@@ -1,12 +1,27 @@
 require('./bootstrap');
-window.Vue = require('vue')
+
+// Import modules...
 import Vue from 'vue';
-import router from './router';
+import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue';
+import PortalVue from 'portal-vue';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
 
-Vue.config.productionTip = false
-Vue.component('mainapp', require('./components/mainapp.vue').default)
+Vue.mixin({ methods: { route } });
+Vue.use(InertiaPlugin);
+Vue.use(PortalVue);
+Vue.use(Vuetify);
 
-const app = new Vue({
-    el: "#app",
-    router
-})
+
+const app = document.getElementById('app');
+
+new Vue({
+    vuetify: new Vuetify(),
+    render: (h) =>
+        h(InertiaApp, {
+            props: {
+                initialPage: JSON.parse(app.dataset.page),
+                resolveComponent: (name) => require(`./Pages/${name}`).default,
+            },
+        }),
+}).$mount(app);
