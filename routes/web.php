@@ -16,13 +16,21 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-            return Inertia::render('Welcome');
+            return Inertia::render('home');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
+    return Inertia::render('home');
+})->name('home');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/one', function () {
     return Inertia::render('one');
 })->name('one');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/two', function () {
+    return Inertia::render('two');
+})->name('two');

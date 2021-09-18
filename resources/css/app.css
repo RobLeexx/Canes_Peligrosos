@@ -5,3 +5,26 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
 @import url('https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css');
 @import "vuetify/dist/vuetify.min.css";
+
+.navBar
+{
+    padding-right: 50px;
+    padding-left: 50px;
+    color: white;
+    font-size: 20px;
+}
+.navBar:hover
+{
+    background: white;
+    color: green;
+}
+.navBar:hover:active
+{
+    background: white;
+    color: green;
+}
+.navBar:active
+{
+    background: white;
+    color: green;
+}
