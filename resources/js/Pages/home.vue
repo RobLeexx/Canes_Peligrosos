@@ -69,10 +69,10 @@
                         <v-toolbar-title>C.A.C</v-toolbar-title>
                         </div>
                         <div class="d-none d-lg-none d-md-none d-sm-block">
-                            <v-toolbar-title>CENTRO DE ADIESTRAMIENTO CANINO</v-toolbar-title>
+                            <v-toolbar-title>CENTRO DE ADIESTRAMIENTO DE CANES</v-toolbar-title>
                         </div>
                         <div class="d-none d-lg-block d-md-block">
-                            <v-toolbar-title>CENTRO DE ADIESTRAMIENTO CANINO (C.A.C)</v-toolbar-title>
+                            <v-toolbar-title>CENTRO DE ADIESTRAMIENTO DE CANES (C.A.C)</v-toolbar-title>
                         </div>
                     </v-row>
                 </div>

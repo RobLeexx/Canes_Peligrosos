@@ -1,5 +1,5 @@
 <template>
-    <jet-authentication-card>
+    <jet-authentication-card style="background-color:#33691E;">
         <template #logo>
             <jet-authentication-card-logo />
         </template>
@@ -12,29 +12,29 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
+                <jet-label for="auth" value="Email o Nombre de Usuario" />
+                <jet-input style="background-color:#DCEDC8;" id="auth" name="auth" type="text" class="mt-1 block w-full" v-model="form.auth" required autofocus />
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
+                <jet-label for="password" value="Contraseña" />
+                <jet-input style="background-color:#DCEDC8;" id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
                 <label class="flex items-center">
-                    <jet-checkbox name="remember" v-model="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    <jet-checkbox style="background-color:#DCEDC8;" name="remember" v-model="form.remember" />
+                    <span class="ml-2 text-sm text-gray-600">Recuérdame</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <inertia-link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
+                    ¿Olvidaste tu contraseña?
                 </inertia-link>
 
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Login
+                <jet-button style="color:white; background-color:#33691E;" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Iniciar Sesión
                 </jet-button>
             </div>
         </form>
@@ -69,7 +69,7 @@
         data() {
             return {
                 form: this.$inertia.form({
-                    email: '',
+                    auth: '',
                     password: '',
                     remember: false
                 })
