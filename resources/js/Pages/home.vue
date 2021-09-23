@@ -22,12 +22,12 @@
         <jet-dropdown align="left" width="48" style="padding-top: 5px; padding-right: 10px;">
             <template #trigger>
                 <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
-                    <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name" />
+                    <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.username" />
                 </button>
 
                 <span v-else class="inline-flex rounded-md">
                     <button type="button"  style="color: black" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                        {{ $page.props.user.name }}
+                        {{ $page.props.user.username }}
 
                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -35,6 +35,22 @@
                     </button>
                 </span>
             </template>
+
+            <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                <inertia-link v-if="$page.props.user" href="/" class="text-sm text-gray-700 underline">
+                    Dashboard
+                </inertia-link>
+
+                <template v-else>
+                    <inertia-link :href="route('login')" class="text-sm text-gray-700 underline">
+                        Login
+                    </inertia-link>
+
+                    <inertia-link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
+                        Register
+                    </inertia-link>
+                </template>
+            </div>
 
             <template #content>
                 <!-- Account Management -->
@@ -343,22 +359,22 @@
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
 
-    export default {
-        components: {
+    export default 
+    {
+        components: 
+        {
             JetApplicationMark,
             JetBanner,
             JetDropdown,
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
-        computed: {
-    },
+            computed: {},
         },
 
-        data() {
-            return {
-                showingNavigationDropdown: false,
-            }
+        data() 
+        {
+            return {showingNavigationDropdown: false,}
         },
         data: () => ({
             v0: false,
@@ -367,21 +383,32 @@
             v3: false,
             v4: false,
             v5: false,
-            v6: false,
-    }),
+            v6: false,}),
 
-        methods: {
-            switchToTeam(team) {
-                this.$inertia.put(route('current-team.update'), {
+        methods: 
+        {
+            switchToTeam(team) 
+            {
+                this.$inertia.put(route('current-team.update'), 
+                {
                     'team_id': team.id
-                }, {
+                }, 
+                {
                     preserveState: false
                 })
             },
 
-            logout() {
+            logout() 
+            {
                 this.$inertia.post(route('logout'));
             },
+        },
+        props: 
+        {
+            canLogin: Boolean,
+            canRegister: Boolean,
+            laravelVersion: String,
+            phpVersion: String,
         }
     }
 </script>
