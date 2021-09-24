@@ -1,7 +1,5 @@
 <template>
     <div>
-        <jet-banner />
-
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
@@ -20,8 +18,8 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('one')" :active="route().current('one')">
-                                    One
+                                <jet-nav-link :href="route('capacitaciones')" :active="route().current('capacitaciones')">
+                                    Capacitaciones
                                 </jet-nav-link>
                                 <jet-nav-link :href="route('usuarios')" :active="route().current('usuarios')">
                                     Usuarios
@@ -241,7 +239,6 @@
 
 <script>
     import JetApplicationMark from '@/Jetstream/ApplicationMark'
-    import JetBanner from '@/Jetstream/Banner'
     import JetDropdown from '@/Jetstream/Dropdown'
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
@@ -250,7 +247,6 @@
     export default {
         components: {
             JetApplicationMark,
-            JetBanner,
             JetDropdown,
             JetDropdownLink,
             JetNavLink,

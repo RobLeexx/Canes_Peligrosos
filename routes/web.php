@@ -33,13 +33,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
         return Inertia::render('home');
     })->name('home');
     
-    Route::middleware(['auth:sanctum', 'verified'])->get('/one', function () {
-        return Inertia::render('one');
-    })->name('one');
+    Route::middleware(['auth:sanctum', 'verified'])->get('/requisitos', function () {
+        return Inertia::render('requisitos');
+    })->name('requisitos');
     
-    Route::middleware(['auth:sanctum', 'verified'])->get('/two', function () {
-        return Inertia::render('two');
-    })->name('two');
+    Route::middleware(['auth:sanctum', 'verified'])->get('/capacitaciones', function () {
+        return Inertia::render('capacitaciones');
+    })->name('capacitaciones');
     
     Route::middleware(['auth:sanctum', 'verified'])->get('/Welcome', function () {
         return Inertia::render('Welcome');

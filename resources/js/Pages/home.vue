@@ -116,11 +116,14 @@
 
         <template v-slot:extension>
             <v-tabs align-with-title>
-                <v-row style="margin:0px">
-                    <v-tab href="home">HOME</v-tab>
-                    <v-tab href="one">ONE</v-tab>
-                    <v-tab href="two">TWO</v-tab>
-                </v-row>
+                <v-col class="d-none d-lg-block d-md-block d-sm-block">
+                    <v-row style="margin:0px: height:50px">
+                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="home">HOME</v-tab></v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="requisitos">REQUISITOS</v-tab></v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="capacitaciones">CAPACITACIONES</v-tab></v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="lista">LISTA</v-tab></v-col>
+                    </v-row>
+                </v-col>
             </v-tabs>
         </template>
         
@@ -129,9 +132,9 @@
         <v-sheet
         id="scrolling-techniques-3"
         class="overflow-y-auto"
-        max-height="710"
+        max-height="900"
         >
-        <v-container style="height: 1500px;">
+        <v-container style="height: 1000px;">
             <div>
             <v-spacer style="height: 350px;"></v-spacer>
               <template>
