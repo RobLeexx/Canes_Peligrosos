@@ -19,83 +19,25 @@
             ></v-img>
         </template>
 
-        <jet-dropdown align="left" width="48" style="padding-top: 5px; padding-right: 10px;">
-            <template #trigger>
-                <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
-                    <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.username" />
-                </button>
-
-                <span v-else class="inline-flex rounded-md">
-                    <button type="button"  style="color: black" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                        {{ $page.props.user.username }}
-
-                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                </span>
-            </template>
-
-            <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                <inertia-link v-if="$page.props.user" href="/" class="text-sm text-gray-700 underline">
-                    Dashboard
-                </inertia-link>
-
-                <template v-else>
-                    <inertia-link :href="route('login')" class="text-sm text-gray-700 underline">
-                        Login
-                    </inertia-link>
-
-                    <inertia-link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
-                        Register
-                    </inertia-link>
-                </template>
-            </div>
-
-            <template #content>
-                <!-- Account Management -->
-                <div class="block px-4 py-2 text-xs text-gray-400">
-                    Configuración del perfil
-                </div>
-
-                <jet-dropdown-link :href="route('profile.show')">
-                    Perfil
-                </jet-dropdown-link>
-
-                <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
-                    API Tokens
-                </jet-dropdown-link>
-
-                <div class="border-t border-gray-100"></div>
-
-                <!-- Authentication -->
-                <form @submit.prevent="logout">
-                    <jet-dropdown-link as="button" style="color: black">
-                        Cerrar Sesión
-                    </jet-dropdown-link>
-                </form>
-            </template>
-        </jet-dropdown>
-
         <template>
-            <v-row style="margin: 0; display: flex; justify-content: flex-end; padding-top:30px; padding-left:30px;">
+            <v-row style="margin: 0; display: flex; justify-content: flex-end; padding-top:20px; padding-left:30px; margin-right: 3px">
                 <div style="background: none; color: white; padding-top: 3px; display:flex; max-height: 50px !important;">
                     <v-row>
                         <div class="d-lg-none d-md-none d-sm-none">
-                        <v-toolbar-title>C.A.C</v-toolbar-title>
+                        <v-toolbar-title style="padding-right: 80px">C.A.C</v-toolbar-title>
                         </div>
                         <div class="d-none d-lg-none d-md-none d-sm-block">
-                            <v-toolbar-title>CENTRO DE ADIESTRAMIENTO DE CANES</v-toolbar-title>
+                            <v-toolbar-title style="padding-left: 100px">CENTRO DE ADIESTRAMIENTO DE CANES</v-toolbar-title>
                         </div>
                         <div class="d-none d-lg-block d-md-block">
-                            <v-toolbar-title>CENTRO DE ADIESTRAMIENTO DE CANES (C.A.C)</v-toolbar-title>
+                            <v-toolbar-title style="padding-left: 200px">CENTRO DE ADIESTRAMIENTO DE CANES (C.A.C)</v-toolbar-title>
                         </div>
                     </v-row>
                 </div>
             </v-row>
         </template>
 
-        <v-row style="margin: 0; display: flex; justify-content: flex-end;">
+        <v-row style="margin: 0; display: flex; text-align: end;" class="d-none d-sm-block">
             <v-btn icon>
             <v-icon>mdi-facebook</v-icon>
             </v-btn>
@@ -112,11 +54,101 @@
                 <v-icon>mdi-whatsapp</v-icon>
             </v-btn>
         </v-row>
-        
 
         <template v-slot:extension>
+            <div>
+                <jet-dropdown align="left" width="48" style="padding-top: 10px; padding-right: 10px; padding-bottom: 15px; position: fixed; top:-1px; z-index: 2">
+                    <template #trigger>
+                        <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                            <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.username" />
+                        </button>
+
+                        <span v-else class="inline-flex rounded-md">
+                            <button type="button"  style="color: black" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                {{ $page.props.user.username }}
+
+                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </span>
+                    </template>
+
+                    <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                        <inertia-link v-if="$page.props.user" href="/" class="text-sm text-gray-700 underline">
+                            Dashboard
+                        </inertia-link>
+
+                        <template v-else>
+                            <inertia-link :href="route('login')" class="text-sm text-gray-700 underline">
+                                Login
+                            </inertia-link>
+
+                            <inertia-link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
+                                Register
+                            </inertia-link>
+                        </template>
+                    </div>
+
+                    <template #content>
+                        <!-- Account Management -->
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            Configuración del perfil
+                        </div>
+
+                        <jet-dropdown-link :href="route('profile.show')">
+                            Perfil
+                        </jet-dropdown-link>
+
+                        <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
+                            API Tokens
+                        </jet-dropdown-link>
+
+                        <div class="border-t border-gray-100"></div>
+
+                        <!-- Authentication -->
+                        <form @submit.prevent="logout">
+                            <jet-dropdown-link as="button" style="color: black">
+                                Cerrar Sesión
+                            </jet-dropdown-link>
+                        </form>
+                    </template>
+                </jet-dropdown>
+
+                <jet-dropdown  class="d-block d-sm-none" align="left" width="48" style="padding-right: 10px; padding-bottom: 15px; position: fixed; top:60px; z-index: 1">
+                <template #trigger>
+                    <span class="inline-flex rounded-md">
+                        <button type="button"  style="color: black" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            Menú
+                            <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </span>
+                </template>
+
+                <template #content>
+                    <jet-dropdown-link as="button" :href="route('profile.show')" style="color: black">
+                        HOME
+                    </jet-dropdown-link>
+                    <div class="border-t border-gray-100"></div>
+                    <jet-dropdown-link as="button" :href="route('profile.show')" style="color: black">
+                        REQUISITOS
+                    </jet-dropdown-link>
+                    <div class="border-t border-gray-100"></div>
+                    <jet-dropdown-link as="button" :href="route('profile.show')" style="color: black">
+                        CAPACITACIONES
+                    </jet-dropdown-link>
+                    <div class="border-t border-gray-100"></div>
+                    <jet-dropdown-link as="button" :href="route('profile.show')" style="color: black">
+                        LISTA
+                    </jet-dropdown-link>
+                </template>
+                </jet-dropdown>
+            </div>
+            
             <v-tabs align-with-title>
-                <v-col class="d-none d-lg-block d-md-block d-sm-block">
+                <v-col class="d-none d-sm-block">
                     <v-row style="margin:0px: height:50px">
                         <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="home">HOME</v-tab></v-col>
                         <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="requisitos">REQUISITOS</v-tab></v-col>
@@ -125,6 +157,26 @@
                     </v-row>
                 </v-col>
             </v-tabs>
+
+            <div class="d-block d-sm-none">
+                <v-row style="margin: 0; display: flex; flex-wrap:nowrap">
+                    <v-btn icon>
+                    <v-icon>mdi-facebook</v-icon>
+                    </v-btn>
+
+                    <v-btn icon>
+                        <v-icon>mdi-instagram</v-icon>
+                    </v-btn>
+
+                    <v-btn icon>
+                        <v-icon>mdi-twitter</v-icon>
+                    </v-btn>
+
+                    <v-btn icon>
+                        <v-icon>mdi-whatsapp</v-icon>
+                    </v-btn>
+                </v-row>
+            </div>
         </template>
         
         </v-app-bar>
@@ -136,7 +188,7 @@
         >
         <v-container style="height: 1000px;">
             <div>
-            <v-spacer style="height: 350px;"></v-spacer>
+            <v-spacer style="height: 320px;"></v-spacer>
               <template>
                 <h1 style="
                     display: flex;
