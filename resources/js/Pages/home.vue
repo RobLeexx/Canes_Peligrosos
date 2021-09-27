@@ -19,6 +19,7 @@
             ></v-img>
         </template>
 
+        <!-- Título Responsive -->
         <template>
             <v-row style="margin: 0; display: flex; justify-content: flex-end; padding-top:20px; padding-left:30px; margin-right: 3px">
                 <div style="background: none; color: white; padding-top: 3px; display:flex; max-height: 50px !important;">
@@ -37,6 +38,7 @@
             </v-row>
         </template>
 
+        <!-- Social Ads No-Mobile -->
         <v-row style="margin: 0; display: flex; text-align: end;" class="d-none d-sm-block">
             <v-btn icon>
             <v-icon>mdi-facebook</v-icon>
@@ -128,21 +130,21 @@
                 </template>
 
                 <template #content>
-                    <jet-dropdown-link as="button" :href="route('profile.show')" style="color: black">
+                    <v-tab href="home" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
                         HOME
-                    </jet-dropdown-link>
+                    </v-tab>
                     <div class="border-t border-gray-100"></div>
-                    <jet-dropdown-link as="button" :href="route('profile.show')" style="color: black">
+                    <v-tab href="requisitos" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
                         REQUISITOS
-                    </jet-dropdown-link>
+                    </v-tab>
                     <div class="border-t border-gray-100"></div>
-                    <jet-dropdown-link as="button" :href="route('profile.show')" style="color: black">
+                    <v-tab href="capacitaciones" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
                         CAPACITACIONES
-                    </jet-dropdown-link>
+                    </v-tab>
                     <div class="border-t border-gray-100"></div>
-                    <jet-dropdown-link as="button" :href="route('profile.show')" style="color: black">
+                    <v-tab href="lista" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
                         LISTA
-                    </jet-dropdown-link>
+                    </v-tab>
                 </template>
                 </jet-dropdown>
             </div>

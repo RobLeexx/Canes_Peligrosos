@@ -40,10 +40,17 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::middleware(['auth:sanctum', 'verified'])->get('/capacitaciones', function () {
         return Inertia::render('capacitaciones');
     })->name('capacitaciones');
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/lista', function () {
+        return Inertia::render('lista');
+    })->name('lsta');
     
     Route::middleware(['auth:sanctum', 'verified'])->get('/Welcome', function () {
         return Inertia::render('Welcome');
     })->name('Welcome');
     
     Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/lista', [UsuarioController::class, 'index'])->name('lista');
 });
+

@@ -1,41 +1,68 @@
 <template>
     <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    
-                    <table class="table-auto">
-                        <thead class="bg-indigo-500 text-white">
-                            <th>Nombre</th>
-                            <th>Email</th>
-                        </thead>
-                        <tbody>
-                            <tr v-for="usuario in usuarios" :key="usuario.id">
-                                <td>{{usuario.name}}</td>
-                                <td>{{usuario.email}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                </div>
-            </div>
-        </div>
     </app-layout>
 </template>
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
+    import JetApplicationMark from '@/Jetstream/ApplicationMark'
+    import JetBanner from '@/Jetstream/Banner'
+    import JetDropdown from '@/Jetstream/Dropdown'
+    import JetDropdownLink from '@/Jetstream/DropdownLink'
+    import JetNavLink from '@/Jetstream/NavLink'
+    import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
 
-    export default {
-        components: {
+    export default 
+    {
+        components: 
+        {
             AppLayout,
+            JetApplicationMark,
+            JetBanner,
+            JetDropdown,
+            JetDropdownLink,
+            JetNavLink,
+            JetResponsiveNavLink,
+            computed: {},
         },
-        props: ['usuarios']
+
+        data() 
+        {
+            return {showingNavigationDropdown: false,}
+        },
+        data: () => ({
+            v0: false,
+            v1: false,
+            v2: false,
+            v3: false,
+            v4: false,
+            v5: false,
+            v6: false,}),
+
+        methods: 
+        {
+            switchToTeam(team) 
+            {
+                this.$inertia.put(route('current-team.update'), 
+                {
+                    'team_id': team.id
+                }, 
+                {
+                    preserveState: false
+                })
+            },
+
+            logout() 
+            {
+                this.$inertia.post(route('logout'));
+            },
+        },
+        props: 
+        {
+            canLogin: Boolean,
+            canRegister: Boolean,
+            laravelVersion: String,
+            phpVersion: String,
+        }
     }
 </script>

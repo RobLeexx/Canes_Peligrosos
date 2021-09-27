@@ -4150,47 +4150,17 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
-/* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
-/* harmony import */ var _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/DropdownLink */ "./resources/js/Jetstream/DropdownLink.vue");
-/* harmony import */ var _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/NavLink */ "./resources/js/Jetstream/NavLink.vue");
-/* harmony import */ var _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/ResponsiveNavLink */ "./resources/js/Jetstream/ResponsiveNavLink.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
+/* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
+/* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
+/* harmony import */ var _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/DropdownLink */ "./resources/js/Jetstream/DropdownLink.vue");
+/* harmony import */ var _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/NavLink */ "./resources/js/Jetstream/NavLink.vue");
+/* harmony import */ var _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/ResponsiveNavLink */ "./resources/js/Jetstream/ResponsiveNavLink.vue");
+
+
+var _components$data$data;
+
 //
 //
 //
@@ -4399,32 +4369,49 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+
+/* harmony default export */ __webpack_exports__["default"] = (_components$data$data = {
   components: {
-    JetApplicationMark: _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_0__["default"],
-    JetDropdown: _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_1__["default"],
-    JetDropdownLink: _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_2__["default"],
-    JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_3__["default"],
-    JetResponsiveNavLink: _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_4__["default"]
+    JetApplicationMark: _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_1__["default"],
+    JetBanner: _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_2__["default"],
+    JetDropdown: _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_3__["default"],
+    JetDropdownLink: _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_4__["default"],
+    JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_5__["default"],
+    JetResponsiveNavLink: _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_6__["default"],
+    computed: {}
   },
   data: function data() {
     return {
       showingNavigationDropdown: false
     };
-  },
-  methods: {
-    switchToTeam: function switchToTeam(team) {
-      this.$inertia.put(route('current-team.update'), {
-        'team_id': team.id
-      }, {
-        preserveState: false
-      });
-    },
-    logout: function logout() {
-      this.$inertia.post(route('logout'));
-    }
   }
-});
+}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+  return {
+    v0: false,
+    v1: false,
+    v2: false,
+    v3: false,
+    v4: false,
+    v5: false,
+    v6: false
+  };
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+  switchToTeam: function switchToTeam(team) {
+    this.$inertia.put(route('current-team.update'), {
+      'team_id': team.id
+    }, {
+      preserveState: false
+    });
+  },
+  logout: function logout() {
+    this.$inertia.post(route('logout'));
+  }
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+  canLogin: Boolean,
+  canRegister: Boolean,
+  laravelVersion: String,
+  phpVersion: String
+}), _components$data$data);
 
 /***/ }),
 
@@ -6530,30 +6517,73 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
+/* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
+/* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
+/* harmony import */ var _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/DropdownLink */ "./resources/js/Jetstream/DropdownLink.vue");
+/* harmony import */ var _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/NavLink */ "./resources/js/Jetstream/NavLink.vue");
+/* harmony import */ var _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/ResponsiveNavLink */ "./resources/js/Jetstream/ResponsiveNavLink.vue");
+
+
+var _components$data$data;
+
 //
 //
 //
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_components$data$data = {
   components: {
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__["default"],
+    JetApplicationMark: _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__["default"],
+    JetBanner: _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__["default"],
+    JetDropdown: _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"],
+    JetDropdownLink: _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_5__["default"],
+    JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_6__["default"],
+    JetResponsiveNavLink: _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_7__["default"],
+    computed: {}
+  },
+  data: function data() {
+    return {
+      showingNavigationDropdown: false
+    };
   }
-});
+}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+  return {
+    v0: false,
+    v1: false,
+    v2: false,
+    v3: false,
+    v4: false,
+    v5: false,
+    v6: false
+  };
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+  switchToTeam: function switchToTeam(team) {
+    this.$inertia.put(route('current-team.update'), {
+      'team_id': team.id
+    }, {
+      preserveState: false
+    });
+  },
+  logout: function logout() {
+    this.$inertia.post(route('logout'));
+  }
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+  canLogin: Boolean,
+  canRegister: Boolean,
+  laravelVersion: String,
+  phpVersion: String
+}), _components$data$data);
 
 /***/ }),
 
@@ -6576,6 +6606,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var _components$data$data;
 
+//
+//
 //
 //
 //
@@ -7043,7 +7075,290 @@ var _components$data$data;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
+/* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
+/* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
+/* harmony import */ var _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/DropdownLink */ "./resources/js/Jetstream/DropdownLink.vue");
+/* harmony import */ var _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/NavLink */ "./resources/js/Jetstream/NavLink.vue");
+/* harmony import */ var _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/ResponsiveNavLink */ "./resources/js/Jetstream/ResponsiveNavLink.vue");
+
+
+var _components$data$data;
+
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_components$data$data = {
+  components: {
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__["default"],
+    JetApplicationMark: _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__["default"],
+    JetBanner: _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__["default"],
+    JetDropdown: _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"],
+    JetDropdownLink: _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_5__["default"],
+    JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_6__["default"],
+    JetResponsiveNavLink: _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_7__["default"],
+    computed: {}
+  },
+  data: function data() {
+    return {
+      showingNavigationDropdown: false
+    };
+  }
+}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+  return {
+    v0: false,
+    v1: false,
+    v2: false,
+    v3: false,
+    v4: false,
+    v5: false,
+    v6: false
+  };
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+  switchToTeam: function switchToTeam(team) {
+    this.$inertia.put(route('current-team.update'), {
+      'team_id': team.id
+    }, {
+      preserveState: false
+    });
+  },
+  logout: function logout() {
+    this.$inertia.post(route('logout'));
+  }
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+  canLogin: Boolean,
+  canRegister: Boolean,
+  laravelVersion: String,
+  phpVersion: String
+}), _components$data$data);
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/requisitos.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/requisitos.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
+/* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
+/* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
+/* harmony import */ var _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/DropdownLink */ "./resources/js/Jetstream/DropdownLink.vue");
+/* harmony import */ var _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/NavLink */ "./resources/js/Jetstream/NavLink.vue");
+/* harmony import */ var _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/ResponsiveNavLink */ "./resources/js/Jetstream/ResponsiveNavLink.vue");
+
+
+var _components$data$data;
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7076,12 +7391,55 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_components$data$data = {
   components: {
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__["default"],
+    JetApplicationMark: _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__["default"],
+    JetBanner: _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__["default"],
+    JetDropdown: _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"],
+    JetDropdownLink: _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_5__["default"],
+    JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_6__["default"],
+    JetResponsiveNavLink: _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_7__["default"],
+    computed: {}
   },
-  props: ['usuarios']
-});
+  data: function data() {
+    return {
+      showingNavigationDropdown: false
+    };
+  }
+}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+  return {
+    v0: false,
+    v1: false,
+    v2: false,
+    v3: false,
+    v4: false,
+    v5: false,
+    v6: false
+  };
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+  switchToTeam: function switchToTeam(team) {
+    this.$inertia.put(route('current-team.update'), {
+      'team_id': team.id
+    }, {
+      preserveState: false
+    });
+  },
+  logout: function logout() {
+    this.$inertia.post(route('logout'));
+  }
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+  canLogin: Boolean,
+  canRegister: Boolean,
+  laravelVersion: String,
+  phpVersion: String
+}), _components$data$data);
 
 /***/ }),
 
@@ -32566,15 +32924,17 @@ component.options.__file = "resources/js/Pages/lista.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _requisitos_vue_vue_type_template_id_971975ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./requisitos.vue?vue&type=template&id=971975ce& */ "./resources/js/Pages/requisitos.vue?vue&type=template&id=971975ce&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _requisitos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./requisitos.vue?vue&type=script&lang=js& */ "./resources/js/Pages/requisitos.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _requisitos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _requisitos_vue_vue_type_template_id_971975ce___WEBPACK_IMPORTED_MODULE_0__.render,
   _requisitos_vue_vue_type_template_id_971975ce___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
@@ -33160,6 +33520,19 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_lista_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./lista.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/lista.vue?vue&type=script&lang=js&");
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_lista_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/requisitos.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/Pages/requisitos.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_requisitos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./requisitos.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/requisitos.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_requisitos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -35972,154 +36345,152 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "min-h-screen bg-gray-100" },
-      [
-        _c("nav", { staticClass: "bg-white border-b border-gray-100" }, [
-          _c("div", { staticClass: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, [
-            _c("div", { staticClass: "flex justify-between h-16" }, [
-              _c("div", { staticClass: "flex" }, [
-                _c(
-                  "div",
-                  { staticClass: "flex-shrink-0 flex items-center" },
-                  [
-                    _c(
-                      "inertia-link",
-                      { attrs: { href: _vm.route("dashboard") } },
-                      [
-                        _c("jet-application-mark", {
-                          staticClass: "block h-9 w-auto"
-                        })
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
-                  },
-                  [
-                    _c(
-                      "jet-nav-link",
-                      {
-                        attrs: {
-                          href: _vm.route("dashboard"),
-                          active: _vm.route().current("dashboard")
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                Dashboard\n                            "
+  return _c(
+    "v-app",
+    [
+      _c(
+        "v-card",
+        { staticClass: "overflow-hidden" },
+        [
+          _c(
+            "v-app-bar",
+            {
+              attrs: {
+                absolute: "",
+                color: "#388E3C",
+                dark: "",
+                "shrink-on-scroll": "",
+                prominent: "",
+                src:
+                  "https://www.desktopbackground.org/p/2012/03/11/356862_4k-ultra-hd-dog-wallpapers-hd-desktop-backgrounds-3840x2160_3840x2160_h.jpg",
+                "fade-img-on-scroll": "",
+                height: "200px",
+                "scroll-target": "#scrolling-techniques-3"
+              },
+              scopedSlots: _vm._u([
+                {
+                  key: "img",
+                  fn: function(ref) {
+                    var props = ref.props
+                    return [
+                      _c(
+                        "v-img",
+                        _vm._b(
+                          {
+                            attrs: {
+                              gradient:
+                                "to top right, rgba(75, 129, 59, 0.7), rgba(30, 72, 25, 0.7)"
+                            }
+                          },
+                          "v-img",
+                          props,
+                          false
                         )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "jet-nav-link",
-                      {
-                        attrs: {
-                          href: _vm.route("capacitaciones"),
-                          active: _vm.route().current("capacitaciones")
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                Capacitaciones\n                            "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "jet-nav-link",
-                      {
-                        attrs: {
-                          href: _vm.route("usuarios"),
-                          active: _vm.route().current("usuarios")
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                Usuarios\n                            "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "hidden sm:flex sm:items-center sm:ml-6" },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "ml-3 relative" },
-                    [
-                      _vm.$page.props.jetstream.hasTeamFeatures
-                        ? _c("jet-dropdown", {
-                            attrs: { align: "right", width: "60" },
-                            scopedSlots: _vm._u(
-                              [
+                      )
+                    ]
+                  }
+                },
+                {
+                  key: "extension",
+                  fn: function() {
+                    return [
+                      _c(
+                        "div",
+                        [
+                          _c(
+                            "jet-dropdown",
+                            {
+                              staticStyle: {
+                                "padding-top": "10px",
+                                "padding-right": "10px",
+                                "padding-bottom": "15px",
+                                position: "fixed",
+                                top: "-1px",
+                                "z-index": "2"
+                              },
+                              attrs: { align: "left", width: "48" },
+                              scopedSlots: _vm._u([
                                 {
                                   key: "trigger",
                                   fn: function() {
                                     return [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "inline-flex rounded-md"
-                                        },
-                                        [
-                                          _c(
+                                      _vm.$page.props.jetstream
+                                        .managesProfilePhotos
+                                        ? _c(
                                             "button",
                                             {
                                               staticClass:
-                                                "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150",
-                                              attrs: { type: "button" }
+                                                "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
                                             },
                                             [
-                                              _vm._v(
-                                                "\n                                            " +
-                                                  _vm._s(
+                                              _c("img", {
+                                                staticClass:
+                                                  "h-8 w-8 rounded-full object-cover",
+                                                attrs: {
+                                                  src:
                                                     _vm.$page.props.user
-                                                      .current_team.name
-                                                  ) +
-                                                  "\n\n                                            "
-                                              ),
+                                                      .profile_photo_url,
+                                                  alt:
+                                                    _vm.$page.props.user
+                                                      .username
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        : _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "inline-flex rounded-md"
+                                            },
+                                            [
                                               _c(
-                                                "svg",
+                                                "button",
                                                 {
                                                   staticClass:
-                                                    "ml-2 -mr-0.5 h-4 w-4",
-                                                  attrs: {
-                                                    xmlns:
-                                                      "http://www.w3.org/2000/svg",
-                                                    viewBox: "0 0 20 20",
-                                                    fill: "currentColor"
-                                                  }
+                                                    "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150",
+                                                  staticStyle: {
+                                                    color: "black"
+                                                  },
+                                                  attrs: { type: "button" }
                                                 },
                                                 [
-                                                  _c("path", {
-                                                    attrs: {
-                                                      "fill-rule": "evenodd",
-                                                      d:
-                                                        "M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
-                                                      "clip-rule": "evenodd"
-                                                    }
-                                                  })
+                                                  _vm._v(
+                                                    "\n                            " +
+                                                      _vm._s(
+                                                        _vm.$page.props.user
+                                                          .username
+                                                      ) +
+                                                      "\n\n                            "
+                                                  ),
+                                                  _c(
+                                                    "svg",
+                                                    {
+                                                      staticClass:
+                                                        "ml-2 -mr-0.5 h-4 w-4",
+                                                      attrs: {
+                                                        xmlns:
+                                                          "http://www.w3.org/2000/svg",
+                                                        viewBox: "0 0 20 20",
+                                                        fill: "currentColor"
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("path", {
+                                                        attrs: {
+                                                          "fill-rule":
+                                                            "evenodd",
+                                                          d:
+                                                            "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
+                                                          "clip-rule": "evenodd"
+                                                        }
+                                                      })
+                                                    ]
+                                                  )
                                                 ]
                                               )
                                             ]
                                           )
-                                        ]
-                                      )
                                     ]
                                   },
                                   proxy: true
@@ -36130,222 +36501,172 @@ var render = function() {
                                     return [
                                       _c(
                                         "div",
-                                        { staticClass: "w-60" },
+                                        {
+                                          staticClass:
+                                            "block px-4 py-2 text-xs text-gray-400"
+                                        },
                                         [
-                                          _vm.$page.props.jetstream
-                                            .hasTeamFeatures
-                                            ? [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "block px-4 py-2 text-xs text-gray-400"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                Manage Team\n                                            "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "jet-dropdown-link",
-                                                  {
-                                                    attrs: {
-                                                      href: _vm.route(
-                                                        "teams.show",
-                                                        _vm.$page.props.user
-                                                          .current_team
-                                                      )
-                                                    }
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                Team Settings\n                                            "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _vm.$page.props.jetstream
-                                                  .canCreateTeams
-                                                  ? _c(
-                                                      "jet-dropdown-link",
-                                                      {
-                                                        attrs: {
-                                                          href: _vm.route(
-                                                            "teams.create"
-                                                          )
-                                                        }
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                                                Create New Team\n                                            "
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e(),
-                                                _vm._v(" "),
-                                                _c("div", {
-                                                  staticClass:
-                                                    "border-t border-gray-100"
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "block px-4 py-2 text-xs text-gray-400"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                Switch Teams\n                                            "
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _vm._l(
-                                                  _vm.$page.props.user
-                                                    .all_teams,
-                                                  function(team) {
-                                                    return [
-                                                      _c(
-                                                        "form",
-                                                        {
-                                                          key: team.id,
-                                                          on: {
-                                                            submit: function(
-                                                              $event
-                                                            ) {
-                                                              $event.preventDefault()
-                                                              return _vm.switchToTeam(
-                                                                team
-                                                              )
-                                                            }
-                                                          }
-                                                        },
-                                                        [
-                                                          _c(
-                                                            "jet-dropdown-link",
-                                                            {
-                                                              attrs: {
-                                                                as: "button"
-                                                              }
-                                                            },
-                                                            [
-                                                              _c(
-                                                                "div",
-                                                                {
-                                                                  staticClass:
-                                                                    "flex items-center"
-                                                                },
-                                                                [
-                                                                  team.id ==
-                                                                  _vm.$page
-                                                                    .props.user
-                                                                    .current_team_id
-                                                                    ? _c(
-                                                                        "svg",
-                                                                        {
-                                                                          staticClass:
-                                                                            "mr-2 h-5 w-5 text-green-400",
-                                                                          attrs: {
-                                                                            fill:
-                                                                              "none",
-                                                                            "stroke-linecap":
-                                                                              "round",
-                                                                            "stroke-linejoin":
-                                                                              "round",
-                                                                            "stroke-width":
-                                                                              "2",
-                                                                            stroke:
-                                                                              "currentColor",
-                                                                            viewBox:
-                                                                              "0 0 24 24"
-                                                                          }
-                                                                        },
-                                                                        [
-                                                                          _c(
-                                                                            "path",
-                                                                            {
-                                                                              attrs: {
-                                                                                d:
-                                                                                  "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                                                              }
-                                                                            }
-                                                                          )
-                                                                        ]
-                                                                      )
-                                                                    : _vm._e(),
-                                                                  _vm._v(" "),
-                                                                  _c("div", [
-                                                                    _vm._v(
-                                                                      _vm._s(
-                                                                        team.name
-                                                                      )
-                                                                    )
-                                                                  ])
-                                                                ]
-                                                              )
-                                                            ]
-                                                          )
-                                                        ],
-                                                        1
-                                                      )
-                                                    ]
-                                                  }
+                                          _vm._v(
+                                            "\n                        Configuración del perfil\n                    "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "jet-dropdown-link",
+                                        {
+                                          attrs: {
+                                            href: _vm.route("profile.show")
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                        Perfil\n                    "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _vm.$page.props.jetstream.hasApiFeatures
+                                        ? _c(
+                                            "jet-dropdown-link",
+                                            {
+                                              attrs: {
+                                                href: _vm.route(
+                                                  "api-tokens.index"
                                                 )
-                                              ]
-                                            : _vm._e()
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                        API Tokens\n                    "
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _c("div", {
+                                        staticClass: "border-t border-gray-100"
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "form",
+                                        {
+                                          on: {
+                                            submit: function($event) {
+                                              $event.preventDefault()
+                                              return _vm.logout.apply(
+                                                null,
+                                                arguments
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "jet-dropdown-link",
+                                            {
+                                              staticStyle: { color: "black" },
+                                              attrs: { as: "button" }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                            Cerrar Sesión\n                        "
+                                              )
+                                            ]
+                                          )
                                         ],
-                                        2
+                                        1
                                       )
                                     ]
                                   },
                                   proxy: true
                                 }
-                              ],
-                              null,
-                              false,
-                              373511154
-                            )
-                          })
-                        : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "ml-3 relative" },
-                    [
-                      _c("jet-dropdown", {
-                        attrs: { align: "right", width: "48" },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "trigger",
-                            fn: function() {
-                              return [
-                                _vm.$page.props.jetstream.managesProfilePhotos
-                                  ? _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
-                                      },
-                                      [
-                                        _c("img", {
-                                          staticClass:
-                                            "h-8 w-8 rounded-full object-cover",
-                                          attrs: {
-                                            src:
-                                              _vm.$page.props.user
-                                                .profile_photo_url,
-                                            alt: _vm.$page.props.user.username
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  : _c(
+                              ])
+                            },
+                            [
+                              _vm._v(" "),
+                              _vm.canLogin
+                                ? _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "hidden fixed top-0 right-0 px-6 py-4 sm:block"
+                                    },
+                                    [
+                                      _vm.$page.props.user
+                                        ? _c(
+                                            "inertia-link",
+                                            {
+                                              staticClass:
+                                                "text-sm text-gray-700 underline",
+                                              attrs: { href: "/" }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                        Dashboard\n                    "
+                                              )
+                                            ]
+                                          )
+                                        : [
+                                            _c(
+                                              "inertia-link",
+                                              {
+                                                staticClass:
+                                                  "text-sm text-gray-700 underline",
+                                                attrs: {
+                                                  href: _vm.route("login")
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                            Login\n                        "
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm.canRegister
+                                              ? _c(
+                                                  "inertia-link",
+                                                  {
+                                                    staticClass:
+                                                      "ml-4 text-sm text-gray-700 underline",
+                                                    attrs: {
+                                                      href: _vm.route(
+                                                        "register"
+                                                      )
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                            Register\n                        "
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ]
+                                    ],
+                                    2
+                                  )
+                                : _vm._e()
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("jet-dropdown", {
+                            staticClass: "d-block d-sm-none",
+                            staticStyle: {
+                              "padding-right": "10px",
+                              "padding-bottom": "15px",
+                              position: "fixed",
+                              top: "60px",
+                              "z-index": "1"
+                            },
+                            attrs: { align: "left", width: "48" },
+                            scopedSlots: _vm._u([
+                              {
+                                key: "trigger",
+                                fn: function() {
+                                  return [
+                                    _c(
                                       "span",
                                       { staticClass: "inline-flex rounded-md" },
                                       [
@@ -36354,15 +36675,12 @@ var render = function() {
                                           {
                                             staticClass:
                                               "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150",
+                                            staticStyle: { color: "black" },
                                             attrs: { type: "button" }
                                           },
                                           [
                                             _vm._v(
-                                              "\n                                            " +
-                                                _vm._s(
-                                                  _vm.$page.props.user.username
-                                                ) +
-                                                "\n\n                                            "
+                                              "\n                        Menú\n                        "
                                             ),
                                             _c(
                                               "svg",
@@ -36391,429 +36709,439 @@ var render = function() {
                                         )
                                       ]
                                     )
-                              ]
-                            },
-                            proxy: true
-                          },
-                          {
-                            key: "content",
-                            fn: function() {
-                              return [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "block px-4 py-2 text-xs text-gray-400"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                        Manage Account\n                                    "
-                                    )
                                   ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "jet-dropdown-link",
-                                  {
-                                    attrs: { href: _vm.route("profile.show") }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                        Profile\n                                    "
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _vm.$page.props.jetstream.hasApiFeatures
-                                  ? _c(
-                                      "jet-dropdown-link",
+                                },
+                                proxy: true
+                              },
+                              {
+                                key: "content",
+                                fn: function() {
+                                  return [
+                                    _c(
+                                      "v-tab",
                                       {
-                                        attrs: {
-                                          href: _vm.route("api-tokens.index")
-                                        }
+                                        staticStyle: {
+                                          color: "black",
+                                          display: "flex",
+                                          "justify-content": "flex-start",
+                                          padding: "10px",
+                                          "padding-left": "15px"
+                                        },
+                                        attrs: { href: "home" }
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                        API Tokens\n                                    "
+                                          "\n                    HOME\n                "
                                         )
                                       ]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _c("div", {
-                                  staticClass: "border-t border-gray-100"
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "form",
-                                  {
-                                    on: {
-                                      submit: function($event) {
-                                        $event.preventDefault()
-                                        return _vm.logout.apply(null, arguments)
-                                      }
-                                    }
-                                  },
-                                  [
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", {
+                                      staticClass: "border-t border-gray-100"
+                                    }),
+                                    _vm._v(" "),
                                     _c(
-                                      "jet-dropdown-link",
-                                      { attrs: { as: "button" } },
+                                      "v-tab",
+                                      {
+                                        staticStyle: {
+                                          color: "black",
+                                          display: "flex",
+                                          "justify-content": "flex-start",
+                                          padding: "10px",
+                                          "padding-left": "15px"
+                                        },
+                                        attrs: { href: "requisitos" }
+                                      },
                                       [
                                         _vm._v(
-                                          "\n                                            Logout\n                                        "
+                                          "\n                    REQUISITOS\n                "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", {
+                                      staticClass: "border-t border-gray-100"
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-tab",
+                                      {
+                                        staticStyle: {
+                                          color: "black",
+                                          display: "flex",
+                                          "justify-content": "flex-start",
+                                          padding: "10px",
+                                          "padding-left": "15px"
+                                        },
+                                        attrs: { href: "capacitaciones" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    CAPACITACIONES\n                "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", {
+                                      staticClass: "border-t border-gray-100"
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-tab",
+                                      {
+                                        staticStyle: {
+                                          color: "black",
+                                          display: "flex",
+                                          "justify-content": "flex-start",
+                                          padding: "10px",
+                                          "padding-left": "15px"
+                                        },
+                                        attrs: { href: "lista" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    LISTA\n                "
                                         )
                                       ]
                                     )
-                                  ],
-                                  1
-                                )
-                              ]
-                            },
-                            proxy: true
-                          }
-                        ])
-                      })
-                    ],
-                    1
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "-mr-2 flex items-center sm:hidden" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out",
-                    on: {
-                      click: function($event) {
-                        _vm.showingNavigationDropdown = !_vm.showingNavigationDropdown
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "h-6 w-6",
-                        attrs: {
-                          stroke: "currentColor",
-                          fill: "none",
-                          viewBox: "0 0 24 24"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          class: {
-                            hidden: _vm.showingNavigationDropdown,
-                            "inline-flex": !_vm.showingNavigationDropdown
-                          },
-                          attrs: {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            "stroke-width": "2",
-                            d: "M4 6h16M4 12h16M4 18h16"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("path", {
-                          class: {
-                            hidden: !_vm.showingNavigationDropdown,
-                            "inline-flex": _vm.showingNavigationDropdown
-                          },
-                          attrs: {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            "stroke-width": "2",
-                            d: "M6 18L18 6M6 6l12 12"
-                          }
-                        })
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "sm:hidden",
-              class: {
-                block: _vm.showingNavigationDropdown,
-                hidden: !_vm.showingNavigationDropdown
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "pt-2 pb-3 space-y-1" },
-                [
-                  _c(
-                    "jet-responsive-nav-link",
-                    {
-                      attrs: {
-                        href: _vm.route("dashboard"),
-                        active: _vm.route().current("dashboard")
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        Dashboard\n                    "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "pt-4 pb-1 border-t border-gray-200" }, [
-                _c("div", { staticClass: "flex items-center px-4" }, [
-                  _vm.$page.props.jetstream.managesProfilePhotos
-                    ? _c("div", { staticClass: "flex-shrink-0 mr-3" }, [
-                        _c("img", {
-                          staticClass: "h-10 w-10 rounded-full object-cover",
-                          attrs: {
-                            src: _vm.$page.props.user.profile_photo_url,
-                            alt: _vm.$page.props.user.username
-                          }
-                        })
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c(
-                      "div",
-                      { staticClass: "font-medium text-base text-gray-800" },
-                      [_vm._v(_vm._s(_vm.$page.props.user.username))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "font-medium text-sm text-gray-500" },
-                      [_vm._v(_vm._s(_vm.$page.props.user.username))]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "mt-3 space-y-1" },
-                  [
-                    _c(
-                      "jet-responsive-nav-link",
-                      {
-                        attrs: {
-                          href: _vm.route("profile.show"),
-                          active: _vm.route().current("profile.show")
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Profile\n                        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm.$page.props.jetstream.hasApiFeatures
-                      ? _c(
-                          "jet-responsive-nav-link",
-                          {
-                            attrs: {
-                              href: _vm.route("api-tokens.index"),
-                              active: _vm.route().current("api-tokens.index")
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                            API Tokens\n                        "
-                            )
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "form",
-                      {
-                        attrs: { method: "POST" },
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            return _vm.logout.apply(null, arguments)
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "jet-responsive-nav-link",
-                          { attrs: { as: "button" } },
-                          [
-                            _vm._v(
-                              "\n                                Logout\n                            "
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _vm.$page.props.jetstream.hasTeamFeatures
-                      ? [
-                          _c("div", {
-                            staticClass: "border-t border-gray-200"
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "block px-4 py-2 text-xs text-gray-400"
-                            },
-                            [
-                              _vm._v(
-                                "\n                                Manage Team\n                            "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "jet-responsive-nav-link",
-                            {
-                              attrs: {
-                                href: _vm.route(
-                                  "teams.show",
-                                  _vm.$page.props.user.current_team
-                                ),
-                                active: _vm.route().current("teams.show")
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                Team Settings\n                            "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "jet-responsive-nav-link",
-                            {
-                              attrs: {
-                                href: _vm.route("teams.create"),
-                                active: _vm.route().current("teams.create")
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                Create New Team\n                            "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", {
-                            staticClass: "border-t border-gray-200"
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "block px-4 py-2 text-xs text-gray-400"
-                            },
-                            [
-                              _vm._v(
-                                "\n                                Switch Teams\n                            "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm._l(_vm.$page.props.user.all_teams, function(
-                            team
-                          ) {
-                            return [
-                              _c(
-                                "form",
-                                {
-                                  key: team.id,
-                                  on: {
-                                    submit: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.switchToTeam(team)
-                                    }
-                                  }
+                                  ]
                                 },
+                                proxy: true
+                              }
+                            ])
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tabs",
+                        { attrs: { "align-with-title": "" } },
+                        [
+                          _c(
+                            "v-col",
+                            { staticClass: "d-none d-sm-block" },
+                            [
+                              _c(
+                                "v-row",
+                                { staticStyle: { margin: "0px: height:50px" } },
                                 [
                                   _c(
-                                    "jet-responsive-nav-link",
-                                    { attrs: { as: "button" } },
+                                    "v-col",
+                                    {
+                                      attrs: {
+                                        cols: "12",
+                                        lg: "2",
+                                        md: "2",
+                                        sm: "3"
+                                      }
+                                    },
                                     [
                                       _c(
-                                        "div",
-                                        { staticClass: "flex items-center" },
-                                        [
-                                          team.id ==
-                                          _vm.$page.props.user.current_team_id
-                                            ? _c(
-                                                "svg",
-                                                {
-                                                  staticClass:
-                                                    "mr-2 h-5 w-5 text-green-400",
-                                                  attrs: {
-                                                    fill: "none",
-                                                    "stroke-linecap": "round",
-                                                    "stroke-linejoin": "round",
-                                                    "stroke-width": "2",
-                                                    stroke: "currentColor",
-                                                    viewBox: "0 0 24 24"
-                                                  }
-                                                },
-                                                [
-                                                  _c("path", {
-                                                    attrs: {
-                                                      d:
-                                                        "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                                    }
-                                                  })
-                                                ]
-                                              )
-                                            : _vm._e(),
-                                          _vm._v(" "),
-                                          _c("div", [_vm._v(_vm._s(team.name))])
-                                        ]
+                                        "v-tab",
+                                        {
+                                          staticStyle: {
+                                            "padding-bottom": "15px",
+                                            height: "50px"
+                                          },
+                                          attrs: { href: "home" }
+                                        },
+                                        [_vm._v("HOME")]
                                       )
-                                    ]
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    {
+                                      attrs: {
+                                        cols: "12",
+                                        lg: "2",
+                                        md: "2",
+                                        sm: "3"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "v-tab",
+                                        {
+                                          staticStyle: {
+                                            "padding-bottom": "15px",
+                                            height: "50px"
+                                          },
+                                          attrs: { href: "requisitos" }
+                                        },
+                                        [_vm._v("REQUISITOS")]
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    {
+                                      attrs: {
+                                        cols: "12",
+                                        lg: "2",
+                                        md: "2",
+                                        sm: "3"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "v-tab",
+                                        {
+                                          staticStyle: {
+                                            "padding-bottom": "15px",
+                                            height: "50px"
+                                          },
+                                          attrs: { href: "capacitaciones" }
+                                        },
+                                        [_vm._v("CAPACITACIONES")]
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    {
+                                      attrs: {
+                                        cols: "12",
+                                        lg: "2",
+                                        md: "2",
+                                        sm: "3"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "v-tab",
+                                        {
+                                          staticStyle: {
+                                            "padding-bottom": "15px",
+                                            height: "50px"
+                                          },
+                                          attrs: { href: "lista" }
+                                        },
+                                        [_vm._v("LISTA")]
+                                      )
+                                    ],
+                                    1
                                   )
                                 ],
                                 1
                               )
-                            ]
-                          })
-                        ]
-                      : _vm._e()
-                  ],
-                  2
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "d-block d-sm-none" },
+                        [
+                          _c(
+                            "v-row",
+                            {
+                              staticStyle: {
+                                margin: "0",
+                                display: "flex",
+                                "flex-wrap": "nowrap"
+                              }
+                            },
+                            [
+                              _c(
+                                "v-btn",
+                                { attrs: { icon: "" } },
+                                [_c("v-icon", [_vm._v("mdi-facebook")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                { attrs: { icon: "" } },
+                                [_c("v-icon", [_vm._v("mdi-instagram")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                { attrs: { icon: "" } },
+                                [_c("v-icon", [_vm._v("mdi-twitter")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                { attrs: { icon: "" } },
+                                [_c("v-icon", [_vm._v("mdi-whatsapp")])],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  },
+                  proxy: true
+                }
+              ])
+            },
+            [
+              _vm._v(" "),
+              [
+                _c(
+                  "v-row",
+                  {
+                    staticStyle: {
+                      margin: "0",
+                      display: "flex",
+                      "justify-content": "flex-end",
+                      "padding-top": "20px",
+                      "padding-left": "30px",
+                      "margin-right": "3px"
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          background: "none",
+                          color: "white",
+                          "padding-top": "3px",
+                          display: "flex",
+                          "max-height": "50px !important"
+                        }
+                      },
+                      [
+                        _c("v-row", [
+                          _c(
+                            "div",
+                            { staticClass: "d-lg-none d-md-none d-sm-none" },
+                            [
+                              _c(
+                                "v-toolbar-title",
+                                { staticStyle: { "padding-right": "80px" } },
+                                [_vm._v("C.A.C")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "d-none d-lg-none d-md-none d-sm-block"
+                            },
+                            [
+                              _c(
+                                "v-toolbar-title",
+                                { staticStyle: { "padding-left": "100px" } },
+                                [_vm._v("CENTRO DE ADIESTRAMIENTO DE CANES")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "d-none d-lg-block d-md-block" },
+                            [
+                              _c(
+                                "v-toolbar-title",
+                                { staticStyle: { "padding-left": "200px" } },
+                                [
+                                  _vm._v(
+                                    "CENTRO DE ADIESTRAMIENTO DE CANES (C.A.C)"
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ],
+              _vm._v(" "),
+              _c(
+                "v-row",
+                {
+                  staticClass: "d-none d-sm-block",
+                  staticStyle: {
+                    margin: "0",
+                    display: "flex",
+                    "text-align": "end"
+                  }
+                },
+                [
+                  _c(
+                    "v-btn",
+                    { attrs: { icon: "" } },
+                    [_c("v-icon", [_vm._v("mdi-facebook")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    { attrs: { icon: "" } },
+                    [_c("v-icon", [_vm._v("mdi-instagram")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    { attrs: { icon: "" } },
+                    [_c("v-icon", [_vm._v("mdi-twitter")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    { attrs: { icon: "" } },
+                    [_c("v-icon", [_vm._v("mdi-whatsapp")])],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "v-sheet",
+            {
+              staticClass: "overflow-y-auto",
+              attrs: { id: "scrolling-techniques-3", "max-height": "900" }
+            },
+            [
+              _c("v-container", { staticStyle: { height: "1000px" } }, [
+                _c(
+                  "div",
+                  [_c("v-spacer", { staticStyle: { height: "320px" } })],
+                  1
                 )
               ])
-            ]
+            ],
+            1
           )
-        ]),
-        _vm._v(" "),
-        _c("header", { staticClass: "bg-white shadow" }, [
-          _c(
-            "div",
-            { staticClass: "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8" },
-            [_vm._t("header")],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("main", [_vm._t("default")], 2),
-        _vm._v(" "),
-        _c("portal-target", { attrs: { name: "modal", multiple: "" } })
-      ],
-      1
-    )
-  ])
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40586,39 +40914,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "app-layout",
-    {
-      scopedSlots: _vm._u([
-        {
-          key: "header",
-          fn: function() {
-            return [
-              _c(
-                "h2",
-                {
-                  staticClass:
-                    "font-semibold text-xl text-gray-800 leading-tight"
-                },
-                [_vm._v("\n            Dashboard\n        ")]
-              )
-            ]
-          },
-          proxy: true
-        }
-      ])
-    },
-    [
-      _vm._v(" "),
-      _c("div", { staticClass: "py-12" }, [
-        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
-          _c("div", {
-            staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg"
-          })
-        ])
-      ])
-    ]
-  )
+  return _c("app-layout")
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -41016,13 +41312,16 @@ var render = function() {
                                 fn: function() {
                                   return [
                                     _c(
-                                      "jet-dropdown-link",
+                                      "v-tab",
                                       {
-                                        staticStyle: { color: "black" },
-                                        attrs: {
-                                          as: "button",
-                                          href: _vm.route("profile.show")
-                                        }
+                                        staticStyle: {
+                                          color: "black",
+                                          display: "flex",
+                                          "justify-content": "flex-start",
+                                          padding: "10px",
+                                          "padding-left": "15px"
+                                        },
+                                        attrs: { href: "home" }
                                       },
                                       [
                                         _vm._v(
@@ -41036,13 +41335,16 @@ var render = function() {
                                     }),
                                     _vm._v(" "),
                                     _c(
-                                      "jet-dropdown-link",
+                                      "v-tab",
                                       {
-                                        staticStyle: { color: "black" },
-                                        attrs: {
-                                          as: "button",
-                                          href: _vm.route("profile.show")
-                                        }
+                                        staticStyle: {
+                                          color: "black",
+                                          display: "flex",
+                                          "justify-content": "flex-start",
+                                          padding: "10px",
+                                          "padding-left": "15px"
+                                        },
+                                        attrs: { href: "requisitos" }
                                       },
                                       [
                                         _vm._v(
@@ -41056,13 +41358,16 @@ var render = function() {
                                     }),
                                     _vm._v(" "),
                                     _c(
-                                      "jet-dropdown-link",
+                                      "v-tab",
                                       {
-                                        staticStyle: { color: "black" },
-                                        attrs: {
-                                          as: "button",
-                                          href: _vm.route("profile.show")
-                                        }
+                                        staticStyle: {
+                                          color: "black",
+                                          display: "flex",
+                                          "justify-content": "flex-start",
+                                          padding: "10px",
+                                          "padding-left": "15px"
+                                        },
+                                        attrs: { href: "capacitaciones" }
                                       },
                                       [
                                         _vm._v(
@@ -41076,13 +41381,16 @@ var render = function() {
                                     }),
                                     _vm._v(" "),
                                     _c(
-                                      "jet-dropdown-link",
+                                      "v-tab",
                                       {
-                                        staticStyle: { color: "black" },
-                                        attrs: {
-                                          as: "button",
-                                          href: _vm.route("profile.show")
-                                        }
+                                        staticStyle: {
+                                          color: "black",
+                                          display: "flex",
+                                          "justify-content": "flex-start",
+                                          padding: "10px",
+                                          "padding-left": "15px"
+                                        },
+                                        attrs: { href: "lista" }
                                       },
                                       [
                                         _vm._v(
@@ -41962,61 +42270,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "app-layout",
-    {
-      scopedSlots: _vm._u([
-        {
-          key: "header",
-          fn: function() {
-            return [
-              _c(
-                "h2",
-                {
-                  staticClass:
-                    "font-semibold text-xl text-gray-800 leading-tight"
-                },
-                [_vm._v("\n            Dashboard\n        ")]
-              )
-            ]
-          },
-          proxy: true
-        }
-      ])
-    },
-    [
-      _vm._v(" "),
-      _c("div", { staticClass: "py-12" }, [
-        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
-          _c(
-            "div",
-            { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
-            [
-              _c("table", { staticClass: "table-auto" }, [
-                _c("thead", { staticClass: "bg-indigo-500 text-white" }, [
-                  _c("th", [_vm._v("Nombre")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Email")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.usuarios, function(usuario) {
-                    return _c("tr", { key: usuario.id }, [
-                      _c("td", [_vm._v(_vm._s(usuario.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(usuario.email))])
-                    ])
-                  }),
-                  0
-                )
-              ])
-            ]
-          )
-        ])
-      ])
-    ]
-  )
+  return _c("app-layout")
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42042,20 +42296,532 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { attrs: { id: "app" } },
+    "app-layout",
     [
-      _c("v-app", { attrs: { id: "inspire" } }, [
-        _c("div", [
-          _c("div", { staticClass: "d-lg-none" }, [
-            _vm._v("\n            hide on screens wider than lg\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "d-none d-lg-block" }, [
-            _vm._v("\n            hide on screens smaller than lg\n        ")
+      _c(
+        "v-sheet",
+        {
+          staticClass: "overflow-y-auto",
+          attrs: { id: "scrolling-techniques-3", "max-height": "900" }
+        },
+        [
+          _c("v-container", { staticStyle: { height: "1000px" } }, [
+            _c(
+              "div",
+              [
+                _c("v-spacer", { staticStyle: { height: "320px" } }),
+                _vm._v(" "),
+                [
+                  _c(
+                    "h1",
+                    {
+                      staticStyle: {
+                        display: "flex",
+                        "justify-content": "center",
+                        "font-size": "x-large"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                ART No.12: DOCUMENTOS A PRESENTAR POR EL PROPIETARIO DEL PERRO PELIGROSO"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    [
+                      _c("v-spacer", { staticStyle: { height: "30px" } }),
+                      _vm._v(" "),
+                      _c("v-checkbox", {
+                        attrs: { label: " 1. Memorial", color: "green" },
+                        model: {
+                          value: _vm.v0,
+                          callback: function($$v) {
+                            _vm.v0 = $$v
+                          },
+                          expression: "v0"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-banner",
+                        {
+                          attrs: {
+                            "single-line": "",
+                            transition: "slide-y-transition"
+                          },
+                          model: {
+                            value: _vm.v0,
+                            callback: function($$v) {
+                              _vm.v0 = $$v
+                            },
+                            expression: "v0"
+                          }
+                        },
+                        [
+                          _c(
+                            "v-container",
+                            [
+                              _c(
+                                "v-row",
+                                [
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", sm: "6" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Comandante Departamental",
+                                          placeholder:
+                                            "Nombre del Comandante Departamental",
+                                          solo: ""
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", sm: "6" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Can",
+                                          placeholder: "Can",
+                                          solo: ""
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", sm: "6" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Domicilio",
+                                          placeholder:
+                                            "Domicilio y Municipio al que pertenece",
+                                          solo: ""
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", sm: "6" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Can",
+                                          placeholder: "Can",
+                                          solo: ""
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", sm: "6" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Cuidadores Eventuales",
+                                          placeholder: "Cuidadores Eventuales",
+                                          solo: ""
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", sm: "6" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Disponibilidad",
+                                          placeholder: "Disponibilidad",
+                                          solo: ""
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider", [_vm._v("inset")]),
+                      _vm._v(" "),
+                      _c("v-checkbox", {
+                        attrs: { label: " 2. Documento de Identidad" },
+                        model: {
+                          value: _vm.v1,
+                          callback: function($$v) {
+                            _vm.v1 = $$v
+                          },
+                          expression: "v1"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-banner",
+                        {
+                          attrs: {
+                            "single-line": "",
+                            transition: "slide-y-transition"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "actions",
+                              fn: function(ref) {
+                                var dismiss = ref.dismiss
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: { text: "", color: "primary" },
+                                      on: { click: dismiss }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    Cancelar\n                  "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              }
+                            }
+                          ]),
+                          model: {
+                            value: _vm.v1,
+                            callback: function($$v) {
+                              _vm.v1 = $$v
+                            },
+                            expression: "v1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                1. Memorial\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider", [_vm._v("inset")]),
+                      _vm._v(" "),
+                      _c("v-checkbox", {
+                        attrs: { label: " 3. Antecedentes" },
+                        model: {
+                          value: _vm.v2,
+                          callback: function($$v) {
+                            _vm.v2 = $$v
+                          },
+                          expression: "v2"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-banner",
+                        {
+                          attrs: {
+                            "single-line": "",
+                            transition: "slide-y-transition"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "actions",
+                              fn: function(ref) {
+                                var dismiss = ref.dismiss
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: { text: "", color: "primary" },
+                                      on: { click: dismiss }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    Cancelar\n                  "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              }
+                            }
+                          ]),
+                          model: {
+                            value: _vm.v2,
+                            callback: function($$v) {
+                              _vm.v2 = $$v
+                            },
+                            expression: "v2"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                1. Memorial\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider", [_vm._v("inset")]),
+                      _vm._v(" "),
+                      _c("v-checkbox", {
+                        attrs: {
+                          label:
+                            " 4. Seguro Obligatorio de Responsabilidad Civil"
+                        },
+                        model: {
+                          value: _vm.v3,
+                          callback: function($$v) {
+                            _vm.v3 = $$v
+                          },
+                          expression: "v3"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-banner",
+                        {
+                          attrs: {
+                            "single-line": "",
+                            transition: "slide-y-transition"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "actions",
+                              fn: function(ref) {
+                                var dismiss = ref.dismiss
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: { text: "", color: "primary" },
+                                      on: { click: dismiss }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    Cancelar\n                  "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              }
+                            }
+                          ]),
+                          model: {
+                            value: _vm.v3,
+                            callback: function($$v) {
+                              _vm.v3 = $$v
+                            },
+                            expression: "v3"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                1. Memorial\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider", [_vm._v("inset")]),
+                      _vm._v(" "),
+                      _c("v-checkbox", {
+                        attrs: { label: " 5. Estado de Salud del Can" },
+                        model: {
+                          value: _vm.v4,
+                          callback: function($$v) {
+                            _vm.v4 = $$v
+                          },
+                          expression: "v4"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-banner",
+                        {
+                          attrs: {
+                            "single-line": "",
+                            transition: "slide-y-transition"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "actions",
+                              fn: function(ref) {
+                                var dismiss = ref.dismiss
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: { text: "", color: "primary" },
+                                      on: { click: dismiss }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    Cancelar\n                  "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              }
+                            }
+                          ]),
+                          model: {
+                            value: _vm.v4,
+                            callback: function($$v) {
+                              _vm.v4 = $$v
+                            },
+                            expression: "v4"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                1. Memorial\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider", [_vm._v("inset")]),
+                      _vm._v(" "),
+                      _c("v-checkbox", {
+                        attrs: { label: " 6. Especifiaciones del Domicilio" },
+                        model: {
+                          value: _vm.v5,
+                          callback: function($$v) {
+                            _vm.v5 = $$v
+                          },
+                          expression: "v5"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-banner",
+                        {
+                          attrs: {
+                            "single-line": "",
+                            transition: "slide-y-transition"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "actions",
+                              fn: function(ref) {
+                                var dismiss = ref.dismiss
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: { text: "", color: "primary" },
+                                      on: { click: dismiss }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    Cancelar\n                  "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              }
+                            }
+                          ]),
+                          model: {
+                            value: _vm.v5,
+                            callback: function($$v) {
+                              _vm.v5 = $$v
+                            },
+                            expression: "v5"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                1. Memorial\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("v-divider", [_vm._v("inset")]),
+                      _vm._v(" "),
+                      _c("v-checkbox", {
+                        attrs: { label: " 7. Datos Finales" },
+                        model: {
+                          value: _vm.v6,
+                          callback: function($$v) {
+                            _vm.v6 = $$v
+                          },
+                          expression: "v6"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-banner",
+                        {
+                          attrs: {
+                            "single-line": "",
+                            transition: "slide-y-transition"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "actions",
+                              fn: function(ref) {
+                                var dismiss = ref.dismiss
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: { text: "", color: "primary" },
+                                      on: { click: dismiss }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    Cancelar\n                  "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              }
+                            }
+                          ]),
+                          model: {
+                            value: _vm.v6,
+                            callback: function($$v) {
+                              _vm.v6 = $$v
+                            },
+                            expression: "v6"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                7. Datos Finales\n                "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ]
+              ],
+              2
+            )
           ])
-        ])
-      ])
+        ],
+        1
+      )
     ],
     1
   )
