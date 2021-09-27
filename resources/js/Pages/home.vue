@@ -214,215 +214,68 @@
         <v-container style="height: 1000px;">
             <div>
             <v-spacer style="height: 320px;"></v-spacer>
-              <template>
-                <h1 style="
-                    display: flex;
-                    justify-content: center;
-                    font-size: x-large;" >
-                    ART No.12: DOCUMENTOS A PRESENTAR POR EL PROPIETARIO DEL PERRO PELIGROSO</h1>
-                <div>
-                <v-spacer style="height: 30px;"></v-spacer>
-                <!-- 1. Memorial -->
-                    <v-checkbox
-                        v-model="v0"
-                        label=" 1. Memorial"
-                        color="green"
-                    ></v-checkbox>
-                    <v-banner
-                        v-model="v0"
-                        single-line
-                        transition="slide-y-transition"
+            
+            <template>
+            <v-card
+                flat
+                tile
+            >
+                <v-window
+                v-model="onboarding"
+                vertical
+                >
+                <v-window-item
+                    v-for="n in length"
+                    :key="`card-${n}`"
+                >
+                    <v-card
+                    color="grey"
+                    height="200"
                     >
-                    <v-container>
-                    <v-row>
-                        <v-col cols="12" sm="6">
-                        <v-text-field
-                            label="Comandante Departamental"
-                            placeholder="Nombre del Comandante Departamental"
-                            solo
-                        ></v-text-field>
-                        </v-col>
-                        <v-col cols="12" sm="6">
-                        <v-text-field
-                            label="Can"
-                            placeholder="Can"
-                            solo
-                        ></v-text-field>
-                        </v-col>
-                        <v-col cols="12" sm="6">
-                        <v-text-field
-                            label="Domicilio"
-                            placeholder="Domicilio y Municipio al que pertenece"
-                            solo
-                        ></v-text-field>
-                        </v-col>
-
-                        <v-col cols="12" sm="6">
-                        <v-text-field
-                            label="Can"
-                            placeholder="Can"
-                            solo
-                        ></v-text-field>
-                        </v-col>
-                        <v-col cols="12" sm="6">
-                        <v-text-field
-                            label="Cuidadores Eventuales"
-                            placeholder="Cuidadores Eventuales"
-                            solo
-                        ></v-text-field>
-                        </v-col>
-                        <v-col cols="12" sm="6">
-                        <v-text-field
-                            label="Disponibilidad"
-                            placeholder="Disponibilidad"
-                            solo
-                        ></v-text-field>
-                        </v-col>
+                    <v-row
+                        class="fill-height"
+                        align="center"
+                        justify="center"
+                    >
+                        <h1
+                        style="font-size: 5rem;"
+                        class="white--text"
+                        >
+                        Slide {{ n }}
+                        </h1>
                     </v-row>
-                    </v-container>
+                    </v-card>
+                </v-window-item>
+                </v-window>
 
-                    </v-banner>
-                    <v-divider>inset</v-divider>
+                
 
-                <!-- 2. Documento de Identidad -->
-                    <v-checkbox
-                    v-model="v1"
-                    label=" 2. Documento de Identidad"
-                    ></v-checkbox>
-                    <v-banner
-                        v-model="v1"
-                        single-line
-                        transition="slide-y-transition"
+            </v-card>
+
+            <v-card-actions class="justify-center">
+                <v-item-group
+                    v-model="onboarding"
+                    class="text-center"
+                    mandatory
+                >
+                    <v-item
+                    v-for="n in length"
+                    :key="`btn-${n}`"
+                    v-slot="{ active, toggle }"
                     >
-                    1. Memorial
-                    <template v-slot:actions="{ dismiss }">
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="dismiss"
-                      >
-                        Cancelar
-                      </v-btn>
-                    </template>
-                    </v-banner>
-                    <v-divider>inset</v-divider>
-
-                    <!-- 3. Antecedentes -->
-                    <v-checkbox
-                    v-model="v2"
-                    label=" 3. Antecedentes"
-                    ></v-checkbox>
-                    <v-banner
-                        v-model="v2"
-                        single-line
-                        transition="slide-y-transition"
+                    <v-btn
+                        :input-value="active"
+                        icon
+                        @click="toggle"
                     >
-                    1. Memorial
-                    <template v-slot:actions="{ dismiss }">
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="dismiss"
-                      >
-                        Cancelar
-                      </v-btn>
-                    </template>
-                    </v-banner>
-                    <v-divider>inset</v-divider>
+                        <v-icon>mdi-record</v-icon>
+                    </v-btn>
+                    </v-item>
+                </v-item-group>
+                </v-card-actions>
 
-                    <!-- 4. Seguro Obligatorio de Responsabilidad Civil -->
-                    <v-checkbox
-                    v-model="v3"
-                    label=" 4. Seguro Obligatorio de Responsabilidad Civil"
-                    ></v-checkbox>
-                    <v-banner
-                    v-model="v3"
-                    single-line
-                    transition="slide-y-transition"
-                    >
-                    1. Memorial
-                    <template v-slot:actions="{ dismiss }">
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="dismiss"
-                      >
-                        Cancelar
-                      </v-btn>
-                    </template>
-                    </v-banner>
-                    <v-divider>inset</v-divider>
-
-                    <!-- 5. Estado de Salud del Can -->
-                    <v-checkbox
-                    v-model="v4"
-                    label=" 5. Estado de Salud del Can"
-                    ></v-checkbox>
-                    <v-banner
-                    v-model="v4"
-                    single-line
-                    transition="slide-y-transition"
-                    >
-                    1. Memorial
-                    <template v-slot:actions="{ dismiss }">
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="dismiss"
-                      >
-                        Cancelar
-                      </v-btn>
-                    </template>
-                    </v-banner>
-                    <v-divider>inset</v-divider>
-
-                    <!-- 6. Especifiaciones del Domicilio -->
-                    <v-checkbox
-                    v-model="v5"
-                    label=" 6. Especifiaciones del Domicilio"
-                    ></v-checkbox>
-                    <v-banner
-                    v-model="v5"
-                    single-line
-                    transition="slide-y-transition"
-                    >
-                    1. Memorial
-                    <template v-slot:actions="{ dismiss }">
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="dismiss"
-                      >
-                        Cancelar
-                      </v-btn>
-                    </template>
-                    </v-banner>
-                    <v-divider>inset</v-divider>
-
-                    <!-- 7. Datos Finales -->
-                    <v-checkbox
-                    v-model="v6"
-                    label=" 7. Datos Finales"
-                    ></v-checkbox>
-                    <v-banner
-                    v-model="v6"
-                    single-line
-                    transition="slide-y-transition"
-                    >
-                    7. Datos Finales
-                    <template v-slot:actions="{ dismiss }">
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="dismiss"
-                      >
-                        Cancelar
-                      </v-btn>
-                    </template>
-                    </v-banner>
-
-                </div>
-              </template>
+            </template>
+        
             </div>
         </v-container>
         </v-sheet>
@@ -464,6 +317,10 @@
             v4: false,
             v5: false,
             v6: false,}),
+        data: () => ({
+            length: 3,
+            onboarding: 0,
+            }),
 
         methods: 
         {
@@ -481,6 +338,18 @@
             logout() 
             {
                 this.$inertia.post(route('logout'));
+            },
+            next () 
+            {
+                this.onboarding = this.onboarding + 1 === this.length
+                ? 0
+                : this.onboarding + 1
+            },
+            prev () 
+            {
+                this.onboarding = this.onboarding - 1 < 0
+                ? this.length - 1
+                : this.onboarding - 1
             },
         },
         props: 
