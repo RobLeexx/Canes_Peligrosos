@@ -4150,7 +4150,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
 /* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
@@ -4385,7 +4385,7 @@ var _components$data$data;
       showingNavigationDropdown: false
     };
   }
-}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -4395,7 +4395,7 @@ var _components$data$data;
     v5: false,
     v6: false
   };
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -4406,7 +4406,7 @@ var _components$data$data;
   logout: function logout() {
     this.$inertia.post(route('logout'));
   }
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
@@ -4898,7 +4898,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var _Jetstream_AuthenticationCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/AuthenticationCard */ "./resources/js/Jetstream/AuthenticationCard.vue");
 /* harmony import */ var _Jetstream_AuthenticationCardLogo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/AuthenticationCardLogo */ "./resources/js/Jetstream/AuthenticationCardLogo.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
@@ -4985,7 +4985,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.form.transform(function (data) {
-        return (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, data), {}, {
+        return (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, data), {}, {
           remember: _this.form.remember ? 'on' : ''
         });
       }).post(this.route('login'), {
@@ -6322,6 +6322,17 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
+/* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
+/* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
+/* harmony import */ var _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/DropdownLink */ "./resources/js/Jetstream/DropdownLink.vue");
+/* harmony import */ var _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/NavLink */ "./resources/js/Jetstream/NavLink.vue");
+/* harmony import */ var _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/ResponsiveNavLink */ "./resources/js/Jetstream/ResponsiveNavLink.vue");
+
+
+var _components$data$data;
+
 //
 //
 //
@@ -6498,14 +6509,119 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    canLogin: Boolean,
-    canRegister: Boolean,
-    laravelVersion: String,
-    phpVersion: String
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_components$data$data = {
+  components: {
+    JetApplicationMark: _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_1__["default"],
+    JetBanner: _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_2__["default"],
+    JetDropdown: _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_3__["default"],
+    JetDropdownLink: _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_4__["default"],
+    JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_5__["default"],
+    JetResponsiveNavLink: _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_6__["default"],
+    computed: {}
+  },
+  data: function data() {
+    return {
+      showingNavigationDropdown: false
+    };
   }
-});
+}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+  return {
+    v0: false,
+    v1: false,
+    v2: false,
+    v3: false,
+    v4: false,
+    v5: false,
+    v6: false
+  };
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+  switchToTeam: function switchToTeam(team) {
+    this.$inertia.put(route('current-team.update'), {
+      'team_id': team.id
+    }, {
+      preserveState: false
+    });
+  },
+  logout: function logout() {
+    this.$inertia.post(route('logout'));
+  }
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+  canLogin: Boolean,
+  canRegister: Boolean,
+  laravelVersion: String,
+  phpVersion: String
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "computed", {
+  user: function user() {
+    return this.$page.props.auth.user;
+  }
+}), _components$data$data);
 
 /***/ }),
 
@@ -6517,7 +6633,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
@@ -6557,7 +6673,7 @@ var _components$data$data;
       showingNavigationDropdown: false
     };
   }
-}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -6567,7 +6683,7 @@ var _components$data$data;
     v5: false,
     v6: false
   };
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -6578,7 +6694,7 @@ var _components$data$data;
   logout: function logout() {
     this.$inertia.post(route('logout'));
   }
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
@@ -6595,7 +6711,7 @@ var _components$data$data;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
 /* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
@@ -6606,6 +6722,29 @@ __webpack_require__.r(__webpack_exports__);
 
 var _components$data$data;
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7037,7 +7176,7 @@ var _components$data$data;
       showingNavigationDropdown: false
     };
   }
-}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -7047,7 +7186,7 @@ var _components$data$data;
     v5: false,
     v6: false
   };
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -7058,7 +7197,7 @@ var _components$data$data;
   logout: function logout() {
     this.$inertia.post(route('logout'));
   }
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
@@ -7067,15 +7206,15 @@ var _components$data$data;
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/lista.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/lista.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/registros.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/registros.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
@@ -7115,7 +7254,7 @@ var _components$data$data;
       showingNavigationDropdown: false
     };
   }
-}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -7125,7 +7264,7 @@ var _components$data$data;
     v5: false,
     v6: false
   };
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -7136,7 +7275,7 @@ var _components$data$data;
   logout: function logout() {
     this.$inertia.post(route('logout'));
   }
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
@@ -7153,7 +7292,7 @@ var _components$data$data;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
@@ -7413,7 +7552,7 @@ var _components$data$data;
       showingNavigationDropdown: false
     };
   }
-}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -7423,7 +7562,7 @@ var _components$data$data;
     v5: false,
     v6: false
   };
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -7434,7 +7573,7 @@ var _components$data$data;
   logout: function logout() {
     this.$inertia.post(route('logout'));
   }
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
@@ -32879,16 +33018,16 @@ component.options.__file = "resources/js/Pages/home.vue"
 
 /***/ }),
 
-/***/ "./resources/js/Pages/lista.vue":
-/*!**************************************!*\
-  !*** ./resources/js/Pages/lista.vue ***!
-  \**************************************/
+/***/ "./resources/js/Pages/registros.vue":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/registros.vue ***!
+  \******************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _lista_vue_vue_type_template_id_b3c56b6c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lista.vue?vue&type=template&id=b3c56b6c& */ "./resources/js/Pages/lista.vue?vue&type=template&id=b3c56b6c&");
-/* harmony import */ var _lista_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lista.vue?vue&type=script&lang=js& */ "./resources/js/Pages/lista.vue?vue&type=script&lang=js&");
+/* harmony import */ var _registros_vue_vue_type_template_id_5c4e7767___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./registros.vue?vue&type=template&id=5c4e7767& */ "./resources/js/Pages/registros.vue?vue&type=template&id=5c4e7767&");
+/* harmony import */ var _registros_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./registros.vue?vue&type=script&lang=js& */ "./resources/js/Pages/registros.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -32898,9 +33037,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _lista_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _lista_vue_vue_type_template_id_b3c56b6c___WEBPACK_IMPORTED_MODULE_0__.render,
-  _lista_vue_vue_type_template_id_b3c56b6c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _registros_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _registros_vue_vue_type_template_id_5c4e7767___WEBPACK_IMPORTED_MODULE_0__.render,
+  _registros_vue_vue_type_template_id_5c4e7767___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -32910,7 +33049,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/Pages/lista.vue"
+component.options.__file = "resources/js/Pages/registros.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
@@ -33510,16 +33649,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/lista.vue?vue&type=script&lang=js&":
-/*!***************************************************************!*\
-  !*** ./resources/js/Pages/lista.vue?vue&type=script&lang=js& ***!
-  \***************************************************************/
+/***/ "./resources/js/Pages/registros.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Pages/registros.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_lista_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./lista.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/lista.vue?vue&type=script&lang=js&");
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_lista_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_registros_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./registros.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/registros.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_registros_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -34382,19 +34521,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/lista.vue?vue&type=template&id=b3c56b6c&":
-/*!*********************************************************************!*\
-  !*** ./resources/js/Pages/lista.vue?vue&type=template&id=b3c56b6c& ***!
-  \*********************************************************************/
+/***/ "./resources/js/Pages/registros.vue?vue&type=template&id=5c4e7767&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/Pages/registros.vue?vue&type=template&id=5c4e7767& ***!
+  \*************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_lista_vue_vue_type_template_id_b3c56b6c___WEBPACK_IMPORTED_MODULE_0__.render; },
-/* harmony export */   "staticRenderFns": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_lista_vue_vue_type_template_id_b3c56b6c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_registros_vue_vue_type_template_id_5c4e7767___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   "staticRenderFns": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_registros_vue_vue_type_template_id_5c4e7767___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_lista_vue_vue_type_template_id_b3c56b6c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./lista.vue?vue&type=template&id=b3c56b6c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/lista.vue?vue&type=template&id=b3c56b6c&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_registros_vue_vue_type_template_id_5c4e7767___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./registros.vue?vue&type=template&id=5c4e7767& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/registros.vue?vue&type=template&id=5c4e7767&");
 
 
 /***/ }),
@@ -36458,7 +36597,7 @@ var render = function() {
                                                   _vm._v(
                                                     "\n                            " +
                                                       _vm._s(
-                                                        _vm.$page.props.user
+                                                        _vm.$page.props.auth
                                                           .username
                                                       ) +
                                                       "\n\n                            "
@@ -40342,45 +40481,129 @@ var render = function() {
         "relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"
     },
     [
-      _vm.canLogin
-        ? _c(
-            "div",
-            { staticClass: "hidden fixed top-0 right-0 px-6 py-4 sm:block" },
-            [
-              _vm.$page.props.user
-                ? _c(
-                    "inertia-link",
-                    {
-                      staticClass: "text-sm text-gray-700 underline",
-                      attrs: { href: "/dashboard" }
-                    },
-                    [_vm._v("\n            Dashboard\n        ")]
-                  )
-                : [
-                    _c(
-                      "inertia-link",
-                      {
-                        staticClass: "text-sm text-gray-700 underline",
-                        attrs: { href: _vm.route("login") }
-                      },
-                      [_vm._v("\n                Login\n            ")]
-                    ),
-                    _vm._v(" "),
-                    _vm.canRegister
-                      ? _c(
+      _c("jet-dropdown", {
+        staticStyle: {
+          "padding-top": "10px",
+          "padding-right": "10px",
+          "padding-bottom": "15px",
+          position: "fixed",
+          top: "-1px",
+          "z-index": "2"
+        },
+        attrs: { align: "left", width: "48" },
+        scopedSlots: _vm._u([
+          {
+            key: "trigger",
+            fn: function() {
+              return [
+                _vm.$page.props.auth.user
+                  ? _c("div", [
+                      _vm._v(
+                        "\n                You are logged in as: " +
+                          _vm._s(_vm.$page.props.user.username) +
+                          "\n            "
+                      )
+                    ])
+                  : _c(
+                      "div",
+                      [
+                        _c(
                           "inertia-link",
                           {
-                            staticClass: "ml-4 text-sm text-gray-700 underline",
-                            attrs: { href: _vm.route("register") }
+                            staticClass: "text-sm text-gray-700 underline",
+                            attrs: { href: _vm.route("login") }
                           },
-                          [_vm._v("\n                Register\n            ")]
-                        )
-                      : _vm._e()
+                          [
+                            _vm._v(
+                              "\n                    Login\n                "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.canRegister
+                          ? _c(
+                              "inertia-link",
+                              {
+                                staticClass:
+                                  "ml-4 text-sm text-gray-700 underline",
+                                attrs: { href: _vm.route("register") }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    Register\n                "
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ],
+                      1
+                    )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "content",
+            fn: function() {
+              return [
+                _c(
+                  "div",
+                  { staticClass: "block px-4 py-2 text-xs text-gray-400" },
+                  [
+                    _vm._v(
+                      "\n                Configuración del perfil\n            "
+                    )
                   ]
-            ],
-            2
-          )
-        : _vm._e(),
+                ),
+                _vm._v(" "),
+                _c(
+                  "jet-dropdown-link",
+                  { attrs: { href: _vm.route("profile.show") } },
+                  [_vm._v("\n                Perfil\n            ")]
+                ),
+                _vm._v(" "),
+                _vm.$page.props.jetstream.hasApiFeatures
+                  ? _c(
+                      "jet-dropdown-link",
+                      { attrs: { href: _vm.route("api-tokens.index") } },
+                      [_vm._v("\n                API Tokens\n            ")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "border-t border-gray-100" }),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.logout.apply(null, arguments)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "jet-dropdown-link",
+                      {
+                        staticStyle: { color: "black" },
+                        attrs: { as: "button" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    Cerrar Sesión\n                "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]
+            },
+            proxy: true
+          }
+        ])
+      }),
       _vm._v(" "),
       _c("div", { staticClass: "max-w-6xl mx-auto sm:px-6 lg:px-8" }, [
         _c(
@@ -40689,7 +40912,8 @@ var render = function() {
           ]
         )
       ])
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = [
@@ -40991,259 +41215,430 @@ var render = function() {
                       _c(
                         "div",
                         [
-                          _c(
-                            "jet-dropdown",
-                            {
-                              staticStyle: {
-                                "padding-top": "10px",
-                                "padding-right": "10px",
-                                "padding-bottom": "15px",
-                                position: "fixed",
-                                top: "-1px",
-                                "z-index": "2"
-                              },
-                              attrs: { align: "left", width: "48" },
-                              scopedSlots: _vm._u([
-                                {
-                                  key: "trigger",
-                                  fn: function() {
-                                    return [
-                                      _vm.$page.props.jetstream
-                                        .managesProfilePhotos
-                                        ? _c(
-                                            "button",
-                                            {
-                                              staticClass:
-                                                "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
-                                            },
-                                            [
-                                              _c("img", {
-                                                staticClass:
-                                                  "h-8 w-8 rounded-full object-cover",
-                                                attrs: {
-                                                  src:
-                                                    _vm.$page.props.user
-                                                      .profile_photo_url,
-                                                  alt:
-                                                    _vm.$page.props.user
-                                                      .username
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        : _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "inline-flex rounded-md"
-                                            },
-                                            [
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150",
-                                                  staticStyle: {
-                                                    color: "black"
-                                                  },
-                                                  attrs: { type: "button" }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                            " +
-                                                      _vm._s(
-                                                        _vm.$page.props.user
-                                                          .username
-                                                      ) +
-                                                      "\n\n                            "
-                                                  ),
-                                                  _c(
-                                                    "svg",
+                          _vm.$page.props.auth.user
+                            ? _c(
+                                "div",
+                                [
+                                  _c("jet-dropdown", {
+                                    staticStyle: {
+                                      "padding-top": "10px",
+                                      "padding-right": "10px",
+                                      "padding-bottom": "15px",
+                                      position: "fixed",
+                                      top: "-1px",
+                                      "z-index": "2"
+                                    },
+                                    attrs: { align: "left", width: "48" },
+                                    scopedSlots: _vm._u(
+                                      [
+                                        {
+                                          key: "trigger",
+                                          fn: function() {
+                                            return [
+                                              _vm.$page.props.jetstream
+                                                .managesProfilePhotos
+                                                ? _c(
+                                                    "button",
                                                     {
                                                       staticClass:
-                                                        "ml-2 -mr-0.5 h-4 w-4",
-                                                      attrs: {
-                                                        xmlns:
-                                                          "http://www.w3.org/2000/svg",
-                                                        viewBox: "0 0 20 20",
-                                                        fill: "currentColor"
-                                                      }
+                                                        "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
                                                     },
                                                     [
-                                                      _c("path", {
+                                                      _c("img", {
+                                                        staticClass:
+                                                          "h-8 w-8 rounded-full object-cover",
                                                         attrs: {
-                                                          "fill-rule":
-                                                            "evenodd",
-                                                          d:
-                                                            "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
-                                                          "clip-rule": "evenodd"
+                                                          src:
+                                                            _vm.$page.props.user
+                                                              .profile_photo_url,
+                                                          alt:
+                                                            _vm.$page.props.user
+                                                              .username
                                                         }
                                                       })
                                                     ]
                                                   )
+                                                : _c(
+                                                    "span",
+                                                    {
+                                                      staticClass:
+                                                        "inline-flex rounded-md"
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "button",
+                                                        {
+                                                          staticClass:
+                                                            "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150",
+                                                          staticStyle: {
+                                                            color: "black"
+                                                          },
+                                                          attrs: {
+                                                            type: "button"
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                            " +
+                                                              _vm._s(
+                                                                _vm.$page.props
+                                                                  .user.username
+                                                              ) +
+                                                              "\n\n                            "
+                                                          ),
+                                                          _c(
+                                                            "svg",
+                                                            {
+                                                              staticClass:
+                                                                "ml-2 -mr-0.5 h-4 w-4",
+                                                              attrs: {
+                                                                xmlns:
+                                                                  "http://www.w3.org/2000/svg",
+                                                                viewBox:
+                                                                  "0 0 20 20",
+                                                                fill:
+                                                                  "currentColor"
+                                                              }
+                                                            },
+                                                            [
+                                                              _c("path", {
+                                                                attrs: {
+                                                                  "fill-rule":
+                                                                    "evenodd",
+                                                                  d:
+                                                                    "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
+                                                                  "clip-rule":
+                                                                    "evenodd"
+                                                                }
+                                                              })
+                                                            ]
+                                                          )
+                                                        ]
+                                                      )
+                                                    ]
+                                                  )
+                                            ]
+                                          },
+                                          proxy: true
+                                        },
+                                        {
+                                          key: "content",
+                                          fn: function() {
+                                            return [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "block px-4 py-2 text-xs text-gray-400"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                        Configuración del perfil\n                    "
+                                                  )
                                                 ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "jet-dropdown-link",
+                                                {
+                                                  attrs: {
+                                                    href: _vm.route(
+                                                      "profile.show"
+                                                    )
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                        Perfil\n                    "
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm.$page.props.jetstream
+                                                .hasApiFeatures
+                                                ? _c(
+                                                    "jet-dropdown-link",
+                                                    {
+                                                      attrs: {
+                                                        href: _vm.route(
+                                                          "api-tokens.index"
+                                                        )
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                        API Tokens\n                    "
+                                                      )
+                                                    ]
+                                                  )
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              _c("div", {
+                                                staticClass:
+                                                  "border-t border-gray-100"
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "form",
+                                                {
+                                                  on: {
+                                                    submit: function($event) {
+                                                      $event.preventDefault()
+                                                      return _vm.logout.apply(
+                                                        null,
+                                                        arguments
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c(
+                                                    "jet-dropdown-link",
+                                                    {
+                                                      staticStyle: {
+                                                        color: "black"
+                                                      },
+                                                      attrs: { as: "button" }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                            Cerrar Sesión\n                        "
+                                                      )
+                                                    ]
+                                                  )
+                                                ],
+                                                1
                                               )
                                             ]
-                                          )
-                                    ]
-                                  },
-                                  proxy: true
-                                },
-                                {
-                                  key: "content",
-                                  fn: function() {
-                                    return [
+                                          },
+                                          proxy: true
+                                        }
+                                      ],
+                                      null,
+                                      false,
+                                      2415184669
+                                    )
+                                  })
+                                ],
+                                1
+                              )
+                            : _c(
+                                "div",
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "d-none d-sm-block" },
+                                    [
                                       _c(
                                         "div",
                                         {
-                                          staticClass:
-                                            "block px-4 py-2 text-xs text-gray-400"
+                                          staticStyle: {
+                                            "padding-top": "15px",
+                                            position: "fixed",
+                                            top: "-1px",
+                                            "z-index": "2",
+                                            display: "flex"
+                                          },
+                                          attrs: { align: "left", width: "48" }
                                         },
                                         [
-                                          _vm._v(
-                                            "\n                        Configuración del perfil\n                    "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "jet-dropdown-link",
-                                        {
-                                          attrs: {
-                                            href: _vm.route("profile.show")
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                        Perfil\n                    "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _vm.$page.props.jetstream.hasApiFeatures
-                                        ? _c(
-                                            "jet-dropdown-link",
+                                          _c(
+                                            "inertia-link",
                                             {
+                                              staticStyle: {
+                                                color: "white",
+                                                "text-decoration": "none",
+                                                "font-size": "15px",
+                                                "padding-right": "22px"
+                                              },
                                               attrs: {
-                                                href: _vm.route(
-                                                  "api-tokens.index"
-                                                )
+                                                href: _vm.route("login")
                                               }
                                             },
                                             [
                                               _vm._v(
-                                                "\n                        API Tokens\n                    "
+                                                "\n                            Iniciar de Sesión\n                        "
                                               )
                                             ]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _c("div", {
-                                        staticClass: "border-t border-gray-100"
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "form",
-                                        {
-                                          on: {
-                                            submit: function($event) {
-                                              $event.preventDefault()
-                                              return _vm.logout.apply(
-                                                null,
-                                                arguments
+                                          ),
+                                          _vm._v(" "),
+                                          _vm.canRegister
+                                            ? _c(
+                                                "inertia-link",
+                                                {
+                                                  staticClass:
+                                                    "d-none d-md-block",
+                                                  staticStyle: {
+                                                    color: "white",
+                                                    "text-decoration": "none",
+                                                    "font-size": "15px"
+                                                  },
+                                                  attrs: {
+                                                    href: _vm.route("register")
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                            Registrarse\n                        "
+                                                  )
+                                                ]
                                               )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "jet-dropdown-link",
-                                            {
-                                              staticStyle: { color: "black" },
-                                              attrs: { as: "button" }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                            Cerrar Sesión\n                        "
-                                              )
-                                            ]
-                                          )
+                                            : _vm._e()
                                         ],
                                         1
-                                      )
-                                    ]
-                                  },
-                                  proxy: true
-                                }
-                              ])
-                            },
-                            [
-                              _vm._v(" "),
-                              _vm.canLogin
-                                ? _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "hidden fixed top-0 right-0 px-6 py-4 sm:block"
-                                    },
-                                    [
-                                      _vm.$page.props.user
+                                      ),
+                                      _vm._v(" "),
+                                      _vm.canRegister
                                         ? _c(
                                             "inertia-link",
                                             {
-                                              staticClass:
-                                                "text-sm text-gray-700 underline",
-                                              attrs: { href: "/" }
+                                              staticClass: "d-block d-md-none",
+                                              staticStyle: {
+                                                color: "white",
+                                                "text-decoration": "none",
+                                                "padding-top": "10px",
+                                                position: "fixed",
+                                                top: "23px",
+                                                "z-index": "2",
+                                                "font-size": "15px"
+                                              },
+                                              attrs: {
+                                                href: _vm.route("register")
+                                              }
                                             },
                                             [
                                               _vm._v(
-                                                "\n                        Dashboard\n                    "
+                                                "\n                        Registrarse\n                    "
                                               )
                                             ]
                                           )
-                                        : [
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("jet-dropdown", {
+                                    staticClass: "d-block d-sm-none",
+                                    staticStyle: {
+                                      "padding-top": "10px",
+                                      "padding-right": "10px",
+                                      "padding-bottom": "15px",
+                                      position: "fixed",
+                                      top: "-1px",
+                                      "z-index": "2"
+                                    },
+                                    attrs: { align: "left", width: "48" },
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "trigger",
+                                        fn: function() {
+                                          return [
                                             _c(
-                                              "inertia-link",
+                                              "span",
                                               {
                                                 staticClass:
-                                                  "text-sm text-gray-700 underline",
-                                                attrs: {
-                                                  href: _vm.route("login")
-                                                }
+                                                  "inline-flex rounded-md"
+                                              },
+                                              [
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150",
+                                                    staticStyle: {
+                                                      color: "black"
+                                                    },
+                                                    attrs: { type: "button" }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                            LogIn\n                            "
+                                                    ),
+                                                    _c(
+                                                      "svg",
+                                                      {
+                                                        staticClass:
+                                                          "ml-2 -mr-0.5 h-4 w-4",
+                                                        attrs: {
+                                                          xmlns:
+                                                            "http://www.w3.org/2000/svg",
+                                                          viewBox: "0 0 20 20",
+                                                          fill: "currentColor"
+                                                        }
+                                                      },
+                                                      [
+                                                        _c("path", {
+                                                          attrs: {
+                                                            "fill-rule":
+                                                              "evenodd",
+                                                            d:
+                                                              "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
+                                                            "clip-rule":
+                                                              "evenodd"
+                                                          }
+                                                        })
+                                                      ]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        },
+                                        proxy: true
+                                      },
+                                      {
+                                        key: "content",
+                                        fn: function() {
+                                          return [
+                                            _c(
+                                              "v-tab",
+                                              {
+                                                staticStyle: {
+                                                  color: "black",
+                                                  display: "flex",
+                                                  "justify-content":
+                                                    "flex-start",
+                                                  padding: "10px",
+                                                  "padding-left": "15px"
+                                                },
+                                                attrs: { href: "login" }
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                            Login\n                        "
+                                                  "\n                        Iniciar Sesión\n                    "
                                                 )
                                               ]
                                             ),
                                             _vm._v(" "),
-                                            _vm.canRegister
-                                              ? _c(
-                                                  "inertia-link",
-                                                  {
-                                                    staticClass:
-                                                      "ml-4 text-sm text-gray-700 underline",
-                                                    attrs: {
-                                                      href: _vm.route(
-                                                        "register"
-                                                      )
-                                                    }
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                            Register\n                        "
-                                                    )
-                                                  ]
+                                            _c(
+                                              "v-tab",
+                                              {
+                                                staticStyle: {
+                                                  color: "black",
+                                                  display: "flex",
+                                                  "justify-content":
+                                                    "flex-start",
+                                                  padding: "10px",
+                                                  "padding-left": "15px"
+                                                },
+                                                attrs: { href: "register" }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                        Registrarse\n                    "
                                                 )
-                                              : _vm._e()
+                                              ]
+                                            )
                                           ]
-                                    ],
-                                    2
-                                  )
-                                : _vm._e()
-                            ]
-                          ),
+                                        },
+                                        proxy: true
+                                      }
+                                    ])
+                                  })
+                                ],
+                                1
+                              ),
                           _vm._v(" "),
                           _c("jet-dropdown", {
                             staticClass: "d-block d-sm-none",
@@ -41330,10 +41725,6 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _c("div", {
-                                      staticClass: "border-t border-gray-100"
-                                    }),
-                                    _vm._v(" "),
                                     _c(
                                       "v-tab",
                                       {
@@ -41353,10 +41744,6 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _c("div", {
-                                      staticClass: "border-t border-gray-100"
-                                    }),
-                                    _vm._v(" "),
                                     _c(
                                       "v-tab",
                                       {
@@ -41375,10 +41762,6 @@ var render = function() {
                                         )
                                       ]
                                     ),
-                                    _vm._v(" "),
-                                    _c("div", {
-                                      staticClass: "border-t border-gray-100"
-                                    }),
                                     _vm._v(" "),
                                     _c(
                                       "v-tab",
@@ -42254,10 +42637,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/lista.vue?vue&type=template&id=b3c56b6c&":
-/*!************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/lista.vue?vue&type=template&id=b3c56b6c& ***!
-  \************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/registros.vue?vue&type=template&id=5c4e7767&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/registros.vue?vue&type=template&id=5c4e7767& ***!
+  \****************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100441,8 +100824,8 @@ var map = {
 	"./capacitaciones.vue": "./resources/js/Pages/capacitaciones.vue",
 	"./home": "./resources/js/Pages/home.vue",
 	"./home.vue": "./resources/js/Pages/home.vue",
-	"./lista": "./resources/js/Pages/lista.vue",
-	"./lista.vue": "./resources/js/Pages/lista.vue",
+	"./registros": "./resources/js/Pages/registros.vue",
+	"./registros.vue": "./resources/js/Pages/registros.vue",
 	"./requisitos": "./resources/js/Pages/requisitos.vue",
 	"./requisitos.vue": "./resources/js/Pages/requisitos.vue"
 };
@@ -100568,7 +100951,7 @@ function _objectSpread2(target) {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_from":"axios@0.21.4"}');
 
 /***/ })
 

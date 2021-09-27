@@ -37,7 +37,22 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request)
     {
         return array_merge(parent::share($request), [
-            //
+            // Synchronously
+            'appName' => config('app.username'),
+            // Lazily
+            'auth.user' => fn () => $request->user()
+                ? $request->user()->only('id', 'name', 'username', 'email')
+                : null,
         ]);
     }
 }
+use Inertia\Inertia;
+
+// Synchronously
+Inertia::share('appName', config('app.name'));
+
+// Lazily
+Inertia::share('user', fn (Request $request) => $request->user()
+    ? $request->user()->only('id', 'name', 'username', 'email')
+    : null
+);

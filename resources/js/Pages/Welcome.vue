@@ -1,20 +1,82 @@
 <template>
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            <inertia-link v-if="$page.props.user" href="/dashboard" class="text-sm text-gray-700 underline">
-                Dashboard
-            </inertia-link>
+        <jet-dropdown align="left" width="48" style="padding-top: 10px; padding-right: 10px; padding-bottom: 15px; position: fixed; top:-1px; z-index: 2">
+            <template #trigger>
 
-            <template v-else>
-                <inertia-link :href="route('login')" class="text-sm text-gray-700 underline">
-                    Login
-                </inertia-link>
+                <div v-if="$page.props.auth.user">
+                    You are logged in as: {{ $page.props.user.username}}
+                </div>
+                <div v-else>
+                    <inertia-link :href="route('login')" class="text-sm text-gray-700 underline">
+                        Login
+                    </inertia-link>
 
-                <inertia-link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
-                    Register
-                </inertia-link>
+                    <inertia-link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
+                        Register
+                    </inertia-link>
+                </div>
+
+                <!--
+                <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    <inertia-link v-if="$page.props.user" href="/Welcome" class="text-sm text-gray-700 underline">
+                        <span class="inline-flex rounded-md">
+                            <button type="button"  style="color: black" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                {{ $page.props.user.username }}
+
+                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </span>
+                    </inertia-link>
+
+                    <template v-else>
+                        <inertia-link :href="route('login')" class="text-sm text-gray-700 underline">
+                            Login
+                        </inertia-link>
+
+                        <inertia-link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
+                            Register
+                        </inertia-link>
+                    </template>
+                </div>
+
+                <span class="inline-flex rounded-md">
+                    <button type="button"  style="color: black" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                        {{ $page.props.user.username }}
+
+                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </span>
+                -->
             </template>
-        </div>
+
+            <template #content>
+                <!-- Account Management -->
+                <div class="block px-4 py-2 text-xs text-gray-400">
+                    Configuración del perfil
+                </div>
+
+                <jet-dropdown-link :href="route('profile.show')">
+                    Perfil
+                </jet-dropdown-link>
+
+                <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
+                    API Tokens
+                </jet-dropdown-link>
+
+                <div class="border-t border-gray-100"></div>
+
+                <!-- Authentication -->
+                <form @submit.prevent="logout">
+                    <jet-dropdown-link as="button" style="color: black">
+                        Cerrar Sesión
+                    </jet-dropdown-link>
+                </form>
+            </template>
+        </jet-dropdown>
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
@@ -173,14 +235,71 @@
         }
     }
 </style>
-
 <script>
-    export default {
-        props: {
+    import JetApplicationMark from '@/Jetstream/ApplicationMark'
+    import JetBanner from '@/Jetstream/Banner'
+    import JetDropdown from '@/Jetstream/Dropdown'
+    import JetDropdownLink from '@/Jetstream/DropdownLink'
+    import JetNavLink from '@/Jetstream/NavLink'
+    import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+
+    export default 
+    {
+        components: 
+        {
+            JetApplicationMark,
+            JetBanner,
+            JetDropdown,
+            JetDropdownLink,
+            JetNavLink,
+            JetResponsiveNavLink,
+            computed: {},
+        },
+
+        data() 
+        {
+            return {showingNavigationDropdown: false,}
+        },
+        data: () => ({
+            v0: false,
+            v1: false,
+            v2: false,
+            v3: false,
+            v4: false,
+            v5: false,
+            v6: false,}),
+
+        methods: 
+        {
+            switchToTeam(team) 
+            {
+                this.$inertia.put(route('current-team.update'), 
+                {
+                    'team_id': team.id
+                }, 
+                {
+                    preserveState: false
+                })
+            },
+
+            logout() 
+            {
+                this.$inertia.post(route('logout'));
+            },
+        },
+        props: 
+        {
             canLogin: Boolean,
             canRegister: Boolean,
             laravelVersion: String,
             phpVersion: String,
+        },
+        computed: 
+        {
+        user() 
+        {
+        return this.$page.props.auth.user
         }
+    }
     }
 </script>
