@@ -156,29 +156,33 @@
                 </template>
 
                 <template #content>
-                    <v-tab href="home" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
-                        HOME
-                    </v-tab>
-                    <v-tab href="requisitos" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
-                        REQUISITOS
-                    </v-tab>
-                    <v-tab href="capacitaciones" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
-                        CAPACITACIONES
-                    </v-tab>
-                    <v-tab href="lista" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
-                        LISTA
-                    </v-tab>
+                    <v-tabs v-model="tabs" fixed-tabs>
+                        <v-list>
+                            <v-list-item :key="1" style="color: black; background: white">
+                                HOME
+                            </v-list-item>
+                            <v-list-item :key="2" style="color: black">
+                                REQUISITOS
+                            </v-list-item>
+                            <v-list-item :key="3" style="color: black">
+                                CAPACITACIONES
+                            </v-list-item>
+                            <v-list-item :key="4" style="color: black">
+                                LISTA
+                            </v-list-item>
+                        </v-list>
+                    </v-tabs>
                 </template>
                 </jet-dropdown>
             </div>
             
-            <v-tabs align-with-title>
+            <v-tabs align-with-title v-model="tabs">
                 <v-col class="d-none d-sm-block">
                     <v-row style="margin:0px: height:50px">
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="home">HOME</v-tab></v-col>
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="requisitos">REQUISITOS</v-tab></v-col>
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="capacitaciones">CAPACITACIONES</v-tab></v-col>
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="lista">LISTA</v-tab></v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="1">INICIO</v-tab></v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="2">INSTITUCIÓN</v-tab></v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="3">PUBLICACIONES</v-tab></v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="4">CAPACITACIONES</v-tab></v-col>
                     </v-row>
                 </v-col>
             </v-tabs>
@@ -209,72 +213,57 @@
         <v-sheet
         id="scrolling-techniques-3"
         class="overflow-y-auto"
-        max-height="900"
+        max-height="600"
         >
         <v-container style="height: 1000px;">
             <div>
             <v-spacer style="height: 320px;"></v-spacer>
             
-            <template>
-            <v-card
-                flat
-                tile
-            >
-                <v-window
-                v-model="onboarding"
-                vertical
-                >
-                <v-window-item
-                    v-for="n in length"
-                    :key="`card-${n}`"
-                >
-                    <v-card
-                    color="grey"
-                    height="200"
-                    >
-                    <v-row
-                        class="fill-height"
-                        align="center"
-                        justify="center"
-                    >
-                        <h1
-                        style="font-size: 5rem;"
-                        class="white--text"
-                        >
-                        Slide {{ n }}
-                        </h1>
-                    </v-row>
-                    </v-card>
-                </v-window-item>
-                </v-window>
+            <v-tabs-items v-model="tabs">
+            <v-tab-item>
+                <v-card flat>
+                <v-card-text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </v-card-text>
+                </v-card>
+            </v-tab-item>
+            <v-tab-item>
+                <v-card flat>
+                <v-card-title class="text-h5">
+                    An awesome title
+                </v-card-title>
+                <v-card-text>
+                    <p>
+                    Duis lobortis massa imperdiet quam. Donec vitae orci sed dolor rutrum auctor. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Praesent congue erat at massa.
+                    </p>
 
-                
+                    <p>
+                    Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Etiam sit amet orci eget eros faucibus tincidunt. Donec sodales sagittis magna.
+                    </p>
 
-            </v-card>
+                    <p class="mb-0">
+                    Ut leo. Suspendisse potenti. Duis vel nibh at velit scelerisque suscipit. Fusce pharetra convallis urna.
+                    </p>
+                </v-card-text>
+                </v-card>
+            </v-tab-item>
+            <v-tab-item>
+                <v-card flat>
+                <v-card-title class="text-h5">
+                    An even better title
+                </v-card-title>
+                <v-card-text>
+                    <p>
+                    Maecenas ullamcorper, dui et placerat feugiat, eros pede varius nisi, condimentum viverra felis nunc et lorem. Sed hendrerit. Maecenas malesuada. Vestibulum ullamcorper mauris at ligula. Proin faucibus arcu quis ante.
+                    </p>
 
-            <v-card-actions class="justify-center">
-                <v-item-group
-                    v-model="onboarding"
-                    class="text-center"
-                    mandatory
-                >
-                    <v-item
-                    v-for="n in length"
-                    :key="`btn-${n}`"
-                    v-slot="{ active, toggle }"
-                    >
-                    <v-btn
-                        :input-value="active"
-                        icon
-                        @click="toggle"
-                    >
-                        <v-icon>mdi-record</v-icon>
-                    </v-btn>
-                    </v-item>
-                </v-item-group>
-                </v-card-actions>
-
-            </template>
+                    <p class="mb-0">
+                    Etiam vitae tortor. Curabitur ullamcorper ultricies nisi. Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Aliquam lobortis. Suspendisse potenti.
+                    </p>
+                </v-card-text>
+                </v-card>
+            </v-tab-item>
+            </v-tabs-items>
         
             </div>
         </v-container>
@@ -319,8 +308,14 @@
             v6: false,}),
         data: () => ({
             length: 3,
-            onboarding: 0,
+            window: 0,
             }),
+            data () {
+            return {
+                tabs: null,
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            }
+            },
 
         methods: 
         {
