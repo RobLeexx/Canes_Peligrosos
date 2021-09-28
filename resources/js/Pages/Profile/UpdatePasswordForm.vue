@@ -30,11 +30,11 @@
 
         <template #actions>
             <jet-action-message :on="form.recentlySuccessful" class="mr-3">
-                Saved.
+                Guardado con éxito
             </jet-action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Save
+            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#33691E;">
+                Guardar
             </jet-button>
         </template>
     </jet-form-section>

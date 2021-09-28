@@ -1,7 +1,7 @@
 <template>
     <jet-action-section>
         <template #title>
-            Eliminar Cuenta|
+            Eliminar Cuenta
         </template>
 
         <template #description>
@@ -40,7 +40,7 @@
 
                 <template #footer>
                     <jet-secondary-button @click.native="closeModal">
-                        No importa
+                        Cancelar
                     </jet-secondary-button>
 
                     <jet-danger-button class="ml-2" @click.native="deleteUser" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

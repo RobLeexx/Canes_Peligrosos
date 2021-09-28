@@ -44,7 +44,7 @@
             </div>
 
             <div class="flex items-center mt-5">
-                <jet-button @click.native="confirmLogout">
+                <jet-button @click.native="confirmLogout" style="color:white; background-color:#33691E;">
                     Logout Other Browser Sessions
                 </jet-button>
 

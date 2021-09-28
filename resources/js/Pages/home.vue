@@ -80,11 +80,21 @@
                     <template #content>
                         <!-- Account Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
+                            Acciones
+                        </div>
+
+                        <jet-dropdown-link :href="route('dashboard')">
+                            Administración
+                        </jet-dropdown-link>
+
+                        <div class="block px-4 py-2 text-xs text-gray-400">
                             Configuración del perfil
                         </div>
 
                         <jet-dropdown-link :href="route('profile.show')">
-                            Perfil
+                            <h2 style="color: black">
+                                Perfil
+                            </h2>
                         </jet-dropdown-link>
 
                         <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
@@ -95,7 +105,7 @@
 
                         <!-- Authentication -->
                         <form @submit.prevent="logout">
-                            <jet-dropdown-link as="button" style="color: black">
+                            <jet-dropdown-link as="button" style="color: red">
                                 Cerrar Sesión
                             </jet-dropdown-link>
                         </form>

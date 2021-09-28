@@ -1,11 +1,11 @@
 <template>
     <jet-form-section @submitted="updateProfileInformation">
         <template #title>
-            Profile Information
+            Información del Perfil
         </template>
 
         <template #description>
-            Update your account's profile information and email address.
+            Actualiza tu información de inicio de sesión.
         </template>
 
         <template #form>
@@ -42,10 +42,18 @@
             </div>
 
             <!-- Name -->
-            <div class="col-span-6 sm:col-span-4">
+            <!-- <div class="col-span-6 sm:col-span-4">
                 <jet-label for="name" value="Name" />
                 <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
                 <jet-input-error :message="form.errors.name" class="mt-2" />
+            </div>
+            -->
+
+            <!-- Username -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="username" value="Nombre de Usuario" />
+                <jet-input id="username" type="text" class="mt-1 block w-full" v-model="form.username" autocomplete="username" />
+                <jet-input-error :message="form.errors.username" class="mt-2" />
             </div>
 
             <!-- Email -->
@@ -58,11 +66,11 @@
 
         <template #actions>
             <jet-action-message :on="form.recentlySuccessful" class="mr-3">
-                Saved.
+                Guardado con éxito
             </jet-action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Save
+            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#33691E;">
+                Guardar
             </jet-button>
         </template>
     </jet-form-section>
@@ -94,6 +102,7 @@
             return {
                 form: this.$inertia.form({
                     _method: 'PUT',
+                    username: this.user.username,
                     name: this.user.name,
                     email: this.user.email,
                     photo: null,

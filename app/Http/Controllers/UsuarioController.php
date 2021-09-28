@@ -11,6 +11,6 @@ class UsuarioController extends Controller
 {
     public function index(){
         $usuarios = User::all();
-        return Inertia::render('Usuarios', ['usuarios' => $usuarios]);
+        return Inertia::render('usuarios', ['usuarios' => $usuarios]);
     }
 }

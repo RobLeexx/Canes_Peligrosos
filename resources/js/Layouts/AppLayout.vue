@@ -1,286 +1,277 @@
 <template>
-    <v-app>
-        <v-card class="overflow-hidden">
-        <v-app-bar
-        absolute
-        color="#388E3C"
-        dark
-        shrink-on-scroll
-        prominent
-        src="https://www.desktopbackground.org/p/2012/03/11/356862_4k-ultra-hd-dog-wallpapers-hd-desktop-backgrounds-3840x2160_3840x2160_h.jpg"
-        fade-img-on-scroll
-        height="200px"
-        scroll-target="#scrolling-techniques-3"
-        >
-        <template v-slot:img="{ props }">
-            <v-img
-            v-bind="props"
-            gradient="to top right, rgba(75, 129, 59, 0.7), rgba(30, 72, 25, 0.7)"
-            ></v-img>
-        </template>
+    <div>
+        <div class="min-h-screen bg-gray-100">
+            <nav class="bg-white border-b border-gray-100">
+                <!-- Primary Navigation Menu -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between h-16">
+                        <div class="flex">
+                            <!-- Logo -->
+                            <div class="flex-shrink-0 flex items-center">
+                                <inertia-link :href="route('dashboard')">
+                                    <jet-application-mark class="block h-9 w-auto" />
+                                </inertia-link>
+                            </div>
 
-        <!-- Título Responsive -->
-        <template>
-            <v-row style="margin: 0; display: flex; justify-content: flex-end; padding-top:20px; padding-left:30px; margin-right: 3px">
-                <div style="background: none; color: white; padding-top: 3px; display:flex; max-height: 50px !important;">
-                    <v-row>
-                        <div class="d-lg-none d-md-none d-sm-none">
-                        <v-toolbar-title style="padding-right: 80px">C.A.C</v-toolbar-title>
+                            <!-- Navigation Links -->
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('home')" :active="route().current('home')" style="margin-right: 50px">
+                                    Página Principal
+                                </jet-nav-link>
+                                
+                                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Dashboard
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('usuarios')" :active="route().current('usuarios')">
+                                    Usuarios
+                                </jet-nav-link>
+                            </div>
                         </div>
-                        <div class="d-none d-lg-none d-md-none d-sm-block">
-                            <v-toolbar-title style="padding-left: 100px">CENTRO DE ADIESTRAMIENTO DE CANES</v-toolbar-title>
+
+                        <div class="hidden sm:flex sm:items-center sm:ml-6">
+                            <div class="ml-3 relative">
+                                <!-- Teams Dropdown -->
+                                <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">
+                                    <template #trigger>
+                                        <span class="inline-flex rounded-md">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                                {{ $page.props.user.current_team.name }}
+
+                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </template>
+
+                                    <template #content>
+                                        <div class="w-60">
+                                            <!-- Team Management -->
+                                            <template v-if="$page.props.jetstream.hasTeamFeatures">
+                                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                                    Manage Team
+                                                </div>
+
+                                                <!-- Team Settings -->
+                                                <jet-dropdown-link :href="route('teams.show', $page.props.user.current_team)">
+                                                    Team Settings
+                                                </jet-dropdown-link>
+
+                                                <jet-dropdown-link :href="route('teams.create')" v-if="$page.props.jetstream.canCreateTeams">
+                                                    Create New Team
+                                                </jet-dropdown-link>
+
+                                                <div class="border-t border-gray-100"></div>
+
+                                                <!-- Team Switcher -->
+                                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                                    Switch Teams
+                                                </div>
+
+                                                <template v-for="team in $page.props.user.all_teams">
+                                                    <form @submit.prevent="switchToTeam(team)" :key="team.id">
+                                                        <jet-dropdown-link as="button">
+                                                            <div class="flex items-center">
+                                                                <svg v-if="team.id == $page.props.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                                <div>{{ team.name }}</div>
+                                                            </div>
+                                                        </jet-dropdown-link>
+                                                    </form>
+                                                </template>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </jet-dropdown>
+                            </div>
+
+                            <!-- Settings Dropdown -->
+                            <div class="ml-3 relative">
+                                <jet-dropdown align="right" width="48">
+                                    <template #trigger>
+                                        <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                                            <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.username" />
+                                        </button>
+
+                                        <span v-else class="inline-flex rounded-md">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                                {{ $page.props.user.username }}
+
+                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </template>
+
+                                    <template #content>
+                                        <!-- Account Management -->
+                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                            Configuración del perfil
+                                        </div>
+
+                                        <jet-dropdown-link :href="route('profile.show')">
+                                            Perfil
+                                        </jet-dropdown-link>
+
+                                        <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
+                                            API Tokens
+                                        </jet-dropdown-link>
+
+                                        <div class="border-t border-gray-100"></div>
+
+                                        <!-- Authentication -->
+                                        <form @submit.prevent="logout">
+                                            <jet-dropdown-link as="button" style="color: red">
+                                                Cerrar Sesión
+                                            </jet-dropdown-link>
+                                        </form>
+                                    </template>
+                                </jet-dropdown>
+                            </div>
                         </div>
-                        <div class="d-none d-lg-block d-md-block">
-                            <v-toolbar-title style="padding-left: 200px">CENTRO DE ADIESTRAMIENTO DE CANES (C.A.C)</v-toolbar-title>
-                        </div>
-                    </v-row>
-                </div>
-            </v-row>
-        </template>
 
-        <!-- Social Ads No-Mobile -->
-        <v-row style="margin: 0; display: flex; text-align: end;" class="d-none d-sm-block">
-            <v-btn icon>
-            <v-icon>mdi-facebook</v-icon>
-            </v-btn>
-
-            <v-btn icon>
-                <v-icon>mdi-instagram</v-icon>
-            </v-btn>
-
-            <v-btn icon>
-                <v-icon>mdi-twitter</v-icon>
-            </v-btn>
-
-            <v-btn icon>
-                <v-icon>mdi-whatsapp</v-icon>
-            </v-btn>
-        </v-row>
-
-        <template v-slot:extension>
-            <div>
-                <div v-if="$page.props.auth.user">
-                    <jet-dropdown align="left" width="48" style="padding-top: 10px; padding-right: 10px; padding-bottom: 15px; position: fixed; top:-1px; z-index: 2">
-                    <template #trigger>
-                        <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
-                            <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.username" />
-                        </button>
-
-                        <span v-else class="inline-flex rounded-md">
-                            <button type="button"  style="color: black" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                {{ $page.props.user.username }}
-
-                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        <!-- Hamburger -->
+                        <div class="-mr-2 flex items-center sm:hidden">
+                            <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                    <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    <path :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
-                        </span>
-                    </template>
-
-                    <template #content>
-                        <!-- Account Management -->
-                        <div class="block px-4 py-2 text-xs text-gray-400">
-                            Configuración del perfil
                         </div>
-
-                        <jet-dropdown-link :href="route('profile.show')">
-                            Perfil
-                        </jet-dropdown-link>
-
-                        <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
-                            API Tokens
-                        </jet-dropdown-link>
-
-                        <div class="border-t border-gray-100"></div>
-
-                        <!-- Authentication -->
-                        <form @submit.prevent="logout">
-                            <jet-dropdown-link as="button" style="color: black">
-                                Cerrar Sesión
-                            </jet-dropdown-link>
-                        </form>
-                    </template>
-                    </jet-dropdown>
+                    </div>
                 </div>
 
-                <div v-else>
-                    <div  class="d-none d-sm-block">
-                        <div style="padding-top: 15px; position: fixed; top:-1px; z-index: 2; display: flex" align="left" width="48">
-                            <inertia-link :href="route('login')" style="color: white; text-decoration: none; font-size: 15px; padding-right: 22px">
-                                Iniciar de Sesión
-                            </inertia-link>
-
-                            <inertia-link v-if="canRegister" :href="route('register')" class="d-none d-md-block" style="color: white; text-decoration: none; font-size: 15px">
-                                Registrarse
-                            </inertia-link>
-                        </div>
-                        <inertia-link v-if="canRegister" :href="route('register')" class="d-block d-md-none" style="color: white; text-decoration: none; padding-top: 10px; position: fixed; top:23px; z-index: 2; font-size: 15px">
-                            Registrarse
-                        </inertia-link>
+                <!-- Responsive Navigation Menu -->
+                <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
+                    <div class="pt-2 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                            Dashboard
+                        </jet-responsive-nav-link>
                     </div>
 
-                    <!-- ResponsiveMenúLogIn -->
-                    <jet-dropdown  class="d-block d-sm-none" align="left" width="48" style="padding-top: 10px; padding-right: 10px; padding-bottom: 15px; position: fixed; top:-1px; z-index: 2">
-                    <template #trigger>
-                        <span class="inline-flex rounded-md">
-                            <button type="button"  style="color: black" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                LogIn
-                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                        </span>
-                    </template>
+                    <!-- Responsive Settings Options -->
+                    <div class="pt-4 pb-1 border-t border-gray-200">
+                        <div class="flex items-center px-4">
+                            <div v-if="$page.props.jetstream.managesProfilePhotos" class="flex-shrink-0 mr-3" >
+                                <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.username" />
+                            </div>
 
-                    <template #content>
-                        <v-tab href="login" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
-                            Iniciar Sesión
-                        </v-tab>
-                        <v-tab href="register" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
-                            Registrarse
-                        </v-tab>
-                    </template>
-                    </jet-dropdown>
+                            <div>
+                                <div class="font-medium text-base text-gray-800">{{ $page.props.user.username }}</div>
+                                <div class="font-medium text-sm text-gray-500">{{ $page.props.user.username }}</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 space-y-1">
+                            <jet-responsive-nav-link :href="route('profile.show')" :active="route().current('profile.show')">
+                                Perfil
+                            </jet-responsive-nav-link>
+
+                            <jet-responsive-nav-link :href="route('api-tokens.index')" :active="route().current('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
+                                API Tokens
+                            </jet-responsive-nav-link>
+
+                            <!-- Authentication -->
+                            <form method="POST" @submit.prevent="logout">
+                                <jet-responsive-nav-link as="button">
+                                    Cerrar Sesión
+                                </jet-responsive-nav-link>
+                            </form>
+
+                            <!-- Team Management -->
+                            <template v-if="$page.props.jetstream.hasTeamFeatures">
+                                <div class="border-t border-gray-200"></div>
+
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    Manage Team
+                                </div>
+
+                                <!-- Team Settings -->
+                                <jet-responsive-nav-link :href="route('teams.show', $page.props.user.current_team)" :active="route().current('teams.show')">
+                                    Team Settings
+                                </jet-responsive-nav-link>
+
+                                <jet-responsive-nav-link :href="route('teams.create')" :active="route().current('teams.create')">
+                                    Create New Team
+                                </jet-responsive-nav-link>
+
+                                <div class="border-t border-gray-200"></div>
+
+                                <!-- Team Switcher -->
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    Switch Teams
+                                </div>
+
+                                <template v-for="team in $page.props.user.all_teams">
+                                    <form @submit.prevent="switchToTeam(team)" :key="team.id">
+                                        <jet-responsive-nav-link as="button">
+                                            <div class="flex items-center">
+                                                <svg v-if="team.id == $page.props.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                <div>{{ team.name }}</div>
+                                            </div>
+                                        </jet-responsive-nav-link>
+                                    </form>
+                                </template>
+                            </template>
+                        </div>
+                    </div>
                 </div>
+            </nav>
 
-                <jet-dropdown  class="d-block d-sm-none" align="left" width="48" style="padding-right: 10px; padding-bottom: 15px; position: fixed; top:60px; z-index: 1">
-                <template #trigger>
-                    <span class="inline-flex rounded-md">
-                        <button type="button"  style="color: black" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            Menú
-                            <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </span>
-                </template>
+            <!-- Page Heading -->
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <slot name="header"></slot>
+                </div>
+            </header>
 
-                <template #content>
-                    <v-tab href="home" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
-                        HOME
-                    </v-tab>
-                    <v-tab href="requisitos" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
-                        REQUISITOS
-                    </v-tab>
-                    <v-tab href="capacitaciones" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
-                        CAPACITACIONES
-                    </v-tab>
-                    <v-tab href="lista" style="color: black; display: flex; justify-content: flex-start; padding: 10px; padding-left: 15px">
-                        LISTA
-                    </v-tab>
-                </template>
-                </jet-dropdown>
-            </div>
-            
-            <v-tabs align-with-title>
-                <v-col class="d-none d-sm-block">
-                    <v-row style="margin:0px: height:50px">
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="home">HOME</v-tab></v-col>
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="requisitos">REQUISITOS</v-tab></v-col>
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="capacitaciones">CAPACITACIONES</v-tab></v-col>
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px" href="lista">LISTA</v-tab></v-col>
-                    </v-row>
-                </v-col>
-            </v-tabs>
+            <!-- Page Content -->
+            <main>
+                <slot></slot>
+            </main>
 
-            <div class="d-block d-sm-none">
-                <v-row style="margin: 0; display: flex; flex-wrap:nowrap">
-                    <v-btn icon>
-                    <v-icon>mdi-facebook</v-icon>
-                    </v-btn>
-
-                    <v-btn icon>
-                        <v-icon>mdi-instagram</v-icon>
-                    </v-btn>
-
-                    <v-btn icon>
-                        <v-icon>mdi-twitter</v-icon>
-                    </v-btn>
-
-                    <v-btn icon>
-                        <v-icon>mdi-whatsapp</v-icon>
-                    </v-btn>
-                </v-row>
-            </div>
-        </template>
-        
-        </v-app-bar>
-
-        <v-sheet
-        id="scrolling-techniques-3"
-        class="overflow-y-auto"
-        max-height="900"
-        >
-        <v-container style="height: 1000px;">
-            <div>
-            <v-spacer style="height: 320px;"></v-spacer>
-              
-            </div>
-        </v-container>
-        </v-sheet>
-        </v-card>
-    </v-app>
-
+            <!-- Modal Portal -->
+            <portal-target name="modal" multiple>
+            </portal-target>
+        </div>
+    </div>
 </template>
 
 <script>
     import JetApplicationMark from '@/Jetstream/ApplicationMark'
-    import JetBanner from '@/Jetstream/Banner'
     import JetDropdown from '@/Jetstream/Dropdown'
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
 
-    export default 
-    {
-        components: 
-        {
+    export default {
+        components: {
             JetApplicationMark,
-            JetBanner,
             JetDropdown,
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
-            computed: {},
         },
 
-        data() 
-        {
-            return {showingNavigationDropdown: false,}
+        data() {
+            return {
+                showingNavigationDropdown: false,
+            }
         },
-        data: () => ({
-            v0: false,
-            v1: false,
-            v2: false,
-            v3: false,
-            v4: false,
-            v5: false,
-            v6: false,}),
 
-        methods: 
-        {
-            switchToTeam(team) 
-            {
-                this.$inertia.put(route('current-team.update'), 
-                {
+        methods: {
+            switchToTeam(team) {
+                this.$inertia.put(route('current-team.update'), {
                     'team_id': team.id
-                }, 
-                {
+                }, {
                     preserveState: false
                 })
             },
 
-            logout() 
-            {
+            logout() {
                 this.$inertia.post(route('logout'));
             },
-        },
-        props: 
-        {
-            canLogin: Boolean,
-            canRegister: Boolean,
-            laravelVersion: String,
-            phpVersion: String,
         }
     }
 </script>
