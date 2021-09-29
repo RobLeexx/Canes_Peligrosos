@@ -14,7 +14,7 @@
 
             <div class="mt-4">
                 <jet-label for="username" value="Nombre de Usuario" />
-                <jet-input style="background-color:#DCEDC8;" id="username" type="text" class="mt-1 block w-full" v-model="form.username" required autofocus autocomplete="username" />
+                <jet-input style="background-color:#DCEDC8;" :counter="10" id="username" type="text" class="mt-1 block w-full" v-model="form.username" required autofocus autocomplete="username" />
             </div>
 
             <div class="mt-4">

@@ -24,10 +24,10 @@
 
             <template #footer>
                 <jet-secondary-button @click.native="closeModal">
-                    Nevermind
+                    Cancelar
                 </jet-secondary-button>
 
-                <jet-button class="ml-2" @click.native="confirmPassword" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button class="ml-2" @click.native="confirmPassword" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#33691E;">
                     {{ button }}
                 </jet-button>
             </template>
@@ -45,13 +45,13 @@
     export default {
         props: {
             title: {
-                default: 'Confirm Password',
+                default: 'Confirmar Contraseña',
             },
             content: {
-                default: 'For your security, please confirm your password to continue.',
+                default: 'Por su seguridad, confirme su contraseña para continuar.',
             },
             button: {
-                default: 'Confirm',
+                default: 'Confirmar',
             }
         },
 

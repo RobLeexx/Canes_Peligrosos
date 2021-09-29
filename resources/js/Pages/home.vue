@@ -2,7 +2,7 @@
     <v-app>
         <v-card class="overflow-hidden">
         <v-app-bar
-        absolute
+        fixed
         color="#388E3C"
         dark
         shrink-on-scroll
@@ -10,7 +10,6 @@
         src="https://www.desktopbackground.org/p/2012/03/11/356862_4k-ultra-hd-dog-wallpapers-hd-desktop-backgrounds-3840x2160_3840x2160_h.jpg"
         fade-img-on-scroll
         height="200px"
-        scroll-target="#scrolling-techniques-3"
         >
         <template v-slot:img="{ props }">
             <v-img
@@ -25,13 +24,13 @@
                 <div style="background: none; color: white; padding-top: 3px; display:flex; max-height: 50px !important;">
                     <v-row>
                         <div class="d-lg-none d-md-none d-sm-none">
-                        <v-toolbar-title style="padding-right: 80px">C.A.C</v-toolbar-title>
+                        <v-toolbar-title style="padding-right: 80px; cursor: pointer" @click="scrollMeTo('cac')">C.A.C</v-toolbar-title>
                         </div>
                         <div class="d-none d-lg-none d-md-none d-sm-block">
-                            <v-toolbar-title style="padding-left: 100px">CENTRO DE ADIESTRAMIENTO DE CANES</v-toolbar-title>
+                            <v-toolbar-title style="padding-left: 100px; cursor: pointer" @click="scrollMeTo('cac')">CENTRO DE ADIESTRAMIENTO DE CANES</v-toolbar-title>
                         </div>
                         <div class="d-none d-lg-block d-md-block">
-                            <v-toolbar-title style="padding-left: 200px">CENTRO DE ADIESTRAMIENTO DE CANES (C.A.C)</v-toolbar-title>
+                            <v-toolbar-title style="padding-left: 200px; cursor: pointer" @click="scrollMeTo('cac')">CENTRO DE ADIESTRAMIENTO DE CANES (C.A.C)</v-toolbar-title>
                         </div>
                     </v-row>
                 </div>
@@ -167,16 +166,22 @@
 
                 <template #content>
                     <v-list style="background: white; ">
-                        <v-list-item :key="1" @click="addItem(1)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px; margin-top: -12px">
+                        <v-list-item @click="scrollMeTo('inicio')" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px; margin-top: -12px">
                             INICIO
                         </v-list-item>
-                        <v-list-item :key="2" @click="addItem(2)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
+                        <v-list-item @click="scrollMeTo('institucion')" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
                             INSTITUCIÓN
                         </v-list-item>
-                        <v-list-item :key="3" @click="addItem(3)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
+                            <v-list-item @click="scrollMeTo('mision')" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
+                                - Misión
+                            </v-list-item>
+                            <v-list-item @click="scrollMeTo('vision')" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
+                                - Visión
+                            </v-list-item>
+                        <v-list-item @click="scrollMeTo('publicaciones')" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
                             PUBLICACIONES
                         </v-list-item>
-                        <v-list-item :key="4" @click="addItem(4)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -12px">
+                        <v-list-item @click="scrollMeTo('capacitaciones')" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -12px">
                             CAPACITACIONES
                         </v-list-item>
                     </v-list>
@@ -184,13 +189,29 @@
                 </jet-dropdown>
             </div>
 
+            <!-- Menú -->
             <v-tabs align-with-title v-model="currentItem" fixed-tabs slider-color="white">
                 <v-col class="d-none d-sm-block">
                     <v-row style="margin:0px: height:50px">
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="1" :href="'#tab' + 1">INICIO</v-tab></v-col>
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="2" :href="'#tab' + 2">INSTITUCIÓN</v-tab></v-col>
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="3" :href="'#tab' + 3">PUBLICACIONES</v-tab></v-col>
-                        <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="4" :href="'#tab' + 4">CAPACITACIONES</v-tab></v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3" style="display: grid;"><v-btn style="color: white; background: none; box-shadow: none" @click="scrollMeTo('inicio')">INICIO</v-btn></v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3" style="display: grid;">
+                            <v-menu open-on-hover bottom offset-y>
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-btn v-bind="attrs" v-on="on" @click="scrollMeTo('institucion')" style="background: none; box-shadow: none">
+                                    INSTITUCIÓN
+                                    <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    </v-btn>
+                                </template>
+                                <v-list>
+                                    <v-list-item @click="scrollMeTo('mision')">Misión</v-list-item>
+                                    <v-list-item @click="scrollMeTo('vision')">Visión</v-list-item>
+                                </v-list>
+                            </v-menu>
+                        </v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3" style="display: grid;"><v-btn style="color:white; background: none; box-shadow: none" @click="scrollMeTo('publicaciones')">PUBLICACIONES</v-btn></v-col>
+                        <v-col cols="12" lg="2" md="2" sm="3" style="display: grid;"><v-btn style="color:white; background: none; box-shadow: none" @click="scrollMeTo('capacitaciones')">CAPACITACIONES</v-btn></v-col>
                     </v-row>
                 </v-col>
             </v-tabs>
@@ -218,53 +239,46 @@
         
         </v-app-bar>
 
-        <v-sheet
-        id="scrolling-techniques-3"
-        class="overflow-y-auto"
-        max-height="600"
-        >
-        <v-container style="height: 1000px;">
             <div>
-            <v-spacer style="height: 320px;"></v-spacer>
-            
-            <v-tabs-items v-model="currentItem">
-            <v-tab-item :key="1" :value="'tab' + 1">
-                <v-card flat>
-                <v-card-text>
-                    <h2>UNO</h2>
-                    HOLA UNO
-                </v-card-text>
-                </v-card>
-            </v-tab-item>
-            <v-tab-item :key="2" :value="'tab' + 2">
-                <v-card flat>
-                <v-card-text>
-                    <h2>DOS</h2>
-                    HOLA DOS
-                </v-card-text>
-                </v-card>
-            </v-tab-item>
-            <v-tab-item :key="3" :value="'tab' + 3">
-                <v-card flat>
-                <v-card-text>
-                    <h2>TRES</h2>
-                    HOLA TRES
-                </v-card-text>
-                </v-card>
-            </v-tab-item>
-            <v-tab-item :key="4" :value="'tab' + 4">
-                <v-card flat>
-                <v-card-text>
-                    <h2>CUATRO</h2>
-                    HOLA CUATRO
-                </v-card-text>
-                </v-card>
-            </v-tab-item>
-            </v-tabs-items>
-        
+                <div ref="cac"></div>
+                <v-spacer style="height: 200px;"></v-spacer>
+                <div ref="inicio" style="padding-bottom: 120px">
+                </div>
+                <h1>
+                        INICIO
+                </h1>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <div ref="institucion"style="padding-bottom: 120px">
+                </div>
+                <h1>
+                        INSTITUCIÓN
+                    </h1>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <div ref="mision"style="padding-bottom: 120px">
+                </div>
+                <h1>
+                        Misión
+                    </h1>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <div ref="vision"style="padding-bottom: 120px">
+                </div>
+                <h1>
+                        Visión
+                    </h1>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <div ref="publicaciones"style="padding-bottom: 120px">
+                </div>
+                <h1>
+                        PUBLICACIONES
+                    </h1>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <div ref="capacitaciones" style="padding-bottom: 120px">
+                </div>
+                <h1>
+                        CAPACITACIONES
+                    </h1>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             </div>
-        </v-container>
-        </v-sheet>
         </v-card>
     </v-app>
 
@@ -296,28 +310,13 @@
             return {showingNavigationDropdown: false,}
         },
         data: () => ({
-            v0: false,
-            v1: false,
-            v2: false,
-            v3: false,
-            v4: false,
-            v5: false,
-            v6: false,}),
-        data: () => ({
-            length: 3,
-            window: 0,
-            }),
-            data: () => ({
-            currentItem: 'tab-Web',
-            items: [
-                'Web', 'Shopping', 'Videos', 'Images',
-            ],
-            more: [
-                'News', 'Maps', 'Books', 'Flights', 'Apps',
-            ],
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            }),
-
+        items: [
+            { title: 'Click Me' },
+            { title: 'Click Me' },
+            { title: 'Click Me' },
+            { title: 'Click Me 2' },
+        ],
+        }),
         methods: 
         {
             switchToTeam(team) 
@@ -330,30 +329,14 @@
                     preserveState: false
                 })
             },
-            addItem (item) {
-                const removed = this.items.splice(0, 1)
-                this.items.push(
-                ...this.more.splice(this.more.indexOf(item), 1),
-                )
-                this.more.push(...removed)
-                this.$nextTick(() => { this.currentItem = 'tab' + item })
-            },
-
             logout() 
             {
                 this.$inertia.post(route('logout'));
             },
-            next () 
-            {
-                this.onboarding = this.onboarding + 1 === this.length
-                ? 0
-                : this.onboarding + 1
-            },
-            prev () 
-            {
-                this.onboarding = this.onboarding - 1 < 0
-                ? this.length - 1
-                : this.onboarding - 1
+            scrollMeTo(refName) {
+                var element = this.$refs[refName];
+                var top = element.offsetTop;
+                window.scrollTo(0, top);
             },
         },
         props: 

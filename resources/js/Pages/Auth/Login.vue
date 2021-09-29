@@ -23,7 +23,7 @@
 
             <div class="block mt-4">
                 <label class="flex items-center">
-                    <jet-checkbox style="background-color:#DCEDC8;" name="remember" v-model="form.remember" />
+                    <jet-checkbox style="background-color:#33691E;" name="remember" v-model="form.remember" />
                     <span class="ml-2 text-sm text-gray-600">Recuérdame</span>
                 </label>
             </div>

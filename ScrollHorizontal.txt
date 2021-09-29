@@ -1,0 +1,82 @@
+<v-list style="background: white; ">
+                        <v-list-item :key="1" @click="addItem(1)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px; margin-top: -12px">
+                            INICIO
+                        </v-list-item>
+                        <v-list-item :key="2" @click="addItem(2)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
+                            INSTITUCIÓN
+                        </v-list-item>
+                        <v-list-item :key="3" @click="addItem(3)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
+                            PUBLICACIONES
+                        </v-list-item>
+                        <v-list-item :key="4" @click="addItem(4)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -12px">
+                            CAPACITACIONES
+                        </v-list-item>
+                    </v-list>
+
+<!-- Menú 
+<v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="1" :href="'#tab' + 1">INICIO</v-tab></v-col>
+<v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="2" :href="'#tab' + 2">INSTITUCIÓN</v-tab></v-col>
+<v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="3" :href="'#tab' + 3">PUBLICACIONES</v-tab></v-col>
+<v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="4" :href="'#tab' + 4">CAPACITACIONES</v-tab></v-col>
+-->
+
+<!-- Menú 
+	<v-tabs-items v-model="currentItem">
+                <v-tab-item :key="1" :value="'tab' + 1">
+                    <v-card flat>
+                    <v-card-text>
+                        <h2>UNO</h2>
+                        HOLA UNO
+                    </v-card-text>
+                    </v-card>
+                </v-tab-item>
+                <v-tab-item :key="2" :value="'tab' + 2">
+                    <v-card flat>
+                    <v-card-text>
+                        <h2>DOS</h2>
+                        HOLA DOS
+                    </v-card-text>
+                    </v-card>
+                </v-tab-item>
+                <v-tab-item :key="3" :value="'tab' + 3">
+                    <v-card flat>
+                    <v-card-text>
+                        <h2>TRES</h2>
+                        HOLA TRES
+                    </v-card-text>
+                    </v-card>
+                </v-tab-item>
+                <v-tab-item :key="4" :value="'tab' + 4">
+                    <v-card flat>
+                    <v-card-text>
+                        <h2>CUATRO</h2>
+                        HOLA CUATRO
+                    </v-card-text>
+                    </v-card>
+                </v-tab-item>
+                </v-tabs-items>
+                -->
+data: () => ({
+            length: 3,
+            window: 0,
+            }),
+            data: () => ({
+            currentItem: 'tab-Web',
+            items: [
+                'Web', 'Shopping', 'Videos', 'Images',
+            ],
+            more: [
+                'News', 'Maps', 'Books', 'Flights', 'Apps',
+            ],
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            }),
+methods: {
+addItem (item) {
+                const removed = this.items.splice(0, 1)
+                this.items.push(
+                ...this.more.splice(this.more.indexOf(item), 1),
+                )
+                this.more.push(...removed)
+                this.$nextTick(() => { this.currentItem = 'tab' + item })
+            },
+}

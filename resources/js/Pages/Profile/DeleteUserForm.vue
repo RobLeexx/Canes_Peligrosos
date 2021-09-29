@@ -14,7 +14,7 @@
             </div>
 
             <div class="mt-5">
-                <jet-danger-button @click.native="confirmUserDeletion">
+                <jet-danger-button @click.native="confirmUserDeletion" style="color: white">
                     Eliminar Cuenta
                 </jet-danger-button>
             </div>
@@ -43,7 +43,7 @@
                         Cancelar
                     </jet-secondary-button>
 
-                    <jet-danger-button class="ml-2" @click.native="deleteUser" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <jet-danger-button class="ml-2" @click.native="deleteUser" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color: white">
                         Eliminar Cuenta
                     </jet-danger-button>
                 </template>
