@@ -8,19 +8,25 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
-                                <inertia-link :href="route('lista')">
+                                <inertia-link :href="route('home')">
                                     <jet-application-mark class="block h-9 w-auto" />
                                 </inertia-link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('home')" :active="route().current('home')" style="margin-right: 50px">
+                                <jet-nav-link :href="route('home')" :active="route().current('home')" style="border-block-color: #33691E">
                                     Página Principal
                                 </jet-nav-link>
-                                
+                                <v-spacer style="border-right: 2px solid; border-color: #33691E; margin-top: 15px; margin-bottom: 15px"></v-spacer>
                                 <jet-nav-link :href="route('lista')" :active="route().current('lista')">
                                     Lista
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('requisitos')" :active="route().current('requisitos')">
+                                    Requisitos
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('capacitaciones')" :active="route().current('capacitaciones')">
+                                    Capacitaciones
                                 </jet-nav-link>
                                 <jet-nav-link :href="route('usuarios')" :active="route().current('usuarios')">
                                     Usuarios
@@ -145,8 +151,20 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('home')" :active="route().current('home')">
+                            Página Principal
+                        </jet-responsive-nav-link>
                         <jet-responsive-nav-link :href="route('lista')" :active="route().current('lista')">
-                            lista
+                            Lista
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link :href="route('requisitos')" :active="route().current('requisitos')">
+                            Requisitos
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link :href="route('capacitaciones')" :active="route().current('capacitaciones')">
+                            Capacitaciones
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link :href="route('usuarios')" :active="route().current('usuarios')">
+                            Usuarios
                         </jet-responsive-nav-link>
                     </div>
 

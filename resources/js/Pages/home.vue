@@ -190,7 +190,7 @@
             </div>
 
             <!-- Menú -->
-            <v-tabs align-with-title v-model="currentItem" fixed-tabs slider-color="white">
+            <v-tabs align-with-title fixed-tabs slider-color="white">
                 <v-col class="d-none d-sm-block">
                     <v-row style="margin:0px: height:50px">
                         <v-col cols="12" lg="2" md="2" sm="3" style="display: grid;"><v-btn style="color: white; background: none; box-shadow: none" @click="scrollMeTo('inicio')">INICIO</v-btn></v-col>
