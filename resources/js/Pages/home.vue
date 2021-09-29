@@ -82,7 +82,7 @@
                             Acciones
                         </div>
 
-                        <jet-dropdown-link :href="route('dashboard')">
+                        <jet-dropdown-link :href="route('lista')">
                             Administración
                         </jet-dropdown-link>
 
@@ -248,25 +248,25 @@
                         INICIO
                 </h1>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <div ref="institucion"style="padding-bottom: 120px">
+                <div ref="institucion" style="padding-bottom: 120px">
                 </div>
                 <h1>
                         INSTITUCIÓN
                     </h1>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <div ref="mision"style="padding-bottom: 120px">
+                <div ref="mision" style="padding-bottom: 120px">
                 </div>
                 <h1>
                         Misión
                     </h1>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <div ref="vision"style="padding-bottom: 120px">
+                <div ref="vision" style="padding-bottom: 120px">
                 </div>
                 <h1>
                         Visión
                     </h1>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <div ref="publicaciones"style="padding-bottom: 120px">
+                <div ref="publicaciones" style="padding-bottom: 120px">
                 </div>
                 <h1>
                         PUBLICACIONES
@@ -309,14 +309,6 @@
         {
             return {showingNavigationDropdown: false,}
         },
-        data: () => ({
-        items: [
-            { title: 'Click Me' },
-            { title: 'Click Me' },
-            { title: 'Click Me' },
-            { title: 'Click Me 2' },
-        ],
-        }),
         methods: 
         {
             switchToTeam(team) 

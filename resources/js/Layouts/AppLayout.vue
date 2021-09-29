@@ -8,7 +8,7 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
-                                <inertia-link :href="route('dashboard')">
+                                <inertia-link :href="route('lista')">
                                     <jet-application-mark class="block h-9 w-auto" />
                                 </inertia-link>
                             </div>
@@ -19,8 +19,8 @@
                                     Página Principal
                                 </jet-nav-link>
                                 
-                                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                <jet-nav-link :href="route('lista')" :active="route().current('lista')">
+                                    Lista
                                 </jet-nav-link>
                                 <jet-nav-link :href="route('usuarios')" :active="route().current('usuarios')">
                                     Usuarios
@@ -145,8 +145,8 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                        <jet-responsive-nav-link :href="route('lista')" :active="route().current('lista')">
+                            lista
                         </jet-responsive-nav-link>
                     </div>
 

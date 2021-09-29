@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Use App\Http\Controllers\UsuarioController;
+Use App\Http\Controllers\ListaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,6 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
-    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
     
     Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
         return Inertia::render('home');
@@ -51,6 +49,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     
     Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/lista', [UsuarioController::class, 'index'])->name('lista');
+    Route::middleware(['auth:sanctum', 'verified'])->get('/lista', [ListaController::class, 'listaCont'])->name('lista');
 });
 
