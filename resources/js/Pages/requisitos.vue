@@ -6,7 +6,7 @@
             </h2>
         </template>
 
-        <div class="py-12">
+        <div class="py-12" style="background: #DCEDC8">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <v-app style="padding: 20px">
@@ -218,7 +218,15 @@
                             </template>
                             </v-banner>
 
+                            <v-checkbox
+                            v-model="enabled"
+                            hide-details
+                            class="shrink mr-2 mt-0"
+                            ></v-checkbox>
                         </div>
+                        <v-btn :disabled="!enabled">
+                            Siguiente
+                        </v-btn>
                         </template>
                     </v-app>
                 </div>
@@ -263,6 +271,10 @@
             v4: false,
             v5: false,
             v6: false,}),
+
+        data: () => ({
+        enabled: false,
+        }),
 
         methods: 
         {

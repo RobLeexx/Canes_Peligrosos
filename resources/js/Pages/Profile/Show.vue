@@ -6,7 +6,7 @@
             </h2>
         </template>
 
-        <div>
+        <div style="background: #DCEDC8">
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
                     <update-profile-information-form :user="$page.props.user" />

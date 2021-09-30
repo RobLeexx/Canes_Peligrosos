@@ -15,7 +15,7 @@
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('home')" :active="route().current('home')" style="border-block-color: #33691E">
+                                <jet-nav-link :href="route('home')" :active="route().current('home')">
                                     Página Principal
                                 </jet-nav-link>
                                 <v-spacer style="border-right: 2px solid; border-color: #33691E; margin-top: 15px; margin-bottom: 15px"></v-spacer>
