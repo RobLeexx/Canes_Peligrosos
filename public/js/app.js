@@ -4929,7 +4929,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var _Jetstream_AuthenticationCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/AuthenticationCard */ "./resources/js/Jetstream/AuthenticationCard.vue");
 /* harmony import */ var _Jetstream_AuthenticationCardLogo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/AuthenticationCardLogo */ "./resources/js/Jetstream/AuthenticationCardLogo.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
@@ -5016,7 +5016,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.form.transform(function (data) {
-        return (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, data), {}, {
+        return (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, data), {}, {
           remember: _this.form.remember ? 'on' : ''
         });
       }).post(this.route('login'), {
@@ -6323,7 +6323,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
 /* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
@@ -6592,7 +6592,7 @@ var _components$data$data;
       showingNavigationDropdown: false
     };
   }
-}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -6602,7 +6602,7 @@ var _components$data$data;
     v5: false,
     v6: false
   };
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -6613,12 +6613,12 @@ var _components$data$data;
   logout: function logout() {
     this.$inertia.post(route('logout'));
   }
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
   phpVersion: String
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "computed", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "computed", {
   user: function user() {
     return this.$page.props.auth.user;
   }
@@ -7056,7 +7056,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
@@ -7096,7 +7096,7 @@ var _components$data$data;
       showingNavigationDropdown: false
     };
   }
-}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -7106,7 +7106,7 @@ var _components$data$data;
     v5: false,
     v6: false
   };
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -7117,7 +7117,7 @@ var _components$data$data;
   logout: function logout() {
     this.$inertia.post(route('logout'));
   }
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
@@ -7134,7 +7134,7 @@ var _components$data$data;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
@@ -7146,26 +7146,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var _components$data$data;
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7407,7 +7387,7 @@ var _components$data$data;
       showingNavigationDropdown: false
     };
   }
-}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -7415,13 +7395,11 @@ var _components$data$data;
     v3: false,
     v4: false,
     v5: false,
-    v6: false
+    v6: false,
+    date: null,
+    menu: false
   };
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
-  return {
-    enabled: false
-  };
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -7431,8 +7409,11 @@ var _components$data$data;
   },
   logout: function logout() {
     this.$inertia.post(route('logout'));
+  },
+  save: function save(date) {
+    this.$refs.menu.save(date);
   }
-}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
@@ -42854,12 +42835,29 @@ var render = function() {
                               _c(
                                 "v-container",
                                 [
+                                  _c("v-subheader", [
+                                    _vm._v("Referencia del Memorial")
+                                  ]),
+                                  _vm._v(" "),
                                   _c(
-                                    "v-row",
+                                    "div",
+                                    {
+                                      staticStyle: {
+                                        display: "flex",
+                                        "flex-wrap": "wrap"
+                                      }
+                                    },
                                     [
                                       _c(
                                         "v-col",
-                                        { attrs: { cols: "12", sm: "6" } },
+                                        {
+                                          attrs: {
+                                            cols: "12",
+                                            lg: "6",
+                                            md: "6",
+                                            sm: "12"
+                                          }
+                                        },
                                         [
                                           _c("v-text-field", {
                                             attrs: {
@@ -42875,28 +42873,20 @@ var render = function() {
                                       _vm._v(" "),
                                       _c(
                                         "v-col",
-                                        { attrs: { cols: "12", sm: "6" } },
+                                        {
+                                          attrs: {
+                                            cols: "12",
+                                            lg: "6",
+                                            md: "6",
+                                            sm: "12"
+                                          }
+                                        },
                                         [
                                           _c("v-text-field", {
                                             attrs: {
-                                              label: "Can",
-                                              placeholder: "Can",
-                                              solo: ""
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-col",
-                                        { attrs: { cols: "12", sm: "6" } },
-                                        [
-                                          _c("v-text-field", {
-                                            attrs: {
-                                              label: "Domicilio",
+                                              label: "Referencia",
                                               placeholder:
-                                                "Domicilio y Municipio al que pertenece",
+                                                "Referencia adjuntada en el memorial",
                                               solo: ""
                                             }
                                           })
@@ -42906,49 +42896,180 @@ var render = function() {
                                       _vm._v(" "),
                                       _c(
                                         "v-col",
-                                        { attrs: { cols: "12", sm: "6" } },
+                                        {
+                                          attrs: {
+                                            cols: "12",
+                                            lg: "12",
+                                            sm: "12"
+                                          }
+                                        },
                                         [
-                                          _c("v-text-field", {
-                                            attrs: {
-                                              label: "Can",
-                                              placeholder: "Can",
-                                              solo: ""
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-col",
-                                        { attrs: { cols: "12", sm: "6" } },
-                                        [
-                                          _c("v-text-field", {
-                                            attrs: {
-                                              label: "Cuidadores Eventuales",
-                                              placeholder:
-                                                "Cuidadores Eventuales",
-                                              solo: ""
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-col",
-                                        { attrs: { cols: "12", sm: "6" } },
-                                        [
-                                          _c("v-text-field", {
-                                            attrs: {
-                                              label: "Disponibilidad",
-                                              placeholder: "Disponibilidad",
-                                              solo: ""
-                                            }
-                                          })
+                                          _c("v-subheader", [
+                                            _vm._v(
+                                              "Fecha de expedición del Memorial"
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-menu",
+                                            {
+                                              ref: "menu",
+                                              attrs: {
+                                                "close-on-content-click": false,
+                                                transition: "scale-transition",
+                                                "offset-y": "",
+                                                "min-width": "auto"
+                                              },
+                                              scopedSlots: _vm._u([
+                                                {
+                                                  key: "activator",
+                                                  fn: function(ref) {
+                                                    var on = ref.on
+                                                    var attrs = ref.attrs
+                                                    return [
+                                                      _c(
+                                                        "v-text-field",
+                                                        _vm._g(
+                                                          _vm._b(
+                                                            {
+                                                              attrs: {
+                                                                "prepend-icon":
+                                                                  "mdi-calendar",
+                                                                readonly: ""
+                                                              },
+                                                              model: {
+                                                                value: _vm.date,
+                                                                callback: function(
+                                                                  $$v
+                                                                ) {
+                                                                  _vm.date = $$v
+                                                                },
+                                                                expression:
+                                                                  "date"
+                                                              }
+                                                            },
+                                                            "v-text-field",
+                                                            attrs,
+                                                            false
+                                                          ),
+                                                          on
+                                                        )
+                                                      )
+                                                    ]
+                                                  }
+                                                }
+                                              ]),
+                                              model: {
+                                                value: _vm.menu,
+                                                callback: function($$v) {
+                                                  _vm.menu = $$v
+                                                },
+                                                expression: "menu"
+                                              }
+                                            },
+                                            [
+                                              _vm._v(" "),
+                                              _c("v-date-picker", {
+                                                attrs: {
+                                                  max: new Date(
+                                                    Date.now() -
+                                                      new Date().getTimezoneOffset() *
+                                                        60000
+                                                  )
+                                                    .toISOString()
+                                                    .substr(0, 10),
+                                                  min: "2014-01-01"
+                                                },
+                                                on: { change: _vm.save },
+                                                model: {
+                                                  value: _vm.date,
+                                                  callback: function($$v) {
+                                                    _vm.date = $$v
+                                                  },
+                                                  expression: "date"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
                                         ],
                                         1
                                       )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("v-divider"),
+                              _vm._v(" "),
+                              _c(
+                                "v-container",
+                                [
+                                  _c("v-subheader", [
+                                    _vm._v(
+                                      "Datos del Can Peligroso en el memorial"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", sm: "6" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Domicilio",
+                                          placeholder:
+                                            "Domicilio y Municipio al que pertenece",
+                                          solo: ""
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", sm: "6" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Can",
+                                          placeholder: "Can",
+                                          solo: ""
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", sm: "6" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Cuidadores Eventuales",
+                                          placeholder: "Cuidadores Eventuales",
+                                          solo: ""
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12", sm: "6" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "Disponibilidad",
+                                          placeholder: "Disponibilidad",
+                                          solo: ""
+                                        }
+                                      })
                                     ],
                                     1
                                   )
@@ -42962,7 +43083,10 @@ var render = function() {
                           _c("v-divider", [_vm._v("inset")]),
                           _vm._v(" "),
                           _c("v-checkbox", {
-                            attrs: { label: " 2. Documento de Identidad" },
+                            attrs: {
+                              label: " 2. Documento de Identidad",
+                              color: "green"
+                            },
                             model: {
                               value: _vm.v1,
                               callback: function($$v) {
@@ -42979,28 +43103,6 @@ var render = function() {
                                 "single-line": "",
                                 transition: "slide-y-transition"
                               },
-                              scopedSlots: _vm._u([
-                                {
-                                  key: "actions",
-                                  fn: function(ref) {
-                                    var dismiss = ref.dismiss
-                                    return [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: { click: dismiss }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                            Cancelar\n                        "
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  }
-                                }
-                              ]),
                               model: {
                                 value: _vm.v1,
                                 callback: function($$v) {
@@ -43019,7 +43121,10 @@ var render = function() {
                           _c("v-divider", [_vm._v("inset")]),
                           _vm._v(" "),
                           _c("v-checkbox", {
-                            attrs: { label: " 3. Antecedentes" },
+                            attrs: {
+                              label: " 3. Antecedentes",
+                              color: "green"
+                            },
                             model: {
                               value: _vm.v2,
                               callback: function($$v) {
@@ -43036,28 +43141,6 @@ var render = function() {
                                 "single-line": "",
                                 transition: "slide-y-transition"
                               },
-                              scopedSlots: _vm._u([
-                                {
-                                  key: "actions",
-                                  fn: function(ref) {
-                                    var dismiss = ref.dismiss
-                                    return [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: { click: dismiss }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                            Cancelar\n                        "
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  }
-                                }
-                              ]),
                               model: {
                                 value: _vm.v2,
                                 callback: function($$v) {
@@ -43078,7 +43161,8 @@ var render = function() {
                           _c("v-checkbox", {
                             attrs: {
                               label:
-                                " 4. Seguro Obligatorio de Responsabilidad Civil"
+                                " 4. Seguro Obligatorio de Responsabilidad Civil",
+                              color: "green"
                             },
                             model: {
                               value: _vm.v3,
@@ -43096,28 +43180,6 @@ var render = function() {
                                 "single-line": "",
                                 transition: "slide-y-transition"
                               },
-                              scopedSlots: _vm._u([
-                                {
-                                  key: "actions",
-                                  fn: function(ref) {
-                                    var dismiss = ref.dismiss
-                                    return [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: { click: dismiss }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                            Cancelar\n                        "
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  }
-                                }
-                              ]),
                               model: {
                                 value: _vm.v3,
                                 callback: function($$v) {
@@ -43136,7 +43198,10 @@ var render = function() {
                           _c("v-divider", [_vm._v("inset")]),
                           _vm._v(" "),
                           _c("v-checkbox", {
-                            attrs: { label: " 5. Estado de Salud del Can" },
+                            attrs: {
+                              label: " 5. Estado de Salud del Can",
+                              color: "green"
+                            },
                             model: {
                               value: _vm.v4,
                               callback: function($$v) {
@@ -43153,28 +43218,6 @@ var render = function() {
                                 "single-line": "",
                                 transition: "slide-y-transition"
                               },
-                              scopedSlots: _vm._u([
-                                {
-                                  key: "actions",
-                                  fn: function(ref) {
-                                    var dismiss = ref.dismiss
-                                    return [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: { click: dismiss }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                            Cancelar\n                        "
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  }
-                                }
-                              ]),
                               model: {
                                 value: _vm.v4,
                                 callback: function($$v) {
@@ -43194,7 +43237,8 @@ var render = function() {
                           _vm._v(" "),
                           _c("v-checkbox", {
                             attrs: {
-                              label: " 6. Especifiaciones del Domicilio"
+                              label: " 6. Especifiaciones del Domicilio",
+                              color: "green"
                             },
                             model: {
                               value: _vm.v5,
@@ -43212,28 +43256,6 @@ var render = function() {
                                 "single-line": "",
                                 transition: "slide-y-transition"
                               },
-                              scopedSlots: _vm._u([
-                                {
-                                  key: "actions",
-                                  fn: function(ref) {
-                                    var dismiss = ref.dismiss
-                                    return [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: { click: dismiss }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                            Cancelar\n                        "
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  }
-                                }
-                              ]),
                               model: {
                                 value: _vm.v5,
                                 callback: function($$v) {
@@ -43252,7 +43274,10 @@ var render = function() {
                           _c("v-divider", [_vm._v("inset")]),
                           _vm._v(" "),
                           _c("v-checkbox", {
-                            attrs: { label: " 7. Datos Finales" },
+                            attrs: {
+                              label: " 7. Datos Finales",
+                              color: "green"
+                            },
                             model: {
                               value: _vm.v6,
                               callback: function($$v) {
@@ -43269,28 +43294,6 @@ var render = function() {
                                 "single-line": "",
                                 transition: "slide-y-transition"
                               },
-                              scopedSlots: _vm._u([
-                                {
-                                  key: "actions",
-                                  fn: function(ref) {
-                                    var dismiss = ref.dismiss
-                                    return [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { text: "", color: "primary" },
-                                          on: { click: dismiss }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                            Cancelar\n                        "
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  }
-                                }
-                              ]),
                               model: {
                                 value: _vm.v6,
                                 callback: function($$v) {
@@ -43304,28 +43307,36 @@ var render = function() {
                                 "\n                        7. Datos Finales\n                        "
                               )
                             ]
-                          ),
-                          _vm._v(" "),
-                          _c("v-checkbox", {
-                            staticClass: "shrink mr-2 mt-0",
-                            attrs: { "hide-details": "" },
-                            model: {
-                              value: _vm.enabled,
-                              callback: function($$v) {
-                                _vm.enabled = $$v
-                              },
-                              expression: "enabled"
-                            }
-                          })
+                          )
                         ],
                         1
                       ),
                       _vm._v(" "),
-                      _c("v-btn", { attrs: { disabled: !_vm.enabled } }, [
-                        _vm._v(
-                          "\n                        Siguiente\n                    "
-                        )
-                      ])
+                      _c("v-spacer", { staticStyle: { height: "50px" } }),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            rounded: "",
+                            color: "primary",
+                            disabled: !(
+                              _vm.v0 &
+                              _vm.v1 &
+                              _vm.v2 &
+                              _vm.v3 &
+                              _vm.v4 &
+                              _vm.v5 &
+                              _vm.v6
+                            )
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Siguiente\n                    "
+                          )
+                        ]
+                      )
                     ]
                   ],
                   2
@@ -101144,7 +101155,7 @@ function _objectSpread2(target) {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_from":"axios@0.21.4"}');
 
 /***/ })
 

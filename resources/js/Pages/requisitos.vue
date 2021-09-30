@@ -31,21 +31,55 @@
                                 transition="slide-y-transition"
                             >
                             <v-container>
-                            <v-row>
-                                <v-col cols="12" sm="6">
-                                <v-text-field
-                                    label="Comandante Departamental"
-                                    placeholder="Nombre del Comandante Departamental"
-                                    solo
-                                ></v-text-field>
-                                </v-col>
-                                <v-col cols="12" sm="6">
-                                <v-text-field
-                                    label="Can"
-                                    placeholder="Can"
-                                    solo
-                                ></v-text-field>
-                                </v-col>
+                                <v-subheader>Referencia del Memorial</v-subheader>
+                                <div style="display: flex; flex-wrap: wrap;">
+                                    <v-col cols="12" lg="6" md="6" sm="12">
+                                    <v-text-field
+                                        label="Comandante Departamental"
+                                        placeholder="Nombre del Comandante Departamental"
+                                        solo
+                                    ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" lg="6" md="6" sm="12">
+                                    <v-text-field
+                                        label="Referencia"
+                                        placeholder="Referencia adjuntada en el memorial"
+                                        solo
+                                    ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" lg="12" sm="12">
+                                        <v-subheader>Fecha de expedición del Memorial</v-subheader>
+                                        <v-menu
+                                        ref="menu"
+                                        v-model="menu"
+                                        :close-on-content-click="false"
+                                        transition="scale-transition"
+                                        offset-y
+                                        min-width="auto"
+                                        >
+                                        <template v-slot:activator="{ on, attrs }">
+                                            <v-text-field
+                                            v-model="date"
+                                            prepend-icon="mdi-calendar"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            ></v-text-field>
+                                        </template>
+                                        <v-date-picker
+                                            v-model="date"
+                                            :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                            min="2014-01-01"
+                                            @change="save"
+                                        ></v-date-picker>
+                                        </v-menu>
+                                    </v-col>
+                                </div>
+                            </v-container>
+                            <v-divider></v-divider>
+                            
+                            <v-container>
+                                <v-subheader>Datos del Can Peligroso en el memorial</v-subheader>
                                 <v-col cols="12" sm="6">
                                 <v-text-field
                                     label="Domicilio"
@@ -75,7 +109,6 @@
                                     solo
                                 ></v-text-field>
                                 </v-col>
-                            </v-row>
                             </v-container>
 
                             </v-banner>
@@ -85,6 +118,7 @@
                             <v-checkbox
                             v-model="v1"
                             label=" 2. Documento de Identidad"
+                            color="green"
                             ></v-checkbox>
                             <v-banner
                                 v-model="v1"
@@ -92,15 +126,6 @@
                                 transition="slide-y-transition"
                             >
                             1. Memorial
-                            <template v-slot:actions="{ dismiss }">
-                            <v-btn
-                                text
-                                color="primary"
-                                @click="dismiss"
-                            >
-                                Cancelar
-                            </v-btn>
-                            </template>
                             </v-banner>
                             <v-divider>inset</v-divider>
 
@@ -108,6 +133,7 @@
                             <v-checkbox
                             v-model="v2"
                             label=" 3. Antecedentes"
+                            color="green"
                             ></v-checkbox>
                             <v-banner
                                 v-model="v2"
@@ -115,15 +141,6 @@
                                 transition="slide-y-transition"
                             >
                             1. Memorial
-                            <template v-slot:actions="{ dismiss }">
-                            <v-btn
-                                text
-                                color="primary"
-                                @click="dismiss"
-                            >
-                                Cancelar
-                            </v-btn>
-                            </template>
                             </v-banner>
                             <v-divider>inset</v-divider>
 
@@ -131,6 +148,7 @@
                             <v-checkbox
                             v-model="v3"
                             label=" 4. Seguro Obligatorio de Responsabilidad Civil"
+                            color="green"
                             ></v-checkbox>
                             <v-banner
                             v-model="v3"
@@ -138,15 +156,6 @@
                             transition="slide-y-transition"
                             >
                             1. Memorial
-                            <template v-slot:actions="{ dismiss }">
-                            <v-btn
-                                text
-                                color="primary"
-                                @click="dismiss"
-                            >
-                                Cancelar
-                            </v-btn>
-                            </template>
                             </v-banner>
                             <v-divider>inset</v-divider>
 
@@ -154,6 +163,7 @@
                             <v-checkbox
                             v-model="v4"
                             label=" 5. Estado de Salud del Can"
+                            color="green"
                             ></v-checkbox>
                             <v-banner
                             v-model="v4"
@@ -161,15 +171,6 @@
                             transition="slide-y-transition"
                             >
                             1. Memorial
-                            <template v-slot:actions="{ dismiss }">
-                            <v-btn
-                                text
-                                color="primary"
-                                @click="dismiss"
-                            >
-                                Cancelar
-                            </v-btn>
-                            </template>
                             </v-banner>
                             <v-divider>inset</v-divider>
 
@@ -177,6 +178,7 @@
                             <v-checkbox
                             v-model="v5"
                             label=" 6. Especifiaciones del Domicilio"
+                            color="green"
                             ></v-checkbox>
                             <v-banner
                             v-model="v5"
@@ -184,15 +186,6 @@
                             transition="slide-y-transition"
                             >
                             1. Memorial
-                            <template v-slot:actions="{ dismiss }">
-                            <v-btn
-                                text
-                                color="primary"
-                                @click="dismiss"
-                            >
-                                Cancelar
-                            </v-btn>
-                            </template>
                             </v-banner>
                             <v-divider>inset</v-divider>
 
@@ -200,6 +193,7 @@
                             <v-checkbox
                             v-model="v6"
                             label=" 7. Datos Finales"
+                            color="green"
                             ></v-checkbox>
                             <v-banner
                             v-model="v6"
@@ -207,24 +201,10 @@
                             transition="slide-y-transition"
                             >
                             7. Datos Finales
-                            <template v-slot:actions="{ dismiss }">
-                            <v-btn
-                                text
-                                color="primary"
-                                @click="dismiss"
-                            >
-                                Cancelar
-                            </v-btn>
-                            </template>
                             </v-banner>
-
-                            <v-checkbox
-                            v-model="enabled"
-                            hide-details
-                            class="shrink mr-2 mt-0"
-                            ></v-checkbox>
                         </div>
-                        <v-btn :disabled="!enabled">
+                        <v-spacer style="height:50px"></v-spacer>
+                        <v-btn rounded color="primary" :disabled="!(v0 & v1 & v2 & v3 & v4 & v5 & v6)">
                             Siguiente
                         </v-btn>
                         </template>
@@ -270,11 +250,10 @@
             v3: false,
             v4: false,
             v5: false,
-            v6: false,}),
-
-        data: () => ({
-        enabled: false,
-        }),
+            v6: false,
+            date: null,
+            menu: false,
+            }),
 
         methods: 
         {
@@ -292,6 +271,9 @@
             logout() 
             {
                 this.$inertia.post(route('logout'));
+            },
+            save (date) {
+                this.$refs.menu.save(date)
             },
         },
         props: 

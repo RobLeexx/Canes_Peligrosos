@@ -219,7 +219,7 @@
             <div class="d-block d-sm-none">
                 <v-row style="margin: 0; display: flex; flex-wrap:nowrap">
                     <v-btn icon>
-                    <v-icon>mdi-facebook</v-icon>
+                        <v-icon>mdi-facebook</v-icon>
                     </v-btn>
 
                     <v-btn icon>
