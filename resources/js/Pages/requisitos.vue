@@ -2,264 +2,300 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Requisitos
+                Registro de Requisitos
             </h2>
         </template>
 
         <div class="py-12" style="background: #33691E">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
-                    <v-app style="padding: 20px">
-                        <template>
-                        <v-form>
+                    <v-app>
                         <h1 style="
                             display: flex;
                             justify-content: center;
                             font-size: x-large;
-                            padding-top: 20px" >
+                            padding: 50px" >
                             ART No.12: DOCUMENTOS A PRESENTAR POR EL PROPIETARIO DEL PERRO PELIGROSO</h1>
-                        <div>
-                        <v-spacer style="height: 30px;"></v-spacer>
-                        <!-- 1. Memorial -->
-                            <v-checkbox
-                                v-model="v0"
-                                label=" 1. Memorial"
-                                color="green"
-                            ></v-checkbox>
-                            <v-banner
-                                v-model="v0"
-                                single-line
-                                transition="slide-y-transition"
+                        <template>
+                            <v-stepper
+                                v-model="e6"
+                                vertical
                             >
-                            <v-container>
-                                <v-subheader>Referencia del Memorial</v-subheader>
-                                <div style="display: flex; flex-wrap: wrap;">
-                                    <v-col cols="12" lg="6" md="6" sm="12">
-                                    <v-text-field
-                                        label="Comandante Departamental"
-                                        placeholder="Nombre del Comandante Departamental"
-                                        outlined
-                                    ></v-text-field>
-                                    </v-col>
-                                    <v-col cols="12" lg="6" md="6" sm="12">
-                                    <v-text-field
-                                        label="Referencia"
-                                        placeholder="Referencia adjuntada en el memorial"
-                                        outlined
-                                    ></v-text-field>
-                                    </v-col>
-                                    <v-col cols="12" lg="12" sm="12">
-                                        <template>
-                                            <div>
-                                                <div style="display: none" class="mb-6">Active picker: <code>{{ activePicker || 'null' }}</code></div>
-                                                <v-menu
-                                                ref="menu"
-                                                v-model="menu"
-                                                :close-on-content-click="false"
-                                                transition="scale-transition"
-                                                offset-y
-                                                min-width="auto"
+
+                                <!-- 1. Datos del Memorial -->
+                                <v-stepper-step
+                                :complete="e6 > 1"
+                                step="1"
+                                >
+                                Datos del Memorial
+                                </v-stepper-step>
+
+                                <v-stepper-content step="1">
+                                <v-card
+                                    color="grey lighten-1"
+                                    class="mb-12"
+                                    height="100%"
+                                >
+
+                                <template>
+                                    <v-card flat>
+                                        <v-form
+                                        ref="form"
+                                        @submit.prevent="submit"
+                                        >
+                                        <v-container fluid>
+                                            <v-row>
+                                            <v-col
+                                                cols="12"
+                                                sm="6"
+                                            >
+                                                <v-text-field
+                                                v-model="form.first"
+                                                :rules="rules.name"
+                                                label="Comandante Departamental"
+                                                placeholder="Rango y nombre del Comandante Departamental"
+                                                required
+                                                outlined
+                                                ></v-text-field>
+                                            </v-col>
+                                            <v-col
+                                                cols="12"
+                                                sm="6"
+                                            >
+                                                <v-text-field
+                                                v-model="form.last"
+                                                :rules="rules.name"
+                                                label="Referencia"
+                                                placeholder="Referencia adjuntada en el memorial"
+                                                required
+                                                outlined
+                                                ></v-text-field>
+                                            </v-col>
+                                            <!-- --<v-col cols="12">
+                                                <v-textarea
+                                                v-model="form.bio"
+                                                color="teal"
                                                 >
-                                                <template v-slot:activator="{ on, attrs }">
-                                                    <v-text-field
-                                                    v-model="date"
-                                                    label="Fecha de expedición del Memorial"
-                                                    prepend-icon="mdi-calendar"
-                                                    readonly
-                                                    outlined
-                                                    v-bind="attrs"
-                                                    v-on="on"
-                                                    ></v-text-field>
+                                                <template v-slot:label>
+                                                    <div>
+                                                    Bio <small>(optional)</small>
+                                                    </div>
                                                 </template>
-                                                <v-date-picker
-                                                    v-model="date"
-                                                    :active-picker.sync="activePicker"
-                                                    :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
-                                                    min="2014-01-01"
-                                                    @change="save"
-                                                ></v-date-picker>
-                                                </v-menu>
-                                            </div>
-                                            </template>
-                                    </v-col>
-                                </div>
-                            </v-container>
-                            <v-divider></v-divider>
+                                                </v-textarea>
+                                            </v-col>
+                                             -->
+                                             <v-col cols="12" sm="6">
+                                                <template>
+                                                    <div>
+                                                        <div style="display: none" class="mb-6">Active picker: <code>{{ activePicker || 'null' }}</code></div>
+                                                        <v-menu
+                                                        ref="menu"
+                                                        v-model="menu"
+                                                        :close-on-content-click="false"
+                                                        transition="scale-transition"
+                                                        offset-y
+                                                        min-width="auto"
+                                                        >
+                                                        <template v-slot:activator="{ on, attrs }">
+                                                            <v-text-field
+                                                            v-model="date"
+                                                            label="Fecha de expedición del Memorial"
+                                                            prepend-icon="mdi-calendar"
+                                                            readonly
+                                                            outlined
+                                                            :rules="rules.dater"
+                                                            required
+                                                            v-bind="attrs"
+                                                            v-on="on"
+                                                            ></v-text-field>
+                                                        </template>
+                                                        <v-date-picker
+                                                            v-model="date"
+                                                            :active-picker.sync="activePicker"
+                                                            :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                            min="2014-01-01"
+                                                            @change="save"
+                                                        ></v-date-picker>
+                                                        </v-menu>
+                                                    </div>
+                                                </template>
+                                            </v-col>
+                                            <v-col
+                                                cols="12"
+                                                sm="6"
+                                            >
+                                                <template>
+                                                <v-file-input style="height: 45px"
+                                                    label="Memorial Adjuntado (Opcional)"
+                                                    outlined
+                                                    dense
+                                                    show-size
+                                                ></v-file-input>
+                                                <v-subheader style="
+                                                    display: flex;
+                                                    align-items: flex-start;
+                                                    justify-content: flex-end;">
+                                                    *Solo se admite un elemento</v-subheader>
+                                                </template>
+                                            </v-col>
+                                            <v-col cols="12" style="padding-top: 0;">
+                                                <v-checkbox
+                                                v-model="form.terms"
+                                                color="green"
+                                                >
+                                                <template v-slot:label>
+                                                    <div @click.stop="">
+                                                    El Propietario del Can Peligroso está dispuesto a cumplir con las capacitaciones respectivas, sobre la
+                                                    <a
+                                                        href="#"
+                                                        @click.prevent="terms = true"
+                                                    >normativa legal</a>
+                                                    inherente al tratamiento con animales domésticos. 
+                                                    </div>
+                                                </template>
+                                                </v-checkbox>
+                                            </v-col>
+                                            </v-row>
+                                        </v-container>
+                                        </v-form>
+                                        <v-dialog
+                                        v-model="terms"
+                                        width="70%"
+                                        >
+                                        <v-card>
+                                            <v-card-title class="text-h6">
+                                            Terms
+                                            </v-card-title>
+                                            <v-card-text
+                                            v-for="n in 5"
+                                            :key="n"
+                                            >
+                                            {{ content }}
+                                            </v-card-text>
+                                            <v-card-actions>
+                                            <v-spacer></v-spacer>
+                                            <v-btn
+                                                text
+                                                @click="terms = false"
+                                            >
+                                                Ok
+                                            </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                        </v-dialog>
+                                    </v-card>
+                                </template>
 
-                            <v-container fluid>
-                                <v-subheader>Datos del Can Peligroso en el memorial</v-subheader>
-                                <v-subheader>Edad del Can Peligroso</v-subheader>
-                                <div style="display: flex; flex-wrap: wrap;">
-                                    <v-col cols="12" lg="5" md="5" sm="6">
-                                        <v-text-field
-                                        label="Edad en Meses"
-                                        suffix="meses"
-                                        placeholder="Edad del Can en Meses"
-                                        outlined
-                                    ></v-text-field>
-                                    </v-col>
-                                    <v-col cols="12" lg="5" md="5" sm="6">
-                                        <v-text-field
-                                        label="Edad en Años"
-                                        suffix="años"
-                                        placeholder="Edad del Can en Años"
-                                        outlined
-                                    ></v-text-field>
-                                    </v-col>
-                                    <v-col cols="12" lg="2" md="2" sm="6">
-                                    <v-switch label="Pedigree"
-                                    ></v-switch>
-                                    </v-col>
-                                    <v-col cols="12" sm="6">
-                                    <v-text-field
-                                        label="Cuidadores Eventuales"
-                                        placeholder="Cuidadores Eventuales"
-                                        outlined
-                                    ></v-text-field>
-                                    </v-col>
-                                    <v-col cols="12" sm="6">
-                                    <v-text-field
-                                        label="Número de referencia"
-                                        placeholder="Número de algún cuidador eventual"
-                                        outlined
-                                    ></v-text-field>
-                                    </v-col>
-                                </div>
-                            </v-container>
-                            <v-divider></v-divider>
-                            
-                            <v-container fluid>
-                                <v-subheader>Datos del Propietario en el memorial</v-subheader>
-                                <div style="display: flex; flex-wrap: wrap;">
-                                    <v-col cols="12" lg="6" md="6" sm="12">
-                                    <v-text-field
-                                        label="Domicilio"
-                                        placeholder="Domicilio y Municipio al que pertenece"
-                                        outlined
-                                    ></v-text-field>
-                                    </v-col>
-                                    <v-col cols="12" lg="6" md="6" sm="12">
-                                    <v-select
-                                        prefix="Departamento de"
-                                        label="Departamento"
-                                        :items="departamento"
-                                        outlined
-                                    ></v-select>
-                                    </v-col>
-                                    <v-col cols="12" sm="6">
-                                    <v-text-field
-                                        label="Cuidadores Eventuales"
-                                        placeholder="Cuidadores Eventuales"
-                                        outlined
-                                    ></v-text-field>
-                                    </v-col>
-                                    <v-col cols="12" sm="6">
-                                    <v-text-field
-                                        label="Número de referencia"
-                                        placeholder="Número de contacto del cuidador eventual"
-                                        outlined
-                                    ></v-text-field>
-                                    </v-col>
-                                </div>
-                            </v-container>
+                                </v-card>
+                                <v-card-actions>
+                                    <v-btn
+                                    :disabled="!formIsValid"
+                                    color="primary"
+                                    @click="e6 = 2"
+                                    type="submit"
+                                    >
+                                    Continuar
+                                    </v-btn>
+                                </v-card-actions>
+                                </v-stepper-content>
 
-                            </v-banner>
-                            <v-divider>inset</v-divider>
+                                <!-- 2. Datos del Propietario -->
+                                <v-stepper-step
+                                :complete="e6 > 2"
+                                step="2"
+                                >
+                                Datos del Propietario
+                                </v-stepper-step>
 
-                        <!-- 2. Documento de Identidad -->
-                            <v-checkbox
-                            v-model="v1"
-                            label=" 2. Documento de Identidad"
-                            color="green"
-                            ></v-checkbox>
-                            <v-banner
-                                v-model="v1"
-                                single-line
-                                transition="slide-y-transition"
-                            >
-                            1. Memorial
-                            </v-banner>
-                            <v-divider>inset</v-divider>
+                                <v-stepper-content step="2">
+                                <v-card
+                                    color="grey lighten-1"
+                                    class="mb-12"
+                                    height="200px"
+                                ></v-card>
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 3"
+                                >
+                                    Continuar
+                                </v-btn>
+                                <v-btn @click="e6 = 1">
+                                    Atrás
+                                </v-btn>
+                                </v-stepper-content>
 
-                            <!-- 3. Antecedentes -->
-                            <v-checkbox
-                            v-model="v2"
-                            label=" 3. Antecedentes"
-                            color="green"
-                            ></v-checkbox>
-                            <v-banner
-                                v-model="v2"
-                                single-line
-                                transition="slide-y-transition"
-                            >
-                            1. Memorial
-                            </v-banner>
-                            <v-divider>inset</v-divider>
+                                <!-- 3. Antecedentes del Propietario -->
+                                <v-stepper-step
+                                :complete="e6 > 3"
+                                step="3"
+                                >
+                                Antecedentes del Propietario
+                                </v-stepper-step>
 
-                            <!-- 4. Seguro Obligatorio de Responsabilidad Civil -->
-                            <v-checkbox
-                            v-model="v3"
-                            label=" 4. Seguro Obligatorio de Responsabilidad Civil"
-                            color="green"
-                            ></v-checkbox>
-                            <v-banner
-                            v-model="v3"
-                            single-line
-                            transition="slide-y-transition"
-                            >
-                            1. Memorial
-                            </v-banner>
-                            <v-divider>inset</v-divider>
+                                <v-stepper-content step="3">
+                                <v-card
+                                    color="grey lighten-1"
+                                    class="mb-12"
+                                    height="200px"
+                                ></v-card>
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 4"
+                                >
+                                    Continue
+                                </v-btn>
+                                <v-btn @click="e6 = 2">
+                                    Atrás
+                                </v-btn>
+                                </v-stepper-content>
 
-                            <!-- 5. Estado de Salud del Can -->
-                            <v-checkbox
-                            v-model="v4"
-                            label=" 5. Estado de Salud del Can"
-                            color="green"
-                            ></v-checkbox>
-                            <v-banner
-                            v-model="v4"
-                            single-line
-                            transition="slide-y-transition"
-                            >
-                            1. Memorial
-                            </v-banner>
-                            <v-divider>inset</v-divider>
+                                <!-- 4. Seguro Obligatorio de Responsabilidad Civil -->
+                                <v-stepper-step 
+                                :complete="e6 > 4"
+                                step="4">
+                                Seguro Obligatorio de Responsabilidad Civil
+                                </v-stepper-step>
 
-                            <!-- 6. Especifiaciones del Domicilio -->
-                            <v-checkbox
-                            v-model="v5"
-                            label=" 6. Especifiaciones del Domicilio"
-                            color="green"
-                            ></v-checkbox>
-                            <v-banner
-                            v-model="v5"
-                            single-line
-                            transition="slide-y-transition"
-                            >
-                            1. Memorial
-                            </v-banner>
-                            <v-divider>inset</v-divider>
+                                <v-stepper-content step="4">
+                                <v-card
+                                    color="grey lighten-1"
+                                    class="mb-12"
+                                    height="200px"
+                                ></v-card>
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 5"
+                                >
+                                    Continue
+                                </v-btn>
+                                <v-btn @click="e6 = 3">
+                                    Atrás
+                                </v-btn>
+                                </v-stepper-content>
 
-                            <!-- 7. Datos Finales -->
-                            <v-checkbox
-                            v-model="v6"
-                            label=" 7. Datos Finales"
-                            color="green"
-                            ></v-checkbox>
-                            <v-banner
-                            v-model="v6"
-                            single-line
-                            transition="slide-y-transition"
-                            >
-                            7. Datos Finales
-                            </v-banner>
-                        </div>
-                        <v-spacer style="height:50px"></v-spacer>
-                        </v-form>
-                        <v-btn rounded color="primary" :disabled="!(v0 & v1 & v2 & v3 & v4 & v5 & v6)">
-                            Siguiente
-                        </v-btn>
+                                <!-- 5. Datos del Can Peligroso -->
+                                <v-stepper-step step="5">
+                                Datos del Can Peligroso
+                                </v-stepper-step>
+
+                                <v-stepper-content step="5">
+                                <v-card
+                                    color="grey lighten-1"
+                                    class="mb-12"
+                                    height="200px"
+                                ></v-card>
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 1"
+                                >
+                                    Continuar
+                                </v-btn>
+                                <v-btn @click="e6 = 4">
+                                    Atrás
+                                </v-btn>
+                                </v-stepper-content>
+
+                            </v-stepper>
                         </template>
                     </v-app>
                 </div>
@@ -290,28 +326,46 @@
             JetNavLink,
             JetResponsiveNavLink,
         },
-
-        data() 
-        {
-            return {showingNavigationDropdown: false,}
-        },
-        data: () => ({
-            v0: false,
-            v1: false,
-            v2: false,
-            v3: false,
-            v4: false,
-            v5: false,
-            v6: false,
+        data () {
+            const defaultForm = Object.freeze({
+            first: '',
+            last: '',
+            bio: '',
+            favoriteAnimal: '',
+            age: null,
+            terms: false,})
+        return {
+            e6: 1,
+            form: Object.assign({}, defaultForm),
+            rules: {
+            age: [
+                val => val < 10 || `I don't believe you!`,
+                ],
+                dater: [val => (val || '').length > 3 || 'Este campo es obligatorio'],
+                name: [val => (val || '').length > 0 || 'Este campo es obligatorio'],},
+            conditions: false,
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.',
+            terms: false,
+            defaultForm,
             activePicker: null,
             date: null,
-            menu: false,
-            departamento: ['La Paz', 'Cochabamba', 'Santa Cruz', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Pando', 'Beni']
-            }),
+            menu: false,}
+            
+        },
         watch: {
             menu (val) {
                 val && setTimeout(() => (this.activePicker = 'YEAR'))
             },
+            },
+        computed: {
+        formIsValid () {
+            return (
+            this.form.first &&
+            this.form.last &&
+            this.date &&
+            this.form.terms
+            )
+        },
         },
 
         methods: 
@@ -330,6 +384,9 @@
             logout() 
             {
                 this.$inertia.post(route('logout'));
+            },
+            submit () {
+                this.snackbar = true
             },
             save (date) {
                 this.$refs.menu.save(date)
