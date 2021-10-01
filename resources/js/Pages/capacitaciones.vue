@@ -6,9 +6,9 @@
             </h2>
         </template>
 
-        <div class="py-12" style="background: #DCEDC8">
+        <div class="py-12" style="background: #33691E">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
                 </div>
             </div>
         </div>

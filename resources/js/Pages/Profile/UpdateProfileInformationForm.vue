@@ -1,11 +1,15 @@
 <template>
     <jet-form-section @submitted="updateProfileInformation">
-        <template #title>
-            Información del Perfil
+        <template #title >
+            <h2 style="color: white">
+                Información del Perfil
+            </h2>
         </template>
 
-        <template #description>
-            Actualiza tu información de inicio de sesión.
+        <template #description style="color: white">
+            <h2 style="color: white">
+                Actualiza tu información de inicio de sesión.
+            </h2>
         </template>
 
         <template #form>

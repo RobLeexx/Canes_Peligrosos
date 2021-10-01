@@ -1,11 +1,15 @@
 <template>
     <jet-action-section>
         <template #title>
-            Sesiones de Navegación
+            <h2 style="color: white">
+                Sesiones de Navegación
+            </h2>
         </template>
 
         <template #description>
-            Administre y cierre la sesión de sus sesiones activas en otros navegadores y dispositivos.
+            <h2 style="color: white">
+                Administre y cierre la sesión de sus sesiones activas en otros navegadores y dispositivos.
+            </h2>
         </template>
 
         <template #content>

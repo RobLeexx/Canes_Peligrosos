@@ -6,11 +6,12 @@
             </h2>
         </template>
 
-        <div class="py-12" style="background: #DCEDC8">
+        <div class="py-12" style="background: #33691E">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
                     <v-app style="padding: 20px">
                         <template>
+                        <v-form>
                         <h1 style="
                             display: flex;
                             justify-content: center;
@@ -37,78 +38,129 @@
                                     <v-text-field
                                         label="Comandante Departamental"
                                         placeholder="Nombre del Comandante Departamental"
-                                        solo
+                                        outlined
                                     ></v-text-field>
                                     </v-col>
                                     <v-col cols="12" lg="6" md="6" sm="12">
                                     <v-text-field
                                         label="Referencia"
                                         placeholder="Referencia adjuntada en el memorial"
-                                        solo
+                                        outlined
                                     ></v-text-field>
                                     </v-col>
                                     <v-col cols="12" lg="12" sm="12">
-                                        <v-subheader>Fecha de expedición del Memorial</v-subheader>
-                                        <v-menu
-                                        ref="menu"
-                                        v-model="menu"
-                                        :close-on-content-click="false"
-                                        transition="scale-transition"
-                                        offset-y
-                                        min-width="auto"
-                                        >
-                                        <template v-slot:activator="{ on, attrs }">
-                                            <v-text-field
-                                            v-model="date"
-                                            prepend-icon="mdi-calendar"
-                                            readonly
-                                            v-bind="attrs"
-                                            v-on="on"
-                                            ></v-text-field>
-                                        </template>
-                                        <v-date-picker
-                                            v-model="date"
-                                            :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
-                                            min="2014-01-01"
-                                            @change="save"
-                                        ></v-date-picker>
-                                        </v-menu>
+                                        <template>
+                                            <div>
+                                                <div style="display: none" class="mb-6">Active picker: <code>{{ activePicker || 'null' }}</code></div>
+                                                <v-menu
+                                                ref="menu"
+                                                v-model="menu"
+                                                :close-on-content-click="false"
+                                                transition="scale-transition"
+                                                offset-y
+                                                min-width="auto"
+                                                >
+                                                <template v-slot:activator="{ on, attrs }">
+                                                    <v-text-field
+                                                    v-model="date"
+                                                    label="Fecha de expedición del Memorial"
+                                                    prepend-icon="mdi-calendar"
+                                                    readonly
+                                                    outlined
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    ></v-text-field>
+                                                </template>
+                                                <v-date-picker
+                                                    v-model="date"
+                                                    :active-picker.sync="activePicker"
+                                                    :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                    min="2014-01-01"
+                                                    @change="save"
+                                                ></v-date-picker>
+                                                </v-menu>
+                                            </div>
+                                            </template>
+                                    </v-col>
+                                </div>
+                            </v-container>
+                            <v-divider></v-divider>
+
+                            <v-container fluid>
+                                <v-subheader>Datos del Can Peligroso en el memorial</v-subheader>
+                                <v-subheader>Edad del Can Peligroso</v-subheader>
+                                <div style="display: flex; flex-wrap: wrap;">
+                                    <v-col cols="12" lg="5" md="5" sm="6">
+                                        <v-text-field
+                                        label="Edad en Meses"
+                                        suffix="meses"
+                                        placeholder="Edad del Can en Meses"
+                                        outlined
+                                    ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" lg="5" md="5" sm="6">
+                                        <v-text-field
+                                        label="Edad en Años"
+                                        suffix="años"
+                                        placeholder="Edad del Can en Años"
+                                        outlined
+                                    ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" lg="2" md="2" sm="6">
+                                    <v-switch label="Pedigree"
+                                    ></v-switch>
+                                    </v-col>
+                                    <v-col cols="12" sm="6">
+                                    <v-text-field
+                                        label="Cuidadores Eventuales"
+                                        placeholder="Cuidadores Eventuales"
+                                        outlined
+                                    ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6">
+                                    <v-text-field
+                                        label="Número de referencia"
+                                        placeholder="Número de algún cuidador eventual"
+                                        outlined
+                                    ></v-text-field>
                                     </v-col>
                                 </div>
                             </v-container>
                             <v-divider></v-divider>
                             
-                            <v-container>
-                                <v-subheader>Datos del Can Peligroso en el memorial</v-subheader>
-                                <v-col cols="12" sm="6">
-                                <v-text-field
-                                    label="Domicilio"
-                                    placeholder="Domicilio y Municipio al que pertenece"
-                                    solo
-                                ></v-text-field>
-                                </v-col>
-
-                                <v-col cols="12" sm="6">
-                                <v-text-field
-                                    label="Can"
-                                    placeholder="Can"
-                                    solo
-                                ></v-text-field>
-                                </v-col>
-                                <v-col cols="12" sm="6">
-                                <v-text-field
-                                    label="Cuidadores Eventuales"
-                                    placeholder="Cuidadores Eventuales"
-                                    solo
-                                ></v-text-field>
-                                </v-col>
-                                <v-col cols="12" sm="6">
-                                <v-text-field
-                                    label="Disponibilidad"
-                                    placeholder="Disponibilidad"
-                                    solo
-                                ></v-text-field>
-                                </v-col>
+                            <v-container fluid>
+                                <v-subheader>Datos del Propietario en el memorial</v-subheader>
+                                <div style="display: flex; flex-wrap: wrap;">
+                                    <v-col cols="12" lg="6" md="6" sm="12">
+                                    <v-text-field
+                                        label="Domicilio"
+                                        placeholder="Domicilio y Municipio al que pertenece"
+                                        outlined
+                                    ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" lg="6" md="6" sm="12">
+                                    <v-select
+                                        prefix="Departamento de"
+                                        label="Departamento"
+                                        :items="departamento"
+                                        outlined
+                                    ></v-select>
+                                    </v-col>
+                                    <v-col cols="12" sm="6">
+                                    <v-text-field
+                                        label="Cuidadores Eventuales"
+                                        placeholder="Cuidadores Eventuales"
+                                        outlined
+                                    ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6">
+                                    <v-text-field
+                                        label="Número de referencia"
+                                        placeholder="Número de contacto del cuidador eventual"
+                                        outlined
+                                    ></v-text-field>
+                                    </v-col>
+                                </div>
                             </v-container>
 
                             </v-banner>
@@ -204,6 +256,7 @@
                             </v-banner>
                         </div>
                         <v-spacer style="height:50px"></v-spacer>
+                        </v-form>
                         <v-btn rounded color="primary" :disabled="!(v0 & v1 & v2 & v3 & v4 & v5 & v6)">
                             Siguiente
                         </v-btn>
@@ -236,7 +289,6 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
-            computed: {},
         },
 
         data() 
@@ -251,9 +303,16 @@
             v4: false,
             v5: false,
             v6: false,
+            activePicker: null,
             date: null,
             menu: false,
+            departamento: ['La Paz', 'Cochabamba', 'Santa Cruz', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Pando', 'Beni']
             }),
+        watch: {
+            menu (val) {
+                val && setTimeout(() => (this.activePicker = 'YEAR'))
+            },
+        },
 
         methods: 
         {

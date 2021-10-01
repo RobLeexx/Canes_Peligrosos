@@ -1,11 +1,15 @@
 <template>
     <jet-action-section>
         <template #title>
-            Eliminar Cuenta
+            <h2 style="color: white">
+                Eliminar Cuenta
+            </h2>
         </template>
 
         <template #description>
-            Borrar permanentemente la cuenta.
+            <h2 style="color: white">
+                Borrar permanentemente la cuenta.
+            </h2>
         </template>
 
         <template #content>

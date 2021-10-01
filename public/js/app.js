@@ -4929,7 +4929,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var _Jetstream_AuthenticationCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/AuthenticationCard */ "./resources/js/Jetstream/AuthenticationCard.vue");
 /* harmony import */ var _Jetstream_AuthenticationCardLogo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/AuthenticationCardLogo */ "./resources/js/Jetstream/AuthenticationCardLogo.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
@@ -5016,7 +5016,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.form.transform(function (data) {
-        return (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, data), {}, {
+        return (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, data), {}, {
           remember: _this.form.remember ? 'on' : ''
         });
       }).post(this.route('login'), {
@@ -5520,6 +5520,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -5592,6 +5596,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
 /* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -5927,6 +5935,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -6019,6 +6031,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -6211,6 +6227,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -6323,7 +6343,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
 /* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
@@ -6592,7 +6612,7 @@ var _components$data$data;
       showingNavigationDropdown: false
     };
   }
-}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -6602,7 +6622,7 @@ var _components$data$data;
     v5: false,
     v6: false
   };
-}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -6613,12 +6633,12 @@ var _components$data$data;
   logout: function logout() {
     this.$inertia.post(route('logout'));
   }
-}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
   phpVersion: String
-}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "computed", {
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "computed", {
   user: function user() {
     return this.$page.props.auth.user;
   }
@@ -7056,7 +7076,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
@@ -7096,7 +7116,7 @@ var _components$data$data;
       showingNavigationDropdown: false
     };
   }
-}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -7106,7 +7126,7 @@ var _components$data$data;
     v5: false,
     v6: false
   };
-}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -7117,7 +7137,7 @@ var _components$data$data;
   logout: function logout() {
     this.$inertia.post(route('logout'));
   }
-}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
@@ -7134,7 +7154,7 @@ var _components$data$data;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
@@ -7146,6 +7166,59 @@ __webpack_require__.r(__webpack_exports__);
 
 var _components$data$data;
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7379,15 +7452,14 @@ var _components$data$data;
     JetDropdown: _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"],
     JetDropdownLink: _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_5__["default"],
     JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_6__["default"],
-    JetResponsiveNavLink: _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_7__["default"],
-    computed: {}
+    JetResponsiveNavLink: _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   data: function data() {
     return {
       showingNavigationDropdown: false
     };
   }
-}, (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
+}, (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "data", function data() {
   return {
     v0: false,
     v1: false,
@@ -7396,10 +7468,20 @@ var _components$data$data;
     v4: false,
     v5: false,
     v6: false,
+    activePicker: null,
     date: null,
-    menu: false
+    menu: false,
+    departamento: ['La Paz', 'Cochabamba', 'Santa Cruz', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Pando', 'Beni']
   };
-}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "watch", {
+  menu: function menu(val) {
+    var _this = this;
+
+    val && setTimeout(function () {
+      return _this.activePicker = 'YEAR';
+    });
+  }
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "methods", {
   switchToTeam: function switchToTeam(team) {
     this.$inertia.put(route('current-team.update'), {
       'team_id': team.id
@@ -7413,7 +7495,7 @@ var _components$data$data;
   save: function save(date) {
     this.$refs.menu.save(date);
   }
-}), (0,C_CANES_canes_peligrosos_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
+}), (0,C_Projects_canes_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_components$data$data, "props", {
   canLogin: Boolean,
   canRegister: Boolean,
   laravelVersion: String,
@@ -34600,7 +34682,10 @@ var render = function() {
       _c("div", { staticClass: "mt-5 md:mt-0 md:col-span-2" }, [
         _c(
           "div",
-          { staticClass: "px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg" },
+          {
+            staticClass: "px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg",
+            staticStyle: { "box-shadow": "0px 0px 30px" }
+          },
           [_vm._t("content")],
           2
         )
@@ -35567,43 +35652,54 @@ var render = function() {
         )
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "mt-5 md:mt-0 md:col-span-2" }, [
-        _c(
-          "form",
-          {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.$emit("submitted")
+      _c(
+        "div",
+        {
+          staticClass: "mt-5 md:mt-0 md:col-span-2",
+          staticStyle: { "box-shadow": "0px 0px 30px" }
+        },
+        [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.$emit("submitted")
+                }
               }
-            }
-          },
-          [
-            _c("div", { staticClass: "shadow overflow-hidden sm:rounded-md" }, [
-              _c("div", { staticClass: "px-4 py-5 bg-white sm:p-6" }, [
-                _c(
-                  "div",
-                  { staticClass: "grid grid-cols-6 gap-6" },
-                  [_vm._t("form")],
-                  2
-                )
-              ]),
-              _vm._v(" "),
-              _vm.hasActions
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6"
-                    },
-                    [_vm._t("actions")],
-                    2
-                  )
-                : _vm._e()
-            ])
-          ]
-        )
-      ])
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "shadow overflow-hidden sm:rounded-md" },
+                [
+                  _c("div", { staticClass: "px-4 py-5 bg-white sm:p-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "grid grid-cols-6 gap-6" },
+                      [_vm._t("form")],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.hasActions
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6"
+                        },
+                        [_vm._t("actions")],
+                        2
+                      )
+                    : _vm._e()
+                ]
+              )
+            ]
+          )
+        ]
+      )
     ],
     1
   )
@@ -39190,14 +39286,24 @@ var render = function() {
       {
         key: "title",
         fn: function() {
-          return [_vm._v("\n        Eliminar Cuenta\n    ")]
+          return [
+            _c("h2", { staticStyle: { color: "white" } }, [
+              _vm._v("\n            Eliminar Cuenta\n        ")
+            ])
+          ]
         },
         proxy: true
       },
       {
         key: "description",
         fn: function() {
-          return [_vm._v("\n        Borrar permanentemente la cuenta.\n    ")]
+          return [
+            _c("h2", { staticStyle: { color: "white" } }, [
+              _vm._v(
+                "\n            Borrar permanentemente la cuenta.\n        "
+              )
+            ])
+          ]
         },
         proxy: true
       },
@@ -39379,7 +39485,11 @@ var render = function() {
       {
         key: "title",
         fn: function() {
-          return [_vm._v("\n        Sesiones de Navegación\n    ")]
+          return [
+            _c("h2", { staticStyle: { color: "white" } }, [
+              _vm._v("\n            Sesiones de Navegación\n        ")
+            ])
+          ]
         },
         proxy: true
       },
@@ -39387,9 +39497,11 @@ var render = function() {
         key: "description",
         fn: function() {
           return [
-            _vm._v(
-              "\n        Administre y cierre la sesión de sus sesiones activas en otros navegadores y dispositivos.\n    "
-            )
+            _c("h2", { staticStyle: { color: "white" } }, [
+              _vm._v(
+                "\n            Administre y cierre la sesión de sus sesiones activas en otros navegadores y dispositivos.\n        "
+              )
+            ])
           ]
         },
         proxy: true
@@ -39732,7 +39844,7 @@ var render = function() {
     },
     [
       _vm._v(" "),
-      _c("div", { staticStyle: { background: "#DCEDC8" } }, [
+      _c("div", { staticStyle: { background: "#33691E" } }, [
         _c(
           "div",
           { staticClass: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8" },
@@ -39826,7 +39938,11 @@ var render = function() {
       {
         key: "title",
         fn: function() {
-          return [_vm._v("\n        Autenticación de dos factores\n    ")]
+          return [
+            _c("h2", { staticStyle: { color: "white" } }, [
+              _vm._v("\n            Autenticación de dos factores\n        ")
+            ])
+          ]
         },
         proxy: true
       },
@@ -39834,9 +39950,11 @@ var render = function() {
         key: "description",
         fn: function() {
           return [
-            _vm._v(
-              "\n        Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.\n    "
-            )
+            _c("h2", { staticStyle: { color: "white" } }, [
+              _vm._v(
+                "\n            Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.\n        "
+              )
+            ])
           ]
         },
         proxy: true
@@ -40063,7 +40181,11 @@ var render = function() {
       {
         key: "title",
         fn: function() {
-          return [_vm._v("\n        Actualizar Contraseña\n    ")]
+          return [
+            _c("h2", { staticStyle: { color: "white" } }, [
+              _vm._v("\n            Actualizar Contraseña\n        ")
+            ])
+          ]
         },
         proxy: true
       },
@@ -40071,9 +40193,11 @@ var render = function() {
         key: "description",
         fn: function() {
           return [
-            _vm._v(
-              "\n        Asegúrate de escoger una contraseña segura de mínimamente 8 caracteres.\n    "
-            )
+            _c("h2", { staticStyle: { color: "white" } }, [
+              _vm._v(
+                "\n            Asegúrate de escoger una contraseña segura de mínimamente 8 caracteres.\n        "
+              )
+            ])
           ]
         },
         proxy: true
@@ -40244,7 +40368,11 @@ var render = function() {
       {
         key: "title",
         fn: function() {
-          return [_vm._v("\n        Información del Perfil\n    ")]
+          return [
+            _c("h2", { staticStyle: { color: "white" } }, [
+              _vm._v("\n            Información del Perfil\n        ")
+            ])
+          ]
         },
         proxy: true
       },
@@ -40252,9 +40380,11 @@ var render = function() {
         key: "description",
         fn: function() {
           return [
-            _vm._v(
-              "\n        Actualiza tu información de inicio de sesión.\n    "
-            )
+            _c("h2", { staticStyle: { color: "white" } }, [
+              _vm._v(
+                "\n            Actualiza tu información de inicio de sesión.\n        "
+              )
+            ])
           ]
         },
         proxy: true
@@ -41222,11 +41352,12 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "py-12", staticStyle: { background: "#DCEDC8" } },
+        { staticClass: "py-12", staticStyle: { background: "#33691E" } },
         [
           _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
             _c("div", {
-              staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg"
+              staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg",
+              staticStyle: { "box-shadow": "0px 0px 30px" }
             })
           ])
         ]
@@ -42678,13 +42809,14 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "py-12", staticStyle: { background: "#DCEDC8" } },
+        { staticClass: "py-12", staticStyle: { background: "#33691E" } },
         [
           _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
             _c(
               "div",
               {
-                staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg"
+                staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg",
+                staticStyle: { "box-shadow": "0px 0px 30px" }
               },
               [_c("welcome")],
               1
@@ -42769,13 +42901,14 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "py-12", staticStyle: { background: "#DCEDC8" } },
+        { staticClass: "py-12", staticStyle: { background: "#33691E" } },
         [
           _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
             _c(
               "div",
               {
-                staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg"
+                staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg",
+                staticStyle: { "box-shadow": "0px 0px 30px" }
               },
               [
                 _c(
@@ -42784,209 +42917,508 @@ var render = function() {
                   [
                     [
                       _c(
-                        "h1",
-                        {
-                          staticStyle: {
-                            display: "flex",
-                            "justify-content": "center",
-                            "font-size": "x-large",
-                            "padding-top": "20px"
-                          }
-                        },
+                        "v-form",
                         [
-                          _vm._v(
-                            "\n                        ART No.12: DOCUMENTOS A PRESENTAR POR EL PROPIETARIO DEL PERRO PELIGROSO"
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        [
-                          _c("v-spacer", { staticStyle: { height: "30px" } }),
-                          _vm._v(" "),
-                          _c("v-checkbox", {
-                            attrs: { label: " 1. Memorial", color: "green" },
-                            model: {
-                              value: _vm.v0,
-                              callback: function($$v) {
-                                _vm.v0 = $$v
-                              },
-                              expression: "v0"
-                            }
-                          }),
-                          _vm._v(" "),
                           _c(
-                            "v-banner",
+                            "h1",
                             {
-                              attrs: {
-                                "single-line": "",
-                                transition: "slide-y-transition"
-                              },
-                              model: {
-                                value: _vm.v0,
-                                callback: function($$v) {
-                                  _vm.v0 = $$v
-                                },
-                                expression: "v0"
+                              staticStyle: {
+                                display: "flex",
+                                "justify-content": "center",
+                                "font-size": "x-large",
+                                "padding-top": "20px"
                               }
                             },
                             [
+                              _vm._v(
+                                "\n                        ART No.12: DOCUMENTOS A PRESENTAR POR EL PROPIETARIO DEL PERRO PELIGROSO"
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            [
+                              _c("v-spacer", {
+                                staticStyle: { height: "30px" }
+                              }),
+                              _vm._v(" "),
+                              _c("v-checkbox", {
+                                attrs: {
+                                  label: " 1. Memorial",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.v0,
+                                  callback: function($$v) {
+                                    _vm.v0 = $$v
+                                  },
+                                  expression: "v0"
+                                }
+                              }),
+                              _vm._v(" "),
                               _c(
-                                "v-container",
-                                [
-                                  _c("v-subheader", [
-                                    _vm._v("Referencia del Memorial")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        display: "flex",
-                                        "flex-wrap": "wrap"
-                                      }
+                                "v-banner",
+                                {
+                                  attrs: {
+                                    "single-line": "",
+                                    transition: "slide-y-transition"
+                                  },
+                                  model: {
+                                    value: _vm.v0,
+                                    callback: function($$v) {
+                                      _vm.v0 = $$v
                                     },
+                                    expression: "v0"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "v-container",
                                     [
-                                      _c(
-                                        "v-col",
-                                        {
-                                          attrs: {
-                                            cols: "12",
-                                            lg: "6",
-                                            md: "6",
-                                            sm: "12"
-                                          }
-                                        },
-                                        [
-                                          _c("v-text-field", {
-                                            attrs: {
-                                              label: "Comandante Departamental",
-                                              placeholder:
-                                                "Nombre del Comandante Departamental",
-                                              solo: ""
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
+                                      _c("v-subheader", [
+                                        _vm._v("Referencia del Memorial")
+                                      ]),
                                       _vm._v(" "),
                                       _c(
-                                        "v-col",
+                                        "div",
                                         {
-                                          attrs: {
-                                            cols: "12",
-                                            lg: "6",
-                                            md: "6",
-                                            sm: "12"
+                                          staticStyle: {
+                                            display: "flex",
+                                            "flex-wrap": "wrap"
                                           }
                                         },
                                         [
-                                          _c("v-text-field", {
-                                            attrs: {
-                                              label: "Referencia",
-                                              placeholder:
-                                                "Referencia adjuntada en el memorial",
-                                              solo: ""
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-col",
-                                        {
-                                          attrs: {
-                                            cols: "12",
-                                            lg: "12",
-                                            sm: "12"
-                                          }
-                                        },
-                                        [
-                                          _c("v-subheader", [
-                                            _vm._v(
-                                              "Fecha de expedición del Memorial"
-                                            )
-                                          ]),
-                                          _vm._v(" "),
                                           _c(
-                                            "v-menu",
+                                            "v-col",
                                             {
-                                              ref: "menu",
                                               attrs: {
-                                                "close-on-content-click": false,
-                                                transition: "scale-transition",
-                                                "offset-y": "",
-                                                "min-width": "auto"
-                                              },
-                                              scopedSlots: _vm._u([
-                                                {
-                                                  key: "activator",
-                                                  fn: function(ref) {
-                                                    var on = ref.on
-                                                    var attrs = ref.attrs
-                                                    return [
-                                                      _c(
-                                                        "v-text-field",
-                                                        _vm._g(
-                                                          _vm._b(
-                                                            {
-                                                              attrs: {
-                                                                "prepend-icon":
-                                                                  "mdi-calendar",
-                                                                readonly: ""
-                                                              },
-                                                              model: {
-                                                                value: _vm.date,
-                                                                callback: function(
-                                                                  $$v
-                                                                ) {
-                                                                  _vm.date = $$v
-                                                                },
-                                                                expression:
-                                                                  "date"
-                                                              }
-                                                            },
-                                                            "v-text-field",
-                                                            attrs,
-                                                            false
-                                                          ),
-                                                          on
-                                                        )
-                                                      )
-                                                    ]
-                                                  }
-                                                }
-                                              ]),
-                                              model: {
-                                                value: _vm.menu,
-                                                callback: function($$v) {
-                                                  _vm.menu = $$v
-                                                },
-                                                expression: "menu"
+                                                cols: "12",
+                                                lg: "6",
+                                                md: "6",
+                                                sm: "12"
                                               }
                                             },
                                             [
-                                              _vm._v(" "),
-                                              _c("v-date-picker", {
+                                              _c("v-text-field", {
                                                 attrs: {
-                                                  max: new Date(
-                                                    Date.now() -
-                                                      new Date().getTimezoneOffset() *
-                                                        60000
-                                                  )
-                                                    .toISOString()
-                                                    .substr(0, 10),
-                                                  min: "2014-01-01"
-                                                },
-                                                on: { change: _vm.save },
-                                                model: {
-                                                  value: _vm.date,
-                                                  callback: function($$v) {
-                                                    _vm.date = $$v
-                                                  },
-                                                  expression: "date"
+                                                  label:
+                                                    "Comandante Departamental",
+                                                  placeholder:
+                                                    "Nombre del Comandante Departamental",
+                                                  outlined: ""
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-col",
+                                            {
+                                              attrs: {
+                                                cols: "12",
+                                                lg: "6",
+                                                md: "6",
+                                                sm: "12"
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: {
+                                                  label: "Referencia",
+                                                  placeholder:
+                                                    "Referencia adjuntada en el memorial",
+                                                  outlined: ""
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-col",
+                                            {
+                                              attrs: {
+                                                cols: "12",
+                                                lg: "12",
+                                                sm: "12"
+                                              }
+                                            },
+                                            [
+                                              [
+                                                _c(
+                                                  "div",
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass: "mb-6",
+                                                        staticStyle: {
+                                                          display: "none"
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Active picker: "
+                                                        ),
+                                                        _c("code", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              _vm.activePicker ||
+                                                                "null"
+                                                            )
+                                                          )
+                                                        ])
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "v-menu",
+                                                      {
+                                                        ref: "menu",
+                                                        attrs: {
+                                                          "close-on-content-click": false,
+                                                          transition:
+                                                            "scale-transition",
+                                                          "offset-y": "",
+                                                          "min-width": "auto"
+                                                        },
+                                                        scopedSlots: _vm._u([
+                                                          {
+                                                            key: "activator",
+                                                            fn: function(ref) {
+                                                              var on = ref.on
+                                                              var attrs =
+                                                                ref.attrs
+                                                              return [
+                                                                _c(
+                                                                  "v-text-field",
+                                                                  _vm._g(
+                                                                    _vm._b(
+                                                                      {
+                                                                        attrs: {
+                                                                          label:
+                                                                            "Fecha de expedición del Memorial",
+                                                                          "prepend-icon":
+                                                                            "mdi-calendar",
+                                                                          readonly:
+                                                                            "",
+                                                                          outlined:
+                                                                            ""
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm.date,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.date = $$v
+                                                                          },
+                                                                          expression:
+                                                                            "date"
+                                                                        }
+                                                                      },
+                                                                      "v-text-field",
+                                                                      attrs,
+                                                                      false
+                                                                    ),
+                                                                    on
+                                                                  )
+                                                                )
+                                                              ]
+                                                            }
+                                                          }
+                                                        ]),
+                                                        model: {
+                                                          value: _vm.menu,
+                                                          callback: function(
+                                                            $$v
+                                                          ) {
+                                                            _vm.menu = $$v
+                                                          },
+                                                          expression: "menu"
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(" "),
+                                                        _c("v-date-picker", {
+                                                          attrs: {
+                                                            "active-picker":
+                                                              _vm.activePicker,
+                                                            max: new Date(
+                                                              Date.now() -
+                                                                new Date().getTimezoneOffset() *
+                                                                  60000
+                                                            )
+                                                              .toISOString()
+                                                              .substr(0, 10),
+                                                            min: "2014-01-01"
+                                                          },
+                                                          on: {
+                                                            "update:activePicker": function(
+                                                              $event
+                                                            ) {
+                                                              _vm.activePicker = $event
+                                                            },
+                                                            "update:active-picker": function(
+                                                              $event
+                                                            ) {
+                                                              _vm.activePicker = $event
+                                                            },
+                                                            change: _vm.save
+                                                          },
+                                                          model: {
+                                                            value: _vm.date,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.date = $$v
+                                                            },
+                                                            expression: "date"
+                                                          }
+                                                        })
+                                                      ],
+                                                      1
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              ]
+                                            ],
+                                            2
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-divider"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-container",
+                                    { attrs: { fluid: "" } },
+                                    [
+                                      _c("v-subheader", [
+                                        _vm._v(
+                                          "Datos del Can Peligroso en el memorial"
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("v-subheader", [
+                                        _vm._v("Edad del Can Peligroso")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticStyle: {
+                                            display: "flex",
+                                            "flex-wrap": "wrap"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "v-col",
+                                            {
+                                              attrs: {
+                                                cols: "12",
+                                                lg: "5",
+                                                md: "5",
+                                                sm: "6"
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: {
+                                                  label: "Edad en Meses",
+                                                  suffix: "meses",
+                                                  placeholder:
+                                                    "Edad del Can en Meses",
+                                                  outlined: ""
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-col",
+                                            {
+                                              attrs: {
+                                                cols: "12",
+                                                lg: "5",
+                                                md: "5",
+                                                sm: "6"
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: {
+                                                  label: "Edad en Años",
+                                                  suffix: "años",
+                                                  placeholder:
+                                                    "Edad del Can en Años",
+                                                  outlined: ""
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-col",
+                                            {
+                                              attrs: {
+                                                cols: "12",
+                                                lg: "2",
+                                                md: "2",
+                                                sm: "6"
+                                              }
+                                            },
+                                            [
+                                              _c("v-switch", {
+                                                attrs: { label: "Pedigree" }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-col",
+                                            { attrs: { cols: "12", sm: "6" } },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: {
+                                                  label:
+                                                    "Cuidadores Eventuales",
+                                                  placeholder:
+                                                    "Cuidadores Eventuales",
+                                                  outlined: ""
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-col",
+                                            { attrs: { cols: "12", sm: "6" } },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: {
+                                                  label: "Número de referencia",
+                                                  placeholder:
+                                                    "Número de algún cuidador eventual",
+                                                  outlined: ""
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-divider"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-container",
+                                    { attrs: { fluid: "" } },
+                                    [
+                                      _c("v-subheader", [
+                                        _vm._v(
+                                          "Datos del Propietario en el memorial"
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticStyle: {
+                                            display: "flex",
+                                            "flex-wrap": "wrap"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "v-col",
+                                            {
+                                              attrs: {
+                                                cols: "12",
+                                                lg: "6",
+                                                md: "6",
+                                                sm: "12"
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: {
+                                                  label: "Domicilio",
+                                                  placeholder:
+                                                    "Domicilio y Municipio al que pertenece",
+                                                  outlined: ""
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-col",
+                                            {
+                                              attrs: {
+                                                cols: "12",
+                                                lg: "6",
+                                                md: "6",
+                                                sm: "12"
+                                              }
+                                            },
+                                            [
+                                              _c("v-select", {
+                                                attrs: {
+                                                  prefix: "Departamento de",
+                                                  label: "Departamento",
+                                                  items: _vm.departamento,
+                                                  outlined: ""
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-col",
+                                            { attrs: { cols: "12", sm: "6" } },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: {
+                                                  label:
+                                                    "Cuidadores Eventuales",
+                                                  placeholder:
+                                                    "Cuidadores Eventuales",
+                                                  outlined: ""
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-col",
+                                            { attrs: { cols: "12", sm: "6" } },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: {
+                                                  label: "Número de referencia",
+                                                  placeholder:
+                                                    "Número de contacto del cuidador eventual",
+                                                  outlined: ""
                                                 }
                                               })
                                             ],
@@ -43002,317 +43434,242 @@ var render = function() {
                                 1
                               ),
                               _vm._v(" "),
-                              _c("v-divider"),
+                              _c("v-divider", [_vm._v("inset")]),
+                              _vm._v(" "),
+                              _c("v-checkbox", {
+                                attrs: {
+                                  label: " 2. Documento de Identidad",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.v1,
+                                  callback: function($$v) {
+                                    _vm.v1 = $$v
+                                  },
+                                  expression: "v1"
+                                }
+                              }),
                               _vm._v(" "),
                               _c(
-                                "v-container",
+                                "v-banner",
+                                {
+                                  attrs: {
+                                    "single-line": "",
+                                    transition: "slide-y-transition"
+                                  },
+                                  model: {
+                                    value: _vm.v1,
+                                    callback: function($$v) {
+                                      _vm.v1 = $$v
+                                    },
+                                    expression: "v1"
+                                  }
+                                },
                                 [
-                                  _c("v-subheader", [
-                                    _vm._v(
-                                      "Datos del Can Peligroso en el memorial"
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    { attrs: { cols: "12", sm: "6" } },
-                                    [
-                                      _c("v-text-field", {
-                                        attrs: {
-                                          label: "Domicilio",
-                                          placeholder:
-                                            "Domicilio y Municipio al que pertenece",
-                                          solo: ""
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    { attrs: { cols: "12", sm: "6" } },
-                                    [
-                                      _c("v-text-field", {
-                                        attrs: {
-                                          label: "Can",
-                                          placeholder: "Can",
-                                          solo: ""
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    { attrs: { cols: "12", sm: "6" } },
-                                    [
-                                      _c("v-text-field", {
-                                        attrs: {
-                                          label: "Cuidadores Eventuales",
-                                          placeholder: "Cuidadores Eventuales",
-                                          solo: ""
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    { attrs: { cols: "12", sm: "6" } },
-                                    [
-                                      _c("v-text-field", {
-                                        attrs: {
-                                          label: "Disponibilidad",
-                                          placeholder: "Disponibilidad",
-                                          solo: ""
-                                        }
-                                      })
-                                    ],
-                                    1
+                                  _vm._v(
+                                    "\n                        1. Memorial\n                        "
                                   )
-                                ],
-                                1
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("v-divider", [_vm._v("inset")]),
+                              _vm._v(" "),
+                              _c("v-checkbox", {
+                                attrs: {
+                                  label: " 3. Antecedentes",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.v2,
+                                  callback: function($$v) {
+                                    _vm.v2 = $$v
+                                  },
+                                  expression: "v2"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-banner",
+                                {
+                                  attrs: {
+                                    "single-line": "",
+                                    transition: "slide-y-transition"
+                                  },
+                                  model: {
+                                    value: _vm.v2,
+                                    callback: function($$v) {
+                                      _vm.v2 = $$v
+                                    },
+                                    expression: "v2"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        1. Memorial\n                        "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("v-divider", [_vm._v("inset")]),
+                              _vm._v(" "),
+                              _c("v-checkbox", {
+                                attrs: {
+                                  label:
+                                    " 4. Seguro Obligatorio de Responsabilidad Civil",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.v3,
+                                  callback: function($$v) {
+                                    _vm.v3 = $$v
+                                  },
+                                  expression: "v3"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-banner",
+                                {
+                                  attrs: {
+                                    "single-line": "",
+                                    transition: "slide-y-transition"
+                                  },
+                                  model: {
+                                    value: _vm.v3,
+                                    callback: function($$v) {
+                                      _vm.v3 = $$v
+                                    },
+                                    expression: "v3"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        1. Memorial\n                        "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("v-divider", [_vm._v("inset")]),
+                              _vm._v(" "),
+                              _c("v-checkbox", {
+                                attrs: {
+                                  label: " 5. Estado de Salud del Can",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.v4,
+                                  callback: function($$v) {
+                                    _vm.v4 = $$v
+                                  },
+                                  expression: "v4"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-banner",
+                                {
+                                  attrs: {
+                                    "single-line": "",
+                                    transition: "slide-y-transition"
+                                  },
+                                  model: {
+                                    value: _vm.v4,
+                                    callback: function($$v) {
+                                      _vm.v4 = $$v
+                                    },
+                                    expression: "v4"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        1. Memorial\n                        "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("v-divider", [_vm._v("inset")]),
+                              _vm._v(" "),
+                              _c("v-checkbox", {
+                                attrs: {
+                                  label: " 6. Especifiaciones del Domicilio",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.v5,
+                                  callback: function($$v) {
+                                    _vm.v5 = $$v
+                                  },
+                                  expression: "v5"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-banner",
+                                {
+                                  attrs: {
+                                    "single-line": "",
+                                    transition: "slide-y-transition"
+                                  },
+                                  model: {
+                                    value: _vm.v5,
+                                    callback: function($$v) {
+                                      _vm.v5 = $$v
+                                    },
+                                    expression: "v5"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        1. Memorial\n                        "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("v-divider", [_vm._v("inset")]),
+                              _vm._v(" "),
+                              _c("v-checkbox", {
+                                attrs: {
+                                  label: " 7. Datos Finales",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.v6,
+                                  callback: function($$v) {
+                                    _vm.v6 = $$v
+                                  },
+                                  expression: "v6"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-banner",
+                                {
+                                  attrs: {
+                                    "single-line": "",
+                                    transition: "slide-y-transition"
+                                  },
+                                  model: {
+                                    value: _vm.v6,
+                                    callback: function($$v) {
+                                      _vm.v6 = $$v
+                                    },
+                                    expression: "v6"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        7. Datos Finales\n                        "
+                                  )
+                                ]
                               )
                             ],
                             1
                           ),
                           _vm._v(" "),
-                          _c("v-divider", [_vm._v("inset")]),
-                          _vm._v(" "),
-                          _c("v-checkbox", {
-                            attrs: {
-                              label: " 2. Documento de Identidad",
-                              color: "green"
-                            },
-                            model: {
-                              value: _vm.v1,
-                              callback: function($$v) {
-                                _vm.v1 = $$v
-                              },
-                              expression: "v1"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "v-banner",
-                            {
-                              attrs: {
-                                "single-line": "",
-                                transition: "slide-y-transition"
-                              },
-                              model: {
-                                value: _vm.v1,
-                                callback: function($$v) {
-                                  _vm.v1 = $$v
-                                },
-                                expression: "v1"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        1. Memorial\n                        "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("v-divider", [_vm._v("inset")]),
-                          _vm._v(" "),
-                          _c("v-checkbox", {
-                            attrs: {
-                              label: " 3. Antecedentes",
-                              color: "green"
-                            },
-                            model: {
-                              value: _vm.v2,
-                              callback: function($$v) {
-                                _vm.v2 = $$v
-                              },
-                              expression: "v2"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "v-banner",
-                            {
-                              attrs: {
-                                "single-line": "",
-                                transition: "slide-y-transition"
-                              },
-                              model: {
-                                value: _vm.v2,
-                                callback: function($$v) {
-                                  _vm.v2 = $$v
-                                },
-                                expression: "v2"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        1. Memorial\n                        "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("v-divider", [_vm._v("inset")]),
-                          _vm._v(" "),
-                          _c("v-checkbox", {
-                            attrs: {
-                              label:
-                                " 4. Seguro Obligatorio de Responsabilidad Civil",
-                              color: "green"
-                            },
-                            model: {
-                              value: _vm.v3,
-                              callback: function($$v) {
-                                _vm.v3 = $$v
-                              },
-                              expression: "v3"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "v-banner",
-                            {
-                              attrs: {
-                                "single-line": "",
-                                transition: "slide-y-transition"
-                              },
-                              model: {
-                                value: _vm.v3,
-                                callback: function($$v) {
-                                  _vm.v3 = $$v
-                                },
-                                expression: "v3"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        1. Memorial\n                        "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("v-divider", [_vm._v("inset")]),
-                          _vm._v(" "),
-                          _c("v-checkbox", {
-                            attrs: {
-                              label: " 5. Estado de Salud del Can",
-                              color: "green"
-                            },
-                            model: {
-                              value: _vm.v4,
-                              callback: function($$v) {
-                                _vm.v4 = $$v
-                              },
-                              expression: "v4"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "v-banner",
-                            {
-                              attrs: {
-                                "single-line": "",
-                                transition: "slide-y-transition"
-                              },
-                              model: {
-                                value: _vm.v4,
-                                callback: function($$v) {
-                                  _vm.v4 = $$v
-                                },
-                                expression: "v4"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        1. Memorial\n                        "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("v-divider", [_vm._v("inset")]),
-                          _vm._v(" "),
-                          _c("v-checkbox", {
-                            attrs: {
-                              label: " 6. Especifiaciones del Domicilio",
-                              color: "green"
-                            },
-                            model: {
-                              value: _vm.v5,
-                              callback: function($$v) {
-                                _vm.v5 = $$v
-                              },
-                              expression: "v5"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "v-banner",
-                            {
-                              attrs: {
-                                "single-line": "",
-                                transition: "slide-y-transition"
-                              },
-                              model: {
-                                value: _vm.v5,
-                                callback: function($$v) {
-                                  _vm.v5 = $$v
-                                },
-                                expression: "v5"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        1. Memorial\n                        "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("v-divider", [_vm._v("inset")]),
-                          _vm._v(" "),
-                          _c("v-checkbox", {
-                            attrs: {
-                              label: " 7. Datos Finales",
-                              color: "green"
-                            },
-                            model: {
-                              value: _vm.v6,
-                              callback: function($$v) {
-                                _vm.v6 = $$v
-                              },
-                              expression: "v6"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "v-banner",
-                            {
-                              attrs: {
-                                "single-line": "",
-                                transition: "slide-y-transition"
-                              },
-                              model: {
-                                value: _vm.v6,
-                                callback: function($$v) {
-                                  _vm.v6 = $$v
-                                },
-                                expression: "v6"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        7. Datos Finales\n                        "
-                              )
-                            ]
-                          )
+                          _c("v-spacer", { staticStyle: { height: "50px" } })
                         ],
                         1
                       ),
-                      _vm._v(" "),
-                      _c("v-spacer", { staticStyle: { height: "50px" } }),
                       _vm._v(" "),
                       _c(
                         "v-btn",
@@ -43399,11 +43756,12 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "py-12", staticStyle: { background: "#DCEDC8" } },
+        { staticClass: "py-12", staticStyle: { background: "#33691E" } },
         [
           _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
             _c("div", {
-              staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg"
+              staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg",
+              staticStyle: { "box-shadow": "0px 0px 30px" }
             })
           ])
         ]
@@ -101155,7 +101513,7 @@ function _objectSpread2(target) {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_from":"axios@0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 

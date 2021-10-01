@@ -1,11 +1,15 @@
 <template>
     <jet-action-section>
         <template #title>
-            Autenticación de dos factores
+            <h2 style="color: white">
+                Autenticación de dos factores
+            </h2>
         </template>
 
         <template #description>
-            Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.
+            <h2 style="color: white">
+                Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.
+            </h2>
         </template>
 
         <template #content>

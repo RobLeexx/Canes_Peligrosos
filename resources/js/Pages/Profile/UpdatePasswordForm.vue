@@ -1,11 +1,15 @@
 <template>
     <jet-form-section @submitted="updatePassword">
         <template #title>
-            Actualizar Contraseña
+            <h2 style="color: white">
+                Actualizar Contraseña
+            </h2>
         </template>
 
         <template #description>
-            Asegúrate de escoger una contraseña segura de mínimamente 8 caracteres.
+            <h2 style="color: white">
+                Asegúrate de escoger una contraseña segura de mínimamente 8 caracteres.
+            </h2>
         </template>
 
         <template #form>
