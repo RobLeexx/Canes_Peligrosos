@@ -21,7 +21,6 @@
                                 v-model="e6"
                                 vertical
                             >
-
                                 <!-- 1. Datos del Memorial -->
                                 <v-stepper-step
                                 :complete="e6 > 1"
@@ -32,7 +31,6 @@
 
                                 <v-stepper-content step="1">
                                 <v-card
-                                    color="grey lighten-1"
                                     class="mb-12"
                                     height="100%"
                                 >
@@ -71,26 +69,13 @@
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
-                                            <!-- --<v-col cols="12">
-                                                <v-textarea
-                                                v-model="form.bio"
-                                                color="teal"
-                                                >
-                                                <template v-slot:label>
-                                                    <div>
-                                                    Bio <small>(optional)</small>
-                                                    </div>
-                                                </template>
-                                                </v-textarea>
-                                            </v-col>
-                                             -->
                                              <v-col cols="12" sm="6">
                                                 <template>
                                                     <div>
                                                         <div style="display: none" class="mb-6">Active picker: <code>{{ activePicker || 'null' }}</code></div>
                                                         <v-menu
-                                                        ref="menu"
-                                                        v-model="menu"
+                                                        ref="menuMemo"
+                                                        v-model="menuMemo"
                                                         :close-on-content-click="false"
                                                         transition="scale-transition"
                                                         offset-y
@@ -98,19 +83,20 @@
                                                         >
                                                         <template v-slot:activator="{ on, attrs }">
                                                             <v-text-field
-                                                            v-model="date"
-                                                            label="Fecha de expedición del Memorial"
+                                                            v-model="dateMemo"
                                                             prepend-icon="mdi-calendar"
+                                                            label="Fecha de expedición del Memorial"
                                                             readonly
                                                             outlined
                                                             :rules="rules.dater"
                                                             required
                                                             v-bind="attrs"
                                                             v-on="on"
-                                                            ></v-text-field>
+                                                            >
+                                                            </v-text-field>
                                                         </template>
                                                         <v-date-picker
-                                                            v-model="date"
+                                                            v-model="dateMemo"
                                                             :active-picker.sync="activePicker"
                                                             :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                             min="2014-01-01"
@@ -126,11 +112,14 @@
                                             >
                                                 <template>
                                                 <v-file-input style="height: 45px"
-                                                    label="Memorial Adjuntado (Opcional)"
                                                     outlined
                                                     dense
                                                     show-size
-                                                ></v-file-input>
+                                                ><template v-slot:label>
+                                                    <div>
+                                                    Memorial Adjuntado<small> (opcional)</small>
+                                                    </div>
+                                                    </template></v-file-input>
                                                 <v-subheader style="
                                                     display: flex;
                                                     align-items: flex-start;
@@ -189,10 +178,9 @@
                                 </v-card>
                                 <v-card-actions>
                                     <v-btn
-                                    :disabled="!formIsValid"
+                                    :disabled="!form1IsValid"
                                     color="primary"
                                     @click="e6 = 2"
-                                    type="submit"
                                     >
                                     Continuar
                                     </v-btn>
@@ -203,25 +191,169 @@
                                 <v-stepper-step
                                 :complete="e6 > 2"
                                 step="2"
+                                editable
                                 >
                                 Datos del Propietario
                                 </v-stepper-step>
 
                                 <v-stepper-content step="2">
                                 <v-card
-                                    color="grey lighten-1"
                                     class="mb-12"
-                                    height="200px"
-                                ></v-card>
-                                <v-btn
+                                    height="100%"
+                                >
+
+                                <template>
+                                    <v-card flat>
+                                        <v-form
+                                        ref="form"
+                                        @submit.prevent="submit"
+                                        >
+                                        <v-container fluid>
+                                            <v-row>
+                                            <v-col
+                                                cols="12"
+                                                sm="6"
+                                            >
+                                                <v-text-field
+                                                v-model="form.paterno"
+                                                :rules="rules.name"
+                                                label="Apellido Paterno"
+                                                placeholder="Apellido Paterno del Propietario"
+                                                required
+                                                outlined
+                                                ></v-text-field>
+                                            </v-col>
+                                            <v-col
+                                                cols="12"
+                                                sm="6"
+                                            >
+                                                <v-text-field
+                                                v-model="form.materno"
+                                                :rules="rules.name"
+                                                label="Apellido Materno"
+                                                placeholder="Apellido Materno (de no tener, repetir el apellido Paterno)"
+                                                required
+                                                outlined
+                                                ></v-text-field>
+                                            </v-col>
+                                            <v-col
+                                                cols="12"
+                                                sm="6"
+                                            >
+                                                <v-text-field
+                                                v-model="form.nombres"
+                                                :rules="rules.name"
+                                                label="Nombres"
+                                                placeholder="Nombre o Nombres del Propietario"
+                                                required
+                                                outlined
+                                                ></v-text-field>
+                                            </v-col>
+                                             <v-col cols="12" sm="6">
+                                                <template>
+                                                    <div>
+                                                        <div style="display: none" class="mb-6">Active picker: <code>{{ activePicker || 'null' }}</code></div>
+                                                        <v-menu
+                                                        ref="menuProp"
+                                                        v-model="menuProp"
+                                                        :close-on-content-click="false"
+                                                        transition="scale-transition"
+                                                        offset-y
+                                                        min-width="auto"
+                                                        >
+                                                        <template v-slot:activator="{ on, attrs }">
+                                                            <v-text-field
+                                                            v-model="dateProp"
+                                                            label="Fecha de nacimiento"
+                                                            prepend-icon="mdi-calendar"
+                                                            readonly
+                                                            outlined
+                                                            :rules="rules.dater"
+                                                            required
+                                                            v-bind="attrs"
+                                                            v-on="on"
+                                                            ></v-text-field>
+                                                        </template>
+                                                        <v-date-picker
+                                                            v-model="dateProp"
+                                                            :active-picker.sync="activePicker"
+                                                            :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                            min="2014-01-01"
+                                                            @change="save"
+                                                        ></v-date-picker>
+                                                        </v-menu>
+                                                    </div>
+                                                </template>
+                                            </v-col>
+
+                                            <v-col cols="12" sm="6">
+                                                <v-overflow-btn
+                                                v-model="form.doc"
+                                                :items= "doc"
+                                                label="Tipo de Documento"
+                                                :rules="rules.name"
+                                                outlined
+                                                required
+                                                >
+                                                </v-overflow-btn>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field
+                                                v-model="form.documento"
+                                                :rules="rules.name"
+                                                label="Documento"
+                                                placeholder="Documento con lugar de expedición"
+                                                required
+                                                outlined
+                                                ></v-text-field>
+                                            </v-col>
+                                            <v-col
+                                                cols="12"
+                                                sm="6"
+                                            >
+                                                <template>
+                                                <v-file-input style="height: 45px"
+                                                    outlined
+                                                    dense
+                                                    show-size
+                                                ><template v-slot:label>
+                                                    <div>
+                                                    Foto o escaneo del Documento<small> (opcional)</small>
+                                                    </div>
+                                                    </template></v-file-input>
+                                                <v-subheader style="
+                                                    display: flex;
+                                                    align-items: flex-start;
+                                                    justify-content: flex-end;">
+                                                    *Solo se admite un elemento</v-subheader>
+                                                </template>
+                                                <template>
+                                                <v-file-input
+                                                    label="Foto del Propietario"
+                                                    outlined
+                                                    prepend-icon="mdi-camera"
+                                                ></v-file-input>
+                                                </template>
+                                            </v-col>
+                                            </v-row>
+                                        </v-container>
+                                        </v-form>
+                                    </v-card>
+                                </template>
+
+                                </v-card>
+                                <v-card-actions>
+                                    <v-btn
+                                    :disabled="!form2IsValid"
                                     color="primary"
                                     @click="e6 = 3"
-                                >
+                                    >
                                     Continuar
-                                </v-btn>
-                                <v-btn @click="e6 = 1">
+                                    </v-btn>
+                                    <v-btn @click="e6 = 1">
                                     Atrás
-                                </v-btn>
+                                    </v-btn>
+                                </v-card-actions>
                                 </v-stepper-content>
 
                                 <!-- 3. Antecedentes del Propietario -->
@@ -294,7 +426,6 @@
                                     Atrás
                                 </v-btn>
                                 </v-stepper-content>
-
                             </v-stepper>
                         </template>
                     </v-app>
@@ -330,17 +461,15 @@
             const defaultForm = Object.freeze({
             first: '',
             last: '',
-            bio: '',
-            favoriteAnimal: '',
-            age: null,
+            paterno: '',
+            materno: '',
+            nombres: '',
+            documento: '',
             terms: false,})
         return {
             e6: 1,
             form: Object.assign({}, defaultForm),
             rules: {
-            age: [
-                val => val < 10 || `I don't believe you!`,
-                ],
                 dater: [val => (val || '').length > 3 || 'Este campo es obligatorio'],
                 name: [val => (val || '').length > 0 || 'Este campo es obligatorio'],},
             conditions: false,
@@ -348,22 +477,39 @@
             terms: false,
             defaultForm,
             activePicker: null,
-            date: null,
-            menu: false,}
+            dateMemo: null,
+            dateProp: null,
+            menuMemo: false,
+            menuProp: false,
+            doc: ['CI', 'RUT', 'Pasaporte'],
+            }
             
         },
         watch: {
-            menu (val) {
+            menuMemo (val) {
+                val && setTimeout(() => (this.activePicker = 'YEAR'))
+            },
+            menuProp (val) {
                 val && setTimeout(() => (this.activePicker = 'YEAR'))
             },
             },
         computed: {
-        formIsValid () {
+        form1IsValid () {
             return (
             this.form.first &&
             this.form.last &&
-            this.date &&
+            this.dateMemo &&
             this.form.terms
+            )
+        },
+        form2IsValid () {
+            return (
+            this.form.paterno &&
+            this.form.materno &&
+            this.form.nombres &&
+            this.dateProp &&
+            this.form.doc &&
+            this.form.documento
             )
         },
         },
@@ -388,8 +534,11 @@
             submit () {
                 this.snackbar = true
             },
-            save (date) {
-                this.$refs.menu.save(date)
+            save (dateMemo) {
+                this.$refs.menuMemo.save(dateMemo)
+            },
+            save (dateProp) {
+                this.$refs.menuProp.save(dateProp)
             },
         },
         props: 
