@@ -52,7 +52,6 @@
                                                 :rules="rules.name"
                                                 label="Comandante Departamental"
                                                 placeholder="Rango y nombre del Comandante Departamental"
-                                                required
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -65,14 +64,12 @@
                                                 :rules="rules.name"
                                                 label="Referencia"
                                                 placeholder="Referencia adjuntada en el memorial"
-                                                required
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
                                              <v-col cols="12" sm="6">
                                                 <template>
                                                     <div>
-                                                        <div style="display: none" class="mb-6">Active picker: <code>{{ activePicker || 'null' }}</code></div>
                                                         <v-menu
                                                         ref="menuMemo"
                                                         v-model="menuMemo"
@@ -89,7 +86,6 @@
                                                             readonly
                                                             outlined
                                                             :rules="rules.dater"
-                                                            required
                                                             v-bind="attrs"
                                                             v-on="on"
                                                             >
@@ -97,7 +93,6 @@
                                                         </template>
                                                         <v-date-picker
                                                             v-model="dateMemo"
-                                                            :active-picker.sync="activePicker"
                                                             :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                             min="2014-01-01"
                                                             @change="save"
@@ -219,7 +214,6 @@
                                                 :rules="rules.name"
                                                 label="Apellido Paterno"
                                                 placeholder="Apellido Paterno del Propietario"
-                                                required
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -232,7 +226,6 @@
                                                 :rules="rules.name"
                                                 label="Apellido Materno"
                                                 placeholder="Apellido Materno (de no tener, repetir el apellido Paterno)"
-                                                required
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -245,14 +238,12 @@
                                                 :rules="rules.name"
                                                 label="Nombres"
                                                 placeholder="Nombre o Nombres del Propietario"
-                                                required
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
                                              <v-col cols="12" sm="6">
                                                 <template>
                                                     <div>
-                                                        <div style="display: none" class="mb-6">Active picker: <code>{{ activePicker || 'null' }}</code></div>
                                                         <v-menu
                                                         ref="menuProp"
                                                         v-model="menuProp"
@@ -269,14 +260,12 @@
                                                             readonly
                                                             outlined
                                                             :rules="rules.dater"
-                                                            required
                                                             v-bind="attrs"
                                                             v-on="on"
                                                             ></v-text-field>
                                                         </template>
                                                         <v-date-picker
                                                             v-model="dateProp"
-                                                            :active-picker.sync="activePicker"
                                                             :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                             min="2014-01-01"
                                                             @change="save"
@@ -293,7 +282,6 @@
                                                 label="Tipo de Documento"
                                                 :rules="rules.name"
                                                 outlined
-                                                required
                                                 >
                                                 </v-overflow-btn>
                                             </v-col>
@@ -303,7 +291,6 @@
                                                 :rules="rules.name"
                                                 label="Documento"
                                                 placeholder="Documento con lugar de expedición"
-                                                required
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -543,7 +530,6 @@
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.',
             terms: false,
             defaultForm,
-            activePicker: null,
             dateMemo: null,
             dateProp: null,
             menuMemo: false,
@@ -558,14 +544,6 @@
             }
             
         },
-        watch: {
-            menuMemo (val) {
-                val && setTimeout(() => (this.activePicker = 'YEAR'))
-            },
-            menuProp (val) {
-                val && setTimeout(() => (this.activePicker = 'YEAR'))
-            },
-            },
         computed: {
         form1IsValid () {
             return (
@@ -639,7 +617,7 @@
                         })
                         .catch(error => {
                 this.isLoading = false;
-                            alert("May the browser didn't support or there is some errors.");
+                            alert("El navegador o el dispositivo no permiten Cámara Web");
                         });
             },
                         stopCameraStream() {
