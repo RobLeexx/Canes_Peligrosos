@@ -41,7 +41,7 @@
                                         ref="form"
                                         @submit.prevent="submit"
                                         >
-                                        <v-container fluid>
+                                        <v-container>
                                             <v-row>
                                             <v-col
                                                 cols="12"
@@ -62,7 +62,7 @@
                                             >
                                                 <v-text-field
                                                 v-model="form.last"
-                                                :rules="vacio"
+                                                :rules="vacio && min"
                                                 label="Referencia"
                                                 placeholder="Referencia adjuntada en el memorial"
                                                 outlined
@@ -214,6 +214,7 @@
                                                 :rules="vacio"
                                                 label="Apellido Paterno"
                                                 placeholder="Apellido Paterno del Propietario"
+                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -226,6 +227,7 @@
                                                 :rules="vacio"
                                                 label="Apellido Materno"
                                                 placeholder="Apellido Materno (de no tener, repetir el apellido Paterno)"
+                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -238,6 +240,7 @@
                                                 :rules="vacio"
                                                 label="Nombres"
                                                 placeholder="Nombre o Nombres del Propietario"
+                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -278,7 +281,7 @@
                                                 <v-overflow-btn
                                                 v-model="form.doc"
                                                 :items= "doc"
-                                                label="Tipo de Documento"
+                                                label="Tipo de Documento de Identidad"
                                                 :rules="vacio"
                                                 outlined
                                                 >
@@ -288,7 +291,7 @@
                                                 <v-text-field
                                                 v-model="form.documento"
                                                 :rules="vacio"
-                                                label="Documento"
+                                                label="Documento de Identidad"
                                                 placeholder="Documento con lugar de expedición"
                                                 outlined
                                                 ></v-text-field>
@@ -388,6 +391,57 @@
                                                     ></v-file-input>
                                                 </template>
                                             </v-col>
+                                            <v-col cols="12" lg="12" sm="6">
+                                                <v-subheader>Contactos *al menos un campo es obligatorio</v-subheader>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <template>
+                                                    <v-text-field
+                                                        v-model="form.cel"
+                                                        label="Celular"
+                                                        prepend-icon="mdi-phone"
+                                                        placeholder="Teléfono móvil del proietario"
+                                                        outlined
+                                                        type="number"
+                                                    ></v-text-field>
+                                                </template>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <template>
+                                                    <v-text-field
+                                                        v-model="form.tel"
+                                                        label="Télefono"
+                                                        prepend-icon="mdi-phone-classic"
+                                                        placeholder="Télefono fijo del propietario"
+                                                        outlined
+                                                        type="number"
+                                                    ></v-text-field>
+                                                </template>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <template>
+                                                    <v-text-field
+                                                        v-model="form.em"
+                                                        label="Correo Elctrónico"
+                                                        prepend-icon="mdi-at"
+                                                        :rules="email"
+                                                        placeholder="Correo Elctrónico del propietario"
+                                                        outlined
+                                                    ></v-text-field>
+                                                </template>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <template>
+                                                    <v-text-field
+                                                        v-model="form.cel2"
+                                                        label="Otro Número de Contacto"
+                                                        prepend-icon="mdi-phone-plus"
+                                                        placeholder="Otro número de contacto del propietario"
+                                                        outlined
+                                                        type="number"
+                                                    ></v-text-field>
+                                                </template>
+                                            </v-col>
                                             </v-row>
                                         </v-container>
                                         </v-form>
@@ -413,6 +467,7 @@
                                 <v-stepper-step
                                 :complete="e6 > 3"
                                 step="3"
+                                editable
                                 >
                                 Antecedentes del Propietario
                                 </v-stepper-step>
@@ -512,17 +567,14 @@
         },
         data () {
             const defaultForm = Object.freeze({
-            first: '',
-            last: '',
-            paterno: '',
-            materno: '',
-            nombres: '',
-            documento: '',
+            doc: 'CI',
             terms: false,})
         return {
             e6: 1,
             form: Object.assign({}, defaultForm),
             vacio: [v => !!v || 'Este campo es obligatorio'],
+            min: [v => (v && v.length <= 5) || 'Máximo  caracteres'],
+            email: [v => /.+@.+\..+/.test(v) || 'El Correo Electrónico no es válido'],
             conditions: false,
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.',
             terms: false,
@@ -531,7 +583,7 @@
             dateProp: null,
             menuMemo: false,
             menuProp: false,
-            doc: ['CI', 'RUT', 'Pasaporte'],
+            doc: ['CI', 'Pasaporte'],
             dialog: false,
             isCameraOpen: false,
             isPhotoTaken: false,
@@ -556,8 +608,8 @@
             this.form.materno &&
             this.form.nombres &&
             this.dateProp &&
-            this.form.doc &&
-            this.form.documento
+            this.form.documento &&
+            (this.form.cel || this.form.tel || this.form.em || this.form.cel2)
             )
         },
         },
