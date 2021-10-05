@@ -49,9 +49,10 @@
                                             >
                                                 <v-text-field
                                                 v-model="form.first"
-                                                :rules="rules.name"
+                                                :rules="vacio"
                                                 label="Comandante Departamental"
                                                 placeholder="Rango y nombre del Comandante Departamental"
+                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -61,7 +62,7 @@
                                             >
                                                 <v-text-field
                                                 v-model="form.last"
-                                                :rules="rules.name"
+                                                :rules="vacio"
                                                 label="Referencia"
                                                 placeholder="Referencia adjuntada en el memorial"
                                                 outlined
@@ -85,7 +86,6 @@
                                                             label="Fecha de expedición del Memorial"
                                                             readonly
                                                             outlined
-                                                            :rules="rules.dater"
                                                             v-bind="attrs"
                                                             v-on="on"
                                                             >
@@ -211,7 +211,7 @@
                                             >
                                                 <v-text-field
                                                 v-model="form.paterno"
-                                                :rules="rules.name"
+                                                :rules="vacio"
                                                 label="Apellido Paterno"
                                                 placeholder="Apellido Paterno del Propietario"
                                                 outlined
@@ -223,7 +223,7 @@
                                             >
                                                 <v-text-field
                                                 v-model="form.materno"
-                                                :rules="rules.name"
+                                                :rules="vacio"
                                                 label="Apellido Materno"
                                                 placeholder="Apellido Materno (de no tener, repetir el apellido Paterno)"
                                                 outlined
@@ -235,7 +235,7 @@
                                             >
                                                 <v-text-field
                                                 v-model="form.nombres"
-                                                :rules="rules.name"
+                                                :rules="vacio"
                                                 label="Nombres"
                                                 placeholder="Nombre o Nombres del Propietario"
                                                 outlined
@@ -259,7 +259,6 @@
                                                             prepend-icon="mdi-calendar"
                                                             readonly
                                                             outlined
-                                                            :rules="rules.dater"
                                                             v-bind="attrs"
                                                             v-on="on"
                                                             ></v-text-field>
@@ -280,7 +279,7 @@
                                                 v-model="form.doc"
                                                 :items= "doc"
                                                 label="Tipo de Documento"
-                                                :rules="rules.name"
+                                                :rules="vacio"
                                                 outlined
                                                 >
                                                 </v-overflow-btn>
@@ -288,7 +287,7 @@
                                             <v-col cols="12" sm="6">
                                                 <v-text-field
                                                 v-model="form.documento"
-                                                :rules="rules.name"
+                                                :rules="vacio"
                                                 label="Documento"
                                                 placeholder="Documento con lugar de expedición"
                                                 outlined
@@ -523,9 +522,7 @@
         return {
             e6: 1,
             form: Object.assign({}, defaultForm),
-            rules: {
-                dater: [val => (val || '').length > 3 || 'Este campo es obligatorio'],
-                name: [val => (val || '').length > 0 || 'Este campo es obligatorio'],},
+            vacio: [v => !!v || 'Este campo es obligatorio'],
             conditions: false,
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.',
             terms: false,
