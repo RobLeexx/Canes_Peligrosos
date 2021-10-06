@@ -62,7 +62,7 @@
                                             >
                                                 <v-text-field
                                                 v-model="form.last"
-                                                :rules="vacio && min"
+                                                :rules="vacio"
                                                 label="Referencia"
                                                 placeholder="Referencia adjuntada en el memorial"
                                                 outlined
@@ -71,13 +71,11 @@
                                              <v-col cols="12" sm="6">
                                                 <template>
                                                     <div>
-                                                        <v-menu
+                                                        <v-dialog
                                                         ref="menuMemo"
                                                         v-model="menuMemo"
-                                                        :close-on-content-click="false"
-                                                        transition="scale-transition"
                                                         offset-y
-                                                        min-width="auto"
+                                                        width="300px"
                                                         >
                                                         <template v-slot:activator="{ on, attrs }">
                                                             <v-text-field
@@ -93,11 +91,17 @@
                                                         </template>
                                                         <v-date-picker
                                                             v-model="dateMemo"
+                                                            scrollable
                                                             :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                             min="2014-01-01"
-                                                            @change="save"
-                                                        ></v-date-picker>
-                                                        </v-menu>
+                                                        ><v-spacer></v-spacer>
+                                                            <v-btn
+                                                                color="primary"
+                                                                @click="$refs.menuMemo.save(dateMemo)"
+                                                            >
+                                                                OK
+                                                            </v-btn></v-date-picker>
+                                                        </v-dialog>
                                                     </div>
                                                 </template>
                                             </v-col>
@@ -128,12 +132,12 @@
                                                 color="green"
                                                 >
                                                 <template v-slot:label>
-                                                    <div @click.stop="">
-                                                    El Propietario del Can Peligroso está dispuesto a cumplir con las capacitaciones respectivas, sobre la
+                                                    <div @click.stop="" style="padding-top: 15px">
+                                                    El Propietario del Can Peligroso dispone de su cooperación para cumplir con los requisitos y capacitaciones dispuestos en la
                                                     <a
-                                                        href="#"
+                                                        href="553"
                                                         @click.prevent="terms = true"
-                                                    >normativa legal</a>
+                                                    >Ley No.553</a>
                                                     inherente al tratamiento con animales domésticos. 
                                                     </div>
                                                 </template>
@@ -148,7 +152,7 @@
                                         >
                                         <v-card>
                                             <v-card-title class="text-h6">
-                                            Terms
+                                            Ley No.553
                                             </v-card-title>
                                             <v-card-text
                                             v-for="n in 5"
@@ -247,32 +251,37 @@
                                              <v-col cols="12" sm="6">
                                                 <template>
                                                     <div>
-                                                        <v-menu
+                                                        <v-dialog
                                                         ref="menuProp"
                                                         v-model="menuProp"
-                                                        :close-on-content-click="false"
-                                                        transition="scale-transition"
                                                         offset-y
-                                                        min-width="auto"
+                                                        width="300px"
                                                         >
                                                         <template v-slot:activator="{ on, attrs }">
                                                             <v-text-field
                                                             v-model="dateProp"
-                                                            label="Fecha de nacimiento"
                                                             prepend-icon="mdi-calendar"
+                                                            label="Fecha de expedición del Memorial"
                                                             readonly
                                                             outlined
                                                             v-bind="attrs"
                                                             v-on="on"
-                                                            ></v-text-field>
+                                                            >
+                                                            </v-text-field>
                                                         </template>
                                                         <v-date-picker
                                                             v-model="dateProp"
+                                                            scrollable
                                                             :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
-                                                            min="2014-01-01"
-                                                            @change="save"
-                                                        ></v-date-picker>
-                                                        </v-menu>
+                                                            min="1930-01-01"
+                                                        ><v-spacer></v-spacer>
+                                                            <v-btn
+                                                                color="primary"
+                                                                @click="$refs.menuProp.save(dateProp)"
+                                                            >
+                                                                OK
+                                                            </v-btn></v-date-picker>
+                                                        </v-dialog>
                                                     </div>
                                                 </template>
                                             </v-col>
@@ -398,6 +407,7 @@
                                                 <template>
                                                     <v-text-field
                                                         v-model="form.cel"
+                                                        :rules="cel"
                                                         label="Celular"
                                                         prepend-icon="mdi-phone"
                                                         placeholder="Teléfono móvil del proietario"
@@ -410,6 +420,7 @@
                                                 <template>
                                                     <v-text-field
                                                         v-model="form.tel"
+                                                        :rules="tel"
                                                         label="Télefono"
                                                         prepend-icon="mdi-phone-classic"
                                                         placeholder="Télefono fijo del propietario"
@@ -573,7 +584,14 @@
             e6: 1,
             form: Object.assign({}, defaultForm),
             vacio: [v => !!v || 'Este campo es obligatorio'],
-            min: [v => (v && v.length <= 5) || 'Máximo  caracteres'],
+            cel: [
+                v => (v && v.length >= 8) || 'El número de dígitos debe ser mínimo de 8',
+                v => (v && v.length <= 15) || 'El número de dígitos debe ser máximo de 15'
+                ],
+            tel: [
+                v => (v && v.length >= 6) || 'El número de dígitos debe ser mínimo de 6',
+                v => (v && v.length <= 12) || 'El número de dígitos debe ser máximo de 12'
+                ],
             email: [v => /.+@.+\..+/.test(v) || 'El Correo Electrónico no es válido'],
             conditions: false,
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.',
