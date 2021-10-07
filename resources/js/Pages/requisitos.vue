@@ -487,7 +487,7 @@
                                 <v-card
                                     color="grey lighten-1"
                                     class="mb-12"
-                                    height="200px"
+                                    height="100%"
                                 >
                                 <template>
                                     <v-card
@@ -496,64 +496,234 @@
                                     >
                                         <v-window
                                         v-model="onboarding"
-                                        reverse
                                         >
                                         <v-window-item
-                                            v-for="n in length"
-                                            :key="`card-${n}`"
+                                            :key="`card-${1}`"
                                         >
                                             <v-card
-                                            color="grey"
-                                            height="200"
+                                            height="100%"
                                             >
-                                            <v-row
-                                                class="fill-height"
-                                                align="center"
-                                                justify="center"
+                                            <v-row style="padding: 20px; justify-content: space-between"><v-btn text @click="prev">
+                                                <v-icon>mdi-chevron-left</v-icon>
+                                            </v-btn>
+                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Privación o Suspensión Temporal Previa a la Autorización o Licencia de Crianza</h1>
+                                            <v-btn text @click="next">
+                                                <v-icon>mdi-chevron-right</v-icon>
+                                            </v-btn></v-row>
+                                            <v-divider></v-divider>
+                                            
+                                            <v-row style="padding: 20px">
+                                                <v-col cols="12" sm="6">
+                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <v-file-input outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-file-input>
+                                                </v-col>
+                                                <v-col cols="12" sm="3">
+                                                    <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
+                                                    v-model="switchCANES"
+                                                    inset
+                                                    label="¿Tiene Sanciones?"
+                                                    ></v-switch>
+                                                </v-col>
+                                                <v-col cols="12" sm="1">
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES">Sí</v-card-text>
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                                </v-col>
+                                            </v-row>
+                                                    
+                                            <!-- Si tuviera antecedentes -->
+                                            <v-col cols="12" sm="12" style="padding:20px">
+                                                <v-textarea outlined></v-textarea>
+                                            </v-col>
+                                            </v-card>
+                                        </v-window-item>
+                                        <v-window-item
+                                            :key="`card-${2}`"
+                                        >
+                                            <v-card
+                                            height="100%"
                                             >
-                                                <h1
-                                                style="font-size: 5rem;"
-                                                class="white--text"
-                                                >
-                                                Slide {{ n }}
-                                                </h1>
+                                            <v-row style="padding: 20px; justify-content: space-between"><v-btn text @click="prev">
+                                                <v-icon>mdi-chevron-left</v-icon>
+                                            </v-btn>
+                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Certificado de Registro Judicial de Antecedentes Penales - REJAP</h1>
+                                            <v-btn text @click="next">
+                                                <v-icon>mdi-chevron-right</v-icon>
+                                            </v-btn></v-row>
+                                            <v-divider inset></v-divider>
+                                            <v-row>
+                                                <v-col cols="12" sm="4">
+                                                <v-switch style="padding-left: 10px"
+                                                v-model="switchCANES"
+                                                inset
+                                                label="¿Tiene Sanciones?"
+                                                ></v-switch></v-col>
+                                                <v-col cols="12" lg="2" sm="2">
+                                                <v-card-text v-if="switchCANES">Sí</v-card-text>
+                                                <v-card-text v-else>No</v-card-text></v-col>
+                                            </v-row>
+                                            </v-card>
+                                        </v-window-item>
+                                        <v-window-item
+                                            :key="`card-${3}`"
+                                        >
+                                            <v-card
+                                            height="100%"
+                                            >
+                                            <v-row style="padding: 20px; justify-content: space-between"><v-btn text @click="prev">
+                                                <v-icon>mdi-chevron-left</v-icon>
+                                            </v-btn>
+                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Privación o Suspensión temporal previa a la autorización o licencia de crianza</h1>
+                                            <v-btn text @click="next">
+                                                <v-icon>mdi-chevron-right</v-icon>
+                                            </v-btn></v-row>
+                                            <v-divider inset></v-divider>
+                                            <v-row>
+                                                <v-col cols="12" sm="4">
+                                                <v-switch style="padding-left: 10px"
+                                                v-model="switchCANES"
+                                                inset
+                                                label="¿Tiene Sanciones?"
+                                                ></v-switch></v-col>
+                                                <v-col cols="12" lg="2" sm="2">
+                                                <v-card-text v-if="switchCANES">Sí</v-card-text>
+                                                <v-card-text v-else>No</v-card-text></v-col>
+                                            </v-row>
+                                            </v-card>
+                                        </v-window-item>
+                                        <v-window-item
+                                            :key="`card-${4}`"
+                                        >
+                                            <v-card
+                                            height="100%"
+                                            >
+                                            <v-row style="padding: 20px; justify-content: space-between"><v-btn text @click="prev">
+                                                <v-icon>mdi-chevron-left</v-icon>
+                                            </v-btn>
+                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Privación o Suspensión temporal previa a la autorización o licencia de crianza</h1>
+                                            <v-btn text @click="next">
+                                                <v-icon>mdi-chevron-right</v-icon>
+                                            </v-btn></v-row>
+                                            <v-divider inset></v-divider>
+                                            <v-row>
+                                                <v-col cols="12" sm="4">
+                                                <v-switch style="padding-left: 10px"
+                                                v-model="switchCANES"
+                                                inset
+                                                label="¿Tiene Sanciones?"
+                                                ></v-switch></v-col>
+                                                <v-col cols="12" lg="2" sm="2">
+                                                <v-card-text v-if="switchCANES">Sí</v-card-text>
+                                                <v-card-text v-else>No</v-card-text></v-col>
+                                            </v-row>
+                                            </v-card>
+                                        </v-window-item>
+                                        <v-window-item
+                                            :key="`card-${5}`"
+                                        >
+                                            <v-card
+                                            height="100%"
+                                            >
+                                            <v-row style="padding: 20px; justify-content: space-between"><v-btn text @click="prev">
+                                                <v-icon>mdi-chevron-left</v-icon>
+                                            </v-btn>
+                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Privación o Suspensión temporal previa a la autorización o licencia de crianza</h1>
+                                            <v-btn text @click="next">
+                                                <v-icon>mdi-chevron-right</v-icon>
+                                            </v-btn></v-row>
+                                            <v-divider inset></v-divider>
+                                            <v-row>
+                                                <v-col cols="12" sm="3">
+                                                <v-switch style="padding-left: 10px"
+                                                v-model="switchCANES"
+                                                inset
+                                                label="¿Tiene Sanciones?"
+                                                ></v-switch></v-col>
+                                                <v-col cols="12" lg="1" sm="1">
+                                                <v-card-text v-if="switchCANES">Sí</v-card-text>
+                                                <v-card-text v-else>No</v-card-text></v-col>
                                             </v-row>
                                             </v-card>
                                         </v-window-item>
                                         </v-window>
 
-                                        <v-card-actions class="justify-space-between">
-                                        <v-btn
-                                            text
-                                            @click="prev"
-                                        >
-                                            <v-icon>mdi-chevron-left</v-icon>
-                                        </v-btn>
+                                        <v-divider></v-divider>
+                                        <v-card-actions style="display: flex; justify-content: center">
                                         <v-item-group
                                             v-model="onboarding"
-                                            class="text-center"
+                                            class="d-none d-sm-block"
                                             mandatory
                                         >
                                             <v-item
-                                            v-for="n in length"
-                                            :key="`btn-${n}`"
+                                            :key="`btn-${1}`"
                                             v-slot="{ active, toggle }"
                                             >
                                             <v-btn
                                                 :input-value="active"
-                                                icon
+                                                text
+                                                color="primary"
                                                 @click="toggle"
                                             >
-                                                <v-icon>mdi-record</v-icon>
+                                                CANES
+                                            </v-btn>
+                                            </v-item>
+                                            <v-item
+                                            :key="`btn-${2}`"
+                                            v-slot="{ active, toggle }"
+                                            >
+                                            <v-btn
+                                                :input-value="active"
+                                                text
+                                                color="primary"
+                                                @click="toggle"
+                                            >
+                                                REJAP
+                                            </v-btn>
+                                            </v-item>
+                                            <v-item
+                                            :key="`btn-${3}`"
+                                            v-slot="{ active, toggle }"
+                                            >
+                                            <v-btn
+                                                :input-value="active"
+                                                text
+                                                color="primary"
+                                                @click="toggle"
+                                            >
+                                                FELCC
+                                            </v-btn>
+                                            </v-item>
+                                            <v-item
+                                            :key="`btn-${4}`"
+                                            v-slot="{ active, toggle }"
+                                            >
+                                            <v-btn
+                                                :input-value="active"
+                                                text
+                                                color="primary"
+                                                @click="toggle"
+                                            >
+                                                FELCN
+                                            </v-btn>
+                                            </v-item>
+                                            <v-item
+                                            :key="`btn-${5}`"
+                                            v-slot="{ active, toggle }"
+                                            >
+                                            <v-btn
+                                                :input-value="active"
+                                                text
+                                                color="primary"
+                                                @click="toggle"
+                                            >
+                                                FELCV
                                             </v-btn>
                                             </v-item>
                                         </v-item-group>
-                                        <v-btn
-                                            text
-                                            @click="next"
-                                        >
-                                            <v-icon>mdi-chevron-right</v-icon>
-                                        </v-btn>
                                         </v-card-actions>
                                     </v-card>
                                 </template>
@@ -562,7 +732,7 @@
                                     color="primary"
                                     @click="e6 = 4"
                                 >
-                                    Continue
+                                    Continuar
                                 </v-btn>
                                 <v-btn @click="e6 = 2">
                                     Atrás
@@ -586,7 +756,7 @@
                                     color="primary"
                                     @click="e6 = 5"
                                 >
-                                    Continue
+                                    Continuar
                                 </v-btn>
                                 <v-btn @click="e6 = 3">
                                     Atrás
@@ -677,8 +847,13 @@
             isShotPhoto: false,
             isLoading: false,
             link: '#',
-            length: 3,
-            onboarding: 0
+            length: 5,
+            onboarding: 0,
+            switchCANES: false,
+            switchREJAP: false,
+            switchFELCC: false,
+            switchFELCN: false,
+            switchFELCV: false,
             }
             
         },

@@ -1,17 +1,17 @@
 <v-list style="background: white; ">
-                        <v-list-item :key="1" @click="addItem(1)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px; margin-top: -12px">
-                            INICIO
-                        </v-list-item>
-                        <v-list-item :key="2" @click="addItem(2)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
-                            INSTITUCIÓN
-                        </v-list-item>
-                        <v-list-item :key="3" @click="addItem(3)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
-                            PUBLICACIONES
-                        </v-list-item>
-                        <v-list-item :key="4" @click="addItem(4)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -12px">
-                            CAPACITACIONES
-                        </v-list-item>
-                    </v-list>
+    <v-list-item :key="1" @click="addItem(1)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px; margin-top: -12px">
+        INICIO
+    </v-list-item>
+    <v-list-item :key="2" @click="addItem(2)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
+        INSTITUCIÓN
+    </v-list-item>
+    <v-list-item :key="3" @click="addItem(3)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
+        PUBLICACIONES
+    </v-list-item>
+    <v-list-item :key="4" @click="addItem(4)" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -12px">
+        CAPACITACIONES
+    </v-list-item>
+</v-list>
 
 <!-- Menú 
 <v-col cols="12" lg="2" md="2" sm="3"><v-tab style="padding-bottom:15px; height:50px; color:white" :key="1" :href="'#tab' + 1">INICIO</v-tab></v-col>
@@ -22,40 +22,172 @@
 
 <!-- Menú 
 	<v-tabs-items v-model="currentItem">
-                <v-tab-item :key="1" :value="'tab' + 1">
-                    <v-card flat>
-                    <v-card-text>
-                        <h2>UNO</h2>
-                        HOLA UNO
-                    </v-card-text>
-                    </v-card>
-                </v-tab-item>
-                <v-tab-item :key="2" :value="'tab' + 2">
-                    <v-card flat>
-                    <v-card-text>
-                        <h2>DOS</h2>
-                        HOLA DOS
-                    </v-card-text>
-                    </v-card>
-                </v-tab-item>
-                <v-tab-item :key="3" :value="'tab' + 3">
-                    <v-card flat>
-                    <v-card-text>
-                        <h2>TRES</h2>
-                        HOLA TRES
-                    </v-card-text>
-                    </v-card>
-                </v-tab-item>
-                <v-tab-item :key="4" :value="'tab' + 4">
-                    <v-card flat>
-                    <v-card-text>
-                        <h2>CUATRO</h2>
-                        HOLA CUATRO
-                    </v-card-text>
-                    </v-card>
-                </v-tab-item>
-                </v-tabs-items>
+        <v-tab-item :key="1" :value="'tab' + 1">
+            <v-card flat>
+            <v-card-text>
+                <h2>UNO</h2>
+                HOLA UNO
+            </v-card-text>
+            </v-card>
+        </v-tab-item>
+        <v-tab-item :key="2" :value="'tab' + 2">
+            <v-card flat>
+            <v-card-text>
+                <h2>DOS</h2>
+                HOLA DOS
+            </v-card-text>
+            </v-card>
+        </v-tab-item>
+        <v-tab-item :key="3" :value="'tab' + 3">
+            <v-card flat>
+            <v-card-text>
+                <h2>TRES</h2>
+                HOLA TRES
+            </v-card-text>
+            </v-card>
+        </v-tab-item>
+        <v-tab-item :key="4" :value="'tab' + 4">
+            <v-card flat>
+            <v-card-text>
+                <h2>CUATRO</h2>
+                HOLA CUATRO
+            </v-card-text>
+            </v-card>
+        </v-tab-item>
+    </v-tabs-items>
                 -->
+
+
+<template>
+<v-card
+    flat
+    tile
+>
+    <v-window
+    v-model="onboarding"
+    reverse
+    >
+    <v-window-item
+        ref="CANES"
+    >
+        <v-card
+        color="grey"
+        height="200"
+        >
+        <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+        >
+        </v-row>
+        </v-card>
+    </v-window-item>
+    <v-window-item
+        ref="REJAP"
+    >
+        <v-card
+        color="grey"
+        height="200"
+        >
+        <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+        >
+        </v-row>
+        </v-card>
+    </v-window-item>
+    <v-window-item
+        ref="FELCC"
+    >
+        <v-card
+        color="grey"
+        height="200"
+        >
+        <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+        >
+        </v-row>
+        </v-card>
+    </v-window-item>
+    <v-window-item
+        ref="FELCN"
+    >
+        <v-card
+        color="grey"
+        height="200"
+        >
+        <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+        >
+        </v-row>
+        </v-card>
+    </v-window-item>
+    <v-window-item
+        ref="REJAP"
+    >
+        <v-card
+        color="grey"
+        height="200"
+        >
+        <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+        >
+        </v-row>
+        </v-card>
+    </v-window-item>
+    </v-window>
+
+    <v-card-actions class="justify-space-between">
+    <v-btn
+        text
+        @click="prev"
+    >
+        <v-icon>mdi-chevron-left</v-icon>
+    </v-btn>
+    <v-item-group
+        v-model="onboarding"
+        class="text-center"
+        mandatory
+    >
+        <v-btn
+            @click="CANES"
+        >
+        </v-btn>
+        <v-btn
+            @click="REJAP"
+        >
+        </v-btn>
+        <v-btn
+            @click="FELCC"
+        >
+        </v-btn>
+        <v-btn
+            @click="FELCN"
+        >
+        </v-btn>
+        <v-btn
+            @click="FELCV"
+        >
+        </v-btn>
+    </v-item-group>
+    <v-btn
+        text
+        @click="next"
+    >
+        <v-icon>mdi-chevron-right</v-icon>
+    </v-btn>
+    </v-card-actions>
+</v-card>
+</template>
+
+
 data: () => ({
             length: 3,
             window: 0,
