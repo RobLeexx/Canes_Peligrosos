@@ -74,7 +74,6 @@
                                                         <v-dialog
                                                         ref="menuMemo"
                                                         v-model="menuMemo"
-                                                        offset-y
                                                         width="300px"
                                                         >
                                                         <template v-slot:activator="{ on, attrs }">
@@ -82,6 +81,7 @@
                                                             v-model="dateMemo"
                                                             prepend-icon="mdi-calendar"
                                                             label="Fecha de expedición del Memorial"
+                                                            :rules="vacio"
                                                             readonly
                                                             outlined
                                                             v-bind="attrs"
@@ -92,6 +92,7 @@
                                                         <v-date-picker
                                                             v-model="dateMemo"
                                                             scrollable
+                                                            locale="es"
                                                             :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                             min="2014-01-01"
                                                         ><v-spacer></v-spacer>
@@ -254,7 +255,6 @@
                                                         <v-dialog
                                                         ref="menuProp"
                                                         v-model="menuProp"
-                                                        offset-y
                                                         width="300px"
                                                         >
                                                         <template v-slot:activator="{ on, attrs }">
@@ -262,6 +262,7 @@
                                                             v-model="dateProp"
                                                             prepend-icon="mdi-calendar"
                                                             label="Fecha de expedición del Memorial"
+                                                            :rules="vacio"
                                                             readonly
                                                             outlined
                                                             v-bind="attrs"
@@ -272,6 +273,7 @@
                                                         <v-date-picker
                                                             v-model="dateProp"
                                                             scrollable
+                                                            locale="es"
                                                             :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                             min="1930-01-01"
                                                         ><v-spacer></v-spacer>
@@ -514,31 +516,98 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field :rules="vacio" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <div>
+                                                    <v-dialog
+                                                        ref="menu"
+                                                        v-model="dropdownOpen"
+                                                        :close-on-content-click="false"
+                                                        :return-value.sync="model"
+                                                        width="580"
+                                                        height="100%">
+                                                        <template v-slot:activator="{ on }">
+                                                            <v-text-field
+                                                                v-model="displayDate"
+                                                                label="Fecha y hora del registro"
+                                                                prepend-icon="mdi-calendar"
+                                                                readonly
+                                                                outlined
+                                                                :rules="vacio"
+                                                                v-on="on"
+                                                            ></v-text-field>
+                                                        </template>
+                                            
+                                                        <div style="background: white;padding:15px">
+                                                            <v-layout row wrap>
+                                                                <v-flex xs12 sm6 style="justify-content: center">
+                                                                    <v-date-picker 
+                                                                        v-model="dateModel"
+                                                                        width="280"
+                                                                        locale="es"
+                                                                        color="primary"></v-date-picker>
+                                            
+                                                                </v-flex>
+                                                                <v-flex style="display:block; text-align: center" xs12 sm6>
+                                                                    <v-time-picker 
+                                                                        v-if="dropdownOpen" 
+                                                                        v-model="timeModel" 
+                                                                        color="primary"
+                                                                        width="280"
+                                                                        format="ampm"
+                                                                        scrollable></v-time-picker>
+                                            
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection }}</h3>
+                                                                </v-flex>
+                                            
+                                                                <v-flex style="justify-content: center; padding: 15px">
+                                                                    <v-btn color="primary" @click="confirm()">Ok</v-btn>
+                                                                    <v-btn text @click="dropdownOpen = false">Cancelar</v-btn>
+                                                                </v-flex>
+                                                            </v-layout>
+                                                        </div>
+                                                    </v-dialog>
+                                                </div>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
-                                                    <v-file-input outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-file-input>
+                                                    <template>
+                                                    <v-file-input style="height: 45px"
+                                                        outlined
+                                                        dense
+                                                        show-size
+                                                    ><template v-slot:label>
+                                                        <div>
+                                                        Antecedentes CANES Adjuntados<small> (opcional)</small>
+                                                        </div>
+                                                        </template></v-file-input>
+                                                    <v-subheader style="
+                                                        display: flex;
+                                                        align-items: flex-start;
+                                                        justify-content: flex-end;">
+                                                        *Solo se admite un elemento</v-subheader>
+                                                    </template>
                                                 </v-col>
-                                                <v-col cols="12" sm="3">
+                                                <v-col cols="12" sm="4">
                                                     <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
                                                     v-model="switchCANES"
                                                     inset
-                                                    label="¿Tiene Sanciones?"
+                                                    label="¿Tiene Sanciones o Antecedentes?"
                                                     ></v-switch>
                                                 </v-col>
                                                 <v-col cols="12" sm="1">
-                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES">Sí</v-card-text>
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
                                             </v-row>
                                                     
                                             <!-- Si tuviera antecedentes -->
+                                            <v-subheader>Antecedentes CANES</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea outlined></v-textarea>
+                                                <v-textarea v-if="switchCANES == '1'" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else solo disabled label="Ninguno"></v-textarea>
                                             </v-col>
+
                                             </v-card>
                                         </v-window-item>
                                         <v-window-item
@@ -554,18 +623,101 @@
                                             <v-btn text @click="next">
                                                 <v-icon>mdi-chevron-right</v-icon>
                                             </v-btn></v-row>
-                                            <v-divider inset></v-divider>
-                                            <v-row>
+                                            <v-divider></v-divider>
+                                            
+                                            <v-row style="padding: 20px">
+                                                <v-col cols="12" sm="6">
+                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <div>
+                                                    <v-dialog
+                                                        ref="menu"
+                                                        v-model="dropdownOpen"
+                                                        :close-on-content-click="false"
+                                                        :return-value.sync="model"
+                                                        width="580"
+                                                        height="100%">
+                                                        <template v-slot:activator="{ on }">
+                                                            <v-text-field
+                                                                v-model="displayDate"
+                                                                label="Fecha y hora del registro"
+                                                                prepend-icon="mdi-calendar"
+                                                                readonly
+                                                                outlined
+                                                                v-on="on"
+                                                            ></v-text-field>
+                                                        </template>
+                                            
+                                                        <div style="background: white;padding:15px">
+                                                            <v-layout row wrap>
+                                                                <v-flex xs12 sm6 style="justify-content: center">
+                                                                    <v-date-picker 
+                                                                        v-model="dateModel"
+                                                                        width="280"
+                                                                        locale="es"
+                                                                        color="primary"></v-date-picker>
+                                            
+                                                                </v-flex>
+                                                                <v-flex style="display:block; text-align: center" xs12 sm6>
+                                                                    <v-time-picker 
+                                                                        v-if="dropdownOpen" 
+                                                                        v-model="timeModel" 
+                                                                        color="primary"
+                                                                        width="280"
+                                                                        format="ampm"
+                                                                        scrollable></v-time-picker>
+                                            
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection }}</h3>
+                                                                </v-flex>
+                                            
+                                                                <v-flex style="justify-content: center; padding: 15px">
+                                                                    <v-btn color="primary" @click="confirm()">Ok</v-btn>
+                                                                    <v-btn text @click="dropdownOpen = false">Cancelar</v-btn>
+                                                                </v-flex>
+                                                            </v-layout>
+                                                        </div>
+                                                    </v-dialog>
+                                                </div>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <template>
+                                                    <v-file-input style="height: 45px"
+                                                        outlined
+                                                        dense
+                                                        show-size
+                                                    ><template v-slot:label>
+                                                        <div>
+                                                        Antecedentes REJAP Adjuntados<small> (opcional)</small>
+                                                        </div>
+                                                        </template></v-file-input>
+                                                    <v-subheader style="
+                                                        display: flex;
+                                                        align-items: flex-start;
+                                                        justify-content: flex-end;">
+                                                        *Solo se admite un elemento</v-subheader>
+                                                    </template>
+                                                </v-col>
                                                 <v-col cols="12" sm="4">
-                                                <v-switch style="padding-left: 10px"
-                                                v-model="switchCANES"
-                                                inset
-                                                label="¿Tiene Sanciones?"
-                                                ></v-switch></v-col>
-                                                <v-col cols="12" lg="2" sm="2">
-                                                <v-card-text v-if="switchCANES">Sí</v-card-text>
-                                                <v-card-text v-else>No</v-card-text></v-col>
+                                                    <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
+                                                    v-model="switchCANES"
+                                                    inset
+                                                    label="¿Tiene Sanciones o Antecedentes?"
+                                                    ></v-switch>
+                                                </v-col>
+                                                <v-col cols="12" sm="1">
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                                </v-col>
                                             </v-row>
+
+                                            <!-- Si tuviera antecedentes -->
+                                            <v-subheader>Antecedentes REJAP</v-subheader>
+                                            <v-col cols="12" sm="12" style="padding:20px">
+                                                <v-textarea v-if="switchCANES == '1'" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else solo disabled label="Ninguno"></v-textarea>
+                                            </v-col>
+
                                             </v-card>
                                         </v-window-item>
                                         <v-window-item
@@ -577,22 +729,105 @@
                                             <v-row style="padding: 20px; justify-content: space-between"><v-btn text @click="prev">
                                                 <v-icon>mdi-chevron-left</v-icon>
                                             </v-btn>
-                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Privación o Suspensión temporal previa a la autorización o licencia de crianza</h1>
+                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Certificado de Antecedentes Policiales: Fuerza Especial de Lucha Contra el Crimen (F.E.L.C.C)</h1>
                                             <v-btn text @click="next">
                                                 <v-icon>mdi-chevron-right</v-icon>
                                             </v-btn></v-row>
-                                            <v-divider inset></v-divider>
-                                            <v-row>
+                                            <v-divider></v-divider>
+                                            
+                                            <v-row style="padding: 20px">
+                                                <v-col cols="12" sm="6">
+                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <div>
+                                                    <v-dialog
+                                                        ref="menu"
+                                                        v-model="dropdownOpen"
+                                                        :close-on-content-click="false"
+                                                        :return-value.sync="model"
+                                                        width="580"
+                                                        height="100%">
+                                                        <template v-slot:activator="{ on }">
+                                                            <v-text-field
+                                                                v-model="displayDate"
+                                                                label="Fecha y hora del registro"
+                                                                prepend-icon="mdi-calendar"
+                                                                readonly
+                                                                outlined
+                                                                v-on="on"
+                                                            ></v-text-field>
+                                                        </template>
+                                            
+                                                        <div style="background: white;padding:15px">
+                                                            <v-layout row wrap>
+                                                                <v-flex xs12 sm6 style="justify-content: center">
+                                                                    <v-date-picker 
+                                                                        v-model="dateModel"
+                                                                        width="280"
+                                                                        locale="es"
+                                                                        color="primary"></v-date-picker>
+                                            
+                                                                </v-flex>
+                                                                <v-flex style="display:block; text-align: center" xs12 sm6>
+                                                                    <v-time-picker 
+                                                                        v-if="dropdownOpen" 
+                                                                        v-model="timeModel" 
+                                                                        color="primary"
+                                                                        width="280"
+                                                                        format="ampm"
+                                                                        scrollable></v-time-picker>
+                                            
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection }}</h3>
+                                                                </v-flex>
+                                            
+                                                                <v-flex style="justify-content: center; padding: 15px">
+                                                                    <v-btn color="primary" @click="confirm()">Ok</v-btn>
+                                                                    <v-btn text @click="dropdownOpen = false">Cancelar</v-btn>
+                                                                </v-flex>
+                                                            </v-layout>
+                                                        </div>
+                                                    </v-dialog>
+                                                </div>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <template>
+                                                    <v-file-input style="height: 45px"
+                                                        outlined
+                                                        dense
+                                                        show-size
+                                                    ><template v-slot:label>
+                                                        <div>
+                                                        Antecedentes FELCC Adjuntados<small> (opcional)</small>
+                                                        </div>
+                                                        </template></v-file-input>
+                                                    <v-subheader style="
+                                                        display: flex;
+                                                        align-items: flex-start;
+                                                        justify-content: flex-end;">
+                                                        *Solo se admite un elemento</v-subheader>
+                                                    </template>
+                                                </v-col>
                                                 <v-col cols="12" sm="4">
-                                                <v-switch style="padding-left: 10px"
-                                                v-model="switchCANES"
-                                                inset
-                                                label="¿Tiene Sanciones?"
-                                                ></v-switch></v-col>
-                                                <v-col cols="12" lg="2" sm="2">
-                                                <v-card-text v-if="switchCANES">Sí</v-card-text>
-                                                <v-card-text v-else>No</v-card-text></v-col>
+                                                    <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
+                                                    v-model="switchCANES"
+                                                    inset
+                                                    label="¿Tiene Sanciones o Antecedentes?"
+                                                    ></v-switch>
+                                                </v-col>
+                                                <v-col cols="12" sm="1">
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                                </v-col>
                                             </v-row>
+
+                                            <!-- Si tuviera antecedentes -->
+                                            <v-subheader>Antecedentes FELCC</v-subheader>
+                                            <v-col cols="12" sm="12" style="padding:20px">
+                                                <v-textarea v-if="switchCANES == '1'" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else solo disabled label="Ninguno"></v-textarea>
+                                            </v-col>
+
                                             </v-card>
                                         </v-window-item>
                                         <v-window-item
@@ -604,22 +839,105 @@
                                             <v-row style="padding: 20px; justify-content: space-between"><v-btn text @click="prev">
                                                 <v-icon>mdi-chevron-left</v-icon>
                                             </v-btn>
-                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Privación o Suspensión temporal previa a la autorización o licencia de crianza</h1>
+                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Certificado de Antecedentes Policiales: Fuerza Especial de Lucha Contra el Narcotráfico (F.E.L.C.N)</h1>
                                             <v-btn text @click="next">
                                                 <v-icon>mdi-chevron-right</v-icon>
                                             </v-btn></v-row>
-                                            <v-divider inset></v-divider>
-                                            <v-row>
+                                            <v-divider></v-divider>
+                                            
+                                            <v-row style="padding: 20px">
+                                                <v-col cols="12" sm="6">
+                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <div>
+                                                    <v-dialog
+                                                        ref="menu"
+                                                        v-model="dropdownOpen"
+                                                        :close-on-content-click="false"
+                                                        :return-value.sync="model"
+                                                        width="580"
+                                                        height="100%">
+                                                        <template v-slot:activator="{ on }">
+                                                            <v-text-field
+                                                                v-model="displayDate"
+                                                                label="Fecha y hora del registro"
+                                                                prepend-icon="mdi-calendar"
+                                                                readonly
+                                                                outlined
+                                                                v-on="on"
+                                                            ></v-text-field>
+                                                        </template>
+                                            
+                                                        <div style="background: white;padding:15px">
+                                                            <v-layout row wrap>
+                                                                <v-flex xs12 sm6 style="justify-content: center">
+                                                                    <v-date-picker 
+                                                                        v-model="dateModel"
+                                                                        width="280"
+                                                                        locale="es"
+                                                                        color="primary"></v-date-picker>
+                                            
+                                                                </v-flex>
+                                                                <v-flex style="display:block; text-align: center" xs12 sm6>
+                                                                    <v-time-picker 
+                                                                        v-if="dropdownOpen" 
+                                                                        v-model="timeModel" 
+                                                                        color="primary"
+                                                                        width="280"
+                                                                        format="ampm"
+                                                                        scrollable></v-time-picker>
+                                            
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection }}</h3>
+                                                                </v-flex>
+                                            
+                                                                <v-flex style="justify-content: center; padding: 15px">
+                                                                    <v-btn color="primary" @click="confirm()">Ok</v-btn>
+                                                                    <v-btn text @click="dropdownOpen = false">Cancelar</v-btn>
+                                                                </v-flex>
+                                                            </v-layout>
+                                                        </div>
+                                                    </v-dialog>
+                                                </div>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <template>
+                                                    <v-file-input style="height: 45px"
+                                                        outlined
+                                                        dense
+                                                        show-size
+                                                    ><template v-slot:label>
+                                                        <div>
+                                                        Antecedentes FELCN Adjuntados<small> (opcional)</small>
+                                                        </div>
+                                                        </template></v-file-input>
+                                                    <v-subheader style="
+                                                        display: flex;
+                                                        align-items: flex-start;
+                                                        justify-content: flex-end;">
+                                                        *Solo se admite un elemento</v-subheader>
+                                                    </template>
+                                                </v-col>
                                                 <v-col cols="12" sm="4">
-                                                <v-switch style="padding-left: 10px"
-                                                v-model="switchCANES"
-                                                inset
-                                                label="¿Tiene Sanciones?"
-                                                ></v-switch></v-col>
-                                                <v-col cols="12" lg="2" sm="2">
-                                                <v-card-text v-if="switchCANES">Sí</v-card-text>
-                                                <v-card-text v-else>No</v-card-text></v-col>
+                                                    <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
+                                                    v-model="switchCANES"
+                                                    inset
+                                                    label="¿Tiene Sanciones o Antecedentes?"
+                                                    ></v-switch>
+                                                </v-col>
+                                                <v-col cols="12" sm="1">
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                                </v-col>
                                             </v-row>
+
+                                            <!-- Si tuviera antecedentes -->
+                                            <v-subheader>Antecedentes FELCN</v-subheader>
+                                            <v-col cols="12" sm="12" style="padding:20px">
+                                                <v-textarea v-if="switchCANES == '1'" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else solo disabled label="Ninguno"></v-textarea>
+                                            </v-col>
+
                                             </v-card>
                                         </v-window-item>
                                         <v-window-item
@@ -631,22 +949,105 @@
                                             <v-row style="padding: 20px; justify-content: space-between"><v-btn text @click="prev">
                                                 <v-icon>mdi-chevron-left</v-icon>
                                             </v-btn>
-                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Privación o Suspensión temporal previa a la autorización o licencia de crianza</h1>
+                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Certificado de Antecedentes Policiales: Fuerza Especial de Lucha Contra la Violencia (F.E.L.C.V)</h1>
                                             <v-btn text @click="next">
                                                 <v-icon>mdi-chevron-right</v-icon>
                                             </v-btn></v-row>
-                                            <v-divider inset></v-divider>
-                                            <v-row>
-                                                <v-col cols="12" sm="3">
-                                                <v-switch style="padding-left: 10px"
-                                                v-model="switchCANES"
-                                                inset
-                                                label="¿Tiene Sanciones?"
-                                                ></v-switch></v-col>
-                                                <v-col cols="12" lg="1" sm="1">
-                                                <v-card-text v-if="switchCANES">Sí</v-card-text>
-                                                <v-card-text v-else>No</v-card-text></v-col>
+                                            <v-divider></v-divider>
+                                            
+                                            <v-row style="padding: 20px">
+                                                <v-col cols="12" sm="6">
+                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <div>
+                                                    <v-dialog
+                                                        ref="menu"
+                                                        v-model="dropdownOpen"
+                                                        :close-on-content-click="false"
+                                                        :return-value.sync="model"
+                                                        width="580"
+                                                        height="100%">
+                                                        <template v-slot:activator="{ on }">
+                                                            <v-text-field
+                                                                v-model="displayDate"
+                                                                label="Fecha y hora del registro"
+                                                                prepend-icon="mdi-calendar"
+                                                                readonly
+                                                                outlined
+                                                                v-on="on"
+                                                            ></v-text-field>
+                                                        </template>
+                                            
+                                                        <div style="background: white;padding:15px">
+                                                            <v-layout row wrap>
+                                                                <v-flex xs12 sm6 style="justify-content: center">
+                                                                    <v-date-picker 
+                                                                        v-model="dateModel"
+                                                                        width="280"
+                                                                        locale="es"
+                                                                        color="primary"></v-date-picker>
+                                            
+                                                                </v-flex>
+                                                                <v-flex style="display:block; text-align: center" xs12 sm6>
+                                                                    <v-time-picker 
+                                                                        v-if="dropdownOpen" 
+                                                                        v-model="timeModel" 
+                                                                        color="primary"
+                                                                        width="280"
+                                                                        format="ampm"
+                                                                        scrollable></v-time-picker>
+                                            
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection }}</h3>
+                                                                </v-flex>
+                                            
+                                                                <v-flex style="justify-content: center; padding: 15px">
+                                                                    <v-btn color="primary" @click="confirm()">Ok</v-btn>
+                                                                    <v-btn text @click="dropdownOpen = false">Cancelar</v-btn>
+                                                                </v-flex>
+                                                            </v-layout>
+                                                        </div>
+                                                    </v-dialog>
+                                                </div>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <template>
+                                                    <v-file-input style="height: 45px"
+                                                        outlined
+                                                        dense
+                                                        show-size
+                                                    ><template v-slot:label>
+                                                        <div>
+                                                        Antecedentes FELCV Adjuntados<small> (opcional)</small>
+                                                        </div>
+                                                        </template></v-file-input>
+                                                    <v-subheader style="
+                                                        display: flex;
+                                                        align-items: flex-start;
+                                                        justify-content: flex-end;">
+                                                        *Solo se admite un elemento</v-subheader>
+                                                    </template>
+                                                </v-col>
+                                                <v-col cols="12" sm="4">
+                                                    <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
+                                                    v-model="switchCANES"
+                                                    inset
+                                                    label="¿Tiene Sanciones o Antecedentes?"
+                                                    ></v-switch>
+                                                </v-col>
+                                                <v-col cols="12" sm="1">
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                                </v-col>
                                             </v-row>
+
+                                            <!-- Si tuviera antecedentes -->
+                                            <v-subheader>Antecedentes FELCV</v-subheader>
+                                            <v-col cols="12" sm="12" style="padding:20px">
+                                                <v-textarea v-if="switchCANES == '1'" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else solo disabled label="Ninguno"></v-textarea>
+                                            </v-col>
+
                                             </v-card>
                                         </v-window-item>
                                         </v-window>
@@ -849,11 +1250,16 @@
             link: '#',
             length: 5,
             onboarding: 0,
+            datetime: new Date(),
             switchCANES: false,
             switchREJAP: false,
             switchFELCC: false,
             switchFELCN: false,
             switchFELCV: false,
+            dropdownOpen: false,
+            displayDate: '',
+            dateModel: '',
+            timeModel: '',
             }
             
         },
@@ -876,6 +1282,15 @@
             (this.form.cel || this.form.tel || this.form.em || this.form.cel2)
             )
         },
+         model: {
+            get() {return this.value;},
+            set(model) {} },
+        
+        
+            currentSelection() {
+            let selectedTime = this.timeModel;
+            return this.formatDate(this.dateModel) + ' ' + selectedTime;
+            }
         },
 
         methods: 
@@ -965,6 +1380,30 @@
                 download.setAttribute("href", canvas);
                 },
 
+                /* DateTimeExtension */                
+                formatDate(date) {
+                if (!date) return '';
+            
+                const [year, month, day] = date.split('-');
+                return `${year}-${month}-${day}`;
+                },
+            
+                // Confirm the datetime selection and close the popover
+                confirm() {
+                this.onUpdateDate();
+                this.dropdownOpen = false;
+                },
+            
+                // Format the date and trigger the input event
+                onUpdateDate() {
+                if (!this.dateModel || !this.timeModel) return false;
+            
+                let selectedTime = this.timeModel;
+                this.displayDate = this.formatDate(this.dateModel) + ' ' + selectedTime;
+                this.$emit('input', this.dateModel + ' ' + selectedTime);
+                },
+            
+
             /* Antecedentes */
             next () {
                 this.onboarding = this.onboarding + 1 === this.length
@@ -977,6 +1416,16 @@
                 : this.onboarding - 1
             },
         },
+         mounted() {
+            // Set the current date and time as default value_DateTime
+            var d = new Date();
+            var currentHour = d.getHours() % 12; // AM,PM format
+            var minutes = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+            var currentTime = currentHour + ':' + minutes;
+            this.timeModel = currentTime;
+            this.dateModel = d.toISOString().substr(0, 10);
+        },
+
         props: 
         {
             canLogin: Boolean,
