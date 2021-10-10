@@ -177,7 +177,6 @@
                                 </template>
 
                                 </v-card>
-                                <v-card-actions>
                                     <v-btn
                                     :disabled="!form1IsValid"
                                     color="primary"
@@ -185,7 +184,6 @@
                                     >
                                     Continuar
                                     </v-btn>
-                                </v-card-actions>
                                 </v-stepper-content>
 
                                 <!-- 2. Datos del Propietario -->
@@ -464,7 +462,6 @@
                                 </template>
 
                                 </v-card>
-                                <v-card-actions>
                                     <v-btn
                                     :disabled="!form2IsValid"
                                     color="primary"
@@ -475,7 +472,6 @@
                                     <v-btn @click="e6 = 1">
                                     Atrás
                                     </v-btn>
-                                </v-card-actions>
                                 </v-stepper-content>
 
                                 <!-- 3. Antecedentes del Propietario -->
@@ -518,7 +514,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field :rules="vacio" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.aCanes" :rules="vacio" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -606,8 +602,8 @@
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes CANES</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea v-if="switchCANES == '1'" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
-                                                <v-textarea v-else solo disabled label="Ninguno"></v-textarea>
+                                                <v-textarea v-if="switchCANES == '1'" v-model="eCanes" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else v-model="eCanes" solo disabled></v-textarea>
                                             </v-col>
 
                                             </v-card>
@@ -629,7 +625,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.aRejap" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -703,13 +699,13 @@
                                                 </v-col>
                                                 <v-col cols="12" sm="4">
                                                     <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
-                                                    v-model="switchCANES"
+                                                    v-model="switchREJAP"
                                                     inset
                                                     label="¿Tiene Sanciones o Antecedentes?"
                                                     ></v-switch>
                                                 </v-col>
                                                 <v-col cols="12" sm="2" style="padding-top: 10">
-                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchREJAP == '1'">Sí</v-card-text>
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
                                             </v-row>
@@ -717,8 +713,8 @@
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes REJAP</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea v-if="switchCANES == '1'" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
-                                                <v-textarea v-else solo disabled label="Ninguno"></v-textarea>
+                                                <v-textarea v-if="switchREJAP == '1'" v-model="eRejap" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else v-model="eRejap" solo disabled label="Ninguno"></v-textarea>
                                             </v-col>
 
                                             </v-card>
@@ -740,7 +736,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.aFelcc" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -814,13 +810,13 @@
                                                 </v-col>
                                                 <v-col cols="12" sm="4">
                                                     <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
-                                                    v-model="switchCANES"
+                                                    v-model="switchFELCC"
                                                     inset
                                                     label="¿Tiene Sanciones o Antecedentes?"
                                                     ></v-switch>
                                                 </v-col>
                                                 <v-col cols="12" sm="2" style="padding-top: 10">
-                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchFELCC == '1'">Sí</v-card-text>
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
                                             </v-row>
@@ -828,8 +824,8 @@
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes FELCC</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea v-if="switchCANES == '1'" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
-                                                <v-textarea v-else solo disabled label="Ninguno"></v-textarea>
+                                                <v-textarea v-if="switchFELCC == '1'" v-model="eFelcc" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else v-model="eFelcc" solo disabled label="Ninguno"></v-textarea>
                                             </v-col>
 
                                             </v-card>
@@ -851,7 +847,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.aFelcn" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -925,13 +921,13 @@
                                                 </v-col>
                                                 <v-col cols="12" sm="4">
                                                     <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
-                                                    v-model="switchCANES"
+                                                    v-model="switchFELCN"
                                                     inset
                                                     label="¿Tiene Sanciones o Antecedentes?"
                                                     ></v-switch>
                                                 </v-col>
                                                 <v-col cols="12" sm="2" style="padding-top: 10">
-                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchFELCN == '1'">Sí</v-card-text>
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
                                             </v-row>
@@ -939,8 +935,8 @@
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes FELCN</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea v-if="switchCANES == '1'" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
-                                                <v-textarea v-else solo disabled label="Ninguno"></v-textarea>
+                                                <v-textarea v-if="switchFELCN == '1'" v-model="eFelcn" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else v-model="eFelcn" solo disabled label="Ninguno"></v-textarea>
                                             </v-col>
 
                                             </v-card>
@@ -962,7 +958,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.aFelcv" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -1036,13 +1032,13 @@
                                                 </v-col>
                                                 <v-col cols="12" sm="4">
                                                     <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
-                                                    v-model="switchCANES"
+                                                    v-model="switchFELCV"
                                                     inset
                                                     label="¿Tiene Sanciones o Antecedentes?"
                                                     ></v-switch>
                                                 </v-col>
                                                 <v-col cols="12" sm="2" style="padding-top: 10">
-                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
+                                                    <v-card-text style="margin-top:5px; text-align: center" v-if="switchFELCV == '1'">Sí</v-card-text>
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
                                             </v-row>
@@ -1050,8 +1046,8 @@
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes FELCV</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea v-if="switchCANES == '1'" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
-                                                <v-textarea v-else solo disabled label="Ninguno"></v-textarea>
+                                                <v-textarea v-if="switchFELCV == '1'" v-model="eFelcv" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else solo v-model="eFelcv" disabled label="Ninguno"></v-textarea>
                                             </v-col>
 
                                             </v-card>
@@ -1069,7 +1065,18 @@
                                             :key="`btn-${1}`"
                                             v-slot="{ active, toggle }"
                                             >
-                                            <v-btn
+                                            <v-btn v-if="canesCheck"
+                                                :input-value="active"
+                                                text
+                                                color="success"
+                                                @click="toggle"
+                                            >
+                                                CANES
+                                                <v-icon right>
+                                                mdi-check
+                                                </v-icon>
+                                            </v-btn>
+                                            <v-btn v-else
                                                 :input-value="active"
                                                 text
                                                 color="primary"
@@ -1082,7 +1089,18 @@
                                             :key="`btn-${2}`"
                                             v-slot="{ active, toggle }"
                                             >
-                                            <v-btn
+                                            <v-btn v-if="rejapCheck"
+                                                :input-value="active"
+                                                text
+                                                color="success"
+                                                @click="toggle"
+                                            >
+                                                REJAP
+                                                <v-icon right>
+                                                mdi-check
+                                                </v-icon>
+                                            </v-btn>
+                                            <v-btn v-else
                                                 :input-value="active"
                                                 text
                                                 color="primary"
@@ -1095,7 +1113,18 @@
                                             :key="`btn-${3}`"
                                             v-slot="{ active, toggle }"
                                             >
-                                            <v-btn
+                                            <v-btn v-if="felccCheck"
+                                                :input-value="active"
+                                                text
+                                                color="success"
+                                                @click="toggle"
+                                            >
+                                                FELCC
+                                                <v-icon right>
+                                                mdi-check
+                                                </v-icon>
+                                            </v-btn>
+                                            <v-btn v-else
                                                 :input-value="active"
                                                 text
                                                 color="primary"
@@ -1108,7 +1137,18 @@
                                             :key="`btn-${4}`"
                                             v-slot="{ active, toggle }"
                                             >
-                                            <v-btn
+                                            <v-btn v-if="felcnCheck"
+                                                :input-value="active"
+                                                text
+                                                color="success"
+                                                @click="toggle"
+                                            >
+                                                FELCN
+                                                <v-icon right>
+                                                mdi-check
+                                                </v-icon>
+                                            </v-btn>
+                                            <v-btn v-else
                                                 :input-value="active"
                                                 text
                                                 color="primary"
@@ -1121,7 +1161,18 @@
                                             :key="`btn-${5}`"
                                             v-slot="{ active, toggle }"
                                             >
-                                            <v-btn
+                                            <v-btn v-if="felcvCheck"
+                                                :input-value="active"
+                                                text
+                                                color="success"
+                                                @click="toggle"
+                                            >
+                                                FELCV
+                                                <v-icon right>
+                                                mdi-check
+                                                </v-icon>
+                                            </v-btn>
+                                            <v-btn v-else
                                                 :input-value="active"
                                                 text
                                                 color="primary"
@@ -1136,6 +1187,7 @@
                                 </template>
                                 </v-card>
                                 <v-btn
+                                    :disabled="!form3IsValid"
                                     color="primary"
                                     @click="e6 = 4"
                                 >
@@ -1282,6 +1334,16 @@
             timeModel3: '',
             timeModel4: '',
             timeModel5: '',
+            aCanes: '',
+            eCanes: 'Ninguno',
+            aRejap: '',
+            eRejap: 'Ninguno',
+            aFelcc: '',
+            eFelcc: 'Ninguno',
+            aFelcn: '',
+            eFelcn: 'Ninguno',
+            aFelcv: '',
+            eFelcv: 'Ninguno',
             }
             
         },
@@ -1303,6 +1365,59 @@
             this.form.documento &&
             (this.form.cel || this.form.tel || this.form.em || this.form.cel2)
             )
+        },
+        canesCheck () {
+            return (
+            this.form.aCanes &&
+            this.displayDate1 &&
+            this.eCanes
+            )
+        },
+        rejapCheck () {
+            return (
+            this.form.aRejap &&
+            this.displayDate2 &&
+            this.eRejap
+            )
+        },
+        felccCheck () {
+            return (
+            this.form.aFelcc &&
+            this.displayDate3 &&
+            this.eFelcc
+            )
+        },
+        felcnCheck () {
+            return (
+            this.form.aFelcn &&
+            this.displayDate4 &&
+            this.eFelcn
+            )
+        },
+        felcvCheck () {
+            return (
+            this.form.aFelcv &&
+            this.displayDate5 &&
+            this.eFelcv
+            )
+        },
+        form3IsValid () {
+            return (
+            this.form.aCanes &&
+            this.displayDate1 &&
+            this.eCanes &&
+            this.form.aRejap &&
+            this.displayDate2 &&
+            this.eRejap &&
+            this.form.aFelcc &&
+            this.displayDate3 &&
+            this.eFelcc &&
+            this.form.aFelcn &&
+            this.displayDate4 &&
+            this.eFelcn &&
+            this.form.aFelcv &&
+            this.displayDate5 &&
+            this.eFelcv            )
         },
         model1: {
             get() {return this.value;},
