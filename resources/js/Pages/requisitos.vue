@@ -74,7 +74,7 @@
                                                         <v-dialog
                                                         ref="menuMemo"
                                                         v-model="menuMemo"
-                                                        width="300px"
+                                                        :width="anchoDate"
                                                         >
                                                         <template v-slot:activator="{ on, attrs }">
                                                             <v-text-field
@@ -93,6 +93,7 @@
                                                             v-model="dateMemo"
                                                             scrollable
                                                             locale="es"
+                                                            :width="anchoDate"
                                                             :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                             min="2014-01-01"
                                                         ><v-spacer></v-spacer>
@@ -255,7 +256,7 @@
                                                         <v-dialog
                                                         ref="menuProp"
                                                         v-model="menuProp"
-                                                        width="300px"
+                                                        :width="anchoDate"
                                                         >
                                                         <template v-slot:activator="{ on, attrs }">
                                                             <v-text-field
@@ -274,6 +275,7 @@
                                                             v-model="dateProp"
                                                             scrollable
                                                             locale="es"
+                                                            :width="anchoDate"
                                                             :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                             min="1930-01-01"
                                                         ><v-spacer></v-spacer>
@@ -522,16 +524,15 @@
                                                     <div>
                                                     <v-dialog
                                                         ref="menu"
-                                                        v-model="dropdownOpen"
+                                                        v-model="dropdownOpen1"
                                                         :close-on-content-click="false"
-                                                        :return-value.sync="model"
-                                                        width="580"
-                                                        height="100%">
+                                                        :return-value.sync="model1"
+                                                        :width="anchoDate2a">
                                                         <template v-slot:activator="{ on }">
                                                             <v-text-field
-                                                                v-model="displayDate"
+                                                                v-model="displayDate1"
                                                                 label="Fecha y hora del registro"
-                                                                prepend-icon="mdi-calendar"
+                                                                prepend-icon="mdi-calendar-clock"
                                                                 readonly
                                                                 outlined
                                                                 :rules="vacio"
@@ -543,27 +544,28 @@
                                                             <v-layout row wrap>
                                                                 <v-flex xs12 sm6 style="justify-content: center">
                                                                     <v-date-picker 
-                                                                        v-model="dateModel"
-                                                                        width="280"
+                                                                        v-model="dateModel1"
+                                                                        :width="anchoDate2b"
                                                                         locale="es"
+                                                                        :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                                         color="primary"></v-date-picker>
                                             
                                                                 </v-flex>
-                                                                <v-flex style="display:block; text-align: center" xs12 sm6>
+                                                                <v-flex xs12 sm6 style="display:block; text-align: center">
                                                                     <v-time-picker 
-                                                                        v-if="dropdownOpen" 
-                                                                        v-model="timeModel" 
+                                                                        v-if="dropdownOpen1" 
+                                                                        v-model="timeModel1" 
                                                                         color="primary"
-                                                                        width="280"
+                                                                        :width="anchoDate2b"
                                                                         format="ampm"
                                                                         scrollable></v-time-picker>
                                             
-                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection }}</h3>
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection1 }}</h3>
                                                                 </v-flex>
                                             
                                                                 <v-flex style="justify-content: center; padding: 15px">
-                                                                    <v-btn color="primary" @click="confirm()">Ok</v-btn>
-                                                                    <v-btn text @click="dropdownOpen = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirm1()">Ok</v-btn>
+                                                                    <v-btn text @click="dropdownOpen1 = false">Cancelar</v-btn>
                                                                 </v-flex>
                                                             </v-layout>
                                                         </div>
@@ -595,7 +597,7 @@
                                                     label="¿Tiene Sanciones o Antecedentes?"
                                                     ></v-switch>
                                                 </v-col>
-                                                <v-col cols="12" sm="1">
+                                                <v-col cols="12" sm="2" style="padding-top: 10">
                                                     <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
@@ -633,18 +635,18 @@
                                                     <div>
                                                     <v-dialog
                                                         ref="menu"
-                                                        v-model="dropdownOpen"
+                                                        v-model="dropdownOpen2"
                                                         :close-on-content-click="false"
-                                                        :return-value.sync="model"
-                                                        width="580"
-                                                        height="100%">
+                                                        :return-value.sync="model2"
+                                                        :width="anchoDate2a">
                                                         <template v-slot:activator="{ on }">
                                                             <v-text-field
-                                                                v-model="displayDate"
+                                                                v-model="displayDate2"
                                                                 label="Fecha y hora del registro"
-                                                                prepend-icon="mdi-calendar"
+                                                                prepend-icon="mdi-calendar-clock"
                                                                 readonly
                                                                 outlined
+                                                                :rules="vacio"
                                                                 v-on="on"
                                                             ></v-text-field>
                                                         </template>
@@ -653,27 +655,28 @@
                                                             <v-layout row wrap>
                                                                 <v-flex xs12 sm6 style="justify-content: center">
                                                                     <v-date-picker 
-                                                                        v-model="dateModel"
-                                                                        width="280"
+                                                                        v-model="dateModel2"
+                                                                        :width="anchoDate2b"
                                                                         locale="es"
+                                                                        :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                                         color="primary"></v-date-picker>
                                             
                                                                 </v-flex>
-                                                                <v-flex style="display:block; text-align: center" xs12 sm6>
+                                                                <v-flex xs12 sm6 style="display:block; text-align: center">
                                                                     <v-time-picker 
-                                                                        v-if="dropdownOpen" 
-                                                                        v-model="timeModel" 
+                                                                        v-if="dropdownOpen2" 
+                                                                        v-model="timeModel2" 
                                                                         color="primary"
-                                                                        width="280"
+                                                                        :width="anchoDate2b"
                                                                         format="ampm"
                                                                         scrollable></v-time-picker>
                                             
-                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection }}</h3>
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection2 }}</h3>
                                                                 </v-flex>
                                             
                                                                 <v-flex style="justify-content: center; padding: 15px">
-                                                                    <v-btn color="primary" @click="confirm()">Ok</v-btn>
-                                                                    <v-btn text @click="dropdownOpen = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirm2()">Ok</v-btn>
+                                                                    <v-btn text @click="dropdownOpen2 = false">Cancelar</v-btn>
                                                                 </v-flex>
                                                             </v-layout>
                                                         </div>
@@ -705,7 +708,7 @@
                                                     label="¿Tiene Sanciones o Antecedentes?"
                                                     ></v-switch>
                                                 </v-col>
-                                                <v-col cols="12" sm="1">
+                                                <v-col cols="12" sm="2" style="padding-top: 10">
                                                     <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
@@ -743,18 +746,18 @@
                                                     <div>
                                                     <v-dialog
                                                         ref="menu"
-                                                        v-model="dropdownOpen"
+                                                        v-model="dropdownOpen3"
                                                         :close-on-content-click="false"
-                                                        :return-value.sync="model"
-                                                        width="580"
-                                                        height="100%">
+                                                        :return-value.sync="model3"
+                                                        :width="anchoDate2a">
                                                         <template v-slot:activator="{ on }">
                                                             <v-text-field
-                                                                v-model="displayDate"
+                                                                v-model="displayDate3"
                                                                 label="Fecha y hora del registro"
-                                                                prepend-icon="mdi-calendar"
+                                                                prepend-icon="mdi-calendar-clock"
                                                                 readonly
                                                                 outlined
+                                                                :rules="vacio"
                                                                 v-on="on"
                                                             ></v-text-field>
                                                         </template>
@@ -763,27 +766,28 @@
                                                             <v-layout row wrap>
                                                                 <v-flex xs12 sm6 style="justify-content: center">
                                                                     <v-date-picker 
-                                                                        v-model="dateModel"
-                                                                        width="280"
+                                                                        v-model="dateModel3"
+                                                                        :width="anchoDate2b"
                                                                         locale="es"
+                                                                        :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                                         color="primary"></v-date-picker>
                                             
                                                                 </v-flex>
-                                                                <v-flex style="display:block; text-align: center" xs12 sm6>
+                                                                <v-flex xs12 sm6 style="display:block; text-align: center">
                                                                     <v-time-picker 
-                                                                        v-if="dropdownOpen" 
-                                                                        v-model="timeModel" 
+                                                                        v-if="dropdownOpen3" 
+                                                                        v-model="timeModel3" 
                                                                         color="primary"
-                                                                        width="280"
+                                                                        :width="anchoDate2b"
                                                                         format="ampm"
                                                                         scrollable></v-time-picker>
                                             
-                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection }}</h3>
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection3 }}</h3>
                                                                 </v-flex>
                                             
                                                                 <v-flex style="justify-content: center; padding: 15px">
-                                                                    <v-btn color="primary" @click="confirm()">Ok</v-btn>
-                                                                    <v-btn text @click="dropdownOpen = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirm3()">Ok</v-btn>
+                                                                    <v-btn text @click="dropdownOpen3 = false">Cancelar</v-btn>
                                                                 </v-flex>
                                                             </v-layout>
                                                         </div>
@@ -815,7 +819,7 @@
                                                     label="¿Tiene Sanciones o Antecedentes?"
                                                     ></v-switch>
                                                 </v-col>
-                                                <v-col cols="12" sm="1">
+                                                <v-col cols="12" sm="2" style="padding-top: 10">
                                                     <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
@@ -853,18 +857,18 @@
                                                     <div>
                                                     <v-dialog
                                                         ref="menu"
-                                                        v-model="dropdownOpen"
+                                                        v-model="dropdownOpen4"
                                                         :close-on-content-click="false"
-                                                        :return-value.sync="model"
-                                                        width="580"
-                                                        height="100%">
+                                                        :return-value.sync="model4"
+                                                        :width="anchoDate2a">
                                                         <template v-slot:activator="{ on }">
                                                             <v-text-field
-                                                                v-model="displayDate"
+                                                                v-model="displayDate4"
                                                                 label="Fecha y hora del registro"
-                                                                prepend-icon="mdi-calendar"
+                                                                prepend-icon="mdi-calendar-clock"
                                                                 readonly
                                                                 outlined
+                                                                :rules="vacio"
                                                                 v-on="on"
                                                             ></v-text-field>
                                                         </template>
@@ -873,27 +877,28 @@
                                                             <v-layout row wrap>
                                                                 <v-flex xs12 sm6 style="justify-content: center">
                                                                     <v-date-picker 
-                                                                        v-model="dateModel"
-                                                                        width="280"
+                                                                        v-model="dateModel4"
+                                                                        :width="anchoDate2b"
                                                                         locale="es"
+                                                                        :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                                         color="primary"></v-date-picker>
                                             
                                                                 </v-flex>
-                                                                <v-flex style="display:block; text-align: center" xs12 sm6>
+                                                                <v-flex xs12 sm6 style="display:block; text-align: center">
                                                                     <v-time-picker 
-                                                                        v-if="dropdownOpen" 
-                                                                        v-model="timeModel" 
+                                                                        v-if="dropdownOpen4" 
+                                                                        v-model="timeModel4" 
                                                                         color="primary"
-                                                                        width="280"
+                                                                        :width="anchoDate2b"
                                                                         format="ampm"
                                                                         scrollable></v-time-picker>
                                             
-                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection }}</h3>
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection4 }}</h3>
                                                                 </v-flex>
                                             
                                                                 <v-flex style="justify-content: center; padding: 15px">
-                                                                    <v-btn color="primary" @click="confirm()">Ok</v-btn>
-                                                                    <v-btn text @click="dropdownOpen = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirm4()">Ok</v-btn>
+                                                                    <v-btn text @click="dropdownOpen4 = false">Cancelar</v-btn>
                                                                 </v-flex>
                                                             </v-layout>
                                                         </div>
@@ -925,7 +930,7 @@
                                                     label="¿Tiene Sanciones o Antecedentes?"
                                                     ></v-switch>
                                                 </v-col>
-                                                <v-col cols="12" sm="1">
+                                                <v-col cols="12" sm="2" style="padding-top: 10">
                                                     <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
@@ -963,18 +968,18 @@
                                                     <div>
                                                     <v-dialog
                                                         ref="menu"
-                                                        v-model="dropdownOpen"
+                                                        v-model="dropdownOpen5"
                                                         :close-on-content-click="false"
-                                                        :return-value.sync="model"
-                                                        width="580"
-                                                        height="100%">
+                                                        :return-value.sync="model5"
+                                                        :width="anchoDate2a">
                                                         <template v-slot:activator="{ on }">
                                                             <v-text-field
-                                                                v-model="displayDate"
+                                                                v-model="displayDate5"
                                                                 label="Fecha y hora del registro"
-                                                                prepend-icon="mdi-calendar"
+                                                                prepend-icon="mdi-calendar-clock"
                                                                 readonly
                                                                 outlined
+                                                                :rules="vacio"
                                                                 v-on="on"
                                                             ></v-text-field>
                                                         </template>
@@ -983,27 +988,28 @@
                                                             <v-layout row wrap>
                                                                 <v-flex xs12 sm6 style="justify-content: center">
                                                                     <v-date-picker 
-                                                                        v-model="dateModel"
-                                                                        width="280"
+                                                                        v-model="dateModel5"
+                                                                        :width="anchoDate2b"
                                                                         locale="es"
+                                                                        :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                                         color="primary"></v-date-picker>
                                             
                                                                 </v-flex>
-                                                                <v-flex style="display:block; text-align: center" xs12 sm6>
+                                                                <v-flex xs12 sm6 style="display:block; text-align: center">
                                                                     <v-time-picker 
-                                                                        v-if="dropdownOpen" 
-                                                                        v-model="timeModel" 
+                                                                        v-if="dropdownOpen5" 
+                                                                        v-model="timeModel5" 
                                                                         color="primary"
-                                                                        width="280"
+                                                                        :width="anchoDate2b"
                                                                         format="ampm"
                                                                         scrollable></v-time-picker>
                                             
-                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection }}</h3>
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection5 }}</h3>
                                                                 </v-flex>
                                             
                                                                 <v-flex style="justify-content: center; padding: 15px">
-                                                                    <v-btn color="primary" @click="confirm()">Ok</v-btn>
-                                                                    <v-btn text @click="dropdownOpen = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirm5()">Ok</v-btn>
+                                                                    <v-btn text @click="dropdownOpen5 = false">Cancelar</v-btn>
                                                                 </v-flex>
                                                             </v-layout>
                                                         </div>
@@ -1035,7 +1041,7 @@
                                                     label="¿Tiene Sanciones o Antecedentes?"
                                                     ></v-switch>
                                                 </v-col>
-                                                <v-col cols="12" sm="1">
+                                                <v-col cols="12" sm="2" style="padding-top: 10">
                                                     <v-card-text style="margin-top:5px; text-align: center" v-if="switchCANES == '1'">Sí</v-card-text>
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
@@ -1217,7 +1223,7 @@
             JetResponsiveNavLink,
         },
         data () {
-            const defaultForm = Object.freeze({
+        const defaultForm = Object.freeze({
             doc: 'CI',
             terms: false,})
         return {
@@ -1256,10 +1262,26 @@
             switchFELCC: false,
             switchFELCN: false,
             switchFELCV: false,
-            dropdownOpen: false,
-            displayDate: '',
-            dateModel: '',
-            timeModel: '',
+            dropdownOpen1: false,
+            dropdownOpen2: false,
+            dropdownOpen3: false,
+            dropdownOpen4: false,
+            dropdownOpen5: false,
+            displayDate1: '',
+            displayDate2: '',
+            displayDate3: '',
+            displayDate4: '',
+            displayDate5: '',
+            dateModel1: '',
+            dateModel2: '',
+            dateModel3: '',
+            dateModel4: '',
+            dateModel5: '',
+            timeModel1: '',
+            timeModel2: '',
+            timeModel3: '',
+            timeModel4: '',
+            timeModel5: '',
             }
             
         },
@@ -1282,15 +1304,70 @@
             (this.form.cel || this.form.tel || this.form.em || this.form.cel2)
             )
         },
-         model: {
+        model1: {
             get() {return this.value;},
-            set(model) {} },
-        
-        
-            currentSelection() {
-            let selectedTime = this.timeModel;
-            return this.formatDate(this.dateModel) + ' ' + selectedTime;
+            set(model1) {} },
+        model2: {
+            get() {return this.value;},
+            set(model2) {} },
+        model3: {
+            get() {return this.value;},
+            set(model3) {} },
+        model4: {
+            get() {return this.value;},
+            set(model4) {} },
+        model5: {
+            get() {return this.value;},
+            set(model5) {} },
+
+        currentSelection1() {
+        let selectedTime1 = this.timeModel1;
+        return this.formatDate(this.dateModel1) + ' ' + selectedTime1;
+        },
+        currentSelection2() {
+        let selectedTime2 = this.timeModel2;
+        return this.formatDate(this.dateModel2) + ' ' + selectedTime2;
+        },
+        currentSelection3() {
+        let selectedTime3 = this.timeModel3;
+        return this.formatDate(this.dateModel3) + ' ' + selectedTime3;
+        },
+        currentSelection4() {
+        let selectedTime4 = this.timeModel4;
+        return this.formatDate(this.dateModel4) + ' ' + selectedTime4;
+        },
+        currentSelection5() {
+        let selectedTime5 = this.timeModel5;
+        return this.formatDate(this.dateModel5) + ' ' + selectedTime5;
+        },
+
+        anchoDate() {
+            switch (this.$vuetify.breakpoint.name) {
+                case 'xs': return 220
+                case 'sm': return 400
+                case 'md': return 500
+                case 'lg': return 600
+                case 'xl': return 800
             }
+            },
+        anchoDate2a() {
+            switch (this.$vuetify.breakpoint.name) {
+                case 'xs': return 300
+                case 'sm': return 600
+                case 'md': return 600
+                case 'lg': return 600
+                case 'xl': return 800
+            }
+            },
+        anchoDate2b() {
+            switch (this.$vuetify.breakpoint.name) {
+                case 'xs': return 260
+                case 'sm': return 300
+                case 'md': return 300
+                case 'lg': return 300
+                case 'xl': return 300
+            }
+            },
         },
 
         methods: 
@@ -1389,20 +1466,63 @@
                 },
             
                 // Confirm the datetime selection and close the popover
-                confirm() {
-                this.onUpdateDate();
-                this.dropdownOpen = false;
+                confirm1() {
+                this.onUpdateDate1();
+                this.dropdownOpen1 = false;
+                },
+                confirm2() {
+                this.onUpdateDate2();
+                this.dropdownOpen2 = false;
+                },
+                confirm3() {
+                this.onUpdateDate3();
+                this.dropdownOpen3 = false;
+                },
+                confirm4() {
+                this.onUpdateDate4();
+                this.dropdownOpen4 = false;
+                },
+                confirm5() {
+                this.onUpdateDate5();
+                this.dropdownOpen5 = false;
                 },
             
                 // Format the date and trigger the input event
-                onUpdateDate() {
-                if (!this.dateModel || !this.timeModel) return false;
-            
-                let selectedTime = this.timeModel;
-                this.displayDate = this.formatDate(this.dateModel) + ' ' + selectedTime;
-                this.$emit('input', this.dateModel + ' ' + selectedTime);
+                onUpdateDate1() {
+                if (!this.dateModel1 || !this.timeModel1) return false;
+                let selectedTime1 = this.timeModel1;
+                this.displayDate1 = this.formatDate(this.dateModel1) + ' ' + selectedTime1;
+                this.$emit('input', this.dateModel1 + ' ' + selectedTime1);
                 },
-            
+                
+                onUpdateDate2() {
+                if (!this.dateModel2 || !this.timeModel2) return false;
+                let selectedTime2 = this.timeModel2;
+                this.displayDate2 = this.formatDate(this.dateModel2) + ' ' + selectedTime2;
+                this.$emit('input', this.dateModel2 + ' ' + selectedTime2);
+                },
+                
+                onUpdateDate3() {
+                if (!this.dateModel3 || !this.timeModel3) return false;
+                let selectedTime3 = this.timeModel3;
+                this.displayDate3 = this.formatDate(this.dateModel3) + ' ' + selectedTime3;
+                this.$emit('input', this.dateModel3 + ' ' + selectedTime3);
+                },
+                
+                onUpdateDate4() {
+                if (!this.dateModel4 || !this.timeModel4) return false;
+                let selectedTime4 = this.timeModel4;
+                this.displayDate4 = this.formatDate(this.dateModel4) + ' ' + selectedTime4;
+                this.$emit('input', this.dateModel4 + ' ' + selectedTime4);
+                },
+                
+                onUpdateDate5() {
+                if (!this.dateModel5 || !this.timeModel5) return false;
+                let selectedTime5 = this.timeModel5;
+                this.displayDate5 = this.formatDate(this.dateModel5) + ' ' + selectedTime5;
+                this.$emit('input', this.dateModel5 + ' ' + selectedTime5);
+                },
+                
 
             /* Antecedentes */
             next () {
@@ -1422,8 +1542,20 @@
             var currentHour = d.getHours() % 12; // AM,PM format
             var minutes = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
             var currentTime = currentHour + ':' + minutes;
-            this.timeModel = currentTime;
-            this.dateModel = d.toISOString().substr(0, 10);
+            this.timeModel1 = currentTime;
+            this.dateModel1 = d.toISOString().substr(0, 10);
+            
+            this.timeModel2 = currentTime;
+            this.dateModel2 = d.toISOString().substr(0, 10);
+
+            this.timeModel3 = currentTime;
+            this.dateModel3 = d.toISOString().substr(0, 10);
+
+            this.timeModel4 = currentTime;
+            this.dateModel4 = d.toISOString().substr(0, 10);
+
+            this.timeModel5 = currentTime;
+            this.dateModel5 = d.toISOString().substr(0, 10);
         },
 
         props: 
