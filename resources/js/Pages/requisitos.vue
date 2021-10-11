@@ -1214,12 +1214,179 @@
 
                                 <v-stepper-content step="4">
                                 <v-card
-                                    color="grey lighten-1"
                                     class="mb-12"
-                                    height="200px"
-                                ></v-card>
+                                    height="100%"
+                                >
+
+                                <v-container fluid>
+                                    <v-row>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <v-text-field 
+                                        v-model="form.nomAgencia"
+                                        :rules="vacio"
+                                        label="Agencia"
+                                        placeholder="Nombre de la Agencia" 
+                                        outlined></v-text-field>
+                                        </v-col>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <v-text-field 
+                                        v-model="form.ubiAgencia"
+                                        placeholder="Departamento/Ciudad/Zona/Calle" 
+                                        outlined>
+                                        <template v-slot:label>
+                                            <div>
+                                            Ubicación<small> (opcional)</small>
+                                            </div>
+                                        </template>
+                                        </v-text-field>
+                                        </v-col>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <template>
+                                            <div>
+                                                <v-dialog
+                                                ref="menuExpSeg"
+                                                v-model="menuExpSeg"
+                                                :width="anchoDate"
+                                                >
+                                                <template v-slot:activator="{ on, attrs }">
+                                                    <v-text-field
+                                                    v-model="dateExpSeg"
+                                                    prepend-icon="mdi-calendar"
+                                                    label="Fecha de Expedición del Seguro"
+                                                    :rules="vacio"
+                                                    readonly
+                                                    outlined
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    >
+                                                    </v-text-field>
+                                                </template>
+                                                <v-date-picker
+                                                    v-model="dateExpSeg"
+                                                    scrollable
+                                                    locale="es"
+                                                    :width="anchoDate"
+                                                    :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                    min="2000-01-01"
+                                                ><v-spacer></v-spacer>
+                                                    <v-btn
+                                                        color="primary"
+                                                        @click="$refs.menuExpSeg.save(dateExpSeg)"
+                                                    >
+                                                        OK
+                                                    </v-btn></v-date-picker>
+                                                </v-dialog>
+                                            </div>
+                                        </template>
+                                        </v-col>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <template>
+                                            <div>
+                                                <v-dialog
+                                                ref="menuLimSeg"
+                                                v-model="menuLimSeg"
+                                                :width="anchoDate"
+                                                >
+                                                <template v-slot:activator="{ on, attrs }">
+                                                    <v-text-field
+                                                    v-model="dateLimSeg"
+                                                    prepend-icon="mdi-calendar"
+                                                    label="Fecha de Expiración del Seguro"
+                                                    :rules="vacio"
+                                                    readonly
+                                                    outlined
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    >
+                                                    </v-text-field>
+                                                </template>
+                                                <v-date-picker
+                                                    v-model="dateLimSeg"
+                                                    scrollable
+                                                    locale="es"
+                                                    :width="anchoDate"
+                                                    :min="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                    max="2040-01-01"
+                                                ><v-spacer></v-spacer>
+                                                    <v-btn
+                                                        color="primary"
+                                                        @click="$refs.menuLimSeg.save(dateLimSeg)"
+                                                    >
+                                                        OK
+                                                    </v-btn></v-date-picker>
+                                                </v-dialog>
+                                            </div>
+                                        </template>
+                                        </v-col>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <v-text-field 
+                                        v-model="form.resAgencia"
+                                        placeholder="Agente Responsable del Trámite" 
+                                        outlined>
+                                        <template v-slot:label>
+                                            <div>
+                                            Responsable<small> (opcional)</small>
+                                            </div>
+                                        </template></v-text-field>
+                                        </v-col>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <v-text-field 
+                                        v-model="form.resAgenciaNum"
+                                        type="number"
+                                        placeholder="Número de Referencia de la Agencia o Agente Responsable" 
+                                        outlined>
+                                        <template v-slot:label>
+                                            <div>
+                                            Número de Referencia<small> (opcional)</small>
+                                            </div>
+                                        </template></v-text-field>
+                                        </v-col>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <template>
+                                            <v-file-input style="height: 45px"
+                                                outlined
+                                                dense
+                                                show-size
+                                            ><template v-slot:label>
+                                                <div>
+                                                Seguro Adjuntado<small> (opcional)</small>
+                                                </div>
+                                                </template></v-file-input>
+                                            <v-subheader style="
+                                                display: flex;
+                                                align-items: flex-start;
+                                                justify-content: flex-end;">
+                                                *Solo se admite un elemento</v-subheader>
+                                            </template>
+                                        </v-col>
+                                    </v-row>
+                                </v-container>
+                                
+                                </v-card>
                                 <div style="padding: 15px">
                                     <v-btn
+                                        :disabled="!form4IsValid"
                                         color="primary"
                                         @click="e6 = 5"
                                     >
@@ -1238,10 +1405,151 @@
 
                                 <v-stepper-content step="5">
                                 <v-card
-                                    color="grey lighten-1"
                                     class="mb-12"
-                                    height="200px"
-                                ></v-card>
+                                    height="100%"
+                                >
+                                <v-container fluid>
+                                    <v-row>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <v-text-field 
+                                        v-model="form.nomPerro"
+                                        :rules="vacio"
+                                        label="Nombre"
+                                        placeholder="Nombre del Can" 
+                                        outlined></v-text-field>
+                                        </v-col>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <template>
+                                            <div>
+                                                <v-dialog
+                                                ref="menuNacPerro"
+                                                v-model="menuNacPerro"
+                                                :width="anchoDate"
+                                                >
+                                                <template v-slot:activator="{ on, attrs }">
+                                                    <v-text-field
+                                                    v-model="dateNacPerro"
+                                                    prepend-icon="mdi-calendar"
+                                                    label="Fecha de Nacimiento del Can o Aproximada"
+                                                    :rules="vacio"
+                                                    readonly
+                                                    outlined
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    >
+                                                    </v-text-field>
+                                                </template>
+                                                <v-date-picker
+                                                    v-model="dateNacPerro"
+                                                    scrollable
+                                                    locale="es"
+                                                    :width="anchoDate"
+                                                    :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                    min="2000-01-01"
+                                                ><v-spacer></v-spacer>
+                                                    <v-btn
+                                                        color="primary"
+                                                        @click="$refs.menuNacPerro.save(dateNacPerro)"
+                                                    >
+                                                        OK
+                                                    </v-btn></v-date-picker>
+                                                </v-dialog>
+                                            </div>
+                                        </template>
+                                        </v-col>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <v-overflow-btn
+                                            v-model="form.sexoCan"
+                                            :items= "sexoCan"
+                                            label="Sexo del Can"
+                                            :rules="vacio"
+                                            outlined
+                                            >
+                                        </v-overflow-btn>
+                                        </v-col>
+                                        <v-col
+                                            cols="12"
+                                            sm="6"
+                                        >
+                                        <v-text-field 
+                                        v-model="form.procedenciaCan"
+                                        :rules="vacio"
+                                        label="Procedencia"
+                                        placeholder="Procedencia de la Adquisición del Can" 
+                                        outlined></v-text-field>
+                                        </v-col>
+                                        <v-col cols="12" sm="12">
+                                            <v-subheader>Caracterísicas de Raza del Can</v-subheader>
+                                        </v-col>
+                                        <v-col cols="12" sm="12">
+                                            <template>
+                                            <v-carousel v-model="razaCan">
+                                                <v-carousel-item
+                                                v-for="(raza) in razas"
+                                                :key="raza"
+                                                reverse-transition="fade-transition"
+                                                transition="fade-transition"
+                                                >
+                                                <v-sheet
+                                                    :raza="razas"
+                                                    height="100%"
+                                                    tile
+                                                >
+                                                    <v-row
+                                                    class="fill-height"
+                                                    align="center"
+                                                    justify="center"
+                                                    >
+                                                    <div class="text-h2">
+                                                        {{raza}}
+                                                    </div>
+                                                    </v-row>
+                                                </v-sheet>
+                                                </v-carousel-item>
+                                            </v-carousel>
+                                            </template>
+                                        </v-col>
+                                        <v-col cols="12" sm="3">
+                                            <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
+                                            v-model="switchPuro"
+                                            inset
+                                            label="¿Es Pedigree?"
+                                            ></v-switch>
+                                        </v-col>
+                                        <v-col cols="12" sm="2" style="padding-top: 10">
+                                            <v-card-text style="margin-top:5px; text-align: center" v-if="switchPuro == '1'">Sí</v-card-text>
+                                            <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                        </v-col>
+                                        <v-col cols="12" sm="7">
+                                            <v-autocomplete v-if="switchPuro == '1'"
+                                                v-model="form.razaCan"
+                                                :raza="razas"
+                                                :items= "razas"
+                                                label="Raza"
+                                                :rules="vacio"
+                                                placeholder="Especifique la Raza del Can"
+                                                outlined>
+                                            </v-autocomplete>
+                                            <v-text-field v-else
+                                            v-model="form.razaCan"
+                                                :rules="vacio"
+                                                label="Raza"
+                                                placeholder="Especifique la Raza del Can"
+                                                outlined>
+                                            </v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                </v-container>
+                                </v-card>
                                 <div style="padding: 15px">
                                     <v-btn
                                         color="primary"
@@ -1325,6 +1633,7 @@
             switchFELCC: false,
             switchFELCN: false,
             switchFELCV: false,
+            switchPuro: false,
             dropdownOpen1: false,
             dropdownOpen2: false,
             dropdownOpen3: false,
@@ -1355,6 +1664,35 @@
             eFelcn: 'Ninguno',
             aFelcv: '',
             eFelcv: 'Ninguno',
+            nomAgencia: '',
+            ubiAgencia: '',
+            menuExpSeg: null,
+            menuLimSeg: null,
+            dateExpSeg: null,
+            dateLimSeg: null,
+            resAgencia: '',
+            resAgenciaNum: '',
+            nomPerro: '',
+            menuNacPerro: null,
+            dateNacPerro: null,
+            sexoCan: null,
+            procedenciaCan: null,
+            sexoCan: ['Macho', 'Hembra'],
+            razaCan: 0,
+            razas: [
+            'American Staffordshire Terrier',
+            'American Staffordshire Bull Terrier',
+            'Pit Bull Terrier',
+            'Bull Terrier',
+            'Bullmastiff',
+            'Doberman',
+            'Dogo Argentino',
+            'Dogo de Burdeos',
+            'Fila Brasilero',
+            'Rottweiler',
+            'Tosa Inu',
+            'Otro',
+            ],
             }
             
         },
@@ -1430,6 +1768,13 @@
             this.displayDate5 &&
             this.eFelcv            )
         },
+        form4IsValid () {
+            return (
+            this.form.nomAgencia &&
+            this.dateExpSeg &&
+            this.dateLimSeg
+            )
+        },
         model1: {
             get() {return this.value;},
             set(model1) {} },
@@ -1491,7 +1836,7 @@
                 case 'sm': return 300
                 case 'md': return 300
                 case 'lg': return 300
-                case 'xl': return 300
+                case 'xl': return 400
             }
             },
         },
@@ -1522,6 +1867,16 @@
             save (dateProp) {
                 this.$refs.menuProp.save(dateProp)
             },
+            save (dateExpSeg) {
+                this.$refs.menuExpSeg.save(dateExpSeg)
+            },
+            save (dateLimSeg) {
+                this.$refs.menuLimSeg.save(dateLimSeg)
+            },
+            save (dateNacPerro) {
+                this.$refs.menuNacPerro.save(dateNacPerro)
+            },
+            
             toggleCamera() {
                 if(this.isCameraOpen) {
                     this.isCameraOpen = false;
