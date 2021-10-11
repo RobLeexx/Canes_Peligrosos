@@ -177,6 +177,7 @@
                                 </template>
 
                                 </v-card>
+                                <div style="padding: 15px">
                                     <v-btn
                                     :disabled="!form1IsValid"
                                     color="primary"
@@ -184,6 +185,7 @@
                                     >
                                     Continuar
                                     </v-btn>
+                                </div>
                                 </v-stepper-content>
 
                                 <!-- 2. Datos del Propietario -->
@@ -462,6 +464,7 @@
                                 </template>
 
                                 </v-card>
+                                <div style="padding: 15px">
                                     <v-btn
                                     :disabled="!form2IsValid"
                                     color="primary"
@@ -472,6 +475,7 @@
                                     <v-btn @click="e6 = 1">
                                     Atrás
                                     </v-btn>
+                                </div>
                                 </v-stepper-content>
 
                                 <!-- 3. Antecedentes del Propietario -->
@@ -1186,22 +1190,25 @@
                                     </v-card>
                                 </template>
                                 </v-card>
-                                <v-btn
-                                    :disabled="!form3IsValid"
-                                    color="primary"
-                                    @click="e6 = 4"
-                                >
-                                    Continuar
-                                </v-btn>
-                                <v-btn @click="e6 = 2">
-                                    Atrás
-                                </v-btn>
+                                <div style="padding: 15px">
+                                    <v-btn
+                                        :disabled="!form3IsValid"
+                                        color="primary"
+                                        @click="e6 = 4"
+                                    >
+                                        Continuar
+                                    </v-btn>
+                                    <v-btn @click="e6 = 2">
+                                        Atrás
+                                    </v-btn>
+                                </div>
                                 </v-stepper-content>
 
                                 <!-- 4. Seguro Obligatorio de Responsabilidad Civil -->
                                 <v-stepper-step 
                                 :complete="e6 > 4"
-                                step="4">
+                                step="4"
+                                editable>
                                 Seguro Obligatorio de Responsabilidad Civil
                                 </v-stepper-step>
 
@@ -1211,19 +1218,21 @@
                                     class="mb-12"
                                     height="200px"
                                 ></v-card>
-                                <v-btn
-                                    color="primary"
-                                    @click="e6 = 5"
-                                >
-                                    Continuar
-                                </v-btn>
-                                <v-btn @click="e6 = 3">
-                                    Atrás
-                                </v-btn>
+                                <div style="padding: 15px">
+                                    <v-btn
+                                        color="primary"
+                                        @click="e6 = 5"
+                                    >
+                                        Continuar
+                                    </v-btn>
+                                    <v-btn @click="e6 = 3">
+                                        Atrás
+                                    </v-btn>
+                                </div>
                                 </v-stepper-content>
 
                                 <!-- 5. Datos del Can Peligroso -->
-                                <v-stepper-step step="5">
+                                <v-stepper-step step="5" editable>
                                 Datos del Can Peligroso
                                 </v-stepper-step>
 
@@ -1233,15 +1242,17 @@
                                     class="mb-12"
                                     height="200px"
                                 ></v-card>
-                                <v-btn
-                                    color="primary"
-                                    @click="e6 = 1"
-                                >
-                                    Continuar
-                                </v-btn>
-                                <v-btn @click="e6 = 4">
-                                    Atrás
-                                </v-btn>
+                                <div style="padding: 15px">
+                                    <v-btn
+                                        color="primary"
+                                        @click="e6 = 1"
+                                    >
+                                        Continuar
+                                    </v-btn>
+                                    <v-btn @click="e6 = 4">
+                                        Atrás
+                                    </v-btn>
+                                </div>
                                 </v-stepper-content>
                             </v-stepper>
                         </template>
