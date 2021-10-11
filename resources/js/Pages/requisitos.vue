@@ -291,14 +291,14 @@
                                             </v-col>
 
                                             <v-col cols="12" sm="6">
-                                                <v-overflow-btn
+                                                <v-autocomplete
                                                 v-model="form.doc"
                                                 :items= "doc"
                                                 label="Tipo de Documento de Identidad"
                                                 :rules="vacio"
                                                 outlined
                                                 >
-                                                </v-overflow-btn>
+                                                </v-autocomplete>
                                             </v-col>
                                             <v-col cols="12" sm="6">
                                                 <v-text-field
@@ -1467,14 +1467,14 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-overflow-btn
+                                        <v-autocomplete
                                             v-model="form.sexoCan"
-                                            :items= "sexoCan"
-                                            label="Sexo del Can"
+                                            :items= "sexoCan2"
+                                            placeholder="Sexo del Can"
                                             :rules="vacio"
                                             outlined
                                             >
-                                        </v-overflow-btn>
+                                        </v-autocomplete>
                                         </v-col>
                                         <v-col
                                             cols="12"
@@ -1492,7 +1492,7 @@
                                         </v-col>
                                         <v-col cols="12" sm="12">
                                             <template>
-                                            <v-carousel v-model="razaCan">
+                                            <v-carousel v-model="fotosCanesPPP">
                                                 <v-carousel-item
                                                 v-for="(raza) in razas"
                                                 :key="raza"
@@ -1531,16 +1531,15 @@
                                         </v-col>
                                         <v-col cols="12" sm="7">
                                             <v-autocomplete v-if="switchPuro == '1'"
-                                                v-model="form.razaCan"
+                                                v-model="razaCan"
                                                 :raza="razas"
                                                 :items= "razas"
-                                                label="Raza"
                                                 :rules="vacio"
                                                 placeholder="Especifique la Raza del Can"
                                                 outlined>
                                             </v-autocomplete>
                                             <v-text-field v-else
-                                            v-model="form.razaCan"
+                                                v-model="razaCan"
                                                 :rules="vacio"
                                                 label="Raza"
                                                 placeholder="Especifique la Raza del Can"
@@ -1677,8 +1676,8 @@
             dateNacPerro: null,
             sexoCan: null,
             procedenciaCan: null,
-            sexoCan: ['Macho', 'Hembra'],
-            razaCan: 0,
+            sexoCan2: ['Macho', 'Hembra'],
+            fotosCanesPPP: 0,
             razas: [
             'American Staffordshire Terrier',
             'American Staffordshire Bull Terrier',
@@ -1691,8 +1690,9 @@
             'Fila Brasilero',
             'Rottweiler',
             'Tosa Inu',
-            'Otro',
             ],
+            switchPuro: false,
+            razaCan: '',
             }
             
         },
