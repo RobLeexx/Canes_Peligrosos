@@ -1493,8 +1493,8 @@
                                         <v-col cols="12" sm="12">
                                             <h1 style="text-align: center; font-size: 20px">ART No.4 (LEY No 553): DEFINICIÓN DE CAN PELIGROSO SEGÚN SU RAZA</h1>
                                         </v-col>
-                                        <v-col cols="12" sm="2"></v-col>
-                                        <v-col cols="12" sm="8">
+                                        <v-col cols="12" sm="1"></v-col>
+                                        <v-col cols="12" sm="10" class="d-none d-sm-block">
                                             <template>
                                             <v-carousel>
                                                 <v-carousel-item
@@ -1505,7 +1505,18 @@
                                             </v-carousel>
                                             </template>
                                         </v-col>
-                                        <v-col cols="12" sm="2"></v-col>
+                                        <v-col cols="12" sm="8" class="d-block d-sm-none">
+                                            <template>
+                                            <v-carousel hide-delimiters width="auto" height="auto">
+                                                <v-carousel-item
+                                                v-for="(raza,i) in razas"
+                                                :key="i"
+                                                :src="raza.src">
+                                                </v-carousel-item>
+                                            </v-carousel>
+                                            </template>
+                                        </v-col>
+                                        <v-col cols="12" sm="1"></v-col>
                                         <v-col cols="12" sm="3" style="display: flex; align-items: center; justify-content: flex-end; padding: 0">
                                             <v-switch
                                             v-model="switchPuro"
@@ -1545,7 +1556,7 @@
                                         </v-row>
                                         <v-row>
                                         <v-col cols="12" sm="6">
-                                            <v-autocomplete v-model="tamCan" :items="tamCan" outlined placeholder="Tamaño del Can"></v-autocomplete>
+                                            <v-autocomplete v-model="form.tamCan" :items= "tamCan" outlined placeholder="Tamaño del Can"></v-autocomplete>
                                         </v-col>
                                         <v-col cols="12" sm="6">
                                             <v-text-field v-model="colorCan" outlined label="Color" placeholder="Color o Colores Característicos del Can">
@@ -1693,13 +1704,11 @@
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchVac" v-model="vetUbi1" outlined  placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small>
-                                            </div>
-                                        </template>
+                                                <v-text-field :disabled="!switchVac" v-model="vetUbi1" outlined  placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchVac" v-model="vetNum1" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Referente"><template v-slot:label><div>Número de Contacto<small> (opcional)</small>
+                                                <v-text-field :disabled="!switchVac" v-model="vetNum1" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Referente"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                         </v-row>
@@ -1712,15 +1721,15 @@
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="vetUbi2" outlined placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small>
+                                                <v-text-field :disabled="!switchEst" v-model="vetUbi2" outlined placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small>
+                                                <v-text-field :disabled="!switchEst" v-model="vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="vetNum2" type="number" placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small>
+                                                <v-text-field :disabled="!switchEst" v-model="vetNum2" outlined type="number" placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                         </v-row>
@@ -1733,15 +1742,15 @@
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="vetUbi1" outlined label="Ubicación" placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small>
+                                                <v-text-field v-model="vetUbi1" outlined label="Ubicación" placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Vacuna O Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small>
+                                                <v-text-field v-model="vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Vacuna O Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="vetNum1" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small>
+                                                <v-text-field v-model="vetNum1" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                         </v-row>
@@ -1899,7 +1908,7 @@
                     src: '/storage/img/pre/siete.jpg',
                 },
                 {
-                    src: '/storage/img/pre/ocho.png',
+                    src: '/storage/img/pre/ocho.jpg',
                 },
                 {
                     src: '/storage/img/pre/nueve.jpg',
