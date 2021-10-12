@@ -1506,18 +1506,26 @@
                                             </template>
                                         </v-col>
                                         <v-col cols="12" sm="2"></v-col>
-                                        <v-col cols="12" sm="3">
-                                            <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
+                                        <v-col cols="12" sm="3" style="display: flex; align-items: center; justify-content: flex-end; padding: 0">
+                                            <v-switch
                                             v-model="switchPuro"
                                             inset
-                                            label="¿Es Pedigree?"
-                                            ></v-switch>
+                                            label="¿Es Pedigree?">
+                                            </v-switch>
                                         </v-col>
-                                        <v-col cols="12" sm="2" style="padding-top: 10">
+                                        <v-col cols="12" sm="1" style="display: flex; align-items: center; justify-content: center; padding: 0">
+                                            <v-tooltip bottom>
+                                                <template v-slot:activator="{ on, attrs }">
+                                                    <v-icon right v-bind="attrs" v-on="on">mdi-help-circle</v-icon>
+                                                </template>
+                                                <span>¿Es un Can de Raza Pura?</span>
+                                            </v-tooltip>
+                                        </v-col>
+                                        <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: flex-start">
                                             <v-card-text style="margin-top:5px; text-align: center" v-if="switchPuro == '1'">Sí</v-card-text>
                                             <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                         </v-col>
-                                        <v-col cols="12" sm="7">
+                                        <v-col cols="12" sm="6" style="padding-top: 38px">
                                             <v-autocomplete v-if="switchPuro == '1'"
                                                 v-model="razaCan"
                                                 :raza="razas"
@@ -1530,10 +1538,213 @@
                                                 v-model="razaCan"
                                                 :rules="vacio"
                                                 label="Raza"
-                                                placeholder="Especifique la Raza del Can"
+                                                placeholder="Especifique la Raza o Cruce de Razas del Can"
                                                 outlined>
                                             </v-text-field>
                                         </v-col>
+                                        </v-row>
+                                        <v-row>
+                                        <v-col cols="12" sm="6">
+                                            <v-autocomplete v-model="tamCan" :items="tamCan" outlined placeholder="Tamaño del Can"></v-autocomplete>
+                                        </v-col>
+                                        <v-col cols="12" sm="6">
+                                            <v-text-field v-model="colorCan" outlined label="Color" placeholder="Color o Colores Característicos del Can">
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="12" sm="12">
+                                            <v-textarea v-model="sinCan" outlined label="Singularidades del Can" placeholder="Rasgos Característicos del Can, ej: cicatrices, color de ojos, etc.">
+                                            </v-textarea>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="12" sm="12">
+                                            <v-subheader>Estado de Salud del Can</v-subheader>
+                                        </v-col>
+                                        <v-col cols="12" sm="4" style="display: flex; justify-content: center">
+                                            <v-switch
+                                            v-model="switchVac"
+                                            inset
+                                            label="¿Está Vacunado?">
+                                            </v-switch>
+                                        </v-col>
+                                        <v-col cols="12" sm="2">
+                                            <v-card-text style="margin-top:5px; text-align: center" v-if="switchVac == '1'">Sí</v-card-text>
+                                            <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                        </v-col>
+                                        <v-col cols="12" sm="6">
+                                            <template>
+                                            <div>
+                                                <v-dialog
+                                                ref="menuVacPerro"
+                                                v-model="menuVacPerro"
+                                                :width="anchoDate"
+                                                >
+                                                <template v-slot:activator="{ on, attrs }">
+                                                    <v-text-field
+                                                    v-model="dateVacPerro"
+                                                    :disabled="!switchVac"
+                                                    prepend-icon="mdi-calendar"
+                                                    label="Fecha de Vacunación del Can o Aproximada"
+                                                    :rules="vacio"
+                                                    readonly
+                                                    outlined
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    >
+                                                    </v-text-field>
+                                                </template>
+                                                <v-date-picker
+                                                    v-model="dateVacPerro"
+                                                    scrollable
+                                                    locale="es"
+                                                    :width="anchoDate"
+                                                    :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                    min="2000-01-01"
+                                                ><v-spacer></v-spacer>
+                                                    <v-btn
+                                                        color="primary"
+                                                        @click="$refs.menuVacPerro.save(dateVacPerro)"
+                                                    >
+                                                        OK
+                                                    </v-btn></v-date-picker>
+                                                </v-dialog>
+                                            </div>
+                                        </template>
+                                        </v-col>
+                                        <v-col cols="12" sm="4" style="display: flex; justify-content: center" >
+                                            <v-switch
+                                            v-model="switchEst"
+                                            inset
+                                            label="¿Está Esterilizado?">
+                                            </v-switch>
+                                        </v-col>
+                                        <v-col cols="12" sm="2">
+                                            <v-card-text style="margin-top:5px; text-align: center" v-if="switchEst == '1'">Sí</v-card-text>
+                                            <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                        </v-col>
+                                        <v-col cols="12" sm="6">
+                                            <template>
+                                            <div>
+                                                <v-dialog
+                                                ref="menuEstPerro"
+                                                v-model="menuEstPerro"
+                                                :width="anchoDate"
+                                                >
+                                                <template v-slot:activator="{ on, attrs }">
+                                                    <v-text-field
+                                                    v-model="dateEstPerro"
+                                                    :disabled="!switchEst"
+                                                    prepend-icon="mdi-calendar"
+                                                    label="Fecha de Esterilización del Can o Aproximada"
+                                                    :rules="vacio"
+                                                    readonly
+                                                    outlined
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                    >
+                                                    </v-text-field>
+                                                </template>
+                                                <v-date-picker
+                                                    v-model="dateEstPerro"
+                                                    scrollable
+                                                    locale="es"
+                                                    :width="anchoDate"
+                                                    :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                    min="2000-01-01"
+                                                ><v-spacer></v-spacer>
+                                                    <v-btn
+                                                        color="primary"
+                                                        @click="$refs.menuEstPerro.save(dateEstPerro)"
+                                                    >
+                                                        OK
+                                                    </v-btn></v-date-picker>
+                                                </v-dialog>
+                                            </div>
+                                            </template>
+                                        </v-col>
+                                        <v-col cols="12" sm="12"><v-row v-if="switchEst && switchVac">
+                                            <v-col cols="12" sm="6" style="display: flex;align-items: center;justify-content: flex-end;padding-left: 10px">
+                                                <v-switch
+                                                v-model="switchVet"
+                                                inset
+                                                label="¿Mismo Veterinario?">
+                                                </v-switch>
+                                            </v-col>
+                                            <v-col cols="12" sm="1" style="display: flex; align-items: center; justify-content: center; padding: 0">
+                                                <v-tooltip bottom>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-icon right v-bind="attrs" v-on="on">mdi-help-circle</v-icon>
+                                                    </template>
+                                                    <span>¿Es el mismo veterinario que vacunó y esterilizó al Can?</span>
+                                                </v-tooltip>
+                                            </v-col>
+                                            <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
+                                                <v-card-text style="margin-top:5px; text-align: center" v-if="switchVet == '1'">Sí</v-card-text>
+                                                <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                            </v-col>
+                                        </v-row></v-col>
+                                        
+                                        <v-row v-if="!switchVet || (switchVac && !switchEst)">
+                                            <v-col cols="12" sm="12">
+                                            <v-subheader>Datos de Referencia de la Vacuna</v-subheader>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field :disabled="!switchVac" :rules="vacio" v-model="vetNom1" outlined label="Veterinaria o Unidad Móvil" placeholder="Nombre de la Veterinaria o Entidad donde se Vacunó al Can">
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field :disabled="!switchVac" v-model="vetUbi1" outlined  placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small>
+                                            </div>
+                                        </template>
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field :disabled="!switchVac" v-model="vetNum1" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Referente"><template v-slot:label><div>Número de Contacto<small> (opcional)</small>
+                                                </v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                        <v-row v-if="!switchVet || (switchEst && !switchVac)">
+                                            <v-col cols="12" sm="12">
+                                            <v-subheader>Datos de Referencia de la Esterilización</v-subheader>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field :disabled="!switchEst" :rules="vacio" v-model="vetNom2" outlined label="Veterinaria" placeholder="Nombre de la Veterinaria donde se Esterilizó al Can">
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field :disabled="!switchEst" v-model="vetUbi2" outlined placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small>
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field :disabled="!switchEst" v-model="vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small>
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field :disabled="!switchEst" v-model="vetNum2" type="number" placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small>
+                                                </v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                        <v-row v-if="switchVet && switchVac && switchEst">
+                                            <v-col cols="12" sm="12">
+                                            <v-subheader>Datos de Referencia de la Veterinaria</v-subheader>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="vetNom1" :rules="vacio" outlined label="Veterinaria" placeholder="Nombre de la Veterinaria donde se Trató al Can">
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="vetUbi1" outlined label="Ubicación" placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small>
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Vacuna O Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small>
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="vetNum1" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small>
+                                                </v-text-field>
+                                            </v-col>
+                                        </v-row>
                                     </v-row>
                                 </v-container>
                                 </v-card>
@@ -1715,6 +1926,23 @@
             ],
             switchPuro: false,
             razaCan: '',
+            colorCan: '',
+            tamCan: ['Pequeño','Mediano','Grande'],
+            sinCan: '',
+            menuVacPerro: null,
+            dateVacPerro: null,
+            switchVac: null,
+            dateEstPerro: null,
+            menuEstPerro: null,
+            switchEst: null,
+            switchVet: null,
+            vetNom1: '',
+            vetUbi1: '',
+            vetNum1: '',
+            vetNom2: '',
+            vetUbi2: '',
+            vetRes2: '',
+            vetNum2: '',
             }
             
         },
@@ -1897,6 +2125,12 @@
             },
             save (dateNacPerro) {
                 this.$refs.menuNacPerro.save(dateNacPerro)
+            },
+            save (dateVacPerro) {
+                this.$refs.menuVacPerro.save(dateVacPerro)
+            },
+            save (dateEstPerro) {
+                this.$refs.menuEstPerro.save(dateEstPerro)
             },
             
             toggleCamera() {
