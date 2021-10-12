@@ -1491,33 +1491,21 @@
                                             <v-subheader>Caracterísicas de Raza del Can</v-subheader>
                                         </v-col>
                                         <v-col cols="12" sm="12">
+                                            <h1 style="text-align: center; font-size: 20px">ART No.4 (LEY No 553): DEFINICIÓN DE CAN PELIGROSO SEGÚN SU RAZA</h1>
+                                        </v-col>
+                                        <v-col cols="12" sm="2"></v-col>
+                                        <v-col cols="12" sm="8">
                                             <template>
-                                            <v-carousel v-model="fotosCanesPPP">
+                                            <v-carousel>
                                                 <v-carousel-item
-                                                v-for="(raza) in razas"
-                                                :key="raza"
-                                                reverse-transition="fade-transition"
-                                                transition="fade-transition"
-                                                >
-                                                <v-sheet
-                                                    :raza="razas"
-                                                    height="100%"
-                                                    tile
-                                                >
-                                                    <v-row
-                                                    class="fill-height"
-                                                    align="center"
-                                                    justify="center"
-                                                    >
-                                                    <div class="text-h2">
-                                                        {{raza}}
-                                                    </div>
-                                                    </v-row>
-                                                </v-sheet>
+                                                v-for="(raza,i) in razas"
+                                                :key="i"
+                                                :src="raza.src">
                                                 </v-carousel-item>
                                             </v-carousel>
                                             </template>
                                         </v-col>
+                                        <v-col cols="12" sm="2"></v-col>
                                         <v-col cols="12" sm="3">
                                             <v-switch style="padding-left: 30px; display: flex; justify-content: flex-end"
                                             v-model="switchPuro"
@@ -1533,7 +1521,7 @@
                                             <v-autocomplete v-if="switchPuro == '1'"
                                                 v-model="razaCan"
                                                 :raza="razas"
-                                                :items= "razas"
+                                                :items= "razasNames"
                                                 :rules="vacio"
                                                 placeholder="Especifique la Raza del Can"
                                                 outlined>
@@ -1677,8 +1665,42 @@
             sexoCan: null,
             procedenciaCan: null,
             sexoCan2: ['Macho', 'Hembra'],
-            fotosCanesPPP: 0,
             razas: [
+                {
+                    src: '/storage/img/pre/uno.jpg',
+                },
+                {
+                    src: '/storage/img/pre/dos.jpg',
+                },
+                {
+                    src: '/storage/img/pre/tres.jpg',
+                },
+                {
+                    src: '/storage/img/pre/cuatro.jpg',
+                },
+                {
+                    src: '/storage/img/pre/cinco.jpg',
+                },
+                {
+                    src: '/storage/img/pre/seis.jpg',
+                },
+                {
+                    src: '/storage/img/pre/siete.jpg',
+                },
+                {
+                    src: '/storage/img/pre/ocho.png',
+                },
+                {
+                    src: '/storage/img/pre/nueve.jpg',
+                },
+                {
+                    src: '/storage/img/pre/diez.jpg',
+                },
+                {
+                    src: '/storage/img/pre/once.jpg',
+                },
+            ],
+            razasNames: [
             'American Staffordshire Terrier',
             'American Staffordshire Bull Terrier',
             'Pit Bull Terrier',
