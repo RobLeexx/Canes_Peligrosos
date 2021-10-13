@@ -300,14 +300,22 @@
                                                 >
                                                 </v-autocomplete>
                                             </v-col>
-                                            <v-col cols="12" sm="6">
+                                            <v-col cols="12" sm="4">
                                                 <v-text-field
                                                 v-model="form.documento"
                                                 :rules="vacio"
                                                 label="Documento de Identidad"
-                                                placeholder="Documento con lugar de expedición"
+                                                placeholder="Documento de Identidad"
                                                 outlined
                                                 ></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="2">
+                                                <v-autocomplete 
+                                                v-model="form.docExp"
+                                                :items= "docExp"
+                                                label="Lugar de Expedición"
+                                                :rules="vacio"
+                                                outlined></v-autocomplete>
                                             </v-col>
                                             <v-col cols="12" lg="6" sm="6">
                                                 <template>
@@ -1517,7 +1525,7 @@
                                             </template>
                                         </v-col>
                                         <v-col cols="12" sm="1"></v-col>
-                                        <v-col cols="12" sm="3" style="display: flex; align-items: center; justify-content: flex-end; padding: 0">
+                                        <v-col cols="12" sm="3" style="display: flex; align-items: center; justify-content: center; padding: 0">
                                             <v-switch
                                             v-model="switchPuro"
                                             inset
@@ -1538,7 +1546,7 @@
                                         </v-col>
                                         <v-col cols="12" sm="6" style="padding-top: 38px">
                                             <v-autocomplete v-if="switchPuro == '1'"
-                                                v-model="razaCan"
+                                                v-model="form.razaCan"
                                                 :raza="razas"
                                                 :items= "razasNames"
                                                 :rules="vacio"
@@ -1546,7 +1554,7 @@
                                                 outlined>
                                             </v-autocomplete>
                                             <v-text-field v-else
-                                                v-model="razaCan"
+                                                v-model="form.razaCan"
                                                 :rules="vacio"
                                                 label="Raza"
                                                 placeholder="Especifique la Raza o Cruce de Razas del Can"
@@ -1556,14 +1564,14 @@
                                         </v-row>
                                         <v-row>
                                         <v-col cols="12" sm="6">
-                                            <v-autocomplete v-model="form.tamCan" :items= "tamCan" outlined placeholder="Tamaño del Can"></v-autocomplete>
+                                            <v-autocomplete v-model="form.tamCan" :items= "tamCan" :rules="vacio" outlined placeholder="Tamaño del Can"></v-autocomplete>
                                         </v-col>
                                         <v-col cols="12" sm="6">
-                                            <v-text-field v-model="colorCan" outlined label="Color" placeholder="Color o Colores Característicos del Can">
+                                            <v-text-field v-model="form.colorCan" outlined label="Color" :rules="vacio" placeholder="Color o Colores Característicos del Can">
                                             </v-text-field>
                                         </v-col>
                                         <v-col cols="12" sm="12">
-                                            <v-textarea v-model="sinCan" outlined label="Singularidades del Can" placeholder="Rasgos Característicos del Can, ej: cicatrices, color de ojos, etc.">
+                                            <v-textarea v-model="form.sinCan" outlined label="Singularidades del Can" :rules="vacio" placeholder="Rasgos Característicos del Can, ej: cicatrices, color de ojos, etc.">
                                             </v-textarea>
                                         </v-col>
                                     </v-row>
@@ -1711,6 +1719,25 @@
                                                 <v-text-field :disabled="!switchVac" v-model="vetNum1" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Referente"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <template>
+                                                <v-file-input style="height: 45px"
+                                                    :disabled="!switchVac"
+                                                    outlined
+                                                    dense
+                                                    show-size
+                                                ><template v-slot:label>
+                                                    <div>
+                                                    Certificado de Vacunación Adjuntado<small> (opcional)</small>
+                                                    </div>
+                                                    </template></v-file-input>
+                                                <v-subheader style="
+                                                    display: flex;
+                                                    align-items: flex-start;
+                                                    justify-content: flex-end;">
+                                                    *Solo se admite un elemento</v-subheader>
+                                                </template>
+                                            </v-col>
                                         </v-row>
                                         <v-row v-if="!switchVet || (switchEst && !switchVac)">
                                             <v-col cols="12" sm="12">
@@ -1731,6 +1758,25 @@
                                             <v-col cols="12" sm="6">
                                                 <v-text-field :disabled="!switchEst" v-model="vetNum2" outlined type="number" placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <template>
+                                                <v-file-input style="height: 45px"
+                                                    :disabled="!switchEst"
+                                                    outlined
+                                                    dense
+                                                    show-size
+                                                ><template v-slot:label>
+                                                    <div>
+                                                    Certificado de Esterilización Adjuntado<small> (opcional)</small>
+                                                    </div>
+                                                    </template></v-file-input>
+                                                <v-subheader style="
+                                                    display: flex;
+                                                    align-items: flex-start;
+                                                    justify-content: flex-end;">
+                                                    *Solo se admite un elemento</v-subheader>
+                                                </template>
                                             </v-col>
                                         </v-row>
                                         <v-row v-if="switchVet && switchVac && switchEst">
@@ -1753,16 +1799,97 @@
                                                 <v-text-field v-model="vetNum1" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
+                                            <v-col cols="12" sm="12">
+                                                <template>
+                                                <v-file-input style="height: 45px"
+                                                    outlined
+                                                    dense
+                                                    show-size
+                                                    multiple
+                                                    chips
+                                                ><template v-slot:label>
+                                                    <div>
+                                                    Certificado de Vacuna y Esterilización Adjuntados<small> (opcional)</small>
+                                                    </div>
+                                                    </template></v-file-input>
+                                                <v-subheader style="
+                                                    display: flex;
+                                                    align-items: flex-start;
+                                                    justify-content: flex-end;">
+                                                    *Para adjuntar más de un elemento haga una selcción múltiple</v-subheader>
+                                                </template>
+                                            </v-col>
+                                        </v-row>
+                                        <v-row>
+                                            <v-col cols="12" sm="12"><v-subheader>Microchip</v-subheader></v-col>
+                                            <v-col cols="12" sm="3" style="display: flex; align-items: center; justify-content: center; padding: 0">
+                                            <v-switch
+                                            v-model="switchMicro"
+                                            inset
+                                            label="¿Tiene Microchip?">
+                                            </v-switch>
+                                            </v-col>
+                                            <v-col cols="12" sm="1" style="display: flex; align-items: center; justify-content: center; padding: 0">
+                                                <v-tooltip bottom>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-icon right v-bind="attrs" v-on="on">mdi-help-circle</v-icon>
+                                                    </template>
+                                                    <span>¿Tiene implantado un Microchip de registro por una entidad regulada por un Gobierno Autónomo Municipal?</span>
+                                                </v-tooltip>
+                                            </v-col>
+                                            <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: flex-start">
+                                                <v-card-text style="margin-top:5px; text-align: center" v-if="switchMicro == '1'">Sí</v-card-text>
+                                                <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                            </v-col>
+                                            <v-col cols="12" sm="6" style="padding-top: 38px">
+                                                <v-text-field :disabled="!switchMicro"
+                                                    v-model="microCan"
+                                                    :rules="vacio"
+                                                    label="Número de Microchip"
+                                                    placeholder="Número de Identitifación del Microchip"
+                                                    outlined>
+                                                </v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                        <v-row>
+                                            <v-col cols="12" sm="12"><v-subheader>Cuidadores o Tenedores Eventuales *al menos un nombre con contacto es obligatorio</v-subheader></v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="form.canEven1" outlined :rules="vacio" label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="form.canEvenNum1" outlined :rules="vacio" type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="form.canEven2" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="form.canEvenNum2" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="form.canEven3" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="form.canEvenNum3" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="form.canEven4" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field v-model="form.canEvenNum4" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="12"><v-subheader>Tenencia del Can</v-subheader></v-col>
+                                            <v-col cols="12" sm="12"><v-textarea v-model="form.canCon" :rules="vacio" outlined label="Motivos de Convivencia con el Can Peligroso" placeholder="Motivos por los cuales se domestica al Perro Peligroso"></v-textarea></v-col>
                                         </v-row>
                                     </v-row>
                                 </v-container>
                                 </v-card>
                                 <div style="padding: 15px">
                                     <v-btn
+                                        :disabled="!form5IsValid"
                                         color="primary"
                                         @click="e6 = 1"
                                     >
-                                        Continuar
+                                        Finzalizar
                                     </v-btn>
                                     <v-btn @click="e6 = 4">
                                         Atrás
@@ -1826,6 +1953,7 @@
             menuMemo: false,
             menuProp: false,
             doc: ['CI', 'Pasaporte'],
+            docExp: ['CH','LP','CB','OR','PT','TJ','SC','BE','PD', 'Extranjero'],
             dialog: false,
             isCameraOpen: false,
             isPhotoTaken: false,
@@ -1952,6 +2080,17 @@
             vetUbi2: '',
             vetRes2: '',
             vetNum2: '',
+            switchMicro: '',
+            microCan:'',
+            canEven1: '',
+            canEvenNum1: '',
+            canEven2: '',
+            canEvenNum2: '',
+            canEven3: '',
+            canEvenNum3: '',
+            canEven4: '',
+            canEvenNum4: '',
+            canCon: '',
             }
             
         },
@@ -1971,6 +2110,7 @@
             this.form.nombres &&
             this.dateProp &&
             this.form.documento &&
+            this.form.docExp &&
             (this.form.cel || this.form.tel || this.form.em || this.form.cel2)
             )
         },
@@ -2032,6 +2172,21 @@
             this.form.nomAgencia &&
             this.dateExpSeg &&
             this.dateLimSeg
+            )
+        },
+        form5IsValid () {
+            return (
+            this.form.nomPerro &&
+            this.dateNacPerro &&
+            this.form.sexoCan &&
+            this.form.procedenciaCan &&
+            this.form.razaCan &&
+            this.form.tamCan &&
+            this.form.colorCan &&
+            this.form.sinCan &&
+            this.form.canEven1 &&
+            this.form.canEvenNum1 &&
+            this.form.canCon
             )
         },
         model1: {
