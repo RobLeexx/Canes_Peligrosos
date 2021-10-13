@@ -358,10 +358,10 @@
                                                         </div>
                                                         
                                                         <v-row style="padding:12px; margin-right: 5px">
-                                                            <div v-if="isCameraOpen" v-show="!isLoading" :class="{ 'flash' : isShotPhoto }">
+                                                            <div v-if="isCameraOpen" v-show="!isLoading" :class="{ 'flash' : isShotPhoto }" class="camera-canvas">
                                                                 <div :class="{'flash' : isShotPhoto}"></div>
-                                                                <video v-show="!isPhotoTaken" ref="camera" :width="450" :height="337.5" autoplay></video>
-                                                                <canvas v-show="isPhotoTaken" id="photoTaken" ref="canvas" :width="450" :height="337.5"></canvas>
+                                                                <video v-show="!isPhotoTaken" ref="camera" :width="canvasWidth" :height="canvasHeight" autoplay></video>
+                                                                <canvas v-show="isPhotoTaken" id="photoTaken" ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
                                                             </div>
                                                             
                                                             <v-row style="display: flex; flex-direction: column">
@@ -385,8 +385,11 @@
                                                                         <v-icon color="primary">
                                                                             mdi-download
                                                                         </v-icon>
-                                                                        Descargar
+                                                                        Guardar
                                                                     </a>
+                                                                </div>
+                                                                <div v-if="isPhotoTaken && isCameraOpen" style="padding: 50px; text-align: end">
+                                                                    <vue-picture-swipe :items="items"></vue-picture-swipe>
                                                                 </div>
                                                             </v-row>
                                                         </v-row>
@@ -1914,6 +1917,7 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import VuePictureSwipe from "vue-picture-swipe"
 
     export default 
     {
@@ -1926,10 +1930,12 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            VuePictureSwipe,
         },
         data () {
         const defaultForm = Object.freeze({
             doc: 'CI',
+            docExp: 'LP',
             terms: false,})
         return {
             e6: 1,
@@ -2091,6 +2097,9 @@
             canEven4: '',
             canEvenNum4: '',
             canCon: '',
+            canvasHeight:300,
+            canvasWidth:300,
+            items: [],
             }
             
         },
@@ -2316,39 +2325,74 @@
                             video: true
             });
             navigator.mediaDevices
-                        .getUserMedia(constraints)
-                        .then(stream => {
+                .getUserMedia(constraints)
+                .then(stream => {
                 this.isLoading = false;
-                            this.$refs.camera.srcObject = stream;
-                        })
-                        .catch(error => {
+                this.$refs.camera.srcObject = stream;
+                }).catch(error => {
                 this.isLoading = false;
-                            alert("El navegador o el dispositivo no permiten Cámara Web");
-                        });
-            },
-                        stopCameraStream() {
+                    alert("El navegador o el dispositivo no permiten Cámara Web");
+                });
+                },
+                stopCameraStream() {
                 let tracks = this.$refs.camera.srcObject.getTracks();
-
-                        tracks.forEach(track => {
-                            track.stop();
-                        });
+                tracks.forEach(track => {
+                    track.stop();
+                });
                 },
                 
                 takePhoto() {
-                if(!this.isPhotoTaken) {
-                    this.isShotPhoto = true;
-
                     const FLASH_TIMEOUT = 50;
-
+                    let self = this;
                     setTimeout(() => {
-                    this.isShotPhoto = false;
+                    const context = self.$refs.canvas.getContext('2d');
+                    context.drawImage(self.$refs.camera, 0, 0, self.canvasWidth, self.canvasHeight);
+                    const dataUrl = self.$refs.canvas.toDataURL("image/jpeg")
+                        .replace("image/jpeg", "image/octet-stream");
+                    self.addToPhotoGallery(dataUrl);
+                    self.uploadPhoto(dataUrl);
+                    self.isCameraOpen = false;
+                    self.stopCameraStream();
                     }, FLASH_TIMEOUT);
-                }
-                
-                this.isPhotoTaken = !this.isPhotoTaken;
-                
-                const context = this.$refs.canvas.getContext('2d');
-                context.drawImage(this.$refs.camera, 0, 0, 450, 337.5);
+                },
+
+                addToPhotoGallery(dataURI) {
+                this.items.push(
+                    {
+                        src: dataURI,
+                        thumbnail: dataURI,
+                        w: this.canvasWidth,
+                        h: this.canvasHeight,
+                        alt: 'some numbers on a grey background' // optional alt attribute for thumbnail image
+                    }
+                )
+                },
+                uploadPhoto(dataURL){
+                let uniquePictureName = this.generateCapturePhotoName();
+                let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpg')
+                let formData = new FormData()
+                formData.append('file', capturedPhotoFile)
+                // Upload image api
+                // axios.post('http://your-url-upload', formData).then(response => {
+                //   console.log(response)
+                // })
+                console.log("File", capturedPhotoFile);
+                },
+                 generateCapturePhotoName(){
+                return  Math.random().toString(36).substring(2, 15)
+                },
+    
+                dataURLtoFile(dataURL, filename) {
+                    let arr = dataURL.split(','),
+                        mime = arr[0].match(/:(.*?);/)[1],
+                        bstr = atob(arr[1]),
+                        n = bstr.length,
+                        u8arr = new Uint8Array(n);
+    
+                    while (n--) {
+                        u8arr[n] = bstr.charCodeAt(n);
+                    }
+                    return new File([u8arr], filename, {type: mime});
                 },
                 
                 downloadImage() {
