@@ -338,9 +338,14 @@
                                             <v-col cols="12" lg="1" sm="1" style="display: flex; justify-content: center; padding: 0">
                                                 <v-dialog v-model="dialog" width="50%" height="100%">
                                                     <template v-slot:activator="{ on, attrs }">
-                                                        <v-btn fab color="primary" v-bind="attrs" v-on="on" @click="toggleCamera" :loading="dialog">
+                                                        <v-btn fab v-if="!photoTaken" color="primary" v-bind="attrs" v-on="on" @click="toggleCamera" :loading="dialog">
                                                             <v-icon>
                                                                 mdi-camera-plus
+                                                            </v-icon>
+                                                        </v-btn>
+                                                        <v-btn fab v-else color="success" v-bind="attrs" v-on="on" @click.prevent="dialog = true" :loading="dialog">
+                                                            <v-icon>
+                                                                mdi-image
                                                             </v-icon>
                                                         </v-btn>
                                                     </template>
@@ -358,46 +363,35 @@
                                                         </div>
                                                         
                                                         <v-row style="padding:12px; margin-right: 5px">
-                                                            <div v-if="isCameraOpen" v-show="!isLoading" :class="{ 'flash' : isShotPhoto }" class="camera-canvas">
+                                                            <div v-if="isCameraOpen" v-show="!isLoading" :class="{ 'flash' : isShotPhoto }">
                                                                 <div :class="{'flash' : isShotPhoto}"></div>
-                                                                <video v-show="!isPhotoTaken" ref="camera" :width="canvasWidth" :height="canvasHeight" autoplay></video>
-                                                                <canvas v-show="isPhotoTaken" id="photoTaken" ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
+                                                                <video ref="camera" :width="canvasWidth" :height="canvasHeight" autoplay></video>
+                                                                <canvas class="d-none" ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
                                                             </div>
-                                                            
                                                             <v-row style="display: flex; flex-direction: column">
-                                                                <div v-if="isCameraOpen && !isLoading && !isPhotoTaken" style="text-align: center; padding: 50px">
+                                                                <div v-if="isCameraOpen && !isLoading && !photoTaken" style="text-align: center; padding: 50px">
                                                                     <v-btn fab color="success" @click="takePhoto">
                                                                         <v-icon>
                                                                             mdi-camera
                                                                         </v-icon>
                                                                     </v-btn>
                                                                 </div>
-                                                                <div v-if="isCameraOpen && !isLoading && isPhotoTaken" style="text-align: center; padding: 50px">
+                                                                <div v-if="isCameraOpen && !isLoading && photoTaken" style="text-align: center; padding: 50px">
                                                                     <v-btn fab color="warning" @click="takePhoto">
                                                                         <v-icon>
                                                                             mdi-reload
                                                                         </v-icon>
                                                                     </v-btn>
                                                                 </div>
-                                                                
-                                                                <div v-if="isPhotoTaken && isCameraOpen" style="padding: 50px; text-align: center">
-                                                                    <a id="downloadPhoto" download="my-photo.jpg" class="button" role="button" @click="downloadImage">
-                                                                        <v-icon color="primary">
-                                                                            mdi-download
-                                                                        </v-icon>
-                                                                        Guardar
-                                                                    </a>
-                                                                </div>
-                                                                <div v-if="isPhotoTaken && isCameraOpen" style="padding: 50px; text-align: end">
-                                                                    <vue-picture-swipe :items="items"></vue-picture-swipe>
-                                                                </div>
                                                             </v-row>
                                                         </v-row>
-
                                                         <v-divider></v-divider>
                                                         <v-card-actions>
                                                         <v-spacer></v-spacer>
-                                                        <v-btn style="padding: 10px" color="error" @click.prevent="dialog = false" @click="toggleCamera">
+                                                        <v-btn v-if="!photoTaken" style="padding: 10px" color="error" @click.prevent="dialog = false" @click="toggleCamera">
+                                                            Cerrar
+                                                        </v-btn>
+                                                        <v-btn v-else style="padding: 10px" color="error" @click.prevent="dialog = false">
                                                             Cerrar
                                                         </v-btn>
                                                         </v-card-actions>
@@ -406,13 +400,13 @@
                                             </v-col>
                                             <v-col cols="12" lg="5" md="5" sm="5">
                                                 <template>
-                                                    <v-file-input
+                                                    <v-text-field
+                                                        v-model="fotoProp"
                                                         label="Foto del Propietario"
                                                         outlined
                                                         dense
-                                                        show-size
                                                         prepend-icon="mdi-face"
-                                                    ></v-file-input>
+                                                    ></v-text-field>
                                                 </template>
                                             </v-col>
                                             <v-col cols="12" lg="12" sm="6">
@@ -1917,7 +1911,6 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
-    import VuePictureSwipe from "vue-picture-swipe"
 
     export default 
     {
@@ -1930,7 +1923,6 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
-            VuePictureSwipe,
         },
         data () {
         const defaultForm = Object.freeze({
@@ -1962,7 +1954,6 @@
             docExp: ['CH','LP','CB','OR','PT','TJ','SC','BE','PD', 'Extranjero'],
             dialog: false,
             isCameraOpen: false,
-            isPhotoTaken: false,
             isShotPhoto: false,
             isLoading: false,
             link: '#',
@@ -2097,9 +2088,11 @@
             canEven4: '',
             canEvenNum4: '',
             canCon: '',
-            canvasHeight:300,
-            canvasWidth:300,
-            items: [],
+            canvasHeight:420,
+            canvasWidth:550,
+            fotoProp: null,
+            photoTaken: false,
+            itemPhotoProp: [],
             }
             
         },
@@ -2262,6 +2255,18 @@
                 case 'xl': return 400
             }
             },
+        anchoFoto() {
+            switch(this.photoTaken){
+                case false: return 0
+                case true: 550
+            }
+        },
+        altoFoto() {
+            switch(this.photoTaken){
+                case false: return 0
+                case true: 420
+            }
+        },
         },
 
         methods: 
@@ -2305,11 +2310,13 @@
             save (dateEstPerro) {
                 this.$refs.menuEstPerro.save(dateEstPerro)
             },
+            save (dateEstPerro) {
+                this.$refs.menuEstPerro.save(dateEstPerro)
+            },
             
             toggleCamera() {
                 if(this.isCameraOpen) {
                     this.isCameraOpen = false;
-                    this.isPhotoTaken = false;
                     this.isShotPhoto = false;
                     this.stopCameraStream();
                 } else {
@@ -2345,19 +2352,19 @@
                     const FLASH_TIMEOUT = 50;
                     let self = this;
                     setTimeout(() => {
+                    this.photoTaken = true;
                     const context = self.$refs.canvas.getContext('2d');
                     context.drawImage(self.$refs.camera, 0, 0, self.canvasWidth, self.canvasHeight);
                     const dataUrl = self.$refs.canvas.toDataURL("image/jpeg")
                         .replace("image/jpeg", "image/octet-stream");
                     self.addToPhotoGallery(dataUrl);
                     self.uploadPhoto(dataUrl);
-                    self.isCameraOpen = false;
                     self.stopCameraStream();
                     }, FLASH_TIMEOUT);
                 },
 
                 addToPhotoGallery(dataURI) {
-                this.items.push(
+                this.itemPhotoProp.push(
                     {
                         src: dataURI,
                         thumbnail: dataURI,
@@ -2393,13 +2400,6 @@
                         u8arr[n] = bstr.charCodeAt(n);
                     }
                     return new File([u8arr], filename, {type: mime});
-                },
-                
-                downloadImage() {
-                const download = document.getElementById("downloadPhoto");
-                const canvas = document.getElementById("photoTaken").toDataURL("image/jpeg")
-                .replace("image/jpeg", "image/octet-stream");
-                download.setAttribute("href", canvas);
                 },
 
                 /* DateTimeExtension */                
