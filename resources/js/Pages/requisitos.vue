@@ -336,7 +336,7 @@
                                                 </template>
                                             </v-col>
                                             <v-col cols="12" lg="1" sm="1" style="display: flex; justify-content: center; padding: 0">
-                                                <v-dialog v-model="dialog" width="50%" height="100%">
+                                                <v-dialog persistent v-model="dialog" width="50%" height="100%">
                                                     <template v-slot:activator="{ on, attrs }">
                                                         <v-btn fab v-if="!photoTaken" color="primary" v-bind="attrs" v-on="on" @click="toggleCamera" :loading="dialog">
                                                             <v-icon>
@@ -365,8 +365,8 @@
                                                         <v-row style="padding:12px; margin-right: 5px">
                                                             <div v-if="isCameraOpen" v-show="!isLoading" :class="{ 'flash' : isShotPhoto }">
                                                                 <div :class="{'flash' : isShotPhoto}"></div>
-                                                                <video ref="camera" :width="canvasWidth" :height="canvasHeight" autoplay></video>
-                                                                <canvas class="d-none" ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
+                                                                <video v-if="!photoTaken" ref="camera" :width="canvasWidth" :height="canvasHeight" autoplay></video>
+                                                                <canvas v-show="photoTaken" ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
                                                             </div>
                                                             <v-row style="display: flex; flex-direction: column">
                                                                 <div v-if="isCameraOpen && !isLoading && !photoTaken" style="text-align: center; padding: 50px">
@@ -377,7 +377,7 @@
                                                                     </v-btn>
                                                                 </div>
                                                                 <div v-if="isCameraOpen && !isLoading && photoTaken" style="text-align: center; padding: 50px">
-                                                                    <v-btn fab color="warning" @click="takePhoto">
+                                                                    <v-btn fab color="warning" @click="retryPhoto">
                                                                         <v-icon>
                                                                             mdi-reload
                                                                         </v-icon>
@@ -401,7 +401,8 @@
                                             <v-col cols="12" lg="5" md="5" sm="5">
                                                 <template>
                                                     <v-text-field
-                                                        v-model="fotoProp"
+                                                        disabled
+                                                        :value="fotoProp"
                                                         label="Foto del Propietario"
                                                         outlined
                                                         dense
@@ -2090,9 +2091,9 @@
             canCon: '',
             canvasHeight:420,
             canvasWidth:550,
-            fotoProp: null,
             photoTaken: false,
             itemPhotoProp: [],
+            fotoProp: null,
             }
             
         },
@@ -2353,14 +2354,22 @@
                     let self = this;
                     setTimeout(() => {
                     this.photoTaken = true;
-                    const context = self.$refs.canvas.getContext('2d');
-                    context.drawImage(self.$refs.camera, 0, 0, self.canvasWidth, self.canvasHeight);
-                    const dataUrl = self.$refs.canvas.toDataURL("image/jpeg")
+                    const context = this.$refs.canvas.getContext('2d');
+                    context.drawImage(this.$refs.camera, 0, 0, this.canvasWidth, this.canvasHeight);
+                    const dataUrl = this.$refs.canvas.toDataURL("image/jpeg")
                         .replace("image/jpeg", "image/octet-stream");
-                    self.addToPhotoGallery(dataUrl);
-                    self.uploadPhoto(dataUrl);
-                    self.stopCameraStream();
+                    this.addToPhotoGallery(dataUrl);
+                    this.uploadPhoto(dataUrl);
+                    this.stopCameraStream();
                     }, FLASH_TIMEOUT);
+                },
+                retryPhoto() {
+                    this.itemPhotoProp.splice(),
+                    console.log(this.itemPhotoProp);
+                    this.photoTaken = false,
+                    this.isCameraOpen = true,
+                    this.fotoProp = null,
+                    this.createCameraElement()
                 },
 
                 addToPhotoGallery(dataURI) {
@@ -2377,6 +2386,7 @@
                 uploadPhoto(dataURL){
                 let uniquePictureName = this.generateCapturePhotoName();
                 let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpg')
+                this.fotoProp = uniquePictureName;
                 let formData = new FormData()
                 formData.append('file', capturedPhotoFile)
                 // Upload image api
