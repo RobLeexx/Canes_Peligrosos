@@ -405,7 +405,7 @@
                                             </v-col>
                                             <v-col cols="12" lg="5" md="5" sm="5">
                                                 <template>
-                                                    <v-text-field
+                                                    <v-text-field style="height: 45px"
                                                         disabled
                                                         :value="fotoProp"
                                                         label="Foto del Propietario"
@@ -413,10 +413,77 @@
                                                         dense
                                                         prepend-icon="mdi-face"
                                                     ></v-text-field>
+                                                    <v-subheader style="
+                                                        display: flex;
+                                                        align-items: flex-start;
+                                                        justify-content: flex-end;
+                                                        color: grey">
+                                                        *Solo se admite una foto</v-subheader>
                                                 </template>
                                             </v-col>
+                                            <v-col cols="12" sm="12">
+                                                <v-subheader>Domicilio del propietario en Google Maps</v-subheader>
                                             </v-col>
-                                            <v-col cols="12" lg="12" sm="6">
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field 
+                                                        v-model="form.ubiProp"
+                                                        outlined
+                                                        label="Domicilio"
+                                                        placeholder="Departamento/Ciudad/Zona/Calle"
+                                                        :rules="vacio"
+                                                ></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" lg="1" sm="1" style="display: flex; justify-content: center">
+                                                <v-dialog persistent v-model="dialog2" width="50%" height="100%">
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-btn fab color="primary" v-bind="attrs" v-on="on" :loading="dialog2">
+                                                            <v-icon>
+                                                                mdi-map-marker-plus
+                                                            </v-icon>
+                                                        </v-btn>
+                                                        <!--<v-btn fab color="success" v-bind="attrs" v-on="on" @click.prevent="dialog2 = true" :loading="dialog2">
+                                                            <v-icon>
+                                                                mdi-image
+                                                            </v-icon>
+                                                        </v-btn>-->
+                                                    </template>
+                                                    <v-card>
+                                                        <v-card-title class="text-h5 grey lighten-2" style="display: flex; justify-content: center">
+                                                            Ubicación en Google Maps del Propietario
+                                                        </v-card-title>
+                                                        
+                                                        <v-row style="padding:12px; margin-right: 5px">
+                                                        </v-row>
+                                                        <v-divider></v-divider>
+                                                        <v-card-actions>
+                                                        <v-row style="justify-content: center">
+                                                            <v-spacer></v-spacer>
+                                                            <div style="align-items: center; display: flex; padding: 15px">
+                                                                <v-btn style="padding: 10px" color="error" @click.prevent="dialog2 = false">
+                                                                    Cerrar
+                                                                </v-btn>
+                                                            </div>
+                                                        </v-row>
+                                                        </v-card-actions>
+                                                    </v-card>
+                                                    </v-dialog>
+                                            </v-col>
+                                            <v-col cols="12" sm="5" style="display:flex; align-items: center">
+                                                <v-row>
+                                                     <v-text-field
+                                                        label="Latitud"
+                                                        outlined
+                                                        disabled
+                                                    ></v-text-field>
+                                                    <v-spacer></v-spacer>
+                                                    <v-text-field
+                                                        label="Longuitud"
+                                                        outlined
+                                                        disabled
+                                                    ></v-text-field>
+                                                </v-row>
+                                            </v-col>
+                                            <v-col cols="12" sm="12">
                                                 <v-subheader>Contactos *al menos un campo es obligatorio</v-subheader>
                                             </v-col>
                                             <v-col cols="12" sm="6">
@@ -1961,6 +2028,7 @@
             doc: ['CI', 'Pasaporte'],
             docExp: ['CH','LP','CB','OR','PT','TJ','SC','BE','PD', 'Extranjero'],
             dialog: false,
+            dialog2: false,
             isCameraOpen: false,
             isShotPhoto: false,
             isLoading: false,
@@ -2103,6 +2171,7 @@
             itemPhotoProp: [],
             fotoProp: null,
             camaras: [],
+            ubiProp: null,
             }
             
         },
