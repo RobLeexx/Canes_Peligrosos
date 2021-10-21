@@ -387,13 +387,18 @@
                                                         </v-row>
                                                         <v-divider></v-divider>
                                                         <v-card-actions>
-                                                        <v-spacer></v-spacer>
-                                                        <v-btn v-if="!photoTaken" style="padding: 10px" color="error" @click.prevent="dialog = false" @click="toggleCamera">
-                                                            Cerrar
-                                                        </v-btn>
-                                                        <v-btn v-else style="padding: 10px" color="error" @click.prevent="dialog = false">
-                                                            Cerrar
-                                                        </v-btn>
+                                                        <v-row style="justify-content: center">
+                                                            <v-autocomplete style="padding-left:10px" v-show="showDevices" :items="camaras" :value="camaras" id="camaras"></v-autocomplete>
+                                                            <v-spacer></v-spacer>
+                                                            <div style="align-items: center; display: flex; padding: 15px">
+                                                                <v-btn v-if="!photoTaken" style="padding: 10px" color="error" @click.prevent="dialog = false" @click="toggleCamera">
+                                                                    Cerrar
+                                                                </v-btn>
+                                                                <v-btn v-else style="padding: 10px" color="error" @click.prevent="dialog = false">
+                                                                    Cerrar
+                                                                </v-btn>
+                                                            </div>
+                                                        </v-row>
                                                         </v-card-actions>
                                                     </v-card>
                                                     </v-dialog>
@@ -409,6 +414,7 @@
                                                         prepend-icon="mdi-face"
                                                     ></v-text-field>
                                                 </template>
+                                            </v-col>
                                             </v-col>
                                             <v-col cols="12" lg="12" sm="6">
                                                 <v-subheader>Contactos *al menos un campo es obligatorio</v-subheader>
@@ -1912,6 +1918,7 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import Vue from 'vue'
 
     export default 
     {
@@ -1957,6 +1964,7 @@
             isCameraOpen: false,
             isShotPhoto: false,
             isLoading: false,
+            showDevices: false,
             link: '#',
             length: 5,
             onboarding: 0,
@@ -2094,6 +2102,7 @@
             photoTaken: false,
             itemPhotoProp: [],
             fotoProp: null,
+            camaras: [],
             }
             
         },
@@ -2320,14 +2329,43 @@
                     this.isCameraOpen = false;
                     this.isShotPhoto = false;
                     this.stopCameraStream();
+                    console.clear();
                 } else {
                     this.isCameraOpen = true;
+                    this.showDevices = true;
                     this.createCameraElement();
                 }
+                if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+                    alert("No hay cámaras conectadas");
+                    return;
+                    }
+
+                    // List cameras and microphones.
+
+                    navigator.mediaDevices.enumerateDevices().then((devices) => {
+                        let videoSourcesSelect = document.getElementById("camaras");
+                    devices.forEach((device) => {
+                        let option = new Option();
+                        option.value = device.deviceId;
+
+                        switch(device.kind){
+                            // Append device to list of Cameras
+                            case "videoinput":
+                                option.text = device.label || `Camera ${videoSourcesSelect.length + 1}`;
+                                videoSourcesSelect.appendChild(option);
+                                this.camaras.push(device.label);
+                                console.log(device);
+                                break;
+                        }
+                    });
+                    })
+                    .catch(function(err) {
+                    console.log(err.name + ": " + err.message);
+                    });
+
             },
             createCameraElement() {
                 this.isLoading = true;
-                
                 const constraints = (window.constraints = {
                             audio: false,
                             video: true
@@ -2353,6 +2391,7 @@
                     const FLASH_TIMEOUT = 50;
                     let self = this;
                     setTimeout(() => {
+                    this.showDevices = false;
                     this.photoTaken = true;
                     const context = this.$refs.canvas.getContext('2d');
                     context.drawImage(this.$refs.camera, 0, 0, this.canvasWidth, this.canvasHeight);
@@ -2364,8 +2403,9 @@
                     }, FLASH_TIMEOUT);
                 },
                 retryPhoto() {
+                    console.clear();
                     this.itemPhotoProp.splice(),
-                    console.log(this.itemPhotoProp);
+                    this.showDevices = true;
                     this.photoTaken = false,
                     this.isCameraOpen = true,
                     this.fotoProp = null,
