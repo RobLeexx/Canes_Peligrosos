@@ -336,7 +336,7 @@
                                                 </template>
                                             </v-col>
                                             <v-col cols="12" lg="1" sm="1" style="display: flex; justify-content: center; padding: 0">
-                                                <v-dialog persistent v-model="dialog" width="50%" height="100%">
+                                                <v-dialog persistent v-model="dialog" width="50%" height="42%" >
                                                     <template v-slot:activator="{ on, attrs }">
                                                         <v-btn fab v-if="!photoTaken" color="primary" v-bind="attrs" v-on="on" @click="toggleCamera" :loading="dialog">
                                                             <v-icon>
@@ -401,7 +401,7 @@
                                                         </v-row>
                                                         </v-card-actions>
                                                     </v-card>
-                                                    </v-dialog>
+                                                </v-dialog>
                                             </v-col>
                                             <v-col cols="12" lg="5" md="5" sm="5">
                                                 <template>
@@ -434,7 +434,7 @@
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12" lg="1" sm="1" style="display: flex; justify-content: center">
-                                                <v-dialog persistent v-model="dialog2" width="50%" height="100%">
+                                                <v-dialog persistent v-model="dialog2" width="80%" height="100%">
                                                     <template v-slot:activator="{ on, attrs }">
                                                         <v-btn fab color="primary" v-bind="attrs" v-on="on" :loading="dialog2">
                                                             <v-icon>
@@ -447,12 +447,26 @@
                                                             </v-icon>
                                                         </v-btn>-->
                                                     </template>
-                                                    <v-card>
+                                                    <v-card style="height: 100%">
                                                         <v-card-title class="text-h5 grey lighten-2" style="display: flex; justify-content: center">
                                                             Ubicación en Google Maps del Propietario
                                                         </v-card-title>
                                                         
-                                                        <v-row style="padding:12px; margin-right: 5px">
+                                                        <v-row style="padding: 20px; display: flex; jusitfy-content: center">
+                                                            <v-col cols="12" sm="2"><v-spacer class="d-none d-block-sm"></v-spacer></v-col>
+                                                            <v-col cols="12" sm="7">
+                                                                <v-text-field
+                                                                    outlined
+                                                                    label="Buscar Dirección..."
+                                                                    placeholder="Busque por ...XDDDD"
+                                                                ></v-text-field>
+                                                            </v-col>
+                                                            <v-col cols="12" sm="3" style="padding-left:15px">
+                                                                <v-btn
+                                                                    color="primary"
+                                                                    x-large
+                                                                >Buscar</v-btn>
+                                                            </v-col>
                                                         </v-row>
                                                         <v-divider></v-divider>
                                                         <v-card-actions>
