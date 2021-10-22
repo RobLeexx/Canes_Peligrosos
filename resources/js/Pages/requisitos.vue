@@ -391,7 +391,7 @@
                                                             <v-dialog persistent v-model="dialog3" width="25%">
                                                                 <template v-slot:activator="{ on, attrs }">
                                                                     <div style="align-items: center; display: flex; padding: 15px">
-                                                                    <v-btn style="´padding: 10px" rounded v-show="showDevices" color="primary" v-bind="attrs" v-on="on" @click="switchCamara">Cambiar Cámara<v-icon right>mdi-sync</v-icon right></v-btn>
+                                                                    <v-btn style="´padding: 10px" rounded v-show="showDevices" color="primary" v-bind="attrs" v-on="on" @click="switchCamara">Cambiar Cámara<v-icon>mdi-sync</v-icon></v-btn>
                                                                     </div>
                                                                 </template>
                                                                 <select id="camaras"></select>
@@ -472,7 +472,10 @@
                                                                     outlined
                                                                     label="Buscar Dirección..."
                                                                     placeholder="Busque por ...XDDDD"
-                                                                ></v-text-field>
+                                                                    :append-icon="'mdi-target'"
+                                                                    @click:append="locatorButton"
+                                                                >
+                                                                </v-text-field>
                                                             </v-col>
                                                             <v-col cols="12" sm="3" style="padding-left:15px">
                                                                 <v-btn
@@ -2012,7 +2015,7 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
-    import Vue from 'vue'
+    import axios from 'axios'
 
     export default 
     {
@@ -2025,6 +2028,7 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            axios,
         },
         data () {
         const defaultForm = Object.freeze({
@@ -2544,6 +2548,43 @@
                     u8arr[n] = bstr.charCodeAt(n);
                 }
                 return new File([u8arr], filename, {type: mime});
+            },
+
+            /* Maps */
+            locatorButton(){
+                if(navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(
+                        position => {
+                            this.getAdressFrom(position.coords.latitude, position.coords.longitude);
+                            
+                        },
+                        error => {
+                            console.log(error.message);
+                        }
+                    )
+                } else {
+                    alert("El navegador no es compatible con Maps");
+                }
+            },
+            getAdressFrom(lat, lon){
+                axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&key=AIzaSyDMr3XZuZxn_0cQ0nrWxGE8lkVsH1gWSwQ",
+                {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    responseType: 'json',
+                    withCredentials: true,
+                }
+                ).then(response => {
+                    if(response.data.error_message) {
+                        console.log(response.data.error_message);
+                    } else {
+                        console.log(response.data.results[0].formatted_adress);
+                    }
+                })
+                .catch(error => {
+                    console.log(error.message);
+                })
             },
 
             /* DateTimeExtension */                
