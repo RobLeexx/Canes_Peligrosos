@@ -310,12 +310,12 @@
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="2">
-                                                <v-autocomplete 
+                                                <v-select 
                                                 v-model="form.docExp"
                                                 :items= "docExp"
                                                 label="Lugar de Expedición"
                                                 :rules="vacio"
-                                                outlined></v-autocomplete>
+                                                outlined></v-select>
                                             </v-col>
                                             <v-col cols="12" lg="6" sm="6">
                                                 <template>
@@ -336,7 +336,7 @@
                                                 </template>
                                             </v-col>
                                             <v-col cols="12" lg="1" sm="1" style="display: flex; justify-content: center; padding: 0">
-                                                <v-dialog persistent v-model="dialog" width="50%" height="42%" >
+                                                <v-dialog persistent v-model="dialog" width="50%">
                                                     <template v-slot:activator="{ on, attrs }">
                                                         <v-btn fab v-if="!photoTaken" color="primary" v-bind="attrs" v-on="on" @click="toggleCamera" :loading="dialog">
                                                             <v-icon>
@@ -386,15 +386,28 @@
                                                             </v-row>
                                                         </v-row>
                                                         <v-divider></v-divider>
-                                                        <v-card-actions>
+                                                        <v-card-actions style="padding:15px">
                                                         <v-row style="justify-content: center">
-                                                            <v-autocomplete style="padding-left:10px" v-show="showDevices" :items="camaras" :value="camaras" id="camaras"></v-autocomplete>
-                                                            <v-spacer></v-spacer>
-                                                            <div style="align-items: center; display: flex; padding: 15px">
-                                                                <v-btn v-if="!photoTaken" style="padding: 10px" color="error" @click.prevent="dialog = false" @click="toggleCamera">
+                                                            <v-dialog persistent v-model="dialog3" width="25%">
+                                                                <template v-slot:activator="{ on, attrs }">
+                                                                    <div style="align-items: center; display: flex; padding: 15px">
+                                                                    <v-btn style="´padding: 10px" rounded v-show="showDevices" color="primary" v-bind="attrs" v-on="on" @click="switchCamara">Cambiar Cámara<v-icon right>mdi-sync</v-icon right></v-btn>
+                                                                    </div>
+                                                                </template>
+                                                                <select id="camaras"></select>
+                                                                <v-divider></v-divider>
+                                                                <div style="align-items: center; display: flex; padding: 15px; background: white; justify-content: flex-end">
+                                                                <v-btn style="padding: 10px" color="error" @click.prevent="dialog3 = false" @click="clearCameras">
                                                                     Cerrar
                                                                 </v-btn>
-                                                                <v-btn v-else style="padding: 10px" color="error" @click.prevent="dialog = false">
+                                                                </div>
+                                                            </v-dialog>
+                                                            <v-spacer></v-spacer>
+                                                            <div style="align-items: center; display: flex; padding: 15px">
+                                                                <v-btn large v-if="!photoTaken" style="padding: 10px" color="error" @click.prevent="dialog = false" @click="toggleCamera">
+                                                                    Cerrar
+                                                                </v-btn>
+                                                                <v-btn large v-else style="padding: 10px" color="error" @click.prevent="dialog = false">
                                                                     Cerrar
                                                                 </v-btn>
                                                             </div>
@@ -452,7 +465,7 @@
                                                             Ubicación en Google Maps del Propietario
                                                         </v-card-title>
                                                         
-                                                        <v-row style="padding: 20px; display: flex; jusitfy-content: center">
+                                                        <v-row style="padding: 20px; margin: 0; display: flex; jusitfy-content: center">
                                                             <v-col cols="12" sm="2"><v-spacer class="d-none d-block-sm"></v-spacer></v-col>
                                                             <v-col cols="12" sm="7">
                                                                 <v-text-field
@@ -469,11 +482,11 @@
                                                             </v-col>
                                                         </v-row>
                                                         <v-divider></v-divider>
-                                                        <v-card-actions>
+                                                        <v-card-actions style="padding:15px">
                                                         <v-row style="justify-content: center">
                                                             <v-spacer></v-spacer>
                                                             <div style="align-items: center; display: flex; padding: 15px">
-                                                                <v-btn style="padding: 10px" color="error" @click.prevent="dialog2 = false">
+                                                                <v-btn large style="padding: 10px" color="error" @click.prevent="dialog2 = false">
                                                                     Cerrar
                                                                 </v-btn>
                                                             </div>
@@ -2043,6 +2056,7 @@
             docExp: ['CH','LP','CB','OR','PT','TJ','SC','BE','PD', 'Extranjero'],
             dialog: false,
             dialog2: false,
+            dialog3: false,
             isCameraOpen: false,
             isShotPhoto: false,
             isLoading: false,
@@ -2184,7 +2198,7 @@
             photoTaken: false,
             itemPhotoProp: [],
             fotoProp: null,
-            camaras: [],
+            camaras: null,
             ubiProp: null,
             }
             
@@ -2418,34 +2432,31 @@
                     this.showDevices = true;
                     this.createCameraElement();
                 }
-                if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-                    alert("No hay cámaras conectadas");
-                    return;
+            },
+            switchCamara(){
+                navigator.mediaDevices.enumerateDevices().then((devices) => {
+                    let videoSourcesSelect = document.getElementById("camaras");
+                devices.forEach((device) => {
+                    let option = new Option();
+                    option.value = device.deviceId;
+
+                    switch(device.kind){
+                        // Append device to list of Cameras
+                        case "videoinput":
+                            option.text = device.label || `Camera ${videoSourcesSelect.length + 1}`;
+                            videoSourcesSelect.appendChild(option);
+                            this.camaras.push(device.label);
+                            console.log(device);
+                            break;
                     }
-
-                    // List cameras and microphones.
-
-                    navigator.mediaDevices.enumerateDevices().then((devices) => {
-                        let videoSourcesSelect = document.getElementById("camaras");
-                    devices.forEach((device) => {
-                        let option = new Option();
-                        option.value = device.deviceId;
-
-                        switch(device.kind){
-                            // Append device to list of Cameras
-                            case "videoinput":
-                                option.text = device.label || `Camera ${videoSourcesSelect.length + 1}`;
-                                videoSourcesSelect.appendChild(option);
-                                this.camaras.push(device.label);
-                                console.log(device);
-                                break;
-                        }
-                    });
-                    })
-                    .catch(function(err) {
-                    console.log(err.name + ": " + err.message);
-                    });
-
+                });
+                })
+                .catch(function(err) {
+                console.log(err.name + ": " + err.message);
+                });
+            },
+            clearCameras(){
+                console.clear();
             },
             createCameraElement() {
                 this.isLoading = true;
@@ -2454,165 +2465,165 @@
                             video: true
             });
             navigator.mediaDevices
-                .getUserMedia(constraints)
-                .then(stream => {
-                this.isLoading = false;
-                this.$refs.camera.srcObject = stream;
-                }).catch(error => {
-                this.isLoading = false;
-                    alert("El navegador o el dispositivo no permiten Cámara Web");
-                });
-                },
-                stopCameraStream() {
-                let tracks = this.$refs.camera.srcObject.getTracks();
-                tracks.forEach(track => {
-                    track.stop();
-                });
-                },
-                
-                takePhoto() {
-                    const FLASH_TIMEOUT = 50;
-                    let self = this;
-                    setTimeout(() => {
-                    this.showDevices = false;
-                    this.photoTaken = true;
-                    const context = this.$refs.canvas.getContext('2d');
-                    context.drawImage(this.$refs.camera, 0, 0, this.canvasWidth, this.canvasHeight);
-                    const dataUrl = this.$refs.canvas.toDataURL("image/jpeg")
-                        .replace("image/jpeg", "image/octet-stream");
-                    this.addToPhotoGallery(dataUrl);
-                    this.uploadPhoto(dataUrl);
-                    this.stopCameraStream();
-                    }, FLASH_TIMEOUT);
-                },
-                retryPhoto() {
-                    console.clear();
-                    this.itemPhotoProp.splice(),
-                    this.showDevices = true;
-                    this.photoTaken = false,
-                    this.isCameraOpen = true,
-                    this.fotoProp = null,
-                    this.createCameraElement()
-                },
-
-                addToPhotoGallery(dataURI) {
-                this.itemPhotoProp.push(
-                    {
-                        src: dataURI,
-                        thumbnail: dataURI,
-                        w: this.canvasWidth,
-                        h: this.canvasHeight,
-                        alt: 'some numbers on a grey background' // optional alt attribute for thumbnail image
-                    }
-                )
-                },
-                uploadPhoto(dataURL){
-                let uniquePictureName = this.generateCapturePhotoName();
-                let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpg')
-                this.fotoProp = uniquePictureName;
-                let formData = new FormData()
-                formData.append('file', capturedPhotoFile)
-                // Upload image api
-                // axios.post('http://your-url-upload', formData).then(response => {
-                //   console.log(response)
-                // })
-                console.log("File", capturedPhotoFile);
-                },
-                 generateCapturePhotoName(){
-                return  Math.random().toString(36).substring(2, 15)
-                },
-    
-                dataURLtoFile(dataURL, filename) {
-                    let arr = dataURL.split(','),
-                        mime = arr[0].match(/:(.*?);/)[1],
-                        bstr = atob(arr[1]),
-                        n = bstr.length,
-                        u8arr = new Uint8Array(n);
-    
-                    while (n--) {
-                        u8arr[n] = bstr.charCodeAt(n);
-                    }
-                    return new File([u8arr], filename, {type: mime});
-                },
-
-                /* DateTimeExtension */                
-                formatDate(date) {
-                if (!date) return '';
-            
-                const [year, month, day] = date.split('-');
-                return `${year}-${month}-${day}`;
-                },
-            
-                // Confirm the datetime selection and close the popover
-                confirm1() {
-                this.onUpdateDate1();
-                this.dropdownOpen1 = false;
-                },
-                confirm2() {
-                this.onUpdateDate2();
-                this.dropdownOpen2 = false;
-                },
-                confirm3() {
-                this.onUpdateDate3();
-                this.dropdownOpen3 = false;
-                },
-                confirm4() {
-                this.onUpdateDate4();
-                this.dropdownOpen4 = false;
-                },
-                confirm5() {
-                this.onUpdateDate5();
-                this.dropdownOpen5 = false;
-                },
-            
-                // Format the date and trigger the input event
-                onUpdateDate1() {
-                if (!this.dateModel1 || !this.timeModel1) return false;
-                let selectedTime1 = this.timeModel1;
-                this.displayDate1 = this.formatDate(this.dateModel1) + ' ' + selectedTime1;
-                this.$emit('input', this.dateModel1 + ' ' + selectedTime1);
-                },
-                
-                onUpdateDate2() {
-                if (!this.dateModel2 || !this.timeModel2) return false;
-                let selectedTime2 = this.timeModel2;
-                this.displayDate2 = this.formatDate(this.dateModel2) + ' ' + selectedTime2;
-                this.$emit('input', this.dateModel2 + ' ' + selectedTime2);
-                },
-                
-                onUpdateDate3() {
-                if (!this.dateModel3 || !this.timeModel3) return false;
-                let selectedTime3 = this.timeModel3;
-                this.displayDate3 = this.formatDate(this.dateModel3) + ' ' + selectedTime3;
-                this.$emit('input', this.dateModel3 + ' ' + selectedTime3);
-                },
-                
-                onUpdateDate4() {
-                if (!this.dateModel4 || !this.timeModel4) return false;
-                let selectedTime4 = this.timeModel4;
-                this.displayDate4 = this.formatDate(this.dateModel4) + ' ' + selectedTime4;
-                this.$emit('input', this.dateModel4 + ' ' + selectedTime4);
-                },
-                
-                onUpdateDate5() {
-                if (!this.dateModel5 || !this.timeModel5) return false;
-                let selectedTime5 = this.timeModel5;
-                this.displayDate5 = this.formatDate(this.dateModel5) + ' ' + selectedTime5;
-                this.$emit('input', this.dateModel5 + ' ' + selectedTime5);
-                },
-                
-
-            /* Antecedentes */
-            next () {
-                this.onboarding = this.onboarding + 1 === this.length
-                ? 0
-                : this.onboarding + 1
+            .getUserMedia(constraints)
+            .then(stream => {
+            this.isLoading = false;
+            this.$refs.camera.srcObject = stream;
+            }).catch(error => {
+            this.isLoading = false;
+                alert("El navegador o el dispositivo no permiten Cámara Web");
+            });
             },
-            prev () {
-                this.onboarding = this.onboarding - 1 < 0
-                ? this.length - 1
-                : this.onboarding - 1
+            stopCameraStream() {
+            let tracks = this.$refs.camera.srcObject.getTracks();
+            tracks.forEach(track => {
+                track.stop();
+            });
             },
+            
+            takePhoto() {
+                const FLASH_TIMEOUT = 50;
+                let self = this;
+                setTimeout(() => {
+                this.showDevices = false;
+                this.photoTaken = true;
+                const context = this.$refs.canvas.getContext('2d');
+                context.drawImage(this.$refs.camera, 0, 0, this.canvasWidth, this.canvasHeight);
+                const dataUrl = this.$refs.canvas.toDataURL("image/jpeg")
+                    .replace("image/jpeg", "image/octet-stream");
+                this.addToPhotoGallery(dataUrl);
+                this.uploadPhoto(dataUrl);
+                this.stopCameraStream();
+                }, FLASH_TIMEOUT);
+            },
+            retryPhoto() {
+                console.clear();
+                this.itemPhotoProp.splice(),
+                this.showDevices = true;
+                this.photoTaken = false,
+                this.isCameraOpen = true,
+                this.fotoProp = null,
+                this.createCameraElement()
+            },
+
+            addToPhotoGallery(dataURI) {
+            this.itemPhotoProp.push(
+                {
+                    src: dataURI,
+                    thumbnail: dataURI,
+                    w: this.canvasWidth,
+                    h: this.canvasHeight,
+                    alt: 'some numbers on a grey background' // optional alt attribute for thumbnail image
+                }
+            )
+            },
+            uploadPhoto(dataURL){
+            let uniquePictureName = this.generateCapturePhotoName();
+            let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpg')
+            this.fotoProp = uniquePictureName;
+            let formData = new FormData()
+            formData.append('file', capturedPhotoFile)
+            // Upload image api
+            // axios.post('http://your-url-upload', formData).then(response => {
+            //   console.log(response)
+            // })
+            console.log("File", capturedPhotoFile);
+            },
+                generateCapturePhotoName(){
+            return  Math.random().toString(36).substring(2, 15)
+            },
+
+            dataURLtoFile(dataURL, filename) {
+                let arr = dataURL.split(','),
+                    mime = arr[0].match(/:(.*?);/)[1],
+                    bstr = atob(arr[1]),
+                    n = bstr.length,
+                    u8arr = new Uint8Array(n);
+
+                while (n--) {
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+                return new File([u8arr], filename, {type: mime});
+            },
+
+            /* DateTimeExtension */                
+            formatDate(date) {
+            if (!date) return '';
+        
+            const [year, month, day] = date.split('-');
+            return `${year}-${month}-${day}`;
+            },
+        
+            // Confirm the datetime selection and close the popover
+            confirm1() {
+            this.onUpdateDate1();
+            this.dropdownOpen1 = false;
+            },
+            confirm2() {
+            this.onUpdateDate2();
+            this.dropdownOpen2 = false;
+            },
+            confirm3() {
+            this.onUpdateDate3();
+            this.dropdownOpen3 = false;
+            },
+            confirm4() {
+            this.onUpdateDate4();
+            this.dropdownOpen4 = false;
+            },
+            confirm5() {
+            this.onUpdateDate5();
+            this.dropdownOpen5 = false;
+            },
+        
+            // Format the date and trigger the input event
+            onUpdateDate1() {
+            if (!this.dateModel1 || !this.timeModel1) return false;
+            let selectedTime1 = this.timeModel1;
+            this.displayDate1 = this.formatDate(this.dateModel1) + ' ' + selectedTime1;
+            this.$emit('input', this.dateModel1 + ' ' + selectedTime1);
+            },
+            
+            onUpdateDate2() {
+            if (!this.dateModel2 || !this.timeModel2) return false;
+            let selectedTime2 = this.timeModel2;
+            this.displayDate2 = this.formatDate(this.dateModel2) + ' ' + selectedTime2;
+            this.$emit('input', this.dateModel2 + ' ' + selectedTime2);
+            },
+            
+            onUpdateDate3() {
+            if (!this.dateModel3 || !this.timeModel3) return false;
+            let selectedTime3 = this.timeModel3;
+            this.displayDate3 = this.formatDate(this.dateModel3) + ' ' + selectedTime3;
+            this.$emit('input', this.dateModel3 + ' ' + selectedTime3);
+            },
+            
+            onUpdateDate4() {
+            if (!this.dateModel4 || !this.timeModel4) return false;
+            let selectedTime4 = this.timeModel4;
+            this.displayDate4 = this.formatDate(this.dateModel4) + ' ' + selectedTime4;
+            this.$emit('input', this.dateModel4 + ' ' + selectedTime4);
+            },
+            
+            onUpdateDate5() {
+            if (!this.dateModel5 || !this.timeModel5) return false;
+            let selectedTime5 = this.timeModel5;
+            this.displayDate5 = this.formatDate(this.dateModel5) + ' ' + selectedTime5;
+            this.$emit('input', this.dateModel5 + ' ' + selectedTime5);
+            },
+            
+
+        /* Antecedentes */
+        next () {
+            this.onboarding = this.onboarding + 1 === this.length
+            ? 0
+            : this.onboarding + 1
+        },
+        prev () {
+            this.onboarding = this.onboarding - 1 < 0
+            ? this.length - 1
+            : this.onboarding - 1
+        },
         },
          mounted() {
             // Set the current date and time as default value_DateTime
