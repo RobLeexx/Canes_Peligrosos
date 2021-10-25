@@ -365,7 +365,7 @@
                                                         <v-row style="padding:12px; margin-right: 5px">
                                                             <div v-if="isCameraOpen" v-show="!isLoading" :class="{ 'flash' : isShotPhoto }">
                                                                 <div :class="{'flash' : isShotPhoto}"></div>
-                                                                <video v-if="!photoTaken" ref="camera" :width="canvasWidth" :height="canvasHeight" autoplay></video>
+                                                                <video v-if="!photoTaken" ref="camera" :width="canvasWidth" :height="canvasHeight" autoplay id="player"></video>
                                                                 <canvas v-show="photoTaken" ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
                                                             </div>
                                                             <v-row style="display: flex; flex-direction: column">
@@ -388,20 +388,7 @@
                                                         <v-divider></v-divider>
                                                         <v-card-actions style="padding:15px">
                                                         <v-row style="justify-content: center">
-                                                            <v-dialog persistent v-model="dialog3" width="25%">
-                                                                <template v-slot:activator="{ on, attrs }">
-                                                                    <div style="align-items: center; display: flex; padding: 15px">
-                                                                    <v-btn style="´padding: 10px" rounded v-show="showDevices" color="primary" v-bind="attrs" v-on="on" @click="switchCamara">Cambiar Cámara<v-icon>mdi-sync</v-icon></v-btn>
-                                                                    </div>
-                                                                </template>
-                                                                <select id="camaras"></select>
-                                                                <v-divider></v-divider>
-                                                                <div style="align-items: center; display: flex; padding: 15px; background: white; justify-content: flex-end">
-                                                                <v-btn style="padding: 10px" color="error" @click.prevent="dialog3 = false" @click="clearCameras">
-                                                                    Cerrar
-                                                                </v-btn>
-                                                                </div>
-                                                            </v-dialog>
+                                                            <select v-show="!photoTaken" id="camaras"></select>
                                                             <v-spacer></v-spacer>
                                                             <div style="align-items: center; display: flex; padding: 15px">
                                                                 <v-btn large v-if="!photoTaken" style="padding: 10px" color="error" @click.prevent="dialog = false" @click="toggleCamera">
@@ -2060,7 +2047,6 @@
             docExp: ['CH','LP','CB','OR','PT','TJ','SC','BE','PD', 'Extranjero'],
             dialog: false,
             dialog2: false,
-            dialog3: false,
             isCameraOpen: false,
             isShotPhoto: false,
             isLoading: false,
@@ -2202,7 +2188,8 @@
             photoTaken: false,
             itemPhotoProp: [],
             fotoProp: null,
-            camaras: null,
+            camarasList: [],
+            firstSwitch: true,
             ubiProp: null,
             }
             
@@ -2430,38 +2417,71 @@
                     this.isCameraOpen = false;
                     this.isShotPhoto = false;
                     this.stopCameraStream();
+                    this.firstSwitch = false;
                     console.clear();
                 } else {
                     this.isCameraOpen = true;
                     this.showDevices = true;
                     this.createCameraElement();
+                    this.switchCamara();
                 }
             },
             switchCamara(){
                 navigator.mediaDevices.enumerateDevices().then((devices) => {
-                    let videoSourcesSelect = document.getElementById("camaras");
-                devices.forEach((device) => {
-                    let option = new Option();
-                    option.value = device.deviceId;
-
-                    switch(device.kind){
-                        // Append device to list of Cameras
-                        case "videoinput":
-                            option.text = device.label || `Camera ${videoSourcesSelect.length + 1}`;
-                            videoSourcesSelect.appendChild(option);
-                            this.camaras.push(device.label);
-                            console.log(device);
-                            break;
+                let videoSourcesSelect = document.getElementById("camaras");
+                let videoPlayer = document.getElementById("player");
+                let MediaStreamHelper = {
+                // Property of the object to store the current stream
+                _stream: null,
+                // This method will return the promise to list the real devices
+                getDevices: function() {
+                    return navigator.mediaDevices.enumerateDevices();
+                },
+                // Request user permissions to access the camera and video
+                requestStream: function() {
+                    if (this._stream) {
+                        this._stream.getTracks().forEach(track => {
+                            track.stop();
+                        });
                     }
-                });
-                })
-                .catch(function(err) {
-                console.log(err.name + ": " + err.message);
-                });
+
+                    const videoSource = videoSourcesSelect.value;
+                    const constraints = {
+                        video: {
+                            deviceId: videoSource ? {exact: videoSource} : undefined
+                        }
+                    };
+                
+                    return navigator.mediaDevices.getUserMedia(constraints);
+                }
+            };
+                    videoSourcesSelect.onchange = function(){
+                    MediaStreamHelper.requestStream().then(function(stream){
+                        MediaStreamHelper._stream = stream;
+                        videoPlayer.srcObject = stream;
+                    });
+                };
+            devices.forEach((device) => {
+                let option = new Option();
+                option.value = device.deviceId;
+
+                switch(device.kind){
+                    // Append device to list of Cameras
+                    case "videoinput":
+                        if(this.firstSwitch){
+                        option.text = device.label || `Camera ${videoSourcesSelect.length + 1}`;
+                        videoSourcesSelect.appendChild(option);
+                        console.log(device);
+                        }
+                        break;
+                }
+            });
+            })
+            .catch(function(err) {
+            console.log(err.name + ": " + err.message);
+            });
             },
-            clearCameras(){
-                console.clear();
-            },
+
             createCameraElement() {
                 this.isLoading = true;
                 const constraints = (window.constraints = {
@@ -2491,6 +2511,7 @@
                 setTimeout(() => {
                 this.showDevices = false;
                 this.photoTaken = true;
+                this.firstSwitch = false;
                 const context = this.$refs.canvas.getContext('2d');
                 context.drawImage(this.$refs.camera, 0, 0, this.canvasWidth, this.canvasHeight);
                 const dataUrl = this.$refs.canvas.toDataURL("image/jpeg")
@@ -2507,6 +2528,7 @@
                 this.photoTaken = false,
                 this.isCameraOpen = true,
                 this.fotoProp = null,
+                this.switchCamara(),
                 this.createCameraElement()
             },
 
