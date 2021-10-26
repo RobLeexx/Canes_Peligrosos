@@ -166,7 +166,7 @@
 
                 <template #content>
                     <v-list style="background: white; ">
-                        <v-list-item @click="scrollMeTo('inicio')" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px; margin-top: -12px">
+                        <v-list-item @click="scrollMeTo('inicio')"  style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px; margin-top: -12px">
                             INICIO
                         </v-list-item>
                         <v-list-item @click="scrollMeTo('institucion')" style="color: black; font-size: .875rem; font-weight: 500; letter-spacing: .0892857143em; margin-bottom: -10px">
@@ -328,7 +328,7 @@
             scrollMeTo(refName) {
                 var element = this.$refs[refName];
                 var top = element.offsetTop;
-                window.scrollTo(0, top);
+                window.scrollTo({top, behavior: 'smooth'})
             },
         },
         props: 
