@@ -6,6 +6,12 @@
             </h2>
         </template>
 
+        <head>
+            <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.1/mapbox-gl.css" type="text/css" />
+            <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+        </head>
+
         <div class="py-12" style="background: #33691E">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
@@ -336,7 +342,7 @@
                                                 </template>
                                             </v-col>
                                             <v-col cols="12" lg="1" sm="1" style="display: flex; justify-content: center; padding: 0">
-                                                <v-dialog persistent v-model="dialog" width="50%">
+                                                <v-dialog persistent fullscreen hide-overlay transition="dialog-bottom-transition" v-model="dialog">
                                                     <template v-slot:activator="{ on, attrs }">
                                                         <v-btn fab v-if="!photoTaken" color="primary" v-bind="attrs" v-on="on" @click="toggleCamera" :loading="dialog">
                                                             <v-icon>
@@ -350,9 +356,21 @@
                                                         </v-btn>
                                                     </template>
                                                     <v-card>
-                                                        <v-card-title class="text-h5 grey lighten-2" style="display: flex; justify-content: center">
-                                                            Foto Frontal del Propietario
-                                                        </v-card-title>
+                                                        <v-toolbar
+                                                        dark
+                                                        color="primary"
+                                                        >
+                                                        <v-toolbar-title>Foto Frontal del Propietario</v-toolbar-title>
+                                                        <v-spacer></v-spacer>
+                                                        <v-toolbar-items>
+                                                            <v-btn large v-if="!photoTaken" style="padding: 10px" text @click.prevent="dialog = false" @click="toggleCamera">
+                                                                Cerrar
+                                                            </v-btn>
+                                                            <v-btn large v-else style="padding: 10px" text @click.prevent="dialog = false">
+                                                                Guardar
+                                                            </v-btn>
+                                                        </v-toolbar-items>
+                                                        </v-toolbar>
 
                                                         <div v-show="isCameraOpen && isLoading">
                                                             <ul>
@@ -376,6 +394,7 @@
                                                                         </v-icon>
                                                                     </v-btn>
                                                                 </div>
+                                                                <select style="padding:20px; margin-right: 20px; margin-left: 20px" v-show="!photoTaken" id="camaras"></select>
                                                                 <div v-if="isCameraOpen && !isLoading && photoTaken" style="text-align: center; padding: 50px">
                                                                     <v-btn fab color="warning" @click="retryPhoto">
                                                                         <v-icon>
@@ -386,20 +405,6 @@
                                                             </v-row>
                                                         </v-row>
                                                         <v-divider></v-divider>
-                                                        <v-card-actions style="padding:15px">
-                                                        <v-row style="justify-content: center">
-                                                            <select v-show="!photoTaken" id="camaras"></select>
-                                                            <v-spacer></v-spacer>
-                                                            <div style="align-items: center; display: flex; padding: 15px">
-                                                                <v-btn large v-if="!photoTaken" style="padding: 10px" color="error" @click.prevent="dialog = false" @click="toggleCamera">
-                                                                    Cerrar
-                                                                </v-btn>
-                                                                <v-btn large v-else style="padding: 10px" color="error" @click.prevent="dialog = false">
-                                                                    Cerrar
-                                                                </v-btn>
-                                                            </div>
-                                                        </v-row>
-                                                        </v-card-actions>
                                                     </v-card>
                                                 </v-dialog>
                                             </v-col>
@@ -433,72 +438,25 @@
                                                         :rules="vacio"
                                                 ></v-text-field>
                                             </v-col>
-                                            <v-col cols="12" lg="1" sm="1" style="display: flex; justify-content: center">
-                                                <v-dialog persistent v-model="dialog2" width="80%" height="100%">
-                                                    <template v-slot:activator="{ on, attrs }">
-                                                        <v-btn fab color="primary" v-bind="attrs" v-on="on" :loading="dialog2">
-                                                            <v-icon>
-                                                                mdi-map-marker-plus
-                                                            </v-icon>
-                                                        </v-btn>
-                                                        <!--<v-btn fab color="success" v-bind="attrs" v-on="on" @click.prevent="dialog2 = true" :loading="dialog2">
-                                                            <v-icon>
-                                                                mdi-image
-                                                            </v-icon>
-                                                        </v-btn>-->
-                                                    </template>
-                                                    <v-card style="height: 100%">
-                                                        <v-card-title class="text-h5 grey lighten-2" style="display: flex; justify-content: center">
-                                                            Ubicación en Google Maps del Propietario
-                                                        </v-card-title>
-                                                        
-                                                        <v-row style="padding: 20px; margin: 0; display: flex; jusitfy-content: center">
-                                                            <v-col cols="12" sm="2"><v-spacer class="d-none d-block-sm"></v-spacer></v-col>
-                                                            <v-col cols="12" sm="7">
-                                                                <v-text-field
-                                                                    outlined
-                                                                    label="Buscar Dirección..."
-                                                                    placeholder="Busque por ...XDDDD"
-                                                                    :append-icon="'mdi-target'"
-                                                                    @click:append="locatorButton"
-                                                                >
-                                                                </v-text-field>
-                                                            </v-col>
-                                                            <v-col cols="12" sm="3" style="padding-left:15px">
-                                                                <v-btn
-                                                                    color="primary"
-                                                                    x-large
-                                                                >Buscar</v-btn>
-                                                            </v-col>
-                                                        </v-row>
-                                                        <v-divider></v-divider>
-                                                        <v-card-actions style="padding:15px">
-                                                        <v-row style="justify-content: center">
-                                                            <v-spacer></v-spacer>
-                                                            <div style="align-items: center; display: flex; padding: 15px">
-                                                                <v-btn large style="padding: 10px" color="error" @click.prevent="dialog2 = false">
-                                                                    Cerrar
-                                                                </v-btn>
-                                                            </div>
-                                                        </v-row>
-                                                        </v-card-actions>
-                                                    </v-card>
-                                                    </v-dialog>
-                                            </v-col>
-                                            <v-col cols="12" sm="5" style="display:flex; align-items: center">
+                                            <v-col cols="12" sm="6" style="display:flex; align-items: center">
                                                 <v-row>
                                                      <v-text-field
+                                                        v-model="lat"
                                                         label="Latitud"
                                                         outlined
                                                         disabled
                                                     ></v-text-field>
                                                     <v-spacer></v-spacer>
                                                     <v-text-field
+                                                        v-model="lon"
                                                         label="Longuitud"
                                                         outlined
                                                         disabled
                                                     ></v-text-field>
                                                 </v-row>
+                                            </v-col>
+                                            <v-col cols="12" sm="12">
+                                                <div style="height: 500px" id="map"></div>
                                             </v-col>
                                             <v-col cols="12" sm="12">
                                                 <v-subheader>Contactos *al menos un campo es obligatorio</v-subheader>
@@ -1993,7 +1951,6 @@
     </app-layout>
 </template>
 
-
 <script>
     import AppLayout from '@/Layouts/AppLayout'
     import JetApplicationMark from '@/Jetstream/ApplicationMark'
@@ -2003,6 +1960,8 @@
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
     import axios from 'axios'
+    import mapboxgl from 'mapbox-gl'
+    import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
     export default 
     {
@@ -2016,6 +1975,8 @@
             JetNavLink,
             JetResponsiveNavLink,
             axios,
+            mapboxgl,
+            MapboxGeocoder,
         },
         data () {
         const defaultForm = Object.freeze({
@@ -2183,14 +2144,16 @@
             canEven4: '',
             canEvenNum4: '',
             canCon: '',
-            canvasHeight:420,
-            canvasWidth:550,
+            canvasHeight:600,
+            canvasWidth:800,
             photoTaken: false,
             itemPhotoProp: [],
             fotoProp: null,
             camarasList: [],
             firstSwitch: true,
             ubiProp: null,
+            lat: null,
+            lon: null,
             }
             
         },
@@ -2577,8 +2540,8 @@
                 if(navigator.geolocation){
                     navigator.geolocation.getCurrentPosition(
                         position => {
-                            this.getAdressFrom(position.coords.latitude, position.coords.longitude);
-                            
+                            this.lat = position.coords.latitude;
+                            this.lon = position.coords.longitude;
                         },
                         error => {
                             console.log(error.message);
@@ -2587,26 +2550,6 @@
                 } else {
                     alert("El navegador no es compatible con Maps");
                 }
-            },
-            getAdressFrom(lat, lon){
-                axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&key=AIzaSyDMr3XZuZxn_0cQ0nrWxGE8lkVsH1gWSwQ",
-                {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    responseType: 'json',
-                    withCredentials: true,
-                }
-                ).then(response => {
-                    if(response.data.error_message) {
-                        console.log(response.data.error_message);
-                    } else {
-                        console.log(response.data.results[0].formatted_adress);
-                    }
-                })
-                .catch(error => {
-                    console.log(error.message);
-                })
             },
 
             /* DateTimeExtension */                
@@ -2708,6 +2651,50 @@
 
             this.timeModel5 = currentTime;
             this.dateModel5 = d.toISOString().substr(0, 10);
+
+            if(navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(
+                        position => {
+                            this.lat = position.coords.latitude;
+                            this.lon = position.coords.longitude;
+                        },
+                        error => {
+                            console.log(error.message);
+                        }
+                    )
+                } else {
+                    alert("El navegador no es compatible con Maps");
+                }
+                
+            mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ibGVlOTkiLCJhIjoiY2t2Z25tdDZxMDZ0OTJ2cGYzNndzZHJ3NyJ9.pBGTzYuYUmbU2dbF5TW8zQ';
+            const map = new mapboxgl.Map({
+                container: 'map', // container ID
+                style: 'mapbox://styles/mapbox/streets-v11', // style URL
+                center: [-63, -17], // starting position [lng, lat]
+                zoom: 4.5 // starting zoom
+            });
+
+            // Add the control to the map.
+            map.addControl(
+                new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                mapboxgl: mapboxgl
+                })
+            );
+            map.addControl(new mapboxgl.FullscreenControl());
+            // Add geolocate control to the map.
+            map.addControl(
+                new mapboxgl.GeolocateControl({
+                positionOptions: {
+                enableHighAccuracy: true
+                },
+                // When active the map will receive updates to the device's location as it changes.
+                trackUserLocation: true,
+                // Draw an arrow next to the location dot to indicate which direction the device is heading.
+                showUserHeading: true
+                })
+            );
+            
         },
 
         props: 
