@@ -440,19 +440,9 @@
                                             </v-col>
                                             <v-col cols="12" sm="6" style="display:flex; align-items: center">
                                                 <v-row>
-                                                     <v-text-field
-                                                        v-model="lat"
-                                                        label="Latitud"
-                                                        outlined
-                                                        disabled
-                                                    ></v-text-field>
-                                                    <v-spacer></v-spacer>
-                                                    <v-text-field
-                                                        v-model="lon"
-                                                        label="Longuitud"
-                                                        outlined
-                                                        disabled
-                                                    ></v-text-field>
+                                                     <div style="padding-bottom: 25px; padding-left: 35px;"
+                                                        id="longlat"
+                                                    ></div>
                                                 </v-row>
                                             </v-col>
                                             <v-col cols="12" sm="12">
@@ -2152,8 +2142,6 @@
             camarasList: [],
             firstSwitch: true,
             ubiProp: null,
-            lat: null,
-            lon: null,
             }
             
         },
@@ -2535,23 +2523,6 @@
                 return new File([u8arr], filename, {type: mime});
             },
 
-            /* Maps */
-            locatorButton(){
-                if(navigator.geolocation){
-                    navigator.geolocation.getCurrentPosition(
-                        position => {
-                            this.lat = position.coords.latitude;
-                            this.lon = position.coords.longitude;
-                        },
-                        error => {
-                            console.log(error.message);
-                        }
-                    )
-                } else {
-                    alert("El navegador no es compatible con Maps");
-                }
-            },
-
             /* DateTimeExtension */                
             formatDate(date) {
             if (!date) return '';
@@ -2651,20 +2622,6 @@
 
             this.timeModel5 = currentTime;
             this.dateModel5 = d.toISOString().substr(0, 10);
-
-            if(navigator.geolocation){
-                    navigator.geolocation.getCurrentPosition(
-                        position => {
-                            this.lat = position.coords.latitude;
-                            this.lon = position.coords.longitude;
-                        },
-                        error => {
-                            console.log(error.message);
-                        }
-                    )
-                } else {
-                    alert("El navegador no es compatible con Maps");
-                }
                 
             mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ibGVlOTkiLCJhIjoiY2t2Z25tdDZxMDZ0OTJ2cGYzNndzZHJ3NyJ9.pBGTzYuYUmbU2dbF5TW8zQ';
             const map = new mapboxgl.Map({
@@ -2674,13 +2631,34 @@
                 zoom: 4.5 // starting zoom
             });
 
+            var marker = new mapboxgl.Marker();
+
+            function add_marker (event) {
+            var coordinates = event.lngLat;
+            marker.setLngLat(coordinates).addTo(map);
+            document.getElementById('longlat').innerHTML =
+                    // `e.lngLat` is the longitude, latitude geographical position of the event.
+                    JSON.stringify(event.lngLat.wrap());
+            }
+
+            map.on('click', add_marker);
+
             // Add the control to the map.
             map.addControl(
                 new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl
-                })
-            );
+                mapboxgl: mapboxgl,
+                placeholder: "Buscar",
+                bbox: [-69.6443959706429,
+                        -22.9003899973618,
+                        -57.4533040073047,
+                        -9.66484828841838], // Boundary for Bolivia
+                proximity: {
+                    longitude: -73.990593,
+                    latitude: 40.740121
+                } // Coordinates of Bolivia
+            }));
+
             map.addControl(new mapboxgl.FullscreenControl());
             // Add geolocate control to the map.
             map.addControl(
