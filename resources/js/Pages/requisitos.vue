@@ -54,7 +54,7 @@
                                                 sm="6"
                                             >
                                                 <v-text-field
-                                                v-model="form.first"
+                                                v-model="form.coman"
                                                 :rules="vacio"
                                                 label="Comandante Departamental"
                                                 placeholder="Rango y nombre del Comandante Departamental"
@@ -67,7 +67,7 @@
                                                 sm="6"
                                             >
                                                 <v-text-field
-                                                v-model="form.last"
+                                                v-model="form.ref"
                                                 :rules="vacio"
                                                 label="Referencia"
                                                 placeholder="Referencia adjuntada en el memorial"
@@ -2143,13 +2143,12 @@
             firstSwitch: true,
             ubiProp: null,
             }
-            
         },
         computed: {
         form1IsValid () {
             return (
-            this.form.first &&
-            this.form.last &&
+            this.form.coman &&
+            this.form.ref &&
             this.dateMemo &&
             this.form.terms
             )
@@ -2304,18 +2303,6 @@
                 case 'xl': return 400
             }
             },
-        anchoFoto() {
-            switch(this.photoTaken){
-                case false: return 0
-                case true: 550
-            }
-        },
-        altoFoto() {
-            switch(this.photoTaken){
-                case false: return 0
-                case true: 420
-            }
-        },
         },
 
         methods: 

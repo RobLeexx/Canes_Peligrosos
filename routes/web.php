@@ -6,6 +6,7 @@ use Inertia\Inertia;
 
 Use App\Http\Controllers\UsuarioController;
 Use App\Http\Controllers\ListaController;
+Use App\Http\Controllers\MemorialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +51,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/lista', [ListaController::class, 'listaCont'])->name('lista');
+    
+    Route::resource('memoriales', MemorialController::class)->middleware(['auth:sanctum', 'verified']);
 });
 
