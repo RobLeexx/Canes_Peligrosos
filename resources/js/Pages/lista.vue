@@ -13,7 +13,7 @@
                     <v-btn 
                     fab
                     color="primary"
-                    :href="route('requisitos')"
+                    :href="route('memorials.create')"
                     ><v-icon>mdi-plus</v-icon>
                 </v-btn>
                 </div>
@@ -44,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                <tr style="display: flex">
+                                <tr style="display: flex" v-for="memorial in memorials" :key="memorial.id">
                                     <td class="px-6 py-4 whitespace-nowrap" :width="anchoProp">
                                         <div class="flex items-center">
                                         <div class="flex-shrink-0 h-10 w-10">
@@ -52,10 +52,10 @@
                                         </div>
                                         <div class="ml-4">
                                             <div class="text-sm font-medium text-gray-900">
-                                            Millán Cuevas, Roberto Carlos
+                                            {{ $page.props.user.username }}
                                             </div>
                                             <div class="text-sm text-gray-500">
-                                            6818666 LP
+                                            {{ memorial.comandante }}
                                             </div>
                                         </div>
                                         </div>
@@ -67,10 +67,10 @@
                                         </div>
                                         <div class="ml-4">
                                             <div class="text-sm font-medium text-gray-900">
-                                            Pedro
+                                            {{ memorial.referencia }}
                                             </div>
                                             <div class="text-sm text-gray-500">
-                                            Criollo
+                                            {{ memorial.dateMemo }}
                                             </div>
                                         </div>
                                         </div>
@@ -113,7 +113,7 @@
 
     export default {
         props: {
-            memoriales: Array
+            memorials: Array
         },
         data: function () {
             return {

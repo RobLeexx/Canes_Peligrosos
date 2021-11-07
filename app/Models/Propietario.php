@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Propietario extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'paterno',
+        'materno',
+        'nombres',
+        'cel'
+    ];
 }

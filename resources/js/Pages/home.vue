@@ -82,7 +82,7 @@
                             Acciones
                         </div>
 
-                        <jet-dropdown-link :href="route('lista')">
+                        <jet-dropdown-link :href="route('memorials.index')">
                             Administración
                         </jet-dropdown-link>
 

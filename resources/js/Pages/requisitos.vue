@@ -54,7 +54,8 @@
                                                 sm="6"
                                             >
                                                 <v-text-field
-                                                v-model="form.coman"
+                                                id="comandante"
+                                                v-model="form.comandante"
                                                 :rules="vacio"
                                                 label="Comandante Departamental"
                                                 placeholder="Rango y nombre del Comandante Departamental"
@@ -67,7 +68,8 @@
                                                 sm="6"
                                             >
                                                 <v-text-field
-                                                v-model="form.ref"
+                                                id="referencia"
+                                                v-model="form.referencia"
                                                 :rules="vacio"
                                                 label="Referencia"
                                                 placeholder="Referencia adjuntada en el memorial"
@@ -84,7 +86,7 @@
                                                         >
                                                         <template v-slot:activator="{ on, attrs }">
                                                             <v-text-field
-                                                            v-model="dateMemo"
+                                                            v-model="form.dateMemo"
                                                             prepend-icon="mdi-calendar"
                                                             label="Fecha de expedición del Memorial"
                                                             :rules="vacio"
@@ -96,7 +98,7 @@
                                                             </v-text-field>
                                                         </template>
                                                         <v-date-picker
-                                                            v-model="dateMemo"
+                                                            v-model="form.dateMemo"
                                                             scrollable
                                                             locale="es"
                                                             :width="anchoDate"
@@ -105,7 +107,7 @@
                                                         ><v-spacer></v-spacer>
                                                             <v-btn
                                                                 color="primary"
-                                                                @click="$refs.menuMemo.save(dateMemo)"
+                                                                @click="$refs.menuMemo.save(form.dateMemo)"
                                                             >
                                                                 OK
                                                             </v-btn></v-date-picker>
@@ -300,7 +302,7 @@
                                                 <v-autocomplete
                                                 v-model="form.doc"
                                                 :items= "doc"
-                                                label="Tipo de Documento de Identidad"
+                                                placeholder="Tipo de Documento de Identidad"
                                                 :rules="vacio"
                                                 outlined
                                                 >
@@ -319,7 +321,7 @@
                                                 <v-select 
                                                 v-model="form.docExp"
                                                 :items= "docExp"
-                                                label="Lugar de Expedición"
+                                                placeholder="Departamento"
                                                 :rules="vacio"
                                                 outlined></v-select>
                                             </v-col>
@@ -1934,6 +1936,11 @@
                                 </v-stepper-content>
                             </v-stepper>
                         </template>
+                        <v-btn
+                        color="primary"
+                        style="padding: 30px"
+                        @click="submitData"
+                        >Guardar</v-btn>
                     </v-app>
                 </div>
             </div>
@@ -2142,14 +2149,19 @@
             camarasList: [],
             firstSwitch: true,
             ubiProp: null,
+            form: {
+                comandante: null,
+                referencia: null,
+                dateMemo: null,
+            },
             }
         },
         computed: {
         form1IsValid () {
             return (
-            this.form.coman &&
-            this.form.ref &&
-            this.dateMemo &&
+            this.form.comandante &&
+            this.form.referencia &&
+            this.form.dateMemo &&
             this.form.terms
             )
         },
@@ -2307,6 +2319,9 @@
 
         methods: 
         {
+            submitData() {
+                this.$inertia.post(route('memorials.store'),this.form);
+            },
             switchToTeam(team) 
             {
                 this.$inertia.put(route('current-team.update'), 
@@ -2668,6 +2683,7 @@
             canRegister: Boolean,
             laravelVersion: String,
             phpVersion: String,
+            errors: Object,
         }
     }
 </script>

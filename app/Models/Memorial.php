@@ -11,7 +11,7 @@ class Memorial extends Model
     protected $fillable = [
         'comandante',
         'referencia',
-        'fecha_memo',
-        'file_memo'
+        'dateMemo',
+        /*'file_memo'*/
     ];
 }

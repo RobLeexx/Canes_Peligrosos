@@ -13,11 +13,11 @@ class CreateMemorialesTable extends Migration
      */
     public function up()
     {
-        Schema::create('memoriales', function (Blueprint $table) {
+        Schema::create('memorials', function (Blueprint $table) {
             $table->id();
             $table->string('comandante');
             $table->string('referencia');
-            $table->string('fecha_memo');
+            $table->string('dateMemo');
             $table->date('file_memo')->nullable();
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateMemorialesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memoriales');
+        Schema::dropIfExists('memorials');
     }
 }

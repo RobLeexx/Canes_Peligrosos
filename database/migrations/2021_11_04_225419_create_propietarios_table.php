@@ -15,6 +15,10 @@ class CreatePropietariosTable extends Migration
     {
         Schema::create('propietarios', function (Blueprint $table) {
             $table->id();
+            $table->string('paterno');
+            $table->string('materno');
+            $table->string('nombres');
+            $table->date('cel')->nullable();
             $table->timestamps();
         });
     }

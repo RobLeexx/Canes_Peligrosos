@@ -19,10 +19,10 @@
                                     Página Principal
                                 </jet-nav-link>
                                 <v-spacer style="border-right: 2px solid; border-color: #33691E; margin-top: 15px; margin-bottom: 15px"></v-spacer>
-                                <jet-nav-link :href="route('lista')" :active="route().current('lista')">
+                                <jet-nav-link :href="route('memorials.index')" :active="route().current('memorials.index')">
                                     Lista
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('requisitos')" :active="route().current('requisitos')">
+                                <jet-nav-link :href="route('memorials.create')" :active="route().current('memorials.create')">
                                     Requisitos
                                 </jet-nav-link>
                                 <jet-nav-link :href="route('capacitaciones')" :active="route().current('capacitaciones')">
