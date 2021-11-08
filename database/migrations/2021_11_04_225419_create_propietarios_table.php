@@ -18,7 +18,7 @@ class CreatePropietariosTable extends Migration
             $table->string('paterno');
             $table->string('materno');
             $table->string('nombres');
-            $table->date('cel')->nullable();
+            $table->string('cel')->nullable();
             $table->timestamps();
         });
     }

@@ -52,6 +52,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/lista', [ListaController::class, 'listaCont'])->name('lista');
     
-    Route::resource('memorials', RegistroController::class)->middleware(['auth:sanctum', 'verified']);
+    Route::resource('registros', RegistroController::class)->middleware(['auth:sanctum', 'verified']);
 });
 

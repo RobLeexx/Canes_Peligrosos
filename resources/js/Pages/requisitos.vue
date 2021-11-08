@@ -224,6 +224,7 @@
                                                 sm="6"
                                             >
                                                 <v-text-field
+                                                id="paterno"
                                                 v-model="form.paterno"
                                                 :rules="vacio"
                                                 label="Apellido Paterno"
@@ -237,6 +238,7 @@
                                                 sm="6"
                                             >
                                                 <v-text-field
+                                                id="materno"
                                                 v-model="form.materno"
                                                 :rules="vacio"
                                                 label="Apellido Materno"
@@ -250,6 +252,7 @@
                                                 sm="6"
                                             >
                                                 <v-text-field
+                                                id="nombres"
                                                 v-model="form.nombres"
                                                 :rules="vacio"
                                                 label="Nombres"
@@ -456,6 +459,7 @@
                                             <v-col cols="12" sm="6">
                                                 <template>
                                                     <v-text-field
+                                                        id="cel"
                                                         v-model="form.cel"
                                                         :rules="cel"
                                                         label="Celular"
@@ -2150,9 +2154,15 @@
             firstSwitch: true,
             ubiProp: null,
             form: {
+                /* Memorial */
                 comandante: null,
                 referencia: null,
                 dateMemo: null,
+                /* Propietario */
+                paterno: null,
+                materno: null,
+                nombres: null,
+                cel: null,
             },
             }
         },
@@ -2320,7 +2330,7 @@
         methods: 
         {
             submitData() {
-                this.$inertia.post(route('memorials.store'),this.form);
+                this.$inertia.post(route('registros.store'),this.form);
             },
             switchToTeam(team) 
             {

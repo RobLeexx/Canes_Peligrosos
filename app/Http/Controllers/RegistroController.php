@@ -17,8 +17,9 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        $memorials = Memorial::all();
-        return Inertia::render('lista', ['memorials'=>$memorials]);
+        $registros = Memorial::all();
+        $propietarios = Propietario::all();
+        return Inertia::render('lista', ['registros'=>$registros, 'propietarios'=>$propietarios]);
     }
 
     /**
@@ -44,10 +45,15 @@ class RegistroController extends Controller
             'referencia' => 'required',
             'dateMemo' => 'required',
             /*'file_memo' => 'required',*/
+            'paterno' => 'required',
+            'materno' => 'required',
+            'nombres' => 'required',
+            'cel' => 'required',
         ]);
 
         Memorial::create($request->all());
-        return Redirect::route('memorials.index');
+        Propietario::create($request->all());
+        return Redirect::route('registros.index');
     }
 
     /**
