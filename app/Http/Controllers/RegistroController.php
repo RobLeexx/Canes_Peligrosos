@@ -51,6 +51,17 @@ class RegistroController extends Controller
             'cel' => 'required',
         ]);
 
+        $input = $request->all();
+        if($request->hasFile('fotoProp'))
+        {
+            $destination_path = 'public/images/photos';
+            $image = $request->file('fotoProp');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('fotoProp')->storeAs($destination_path,$image_name);
+
+            $input['image'] = $image_name;
+        }
+
         Memorial::create($request->all());
         Propietario::create($request->all());
         return Redirect::route('registros.index');

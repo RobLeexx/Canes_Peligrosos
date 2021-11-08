@@ -417,11 +417,16 @@
                                                 <template>
                                                     <v-text-field style="height: 45px"
                                                         disabled
-                                                        :value="fotoProp"
+                                                        id="fotoPropName"
+                                                        v-model="form.fotoPropName"
                                                         label="Foto del Propietario"
                                                         outlined
                                                         dense
                                                         prepend-icon="mdi-face"
+                                                    ></v-text-field>
+                                                    <v-text-field class="d-none"
+                                                        id="fotoProp"
+                                                        v-model="form.fotoProp"
                                                     ></v-text-field>
                                                     <v-subheader style="
                                                         display: flex;
@@ -2149,7 +2154,6 @@
             canvasWidth:800,
             photoTaken: false,
             itemPhotoProp: [],
-            fotoProp: null,
             camarasList: [],
             firstSwitch: true,
             ubiProp: null,
@@ -2162,6 +2166,8 @@
                 paterno: null,
                 materno: null,
                 nombres: null,
+                fotoProp: null,
+                fotoPropName: null,
                 cel: null,
             },
             }
@@ -2490,7 +2496,8 @@
                 this.showDevices = true;
                 this.photoTaken = false,
                 this.isCameraOpen = true,
-                this.fotoProp = null,
+                this.form.fotoProp = null,
+                this.form.fotoPropName = null,
                 this.switchCamara(),
                 this.createCameraElement()
             },
@@ -2508,8 +2515,9 @@
             },
             uploadPhoto(dataURL){
             let uniquePictureName = this.generateCapturePhotoName();
-            let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpg')
-            this.fotoProp = uniquePictureName;
+            let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName + '.jpg')
+            this.form.fotoPropName = uniquePictureName;
+            this.form.fotoProp = capturedPhotoFile;
             let formData = new FormData()
             formData.append('file', capturedPhotoFile)
             // Upload image api

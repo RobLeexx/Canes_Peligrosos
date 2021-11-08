@@ -12,6 +12,8 @@ class Propietario extends Model
         'paterno',
         'materno',
         'nombres',
+        'fotoProp',
+        'fotoPropName',
         'cel'
     ];
 }

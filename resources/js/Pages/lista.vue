@@ -45,33 +45,33 @@
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <div style="display: flex; flex-direction: column; float: left">
-                                    <tr style="display: flex" v-for="registro in registros" :key="registro.id">
-                                        <td class="px-6 py-4 whitespace-nowrap" :width="anchoProp" v-if="registro.id %2 == 0">
+                                    <tr style="display: flex" v-for="propietario in propietarios" :key="propietario.id">
+                                        <td class="px-6 py-4 whitespace-nowrap" :width="anchoProp" v-if="propietario.id %2 == 0">
                                             <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                                            <div class="flex-shrink-0 h-10 w-15">
+                                                <img class="h-10 w-15 rounded-full" v-bind:src="'/storage/images/photos/' + propietario.fotoPropName + '.jpg'">
                                             </div>
-                                            <div class="ml-4" style="height: 56px">
+                                            <div class="ml-4" style="height: 56px; padding-top: 8.5px">
                                                 <div class="text-sm font-medium text-gray-900">
-                                                {{ registro.comandante }}
+                                                {{ propietario.nombres }}
                                                 </div>
                                                 <div class="text-sm text-gray-500">
-                                                {{ registro.referencia }}
+                                                {{ propietario.cel }}
                                                 </div>
                                             </div>
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap" style="background: #EFEDED" :width="anchoProp" v-else>
                                             <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                                            <div class="flex-shrink-0 h-10 w-15">
+                                                <img class="h-10 w-15 rounded-full" v-bind:src="'/storage/images/photos/' + propietario.fotoPropName + '.jpg'">
                                             </div>
-                                            <div class="ml-4" style="height: 56px">
+                                            <div class="ml-4" style="height: 56px; padding-top: 8.5px">
                                                 <div class="text-sm font-medium text-gray-900">
-                                                {{ registro.comandante }}
+                                                {{ propietario.nombres }}
                                                 </div>
                                                 <div class="text-sm text-gray-500">
-                                                {{ registro.referencia }}
+                                                {{ propietario.cel }}
                                                 </div>
                                             </div>
                                             </div>
@@ -86,7 +86,7 @@
                                             <div class="flex-shrink-0 h-10 w-10">
                                                 <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
                                             </div>
-                                            <div class="ml-4" style="height: 56px">
+                                            <div class="ml-4" style="height: 56px; padding-top: 8.5px">
                                                 <div class="text-sm font-medium text-gray-900">
                                                 {{ propietario.paterno }}
                                                 </div>
@@ -101,7 +101,7 @@
                                             <div class="flex-shrink-0 h-10 w-10">
                                                 <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
                                             </div>
-                                            <div class="ml-4" style="height: 56px">
+                                            <div class="ml-4" style="height: 56px; padding-top: 8.5px">
                                                 <div class="text-sm font-medium text-gray-900">
                                                 {{ propietario.paterno }}
                                                 </div>
@@ -178,6 +178,8 @@
         data: function () {
             return {
             }
+        },
+        methods: {
         },
         computed: {
             anchoProp() {
