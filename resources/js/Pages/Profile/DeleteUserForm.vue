@@ -2,7 +2,7 @@
     <jet-action-section>
         <template #title>
             <h2 style="color: white">
-                Eliminar Cuenta
+                Eliminar Cuenta (SOLO ADMINISTRATIVOS)
             </h2>
         </template>
 
@@ -18,9 +18,9 @@
             </div>
 
             <div class="mt-5">
-                <jet-danger-button @click.native="confirmUserDeletion" style="color: white">
+                <jet-button @click.native="confirmUserDeletion" style="color: white; background: #ADAAAA" disabled>
                     Eliminar Cuenta
-                </jet-danger-button>
+                </jet-button>
             </div>
 
             <!-- Delete Account Confirmation Modal -->
@@ -62,12 +62,14 @@
     import JetDangerButton from '@/Jetstream/DangerButton'
     import JetInput from '@/Jetstream/Input'
     import JetInputError from '@/Jetstream/InputError'
+    import JetButton from '@/Jetstream/Button'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton'
 
     export default {
         components: {
             JetActionSection,
             JetDangerButton,
+            JetButton,
             JetDialogModal,
             JetInput,
             JetInputError,

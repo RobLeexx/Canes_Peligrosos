@@ -56,14 +56,14 @@
             <!-- Username -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="username" value="Nombre de Usuario" />
-                <jet-input id="username" type="text" class="mt-1 block w-full" v-model="form.username" autocomplete="username" />
+                <jet-input id="username" type="text" class="mt-1 block w-full" v-model="form.username" autocomplete="username" style="background: #EFEDED"/>
                 <jet-input-error :message="form.errors.username" class="mt-2" />
             </div>
 
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="email" value="Correo Electrónico" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" />
+                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" style="background: #EFEDED"/>
                 <jet-input-error :message="form.errors.email" class="mt-2" />
             </div>
         </template>

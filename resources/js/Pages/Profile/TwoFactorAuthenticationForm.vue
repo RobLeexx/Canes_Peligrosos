@@ -2,7 +2,7 @@
     <jet-action-section>
         <template #title>
             <h2 style="color: white">
-                Autenticación de dos factores
+                Autenticación de dos factores (DESHABILITADO)
             </h2>
         </template>
 
@@ -57,7 +57,7 @@
             <div class="mt-5">
                 <div v-if="! twoFactorEnabled">
                     <jet-confirms-password @confirmed="enableTwoFactorAuthentication">
-                        <jet-button type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling" style="color:white; background-color:#33691E;">
+                        <jet-button type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling" style="color:white; background-color:#ADAAAA;" disabled>
                             Habilitar
                         </jet-button>
                     </jet-confirms-password>

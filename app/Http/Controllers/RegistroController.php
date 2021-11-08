@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Memorial;
 use App\Models\Propietario;
+use App\Models\Can;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
@@ -19,7 +20,8 @@ class RegistroController extends Controller
     {
         $registros = Memorial::all();
         $propietarios = Propietario::all();
-        return Inertia::render('lista', ['registros'=>$registros, 'propietarios'=>$propietarios]);
+        $canes = Can::all();
+        return Inertia::render('lista', ['registros'=>$registros, 'propietarios'=>$propietarios, 'canes'=>$canes]);
     }
 
     /**
@@ -59,11 +61,35 @@ class RegistroController extends Controller
             $image_name = $image->getClientOriginalName();
             $path = $request->file('fotoProp')->storeAs($destination_path,$image_name);
 
-            $input['image'] = $image_name;
+            $input['fotoProp'] = $image_name;
+        }
+        if($request->hasFile('fotoCan'))
+        {
+            $destination_path = 'public/images/photos';
+            $image = $request->file('fotoCan');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('fotoCan')->storeAs($destination_path,$image_name);
+
+            $input['fotoCan'] = $image_name;
+        }
+        if($request->hasFile('fotoCan2'))
+        {
+            $destination_path = 'public/images/photos';
+            $image = $request->file('fotoCan2');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('fotoCan2')->storeAs($destination_path,$image_name);
+        }
+        if($request->hasFile('fotoCan2Name'))
+        {
+            $destination_path = 'public/images/photos';
+            $image = $request->file('fotoCan2Name');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('fotoCan2Name')->storeAs($destination_path,$image_name);
         }
 
         Memorial::create($request->all());
         Propietario::create($request->all());
+        Can::create($request->all());
         return Redirect::route('registros.index');
     }
 
