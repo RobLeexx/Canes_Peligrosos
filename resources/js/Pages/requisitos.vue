@@ -448,26 +448,26 @@
                                                         :rules="vacio"
                                                 ></v-text-field>
                                             </v-col>
-                                            <v-col cols="12" sm="6" style="display:flex; align-items: center">
-                                                <div>
-                                                    <v-row>
-                                                        <div>
-                                                            Latitud
-                                                        </div>
-                                                        <div>
-                                                            Longitud
-                                                        </div>
-                                                    </v-row>
-                                                    <v-row style="display: flex">
-                                                        <div style="padding-bottom: 25px"
-                                                            id="longitud"
-                                                            v-model="form.latitud"
-                                                        ></div>
-                                                        <div style="padding-bottom: 25px"
-                                                            id="latitud"
-                                                            v-model="form.longitud"
-                                                        ></div>
-                                                </v-row>
+                                            <v-col cols="12" sm="3">
+                                                <div style="text-align: center">
+                                                    <div style="-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">
+                                                        Latitud
+                                                    </div>
+                                                    <div
+                                                        id="latitud"
+                                                        v-model="form.latitud"
+                                                    ></div>
+                                                </div>
+                                            </v-col>
+                                            <v-col cols="12" sm="3">
+                                                <div style="text-align: center">
+                                                    <div style="-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">
+                                                        Longitud
+                                                    </div>
+                                                    <div
+                                                        id="longitud"
+                                                        v-model="form.longitud"
+                                                    ></div>
                                                 </div>
                                             </v-col>
                                             <v-col cols="12" sm="12">
@@ -2990,8 +2990,8 @@
             console.clear(coordinates);
             coordinates = event.lngLat;
             marker.setLngLat(coordinates).addTo(map);
-            document.getElementById('latitud').innerHTML = Object.values(coordinates)[0];
-            document.getElementById('longitud').innerHTML = Object.values(coordinates)[1];
+            document.getElementById('latitud').innerHTML = Object.values(coordinates)[1];
+            document.getElementById('longitud').innerHTML = Object.values(coordinates)[0];
             console.log(coordinates);
             console.log(Object.values(coordinates));
             }
