@@ -449,11 +449,26 @@
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" style="display:flex; align-items: center">
-                                                <v-row>
-                                                     <div style="padding-bottom: 25px; padding-left: 35px;"
-                                                        id="longlat"
-                                                    ></div>
+                                                <div>
+                                                    <v-row>
+                                                        <div>
+                                                            Latitud
+                                                        </div>
+                                                        <div>
+                                                            Longitud
+                                                        </div>
+                                                    </v-row>
+                                                    <v-row style="display: flex">
+                                                        <div style="padding-bottom: 25px"
+                                                            id="longitud"
+                                                            v-model="form.latitud"
+                                                        ></div>
+                                                        <div style="padding-bottom: 25px"
+                                                            id="latitud"
+                                                            v-model="form.longitud"
+                                                        ></div>
                                                 </v-row>
+                                                </div>
                                             </v-col>
                                             <v-col cols="12" sm="12">
                                                 <div style="height: 500px" id="map"></div>
@@ -1552,6 +1567,7 @@
                                                     outlined
                                                     accept="image/*"
                                                     @change="onFileChange"
+                                                    @click:clear="callItBack()"
                                                     dense
                                                     show-size
                                                     :disabled="!webFotoCan"
@@ -2296,6 +2312,8 @@
                 nombres: null,
                 fotoProp: null,
                 fotoPropName: null,
+                latitud: null,
+                longitud: null,
                 cel: null,
                 /* Can */
                 nomPerro: null,
@@ -2324,44 +2342,46 @@
             this.dateProp &&
             this.form.documento &&
             this.form.docExp &&
+            this.form.fotoPropName &&
+            this.form.ubiProp &&
             (this.form.cel || this.form.tel || this.form.em || this.form.cel2)
             )
         },
-        canesCheck () {
-            return (
-            this.form.aCanes &&
-            this.displayDate1 &&
-            this.eCanes
-            )
-        },
-        rejapCheck () {
-            return (
-            this.form.aRejap &&
-            this.displayDate2 &&
-            this.eRejap
-            )
-        },
-        felccCheck () {
-            return (
-            this.form.aFelcc &&
-            this.displayDate3 &&
-            this.eFelcc
-            )
-        },
-        felcnCheck () {
-            return (
-            this.form.aFelcn &&
-            this.displayDate4 &&
-            this.eFelcn
-            )
-        },
-        felcvCheck () {
-            return (
-            this.form.aFelcv &&
-            this.displayDate5 &&
-            this.eFelcv
-            )
-        },
+            canesCheck () {
+                return (
+                this.form.aCanes &&
+                this.displayDate1 &&
+                this.eCanes
+                )
+            },
+            rejapCheck () {
+                return (
+                this.form.aRejap &&
+                this.displayDate2 &&
+                this.eRejap
+                )
+            },
+            felccCheck () {
+                return (
+                this.form.aFelcc &&
+                this.displayDate3 &&
+                this.eFelcc
+                )
+            },
+            felcnCheck () {
+                return (
+                this.form.aFelcn &&
+                this.displayDate4 &&
+                this.eFelcn
+                )
+            },
+            felcvCheck () {
+                return (
+                this.form.aFelcv &&
+                this.displayDate5 &&
+                this.eFelcv
+                )
+            },
         form3IsValid () {
             return (
             this.form.aCanes &&
@@ -2847,6 +2867,12 @@
                 console.log(event.name);
                 let fotoCanName2 = event.name;
                 this.form.fotoCan2Name = fotoCanName2;
+                this.adFotoCan = false;
+                console.clear();
+            },
+            callItBack(){
+                this.adFotoCan = true;
+                console.clear();
             },
 
             /* DateTimeExtension */                
@@ -2960,11 +2986,14 @@
             var marker = new mapboxgl.Marker();
 
             function add_marker (event) {
-            var coordinates = event.lngLat;
+            var coordinates = null;
+            console.clear(coordinates);
+            coordinates = event.lngLat;
             marker.setLngLat(coordinates).addTo(map);
-            document.getElementById('longlat').innerHTML =
-                    // `e.lngLat` is the longitude, latitude geographical position of the event.
-                    JSON.stringify(event.lngLat.wrap());
+            document.getElementById('latitud').innerHTML = Object.values(coordinates)[0];
+            document.getElementById('longitud').innerHTML = Object.values(coordinates)[1];
+            console.log(coordinates);
+            console.log(Object.values(coordinates));
             }
 
             map.on('click', add_marker);

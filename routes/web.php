@@ -7,6 +7,7 @@ use Inertia\Inertia;
 Use App\Http\Controllers\UsuarioController;
 Use App\Http\Controllers\ListaController;
 Use App\Http\Controllers\RegistroController;
+Use App\Http\Controllers\RegistroShowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/lista', [ListaController::class, 'listaCont'])->name('lista');
     
-    Route::resource('registros', RegistroController::class)->middleware(['auth:sanctum', 'verified']);
+    Route::resource('registros', RegistroController::class)->middleware(['auth:sanctum', 'verified'])->except('show');
+
+    Route::get('/propietarios/{propietario}', RegistroShowController::class)->name('registros.show');
 });
 

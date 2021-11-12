@@ -157,7 +157,7 @@
                         <jet-responsive-nav-link :href="route('registros.index')" :active="route().current('registros.index')">
                             Lista
                         </jet-responsive-nav-link>
-                        <jet-responsive-nav-link :href="route('requisitos')" :active="route().current('requisitos')">
+                        <jet-responsive-nav-link :href="route('registros.create')" :active="route().current('registros.create')">
                             Requisitos
                         </jet-responsive-nav-link>
                         <jet-responsive-nav-link :href="route('capacitaciones')" :active="route().current('capacitaciones')">

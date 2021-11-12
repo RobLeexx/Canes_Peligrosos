@@ -17,6 +17,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ListaController' => $baseDir . '/app/Http/Controllers/ListaController.php',
     'App\\Http\\Controllers\\RegistroController' => $baseDir . '/app/Http/Controllers/RegistroController.php',
+    'App\\Http\\Controllers\\RegistroShowController' => $baseDir . '/app/Http/Controllers/RegistroShowController.php',
     'App\\Http\\Controllers\\User\\PerfilController' => $baseDir . '/app/Http/Controllers/User/PerfilController.php',
     'App\\Http\\Controllers\\UsuarioController' => $baseDir . '/app/Http/Controllers/UsuarioController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

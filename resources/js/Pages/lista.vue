@@ -137,12 +137,12 @@
                                 </td>
 
                                 <td class="px-1 py-4 whitespace-nowrap text-right text-sm font-medium d-none d-sm-block" v-if="propietario.id %2 == 0" style="width: 100%">
-                                    <v-btn fab text><v-icon>mdi-eye</v-icon></v-btn>
-                                    <v-btn fab text><v-icon>mdi-pencil</v-icon></v-btn>
+                                    <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-eye</v-icon></v-btn>
+                                    <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-pencil</v-icon></v-btn>
                                 </td>
                                 <td class="px-1 py-4 whitespace-nowrap text-right text-sm font-medium d-none d-sm-block" v-else style="background: #EFEDED; width: 100%">
-                                    <v-btn fab text><v-icon>mdi-eye</v-icon></v-btn>
-                                    <v-btn fab text><v-icon>mdi-pencil</v-icon></v-btn>
+                                    <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-eye</v-icon></v-btn>
+                                    <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-pencil</v-icon></v-btn>
                                 </td>
 
                                 <td class="px-1 py-4 whitespace-nowrap text-right text-sm font-medium d-block d-sm-none" style="padding: 4px !important; width: 100%" v-if="propietario.id %2 == 0">
@@ -177,7 +177,6 @@
 
     export default {
         props: {
-            registros: Array,
             propietarios: Array,
             canes: Array,
         },

@@ -578,6 +578,7 @@ class ComposerStaticInit6ba9a1e50238b7a8c492ae6a8203c8f2
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ListaController' => __DIR__ . '/../..' . '/app/Http/Controllers/ListaController.php',
         'App\\Http\\Controllers\\RegistroController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistroController.php',
+        'App\\Http\\Controllers\\RegistroShowController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistroShowController.php',
         'App\\Http\\Controllers\\User\\PerfilController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/PerfilController.php',
         'App\\Http\\Controllers\\UsuarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsuarioController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

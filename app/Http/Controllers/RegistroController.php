@@ -18,10 +18,10 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        $registros = Memorial::all();
+        $memoriales = Memorial::all();
         $propietarios = Propietario::all();
         $canes = Can::all();
-        return Inertia::render('lista', ['registros'=>$registros, 'propietarios'=>$propietarios, 'canes'=>$canes]);
+        return Inertia::render('lista', ['memoriales'=>$memoriales, 'propietarios'=>$propietarios, 'canes'=>$canes]);
     }
 
     /**
@@ -99,10 +99,11 @@ class RegistroController extends Controller
      * @param  \App\Models\Memorial  $memorial
      * @return \Illuminate\Http\Response
      */
-    public function show(Memorial $memorial)
+    public function show(Registro $registro)
     {
         //
     }
+
 
     /**
      * Show the form for editing the specified resource.
