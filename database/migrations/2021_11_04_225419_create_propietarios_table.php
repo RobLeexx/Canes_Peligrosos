@@ -20,6 +20,8 @@ class CreatePropietariosTable extends Migration
             $table->string('nombres');
             $table->string('fotoProp');
             $table->string('fotoPropName');
+            $table->string('latitud');
+            $table->string('longitud');
             $table->string('cel')->nullable();
             $table->timestamps();
         });

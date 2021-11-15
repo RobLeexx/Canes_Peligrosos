@@ -50,6 +50,8 @@ class RegistroController extends Controller
             'paterno' => 'required',
             'materno' => 'required',
             'nombres' => 'required',
+            'latitud' => 'required',
+            'longitud' => 'required',
             'cel' => 'required',
         ]);
 

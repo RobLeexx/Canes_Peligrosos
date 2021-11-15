@@ -14,6 +14,8 @@ class Propietario extends Model
         'nombres',
         'fotoProp',
         'fotoPropName',
+        'latitud',
+        'longitud',
         'cel'
     ];
 }

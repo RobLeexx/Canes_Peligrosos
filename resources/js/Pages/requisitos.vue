@@ -437,7 +437,7 @@
                                                 </template>
                                             </v-col>
                                             <v-col cols="12" sm="12">
-                                                <v-subheader>Domicilio del propietario en Google Maps</v-subheader>
+                                                <v-subheader>Domicilio del propietario en Georreferenciado</v-subheader>
                                             </v-col>
                                             <v-col cols="12" sm="6">
                                                 <v-text-field 
@@ -448,7 +448,7 @@
                                                         :rules="vacio"
                                                 ></v-text-field>
                                             </v-col>
-                                            <v-col cols="12" sm="3">
+                                            <v-col cols="12" sm="2">
                                                 <div style="text-align: center">
                                                     <div style="-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">
                                                         Latitud
@@ -459,7 +459,7 @@
                                                     ></div>
                                                 </div>
                                             </v-col>
-                                            <v-col cols="12" sm="3">
+                                            <v-col cols="12" sm="2">
                                                 <div style="text-align: center">
                                                     <div style="-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">
                                                         Longitud
@@ -469,6 +469,12 @@
                                                         v-model="form.longitud"
                                                     ></div>
                                                 </div>
+                                            </v-col>
+                                            <v-col cols="12" sm="2">
+                                                <v-btn
+                                                color="primary"
+                                                @click="saveCoord"
+                                                >Guardar</v-btn>
                                             </v-col>
                                             <v-col cols="12" sm="12">
                                                 <div style="height: 500px" id="map"></div>
@@ -2344,6 +2350,8 @@
             this.form.docExp &&
             this.form.fotoPropName &&
             this.form.ubiProp &&
+            this.form.latitud &&
+            this.form.longitud &&
             (this.form.cel || this.form.tel || this.form.em || this.form.cel2)
             )
         },
@@ -2682,7 +2690,7 @@
             console.log("File", capturedPhotoFile);
             },
                 generateCapturePhotoName(){
-            return  Math.random().toString(36).substring(2, 15)
+            return  'propietario_' + Math.random().toString(36).substring(2, 15)
             },
 
             dataURLtoFile(dataURL, filename) {
@@ -2847,7 +2855,7 @@
             console.log("File", capturedPhotoFile2);
             },
                 generateCapturePhotoName2(){
-            return  Math.random().toString(36).substring(2, 15)
+            return  'can_' + Math.random().toString(36).substring(2, 15)
             },
 
             dataURLtoFile2(dataURL2, filename2) {
@@ -2953,6 +2961,15 @@
             ? this.length - 1
             : this.onboarding - 1
         },
+        saveCoord(){
+            const lati = localStorage.getItem('lat');
+            console.log(lati);
+            const longi = localStorage.getItem('lon');
+            console.log(longi);
+            this.form.latitud = lati;
+            this.form.longitud = longi;
+            
+        },
         },
          mounted() {
             // Set the current date and time as default value_DateTime
@@ -2987,13 +3004,24 @@
 
             function add_marker (event) {
             var coordinates = null;
-            console.clear(coordinates);
             coordinates = event.lngLat;
             marker.setLngLat(coordinates).addTo(map);
             document.getElementById('latitud').innerHTML = Object.values(coordinates)[1];
             document.getElementById('longitud').innerHTML = Object.values(coordinates)[0];
-            console.log(coordinates);
-            console.log(Object.values(coordinates));
+            if(localStorage.getItem('lat') == null)
+            {
+                localStorage.setItem("lat", Object.values(coordinates)[1]);
+                localStorage.setItem("lon", Object.values(coordinates)[0]);
+            }
+            else
+            {
+                localStorage.removeItem('lat');
+                localStorage.removeItem('lon');
+                console.clear();
+                localStorage.setItem("lat", Object.values(coordinates)[1]);
+                localStorage.setItem("lon", Object.values(coordinates)[0]);
+            }
+
             }
 
             map.on('click', add_marker);

@@ -26,6 +26,7 @@
         "vue-mapbox": "^0.4.1",
         "vue-picture-swipe": "^2.1.0",
         "vue-router": "^3.5.2",
+        "vue-sessionstorage": "^1.0.0",
         "vue-web-cam": "^1.9.0",
         "vuetify": "^2.5.8",
         "vuetify-datetime-picker": "^2.1.1"
