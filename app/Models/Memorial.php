@@ -12,6 +12,6 @@ class Memorial extends Model
         'comandante',
         'referencia',
         'dateMemo',
-        /*'file_memo'*/
+        'memoFile'
     ];
 }

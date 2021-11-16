@@ -120,7 +120,8 @@
                                                 sm="6"
                                             >
                                                 <template>
-                                                <v-file-input style="height: 45px"
+                                                <v-file-input v-model="form.memoFile" 
+                                                    style="height: 45px"
                                                     outlined
                                                     dense
                                                     show-size
@@ -2312,6 +2313,7 @@
                 comandante: null,
                 referencia: null,
                 dateMemo: null,
+                memoFile: null,
                 /* Propietario */
                 paterno: null,
                 materno: null,

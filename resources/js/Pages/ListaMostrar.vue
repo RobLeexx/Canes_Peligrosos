@@ -20,7 +20,7 @@
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <tr style="display: flex">
-                                <td class="px-6 py-4 whitespace-nowrap">
+                                <td class="px-6 py-10 whitespace-nowrap">
                                     <div class="flex items-center">
                                     <div class="ml-4" style="height: 100px; padding-top: 8.5px">
                                         <div class="text-sm font-medium text-gray-900">
@@ -30,15 +30,22 @@
                                         {{ propietario.materno}}
                                         </div>
                                         <div v-for="can in canes" :key="can.id">
-                                        <div v-if="propietario.id == can.id">
-                                            <div class="text-sm text-gray-500">
-                                                {{ can.raza }}
-                                            </div>
-                                            <div class="flex-shrink-0 h-10 w-15">
-                                                <img class="h-10 w-15 rounded-full" v-if="can.fotoCanName != null" v-bind:src="'/storage/images/photos/' + can.fotoCanName + '.jpg'">
-                                                <img class="h-10 w-15 rounded-full" v-else v-bind:src="'/storage/images/photos/' + can.fotoCan2Name">
+                                            <div v-if="propietario.id == can.id">
+                                                <div class="text-sm text-gray-500">
+                                                    {{ can.raza }}
+                                                </div>
+                                                <div class="flex-shrink-0 h-10 w-15">
+                                                    <img class="h-10 w-15 rounded-full" v-if="can.fotoCan != null" v-bind:src="'/storage/images/photos/' + can.fotoCan">
+                                                    <img class="h-10 w-15 rounded-full" v-else v-bind:src="'/storage/images/photos/' + can.fotoCan2">
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <div v-for="memorial in memoriales" :key="memorial.id" style="height: 50px">
+                                            <div v-if="propietario.id == memorial.id">
+                                                <v-btn 
+                                                >{{ memorial.memoFile }}</v-btn>
+                                            </div>
                                         </div>
                                     </div>
                                     </div>

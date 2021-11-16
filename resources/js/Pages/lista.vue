@@ -50,7 +50,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap" :width="anchoProp" v-if="propietario.id %2 == 0">
                                     <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-15">
-                                        <img class="h-10 w-15 rounded-full" v-bind:src="'/storage/images/photos/' + propietario.fotoPropName + '.jpg'">
+                                        <img class="h-10 w-15 rounded-full" v-bind:src="'/storage/images/photos/' + propietario.fotoProp">
                                     </div>
                                     <div class="ml-4" style="height: 56px; padding-top: 8.5px">
                                         <div class="text-sm font-medium text-gray-900">
@@ -65,7 +65,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap" style="background: #EFEDED" :width="anchoProp" v-else>
                                     <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-15">
-                                        <img class="h-10 w-15 rounded-full" v-bind:src="'/storage/images/photos/' + propietario.fotoPropName + '.jpg'">
+                                        <img class="h-10 w-15 rounded-full" v-bind:src="'/storage/images/photos/' + propietario.fotoProp">
                                     </div>
                                     <div class="ml-4" style="height: 56px; padding-top: 8.5px">
                                         <div class="text-sm font-medium text-gray-900">
@@ -85,8 +85,8 @@
                                 <td class="px-6 py-4 whitespace-nowrap d-none d-sm-block" :width="anchoCan2" v-if="can.id %2 == 0" style="min-width: 200px">
                                     <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-15">
-                                        <img class="h-10 w-15 rounded-full" v-if="can.fotoCanName != null" v-bind:src="'/storage/images/photos/' + can.fotoCanName + '.jpg'">
-                                        <img class="h-10 w-15 rounded-full" v-else v-bind:src="'/storage/images/photos/' + can.fotoCan2Name">
+                                        <img class="h-10 w-15 rounded-full" v-if="can.fotoCan != null" v-bind:src="'/storage/images/photos/' + can.fotoCan">
+                                        <img class="h-10 w-15 rounded-full" v-else v-bind:src="'/storage/images/photos/' + can.fotoCan2">
                                     </div>
                                     <div class="ml-4" style="height: 56px; padding-top: 8.5px">
                                         <div class="text-sm font-medium text-gray-900">
@@ -101,8 +101,8 @@
                                 <td class="px-6 py-4 whitespace-nowrap d-none d-sm-block" :width="anchoCan2" v-else style="background: #EFEDED; min-width: 200px">
                                     <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-15">
-                                        <img class="h-10 w-15 rounded-full" v-if="can.fotoCanName != null" v-bind:src="'/storage/images/photos/' + can.fotoCanName + '.jpg'">
-                                        <img class="h-10 w-15 rounded-full" v-else v-bind:src="'/storage/images/photos/' + can.fotoCan2Name">
+                                        <img class="h-10 w-15 rounded-full" v-if="can.fotoCan != null" v-bind:src="'/storage/images/photos/' + can.fotoCan">
+                                        <img class="h-10 w-15 rounded-full" v-else v-bind:src="'/storage/images/photos/' + can.fotoCan2">
                                     </div>
                                     <div class="ml-4" style="height: 56px; padding-top: 8.5px">
                                         <div class="text-sm font-medium text-gray-900">

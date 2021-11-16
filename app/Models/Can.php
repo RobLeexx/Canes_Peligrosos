@@ -10,10 +10,8 @@ class Can extends Model
     use HasFactory;
     protected $fillable = [
         'nomPerro',
-        'fotoCan2',
-        'fotoCan2Name',
         'fotoCan',
-        'fotoCanName',
+        'fotoCan2',
         'razaCan'
     ];
 }

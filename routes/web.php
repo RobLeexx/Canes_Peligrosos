@@ -8,6 +8,7 @@ Use App\Http\Controllers\UsuarioController;
 Use App\Http\Controllers\ListaController;
 Use App\Http\Controllers\RegistroController;
 Use App\Http\Controllers\RegistroShowController;
+Use App\Http\Controllers\DownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +57,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::resource('registros', RegistroController::class)->middleware(['auth:sanctum', 'verified'])->except('show');
 
     Route::get('/propietarios/{propietario}', RegistroShowController::class)->name('registros.show');
+
+    Route::get('/download', [DownloadController::class, 'download']);
 });
 

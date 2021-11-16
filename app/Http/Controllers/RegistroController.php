@@ -59,39 +59,43 @@ class RegistroController extends Controller
         if($request->hasFile('fotoProp'))
         {
             $destination_path = 'public/images/photos';
-            $image = $request->file('fotoProp');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('fotoProp')->storeAs($destination_path,$image_name);
+            $imageProp = $request->file('fotoProp');
+            $image_PropName = $imageProp->getClientOriginalName();
+            $path = $request->file('fotoProp')->storeAs($destination_path,$image_PropName);
 
-            $input['fotoProp'] = $image_name;
+            $input['fotoProp'] = $image_PropName;
         }
         if($request->hasFile('fotoCan'))
         {
             $destination_path = 'public/images/photos';
-            $image = $request->file('fotoCan');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('fotoCan')->storeAs($destination_path,$image_name);
+            $imageCan = $request->file('fotoCan');
+            $image_CanName = $imageCan->getClientOriginalName();
+            $path = $request->file('fotoCan')->storeAs($destination_path,$image_CanName);
 
-            $input['fotoCan'] = $image_name;
+            $input['fotoCan'] = $image_CanName;
         }
         if($request->hasFile('fotoCan2'))
         {
             $destination_path = 'public/images/photos';
-            $image = $request->file('fotoCan2');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('fotoCan2')->storeAs($destination_path,$image_name);
+            $imageCan2 = $request->file('fotoCan2');
+            $image_Can2Name = $imageCan2->getClientOriginalName();
+            $path = $request->file('fotoCan2')->storeAs($destination_path,$image_Can2Name);
+
+            $input['fotoCan'] = $image_Can2Name;
         }
-        if($request->hasFile('fotoCan2Name'))
+        if($request->hasFile('memoFile'))
         {
-            $destination_path = 'public/images/photos';
-            $image = $request->file('fotoCan2Name');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('fotoCan2Name')->storeAs($destination_path,$image_name);
+            $destination_path = 'public/doc/memos';
+            $doc = $request->file('memoFile');
+            $doc_name = $doc->getClientOriginalName();
+            $path = $request->file('memoFile')->storeAs($destination_path,$doc_name);
+
+            $input['memoFile'] = $doc_name;
         }
 
-        Memorial::create($request->all());
-        Propietario::create($request->all());
-        Can::create($request->all());
+        Memorial::create($input);
+        Propietario::create($input);
+        Can::create($input);
         return Redirect::route('registros.index');
     }
 

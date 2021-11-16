@@ -13,7 +13,6 @@ class Propietario extends Model
         'materno',
         'nombres',
         'fotoProp',
-        'fotoPropName',
         'latitud',
         'longitud',
         'cel'

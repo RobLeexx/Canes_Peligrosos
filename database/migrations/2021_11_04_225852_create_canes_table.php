@@ -16,10 +16,8 @@ class CreateCanesTable extends Migration
         Schema::create('cans', function (Blueprint $table) {
             $table->id();
             $table->string('nomPerro');
-            $table->string('fotoCan2')->nullable();
-            $table->string('fotoCan2Name')->nullable();
             $table->string('fotoCan')->nullable();
-            $table->string('fotoCanName')->nullable();
+            $table->string('fotoCan2')->nullable();
             $table->string('razaCan');
             $table->timestamps();
         });
