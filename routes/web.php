@@ -58,6 +58,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::get('/propietarios/{propietario}', RegistroShowController::class)->name('registros.show');
 
-    Route::get('/download', [DownloadController::class, 'download']);
+    Route::get('/memorials/{memo}', [DownloadController::class, 'downloadMemo'])->name('download');
 });
 

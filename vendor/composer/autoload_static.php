@@ -583,7 +583,6 @@ class ComposerStaticInit6ba9a1e50238b7a8c492ae6a8203c8f2
         'App\\Http\\Controllers\\UsuarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsuarioController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
-        'App\\Http\\Middleware\\CorsMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/CorsMiddleware.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\HandleInertiaRequests' => __DIR__ . '/../..' . '/app/Http/Middleware/HandleInertiaRequests.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',

@@ -20,7 +20,7 @@
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <tr style="display: flex">
-                                <td class="px-6 py-10 whitespace-nowrap">
+                                <td class="px-6 py-20 whitespace-nowrap">
                                     <div class="flex items-center">
                                     <div class="ml-4" style="height: 100px; padding-top: 8.5px">
                                         <div class="text-sm font-medium text-gray-900">
@@ -43,7 +43,7 @@
 
                                         <div v-for="memorial in memoriales" :key="memorial.id" style="height: 50px">
                                             <div v-if="propietario.id == memorial.id">
-                                                <v-btn 
+                                                <v-btn :href="route('download', memorial.memoFile)"
                                                 >{{ memorial.memoFile }}</v-btn>
                                             </div>
                                         </div>
