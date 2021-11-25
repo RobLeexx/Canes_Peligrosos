@@ -14,4 +14,9 @@ class DownloadController extends Controller
         $path = public_path('storage/doc/memos/'. $memo);
         return response()->download($path);
     }
+    public function downloadDoc($doc)
+    {
+        $path = public_path('storage/doc/identificación/'. $doc);
+        return response()->download($path);
+    }
 }

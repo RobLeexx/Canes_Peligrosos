@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Memorial;
 use App\Models\Propietario;
+use App\Models\Antecedente;
 use App\Models\Can;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -18,10 +19,9 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        $memoriales = Memorial::all();
         $propietarios = Propietario::all();
         $canes = Can::all();
-        return Inertia::render('lista', ['memoriales'=>$memoriales, 'propietarios'=>$propietarios, 'canes'=>$canes]);
+        return Inertia::render('lista', ['propietarios'=>$propietarios, 'canes'=>$canes]);
     }
 
     /**
@@ -43,16 +43,33 @@ class RegistroController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            /* MEMORIAL */
             'comandante' => 'required',
             'referencia' => 'required',
             'dateMemo' => 'required',
-            /*'file_memo' => 'required',*/
+            /* PROPIETARIO */
             'paterno' => 'required',
             'materno' => 'required',
             'nombres' => 'required',
+            'dateProp' => 'required',
+            'docTipo' => 'required',
+            'documento' => 'required',
+            'docExp' => 'required',
+            'domicilio' => 'required',
+            'fotoProp' => 'required',
             'latitud' => 'required',
             'longitud' => 'required',
-            'cel' => 'required',
+            /* ANTECEDENTES */
+            'aCanes' => 'required',
+            'aFechaHoraCanes' => 'required',
+            'aRejap' => 'required',
+            'aFechaHoraRejap' => 'required',
+            'aFelcc' => 'required',
+            'aFechaHoraFelcc' => 'required',
+            'aFelcn' => 'required',
+            'aFechaHoraFelcn' => 'required',
+            'aFelcv' => 'required',
+            'aFechaHoraFelcv' => 'required',
         ]);
 
         $input = $request->all();
@@ -92,9 +109,64 @@ class RegistroController extends Controller
 
             $input['memoFile'] = $doc_name;
         }
+        if($request->hasFile('docFile'))
+        {
+            $destination_path = 'public/doc/identificación';
+            $ide = $request->file('docFile');
+            $ide_name = $ide->getClientOriginalName();
+            $path = $request->file('docFile')->storeAs($destination_path,$doc_name);
+
+            $input['docFile'] = $ide_name;
+        }
+        if($request->hasFile('aCanesFile'))
+        {
+            $destination_path = 'public/doc/antecedentes';
+            $aCanes = $request->file('aCanesFile');
+            $aCanes_name = $aCanes->getClientOriginalName();
+            $path = $request->file('aCanesFile')->storeAs($destination_path,$aCanes_name);
+
+            $input['aCanesFile'] = $aCanes_name;
+        }
+        if($request->hasFile('aRejapFile'))
+        {
+            $destination_path = 'public/doc/antecedentes';
+            $aRejap = $request->file('aRejapFile');
+            $aRejap_name = $aRejap->getClientOriginalName();
+            $path = $request->file('aRejapFile')->storeAs($destination_path,$aRejap_name);
+
+            $input['aRejapFile'] = $aRejap_name;
+        }
+        if($request->hasFile('aFelccFile'))
+        {
+            $destination_path = 'public/doc/antecedentes';
+            $aFelcc = $request->file('aFelccFile');
+            $aFelcc_name = $aFelcc->getClientOriginalName();
+            $path = $request->file('aFelccFile')->storeAs($destination_path,$aFelcc_name);
+
+            $input['aFelccFile'] = $aFelcc_name;
+        }
+        if($request->hasFile('aFelcnFile'))
+        {
+            $destination_path = 'public/doc/antecedentes';
+            $aFelcn = $request->file('aFelcnFile');
+            $aFelcn_name = $aFelcn->getClientOriginalName();
+            $path = $request->file('aFelcnFile')->storeAs($destination_path,$aFelcn_name);
+
+            $input['aFelcnFile'] = $aFelcn_name;
+        }
+        if($request->hasFile('aFelcvFile'))
+        {
+            $destination_path = 'public/doc/antecedentes';
+            $aFelcv = $request->file('aFelcvFile');
+            $aFelcv_name = $aFelcv->getClientOriginalName();
+            $path = $request->file('aFelcvFile')->storeAs($destination_path,$aFelcv_name);
+
+            $input['aFelcvFile'] = $aFelcv_name;
+        }
 
         Memorial::create($input);
         Propietario::create($input);
+        Antecedente::create($input);
         Can::create($input);
         return Redirect::route('registros.index');
     }

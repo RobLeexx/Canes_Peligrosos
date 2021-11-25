@@ -17,7 +17,7 @@ class CreateMemorialesTable extends Migration
             $table->id();
             $table->string('comandante');
             $table->string('referencia');
-            $table->string('dateMemo');
+            $table->date('dateMemo');
             $table->string('memoFile')->nullable();
             $table->timestamps();
         });

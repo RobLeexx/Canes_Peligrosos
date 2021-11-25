@@ -17,14 +17,14 @@
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
                     <v-row style="height: 100%; padding: 50px; display: flex; justify-content: space-around;">
                         <div style="display: flex; flex-direction: column; width: 50%">
-                            <h1 style="text-align: center; padding: 20px">Propietario</h1>
+                            <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">PROPIETARIO</h1>
                             <v-row style="display: flex;justify-content: space-evenly">
                                 <div></div>
                                 <img style="max-width: 60%; padding-bottom: 15px" v-bind:src="'/storage/images/photos/' + propietario.fotoProp">
                                 <div></div>
                             </v-row>
                             <v-row style="display: flex; justify-content: space-between; padding-inline: 15%">
-                                <div style="padding: 20px">
+                                <div style="padding: 20px; font-weight: bold">
                                     Nombres
                                 </div>
                                 <div style="padding: 20px">
@@ -32,7 +32,7 @@
                                 </div>
                             </v-row>
                             <v-row style="display: flex; justify-content: space-between; padding-inline: 15%">
-                                <div style="padding: 20px">
+                                <div style="padding: 20px; font-weight: bold">
                                     Apellido Paterno
                                 </div>
                                 <div style="padding: 20px">
@@ -40,7 +40,7 @@
                                 </div>
                             </v-row>
                             <v-row style="display: flex; justify-content: space-between; padding-inline: 15%">
-                                <div style="padding: 20px">
+                                <div style="padding: 20px; font-weight: bold">
                                     Apellido Materno
                                 </div>
                                 <div style="padding: 20px">
@@ -51,15 +51,15 @@
                         <div style="display: flex; flex-direction: column; width: 50%">
                             <div v-for="can in canes" :key="can.id">
                             <div v-if="propietario.id == can.id">
-                                <h1 style="text-align: center; padding: 20px">Can</h1>
-                                <v-row style="display: flex;justify-content: space-evenly">
+                                <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">CAN</h1>
+                                <v-row style="display: flex; justify-content: space-evenly">
                                     <div></div>
-                                    <img style="max-width: 60%; padding-bottom: 15px" v-if="can.fotoCan != null" v-bind:src="'/storage/images/photos/' + can.fotoCan">
-                                    <img style="max-width: 60%; padding-bottom: 15px" v-else v-bind:src="'/storage/images/photos/' + can.fotoCan2">
+                                    <img style="max-width: 60%; min-height: 280px; padding-bottom: 15px" v-if="can.fotoCan != null" v-bind:src="'/storage/images/photos/' + can.fotoCan">
+                                    <img style="max-width: 60%; min-height: 280px; padding-bottom: 15px" v-else v-bind:src="'/storage/images/photos/' + can.fotoCan2">
                                     <div></div>
                                 </v-row>
                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 15%">
-                                    <div style="padding: 20px">
+                                    <div style="padding: 20px; font-weight: bold">
                                         Nombre del Can
                                     </div>
                                     <div style="padding: 20px">
@@ -67,7 +67,7 @@
                                     </div>
                                 </v-row>
                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 15%">
-                                    <div style="padding: 20px">
+                                    <div style="padding: 20px; font-weight: bold">
                                         Raza
                                     </div>
                                     <div style="padding: 20px">
@@ -75,7 +75,7 @@
                                     </div>
                                 </v-row>
                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 15%">
-                                    <div style="padding: 20px">
+                                    <div style="padding: 20px; font-weight: bold">
                                         Apellido Materno
                                     </div>
                                     <div style="padding: 20px">

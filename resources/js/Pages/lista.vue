@@ -36,7 +36,7 @@
                                         Capacitación
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider d-none d-md-block" :width="anchoTel">
-                                        Teléfono
+                                        Contacto
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">
                                         <span class="sr-only">Editar</span>
@@ -57,7 +57,7 @@
                                         {{ propietario.paterno }} {{ propietario.materno }} , {{ propietario.nombres }}
                                         </div>
                                         <div class="text-sm text-gray-500">
-                                        {{ propietario.cel }}
+                                        {{ propietario.documento }} {{ propietario.docExp }}
                                         </div>
                                     </div>
                                     </div>
@@ -72,7 +72,7 @@
                                         {{ propietario.paterno }} {{ propietario.materno }} , {{ propietario.nombres }}
                                         </div>
                                         <div class="text-sm text-gray-500">
-                                        {{ propietario.cel }}
+                                        {{ propietario.documento }} {{ propietario.docExp }}
                                         </div>
                                     </div>
                                     </div>
@@ -130,10 +130,32 @@
                                 </td>
 
                                 <td class="px-10 py-4 text-sm text-gray-500 d-none d-md-block" style="padding-top: 32px !important; padding-left: 25px !important; width: 100%; text-align: center" :width="anchoTel" v-if="propietario.id %2 == 0">
-                                    {{ propietario.cel }}
+                                    <div v-show="propietario.celular != null">
+                                    {{ propietario.celular }}
+                                    </div>
+                                    <div v-show="(propietario.celular == null) && (propietario.telefono != null)">
+                                    {{ propietario.telefono }}
+                                    </div>
+                                    <div v-show="((propietario.celular && propietario.telefono) == null) && propietario.email != null">
+                                    {{ propietario.email }}
+                                    </div>
+                                    <div v-show="((propietario.celular && propietario.telefono && propietario.email) == null) && propietario.contactoAlterno != null">
+                                    {{ propietario.contactoAlterno }}
+                                    </div>
                                 </td>
                                 <td class="px-10 py-4 text-sm text-gray-500 d-none d-md-block" style="padding-top: 32px !important; padding-left: 25px !important; background: #EFEDED; width: 100%; text-align: center" :width="anchoTel" v-else>
-                                    {{ propietario.cel }}
+                                    <div v-show="propietario.celular != null">
+                                    {{ propietario.celular }}
+                                    </div>
+                                    <div v-show="(propietario.celular == null) && (propietario.telefono != null)">
+                                    {{ propietario.telefono }}
+                                    </div>
+                                    <div v-show="((propietario.celular && propietario.telefono) == null) && propietario.email != null">
+                                    {{ propietario.email }}
+                                    </div>
+                                    <div v-show="((propietario.celular && propietario.telefono && propietario.email) == null) && propietario.contactoAlterno != null">
+                                    {{ propietario.contactoAlterno }}
+                                    </div>
                                 </td>
 
                                 <td class="px-1 py-4 whitespace-nowrap text-right text-sm font-medium d-none d-sm-block" v-if="propietario.id %2 == 0" style="width: 100%">

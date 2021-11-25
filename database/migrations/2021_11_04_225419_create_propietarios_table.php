@@ -18,10 +18,19 @@ class CreatePropietariosTable extends Migration
             $table->string('paterno');
             $table->string('materno');
             $table->string('nombres');
+            $table->date('dateProp');
+            $table->string('docTipo');
+            $table->string('documento');
+            $table->string('docExp');
+            $table->string('docFile')->nullable();
             $table->string('fotoProp');
+            $table->string('domicilio');
             $table->string('latitud');
             $table->string('longitud');
-            $table->string('cel')->nullable();
+            $table->string('celular')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('email')->nullable()->unique();;
+            $table->string('contactoAlterno')->nullable();
             $table->timestamps();
         });
     }

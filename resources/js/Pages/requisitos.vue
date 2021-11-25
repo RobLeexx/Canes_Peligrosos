@@ -272,9 +272,10 @@
                                                         >
                                                         <template v-slot:activator="{ on, attrs }">
                                                             <v-text-field
-                                                            v-model="dateProp"
+                                                            id="dateProp"
+                                                            v-model="form.dateProp"
                                                             prepend-icon="mdi-calendar"
-                                                            label="Fecha de expedición del Memorial"
+                                                            label="Fecha de nacimiento del Propietario"
                                                             :rules="vacio"
                                                             readonly
                                                             outlined
@@ -284,7 +285,7 @@
                                                             </v-text-field>
                                                         </template>
                                                         <v-date-picker
-                                                            v-model="dateProp"
+                                                            v-model="form.dateProp"
                                                             scrollable
                                                             locale="es"
                                                             :width="anchoDate"
@@ -293,7 +294,7 @@
                                                         ><v-spacer></v-spacer>
                                                             <v-btn
                                                                 color="primary"
-                                                                @click="$refs.menuProp.save(dateProp)"
+                                                                @click="$refs.menuProp.save(form.dateProp)"
                                                             >
                                                                 OK
                                                             </v-btn></v-date-picker>
@@ -304,7 +305,8 @@
 
                                             <v-col cols="12" sm="6">
                                                 <v-autocomplete
-                                                v-model="form.doc"
+                                                id="docTipo"
+                                                v-model="form.docTipo"
                                                 :items= "doc"
                                                 placeholder="Tipo de Documento de Identidad"
                                                 :rules="vacio"
@@ -314,6 +316,7 @@
                                             </v-col>
                                             <v-col cols="12" sm="4">
                                                 <v-text-field
+                                                id="documento"
                                                 v-model="form.documento"
                                                 :rules="vacio"
                                                 label="Documento de Identidad"
@@ -323,8 +326,9 @@
                                             </v-col>
                                             <v-col cols="12" sm="2">
                                                 <v-select 
+                                                id="docExp"
                                                 v-model="form.docExp"
-                                                :items= "docExp"
+                                                :items= "docExpItems"
                                                 placeholder="Departamento"
                                                 :rules="vacio"
                                                 outlined></v-select>
@@ -332,6 +336,7 @@
                                             <v-col cols="12" lg="6" sm="6">
                                                 <template>
                                                     <v-file-input style="height: 45px"
+                                                        v-model="form.docFile"
                                                         outlined
                                                         dense
                                                         show-size
@@ -442,7 +447,7 @@
                                             </v-col>
                                             <v-col cols="12" sm="6">
                                                 <v-text-field 
-                                                        v-model="form.ubiProp"
+                                                        v-model="form.domicilio"
                                                         outlined
                                                         label="Domicilio"
                                                         placeholder="Departamento/Ciudad/Zona/Calle"
@@ -487,7 +492,7 @@
                                                 <template>
                                                     <v-text-field
                                                         id="cel"
-                                                        v-model="form.cel"
+                                                        v-model="form.celular"
                                                         :rules="cel"
                                                         label="Celular"
                                                         prepend-icon="mdi-phone"
@@ -500,7 +505,7 @@
                                             <v-col cols="12" sm="6">
                                                 <template>
                                                     <v-text-field
-                                                        v-model="form.tel"
+                                                        v-model="form.telefono"
                                                         :rules="tel"
                                                         label="Télefono"
                                                         prepend-icon="mdi-phone-classic"
@@ -513,7 +518,7 @@
                                             <v-col cols="12" sm="6">
                                                 <template>
                                                     <v-text-field
-                                                        v-model="form.em"
+                                                        v-model="form.email"
                                                         label="Correo Elctrónico"
                                                         prepend-icon="mdi-at"
                                                         :rules="email"
@@ -525,7 +530,7 @@
                                             <v-col cols="12" sm="6">
                                                 <template>
                                                     <v-text-field
-                                                        v-model="form.cel2"
+                                                        v-model="form.contactoAlterno"
                                                         label="Otro Número de Contacto"
                                                         prepend-icon="mdi-phone-plus"
                                                         placeholder="Otro número de contacto del propietario"
@@ -595,7 +600,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="form.aCanes" :rules="vacio" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.numCanes" :rules="vacio" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -607,7 +612,7 @@
                                                         :width="anchoDate2a">
                                                         <template v-slot:activator="{ on }">
                                                             <v-text-field
-                                                                v-model="displayDate1"
+                                                                v-model="form.aFechaHoraCanes"
                                                                 label="Fecha y hora del registro"
                                                                 prepend-icon="mdi-calendar-clock"
                                                                 readonly
@@ -652,6 +657,7 @@
                                                 <v-col cols="12" sm="6">
                                                     <template>
                                                     <v-file-input style="height: 45px"
+                                                        v-model="form.aCanesFile"
                                                         outlined
                                                         dense
                                                         show-size
@@ -683,8 +689,8 @@
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes CANES</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea v-if="switchCANES == '1'" v-model="eCanes" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
-                                                <v-textarea v-else v-model="eCanes" solo disabled></v-textarea>
+                                                <v-textarea v-if="switchCANES == '1'" v-model="form.aCanes" counter maxlength="150" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else v-model="form.aCanes" solo disabled></v-textarea>
                                             </v-col>
 
                                             </v-card>
@@ -706,7 +712,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="form.aRejap" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.numRejap" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -718,7 +724,7 @@
                                                         :width="anchoDate2a">
                                                         <template v-slot:activator="{ on }">
                                                             <v-text-field
-                                                                v-model="displayDate2"
+                                                                v-model="form.aFechaHoraRejap"
                                                                 label="Fecha y hora del registro"
                                                                 prepend-icon="mdi-calendar-clock"
                                                                 readonly
@@ -763,6 +769,7 @@
                                                 <v-col cols="12" sm="6">
                                                     <template>
                                                     <v-file-input style="height: 45px"
+                                                        v-model="form.aRejapFile"
                                                         outlined
                                                         dense
                                                         show-size
@@ -794,8 +801,8 @@
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes REJAP</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea v-if="switchREJAP == '1'" v-model="eRejap" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
-                                                <v-textarea v-else v-model="eRejap" solo disabled label="Ninguno"></v-textarea>
+                                                <v-textarea v-if="switchREJAP == '1'" v-model="form.aRejap" counter maxlength="150" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else v-model="form.aRejap" solo disabled label="Ninguno"></v-textarea>
                                             </v-col>
 
                                             </v-card>
@@ -817,7 +824,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="form.aFelcc" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.numFelcc" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -829,7 +836,7 @@
                                                         :width="anchoDate2a">
                                                         <template v-slot:activator="{ on }">
                                                             <v-text-field
-                                                                v-model="displayDate3"
+                                                                v-model="form.aFechaHoraFelcc"
                                                                 label="Fecha y hora del registro"
                                                                 prepend-icon="mdi-calendar-clock"
                                                                 readonly
@@ -874,6 +881,7 @@
                                                 <v-col cols="12" sm="6">
                                                     <template>
                                                     <v-file-input style="height: 45px"
+                                                        v-model="form.aFelccFile"
                                                         outlined
                                                         dense
                                                         show-size
@@ -905,8 +913,8 @@
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes FELCC</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea v-if="switchFELCC == '1'" v-model="eFelcc" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
-                                                <v-textarea v-else v-model="eFelcc" solo disabled label="Ninguno"></v-textarea>
+                                                <v-textarea v-if="switchFELCC == '1'" v-model="form.aFelcc" counter maxlength="150" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else v-model="form.aFelcc" solo disabled label="Ninguno"></v-textarea>
                                             </v-col>
 
                                             </v-card>
@@ -928,7 +936,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="form.aFelcn" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.numFelcn" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -940,7 +948,7 @@
                                                         :width="anchoDate2a">
                                                         <template v-slot:activator="{ on }">
                                                             <v-text-field
-                                                                v-model="displayDate4"
+                                                                v-model="form.aFechaHoraFelcn"
                                                                 label="Fecha y hora del registro"
                                                                 prepend-icon="mdi-calendar-clock"
                                                                 readonly
@@ -985,6 +993,7 @@
                                                 <v-col cols="12" sm="6">
                                                     <template>
                                                     <v-file-input style="height: 45px"
+                                                        v-model="form.aFelcnFile"
                                                         outlined
                                                         dense
                                                         show-size
@@ -1016,8 +1025,8 @@
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes FELCN</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea v-if="switchFELCN == '1'" v-model="eFelcn" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
-                                                <v-textarea v-else v-model="eFelcn" solo disabled label="Ninguno"></v-textarea>
+                                                <v-textarea v-if="switchFELCN == '1'" v-model="form.aFelcn" counter maxlength="150" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else v-model="form.aFelcn" solo disabled label="Ninguno"></v-textarea>
                                             </v-col>
 
                                             </v-card>
@@ -1039,7 +1048,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="form.aFelcv" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.numFelcv" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -1051,7 +1060,7 @@
                                                         :width="anchoDate2a">
                                                         <template v-slot:activator="{ on }">
                                                             <v-text-field
-                                                                v-model="displayDate5"
+                                                                v-model="form.aFechaHoraFelcv"
                                                                 label="Fecha y hora del registro"
                                                                 prepend-icon="mdi-calendar-clock"
                                                                 readonly
@@ -1096,6 +1105,7 @@
                                                 <v-col cols="12" sm="6">
                                                     <template>
                                                     <v-file-input style="height: 45px"
+                                                        v-model="form.aFelcvFile"
                                                         outlined
                                                         dense
                                                         show-size
@@ -1127,8 +1137,8 @@
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes FELCV</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
-                                                <v-textarea v-if="switchFELCV == '1'" v-model="eFelcv" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
-                                                <v-textarea v-else solo v-model="eFelcv" disabled label="Ninguno"></v-textarea>
+                                                <v-textarea v-if="switchFELCV == '1'" v-model="form.aFelcv" counter maxlength="150" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                                <v-textarea v-else solo v-model="form.aFelcv" disabled label="Ninguno"></v-textarea>
                                             </v-col>
 
                                             </v-card>
@@ -2132,8 +2142,6 @@
         },
         data () {
         const defaultForm = Object.freeze({
-            doc: 'CI',
-            docExp: 'LP',
             terms: false,})
         return {
             e6: 1,
@@ -2152,12 +2160,10 @@
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.',
             terms: false,
             defaultForm,
-            dateMemo: null,
-            dateProp: null,
             menuMemo: false,
             menuProp: false,
             doc: ['CI', 'Pasaporte'],
-            docExp: ['CH','LP','CB','OR','PT','TJ','SC','BE','PD', 'Extranjero'],
+            docExpItems: ['CH','LP','CB','OR','PT','TJ','SC','BE','PD', 'Extranjero'],
             dialog: false,
             dialog2: false,
             isCameraOpen: false,
@@ -2182,11 +2188,6 @@
             dropdownOpen3: false,
             dropdownOpen4: false,
             dropdownOpen5: false,
-            displayDate1: '',
-            displayDate2: '',
-            displayDate3: '',
-            displayDate4: '',
-            displayDate5: '',
             dateModel1: '',
             dateModel2: '',
             dateModel3: '',
@@ -2197,16 +2198,6 @@
             timeModel3: '',
             timeModel4: '',
             timeModel5: '',
-            aCanes: '',
-            eCanes: 'Ninguno',
-            aRejap: '',
-            eRejap: 'Ninguno',
-            aFelcc: '',
-            eFelcc: 'Ninguno',
-            aFelcn: '',
-            eFelcn: 'Ninguno',
-            aFelcv: '',
-            eFelcv: 'Ninguno',
             nomAgencia: '',
             ubiAgencia: '',
             menuExpSeg: null,
@@ -2305,7 +2296,6 @@
             firstSwitch: true,
             firstSwitch2: true,
             photoTaken2: false,
-            ubiProp: null,
             webFotoCan: true,
             adFotoCan: true,
             form: {
@@ -2318,11 +2308,41 @@
                 paterno: null,
                 materno: null,
                 nombres: null,
+                dateProp: null,
+                docTipo: null,
+                documento: null,
+                docExp: null,
+                docFile: null,
+                domicilio: null,
                 fotoProp: null,
                 fotoPropName: null,
                 latitud: null,
                 longitud: null,
-                cel: null,
+                celular: null,
+                telefono: null,
+                email: null,
+                contactoAlterno: null,
+                /* Antecedentes */
+                numCanes: null,
+                aFechaHoraCanes: null,
+                aCanesFile: null,
+                aCanes: 'Ninguno',
+                numRejap: null,
+                aFechaHoraRejap: null,
+                aRejapFile: null,
+                aRejap: 'Ninguno',
+                numFelcc: null,
+                aFechaHoraFelcc: null,
+                aFelccFile: null,
+                aFelcc: 'Ninguno',
+                numFelcn: null,
+                aFechaHoraFelcn: null,
+                aFelcnFile: null,
+                aFelcn: 'Ninguno',
+                numFelcv: null,
+                aFechaHoraFelcv: null,
+                aFelcvFile: null,
+                aFelcv: 'Ninguno',
                 /* Can */
                 nomPerro: null,
                 fotoCan2: null,
@@ -2347,68 +2367,69 @@
             this.form.paterno &&
             this.form.materno &&
             this.form.nombres &&
-            this.dateProp &&
+            this.form.dateProp &&
+            this.form.docTipo &&
             this.form.documento &&
             this.form.docExp &&
             this.form.fotoPropName &&
-            this.form.ubiProp &&
+            this.form.domicilio &&
             this.form.latitud &&
             this.form.longitud &&
-            (this.form.cel || this.form.tel || this.form.em || this.form.cel2)
+            (this.form.celular || this.form.telefono || this.form.email || this.form.contactoAlterno)
             )
         },
             canesCheck () {
                 return (
-                this.form.aCanes &&
-                this.displayDate1 &&
-                this.eCanes
+                this.form.numCanes &&
+                this.form.aFechaHoraCanes &&
+                this.form.aCanes
                 )
             },
             rejapCheck () {
                 return (
-                this.form.aRejap &&
-                this.displayDate2 &&
-                this.eRejap
+                this.form.numRejap &&
+                this.form.aFechaHoraRejap &&
+                this.form.aRejap
                 )
             },
             felccCheck () {
                 return (
-                this.form.aFelcc &&
-                this.displayDate3 &&
-                this.eFelcc
+                this.form.numFelcc &&
+                this.form.aFechaHoraFelcc &&
+                this.form.aFelcc
                 )
             },
             felcnCheck () {
                 return (
-                this.form.aFelcn &&
-                this.displayDate4 &&
-                this.eFelcn
+                this.form.numFelcn &&
+                this.form.aFechaHoraFelcn &&
+                this.form.aFelcn
                 )
             },
             felcvCheck () {
                 return (
-                this.form.aFelcv &&
-                this.displayDate5 &&
-                this.eFelcv
+                this.form.numFelcv &&
+                this.form.aFechaHoraFelcv &&
+                this.form.aFelcv
                 )
             },
         form3IsValid () {
             return (
+            this.form.numCanes &&
+            this.form.aFechaHoraCanes &&
             this.form.aCanes &&
-            this.displayDate1 &&
-            this.eCanes &&
+            this.form.numRejap &&
+            this.form.aFechaHoraRejap &&
             this.form.aRejap &&
-            this.displayDate2 &&
-            this.eRejap &&
+            this.form.numFelcc &&
+            this.form.aFechaHoraFelcc &&
             this.form.aFelcc &&
-            this.displayDate3 &&
-            this.eFelcc &&
+            this.form.numFelcn &&
+            this.form.aFechaHoraFelcn &&
             this.form.aFelcn &&
-            this.displayDate4 &&
-            this.eFelcn &&
-            this.form.aFelcv &&
-            this.displayDate5 &&
-            this.eFelcv            )
+            this.form.numFelcv &&
+            this.form.aFechaHoraFelcv &&
+            this.form.aFelcv            )
         },
         form4IsValid () {
             return (
@@ -2919,35 +2940,35 @@
             onUpdateDate1() {
             if (!this.dateModel1 || !this.timeModel1) return false;
             let selectedTime1 = this.timeModel1;
-            this.displayDate1 = this.formatDate(this.dateModel1) + ' ' + selectedTime1;
+            this.form.aFechaHoraCanes = this.formatDate(this.dateModel1) + ' ' + selectedTime1;
             this.$emit('input', this.dateModel1 + ' ' + selectedTime1);
             },
             
             onUpdateDate2() {
             if (!this.dateModel2 || !this.timeModel2) return false;
             let selectedTime2 = this.timeModel2;
-            this.displayDate2 = this.formatDate(this.dateModel2) + ' ' + selectedTime2;
+            this.form.aFechaHoraRejap = this.formatDate(this.dateModel2) + ' ' + selectedTime2;
             this.$emit('input', this.dateModel2 + ' ' + selectedTime2);
             },
             
             onUpdateDate3() {
             if (!this.dateModel3 || !this.timeModel3) return false;
             let selectedTime3 = this.timeModel3;
-            this.displayDate3 = this.formatDate(this.dateModel3) + ' ' + selectedTime3;
+            this.form.aFechaHoraFelcc = this.formatDate(this.dateModel3) + ' ' + selectedTime3;
             this.$emit('input', this.dateModel3 + ' ' + selectedTime3);
             },
             
             onUpdateDate4() {
             if (!this.dateModel4 || !this.timeModel4) return false;
             let selectedTime4 = this.timeModel4;
-            this.displayDate4 = this.formatDate(this.dateModel4) + ' ' + selectedTime4;
+            this.form.aFechaHoraFelcn = this.formatDate(this.dateModel4) + ' ' + selectedTime4;
             this.$emit('input', this.dateModel4 + ' ' + selectedTime4);
             },
             
             onUpdateDate5() {
             if (!this.dateModel5 || !this.timeModel5) return false;
             let selectedTime5 = this.timeModel5;
-            this.displayDate5 = this.formatDate(this.dateModel5) + ' ' + selectedTime5;
+            this.form.aFechaHoraFelcv = this.formatDate(this.dateModel5) + ' ' + selectedTime5;
             this.$emit('input', this.dateModel5 + ' ' + selectedTime5);
             },
             

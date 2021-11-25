@@ -12,9 +12,18 @@ class Propietario extends Model
         'paterno',
         'materno',
         'nombres',
+        'dateProp',
+        'docTipo',
+        'documento',
+        'docExp',
+        'docFile',
         'fotoProp',
+        'domicilio',
         'latitud',
         'longitud',
-        'cel'
+        'celular',
+        'telefono',
+        'email',
+        'contactoAlterno'
     ];
 }
