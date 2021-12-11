@@ -114,7 +114,7 @@ class RegistroController extends Controller
             $destination_path = 'public/doc/identificación';
             $ide = $request->file('docFile');
             $ide_name = $ide->getClientOriginalName();
-            $path = $request->file('docFile')->storeAs($destination_path,$doc_name);
+            $path = $request->file('docFile')->storeAs($destination_path,$ide_name);
 
             $input['docFile'] = $ide_name;
         }

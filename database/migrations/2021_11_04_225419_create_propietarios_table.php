@@ -24,9 +24,14 @@ class CreatePropietariosTable extends Migration
             $table->string('docExp');
             $table->string('docFile')->nullable();
             $table->string('fotoProp');
+            /* Domicilio */
+            $table->string('departamento');
+            $table->string('provincia');
+            $table->string('municipio');
             $table->string('domicilio');
             $table->string('latitud');
             $table->string('longitud');
+            /* Contactos */
             $table->string('celular')->nullable();
             $table->string('telefono')->nullable();
             $table->string('email')->nullable()->unique();;

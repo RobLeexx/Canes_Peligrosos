@@ -443,14 +443,163 @@
                                                 </template>
                                             </v-col>
                                             <v-col cols="12" sm="12">
-                                                <v-subheader>Domicilio del propietario en Georreferenciado</v-subheader>
+                                                <v-subheader>Domicilio del propietario y su Georreferenciación</v-subheader>
                                             </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-autocomplete
+                                                v-model="form.departamento"
+                                                :items= "depa"
+                                                placeholder="Departamento"
+                                                :rules="vacio"
+                                                outlined>
+                                                </v-autocomplete>
+                                            </v-col>
+                                                <!-- Provincias -->
+                                                <v-col cols="12" sm="6">
+                                                    <v-autocomplete v-if="form.departamento == null" disabled placeholder="Provincia" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.departamento == 'Chuquisaca'" v-model="form.provincia" :items= "provCH" placeholder="Provincia de Chuquisaca" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.departamento == 'La Paz'" v-model="form.provincia" :items= "provLP" placeholder="Provincia de La Paz" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.departamento == 'Cochabamba'" v-model="form.provincia" :items= "provCB" placeholder="Provincia de Cochabamba" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.departamento == 'Oruro'" v-model="form.provincia" :items= "provOR" placeholder="Provincia de Oruro" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.departamento == 'Potosí'" v-model="form.provincia" :items= "provPT" placeholder="Provincia de Potosí" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.departamento == 'Tarija'" v-model="form.provincia" :items= "provTJ" placeholder="Provincia de Tarija" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.departamento == 'Santa Cruz'" v-model="form.provincia" :items= "provSC" placeholder="Provincia de Santa Cruz" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.departamento == 'Beni'" v-model="form.provincia" :items= "provBE" placeholder="Provincia de Beni" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.departamento == 'Pando'" v-model="form.provincia" :items= "provPD" placeholder="Provincia de Pando" :rules="vacio" outlined></v-autocomplete>
+                                                </v-col>
+
+                                                <!-- Municipios de Chuquisaca -->
+                                                <v-col cols="12" sm="6">
+                                                    <v-autocomplete v-if="form.provincia == null" disabled placeholder="Municipio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Azurduy'" v-model="form.municipio" :items= "muniCH1" placeholder="Municipio de Azurduy" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Belisario Boeto'" v-model="form.municipio" :items= "muniCH2" placeholder="Municipio de Belisario Boeto" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Hernando Siles'" v-model="form.municipio" :items= "muniCH3" placeholder="Municipio de Hernando Siles" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Luis Calvo'" v-model="form.municipio" :items= "muniCH4" placeholder="Municipio de Luis Calvo" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Nor Cinti'" v-model="form.municipio" :items= "muniCH5" placeholder="Municipio de Nor Cinti" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Oropeza'" v-model="form.municipio" :items= "muniCH6" placeholder="Municipio de Oropeza" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Sud Cinti'" v-model="form.municipio" :items= "muniCH7" placeholder="Municipio de Sud Cinti" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Tomina'" v-model="form.municipio" :items= "muniCH8" placeholder="Municipio de Tomina" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Yamparáez'" v-model="form.municipio" :items= "muniCH9" placeholder="Municipio de Yamparáez" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Zudáñez'" v-model="form.municipio" :items= "muniCH10" placeholder="Municipio de Zudáñez" :rules="vacio" outlined></v-autocomplete>
+                                                <!-- Municipios de La Paz -->
+                                                    <v-autocomplete v-else-if="form.provincia == 'Abel Iturralde'" v-model="form.municipio" :items= "muniLP1" placeholder="Municipio de Abel Iturralde" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Aroma'" v-model="form.municipio" :items= "muniLP2" placeholder="Municipio de Aroma" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Bautista Saavedra'" v-model="form.municipio" :items= "muniLP3" placeholder="Municipio de Bautista Saavedra" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Camacho'" v-model="form.municipio" :items= "muniLP4" placeholder="Municipio de Camacho" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Caranavi'" v-model="form.municipio" :items= "muniLP5" placeholder="Municipio de Caranavi" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Franz Tamayo'" v-model="form.municipio" :items= "muniLP6" placeholder="Municipio de Franz Tamayo" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Gualberto Villaroel'" v-model="form.municipio" :items= "muniLP7" placeholder="Municipio de Gualberto Villaroel" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Ingavi'" v-model="form.municipio" :items= "muniLP8" placeholder="Municipio de Ingavi" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Inquisivi'" v-model="form.municipio" :items= "muniLP9" placeholder="Municipio de Inquisivi" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'José Manuel Pando'" v-model="form.municipio" :items= "muniLP10" placeholder="Municipio de José Manuel Pando" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Larecaja'" v-model="form.municipio" :items= "muniLP11" placeholder="Municipio de Larecaja" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Loayza'" v-model="form.municipio" :items= "muniLP12" placeholder="Municipio de Loayza" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Los Andes'" v-model="form.municipio" :items= "muniLP13" placeholder="Municipio de Los Andes" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Manco Kapac'" v-model="form.municipio" :items= "muniLP14" placeholder="Municipio de Manco Kapac" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Muñecas'" v-model="form.municipio" :items= "muniLP15" placeholder="Municipio de Muñecas" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Murillo'" v-model="form.municipio" :items= "muniLP16" placeholder="Municipio de Murillo" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Nor Yungas'" v-model="form.municipio" :items= "muniLP17" placeholder="Municipio de Nor Yungas" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Omasuyos'" v-model="form.municipio" :items= "muniLP18" placeholder="Municipio de Omasuyos" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Pacajes'" v-model="form.municipio" :items= "muniLP19" placeholder="Municipio de Pacajes" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Sud Yungas'" v-model="form.municipio" :items= "muniLP20" placeholder="Municipio de Sud Yungas" :rules="vacio" outlined></v-autocomplete>
+                                                <!-- Municipios de Cochabamba -->
+                                                    <v-autocomplete v-else-if="form.provincia == 'Arani'" v-model="form.municipio" :items= "muniCB1" placeholder="Municipio de Arani" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Arque'" v-model="form.municipio" :items= "muniCB2" placeholder="Municipio de Arque" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Ayopaya'" v-model="form.municipio" :items= "muniCB3" placeholder="Municipio de Ayopaya" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Bolívar'" v-model="form.municipio" :items= "muniCB4" placeholder="Municipio de Bolívar" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Campero'" v-model="form.municipio" :items= "muniCB5" placeholder="Municipio de Campero" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Capinota'" v-model="form.municipio" :items= "muniCB6" placeholder="Municipio de Capinota" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Carrasco'" v-model="form.municipio" :items= "muniCB7" placeholder="Municipio de Carrasco" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Cercado'" v-model="form.municipio" :items= "muniCB8" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Chapare'" v-model="form.municipio" :items= "muniCB9" placeholder="Municipio de Chapare" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Esteban Arce'" v-model="form.municipio" :items= "muniCB10" placeholder="Municipio de Esteban Arce" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Germán Jordán'" v-model="form.municipio" :items= "muniCB11" placeholder="Municipio de Germán Jordán" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Mizque'" v-model="form.municipio" :items= "muniCB12" placeholder="Municipio de Mizque" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Punata'" v-model="form.municipio" :items= "muniCB13" placeholder="Municipio de Punata" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Quillacollo'" v-model="form.municipio" :items= "muniCB14" placeholder="Municipio de Quillacollo" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Tapacarí'" v-model="form.municipio" :items= "muniCB15" placeholder="Municipio de Tapacarí" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Tiraque'" v-model="form.municipio" :items= "muniCB16" placeholder="Municipio de Tiraque" :rules="vacio" outlined></v-autocomplete>
+                                                <!-- Municipios de Oruro -->
+                                                    <v-autocomplete v-else-if="form.provincia == 'Sabaya'" v-model="form.municipio" :items= "muniOR1" placeholder="Municipio de Sabaya" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Carangas'" v-model="form.municipio" :items= "muniOR2" placeholder="Municipio de Carangas" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Cercado'" v-model="form.municipio" :items= "muniOR3" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Eduardo Abaroa'" v-model="form.municipio" :items= "muniOR4" placeholder="Municipio de Eduardo Abaroa" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Ladislao Cabrera'" v-model="form.municipio" :items= "muniOR5" placeholder="Municipio de Ladislao Cabrera" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Litoral'" v-model="form.municipio" :items= "muniOR6" placeholder="Municipio de Litoral" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Mejillones'" v-model="form.municipio" :items= "muniOR7" placeholder="Municipio de Mejillones" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Nor Carangas'" v-model="form.municipio" :items= "muniOR8" placeholder="Municipio de Nor Carangas" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Pantaleón Dalence'" v-model="form.municipio" :items= "muniOR9" placeholder="Municipio de Pantaleón Dalence" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Poopó'" v-model="form.municipio" :items= "muniOR10" placeholder="Municipio de Poopó" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Sajama'" v-model="form.municipio" :items= "muniOR11" placeholder="Municipio de Sajama" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'San Pedro de Totora'" v-model="form.municipio" :items= "muniOR12" placeholder="Municipio de San Pedro de Totora" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Saucarí'" v-model="form.municipio" :items= "muniOR13" placeholder="Municipio de Saucarí" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Sebastián Pagador'" v-model="form.municipio" :items= "muniOR14" placeholder="Municipio de Sebastián Pagador" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Sud Carangas'" v-model="form.municipio" :items= "muniOR15" placeholder="Municipio de Sud Carangas" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Tomás Barrón'" v-model="form.municipio" :items= "muniOR16" placeholder="Municipio de Tomás Barrón" :rules="vacio" outlined></v-autocomplete>
+                                                     
+                                                <!-- Municipios de Potosí -->
+                                                    <v-autocomplete v-else-if="form.provincia == 'Alonso de Ibáñez'" v-model="form.municipio" :items= "muniPT1" placeholder="Municipio de Alonso de Ibáñez" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Antonio Quijarro'" v-model="form.municipio" :items= "muniPT2" placeholder="Municipio de Antonio Quijarro" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Bernardino Bilbao'" v-model="form.municipio" :items= "muniPT3" placeholder="Municipio de Bernardino Bilbao" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Charcas'" v-model="form.municipio" :items= "muniPT4" placeholder="Municipio de Charcas" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Chayanta'" v-model="form.municipio" :items= "muniPT5" placeholder="Municipio de Chayanta" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Cornelio Saavedr'" v-model="form.municipio" :items= "muniPT6" placeholder="Municipio de Cornelio Saavedr" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Daniel Campos'" v-model="form.municipio" :items= "muniPT7" placeholder="Municipio de Daniel Campos" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Enrique Baldivieso'" v-model="form.municipio" :items= "muniPT8" placeholder="Municipio de Enrique Baldivieso" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'José María Linares'" v-model="form.municipio" :items= "muniPT9" placeholder="Municipio de José María Linares" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Modesto Omiste'" v-model="form.municipio" :items= "muniPT10" placeholder="Municipio de Modesto Omiste" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Nor Chichas'" v-model="form.municipio" :items= "muniPT11" placeholder="Municipio de Nor Chichas" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Nor Lípez'" v-model="form.municipio" :items= "muniPT12" placeholder="Municipio de Nor Lípez" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Rafael Bustillo   '" v-model="form.municipio" :items= "muniPT13" placeholder="Municipio de Rafael Bustillo" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Sud Chichas'" v-model="form.municipio" :items= "muniPT14" placeholder="Municipio de Sud Chichas" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Sud Lípez'" v-model="form.municipio" :items= "muniPT15" placeholder="Municipio de Sud Lípez" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Tomás Frías'" v-model="form.municipio" :items= "muniPT16" placeholder="Municipio de Tomás Frías" :rules="vacio" outlined></v-autocomplete>
+                                                <!-- Municipios de Tarija -->
+                                                    <v-autocomplete v-else-if="form.provincia == 'Aniceto Arce'" v-model="form.municipio" :items= "muniTJ1" placeholder="Municipio de Aniceto Arce" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Avilés'" v-model="form.municipio" :items= "muniTJ2" placeholder="Municipio de Avilés" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Cercado'" v-model="form.municipio" :items= "muniTJ3" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Gran Chaco'" v-model="form.municipio" :items= "muniTJ4" placeholder="Municipio de Gran Chaco" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Méndez'" v-model="form.municipio" :items= "muniTJ5" placeholder="Municipio de Méndez" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'O’Connor'" v-model="form.municipio" :items= "muniTJ6" placeholder="Municipio de O’Connor" :rules="vacio" outlined></v-autocomplete>
+                                                <!-- Municipios de Santa Cruz -->
+                                                    <v-autocomplete v-else-if="form.provincia == 'Andrés Ibáñez'" v-model="form.municipio" :items= "muniSC1" placeholder="Municipio de Andrés Ibáñez" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Ángel Sandoval'" v-model="form.municipio" :items= "muniSC2" placeholder="Municipio de Ángel Sandoval" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Chiquitos'" v-model="form.municipio" :items= "muniSC3" placeholder="Municipio de Chiquitos" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Cordillera'" v-model="form.municipio" :items= "muniSC4" placeholder="Municipio de Cordillera" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Florida'" v-model="form.municipio" :items= "muniSC5" placeholder="Municipio de Florida" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Germán Busch'" v-model="form.municipio" :items= "muniSC6" placeholder="Municipio de Germán Busch" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Guarayos'" v-model="form.municipio" :items= "muniSC7" placeholder="Municipio de Guarayos" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Ichilo'" v-model="form.municipio" :items= "muniSC8" placeholder="Municipio de Ichilo" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'José Miguel de Velasco'" v-model="form.municipio" :items= "muniSC9" placeholder="Municipio de José Miguel de Velasco" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Manuel María Caballero'" v-model="form.municipio" :items= "muniSC10" placeholder="Municipio de Manuel María Caballero" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Ñuflo de Chávez'" v-model="form.municipio" :items= "muniSC11" placeholder="Municipio de Ñuflo de Chávez" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Obispo Santisteban'" v-model="form.municipio" :items= "muniSC12" placeholder="Municipio de Obispo Santisteban" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Sara'" v-model="form.municipio" :items= "muniSC13" placeholder="Municipio de Sara" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Vallegrande'" v-model="form.municipio" :items= "muniSC14" placeholder="Municipio de Vallegrande" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Warnes'" v-model="form.municipio" :items= "muniSC15" placeholder="Municipio de Warnes" :rules="vacio" outlined></v-autocomplete>
+                                                <!-- Municipios de Beni -->
+                                                    <v-autocomplete v-else-if="form.provincia == 'Cercado'" v-model="form.municipio" :items= "muniBE1" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Iténez'" v-model="form.municipio" :items= "muniBE2" placeholder="Municipio de Iténez" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'José Ballivián'" v-model="form.municipio" :items= "muniBE3" placeholder="Municipio de José Ballivián" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Mamoré'" v-model="form.municipio" :items= "muniBE4" placeholder="Municipio de Mamoré" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Marbán'" v-model="form.municipio" :items= "muniBE5" placeholder="Municipio de Marbán" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Moxos'" v-model="form.municipio" :items= "muniBE6" placeholder="Municipio de Moxos" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Vaca Díez'" v-model="form.municipio" :items= "muniBE7" placeholder="Municipio de Vaca Díez" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Yacuma'" v-model="form.municipio" :items= "muniBE8" placeholder="Municipio de Yacuma" :rules="vacio" outlined></v-autocomplete>
+                                                <!-- Municipios de Pando -->
+                                                    <v-autocomplete v-else-if="form.provincia == 'Abuná'" v-model="form.municipio" :items= "muniPD1" placeholder="Municipio de Abuná" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Federico Román'" v-model="form.municipio" :items= "muniPD2" placeholder="Municipio de Federico Román" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Madre de Dios'" v-model="form.municipio" :items= "muniPD3" placeholder="Municipio de Madre de Dios" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Manuripi'" v-model="form.municipio" :items= "muniPD4" placeholder="Municipio de Manuripi" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Nicolás Suárez'" v-model="form.municipio" :items= "muniPD5" placeholder="Municipio de Nicolás Suárez" :rules="vacio" outlined></v-autocomplete>
+                                                </v-col>
+
                                             <v-col cols="12" sm="6">
                                                 <v-text-field 
                                                         v-model="form.domicilio"
                                                         outlined
                                                         label="Domicilio"
-                                                        placeholder="Departamento/Ciudad/Zona/Calle"
+                                                        placeholder="Zona/Calle"
                                                         :rules="vacio"
                                                 ></v-text-field>
                                             </v-col>
@@ -2164,6 +2313,139 @@
             menuProp: false,
             doc: ['CI', 'Pasaporte'],
             docExpItems: ['CH','LP','CB','OR','PT','TJ','SC','BE','PD', 'Extranjero'],
+            /* Ubicación escrita */
+            depa: ['Chuquisaca','La Paz','Cochabamba','Oruro','Potosí','Tarija','Santa Cruz','Beni','Pando'],
+                /* Chuquisaca */
+                provCH:['Azurduy','Belisario Boeto','Hernando Siles','Luis Calvo','Nor Cinti','Oropeza','Sud Cinti','Tomina','Yamparáez','Zudáñez'],
+                muniCH1:['Villa Azurduy','Tarvita'],
+                muniCH2:['Villa Serrano'],
+                muniCH3:['Monteagudo','San Pablo de Huacareta'],
+                muniCH4:['Villa Vaca Guzmán','Huacaya','Macharetí'],
+                muniCH5:['Camargo','Incahuasi','San Lucas','Villa Charcas'],
+                muniCH6:['Sucre','Poroma','Yotala'],
+                muniCH7:['Camataqui (Villa Abecia)','Culpina','Las Carreras'],
+                muniCH8:['Padilla','El Villar','Sopachuy','Tomina','Villa Alcalá'],
+                muniCH9:['Tarabuco','Yamparáez'],
+                muniCH10:['Villa Zudáñez','Icla','Presto','Villa Mojocoya'],
+                /* La Paz */
+                provLP: ['Abel Iturralde','Aroma','Bautista Saavedra','Camacho','Caranavi','Franz Tamayo','Gualberto Villaroel','Ingavi','Inquisivi', 'José Manuel Pando', 'Larecaja', 'Loayza', 'Los Andes', 'Manco Kapac', 'Muñecas', 'Murillo', 'Nor Yungas', 'Omasuyos', 'Pacajes', 'Sud Yungas'],
+                muniLP1: ['Ixiamas','San buenaventura'],
+                muniLP2: ['Sica Sica','Ayo Ayo','Calamarca','Collana','Colquencha','Patacamaya','Umala'],
+                muniLP3: ['Charazani','Curva'],
+                muniLP4: ['Puerto Acosta','Mocomoco','Puerto Carabuco','Escoma','Humanata'],
+                muniLP5: ['Caranavi','Alto Beni'],
+                muniLP6: ['Apolo','Pelechuco'],
+                muniLP7: ['San Pedro de Curahuara','Chacarilla','Papel Pampa'],
+                muniLP8: ['Viacha','Desaguadero','Guaqui','Jesús de Machaca','San Andrés de Machaca','Taraco','Tiahuanaco'],
+                muniLP9: ['Inquisivi','Cajuata','Colquiri','Ichoca','Licoma Pampa','Quime'],
+                muniLP10: ['Santiago de Machaca','Catacora'],
+                muniLP11: ['Sorata','Combaya','Guanay','Mapiri','Quiabaya','Tacacoma','Teoponte','Tipuani'],
+                muniLP12: ['Luribay','Cairoma','Malla','Sapahaqui','Yaco'],
+                muniLP13: ['Pucarani','Batallas','Laja','Puerto Pérez'],
+                muniLP14: ['Copacabana','San Pedro de Tiquina','Tito Yupanqui'],
+                muniLP15: ['Chuma','Aucapata','Ayata'],
+                muniLP16: ['Palca','Achocalla','El Alto','Ciudad de La Paz','Mecapaca'],
+                muniLP17: ['Coroico','Coripata'],
+                muniLP18: ['Achacachi','Ancoraimes','Chua Cocani','Huarina','Huatajata','Santiago de Huata'],
+                muniLP19: ['Coro Coro','Calacoto','Caquiaviri','Charaña','Comanche','Nazacara de Pacajes','Santiago de Callapa','Waldo Ballivián'],
+                muniLP20: ['Chulumani','Irupana','La Asunta','Palos Blancos','Yanacachi'],
+                /* Cochabamba */
+                provCB:['Arani','Arque','Ayopaya','Bolívar','Campero','Capinota','Carrasco','Cercado','Chapare','Esteban Arce','Germán Jordán','Mizque','Punata','Quillacollo','Tapacarí','Tiraque'],
+                muniCB1:['Arani','Vacas'],
+                muniCB2:['Arque','Tacopaya'],
+                muniCB3:['Independencia','Morochata','Cocapata'],
+                muniCB4:['Bolívar'],
+                muniCB5:['Aiquile','Omereque','Pasorapa'],
+                muniCB6:['Capinota','Santiváñez','Sicaya'],
+                muniCB7:['Totora','Chimoré','Entre Ríos','Pocona','Pojo','Puerto Villarroel'],
+                muniCB8:['Ciudad de Cochabamba'],
+                muniCB9:['Sacaba','Colomi','Villa Tunari'],
+                muniCB10:['Tarata','Anzaldo','Arbieto','Sacabamba'],
+                muniCB11:['Cliza','Toco','Tolata'],
+                muniCB12:['Mizque','Alalay','Vila Vila'],
+                muniCB13:['Punata','Cuchumuela','San Benito','Tacachi','Villa Rivero'],
+                muniCB14:['Quillacollo','Colcapirhua','Sipe Sipe','Tiquipaya','Vinto'],
+                muniCB15:['Tapacarí'],
+                muniCB16:['Tiraque','Shinahota'],
+                /* Oruro */
+                provOR:['Sabaya','Carangas','Cercado','Eduardo Abaroa','Ladislao Cabrera','Litoral','Mejillones','Nor Carangas','Pantaleón Dalence','Poopó','Sajama','San Pedro de Totora','Saucarí','Sebastián, Pagador','Sud Carangas','Tomás Barrón'],
+                muniOR1:['Sabaya','Chipaya','Coipasa'],
+                muniOR2:['Corque','Choquecota'],
+                muniOR3:['Oruro','Caracollo','El Choro','Soracachi'],
+                muniOR4:['Challapata','Santuario de Quillacas'],
+                muniOR5:['Salinas de Garci Mendoza','Pampa Aullagas'],
+                muniOR6:['Huachacalla','Cruz de Machacamarca','Escara','Esmeralda','Yunguyo del Litoral'],
+                muniOR7:['La Rivera','Carangas','Todos Santos'],
+                muniOR8:['Santiago de Huayllamarca'],
+                muniOR9:['Villa Huanuni','Machacamarca'],
+                muniOR10:['Villa Poopó','Antequera','Pazña'],
+                muniOR11:['Curahuara de Carangas','Turco'],
+                muniOR12:['Totora'],
+                muniOR13:['Toledo'],
+                muniOR14:['Santiago de Huari'],
+                muniOR15:['Santiago de Andamarca','Belén de Andamarca'],
+                muniOR16:['Eucaliptus'],
+                /* Potosí */
+                provPT:['Alonso de Ibáñez','Antonio Quijarro','Bernardino Bilbao','Charcas','Chayanta','Cornelio Saavedra','Daniel Campos','Enrique Baldivieso','José María Linares','Modesto Omiste','Nor Chichas','Nor Lípez','Rafael Bustillo','Sud Chichas','Sud Lípez','Tomás Frías'],
+                muniPT1:['Sacaca','Caripuyo'],
+                muniPT2:['Uyuni','Porco','Tomave'],
+                muniPT3:['Arampampa','Acasio'],
+                muniPT4:['San Pedro de Buena Vista','Toro Toro'],
+                muniPT5:['Colquechaca','Ocurí','Pocoata','Ravelo','San Pedro de Macha'],
+                muniPT6:['Betanzos','Chaquí','Tacobamba'],
+                muniPT7:['Llica','Tahua'],
+                muniPT8:['San Agustín'],
+                muniPT9:['Puna','Caiza D','Ckochas'],
+                muniPT10:['Villazón'],
+                muniPT11:['Cotagaita','Vitichi'],
+                muniPT12:['Colcha K','San Pedro de Quemes'],
+                muniPT13:['Uncía','Chayanta','Llallagua','Chuquiuta'],
+                muniPT14:['Tupiza','Atocha'],
+                muniPT15:['San Pablo de Lípez','Mojinete','San Antonio de Esmoruco'],
+                muniPT16:['Potosí','Tinguipaya','Urmiri','Villa de Yocalla'],
+                /* Tarija */
+                provTJ:['Aniceto Arce','Avilés','Cercado','Gran Chaco','Méndez','O’Connor'],
+                muniTJ1:['Padcaya','Bermejo'],
+                muniTJ2:['Uriondo','Yunchará'],
+                muniTJ3:['Tarija'],
+                muniTJ4:['Yacuiba','Caraparí','Villamontes'],
+                muniTJ5:['San Lorenzo','El Puente'],
+                muniTJ6:['Entre Ríos'],
+                /* Santa Cruz */
+                provSC:['Andrés Ibáñez','Ángel Sandoval','Chiquitos','Cordillera','Florida','Germán Busch','Guarayos','Ichilo','José Miguel de Velasco','Manuel María Caballero','Ñuflo de Chávez','Obispo Santisteban','Sara','Vallegrande','Warnes'],
+                muniSC1:['Santa Cruz de la Sierra','Cotoca','El Torno','La Guardia'],
+                muniSC2:['San Matías'],
+                muniSC3:['San José de Chiquitos','Pailón','Roboré'],
+                muniSC4:['Lagunillas','Bouibe','Cabezas','Camiri','Charagua','Cuevo','Gutiérrez'],
+                muniSC5:['Samaipata','Mairana','Pampa Grande','Quirusillas'],
+                muniSC6:['Puerto Suárez','El Carmen Rivero Tórrez','Puerto Quijarro'],
+                muniSC7:['Ascensión de Guarayos','El Puente','Urubichá'],
+                muniSC8:['Buena Vista','San Carlos','San Juan de Yapacaní','Yapacaní'],
+                muniSC9:['San Ignacio de Velasco','San Miguel de Velasco','San Rafael de Velasco'],
+                muniSC10:['Comarapa','Saipina'],
+                muniSC11:['Concepción','Cuatro Cañadas','San Antonio del Lomerio','San Julián','San Ramón','San Xavier'],
+                muniSC12:['Montero','General Agustín Saavedra','Minero','Fernández Alonso','San Pedro'],
+                muniSC13:['Portachuelo','Colpa Bélgica','Santa Rosa del Sara'],
+                muniSC14:['Vallegrande','El Trigal','Moro Moro','Postrervalle','Pucará'],
+                muniSC15:['Warnes','Okinawa I'],
+                /* Beni */
+                provBE:['Cercado','Iténez','José Ballivián','Mamoré','Marbán','Moxos','Vaca Díez','Yacuma'],
+                muniBE1:['Trinidad','San Javier'],
+                muniBE2:['Magdalena','Baures','Huacaraje'],
+                muniBE3:['Reyes','Rurrenabaque','San Borja','Santa Rosa'],
+                muniBE4:['San Joaquín','Pueto Siles','San Ramón'],
+                muniBE5:['Loreto','San Andrés'],
+                muniBE6:['San Ignacio'],
+                muniBE7:['Riberalta','Guayaramerín'],
+                muniBE8:['Santa Ana','Exaltación'],
+                /* Pando */
+                provPD:['Abuná','Federico Román','Madre de Dios','Manuripi','Nicolás Suárez'],
+                muniPD1:['Santa Rosa del Abuná','Ingavi (Humaita)'],
+                miniPD2:['Nueva Esperanza','Santos Mercado','Villa Nueva'],
+                miniPD3:['Puerto Gonzalo Moreno','San Lorenzo','Sena'],
+                miniPD4:['Puerto Rico','Filadelfia','San Pedro'],
+                miniPD5:['Cobija','Porvenir','Bella Flor','Bolpebra'],
+
             dialog: false,
             dialog2: false,
             isCameraOpen: false,
@@ -2313,8 +2595,11 @@
                 documento: null,
                 docExp: null,
                 docFile: null,
-                domicilio: null,
                 fotoProp: null,
+                departamento: null,
+                provincia: null,
+                municipio: null,
+                domicilio: null,
                 fotoPropName: null,
                 latitud: null,
                 longitud: null,
