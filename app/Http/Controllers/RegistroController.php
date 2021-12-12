@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Memorial;
 use App\Models\Propietario;
 use App\Models\Antecedente;
+use App\Models\Seguro;
 use App\Models\Can;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -42,40 +43,10 @@ class RegistroController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            /* MEMORIAL */
-            'comandante' => 'required',
-            'referencia' => 'required',
-            'dateMemo' => 'required',
-            /* PROPIETARIO */
-            'paterno' => 'required',
-            'materno' => 'required',
-            'nombres' => 'required',
-            'dateProp' => 'required',
-            'docTipo' => 'required',
-            'documento' => 'required',
-            'docExp' => 'required',
-            'domicilio' => 'required',
-            'fotoProp' => 'required',
-            'latitud' => 'required',
-            'longitud' => 'required',
-            /* ANTECEDENTES */
-            'aCanes' => 'required',
-            'aFechaHoraCanes' => 'required',
-            'aRejap' => 'required',
-            'aFechaHoraRejap' => 'required',
-            'aFelcc' => 'required',
-            'aFechaHoraFelcc' => 'required',
-            'aFelcn' => 'required',
-            'aFechaHoraFelcn' => 'required',
-            'aFelcv' => 'required',
-            'aFechaHoraFelcv' => 'required',
-        ]);
-
         $input = $request->all();
         if($request->hasFile('fotoProp'))
         {
-            $destination_path = 'public/images/photos';
+            $destination_path = 'public/images/propietarios';
             $imageProp = $request->file('fotoProp');
             $image_PropName = $imageProp->getClientOriginalName();
             $path = $request->file('fotoProp')->storeAs($destination_path,$image_PropName);
@@ -84,7 +55,7 @@ class RegistroController extends Controller
         }
         if($request->hasFile('fotoCan'))
         {
-            $destination_path = 'public/images/photos';
+            $destination_path = 'public/images/canes';
             $imageCan = $request->file('fotoCan');
             $image_CanName = $imageCan->getClientOriginalName();
             $path = $request->file('fotoCan')->storeAs($destination_path,$image_CanName);
@@ -93,7 +64,7 @@ class RegistroController extends Controller
         }
         if($request->hasFile('fotoCan2'))
         {
-            $destination_path = 'public/images/photos';
+            $destination_path = 'public/images/canes';
             $imageCan2 = $request->file('fotoCan2');
             $image_Can2Name = $imageCan2->getClientOriginalName();
             $path = $request->file('fotoCan2')->storeAs($destination_path,$image_Can2Name);
@@ -111,7 +82,7 @@ class RegistroController extends Controller
         }
         if($request->hasFile('docFile'))
         {
-            $destination_path = 'public/doc/identificación';
+            $destination_path = 'public/doc/identificaciones';
             $ide = $request->file('docFile');
             $ide_name = $ide->getClientOriginalName();
             $path = $request->file('docFile')->storeAs($destination_path,$ide_name);
@@ -163,10 +134,49 @@ class RegistroController extends Controller
 
             $input['aFelcvFile'] = $aFelcv_name;
         }
+        if($request->hasFile('seguroFile'))
+        {
+            $destination_path = 'public/doc/seguros';
+            $seguro = $request->file('seguroFile');
+            $seguro_name = $seguro->getClientOriginalName();
+            $path = $request->file('seguroFile')->storeAs($destination_path,$seguro_name);
+
+            $input['seguroFile'] = $seguro_name;
+        }
+        if($request->hasFile('vacFile'))
+        {
+            $destination_path = 'public/doc/veterinaria';
+            $vac = $request->file('vacFile');
+            $vac_name = $vac->getClientOriginalName();
+            $path = $request->file('vacFile')->storeAs($destination_path,$vac_name);
+
+            $input['vacFile'] = $vac_name;
+        }
+        if($request->hasFile('estFile'))
+        {
+            $destination_path = 'public/doc/veterinaria';
+            $est = $request->file('estFile');
+            $est_name = $est->getClientOriginalName();
+            $path = $request->file('estFile')->storeAs($destination_path,$est_name);
+
+            $input['estFile'] = $est_name;
+        }
+        if($request->hasFile('vetFile'))
+        {
+            foreach($request->file('vetFile') as $vet)
+            {
+                $destination_path = 'public/doc/veterinaria';
+                $vet_name = $vet->getClientOriginalName();
+                $path = $request->file('vetFile')->storeAs($destination_path,$vet_name);
+
+                $input['vetFile'] = $vet_name;
+            }
+        }
 
         Memorial::create($input);
         Propietario::create($input);
         Antecedente::create($input);
+        Seguro::create($input);
         Can::create($input);
         return Redirect::route('registros.index');
     }

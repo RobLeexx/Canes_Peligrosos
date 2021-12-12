@@ -20,7 +20,7 @@
                             <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">PROPIETARIO</h1>
                             <v-row style="display: flex;justify-content: space-evenly">
                                 <div></div>
-                                <img style="max-width: 60%; padding-bottom: 15px" v-bind:src="'/storage/images/photos/' + propietario.fotoProp">
+                                <img style="max-width: 60%; padding-bottom: 15px" v-bind:src="'/storage/images/propietarios/' + propietario.fotoProp">
                                 <div></div>
                             </v-row>
                             <v-row style="display: flex; justify-content: space-between; padding-inline: 15%">
@@ -47,6 +47,13 @@
                                     {{ propietario.materno }}
                                 </div>
                             </v-row>
+                            <v-row style="display: flex; justify-content: space-between; padding-inline: 15%">
+                                <div style="padding: 20px; font-weight: bold">
+                                    Edad
+                                </div>
+                                <div style="padding: 20px" id="edad">
+                                </div>
+                            </v-row>
                         </div>
                         <div style="display: flex; flex-direction: column; width: 50%">
                             <div v-for="can in canes" :key="can.id">
@@ -54,8 +61,8 @@
                                 <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">CAN</h1>
                                 <v-row style="display: flex; justify-content: space-evenly">
                                     <div></div>
-                                    <img style="max-width: 60%; min-height: 280px; padding-bottom: 15px" v-if="can.fotoCan != null" v-bind:src="'/storage/images/photos/' + can.fotoCan">
-                                    <img style="max-width: 60%; min-height: 280px; padding-bottom: 15px" v-else v-bind:src="'/storage/images/photos/' + can.fotoCan2">
+                                    <img style="max-width: 60%; min-height: 280px; padding-bottom: 15px" v-if="can.fotoCan != null" v-bind:src="'/storage/images/canes/' + can.fotoCan">
+                                    <img style="max-width: 60%; min-height: 280px; padding-bottom: 15px" v-else v-bind:src="'/storage/images/canes/' + can.fotoCan2">
                                     <div></div>
                                 </v-row>
                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 15%">
@@ -142,6 +149,18 @@
             canes: Array,
         },
         methods: {
+            
+        },
+        mounted() {
+            var today = new Date();
+            var birthDate = new Date(this.propietario.dateProp);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            document.getElementById('edad').innerHTML = age;
+
         },
         components: {
             AppLayout,

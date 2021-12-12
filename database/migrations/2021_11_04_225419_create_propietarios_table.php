@@ -34,7 +34,7 @@ class CreatePropietariosTable extends Migration
             /* Contactos */
             $table->string('celular')->nullable();
             $table->string('telefono')->nullable();
-            $table->string('email')->nullable()->unique();;
+            $table->string('email')->nullable();
             $table->string('contactoAlterno')->nullable();
             $table->timestamps();
         });

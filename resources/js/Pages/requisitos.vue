@@ -201,7 +201,6 @@
                                 <v-stepper-step
                                 :complete="e6 > 2"
                                 step="2"
-                                editable
                                 >
                                 Datos del Propietario
                                 </v-stepper-step>
@@ -642,7 +641,7 @@
                                                     <v-text-field
                                                         id="cel"
                                                         v-model="form.celular"
-                                                        :rules="cel"
+                                                        :rules="vacio"
                                                         label="Celular"
                                                         prepend-icon="mdi-phone"
                                                         placeholder="Teléfono móvil del proietario"
@@ -655,7 +654,6 @@
                                                 <template>
                                                     <v-text-field
                                                         v-model="form.telefono"
-                                                        :rules="tel"
                                                         label="Télefono"
                                                         prepend-icon="mdi-phone-classic"
                                                         placeholder="Télefono fijo del propietario"
@@ -713,7 +711,6 @@
                                 <v-stepper-step
                                 :complete="e6 > 3"
                                 step="3"
-                                editable
                                 >
                                 Antecedentes del Propietario
                                 </v-stepper-step>
@@ -1443,8 +1440,7 @@
                                 <!-- 4. Seguro Obligatorio de Responsabilidad Civil -->
                                 <v-stepper-step 
                                 :complete="e6 > 4"
-                                step="4"
-                                editable>
+                                step="4">
                                 Seguro Obligatorio de Responsabilidad Civil
                                 </v-stepper-step>
 
@@ -1495,7 +1491,7 @@
                                                 >
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-text-field
-                                                    v-model="dateExpSeg"
+                                                    v-model="form.dateExpSeg"
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Expedición del Seguro"
                                                     :rules="vacio"
@@ -1507,7 +1503,7 @@
                                                     </v-text-field>
                                                 </template>
                                                 <v-date-picker
-                                                    v-model="dateExpSeg"
+                                                    v-model="form.dateExpSeg"
                                                     scrollable
                                                     locale="es"
                                                     :width="anchoDate"
@@ -1516,7 +1512,7 @@
                                                 ><v-spacer></v-spacer>
                                                     <v-btn
                                                         color="primary"
-                                                        @click="$refs.menuExpSeg.save(dateExpSeg)"
+                                                        @click="$refs.menuExpSeg.save(form.dateExpSeg)"
                                                     >
                                                         OK
                                                     </v-btn></v-date-picker>
@@ -1537,7 +1533,7 @@
                                                 >
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-text-field
-                                                    v-model="dateLimSeg"
+                                                    v-model="form.dateLimSeg"
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Expiración del Seguro"
                                                     :rules="vacio"
@@ -1549,7 +1545,7 @@
                                                     </v-text-field>
                                                 </template>
                                                 <v-date-picker
-                                                    v-model="dateLimSeg"
+                                                    v-model="form.dateLimSeg"
                                                     scrollable
                                                     locale="es"
                                                     :width="anchoDate"
@@ -1558,7 +1554,7 @@
                                                 ><v-spacer></v-spacer>
                                                     <v-btn
                                                         color="primary"
-                                                        @click="$refs.menuLimSeg.save(dateLimSeg)"
+                                                        @click="$refs.menuLimSeg.save(form.dateLimSeg)"
                                                     >
                                                         OK
                                                     </v-btn></v-date-picker>
@@ -1601,6 +1597,7 @@
                                         >
                                         <template>
                                             <v-file-input style="height: 45px"
+                                                v-model="form.seguroFile"
                                                 outlined
                                                 dense
                                                 show-size
@@ -1635,7 +1632,7 @@
                                 </v-stepper-content>
 
                                 <!-- 5. Datos del Can Peligroso -->
-                                <v-stepper-step step="5" editable>
+                                <v-stepper-step step="5">
                                 Datos del Can Peligroso
                                 </v-stepper-step>
 
@@ -1671,7 +1668,7 @@
                                                 >
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-text-field
-                                                    v-model="dateNacPerro"
+                                                    v-model="form.dateNacPerro"
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Nacimiento del Can o Aproximada"
                                                     :rules="vacio"
@@ -1683,7 +1680,7 @@
                                                     </v-text-field>
                                                 </template>
                                                 <v-date-picker
-                                                    v-model="dateNacPerro"
+                                                    v-model="form.dateNacPerro"
                                                     scrollable
                                                     locale="es"
                                                     :width="anchoDate"
@@ -1692,7 +1689,7 @@
                                                 ><v-spacer></v-spacer>
                                                     <v-btn
                                                         color="primary"
-                                                        @click="$refs.menuNacPerro.save(dateNacPerro)"
+                                                        @click="$refs.menuNacPerro.save(form.dateNacPerro)"
                                                     >
                                                         OK
                                                     </v-btn></v-date-picker>
@@ -1893,6 +1890,7 @@
                                         <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: flex-start">
                                             <v-card-text style="margin-top:5px; text-align: center" v-if="switchPuro == '1'">Sí</v-card-text>
                                             <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                            <input @your-event-name="esPedigree()" class="d-none"></input>
                                         </v-col>
                                         <v-col cols="12" sm="6" style="padding-top: 38px">
                                             <v-autocomplete v-if="switchPuro == '1'"
@@ -1916,7 +1914,7 @@
                                         </v-row>
                                         <v-row>
                                         <v-col cols="12" sm="6">
-                                            <v-autocomplete v-model="form.tamCan" :items= "tamCan" :rules="vacio" outlined placeholder="Tamaño del Can"></v-autocomplete>
+                                            <v-autocomplete v-model="form.tamCan" :items= "tamCanItems" :rules="vacio" outlined placeholder="Tamaño del Can"></v-autocomplete>
                                         </v-col>
                                         <v-col cols="12" sm="6">
                                             <v-text-field v-model="form.colorCan" outlined label="Color" :rules="vacio" placeholder="Color o Colores Característicos del Can">
@@ -1939,8 +1937,8 @@
                                             </v-switch>
                                         </v-col>
                                         <v-col cols="12" sm="2">
-                                            <v-card-text style="margin-top:5px; text-align: center" v-if="switchVac == '1'">Sí</v-card-text>
-                                            <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                            <v-card-text v-model="form.vacuna" style="margin-top:5px; text-align: center" v-if="switchVac == '1'">Sí</v-card-text>
+                                            <v-card-text v-model="form.esterilizacion" style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                         </v-col>
                                         <v-col cols="12" sm="6">
                                             <template>
@@ -1952,7 +1950,7 @@
                                                 >
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-text-field
-                                                    v-model="dateVacPerro"
+                                                    v-model="form.dateVacPerro"
                                                     :disabled="!switchVac"
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Vacunación del Can o Aproximada"
@@ -1965,7 +1963,7 @@
                                                     </v-text-field>
                                                 </template>
                                                 <v-date-picker
-                                                    v-model="dateVacPerro"
+                                                    v-model="form.dateVacPerro"
                                                     scrollable
                                                     locale="es"
                                                     :width="anchoDate"
@@ -1974,7 +1972,7 @@
                                                 ><v-spacer></v-spacer>
                                                     <v-btn
                                                         color="primary"
-                                                        @click="$refs.menuVacPerro.save(dateVacPerro)"
+                                                        @click="$refs.menuVacPerro.save(form.dateVacPerro)"
                                                     >
                                                         OK
                                                     </v-btn></v-date-picker>
@@ -2003,7 +2001,7 @@
                                                 >
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-text-field
-                                                    v-model="dateEstPerro"
+                                                    v-model="form.dateEstPerro"
                                                     :disabled="!switchEst"
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Esterilización del Can o Aproximada"
@@ -2016,7 +2014,7 @@
                                                     </v-text-field>
                                                 </template>
                                                 <v-date-picker
-                                                    v-model="dateEstPerro"
+                                                    v-model="form.dateEstPerro"
                                                     scrollable
                                                     locale="es"
                                                     :width="anchoDate"
@@ -2025,7 +2023,7 @@
                                                 ><v-spacer></v-spacer>
                                                     <v-btn
                                                         color="primary"
-                                                        @click="$refs.menuEstPerro.save(dateEstPerro)"
+                                                        @click="$refs.menuEstPerro.save(form.dateEstPerro)"
                                                     >
                                                         OK
                                                     </v-btn></v-date-picker>
@@ -2060,20 +2058,25 @@
                                             <v-subheader>Datos de Referencia de la Vacuna</v-subheader>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchVac" :rules="vacio" v-model="vetNom1" outlined label="Veterinaria o Unidad Móvil" placeholder="Nombre de la Veterinaria o Entidad donde se Vacunó al Can">
+                                                <v-text-field :disabled="!switchVac" v-model="form.vetNom1" :rules="vacio" outlined label="Veterinaria o Unidad Móvil" placeholder="Nombre de la Veterinaria o Entidad donde se Vacunó al Can">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchVac" v-model="vetUbi1" outlined  placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchVac" v-model="form.vetUbi1" outlined placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchVac" v-model="vetNum1" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Referente"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchEst" v-model="form.vetRes1" outlined placeholder="Nombre del Responsable a Cargo de la Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field :disabled="!switchVac" v-model="form.vetNum1" outlined type="number" placeholder="Teléfono de Referencia de la Veterinaria o Referente"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
                                                 <template>
                                                 <v-file-input style="height: 45px"
+                                                    v-model="form.vacFile"
                                                     :disabled="!switchVac"
                                                     outlined
                                                     dense
@@ -2096,24 +2099,25 @@
                                             <v-subheader>Datos de Referencia de la Esterilización</v-subheader>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" :rules="vacio" v-model="vetNom2" outlined label="Veterinaria" placeholder="Nombre de la Veterinaria donde se Esterilizó al Can">
+                                                <v-text-field :disabled="!switchEst" v-model="form.vetNom2" :rules="vacio" outlined label="Veterinaria" placeholder="Nombre de la Veterinaria donde se Esterilizó al Can">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="vetUbi2" outlined placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchEst" v-model="form.vetUbi2" outlined placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchEst" v-model="form.vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Vacunación"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="vetNum2" outlined type="number" placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchEst" v-model="form.vetNum2" outlined type="number" placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
                                                 <template>
                                                 <v-file-input style="height: 45px"
+                                                    v-model="form.estFile"
                                                     :disabled="!switchEst"
                                                     outlined
                                                     dense
@@ -2136,24 +2140,25 @@
                                             <v-subheader>Datos de Referencia de la Veterinaria</v-subheader>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="vetNom1" :rules="vacio" outlined label="Veterinaria" placeholder="Nombre de la Veterinaria donde se Trató al Can">
+                                                <v-text-field v-model="form.vetNom3" :rules="vacio" outlined label="Veterinaria" placeholder="Nombre de la Veterinaria donde se Trató al Can">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="vetUbi1" outlined label="Ubicación" placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
+                                                <v-text-field v-model="form.vetUbi3" outlined label="Ubicación" placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Vacuna O Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
+                                                <v-text-field v-model="form.vetRes3" outlined placeholder="Nombre del Responsable a Cargo de la Vacuna O Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="vetNum1" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
+                                                <v-text-field v-model="form.vetNum3" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="12">
                                                 <template>
                                                 <v-file-input style="height: 45px"
+                                                    v-model="form.vetFile"
                                                     outlined
                                                     dense
                                                     show-size
@@ -2190,12 +2195,12 @@
                                                 </v-tooltip>
                                             </v-col>
                                             <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: flex-start">
-                                                <v-card-text style="margin-top:5px; text-align: center" v-if="switchMicro == '1'">Sí</v-card-text>
-                                                <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                                <v-card-text v-model="form.microchip" style="margin-top:5px; text-align: center" v-if="switchMicro == '1'">Sí</v-card-text>
+                                                <v-card-text v-model="form.microchip" style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                             </v-col>
                                             <v-col cols="12" sm="6" style="padding-top: 38px">
                                                 <v-text-field :disabled="!switchMicro"
-                                                    v-model="microCan"
+                                                    v-model="form.numMicro"
                                                     :rules="vacio"
                                                     label="Número de Microchip"
                                                     placeholder="Número de Identitifación del Microchip"
@@ -2230,7 +2235,7 @@
                                                 <v-text-field v-model="form.canEvenNum4" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="12"><v-subheader>Tenencia del Can</v-subheader></v-col>
-                                            <v-col cols="12" sm="12"><v-textarea v-model="form.canCon" :rules="vacio" outlined label="Motivos de Convivencia con el Can Peligroso" placeholder="Motivos por los cuales se domestica al Perro Peligroso"></v-textarea></v-col>
+                                            <v-col cols="12" sm="12"><v-textarea v-model="form.canConvivencia" :rules="vacio" outlined label="Motivos de Convivencia con el Can Peligroso" placeholder="Motivos por los cuales se domestica al Perro Peligroso"></v-textarea></v-col>
                                         </v-row>
                                     </v-row>
                                 </v-container>
@@ -2480,18 +2485,10 @@
             timeModel3: '',
             timeModel4: '',
             timeModel5: '',
-            nomAgencia: '',
-            ubiAgencia: '',
             menuExpSeg: null,
             menuLimSeg: null,
-            dateExpSeg: null,
-            dateLimSeg: null,
-            resAgencia: '',
-            resAgenciaNum: '',
             menuNacPerro: null,
-            dateNacPerro: null,
-            sexoCan: null,
-            procedenciaCan: null,
+            
             sexoCan2: ['Macho', 'Hembra'],
             razas: [
                 {
@@ -2542,34 +2539,13 @@
             'Tosa Inu',
             ],
             switchPuro: false,
-            colorCan: '',
-            tamCan: ['Pequeño','Mediano','Grande'],
-            sinCan: '',
+            tamCanItems: ['Pequeño','Mediano','Grande'],
             menuVacPerro: null,
-            dateVacPerro: null,
-            switchVac: null,
-            dateEstPerro: null,
+            switchVac: null,            
             menuEstPerro: null,
             switchEst: null,
             switchVet: null,
-            vetNom1: '',
-            vetUbi1: '',
-            vetNum1: '',
-            vetNom2: '',
-            vetUbi2: '',
-            vetRes2: '',
-            vetNum2: '',
             switchMicro: '',
-            microCan:'',
-            canEven1: '',
-            canEvenNum1: '',
-            canEven2: '',
-            canEvenNum2: '',
-            canEven3: '',
-            canEvenNum3: '',
-            canEven4: '',
-            canEvenNum4: '',
-            canCon: '',
             canvasHeight:600,
             canvasWidth:800,
             photoTaken: false,
@@ -2628,13 +2604,62 @@
                 aFechaHoraFelcv: null,
                 aFelcvFile: null,
                 aFelcv: 'Ninguno',
+                /* Seguro */
+                nomAgencia: null,
+                ubiAgencia: null,
+                dateExpSeg: null,
+                dateLimSeg: null,
+                resAgencia: null,
+                resAgenciaNum: null,
+                seguroFile: null,
                 /* Can */
                 nomPerro: null,
+                dateNacPerro: null,
+                sexoCan: null,
+                procedenciaCan: null,
+
                 fotoCan2: null,
                 fotoCan2Name: null,
                 fotoCan: null,
                 fotoCanName: null,
+                pedigree: false,
                 razaCan: null,
+                tamCan: null,
+                colorCan: null,
+                sinCan: null,
+                vacuna: null,
+                dateVacPerro: null,
+                esterilizacion: null,
+                dateEstPerro: null,
+                vetNom1: null,
+                vetUbi1: null,
+                vetRes1: null,
+                vetNum1: null,
+                vacFile: null,
+
+                vetNom2: null,
+                vetUbi2: null,
+                vetRes2: null,
+                vetNum2: null,
+                estFile: null,
+
+                vetNom3: null,
+                vetUbi3: null,
+                vetRes3: null,
+                vetNum3: null,
+                vetFile: null,
+
+                numMicro: null,
+
+                canEven1: null,
+                canEvenNum1: null,
+                canEven2: null,
+                canEvenNum2: null,
+                canEven3: null,
+                canEvenNum3: null,
+                canEven4: null,
+                canEvenNum4: null,
+                canConvivencia: null,
             },
             }
         },
@@ -2719,14 +2744,14 @@
         form4IsValid () {
             return (
             this.form.nomAgencia &&
-            this.dateExpSeg &&
-            this.dateLimSeg
+            this.form.dateExpSeg &&
+            this.form.dateLimSeg
             )
         },
         form5IsValid () {
             return (
             this.form.nomPerro &&
-            this.dateNacPerro &&
+            this.form.dateNacPerro &&
             this.form.sexoCan &&
             this.form.procedenciaCan &&
             this.form.razaCan &&
@@ -2735,7 +2760,7 @@
             this.form.sinCan &&
             this.form.canEven1 &&
             this.form.canEvenNum1 &&
-            this.form.canCon
+            this.form.canConvivencia
             )
         },
         model1: {
@@ -3256,8 +3281,19 @@
             this.form.aFechaHoraFelcv = this.formatDate(this.dateModel5) + ' ' + selectedTime5;
             this.$emit('input', this.dateModel5 + ' ' + selectedTime5);
             },
-            
 
+        esPedigree (){
+            if(switchPuro = '1')
+            {
+                this.$emit('your-event-name', 'Sí')
+            }
+            else
+            {
+                this.$emit('your-event-name', 'No')
+            }
+            
+        },
+        
         /* Antecedentes */
         next () {
             this.onboarding = this.onboarding + 1 === this.length

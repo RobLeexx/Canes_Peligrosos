@@ -10,8 +10,50 @@ class Can extends Model
     use HasFactory;
     protected $fillable = [
         'nomPerro',
+        'dateNacPerro',
+        'sexoCan',
+        'procedenciaCan',
         'fotoCan',
         'fotoCan2',
-        'razaCan'
+
+        'pedigree',
+        'razaCan',
+        'tamCan',
+        'colorCan',
+        'sinCan',
+
+        'vacuna',
+        'dateVacPerro',
+        'esterilizacion',
+        'dateEstPerro',
+
+        'vetNom1',
+        'vetUbi1',
+        'vetRes1',
+        'vetNum1',
+        'vacFile',
+
+        'vetNom2',
+        'vetUbi2',
+        'vetRes2',
+        'vetNum2',
+        'estFile',
+
+        'vetNom3',
+        'vetUbi3',
+        'vetRes3',
+        'vetNum3',
+        'vetFile',
+        
+        'numMicro',
+        'canEven1',
+        'canEvenNum1',
+        'canEven2',
+        'canEvenNum2',
+        'canEven3',
+        'canEvenNum3',
+        'canEven4',
+        'canEvenNum4',
+        'canConvivencia',
     ];
 }

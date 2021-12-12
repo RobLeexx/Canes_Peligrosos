@@ -16,9 +16,52 @@ class CreateCanesTable extends Migration
         Schema::create('cans', function (Blueprint $table) {
             $table->id();
             $table->string('nomPerro');
+            $table->string('dateNacPerro');
+            $table->string('sexoCan');
+            $table->string('procedenciaCan');
             $table->string('fotoCan')->nullable();
             $table->string('fotoCan2')->nullable();
+
+            $table->string('pedigree')->nullable();
             $table->string('razaCan');
+            $table->string('tamCan');
+            $table->string('colorCan');
+            $table->string('sinCan')->nullable();
+
+            $table->string('vacuna')->nullable();
+            $table->string('dateVacPerro')->nullable();
+            $table->string('esterilizacion')->nullable();
+            $table->string('dateEstPerro')->nullable();
+
+            $table->string('vetNom1')->nullable();
+            $table->string('vetUbi1')->nullable();
+            $table->string('vetRes1')->nullable();
+            $table->string('vetNum1')->nullable();
+            $table->string('vacFile')->nullable();
+
+            $table->string('vetNom2')->nullable();
+            $table->string('vetUbi2')->nullable();
+            $table->string('vetRes2')->nullable();
+            $table->string('vetNum2')->nullable();
+            $table->string('estFile')->nullable();
+
+            $table->string('vetNom3')->nullable();
+            $table->string('vetUbi3')->nullable();
+            $table->string('vetRes3')->nullable();
+            $table->string('vetNum3')->nullable();
+            $table->string('vetFile')->nullable();
+
+            $table->string('numMicro')->nullable();
+            $table->string('canEven1');
+            $table->string('canEvenNum1');
+            $table->string('canEven2')->nullable();
+            $table->string('canEvenNum2')->nullable();
+            $table->string('canEven3')->nullable();
+            $table->string('canEvenNum3')->nullable();
+            $table->string('canEven4')->nullable();
+            $table->string('canEvenNum4')->nullable();
+            $table->string('canConvivencia');
+
             $table->timestamps();
         });
     }
