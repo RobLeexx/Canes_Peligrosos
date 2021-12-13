@@ -1632,7 +1632,7 @@
                                 </v-stepper-content>
 
                                 <!-- 5. Datos del Can Peligroso -->
-                                <v-stepper-step step="5">
+                                <v-stepper-step step="5" editable>
                                 Datos del Can Peligroso
                                 </v-stepper-step>
 
