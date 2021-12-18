@@ -708,7 +708,7 @@
                                 </v-stepper-content>
 
                                 <!-- 3. Antecedentes del Propietario -->
-                                <v-stepper-step
+                                <v-stepper-step editable
                                 :complete="e6 > 3"
                                 step="3"
                                 >
@@ -2066,7 +2066,7 @@
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="form.vetRes1" outlined placeholder="Nombre del Responsable a Cargo de la Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchVac" v-model="form.vetRes1" outlined placeholder="Nombre del Responsable a Cargo de la Vacunación"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
@@ -2107,7 +2107,7 @@
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="form.vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Vacunación"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchEst" v-model="form.vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">

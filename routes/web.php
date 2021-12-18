@@ -58,8 +58,26 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::get('/propietarios/{propietario}', RegistroShowController::class)->name('registros.show');
 
-    Route::get('/memorials/{memo}', [DownloadController::class, 'downloadMemo'])->name('downloadMemo');
+    Route::get('/memos/{memo}', [DownloadController::class, 'downloadMemo'])->name('downloadMemo');
 
-    Route::get('/propietarios/{doc}', [DownloadController::class, 'downloadDoc'])->name('downloadDoc');
+    Route::get('/identificaciones/{doc}', [DownloadController::class, 'downloadDoc'])->name('downloadDoc');
+
+    Route::get('/antecedentes/{canesFile}', [DownloadController::class, 'downloadCanes'])->name('downloadCanes');
+
+    Route::get('/antecedentes/{rejap}', [DownloadController::class, 'downloadRejap'])->name('downloadRejap');
+
+    Route::get('/antecedentes/{felcc}', [DownloadController::class, 'downloadFelcc'])->name('downloadFelcc');
+
+    Route::get('/antecedentes/{felcn}', [DownloadController::class, 'downloadFelcn'])->name('downloadFelcn');
+
+    Route::get('/antecedentes/{felcv}', [DownloadController::class, 'downloadFelcv'])->name('downloadFelcv');
+
+    Route::get('/seguros/{seguro}', [DownloadController::class, 'downloadSeguro'])->name('downloadSeguro');
+
+    Route::get('/veterinaria/{vac}', [DownloadController::class, 'downloadVac'])->name('downloadVac');
+
+    Route::get('/veterinaria/{est}', [DownloadController::class, 'downloadEst'])->name('downloadEst');
+
+    Route::get('/veterinaria/{vet}', [DownloadController::class, 'downloadVet'])->name('downloadVet');
 });
 

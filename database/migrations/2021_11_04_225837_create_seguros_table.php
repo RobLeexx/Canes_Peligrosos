@@ -16,7 +16,7 @@ class CreateSegurosTable extends Migration
         Schema::create('seguros', function (Blueprint $table) {
             $table->id();
             $table->string('nomAgencia');
-            $table->string('ubiAgencia');
+            $table->string('ubiAgencia')->nullable();
             $table->date('dateExpSeg');
             $table->date('dateLimSeg');
             $table->string('resAgencia')->nullable();

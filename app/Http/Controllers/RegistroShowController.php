@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Memorial;
 use App\Models\Propietario;
+use App\Models\Antecedente;
+use App\Models\Seguro;
 use App\Models\Can;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -20,6 +22,8 @@ class RegistroShowController extends Controller
     {
         $canes = Can::all();
         $memoriales = Memorial::all();
-        return Inertia::render('ListaMostrar', compact('propietario', 'memoriales', 'canes'));
+        $antecedentes = Antecedente::all();
+        $seguros = Seguro::all();
+        return Inertia::render('ListaMostrar', compact('propietario', 'memoriales', 'canes', 'antecedentes', 'seguros'));
     }
 }
