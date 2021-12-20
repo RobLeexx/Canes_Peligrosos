@@ -708,7 +708,7 @@
                                 </v-stepper-content>
 
                                 <!-- 3. Antecedentes del Propietario -->
-                                <v-stepper-step editable
+                                <v-stepper-step
                                 :complete="e6 > 3"
                                 step="3"
                                 >
@@ -1632,7 +1632,7 @@
                                 </v-stepper-content>
 
                                 <!-- 5. Datos del Can Peligroso -->
-                                <v-stepper-step step="5" editable>
+                                <v-stepper-step step="5">
                                 Datos del Can Peligroso
                                 </v-stepper-step>
 

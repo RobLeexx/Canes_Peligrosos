@@ -61,10 +61,21 @@
                             </v-row>
                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
                                 <div style="padding: 14px; font-weight: bold">
-                                    <v-btn v-if="propietario.docFile" :href="route('downloadDoc', propietario.docFile)" small color="primary" fab text
+                                    <v-tooltip v-if="propietario.docFile" top>
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-btn :href="route('downloadDoc', propietario.docFile)" small color="primary" fab text v-bind="attrs" v-on="on"
                                         ><v-icon style="padding-bottom: 3px">mdi-card-account-details</v-icon></v-btn>
-                                        <v-icon v-else color="red" style="padding-bottom: 3px">mdi-alert-circle</v-icon>
-                                        Documento de Identidad
+                                    </template>
+                                    <span>{{ propietario.docFile }}</span>
+                                    </v-tooltip>
+
+                                    <v-tooltip v-else top>
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-icon v-bind="attrs" v-on="on" color="red" style="padding-bottom: 3px">mdi-alert-circle</v-icon>
+                                    </template>
+                                    <span>Sin Archivo del Documento</span>
+                                    </v-tooltip>
+                                    Documento de Identidad
                                 </div>
                                 <div style="padding: 20px">
                                     {{ propietario.documento }} {{ propietario.docExp }} 
@@ -280,7 +291,7 @@
                                     </template>
                                 </v-expansion-panel-header>
                                 <v-expansion-panel-content>
-                                    <div v-for="memorial in memoriales" :key="memorial.id" style="padding-top: 20px">
+                                    <div v-for="memorial in memoriales" :key="memorial.id" style="padding-top: 10px">
                                     <div v-if="propietario.id == memorial.id">
                                         <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                             <div style="padding: 20px; font-weight: bold">
@@ -324,7 +335,7 @@
                                 </v-expansion-panel>
                             </v-expansion-panels>
                             </template>
-                        <!-- DATOS DEL CAN -->    
+                        <!-- DATOS DEL CAN -->
                         </v-col>
                         <v-col cols="12" sm="6">
                             <div v-for="can in canes" :key="can.id">
@@ -332,7 +343,7 @@
                                 <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">CAN</h1>
                                 <v-row style="display: flex; justify-content: space-evenly">
                                     <div></div>
-                                    <img style="max-width: 60%; padding-bottom: 15px; min-height: 272px" v-if="can.fotoCan != null" v-bind:src="'/storage/images/canes/' + can.fotoCan">
+                                    <img style="max-width: 60%; padding-bottom: 15px; min-height: 270px; max-height: 270px" v-if="can.fotoCan != null" v-bind:src="'/storage/images/canes/' + can.fotoCan">
                                     <img style="max-width: 60%; padding-bottom: 15px" v-else v-bind:src="'/storage/images/canes/' + can.fotoCan2">
                                     <div></div>
                                 </v-row>
@@ -387,7 +398,7 @@
                                     <v-expansion-panel-header disable-icon-rotate>Características del Can
                                         <template v-slot:actions>
                                             <v-icon color="primary">
-                                            mdi-dog-side
+                                            mdi-paw
                                             </v-icon>
                                         </template>
                                     </v-expansion-panel-header>
@@ -436,13 +447,13 @@
                                     <v-expansion-panel>
                                     <v-expansion-panel-header disable-icon-rotate>Estado Médico del Can
                                         <template v-slot:actions>
-                                            <v-icon v-if="(can.vetNom1 && can.vetNom2) || can.vetNom3" color="primary">
+                                            <v-icon v-if="((!can.vetNom1 || !can.vetNom2) && !can.vetNom3) || (!can.vetNom1 && !can.vetNom2 && !can.vetNom3)" color="red">
                                             mdi-hospital-box
                                             </v-icon>
-                                            <v-icon v-else-if="(!can.vetNom1 && can.vetNom2) || (can.vetNom1 && !can.vetNom2)" color="orange darken-2">
+                                            <v-icon v-else-if="((can.vetNom1 && can.vetNom2) || can.vetNom3) && (((!can.vacFile || !can.estFile) && !can.vetNom3) || ((!can.vetFile) && (!can.vetNom1 && !can.vetNom2)))" color="orange darken-2">
                                             mdi-hospital-box
                                             </v-icon>
-                                            <v-icon v-if="!can.vetNom1 && !can.vetNom2 && !can.vetNom3" color="red">
+                                            <v-icon v-else-if="(can.vetNom1 && can.vetNom2) || can.vetNom3" color="primary">
                                             mdi-hospital-box
                                             </v-icon>
                                         </template>
@@ -746,7 +757,7 @@
                                     <v-expansion-panel-header disable-icon-rotate>Capacitación
                                         <template v-slot:actions>
                                             <v-icon color="primary">
-                                            mdi-dog
+                                            mdi-dog-side
                                             </v-icon>
                                         </template>
                                     </v-expansion-panel-header>
@@ -822,30 +833,49 @@
                             </div>
                             </div>
                         </v-col>
+                        <!-- ANTECEDENTES -->
                         <v-col cols="12" sm="12">
-                            <template>
+                            <div v-for="antecedente in antecedentes" :key="antecedente.id">
+                            <div v-if="propietario.id == antecedente.id">
                             <v-expansion-panels focusable>
                                 <v-expansion-panel>
                                 <v-expansion-panel-header disable-icon-rotate>Antecedentes del Propietario
                                     <template v-slot:actions>
-                                        <v-icon color="#33691E">
+                                        <v-icon v-if="!antecedente.aCanesFile || !antecedente.aRejapFile || !antecedente.aFelccFile || !antecedente.aFelcnFile || !antecedente.aFelcvFile" color="red">
+                                        mdi-police-badge
+                                        </v-icon>
+                                        <v-icon v-else-if="antecedente.aCanes != 'Ninguno' || antecedente.aRejap != 'Ninguno' || antecedente.aFelcc != 'Ninguno' || antecedente.aFelcn != 'Ninguno' || antecedente.aFelcv != 'Ninguno'" color="orange darken-2">
+                                        mdi-police-badge
+                                        </v-icon>
+                                        <v-icon v-else color="#33691E">
                                         mdi-police-badge
                                         </v-icon>
                                     </template>
                                 </v-expansion-panel-header>
                                 <v-expansion-panel-content>
-                                    <div v-for="antecedente in antecedentes" :key="antecedente.id">
-                                    <v-row v-if="propietario.id == antecedente.id">
+                                    <v-row>
                                         <v-col cols="12" sm="6">
-                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
+                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
                                                 <v-subheader style="padding: 20px">
                                                     CANES
                                                 </v-subheader>
-                                                <v-btn v-if="antecedente.aCanesFile" :href="route('downloadCanes', antecedente.aCanesFile)" small color="#33691E" fab text>
-                                                    <v-icon v-if="antecedente.aCanes == 'Ninguno'">mdi-text-box-check</v-icon>
-                                                    <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
-                                                </v-btn>
-                                                <v-icon v-else color="red">mdi-text-box-remove</v-icon>
+
+                                                <v-tooltip v-if="antecedente.aCanesFile" top>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-btn :href="route('downloadCanes', antecedente.aCanesFile)" small color="#33691E" fab text v-bind="attrs" v-on="on">
+                                                            <v-icon v-if="antecedente.aCanes == 'Ninguno'">mdi-text-box-check</v-icon>
+                                                            <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
+                                                        </v-btn>
+                                                    </template>
+                                                    <span>{{ antecedente.aCanesFile }}</span>
+                                                </v-tooltip>
+                                                <v-tooltip v-else top>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-icon color="red" style="padding-right: 15px" v-bind="attrs" v-on="on">mdi-text-box-remove</v-icon>
+                                                    </template>
+                                                    <span>Sin Archivo de Antecedentes de Canes</span>
+                                                </v-tooltip>
+
                                             </v-row>
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                 <div style="padding: 20px; font-weight: bold">
@@ -874,15 +904,27 @@
                                             <v-divider></v-divider>
                                         </v-col>
                                         <v-col cols="12" sm="6">
-                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
+                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
                                                 <v-subheader style="padding: 20px">
                                                     REJAP
                                                 </v-subheader>
-                                                <v-btn v-if="antecedente.aRejapFile" :href="route('downloadRejap', antecedente.aRejapFile)" small color="#33691E" fab text>
-                                                    <v-icon v-if="antecedente.aRejap == 'Ninguno'">mdi-text-box-check</v-icon>
-                                                    <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
-                                                </v-btn>
-                                                <v-icon v-else color="red">mdi-text-box-remove</v-icon>
+                                                
+                                                <v-tooltip v-if="antecedente.aRejapFile" top>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-btn :href="route('downloadRejap', antecedente.aRejapFile)" small color="#33691E" fab text v-bind="attrs" v-on="on">
+                                                            <v-icon v-if="antecedente.aRejap == 'Ninguno'">mdi-text-box-check</v-icon>
+                                                            <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
+                                                        </v-btn>
+                                                    </template>
+                                                    <span>{{ antecedente.aRejapFile }}</span>
+                                                </v-tooltip>
+                                                <v-tooltip v-else top>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-icon color="red" style="padding-right: 15px" v-bind="attrs" v-on="on">mdi-text-box-remove</v-icon>
+                                                    </template>
+                                                    <span>Sin Archivo de Antecedentes de Rejap</span>
+                                                </v-tooltip>
+
                                             </v-row>
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                 <div style="padding: 20px; font-weight: bold">
@@ -915,11 +957,23 @@
                                                 <v-subheader style="padding: 20px">
                                                     FELCC
                                                 </v-subheader>
-                                                <v-btn v-if="antecedente.aFelccFile" :href="route('downloadFelcc', antecedente.aFelccFile)" small color="#33691E" fab text>
-                                                    <v-icon v-if="antecedente.aFelcc == 'Ninguno'">mdi-text-box-check</v-icon>
-                                                    <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
-                                                </v-btn>
-                                                <v-icon v-else color="red">mdi-text-box-remove</v-icon>
+                                                
+                                                <v-tooltip v-if="antecedente.aFelccFile" top>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-btn :href="route('downloadFelcc', antecedente.aFelccFile)" small color="#33691E" fab text v-bind="attrs" v-on="on">
+                                                            <v-icon v-if="antecedente.aFelcc == 'Ninguno'">mdi-text-box-check</v-icon>
+                                                            <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
+                                                        </v-btn>
+                                                    </template>
+                                                    <span>{{ antecedente.aFelccFile }}</span>
+                                                </v-tooltip>
+                                                <v-tooltip v-else top>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-icon color="red" style="padding-right: 15px" v-bind="attrs" v-on="on">mdi-text-box-remove</v-icon>
+                                                    </template>
+                                                    <span>Sin Archivo de Antecedentes de Felcc</span>
+                                                </v-tooltip>
+
                                             </v-row>
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                 <div style="padding: 20px; font-weight: bold">
@@ -952,11 +1006,23 @@
                                                 <v-subheader style="padding: 20px">
                                                     FELCN
                                                 </v-subheader>
-                                                <v-btn v-if="antecedente.aFelcnFile" :href="route('downloadFelcn', antecedente.aFelcnFile)" small color="#33691E" fab text>
-                                                    <v-icon v-if="antecedente.aFelcn == 'Ninguno'">mdi-text-box-check</v-icon>
-                                                    <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
-                                                </v-btn>
-                                                <v-icon v-else color="red">mdi-text-box-remove</v-icon>
+
+                                                <v-tooltip v-if="antecedente.aFelcnFile" top>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-btn :href="route('downloadFelcn', antecedente.aFelcnFile)" small color="#33691E" fab text v-bind="attrs" v-on="on">
+                                                            <v-icon v-if="antecedente.aFelcn == 'Ninguno'">mdi-text-box-check</v-icon>
+                                                            <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
+                                                        </v-btn>
+                                                    </template>
+                                                    <span>{{ antecedente.aFelcnFile }}</span>
+                                                </v-tooltip>
+                                                <v-tooltip v-else top>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-icon color="red" style="padding-right: 15px" v-bind="attrs" v-on="on">mdi-text-box-remove</v-icon>
+                                                    </template>
+                                                    <span>Sin Archivo de Antecedentes de Felcn</span>
+                                                </v-tooltip>
+
                                             </v-row>
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                 <div style="padding: 20px; font-weight: bold">
@@ -989,11 +1055,23 @@
                                                 <v-subheader style="padding: 20px">
                                                     FELCV
                                                 </v-subheader>
-                                                <v-btn v-if="antecedente.aFelcvFile" :href="route('downloadFelcv', antecedente.aFelcvFile)" small color="#33691E" fab text>
-                                                    <v-icon v-if="antecedente.aFelcv == 'Ninguno'">mdi-text-box-check</v-icon>
-                                                    <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
-                                                </v-btn>
-                                                <v-icon v-else color="red">mdi-text-box-remove</v-icon>
+                                                
+                                                <v-tooltip v-if="antecedente.aFelcvFile" top>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-btn :href="route('downloadFelcv', antecedente.aFelcvFile)" small color="#33691E" fab text v-bind="attrs" v-on="on">
+                                                            <v-icon v-if="antecedente.aFelcv == 'Ninguno'">mdi-text-box-check</v-icon>
+                                                            <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
+                                                        </v-btn>
+                                                    </template>
+                                                    <span>{{ antecedente.aFelcvFile }}</span>
+                                                </v-tooltip>
+                                                <v-tooltip v-else top>
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-icon color="red" style="padding-right: 15px" v-bind="attrs" v-on="on">mdi-text-box-remove</v-icon>
+                                                    </template>
+                                                    <span>Sin Archivo de Antecedentes de Felcv</span>
+                                                </v-tooltip>
+
                                             </v-row>
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                 <div style="padding: 20px; font-weight: bold">
@@ -1021,11 +1099,11 @@
                                             </v-row>
                                         </v-col>  
                                     </v-row>
-                                    </div>
                                 </v-expansion-panel-content>
                                 </v-expansion-panel>
                             </v-expansion-panels>
-                            </template>
+                            </div>
+                            </div>
                         </v-col>
                     </v-row>
                     <v-row>
