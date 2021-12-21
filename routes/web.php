@@ -9,6 +9,7 @@ Use App\Http\Controllers\ListaController;
 Use App\Http\Controllers\RegistroController;
 Use App\Http\Controllers\RegistroShowController;
 Use App\Http\Controllers\DownloadController;
+Use App\Http\Controllers\CertificadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +57,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     
     Route::resource('registros', RegistroController::class)->middleware(['auth:sanctum', 'verified'])->except('show');
 
-    Route::get('/propietarios/{propietario}', RegistroShowController::class)->name('registros.show');
+    Route::get('/registros/{propietario}', RegistroShowController::class)->name('registros.show');
 
     Route::get('/memos/{memo}', [DownloadController::class, 'downloadMemo'])->name('downloadMemo');
 
@@ -79,5 +80,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::get('/veterinaria/{est}', [DownloadController::class, 'downloadEst'])->name('downloadEst');
 
     Route::get('/veterinaria/{vet}', [DownloadController::class, 'downloadVet'])->name('downloadVet');
+
+    Route::get('/registros/{propietario}/pdf', CertificadoController::class)->name('certificado.pdf');
 });
 

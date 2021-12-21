@@ -1,4 +1,12 @@
 <template>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ propietario.paterno }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.10/vuetify.css"/>
+</head>
+</template>
+<template>
     <app-layout>
         <template #header>
             <v-row>
@@ -343,8 +351,7 @@
                                 <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">CAN</h1>
                                 <v-row style="display: flex; justify-content: space-evenly">
                                     <div></div>
-                                    <img style="max-width: 60%; padding-bottom: 15px; min-height: 270px; max-height: 270px" v-if="can.fotoCan != null" v-bind:src="'/storage/images/canes/' + can.fotoCan">
-                                    <img style="max-width: 60%; padding-bottom: 15px" v-else v-bind:src="'/storage/images/canes/' + can.fotoCan2">
+                                        <img style="max-width: 60%; padding-bottom: 15px; min-height: 268px; max-height: 268px" v-bind:src="'/storage/images/canes/' + can.fotoCan">
                                     <div></div>
                                 </v-row>
                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -1111,6 +1118,7 @@
                             <v-tooltip top>
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn
+                                @click='generatePDF'
                                 color="primary"
                                 elevation="15"
                                 fab
@@ -1130,6 +1138,10 @@
     </app-layout>
 </template>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.10/vuetify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.js"></script>
 <script>
     import AppLayout from '@/Layouts/AppLayout'
 
@@ -1141,7 +1153,27 @@
             seguros: Array,
             canes: Array,
         },
+        data() {
+            return {
+                moreText: [
+                "This is another few sentences of text to look at it.",
+                "Just testing the paragraphs to see how they format.",
+                "jsPDF likes arrays for sentences.",
+                "Do paragraphs wrap properly?",
+                "Yes, they do!",
+                "What does it look like?",
+                "Not bad at all."
+            ],
+            items: [
+                { title: "Item 1", body: "I am item 1 body text" },
+                { title: "Item 2", body: "I am item 2 body text" },
+                { title: "Item 3", body: "I am item 3 body text" },
+                { title: "Item 4", body: "I am item 4 body text" }
+            ],
+            }
+        },
         methods: {
+            
         },
         mounted() {
             var today = new Date();

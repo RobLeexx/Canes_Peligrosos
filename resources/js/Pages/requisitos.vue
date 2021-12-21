@@ -2446,10 +2446,10 @@
                 /* Pando */
                 provPD:['Abuná','Federico Román','Madre de Dios','Manuripi','Nicolás Suárez'],
                 muniPD1:['Santa Rosa del Abuná','Ingavi (Humaita)'],
-                miniPD2:['Nueva Esperanza','Santos Mercado','Villa Nueva'],
-                miniPD3:['Puerto Gonzalo Moreno','San Lorenzo','Sena'],
-                miniPD4:['Puerto Rico','Filadelfia','San Pedro'],
-                miniPD5:['Cobija','Porvenir','Bella Flor','Bolpebra'],
+                muniPD2:['Nueva Esperanza','Santos Mercado','Villa Nueva'],
+                muniPD3:['Puerto Gonzalo Moreno','San Lorenzo','Sena'],
+                muniPD4:['Puerto Rico','Filadelfia','San Pedro'],
+                muniPD5:['Cobija','Porvenir','Bella Flor','Bolpebra'],
 
             dialog: false,
             dialog2: false,
