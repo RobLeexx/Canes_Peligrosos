@@ -307,7 +307,7 @@
                                     </template>
                                 </v-expansion-panel-header>
                                 <v-expansion-panel-content>
-                                    <div v-for="memorial in memoriales" :key="memorial.id" style="padding-top: 10px">
+                                    <div v-for="memorial in memoriales" :key="memorial.id" style="padding-top: 20px">
                                     <div v-if="propietario.id == memorial.id">
                                         <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                             <div style="padding: 20px; font-weight: bold">
