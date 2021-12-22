@@ -82,5 +82,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::get('/veterinaria/{vet}', [DownloadController::class, 'downloadVet'])->name('downloadVet');
 
     Route::get('/registros/{propietario}/pdf', CertificadoController::class)->name('certificado.pdf');
+    
 });
 

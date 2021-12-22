@@ -1118,8 +1118,8 @@
                             <v-tooltip top>
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn
-                                @click='generatePDF'
-                                color="primary"
+                                :href="route('certificado.pdf', propietario.id)"
+                                color="success"
                                 elevation="15"
                                 fab
                                 x-large
@@ -1127,7 +1127,7 @@
                                 v-on="on"
                                 ><v-icon>mdi-text-box</v-icon></v-btn>
                             </template>
-                            <span>Generar Certificado</span>
+                            <span>Generar Autorización</span>
                             </v-tooltip>
                         </v-col>
                     </v-row>

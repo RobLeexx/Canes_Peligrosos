@@ -10,6 +10,8 @@ use App\Models\Can;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use PDF;
+use App;
+use resources\js\Pages\Certificado;
 
 class CertificadoController extends Controller
 {
@@ -25,6 +27,12 @@ class CertificadoController extends Controller
         $memoriales = Memorial::all();
         $antecedentes = Antecedente::all();
         $seguros = Seguro::all();
+
+        /* PDF */
+        /*$pdf = App::make('dompdf.wrapper');*/
+        /*$pdf = PDF::loadHTML('<h1>Test</h1>');*/
+        /*$pdf = PDF::loadView('certificado.pdf', compact('propietario', 'memoriales', 'canes', 'antecedentes', 'seguros'));*/
+        /*return $pdf->download('Certificado.pdf');*/
         return Inertia::render('Certificado', compact('propietario', 'memoriales', 'canes', 'antecedentes', 'seguros'));
     }
 }
