@@ -304,6 +304,25 @@
 
                                             <v-col cols="12" sm="6">
                                                 <v-autocomplete
+                                                v-model="form.estCivil"
+                                                :rules="vacio"
+                                                :items= "civ"
+                                                placeholder="Estado Civil del Propietario"
+                                                outlined
+                                                ></v-autocomplete>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field
+                                                v-model="form.profesion"
+                                                :rules="vacio"
+                                                label="Profesión u Ocupación"
+                                                placeholder="Profesión u Ocupación del Propietario"
+                                                outlined
+                                                ></v-text-field>
+                                            </v-col>
+
+                                            <v-col cols="12" sm="6">
+                                                <v-autocomplete
                                                 id="docTipo"
                                                 v-model="form.docTipo"
                                                 :items= "doc"
@@ -2316,6 +2335,7 @@
             defaultForm,
             menuMemo: false,
             menuProp: false,
+            civ: ['Soltero', 'Casado', 'Separado', 'Divorciado', 'Viudo'],
             doc: ['CI', 'Pasaporte'],
             docExpItems: ['CH','LP','CB','OR','PT','TJ','SC','BE','PD', 'Extranjero'],
             /* Ubicación escrita */
@@ -2567,6 +2587,8 @@
                 materno: null,
                 nombres: null,
                 dateProp: null,
+                profesion: null,
+                estCivil: null,
                 docTipo: null,
                 documento: null,
                 docExp: null,
@@ -2678,6 +2700,8 @@
             this.form.materno &&
             this.form.nombres &&
             this.form.dateProp &&
+            this.form.profesion &&
+            this.form.estCivil &&
             this.form.docTipo &&
             this.form.documento &&
             this.form.docExp &&

@@ -13,6 +13,8 @@ class Propietario extends Model
         'materno',
         'nombres',
         'dateProp',
+        'estCivil',
+        'profesion',
         'docTipo',
         'documento',
         'docExp',

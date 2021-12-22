@@ -38,6 +38,14 @@
                             </v-row>
                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                 <div style="padding: 20px; font-weight: bold">
+                                    Apellidos
+                                </div>
+                                <div style="padding: 20px">
+                                    {{ propietario.paterno }} {{ propietario.materno }}
+                                </div>
+                            </v-row>
+                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                <div style="padding: 20px; font-weight: bold">
                                     Nombres
                                 </div>
                                 <div style="padding: 20px">
@@ -46,25 +54,25 @@
                             </v-row>
                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                 <div style="padding: 20px; font-weight: bold">
-                                    Apellido Paterno
-                                </div>
-                                <div style="padding: 20px">
-                                    {{ propietario.paterno }}
-                                </div>
-                            </v-row>
-                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
-                                <div style="padding: 20px; font-weight: bold">
-                                    Apellido Materno
-                                </div>
-                                <div style="padding: 20px">
-                                    {{ propietario.materno }}
-                                </div>
-                            </v-row>
-                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
-                                <div style="padding: 20px; font-weight: bold">
                                     Edad
                                 </div>
                                 <div style="padding: 20px" id="edad">
+                                </div>
+                            </v-row>
+                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                <div style="padding: 20px; font-weight: bold">
+                                    Profesión u Ocupación
+                                </div>
+                                <div style="padding: 20px">
+                                    {{ propietario.profesion }}
+                                </div>
+                            </v-row>
+                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                <div style="padding: 20px; font-weight: bold">
+                                    Estado Civil
+                                </div>
+                                <div style="padding: 20px">
+                                    {{ propietario.estCivil }}
                                 </div>
                             </v-row>
                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
@@ -390,12 +398,23 @@
                                     <div style="padding: 20px" id="edadCan">
                                     </div>
                                 </v-row>
-                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 29px">
+                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                     <div style="padding: 20px; font-weight: bold">
                                         Procedencia
                                     </div>
                                     <div style="padding: 20px">
                                         {{ can.procedenciaCan }}
+                                    </div>
+                                </v-row>
+                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 29px">
+                                    <div style="padding: 20px; font-weight: bold">
+                                        Microchip
+                                    </div>
+                                    <div v-if="can.numMicro" style="padding: 20px">
+                                        {{ can.numMicro }}
+                                    </div>
+                                    <div v-else style="padding: 20px">
+                                        NO TIENE
                                     </div>
                                 </v-row>
                                 <v-divider style="padding-bottom: 25px"></v-divider>
@@ -412,7 +431,7 @@
                                     <v-expansion-panel-content>
                                         <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
                                             <div style="padding: 20px; font-weight: bold">
-                                                ¿Es Pedigree?
+                                                Pedigree
                                             </div>
                                             <div style="padding: 20px">
                                                 {{ can.pedigree }}
@@ -679,7 +698,7 @@
                                 <template>
                                 <v-expansion-panels focusable>
                                     <v-expansion-panel>
-                                    <v-expansion-panel-header disable-icon-rotate>Microchip y Convinvecia del Can
+                                    <v-expansion-panel-header disable-icon-rotate>Convinvecia del Can
                                         <template v-slot:actions>
                                             <v-icon color="primary">
                                             mdi-dog
@@ -687,27 +706,11 @@
                                         </template>
                                     </v-expansion-panel-header>
                                     <v-expansion-panel-content>
-                                        <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
-                                            <v-subheader style="padding: 20px">
-                                                Microchip
-                                            </v-subheader>
-                                        </v-row>
-                                        <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
-                                            <div style="padding: 20px; font-weight: bold">
-                                                Número de Microchip
-                                            </div>
-                                            <div v-if="can.numMicro" style="padding: 20px">
-                                                {{ can.numMicro }}
-                                            </div>
-                                            <div v-else style="padding: 20px">
-                                                NO TIENE
-                                            </div>
-                                        </v-row>
                                         <v-divider></v-divider>
                                         <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
-                                            <v-subheader style="padding: 20px">
+                                            <div style="padding: 20px; font-weight: bold">
                                                 Cuidador o Cuidadores Eventuales
-                                            </v-subheader>
+                                            </div>
                                         </v-row>
                                         <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                             <div style="padding: 20px">
@@ -741,10 +744,10 @@
                                                 {{ can.canEvenNum4 }}
                                             </div>
                                         </v-row>
-                                        <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
-                                            <v-subheader style="padding: 20px">
+                                        <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                            <div style="padding: 20px; font-weight: bold">
                                                 Motivos de Convivencia con el Can Peligroso
-                                            </v-subheader>
+                                            </div>
                                         </v-row>
                                         <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                             <div style="padding: 20px">

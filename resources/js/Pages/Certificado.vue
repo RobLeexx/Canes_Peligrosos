@@ -17,7 +17,8 @@
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
                     <h1>{{ propietario.id }}</h1>
                 </div>
-            <div>
+            <!-- Descargar Autorización -->
+            <div style="text-align: center;padding: 50px;">
                 <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn
@@ -57,7 +58,7 @@
                 var pdf = new jsPDF();
 
                 pdf.text(this.propietario.id.toString(), 10, 10);
-                pdf.save('info.pdf')
+                pdf.save('Autorización Nro' + this.propietario.id + '_' + this.propietario.documento + ' ' + this.propietario.docExp)
             },
         },
         mounted() {

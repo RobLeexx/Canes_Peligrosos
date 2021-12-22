@@ -19,6 +19,8 @@ class CreatePropietariosTable extends Migration
             $table->string('materno');
             $table->string('nombres');
             $table->date('dateProp');
+            $table->string('estCivil');
+            $table->string('profesion');
             $table->string('docTipo');
             $table->string('documento');
             $table->string('docExp');
