@@ -55,9 +55,27 @@
         },
         methods: {
             downloadPDF() {
-                var pdf = new jsPDF();
+                var pdf = new jsPDF('p', 'mm', [340, 220]);
+                var img = new Image()
 
-                pdf.text(this.propietario.id.toString(), 10, 10);
+                /* LogoIzq */
+                img.src = '/storage/img/logoPol.png'
+                pdf.addImage(img, 'png', 17, 5, 14, 18)
+                pdf.setFontSize(9).text('POLICÍA BOLIVIANA', 10, 27);
+                pdf.setFontSize(6).text('Dir. Nal. De Fiscalización', 13, 31);
+                pdf.setFontSize(6).text('y Recaudaciones', 16, 34);
+
+                /* Centro */
+                pdf.setFontSize(9).text('N°' + this.propietario.id.toString(), 107, 29.5);
+                pdf.setFontSize(9).text('Serie A-', 105, 33);
+                pdf.setFontSize(12).text('- AUTORIZACIÓN -', 92, 40);
+                pdf.setFontSize(12).text('PARA LA TENENCIA DE CAN PELIGROSO', 67, 45);
+
+                /* Derecha */
+                pdf.setFont(undefined, 'bold').setFontSize(7).text('CENTRO DE ADIESTRAMIENTO', 173, 6);
+                pdf.setFont(undefined, 'bold').setFontSize(7).text('DE CANES (C.A.C)', 181, 9);
+                pdf.setFont(undefined, 'bold').setFontSize(9).text('Costo Bs.', 176, 16);
+                
                 pdf.save('Autorización Nro' + this.propietario.id + '_' + this.propietario.documento + ' ' + this.propietario.docExp)
             },
         },
