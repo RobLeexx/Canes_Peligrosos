@@ -614,10 +614,19 @@
 
                                             <v-col cols="12" sm="6">
                                                 <v-text-field 
+                                                        v-model="form.zona"
+                                                        outlined
+                                                        label="Zona"
+                                                        placeholder="Zona del propietario"
+                                                        :rules="vacio"
+                                                ></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field 
                                                         v-model="form.domicilio"
                                                         outlined
                                                         label="Domicilio"
-                                                        placeholder="Zona/Calle"
+                                                        placeholder="Domicilio del propietario"
                                                         :rules="vacio"
                                                 ></v-text-field>
                                             </v-col>
@@ -2597,6 +2606,7 @@
                 departamento: null,
                 provincia: null,
                 municipio: null,
+                zona: null,
                 domicilio: null,
                 fotoPropName: null,
                 latitud: null,
@@ -2706,6 +2716,10 @@
             this.form.documento &&
             this.form.docExp &&
             this.form.fotoPropName &&
+            this.form.departamento &&
+            this.form.provincia &&
+            this.form.municipio &&
+            this.form.zona &&
             this.form.domicilio &&
             this.form.latitud &&
             this.form.longitud &&

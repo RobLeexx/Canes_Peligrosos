@@ -30,6 +30,7 @@ class CreatePropietariosTable extends Migration
             $table->string('departamento');
             $table->string('provincia');
             $table->string('municipio');
+            $table->string('zona');
             $table->string('domicilio');
             $table->string('latitud');
             $table->string('longitud');

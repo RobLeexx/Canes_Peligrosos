@@ -180,7 +180,6 @@
                                     </v-col>
                                 </td>
                             </tr>
-
                             </tbody>
                             </table>
                         </div>

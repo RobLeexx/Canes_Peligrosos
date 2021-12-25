@@ -23,6 +23,7 @@ class Propietario extends Model
         'departamento',
         'provincia',
         'municipio',
+        'zona',
         'domicilio',
         'latitud',
         'longitud',
