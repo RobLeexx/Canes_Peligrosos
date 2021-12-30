@@ -56,40 +56,40 @@
                                     <div style="display: flex">
                                         <div style="width: 100%">
                                             <v-row style="display: flex; padding-left: 17px; padding-top: 15px; max-width: 380px">
-                                                <div style="font-weight: bold">APELLIDOS:&nbsp;</div>
+                                                <div>APELLIDOS:&nbsp;</div>
                                                 <div>{{ propietario.paterno }} {{ propietario.materno }}</div>
                                             </v-row>
                                             <v-row style="display: flex; padding-left: 17px; max-width: 380px">
-                                                <div style="font-weight: bold">NOMBRES:&nbsp;</div>
+                                                <div>NOMBRES:&nbsp;</div>
                                                 <div>{{ propietario.nombres }}</div>
                                             </v-row>
                                             <v-row style="display: flex; padding-left: 17px; max-width: 380px">
-                                                <div v-if="propietario.docTipo == 'CI'" style="font-weight: bold">CÉDULA DE IDENTIDAD:&nbsp;</div>
-                                                <div v-else style="font-weight: bold">PASAPORTE:&nbsp;</div>
+                                                <div v-if="propietario.docTipo == 'CI'">CÉDULA DE IDENTIDAD:&nbsp;</div>
+                                                <div v-else >PASAPORTE:&nbsp;</div>
                                                 <div>{{ propietario.documento }} {{ propietario.docTipo }}</div>
                                             </v-row>
                                             <v-row style="display: flex; padding-left: 17px; max-width: 380px">
-                                                <div style="font-weight: bold">PROFESIÓN U OCUPACIÓN:&nbsp;</div>
+                                                <div>PROFESIÓN U OCUPACIÓN:&nbsp;</div>
                                                 <div>{{ propietario.profesion }}</div>
                                             </v-row>
                                             <v-row style="display: flex; padding-left: 17px">
-                                                <div style="font-weight: bold">ESTADO CIVIL:&nbsp;</div>
+                                                <div>ESTADO CIVIL:&nbsp;</div>
                                                 <div>{{ propietario.estCivil }}</div>
                                             </v-row>
                                             <v-row style="display: flex; padding-left: 17px">
-                                                <div style="font-weight: bold">EDAD:&nbsp;</div>
+                                                <div>EDAD:&nbsp;</div>
                                                 <div id="edad"></div>
                                             </v-row>
                                             <v-row style="display: flex; padding-left: 17px">
-                                                <div style="font-weight: bold">DOMICILIO:&nbsp;</div>
+                                                <div>DOMICILIO:&nbsp;</div>
                                                 <div>{{ propietario.domicilio }}</div>
                                             </v-row>
                                             <v-row style="display: flex; padding-left: 17px">
-                                                <div style="font-weight: bold">ZONA:&nbsp;</div>
+                                                <div>ZONA:&nbsp;</div>
                                                 <div>{{ propietario.zona }}</div>
                                             </v-row>
                                             <v-row style="display: flex; padding-left: 17px; padding-bottom: 15px">
-                                                <div style="font-weight: bold">MUNICIPIO:&nbsp;</div>
+                                                <div>MUNICIPIO:&nbsp;</div>
                                                 <div>{{ propietario.municipio }}</div>
                                             </v-row>
                                         </div>
@@ -110,24 +110,24 @@
                     </table>
                     <table id="cert" style="width: 100%">
                         <tbody v-for="can in canes" :key="canes.id">
-                            <tr>
+                            <tr v-if="propietario.id == can.id">
                                 <td>
                                     <div style="display: flex">
                                         <div style="width: 100%">
                                             <tr>
-                                                <td><div style="display: flex; padding-left: 5px"><h1 style="font-weight: bold">NOMBRE:</h1>&nbsp;{{ can.nomPerro }}</div></td>
+                                                <td><div style="display: flex; padding-left: 5px"><h1>NOMBRE:</h1>&nbsp;{{ can.nomPerro }}</div></td>
                                             </tr>
                                             <tr>
-                                                <td><div style="display: flex; padding-left: 5px"><h1 style="font-weight: bold">RAZA:</h1>&nbsp;{{ can.razaCan }}</div></td>
+                                                <td><div style="display: flex; padding-left: 5px"><h1>RAZA:</h1>&nbsp;{{ can.razaCan }}</div></td>
                                             </tr>
                                             <tr>
-                                                <td><div style="display: flex; padding-left: 5px"><h1 style="font-weight: bold">SEXO:</h1>&nbsp;{{ can.sexoCan }}</div></td>
+                                                <td><div style="display: flex; padding-left: 5px"><h1>SEXO:</h1>&nbsp;{{ can.sexoCan }}</div></td>
                                             </tr>
                                             <tr>
-                                                <td><div style="display: flex; padding-left: 5px"><h1 style="font-weight: bold">EDAD:</h1>&nbsp;<div id="edadCan"></div></div></td>
+                                                <td><div style="display: flex; padding-left: 5px"><h1>EDAD:</h1>&nbsp;<div id="edadCan"></div></div></td>
                                             </tr>
                                             <tr>
-                                                <td><div style="display: flex; padding-left: 5px"><h1 style="font-weight: bold">PROCEDENCIA:</h1>&nbsp;{{ can.procedenciaCan }}</div></td>
+                                                <td><div style="display: flex; padding-left: 5px"><h1>PROCEDENCIA:</h1>&nbsp;{{ can.procedenciaCan }}</div></td>
                                             </tr>
                                         </div>
                                         <img style="max-width: 220px; min-width: 220px; max-height: 170px" v-bind:src="'/storage/images/canes/' + can.fotoCan">
@@ -143,12 +143,14 @@
                     <v-col style="padding-inline: 0; padding-bottom: 0px">
                     <table style="border: 1px solid black; width: 100%">
                         <tbody v-for="can in canes" :key="canes.id">
+                            <div v-if="propietario.id == can.id">
                             <tr>
                                 <td style="padding-left: 5px"><h1 style="font-weight: bold">TENEDOR(ES) EVENTUAL(ES) DEL PERRO PELIGROSO:</h1>●&nbsp;{{ can.canEven1 }} {{ can.canEvenNum1 }}</td>
                             </tr>
                             <tr v-if="can.canEven2"><td style="padding-left: 5px">●&nbsp;{{ can.canEven2 }} {{ can.canEvenNum2 }}</td></tr>
                             <tr v-if="can.canEven3"><td style="padding-left: 5px">●&nbsp;{{ can.canEven3 }} {{ can.canEvenNum3 }}</td></tr>
                             <tr v-if="can.canEven4"><td style="padding-left: 5px">●&nbsp;{{ can.canEven4 }} {{ can.canEvenNum4 }}</td></tr>
+                            </div>
                         </tbody>
                     </table>
                     </v-col>
@@ -169,7 +171,7 @@
                     <v-col style="padding: 0">
                     <table style="width: 100%">
                         <tbody v-for="can in canes" :key="canes.id">
-                            <tr>
+                            <tr v-if="propietario.id == can.id">
                                 <td style="padding-left: 5px"><h1 style="font-weight: bold">OBSERVACIONES:</h1>{{ can.canConvivencia }}</td>
                             </tr>
                         </tbody>
@@ -204,11 +206,21 @@
                             <div style="padding-left: 5px"><h1 style="font-weight: bold; font-size: 13px">●</h1></div>
                             <div style="padding-left: 5px"><h1 style="font-weight: bold; font-size: 13px">{{ exp6 }}</h1></div>
                         </div>
-                            <div style="padding-left: 5px; display: flex; justify-content: end;padding: 40px"><div>Lugar y Fecha:&nbsp;&nbsp;</div>{{ propietario.departamento }},&nbsp;<div id="diaC"></div>&nbsp;de&nbsp;<div id="mesC"></div>&nbsp;de&nbsp;<div id="anioC"></div>
+                            <div style="padding-left: 5px; display: flex; justify-content: end;padding: 40px"><div style="font-weight: bold">Lugar y Fecha:&nbsp;&nbsp;</div>{{ propietario.departamento }},&nbsp;<div id="diaC"></div>&nbsp;de&nbsp;<div id="mesC"></div>&nbsp;de&nbsp;<div id="anioC"></div>
                         </div>
-                        <div>
-                            
-                        </div>
+                        <v-row style="text-align: center; padding: 40px">
+                            <v-col cols="12" sm="4">
+                                <h1>{{ $page.props.user.name }}</h1>
+                                <h1>Funcionario Policial</h1>
+                            </v-col>
+                            <v-col cols="12" sm="4">
+                                <h1>Vo. Bo.</h1>
+                            </v-col>
+                            <v-col cols="12" sm="4">
+                                <div v-for="memorial in memoriales" :key="memorial.id"><h1 v-if="propietario.id == memorial.id">{{ memorial.comandante }}</h1></div>
+                                <h1>Comandante C.A.C</h1>
+                            </v-col>
+                        </v-row>
                     </v-col>
                 </div>
                 <br>
@@ -236,6 +248,8 @@
 </app-layout>
 </template>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.0.28/jspdf.plugin.autotable.js"></script>
 <script>
     import AppLayout from '@/Layouts/AppLayout'
     import jsPDF from 'jspdf'
@@ -251,23 +265,82 @@
         data() {
             return {
                 exp: 'Documento expedido en aplicación al Art. 8° y 9° de la Ley de Regulación de Tenencia de Perros Peligrosos para la Seguridad Ciudadana.',
-                exp1: 'La presente Autorización NO CONSTITUYE DE POR SI LA "LA TENENCIA DEL PERRO PELIGROSO"; debiendo acudir el propietario del perro peligroso, para el efecto, ente el Gobierno Autónomo Municipal, donde se le registrara y otorgara la "Licencia de crianza del perro peligroso."',
+                exp1: 'La presente Autorización NO CONSTITUYE DE POR SI LA "TENENCIA DEL PERRO PELIGROSO"; debiendo acudir el propietario del perro peligroso, para el efecto, ente el Gobierno Autónomo Municipal, donde se le registrara y otorgara la "Licencia de crianza del perro peligroso."',
                 exp2: 'Válido y de uso exlusivo para el trámite ante el Gobierno Autónomo Municipal.',
                 exp3: 'Cualquier raspadura y/o enmienda anula el presente documento.',
                 exp4: 'El tiempo de validez de la presente Autorización es de dos años (2) a partir de su fecha de emisión',
                 exp5: 'La presente Autorización no constituye a la Policía Boliviana en responsable civil o penal por agresiones que el perro pueda causar (sujetándose al Art. 270° Bis del Código Penal).',
                 exp6: 'Prohibido su uso para personas y en perros no Autorizados y no registrados en el presente documento.',
+
+                exp11: 'La presente Autorización NO CONSTITUYE DE POR SI LA "TENENCIA DEL PERRO PELIGROSO"; debiendo acudir el propietario del perro peligroso, para el efecto, ente el Gobierno            Autónomo Municipal, donde se le registrara y otorgara la "Licencia de crianza del perro peligroso."',
+                diaLocal: [],
+                mesLocal: [],
+                anioLocal: [],
             }
         },
         
         methods: {
             downloadPDF() {
-                var pdf = new jsPDF('p', 'mm', [340, 220]);
-                var img = new Image()
+                /* Legal 22*36 
+                   Legal PRUEBA REAL 21.7*33 */
+                var pdf = new jsPDF('p', 'mm', [360, 217]);
+                var img = new Image();
+                var imgProp = new Image();
+                var imgCan = new Image();
+                var diaCell = this.diaLocal;
+                var mesCell = this.mesLocal;
+                var anioCell = this.anioLocal;
+
+                /* Datos */
+                var docu;
+                if (this.propietario.docTipo == 'CI'){
+                    docu = 'CÉDULA DE IDENTIDAD'
+                }
+                else{
+                    docu = 'PASAPORTE'
+                }
+
+                /* Cálculo de edades */
+                var ep;
+                var ec;
+                var today = new Date();
+                var birthDate = new Date(this.propietario.dateProp);
+                var age = today.getFullYear() - birthDate.getFullYear();
+                var m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                ep = age;
+                for(let can of this.canes)
+                {
+                    if(this.propietario.id == can.id)
+                    {
+                        var birthDateCan = new Date(can.dateNacPerro);
+                        var ageCan = today.getFullYear() - birthDateCan.getFullYear();
+                        var monCan = today.getMonth() - birthDateCan.getMonth();
+                        var m = today.getMonth() - birthDateCan.getMonth();
+                        if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
+                            ageCan--;
+                        }
+                        if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
+                            monCan--;
+                        }
+                        if (ageCan < 1)
+                        {
+                            ec = monCan + " (Meses)";
+                        }
+                        else
+                        {
+                            ec = ageCan;
+                        }
+                    }
+                }
 
                 /* LogoIzq */
-                img.src = '/storage/img/logoPol.png'
-                pdf.addImage(img, 'png', 17, 5, 14, 18)
+                img.src = '/storage/img/logoPol.png';
+                imgProp.src = '/storage/images/propietarios/' + this.propietario.fotoProp;
+                pdf.addImage(img, 'png', 17, 5, 14, 18);
+                pdf.addImage(imgProp, 'png', 62.5, 60, 45, 38);
                 pdf.setFontSize(9).text('POLICÍA BOLIVIANA', 10, 27);
                 pdf.setFontSize(6).text('Dir. Nal. De Fiscalización', 13, 31);
                 pdf.setFontSize(6).text('y Recaudaciones', 16, 34);
@@ -279,16 +352,151 @@
                 pdf.setFontSize(12).text('PARA LA TENENCIA DE CAN PELIGROSO', 67, 45);
 
                 /* Derecha */
-                pdf.setFont(undefined, 'bold').setFontSize(7).text('CENTRO DE ADIESTRAMIENTO', 173, 6);
-                pdf.setFont(undefined, 'bold').setFontSize(7).text('DE CANES (C.A.C)', 181, 9);
+                pdf.setFont(undefined, 'bold').setFontSize(7).text('CENTRO DE ADIESTRAMIENTO', 170, 6);
+                pdf.setFont(undefined, 'bold').setFontSize(7).text('DE CANES (C.A.C)', 179, 9);
                 pdf.setFont(undefined, 'bold').setFontSize(9).text('Costo Bs.', 176, 16);
 
                 /* Tablas */
-                pdf.autoTable({
-                theme: 'grid',
-                html: '#cert'
-                })
+                pdf.autoTable({theme: 'plain', startY: 50, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9 }, 
+                body: [
+                ['DATOS DEL PROPIETARIO']]
+                });
+                pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold'}, 
+                body: [
+                [''],[''],[''],[''],[''],[''],[''],[''],[''],['']]
+                });
+                pdf.autoTable({theme: 'plain', startY: 50, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                body: [
+                ['DATOS DEL CAN PELIGROSO']]
+                });
+                pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold'}, 
+                body: [
+                [''],[''],[''],[''],[''],[''],[''],[''],[''],['']]
+                });
                 
+                /* Propietario */
+                pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 12.5}, tableWidth: 50, styles: { fontSize: 7 },
+                body: [
+                ['APELLIDOS:' + ' ' + this.propietario.paterno + ' ' + this.propietario.materno],
+                ['NOMBRES:' + ' ' + this.propietario.nombres],
+                [docu + ': ' + this.propietario.documento + ' ' + this.propietario.docExp],
+                ['PROFESIÓN U OCUPACIÓN:' + ' ' + this.propietario.profesion],
+                ['ESTADO CIVIL:' + ' ' + this.propietario.estCivil],
+                ['EDAD:' + ' ' + ep],
+                ['DOMICILIO:' + ' ' + this.propietario.domicilio],
+                ['ZONA:' + ' ' + this.propietario.zona],
+                ['MUNICIPIO:' + ' ' + this.propietario.municipio],]
+                });
+
+                /* Can */
+                for(let can of this.canes)
+                {
+                    if(this.propietario.id == can.id)
+                        {
+                            imgCan.src = '/storage/images/canes/' + can.fotoCan;
+                            pdf.addImage(imgCan, 'png', 155, 60, 45, 38);
+                            pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 110}, tableWidth: 48, styles: { fontSize: 7 },
+                            body: [
+                            ['NOMBRE:' + ' ' + can.nomPerro],
+                            ['RAZA:' + ' ' + can.razaCan],
+                            ['SEXO:' + ' ' + can.sexoCan],
+                            ['EDAD:' + ' ' + ec],
+                            ['PROCEDENCIA:' + ' ' + can.procedenciaCan],
+                            ]});
+                            /* Cuidadores Eventuales */
+                            pdf.autoTable({theme: 'plain', startY: 133, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                            body: [
+                            ['TENEDOR(ES) EVENTUAL(ES) DEL PERRO PELIGROSO:'],
+                            ]});
+                            pdf.autoTable({theme: 'grid', startY: 140, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontSize: 7 }, bodyStyles: { lineColor: 20, lineWidth: 0.2 },
+                            body: [
+                            [can.canEven1, can.canEvenNum1],
+                            [can.canEven2, can.canEvenNum2],
+                            [can.canEven3, can.canEvenNum3],
+                            [can.canEven4, can.canEvenNum4],
+                            ]});
+                        }
+                };
+
+                /* CURSOS */
+                pdf.autoTable({theme: 'plain', startY: 165.5, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                body: [
+                ['               CURSO PREVENTIVO SOBRE LA TENENCIA                Y CUIDADO DEL PERRO PELIGROSO']
+                ]});
+                pdf.autoTable({theme: 'plain', startY: 165.5, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                body: [
+                ['                               ADIESTRAMIENTO                                 BÁSICO CANINO']
+                ]});
+                pdf.autoTable({theme: 'plain', startY: 176.5, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center' },
+                body: [
+                ['Terminado']
+                ]});
+                pdf.autoTable({theme: 'plain', startY: 176.5, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center' },
+                body: [
+                ['Óptimo']
+                ]});
+
+                /* Observaciones */
+                pdf.autoTable({theme: 'plain', startY: 184, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                body: [
+                ['OBSERVACIONES:'],
+                ]});
+                pdf.autoTable({theme: 'plain', startY: 191, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontSize: 7}, 
+                body: [
+                [this.propietario.domicilio],
+                ]});
+
+                /* final */
+                pdf.autoTable({theme: 'plain', startY: 197.5, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontStyle: 'bold', fontSize: 6}, bodyStyles: { minCellHeight: 6.23 },
+                body: [
+                [this.exp],
+                [' - ' + this.exp11],
+                [' - ' + this.exp2],
+                [' - ' + this.exp3],
+                [' - ' + this.exp4],
+                [' - ' + this.exp5],
+                [' - ' + this.exp6],
+                [''],
+                [''],
+                [''],
+                [''],
+                [''],
+                ]});
+                pdf.autoTable({theme: 'plain', startY: 245, margin: {horizontal: 130}, tableWidth: 28, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                body: [
+                ['Lugar y Fecha:'],
+                ]});
+                pdf.autoTable({theme: 'plain', startY: 245, margin: {horizontal: 150}, tableWidth: 80, styles: { textColor: 20, fontSize: 7}, 
+                body: [
+                [this.propietario.departamento + ', ' + diaCell + ' de ' + mesCell + ' de ' + anioCell],
+                ]});
+                pdf.autoTable({theme: 'plain', startY: 265, margin: {horizontal: 40}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                body: [
+                ['Funcionario Policial'],
+                ]});
+                pdf.autoTable({theme: 'plain', startY: 265, margin: {horizontal: 104}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                body: [
+                ['Vo. Bo.'],
+                ]});
+                pdf.autoTable({theme: 'plain', startY: 265, margin: {horizontal: 156}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                body: [
+                ['Comandante C.A.C'],
+                ]});
+                pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 25.5}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7}, 
+                body: [
+                [this.$page.props.user.name],
+                ]});
+                for(let memorial of this.memoriales)
+                {
+                    if(this.propietario.id == memorial.id)
+                        {
+                            pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 141}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7}, 
+                            body: [
+                            [memorial.comandante],
+                            ]});
+                        }
+                }
+
                 /* Guardado */
                 pdf.save('Autorización Nro' + this.propietario.id + '_' + this.propietario.documento + ' ' + this.propietario.docExp)
             },
@@ -371,8 +579,11 @@
                 break
             }
             document.getElementById('diaC').innerHTML = dia;
+            this.diaLocal = dia;
             document.getElementById('mesC').innerHTML = mes;
+            this.mesLocal = mes;
             document.getElementById('anioC').innerHTML = anio;
+            this.anioLocal = anio;
         },
         components: {
             jsPDF,
