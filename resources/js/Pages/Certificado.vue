@@ -425,7 +425,7 @@
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 165.5, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9}, 
                 body: [
-                ['                               ADIESTRAMIENTO                                 BÁSICO CANINO']
+                ['                               ADIESTRAMIENTO                                BÁSICO CANINO']
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 176.5, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center' },
                 body: [
@@ -470,15 +470,15 @@
                 body: [
                 [this.propietario.departamento + ', ' + diaCell + ' de ' + mesCell + ' de ' + anioCell],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 265, margin: {horizontal: 40}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 40}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
                 body: [
                 ['Funcionario Policial'],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 265, margin: {horizontal: 104}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 104}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
                 body: [
                 ['Vo. Bo.'],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 265, margin: {horizontal: 156}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 156}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
                 body: [
                 ['Comandante C.A.C'],
                 ]});

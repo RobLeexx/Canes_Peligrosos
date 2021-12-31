@@ -9,7 +9,7 @@
         <v-app>
         <div class="py-12" style="background: #33691E">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div style="padding-left: 10px">
+                <div style="padding-left: 10px; position: absolute; top: 10px">
                     <v-btn 
                     fab
                     color="primary"
@@ -17,176 +17,156 @@
                     ><v-icon>mdi-plus</v-icon>
                 </v-btn>
                 </div>
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
-                    <!-- This example requires Tailwind CSS v2.0+ -->
-                    <div class="flex flex-col">
-                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr style="display: flex">
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" :width="anchoProp">
-                                        Propietario
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider d-none d-sm-block" :width="anchoCan">
-                                        Can
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider d-none d-md-block" :width="anchoCap">
-                                        Capacitación
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider d-none d-md-block" :width="anchoTel">
-                                        Contacto
-                                    </th>
-                                    <th scope="col" class="relative px-6 py-3">
-                                        <span class="sr-only">Editar</span>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                        
-                            <div style="display: flex; flex-direction: column; float: left">
-                            <tr style="display: flex" v-for="propietario in propietarios" :key="propietario.id">
-                                <td class="px-6 py-4 whitespace-nowrap" :width="anchoProp" v-if="propietario.id %2 == 0">
-                                    <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-15">
-                                        <img class="h-10 w-15 rounded-full" v-bind:src="'/storage/images/propietarios/' + propietario.fotoProp">
-                                    </div>
-                                    <div class="ml-4" style="height: 56px; padding-top: 8.5px">
-                                        <div class="text-sm font-medium text-gray-900">
-                                        {{ propietario.paterno }} {{ propietario.materno }} , {{ propietario.nombres }}
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                        {{ propietario.documento }} {{ propietario.docExp }}
-                                        </div>
-                                    </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap" style="background: #EFEDED" :width="anchoProp" v-else>
-                                    <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-15">
-                                        <img class="h-10 w-15 rounded-full" v-bind:src="'/storage/images/propietarios/' + propietario.fotoProp">
-                                    </div>
-                                    <div class="ml-4" style="height: 56px; padding-top: 8.5px">
-                                        <div class="text-sm font-medium text-gray-900">
-                                        {{ propietario.paterno }} {{ propietario.materno }} , {{ propietario.nombres }}
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                        {{ propietario.documento }} {{ propietario.docExp }}
-                                        </div>
-                                    </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; float: left">
-                            <tr style="display: flex" v-for="can in canes" :key="canes.id">
-                                <td class="px-6 py-4 whitespace-nowrap d-none d-sm-block" :width="anchoCan2" v-if="can.id %2 == 0" style="min-width: 200px">
-                                    <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-15">
-                                        <img class="h-10 w-15 rounded-full" v-if="can.fotoCan != null" v-bind:src="'/storage/images/canes/' + can.fotoCan">
-                                        <img class="h-10 w-15 rounded-full" v-else v-bind:src="'/storage/images/canes/' + can.fotoCan2">
-                                    </div>
-                                    <div class="ml-4" style="height: 56px; padding-top: 8.5px">
-                                        <div class="text-sm font-medium text-gray-900">
-                                        {{ can.nomPerro }}
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                        {{ can.razaCan }}
-                                        </div>
-                                    </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap d-none d-sm-block" :width="anchoCan2" v-else style="background: #EFEDED; min-width: 200px">
-                                    <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-15">
-                                        <img class="h-10 w-15 rounded-full" v-if="can.fotoCan != null" v-bind:src="'/storage/images/canes/' + can.fotoCan">
-                                        <img class="h-10 w-15 rounded-full" v-else v-bind:src="'/storage/images/canes/' + can.fotoCan2">
-                                    </div>
-                                    <div class="ml-4" style="height: 56px; padding-top: 8.5px">
-                                        <div class="text-sm font-medium text-gray-900">
-                                        {{ can.nomPerro }}
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                        {{ can.razaCan }}
-                                        </div>
-                                    </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </div>
+                  <v-card style="box-shadow: 0px 0px 30px; border-radius: 10px; position: initial">
+                    <v-card-title style="padding: 0; padding-inline: 20px">
+                        <v-col cols="12" sm="4" style="margin-top: 30px; padding: 0">
+                            <v-select v-model="depPred"
+                            outlined
+                            :items="dep"
+                            persistent-hint
+                            return-object
+                            single-line>
+                            </v-select>
+                        </v-col>
+                        <v-col cols="12" sm="8">
+                            <v-text-field
+                                v-model="search"
+                                append-icon="mdi-magnify"
+                                label="Buscar"
+                                outlined
+                                single-line
+                                hide-details
+                            ></v-text-field>
+                        </v-col>
+                    </v-card-title>
+                    <div>
+                        <v-row style="padding: 15px; background: #EFEDED; margin: 0">
+                            <v-col cols="12" sm="4" class="text-xs font-medium text-gray-500">
+                                PROPIETARIOS
+                            </v-col>
+                            <v-col cols="12" sm="3" class="text-xs font-medium text-gray-500">
+                                CANES
+                            </v-col>
+                            <v-col cols="12" sm="1" style="display: flex; justify-content: center; padding-left: 15px" class="text-xs font-medium text-gray-500">
+                                CAPACITACIÓN
+                            </v-col>
+                            <v-col cols="12" sm="2" style="display: flex; justify-content: center; padding-left: 25px" class="text-xs font-medium text-gray-500">
+                                CONTACTO
+                            </v-col>
+                            <v-col cols="12" sm="2" style="display: flex; justify-content: center; padding-left: 35px" class="text-xs font-medium text-gray-500">
+                                ACCIONES
+                            </v-col>
+                        </v-row>
 
-                            <tr style="display: flex" v-for="propietario in propietarios" :key="propietarios.id">
-                                <td class="px-6 py-4 whitespace-nowrap d-none d-md-block" :width="anchoCap" v-if="propietario.id %2 == 0" style="width: 100%; text-align: center">
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800" style="margin-left: 10px; margin-top: 15px">
-                                    Terminada
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap d-none d-md-block" :width="anchoCap" v-else style="background: #EFEDED; width: 100%; text-align: center">
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800" style="margin-left: 10px; margin-top: 15px">
-                                    Terminada
-                                    </span>
-                                </td>
-
-                                <td class="px-10 py-4 text-sm text-gray-500 d-none d-md-block" style="padding-top: 32px !important; padding-left: 25px !important; width: 100%; text-align: center" :width="anchoTel" v-if="propietario.id %2 == 0">
-                                    <div v-show="propietario.celular != null">
-                                    {{ propietario.celular }}
-                                    </div>
-                                    <div v-show="(propietario.celular == null) && (propietario.telefono != null)">
-                                    {{ propietario.telefono }}
-                                    </div>
-                                    <div v-show="((propietario.celular && propietario.telefono) == null) && propietario.email != null">
-                                    {{ propietario.email }}
-                                    </div>
-                                    <div v-show="((propietario.celular && propietario.telefono && propietario.email) == null) && propietario.contactoAlterno != null">
-                                    {{ propietario.contactoAlterno }}
-                                    </div>
-                                </td>
-                                <td class="px-10 py-4 text-sm text-gray-500 d-none d-md-block" style="padding-top: 32px !important; padding-left: 25px !important; background: #EFEDED; width: 100%; text-align: center" :width="anchoTel" v-else>
-                                    <div v-show="propietario.celular != null">
-                                    {{ propietario.celular }}
-                                    </div>
-                                    <div v-show="(propietario.celular == null) && (propietario.telefono != null)">
-                                    {{ propietario.telefono }}
-                                    </div>
-                                    <div v-show="((propietario.celular && propietario.telefono) == null) && propietario.email != null">
-                                    {{ propietario.email }}
-                                    </div>
-                                    <div v-show="((propietario.celular && propietario.telefono && propietario.email) == null) && propietario.contactoAlterno != null">
-                                    {{ propietario.contactoAlterno }}
-                                    </div>
-                                </td>
-
-                                <td class="px-1 py-4 whitespace-nowrap text-right text-sm font-medium d-none d-sm-block" v-if="propietario.id %2 == 0" style="width: 100%">
-                                    <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-eye</v-icon></v-btn>
-                                    <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-pencil</v-icon></v-btn>
-                                </td>
-                                <td class="px-1 py-4 whitespace-nowrap text-right text-sm font-medium d-none d-sm-block" v-else style="background: #EFEDED; width: 100%">
-                                    <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-eye</v-icon></v-btn>
-                                    <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-pencil</v-icon></v-btn>
-                                </td>
-
-                                <td class="px-1 py-4 whitespace-nowrap text-right text-sm font-medium d-block d-sm-none" style="padding: 4px !important; width: 100%" v-if="propietario.id %2 == 0">
-                                    <v-col style="display: flex; flex-direction: column; padding: 0">
-                                        <v-btn fab text small><v-icon>mdi-eye</v-icon></v-btn>
-                                        <v-btn fab text small><v-icon>mdi-pencil</v-icon></v-btn>
+                        <div v-if="depPred == 'Todos'">
+                            <div v-for="propietario in propietarios" :key="propietario.id">
+                                <v-row v-if="propietario.id %2 == 0" style="background: #EFEDED; margin: 0; border-radius: 10px">
+                                    <v-col cols="12" sm="4" style="display: flex; align-items: center">
+                                        <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-bind:src="'/storage/images/propietarios/' + propietario.fotoProp">
+                                        <div style="padding-inline: 10px">
+                                            <div class="text-sm font-medium text-gray-900">
+                                            {{ propietario.paterno }} {{ propietario.materno }} , {{ propietario.nombres }}
+                                            </div>
+                                            <div class="text-sm text-gray-500">
+                                            {{ propietario.documento }} {{ propietario.docExp }}
+                                            </div>
+                                        </div>
                                     </v-col>
-                                </td>
-                                <td class="px-1 py-4 whitespace-nowrap text-right text-sm font-medium d-block d-sm-none" style="padding: 4px !important; background: #EFEDED; width: 100%" v-else>
-                                    <v-col style="display: flex; flex-direction: column; padding: 0">
-                                        <v-btn fab text small><v-icon>mdi-eye</v-icon></v-btn>
-                                        <v-btn fab text small><v-icon>mdi-pencil</v-icon></v-btn>
+                                    <v-col cols="12" sm="3">
+                                        <div v-for="can in canes" :key="can.id" style="display: flex; align-items: center">
+                                            <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-if="(can.fotoCan != null) && (can.id == propietario.id)" v-bind:src="'/storage/images/canes/' + can.fotoCan">
+                                            <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-else-if="(can.fotoCan2 != null) && (can.id == propietario.id)" v-bind:src="'/storage/images/canes/' + can.fotoCan2">
+                                            <div style="padding-inline: 10px">
+                                                <div class="text-sm font-medium text-gray-900" v-if="can.id == propietario.id">
+                                                {{ can.nomPerro }}
+                                                </div>
+                                                <div class="text-sm text-gray-500" v-if="can.id == propietario.id">
+                                                {{ can.razaCan }}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </v-col>
-                                </td>
-                            </tr>
-                            </tbody>
-                            </table>
+                                    <v-col cols="12" sm="1" style="display: flex; align-items: center; justify-content: center">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Terminada
+                                        </span>
+                                    </v-col>
+                                    <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
+                                        <div v-if="propietario.celular" class="text-sm font-medium text-gray-900">
+                                            {{ propietario.celular }}
+                                        </div>
+                                        <div v-else-if="propietario.telefono" class="text-sm font-medium text-gray-900">
+                                            {{ propietario.telefono }}
+                                        </div>
+                                        <div v-else-if="propietario.email" class="text-sm font-medium text-gray-900">
+                                            {{ propietario.email }}
+                                        </div>
+                                        <div v-else-if="propietario.contactoAlterno" class="text-sm font-medium text-gray-900">
+                                            {{ propietario.contactoAlterno }}
+                                        </div>
+                                    </v-col>
+                                    <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
+                                        <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-eye</v-icon></v-btn>
+                                        <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-pencil</v-icon></v-btn>
+                                    </v-col>
+                                </v-row>
+                                <v-row v-else style="margin: 0; border-radius: 10px">
+                                    <v-col cols="12" sm="4" style="display: flex; align-items: center">
+                                        <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-bind:src="'/storage/images/propietarios/' + propietario.fotoProp">
+                                        <div style="padding-inline: 10px">
+                                            <div class="text-sm font-medium text-gray-900">
+                                            {{ propietario.paterno }} {{ propietario.materno }} , {{ propietario.nombres }}
+                                            </div>
+                                            <div class="text-sm text-gray-500">
+                                            {{ propietario.documento }} {{ propietario.docExp }}
+                                            </div>
+                                        </div>
+                                    </v-col>
+                                    <v-col cols="12" sm="3">
+                                        <div v-for="can in canes" :key="can.id" style="display: flex; align-items: center">
+                                            <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-if="(can.fotoCan != null) && (can.id == propietario.id)" v-bind:src="'/storage/images/canes/' + can.fotoCan">
+                                            <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-else-if="(can.fotoCan2 != null) && (can.id == propietario.id)" v-bind:src="'/storage/images/canes/' + can.fotoCan2">
+                                            <div style="padding-inline: 10px">
+                                                <div class="text-sm font-medium text-gray-900" v-if="can.id == propietario.id">
+                                                {{ can.nomPerro }}
+                                                </div>
+                                                <div class="text-sm text-gray-500" v-if="can.id == propietario.id">
+                                                {{ can.razaCan }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </v-col>
+                                    <v-col cols="12" sm="1" style="display: flex; align-items: center; justify-content: center">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Terminada
+                                        </span>
+                                    </v-col>
+                                    <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
+                                        <div v-if="propietario.celular" class="text-sm font-medium text-gray-900">
+                                            {{ propietario.celular }}
+                                        </div>
+                                        <div v-else-if="propietario.telefono" class="text-sm font-medium text-gray-900">
+                                            {{ propietario.telefono }}
+                                        </div>
+                                        <div v-else-if="propietario.email" class="text-sm font-medium text-gray-900">
+                                            {{ propietario.email }}
+                                        </div>
+                                        <div v-else-if="propietario.contactoAlterno" class="text-sm font-medium text-gray-900">
+                                            {{ propietario.contactoAlterno }}
+                                        </div>
+                                    </v-col>
+                                    <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
+                                        <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-eye</v-icon></v-btn>
+                                        <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-pencil</v-icon></v-btn>
+                                    </v-col>
+                                </v-row>
+                            </div>
                         </div>
+                        <div v-else>
+                            Sin Resultados
                         </div>
                     </div>
-                    </div>
-                </div>
+                </v-card>
             </div>
         </div>
         </v-app>
@@ -203,7 +183,25 @@
         },
         data: function () {
             return {
+                search: null,
+                depPred: 'Todos',
+                dep: ['Todos', 'La Paz', 'Cochabamba', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Beni', 'Pando'],
+                headers: [
+                {
+                    text: 'PROPIETARIOS',
+                    align: 'start',
+                    sortable: false,
+                    value: 'paterno',
+                },
+                { text: 'CAN', value: 'nomPerro', sortable: false },
+                { text: 'CAPACITACIÓN', value: 'cap', sortable: false },
+                { text: 'CONTACTO', value: 'celular', sortable: false },
+                ],
+                propies: [],
+                datos: [],
             }
+        },
+        created () {
         },
         methods: {
         },
