@@ -59,30 +59,28 @@
                         </v-row>
 
                         <div v-if="depPred == 'Todos'">
-                            <div v-for="propietario in propietarios" :key="propietario.id">
-                                <v-row v-if="propietario.id %2 == 0" style="background: #EFEDED; margin: 0; border-radius: 10px">
+                            <div v-for="registro in propFilter" :key="registro.id">
+                                <v-row v-if="registro.id %2 == 0" style="background: #EFEDED; margin: 0; border-radius: 10px">
                                     <v-col cols="12" sm="4" style="display: flex; align-items: center">
-                                        <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-bind:src="'/storage/images/propietarios/' + propietario.fotoProp">
+                                        <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-bind:src="'/storage/images/propietarios/' + registro.fotoProp">
                                         <div style="padding-inline: 10px">
                                             <div class="text-sm font-medium text-gray-900">
-                                            {{ propietario.paterno }} {{ propietario.materno }} , {{ propietario.nombres }}
+                                            {{ registro.paterno }} {{ registro.materno }} , {{ registro.nombres }}
                                             </div>
                                             <div class="text-sm text-gray-500">
-                                            {{ propietario.documento }} {{ propietario.docExp }}
+                                            {{ registro.documento }} {{ registro.docExp }}
                                             </div>
                                         </div>
                                     </v-col>
-                                    <v-col cols="12" sm="3">
-                                        <div v-for="can in canes" :key="can.id" style="display: flex; align-items: center">
-                                            <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-if="(can.fotoCan != null) && (can.id == propietario.id)" v-bind:src="'/storage/images/canes/' + can.fotoCan">
-                                            <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-else-if="(can.fotoCan2 != null) && (can.id == propietario.id)" v-bind:src="'/storage/images/canes/' + can.fotoCan2">
-                                            <div style="padding-inline: 10px">
-                                                <div class="text-sm font-medium text-gray-900" v-if="can.id == propietario.id">
-                                                {{ can.nomPerro }}
-                                                </div>
-                                                <div class="text-sm text-gray-500" v-if="can.id == propietario.id">
-                                                {{ can.razaCan }}
-                                                </div>
+                                    <v-col cols="12" sm="3" style="display: flex; align-items: center">
+                                        <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-if="registro.fotoCan != null" v-bind:src="'/storage/images/canes/' + registro.fotoCan">
+                                        <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-else-if="registro.fotoCan2 != null" v-bind:src="'/storage/images/canes/' + registro.fotoCan2">
+                                        <div style="padding-inline: 10px">
+                                            <div class="text-sm font-medium text-gray-900">
+                                            {{ registro.nomPerro }}
+                                            </div>
+                                            <div class="text-sm text-gray-500">
+                                            {{ registro.razaCan }}
                                             </div>
                                         </div>
                                     </v-col>
@@ -92,47 +90,45 @@
                                         </span>
                                     </v-col>
                                     <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
-                                        <div v-if="propietario.celular" class="text-sm font-medium text-gray-900">
-                                            {{ propietario.celular }}
+                                        <div v-if="registro.celular" class="text-sm font-medium text-gray-900">
+                                            {{ registro.celular }}
                                         </div>
-                                        <div v-else-if="propietario.telefono" class="text-sm font-medium text-gray-900">
-                                            {{ propietario.telefono }}
+                                        <div v-else-if="registro.telefono" class="text-sm font-medium text-gray-900">
+                                            {{ registro.telefono }}
                                         </div>
-                                        <div v-else-if="propietario.email" class="text-sm font-medium text-gray-900">
-                                            {{ propietario.email }}
+                                        <div v-else-if="registro.email" class="text-sm font-medium text-gray-900">
+                                            {{ registro.email }}
                                         </div>
-                                        <div v-else-if="propietario.contactoAlterno" class="text-sm font-medium text-gray-900">
-                                            {{ propietario.contactoAlterno }}
+                                        <div v-else-if="registro.contactoAlterno" class="text-sm font-medium text-gray-900">
+                                            {{ registro.contactoAlterno }}
                                         </div>
                                     </v-col>
                                     <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
-                                        <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-eye</v-icon></v-btn>
-                                        <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-pencil</v-icon></v-btn>
+                                        <v-btn fab text :href="route('registros.show', registro.id)"><v-icon>mdi-eye</v-icon></v-btn>
+                                        <v-btn fab text :href="route('registros.show', registro.id)"><v-icon>mdi-pencil</v-icon></v-btn>
                                     </v-col>
                                 </v-row>
                                 <v-row v-else style="margin: 0; border-radius: 10px">
                                     <v-col cols="12" sm="4" style="display: flex; align-items: center">
-                                        <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-bind:src="'/storage/images/propietarios/' + propietario.fotoProp">
+                                        <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-bind:src="'/storage/images/propietarios/' + registro.fotoProp">
                                         <div style="padding-inline: 10px">
                                             <div class="text-sm font-medium text-gray-900">
-                                            {{ propietario.paterno }} {{ propietario.materno }} , {{ propietario.nombres }}
+                                            {{ registro.paterno }} {{ registro.materno }} , {{ registro.nombres }}
                                             </div>
                                             <div class="text-sm text-gray-500">
-                                            {{ propietario.documento }} {{ propietario.docExp }}
+                                            {{ registro.documento }} {{ registro.docExp }}
                                             </div>
                                         </div>
                                     </v-col>
-                                    <v-col cols="12" sm="3">
-                                        <div v-for="can in canes" :key="can.id" style="display: flex; align-items: center">
-                                            <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-if="(can.fotoCan != null) && (can.id == propietario.id)" v-bind:src="'/storage/images/canes/' + can.fotoCan">
-                                            <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-else-if="(can.fotoCan2 != null) && (can.id == propietario.id)" v-bind:src="'/storage/images/canes/' + can.fotoCan2">
-                                            <div style="padding-inline: 10px">
-                                                <div class="text-sm font-medium text-gray-900" v-if="can.id == propietario.id">
-                                                {{ can.nomPerro }}
-                                                </div>
-                                                <div class="text-sm text-gray-500" v-if="can.id == propietario.id">
-                                                {{ can.razaCan }}
-                                                </div>
+                                    <v-col cols="12" sm="3" style="display: flex; align-items: center">
+                                        <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-if="registro.fotoCan != null" v-bind:src="'/storage/images/canes/' + registro.fotoCan">
+                                        <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-else-if="registro.fotoCan2 != null" v-bind:src="'/storage/images/canes/' + registro.fotoCan2">
+                                        <div style="padding-inline: 10px">
+                                            <div class="text-sm font-medium text-gray-900">
+                                            {{ registro.nomPerro }}
+                                            </div>
+                                            <div class="text-sm text-gray-500">
+                                            {{ registro.razaCan }}
                                             </div>
                                         </div>
                                     </v-col>
@@ -142,22 +138,22 @@
                                         </span>
                                     </v-col>
                                     <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
-                                        <div v-if="propietario.celular" class="text-sm font-medium text-gray-900">
-                                            {{ propietario.celular }}
+                                        <div v-if="registro.celular" class="text-sm font-medium text-gray-900">
+                                            {{ registro.celular }}
                                         </div>
-                                        <div v-else-if="propietario.telefono" class="text-sm font-medium text-gray-900">
-                                            {{ propietario.telefono }}
+                                        <div v-else-if="registro.telefono" class="text-sm font-medium text-gray-900">
+                                            {{ registro.telefono }}
                                         </div>
-                                        <div v-else-if="propietario.email" class="text-sm font-medium text-gray-900">
-                                            {{ propietario.email }}
+                                        <div v-else-if="registro.email" class="text-sm font-medium text-gray-900">
+                                            {{ registro.email }}
                                         </div>
-                                        <div v-else-if="propietario.contactoAlterno" class="text-sm font-medium text-gray-900">
-                                            {{ propietario.contactoAlterno }}
+                                        <div v-else-if="registro.contactoAlterno" class="text-sm font-medium text-gray-900">
+                                            {{ registro.contactoAlterno }}
                                         </div>
                                     </v-col>
                                     <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
-                                        <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-eye</v-icon></v-btn>
-                                        <v-btn fab text :href="route('registros.show', propietario.id)"><v-icon>mdi-pencil</v-icon></v-btn>
+                                        <v-btn fab text :href="route('registros.show', registro.id)"><v-icon>mdi-eye</v-icon></v-btn>
+                                        <v-btn fab text :href="route('registros.show', registro.id)"><v-icon>mdi-pencil</v-icon></v-btn>
                                     </v-col>
                                 </v-row>
                             </div>
@@ -183,7 +179,9 @@
         },
         data: function () {
             return {
-                search: null,
+                search: '',
+                propietarios: '',
+                registros: [],
                 depPred: 'Todos',
                 dep: ['Todos', 'La Paz', 'Cochabamba', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Beni', 'Pando'],
                 headers: [
@@ -197,15 +195,41 @@
                 { text: 'CAPACITACIÓN', value: 'cap', sortable: false },
                 { text: 'CONTACTO', value: 'celular', sortable: false },
                 ],
-                propies: [],
-                datos: [],
             }
         },
         created () {
+            let mergedSubjects = this.propietarios.map(subject => {
+                    let otherSubject = this.canes.find(element => element.id === subject.id)
+                    const reg = {...subject, ...otherSubject}
+                    this.registros.push(reg)
+                    console.log(this.registros);
+                })
         },
         methods: {
         },
         computed: {
+            propFilter:function(){
+                return this.registros.filter((registro) => {
+                    return registro.nombres.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.paterno.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.materno.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.documento.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.docTipo.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.docExp.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.departamento.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.provincia.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.municipio.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.domicilio.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.estCivil.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.dateProp.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.profesion.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.zona.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+
+                    || registro.nomPerro.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    || registro.razaCan.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+                    ;
+                });
+            },
             anchoProp() {
             switch (this.$vuetify.breakpoint.name) {
                 case 'xs': return 320
