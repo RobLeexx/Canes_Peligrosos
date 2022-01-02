@@ -42,106 +42,7 @@
                         </v-col>
                     </v-card-title>
                     <div>
-                        <!--
-                            <div v-for="registro in registros.slice().reverse()" :key="registro.id">
-                            <v-row v-if="registro.id %2 == 0" style="margin: 0; border-radius: 10px">
-                                <v-col cols="12" sm="4" style="display: flex; align-items: center">
-                                    <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-bind:src="'/storage/images/propietarios/' + registro.fotoProp">
-                                    <div style="padding-inline: 10px">
-                                        <div class="text-sm font-medium text-gray-900">
-                                        {{ registro.paterno }} {{ registro.materno }} , {{ registro.nombres }}
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                        {{ registro.documento }} {{ registro.docExp }}
-                                        </div>
-                                    </div>
-                                </v-col>
-                                <v-col cols="12" sm="3" style="display: flex; align-items: center">
-                                    <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-if="registro.fotoCan != null" v-bind:src="'/storage/images/canes/' + registro.fotoCan">
-                                    <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-else-if="registro.fotoCan2 != null" v-bind:src="'/storage/images/canes/' + registro.fotoCan2">
-                                    <div style="padding-inline: 10px">
-                                        <div class="text-sm font-medium text-gray-900">
-                                        {{ registro.nomPerro }}
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                        {{ registro.razaCan }}
-                                        </div>
-                                    </div>
-                                </v-col>
-                                <v-col cols="12" sm="1" style="display: flex; align-items: center; justify-content: center">
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    Terminada
-                                    </span>
-                                </v-col>
-                                <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
-                                    <div v-if="registro.celular" class="text-sm font-medium text-gray-900">
-                                        {{ registro.celular }}
-                                    </div>
-                                    <div v-else-if="registro.telefono" class="text-sm font-medium text-gray-900">
-                                        {{ registro.telefono }}
-                                    </div>
-                                    <div v-else-if="registro.email" class="text-sm font-medium text-gray-900">
-                                        {{ registro.email }}
-                                    </div>
-                                    <div v-else-if="registro.contactoAlterno" class="text-sm font-medium text-gray-900">
-                                        {{ registro.contactoAlterno }}
-                                    </div>
-                                </v-col>
-                                <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
-                                    <v-btn fab text :href="route('registros.show', registro.id)"><v-icon>mdi-eye</v-icon></v-btn>
-                                    <v-btn fab text :href="route('registros.show', registro.id)"><v-icon>mdi-pencil</v-icon></v-btn>
-                                </v-col>
-                            </v-row>
-                            <v-row v-else style="background: #EFEDED; margin: 0; border-radius: 10px">
-                                <v-col cols="12" sm="4" style="display: flex; align-items: center">
-                                    <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-bind:src="'/storage/images/propietarios/' + registro.fotoProp">
-                                    <div style="padding-inline: 10px">
-                                        <div class="text-sm font-medium text-gray-900">
-                                        {{ registro.paterno }} {{ registro.materno }} , {{ registro.nombres }}
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                        {{ registro.documento }} {{ registro.docExp }}
-                                        </div>
-                                    </div>
-                                </v-col>
-                                <v-col cols="12" sm="3" style="display: flex; align-items: center">
-                                    <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-if="registro.fotoCan != null" v-bind:src="'/storage/images/canes/' + registro.fotoCan">
-                                    <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-else-if="registro.fotoCan2 != null" v-bind:src="'/storage/images/canes/' + registro.fotoCan2">
-                                    <div style="padding-inline: 10px">
-                                        <div class="text-sm font-medium text-gray-900">
-                                        {{ registro.nomPerro }}
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                        {{ registro.razaCan }}
-                                        </div>
-                                    </div>
-                                </v-col>
-                                <v-col cols="12" sm="1" style="display: flex; align-items: center; justify-content: center">
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    Terminada
-                                    </span>
-                                </v-col>
-                                <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
-                                    <div v-if="registro.celular" class="text-sm font-medium text-gray-900">
-                                        {{ registro.celular }}
-                                    </div>
-                                    <div v-else-if="registro.telefono" class="text-sm font-medium text-gray-900">
-                                        {{ registro.telefono }}
-                                    </div>
-                                    <div v-else-if="registro.email" class="text-sm font-medium text-gray-900">
-                                        {{ registro.email }}
-                                    </div>
-                                    <div v-else-if="registro.contactoAlterno" class="text-sm font-medium text-gray-900">
-                                        {{ registro.contactoAlterno }}
-                                    </div>
-                                </v-col>
-                                <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: center">
-                                    <v-btn fab text :href="route('registros.show', registro.id)"><v-icon>mdi-eye</v-icon></v-btn>
-                                    <v-btn fab text :href="route('registros.show', registro.id)"><v-icon>mdi-pencil</v-icon></v-btn>
-                                </v-col>
-                            </v-row>
-                        </div>
-                         -->
+                        
                     <v-data-table style="padding: 20px"
                     :headers="headers"
                     :items="registros"
@@ -163,7 +64,7 @@
                                 </div>
                             </div>
                         </template>
-                        <template v-slot:item.canDatos="{ item }">
+                        <template v-slot:item.canesDatos="{ item }">
                             <div style="display: flex; align-items: center; height: 60px">
                                 <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-if="item.fotoCan != null" v-bind:src="'/storage/images/canes/' + item.fotoCan">
                                 <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-else-if="item.fotoCan2 != null" v-bind:src="'/storage/images/canes/' + item.fotoCan2">
@@ -183,6 +84,28 @@
                                 dark>
                                 {{ item.docExp }}
                             </v-chip>
+                        </template>
+                        <template v-slot:item.conDatos="{ item }">
+                            <div style="display: flex; align-items: center; height: 60px; text-align: center">
+                                <div v-if="item.celular" class="text-sm font-medium text-gray-900">
+                                    {{ item.celular }}
+                                </div>
+                                <div v-else-if="item.telefono" class="text-sm font-medium text-gray-900">
+                                    {{ item.telefono }}
+                                </div>
+                                <div v-else-if="item.email" class="text-sm font-medium text-gray-900">
+                                    {{ item.email }}
+                                </div>
+                                <div v-else-if="item.contactoAlterno" class="text-sm font-medium text-gray-900">
+                                    {{ item.contactoAlterno }}
+                                </div>
+                            </div>
+                        </template>
+                        <template v-slot:item.actions="{ item }">
+                            <div style="display: flex; align-items: center; justify-content: center">
+                                <v-btn fab text :href="route('registros.show', item.id)"><v-icon>mdi-eye</v-icon></v-btn>
+                                <v-btn fab text :href="route('registros.show', item.id)"><v-icon>mdi-pencil</v-icon></v-btn>
+                            </div>
                         </template>
                     </v-data-table>
                     </div>
@@ -207,9 +130,11 @@
                 search: '',
                 registros: [],
                 headers: [{ text: "PROPIETARIO", value: "propietarioDatos", sortable: false },
-                        { text: "CAN", value: "canDatos", sortable: false },
-                        { text: "CAPACITACIÓN", value: "docExp", sortable: false, align: 'center' },
-                        { text: "C.A.C", value: "departamento", sortable: false, filter: this.depFilter }],
+                        { text: "CAN", value: "canesDatos", sortable: false },
+                        { text: "CAPACITACIÓN", value: "docExp", sortable: false},
+                        { text: "CONTACTOS", value: "conDatos", sortable: false },
+                        { text: "C.A.C", value: "departamento", sortable: false, filter: this.depFilter },
+                        { text: 'ACCIONES', value: 'actions', sortable: false, align: 'center' }],
                 dep: ['La Paz', 'Cochabamba', 'Santa Cruz', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Beni', 'Pando'],
             }
         },
@@ -233,11 +158,12 @@
             },
             getDisplayRegistros(registro) {
                 const space = ' '
-                const propDatos = registro.paterno.concat(space,registro.materno,space,registro.documento)
-                console.log(propDatos)
+                const propDatos = registro.paterno.concat(space,registro.materno,space,registro.nombres,registro.documento)
+                const canDatos = registro.nomPerro.concat(space,registro.razaCan)
             return {
                 id: registro.id,
                 propietarioDatos: propDatos,
+                canesDatos: canDatos,
                 fotoProp: registro.fotoProp,
                 paterno: registro.paterno,
                 materno: registro.materno,
@@ -245,12 +171,18 @@
                 documento: registro.documento,
                 docExp: registro.docExp,
 
+                celular: registro.celular,
+                telefono: registro.telefono,
+                email: registro.email,
+                contactoAlterno: registro.contactoAlterno,
+
                 fotoCan: registro.fotoCan,
                 fotoCan2: registro.fotoCan2,
                 can: registro.nomPerro,
                 raza: registro.razaCan,
 
                 departamento: registro.departamento,
+                actions: registro.id,
             };
             },
             customSort(items, index, isDesc) {
