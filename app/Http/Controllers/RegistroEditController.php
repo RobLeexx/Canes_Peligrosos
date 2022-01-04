@@ -36,10 +36,35 @@ class RegistroEditController extends Controller
     {
         $input = $request->all();
         $propID = $propietario['id'];
+        $propDOC = $propietario['documento'];
         
+        if($request->hasFile('docFile'))
+        {
+            $destination_path = 'public/doc/identificaciones';
+            $ide = $request->file('docFile');
+            $ide_name = $propDOC.'_';
+            $ide_name .= $ide->getClientOriginalName();
+            $path = $request->file('docFile')->storeAs($destination_path,$ide_name);
+
+            $input['docFile'] = $ide_name;
+            $propietario->update(['docFile'=>$input['docFile']]);
+        }
+        unset($input['docFile']);
         $propietario->fill($input)->save();
+        
         $memoriales = Memorial::whereIn('id',[$propID])->get();
         $memorial = $memoriales[0];
+        if($request->hasFile('memoFile'))
+        {
+            $destination_path = 'public/doc/memos';
+            $doc = $request->file('memoFile');
+            $doc_name = $doc->getClientOriginalName();
+            $path = $request->file('memoFile')->storeAs($destination_path,$doc_name);
+
+            $input['memoFile'] = $doc_name;
+            $memo = $memoriales['memoFile'];
+            $memo->fill($input)->save();
+        }
         $memorial->fill($input)->save();
         return Redirect::route('registros.index');
     }

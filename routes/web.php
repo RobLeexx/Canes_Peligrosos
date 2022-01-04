@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::get('/registros/{propietario}/editar', RegistroEditController::class)->name('registros.edit');
 
-    Route::match(['put', 'patch'], '/registros/{propietario}', [RegistroEditController::class, 'update'])->name('registros.update');
+    Route::match(['put', 'patch', 'post'], '/registros/{propietario}', [RegistroEditController::class, 'update'])->name('registros.update');
 
     Route::get('/memos/{memo}', [DownloadController::class, 'downloadMemo'])->name('downloadMemo');
 

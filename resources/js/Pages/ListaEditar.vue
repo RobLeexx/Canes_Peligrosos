@@ -125,16 +125,13 @@
                                                 sm="6"
                                             >
                                                 <template>
-                                                <v-file-input v-model="form.memoFile" 
+                                                <v-file-input v-model="form.memoFile"
                                                     style="height: 45px"
+                                                    :label="memorial.memoFile"
                                                     outlined
                                                     dense
                                                     show-size
-                                                ><template v-slot:label>
-                                                    <div>
-                                                    Memorial Adjuntado<small> (opcional)</small>
-                                                    </div>
-                                                    </template></v-file-input>
+                                                ></v-file-input>
                                                 <v-subheader style="
                                                     display: flex;
                                                     align-items: flex-start;
@@ -279,7 +276,7 @@
                                                             id="dateProp"
                                                             v-model="form.dateProp"
                                                             prepend-icon="mdi-calendar"
-                                                            :label="propietario.dateProp"
+                                                            label="Fecha de nacimiento del Propietario"
                                                             :rules="vacio"
                                                             readonly
                                                             outlined
@@ -360,14 +357,11 @@
                                                 <template>
                                                     <v-file-input style="height: 45px"
                                                         v-model="form.docFile"
+                                                        :label="propietario.docFile"
                                                         outlined
                                                         dense
                                                         show-size
-                                                    ><template v-slot:label>
-                                                        <div>
-                                                        {{ propietario.docFile }}
-                                                        </div>
-                                                        </template></v-file-input>
+                                                    ></v-file-input>
                                                     <v-subheader style="
                                                         display: flex;
                                                         align-items: flex-start;
@@ -2593,11 +2587,13 @@
                 comandante: this.memorial.comandante,
                 referencia: this.memorial.referencia,
                 dateMemo: this.memorial.dateMemo,
+                memoFile: null,
                 /* Propietario */
                 paterno: this.propietario.paterno,
                 materno: this.propietario.materno,
 
                 dateProp: this.propietario.dateProp,
+                docFile: null,
                 /* Antecedentes */
             },
             }
@@ -2779,7 +2775,7 @@
         methods: 
         {
             updateData() {
-                this.$inertia.put(route('registros.update', this.propietario.id),this.form);
+                this.$inertia.post(route('registros.update', this.propietario.id),this.form);
             },
             switchToTeam(team) 
             {
