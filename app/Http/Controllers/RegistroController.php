@@ -187,7 +187,7 @@ class RegistroController extends Controller
      * @param  \App\Models\Memorial  $memorial
      * @return \Illuminate\Http\Response
      */
-    public function show(Registro $registro)
+    public function show()
     {
         //
     }
@@ -199,9 +199,9 @@ class RegistroController extends Controller
      * @param  \App\Models\Memorial  $memorial
      * @return \Illuminate\Http\Response
      */
-    public function edit(Memorial $memorial)
+    public function edit()
     {
-        return Inertia::render('ListaEditar', ['memorial' => $memorial]);
+        //
     }
 
     /**
@@ -211,10 +211,9 @@ class RegistroController extends Controller
      * @param  \App\Models\Memorial  $memorial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Memorial $memorial)
+    public function update()
     {
-        $producto->update($request->all);
-            return Redirect::route('lista.index');
+        //
     }
 
     /**
@@ -223,7 +222,7 @@ class RegistroController extends Controller
      * @param  \App\Models\Memorial  $memorial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Memorial $memorial)
+    public function destroy()
     {
         //
     }

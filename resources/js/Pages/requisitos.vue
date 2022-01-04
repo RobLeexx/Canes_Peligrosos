@@ -2272,7 +2272,7 @@
                                     <v-btn
                                         :disabled="!form5IsValid"
                                         color="primary"
-                                        @click="e6 = 1"
+                                        @click="submitData"
                                     >
                                         Finzalizar
                                     </v-btn>
@@ -2283,11 +2283,6 @@
                                 </v-stepper-content>
                             </v-stepper>
                         </template>
-                        <v-btn
-                        color="primary"
-                        style="padding: 30px"
-                        @click="submitData"
-                        >Guardar</v-btn>
                     </v-app>
                 </div>
             </div>
@@ -2438,7 +2433,7 @@
                 muniPT15:['San Pablo de Lípez','Mojinete','San Antonio de Esmoruco'],
                 muniPT16:['Potosí','Tinguipaya','Urmiri','Villa de Yocalla'],
                 /* Tarija */
-                provTJ:['Aniceto Arce','Avilés','Cercado','Gran Chaco','Méndez','O’Connor'],
+                provTJ:['Aniceto Arce','Avilés','Cercado','Gran Chaco','Méndez','O`Connor'],
                 muniTJ1:['Padcaya','Bermejo'],
                 muniTJ2:['Uriondo','Yunchará'],
                 muniTJ3:['Tarija'],

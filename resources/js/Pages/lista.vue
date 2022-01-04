@@ -104,7 +104,7 @@
                         <template v-slot:item.actions="{ item }">
                             <div style="display: flex; align-items: center; justify-content: center">
                                 <v-btn fab text :href="route('registros.show', item.id)"><v-icon>mdi-eye</v-icon></v-btn>
-                                <v-btn fab text :href="route('registros.show', item.id)"><v-icon>mdi-pencil</v-icon></v-btn>
+                                <v-btn fab text :href="route('registros.edit', item.id)"><v-icon>mdi-pencil</v-icon></v-btn>
                             </div>
                         </template>
                     </v-data-table>

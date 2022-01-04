@@ -307,7 +307,7 @@
                                     </template>
                                 </v-expansion-panel-header>
                                 <v-expansion-panel-content>
-                                    <div v-for="memorial in memoriales" :key="memorial.id" style="padding-top: 20px">
+                                    <div v-for="memorial in memoriales" :key="memorial.id" style="padding-top: 4px">
                                     <div v-if="propietario.id == memorial.id">
                                         <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                             <div style="padding: 20px; font-weight: bold">
@@ -1117,7 +1117,7 @@
                         </v-col>
                     </v-row>
                     <v-row>
-                        <v-col cols="12" sm="12" style="text-align: center;padding-bottom: 50px">
+                        <v-col cols="12" sm="6" style="text-align: center;padding-bottom: 50px">
                             <v-tooltip top>
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn
@@ -1133,6 +1133,22 @@
                             <span>Generar Autorización</span>
                             </v-tooltip>
                         </v-col>
+                        <v-col cols="12" sm="6" style="text-align: center;padding-bottom: 50px">
+                            <v-tooltip top>
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn
+                                :href="route('registros.edit', propietario.id)"
+                                color="primary"
+                                elevation="15"
+                                fab
+                                x-large
+                                v-bind="attrs"
+                                v-on="on"
+                                ><v-icon>mdi-pencil</v-icon></v-btn>
+                            </template>
+                            <span>Editar Datos</span>
+                            </v-tooltip>
+                        </v-col>
                     </v-row>
                 </div>
             </div>
@@ -1143,8 +1159,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.10/vuetify.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.js"></script>
 <script>
     import AppLayout from '@/Layouts/AppLayout'
 

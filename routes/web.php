@@ -8,6 +8,7 @@ Use App\Http\Controllers\UsuarioController;
 Use App\Http\Controllers\ListaController;
 Use App\Http\Controllers\RegistroController;
 Use App\Http\Controllers\RegistroShowController;
+Use App\Http\Controllers\RegistroEditController;
 Use App\Http\Controllers\DownloadController;
 Use App\Http\Controllers\CertificadoController;
 
@@ -55,9 +56,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/lista', [ListaController::class, 'listaCont'])->name('lista');
     
-    Route::resource('registros', RegistroController::class)->middleware(['auth:sanctum', 'verified'])->except('show');
+    Route::resource('registros', RegistroController::class)->middleware(['auth:sanctum', 'verified'])->except('show','edit','update','destroy');
 
     Route::get('/registros/{propietario}', RegistroShowController::class)->name('registros.show');
+
+    Route::get('/registros/{propietario}/editar', RegistroEditController::class)->name('registros.edit');
+
+    Route::put('/registros/{propietario}', RegistroEditController::class)->name('registros.update');
 
     Route::get('/memos/{memo}', [DownloadController::class, 'downloadMemo'])->name('downloadMemo');
 
