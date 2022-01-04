@@ -43,7 +43,7 @@
                     </v-card-title>
                     <div>
                         
-                    <v-data-table style="padding: 20px"
+                    <v-data-table style="padding-inline: 20px"
                     :headers="headers"
                     :items="registros"
                     :custom-sort="customSort"

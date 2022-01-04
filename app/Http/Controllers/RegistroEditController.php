@@ -9,6 +9,7 @@ use App\Models\Seguro;
 use App\Models\Can;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 
 class RegistroEditController extends Controller
 {
@@ -33,7 +34,13 @@ class RegistroEditController extends Controller
     }
     public function update(Request $request, Propietario $propietario)
     {
-        $propietario->update($request->all);
-            return Redirect::route('ListaMostrar');
+        $input = $request->all();
+        $propID = $propietario['id'];
+        
+        $propietario->fill($input)->save();
+        $memoriales = Memorial::whereIn('id',[$propID])->get();
+        $memorial = $memoriales[0];
+        $memorial->fill($input)->save();
+        return Redirect::route('registros.index');
     }
 }

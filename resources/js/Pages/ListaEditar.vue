@@ -2590,21 +2590,19 @@
             adFotoCan: true,
             form: {
                 /* Memorial */
+                comandante: this.memorial.comandante,
+                referencia: this.memorial.referencia,
+                dateMemo: this.memorial.dateMemo,
                 /* Propietario */
                 paterno: this.propietario.paterno,
                 materno: this.propietario.materno,
+
+                dateProp: this.propietario.dateProp,
                 /* Antecedentes */
             },
             }
         },
         created () {
-            /*for(let memorial in this.memoriales)
-            {
-                if(this.propietario.id == memorial.id)
-                {
-                    let memorialActual
-                }
-            }*/
         },
         computed: {
         form1IsValid () {
@@ -3358,10 +3356,10 @@
         props: 
         {
             propietario: Object,
-            memoriales: Array,
-            antecedentes: Array,
-            seguros: Array,
-            canes: Array,
+            memorial: Object,
+            antecedente: Object,
+            seguro: Object,
+            can: Object,
 
             canLogin: Boolean,
             canRegister: Boolean,
