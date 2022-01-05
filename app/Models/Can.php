@@ -43,7 +43,6 @@ class Can extends Model
         'vetUbi3',
         'vetRes3',
         'vetNum3',
-        'vetFile',
         
         'numMicro',
         'canEven1',

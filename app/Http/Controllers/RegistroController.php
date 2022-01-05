@@ -44,11 +44,13 @@ class RegistroController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $propDOC = $request->input('documento');
         if($request->hasFile('fotoProp'))
         {
             $destination_path = 'public/images/propietarios';
             $imageProp = $request->file('fotoProp');
-            $image_PropName = $imageProp->getClientOriginalName();
+            $image_PropName = $propDOC.'_';
+            $image_PropName .= $imageProp->getClientOriginalName();
             $path = $request->file('fotoProp')->storeAs($destination_path,$image_PropName);
 
             $input['fotoProp'] = $image_PropName;
@@ -57,7 +59,8 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/images/canes';
             $imageCan = $request->file('fotoCan');
-            $image_CanName = $imageCan->getClientOriginalName();
+            $image_CanName = $propDOC.'_';
+            $image_CanName .= $imageCan->getClientOriginalName();
             $path = $request->file('fotoCan')->storeAs($destination_path,$image_CanName);
 
             $input['fotoCan'] = $image_CanName;
@@ -66,16 +69,18 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/images/canes';
             $imageCan2 = $request->file('fotoCan2');
-            $image_Can2Name = $imageCan2->getClientOriginalName();
+            $image_Can2Name = $propDOC.'_';
+            $image_Can2Name .= $imageCan2->getClientOriginalName();
             $path = $request->file('fotoCan2')->storeAs($destination_path,$image_Can2Name);
 
-            $input['fotoCan'] = $image_Can2Name;
+            $input['fotoCan2'] = $image_Can2Name;
         }
         if($request->hasFile('memoFile'))
         {
             $destination_path = 'public/doc/memos';
             $doc = $request->file('memoFile');
-            $doc_name = $doc->getClientOriginalName();
+            $doc_name = $propDOC.'_';
+            $doc_name .= $doc->getClientOriginalName();
             $path = $request->file('memoFile')->storeAs($destination_path,$doc_name);
 
             $input['memoFile'] = $doc_name;
@@ -84,7 +89,8 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/doc/identificaciones';
             $ide = $request->file('docFile');
-            $ide_name = $ide->getClientOriginalName();
+            $ide_name = $propDOC.'_';
+            $ide_name .= $ide->getClientOriginalName();
             $path = $request->file('docFile')->storeAs($destination_path,$ide_name);
 
             $input['docFile'] = $ide_name;
@@ -93,7 +99,8 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/doc/antecedentes';
             $aCanes = $request->file('aCanesFile');
-            $aCanes_name = $aCanes->getClientOriginalName();
+            $aCanes_name = $propDOC.'_';
+            $aCanes_name .= $aCanes->getClientOriginalName();
             $path = $request->file('aCanesFile')->storeAs($destination_path,$aCanes_name);
 
             $input['aCanesFile'] = $aCanes_name;
@@ -102,7 +109,8 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/doc/antecedentes';
             $aRejap = $request->file('aRejapFile');
-            $aRejap_name = $aRejap->getClientOriginalName();
+            $aRejap_name = $propDOC.'_';
+            $aRejap_name .= $aRejap->getClientOriginalName();
             $path = $request->file('aRejapFile')->storeAs($destination_path,$aRejap_name);
 
             $input['aRejapFile'] = $aRejap_name;
@@ -111,7 +119,8 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/doc/antecedentes';
             $aFelcc = $request->file('aFelccFile');
-            $aFelcc_name = $aFelcc->getClientOriginalName();
+            $aFelcc_name = $propDOC.'_';
+            $aFelcc_name .= $aFelcc->getClientOriginalName();
             $path = $request->file('aFelccFile')->storeAs($destination_path,$aFelcc_name);
 
             $input['aFelccFile'] = $aFelcc_name;
@@ -120,7 +129,8 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/doc/antecedentes';
             $aFelcn = $request->file('aFelcnFile');
-            $aFelcn_name = $aFelcn->getClientOriginalName();
+            $aFelcn_name = $propDOC.'_';
+            $aFelcn_name .= $aFelcn->getClientOriginalName();
             $path = $request->file('aFelcnFile')->storeAs($destination_path,$aFelcn_name);
 
             $input['aFelcnFile'] = $aFelcn_name;
@@ -129,7 +139,8 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/doc/antecedentes';
             $aFelcv = $request->file('aFelcvFile');
-            $aFelcv_name = $aFelcv->getClientOriginalName();
+            $aFelcv_name = $propDOC.'_';
+            $aFelcv_name .= $aFelcv->getClientOriginalName();
             $path = $request->file('aFelcvFile')->storeAs($destination_path,$aFelcv_name);
 
             $input['aFelcvFile'] = $aFelcv_name;
@@ -138,7 +149,8 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/doc/seguros';
             $seguro = $request->file('seguroFile');
-            $seguro_name = $seguro->getClientOriginalName();
+            $seguro_name = $propDOC.'_';
+            $seguro_name .= $seguro->getClientOriginalName();
             $path = $request->file('seguroFile')->storeAs($destination_path,$seguro_name);
 
             $input['seguroFile'] = $seguro_name;
@@ -147,7 +159,8 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/doc/veterinaria';
             $vac = $request->file('vacFile');
-            $vac_name = $vac->getClientOriginalName();
+            $vac_name = $propDOC.'_';
+            $vac_name .= $vac->getClientOriginalName();
             $path = $request->file('vacFile')->storeAs($destination_path,$vac_name);
 
             $input['vacFile'] = $vac_name;
@@ -156,21 +169,11 @@ class RegistroController extends Controller
         {
             $destination_path = 'public/doc/veterinaria';
             $est = $request->file('estFile');
-            $est_name = $est->getClientOriginalName();
+            $est_name = $propDOC.'_';
+            $est_name .= $est->getClientOriginalName();
             $path = $request->file('estFile')->storeAs($destination_path,$est_name);
 
             $input['estFile'] = $est_name;
-        }
-        if($request->hasFile('vetFile'))
-        {
-            foreach($request->file('vetFile') as $vet)
-            {
-                $destination_path = 'public/doc/veterinaria';
-                $vet_name = $vet->getClientOriginalName();
-                $path = $request->file('vetFile')->storeAs($destination_path,$vet_name);
-
-                $input['vetFile'] = $vet_name;
-            }
         }
 
         Memorial::create($input);

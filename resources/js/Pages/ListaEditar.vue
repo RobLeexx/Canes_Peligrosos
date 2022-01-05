@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <v-row>
-                <v-btn fab small text :href="route('registros.index')"><v-icon>mdi-arrow-left-circle</v-icon></v-btn>
+                <v-btn fab small text :href="route('registros.show', propietario.id)"><v-icon>mdi-arrow-left-circle</v-icon></v-btn>
                 <div style="padding: 9px">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     Editar Propietario {{ propietario.paterno }}, {{ propietario.documento }} {{ propietario.docExp }} 
@@ -33,11 +33,19 @@
                                 vertical
                             >
                                 <!-- 1. Datos del Memorial -->
-                                <v-stepper-step
+                                <v-stepper-step v-if="memorial.memoFile"
                                 :complete="e6 > 1"
                                 step="1"
                                 editable>
                                 Datos del Memorial
+                                </v-stepper-step>
+                                <v-stepper-step v-else
+                                :rules="[() => false]"
+                                :complete="e6 > 1"
+                                step="1"
+                                editable>
+                                Datos del Memorial
+                                <small>Incompleto</small>
                                 </v-stepper-step>
 
                                 <v-stepper-content step="1">
@@ -127,11 +135,17 @@
                                                 <template>
                                                 <v-file-input v-model="form.memoFile"
                                                     style="height: 45px"
-                                                    :label="memorial.memoFile"
                                                     outlined
                                                     dense
                                                     show-size
-                                                ></v-file-input>
+                                                ><template v-slot:label>
+                                                    <div v-if="memorial.memoFile">
+                                                    {{ memorial.memoFile }}
+                                                    </div>
+                                                    <div v-else>
+                                                        SIN MEMORIAL ADJUNTADO
+                                                    </div>
+                                                    </template></v-file-input>
                                                 <v-subheader style="
                                                     display: flex;
                                                     align-items: flex-start;
@@ -141,7 +155,7 @@
                                             </v-col>
                                             <v-col cols="12" style="padding-top: 0;">
                                                 <v-checkbox
-                                                v-model="form.terms"
+                                                v-model="check"
                                                 color="green"
                                                 >
                                                 <template v-slot:label>
@@ -188,23 +202,22 @@
                                 </template>
 
                                 </v-card>
-                                <div style="padding: 15px">
-                                    <v-btn
-                                    :disabled="!form1IsValid"
-                                    color="primary"
-                                    @click="e6 = 2"
-                                    >
-                                    Continuar
-                                    </v-btn>
-                                </div>
                                 </v-stepper-content>
 
                                 <!-- 2. Datos del Propietario -->
-                                <v-stepper-step
+                                <v-stepper-step v-if="propietario.docFile"
                                 :complete="e6 > 2"
                                 step="2"
                                 editable>
                                 Datos del Propietario
+                                </v-stepper-step>
+                                <v-stepper-step v-else
+                                :rules="[() => false]"
+                                :complete="e6 > 2"
+                                step="2"
+                                editable>
+                                Datos del Propietario
+                                <small>Incompleto</small>
                                 </v-stepper-step>
 
                                 <v-stepper-content step="2">
@@ -357,11 +370,17 @@
                                                 <template>
                                                     <v-file-input style="height: 45px"
                                                         v-model="form.docFile"
-                                                        :label="propietario.docFile"
                                                         outlined
                                                         dense
                                                         show-size
-                                                    ></v-file-input>
+                                                    ><template v-slot:label>
+                                                    <div v-if="propietario.docFile">
+                                                    {{ propietario.docFile }}
+                                                    </div>
+                                                    <div v-else>
+                                                        SIN DOCUMENTO ADJUNTADO
+                                                    </div>
+                                                    </template></v-file-input>
                                                     <v-subheader style="
                                                         display: flex;
                                                         align-items: flex-start;
@@ -720,26 +739,22 @@
                                 </template>
 
                                 </v-card>
-                                <div style="padding: 15px">
-                                    <v-btn
-                                    :disabled="!form2IsValid"
-                                    color="primary"
-                                    @click="e6 = 3"
-                                    >
-                                    Continuar
-                                    </v-btn>
-                                    <v-btn @click="e6 = 1">
-                                    Atrás
-                                    </v-btn>
-                                </div>
                                 </v-stepper-content>
 
                                 <!-- 3. Antecedentes del Propietario -->
-                                <v-stepper-step
+                                <v-stepper-step v-if="antecedente.aCanesFile && antecedente.aRejapFile && antecedente.aFelccFile && antecedente.aFelcn && antecedente.aFelcv"
                                 :complete="e6 > 3"
                                 step="3"
                                 editable>
                                 Antecedentes del Propietario
+                                </v-stepper-step>
+                                <v-stepper-step v-else
+                                :rules="[() => false]"
+                                :complete="e6 > 3"
+                                step="3"
+                                editable>
+                                Antecedentes del Propietario
+                                <small>Incompleto</small>
                                 </v-stepper-step>
 
                                 <v-stepper-content step="3">
@@ -835,8 +850,11 @@
                                                         dense
                                                         show-size
                                                     ><template v-slot:label>
-                                                        <div>
-                                                        Antecedentes CANES Adjuntados<small> (opcional)</small>
+                                                        <div v-if="antecedente.aCanesFile">
+                                                        {{ antecedente.aCanesFile }}
+                                                        </div>
+                                                        <div v-else>
+                                                            SIN ANTECEDENTES ADJUNTADOS
                                                         </div>
                                                         </template></v-file-input>
                                                     <v-subheader style="
@@ -947,8 +965,11 @@
                                                         dense
                                                         show-size
                                                     ><template v-slot:label>
-                                                        <div>
-                                                        Antecedentes REJAP Adjuntados<small> (opcional)</small>
+                                                        <div v-if="antecedente.aRejapFile">
+                                                        {{ antecedente.aRejapFile }}
+                                                        </div>
+                                                        <div v-else>
+                                                            SIN ANTECEDENTES ADJUNTADOS
                                                         </div>
                                                         </template></v-file-input>
                                                     <v-subheader style="
@@ -1059,8 +1080,11 @@
                                                         dense
                                                         show-size
                                                     ><template v-slot:label>
-                                                        <div>
-                                                        Antecedentes FELCC Adjuntados<small> (opcional)</small>
+                                                        <div v-if="antecedente.aFelccFile">
+                                                        {{ antecedente.aFelccFile }}
+                                                        </div>
+                                                        <div v-else>
+                                                            SIN ANTECEDENTES ADJUNTADOS
                                                         </div>
                                                         </template></v-file-input>
                                                     <v-subheader style="
@@ -1171,8 +1195,11 @@
                                                         dense
                                                         show-size
                                                     ><template v-slot:label>
-                                                        <div>
-                                                        Antecedentes FELCN Adjuntados<small> (opcional)</small>
+                                                        <div v-if="antecedente.aFelcnFile">
+                                                        {{ antecedente.aFelcnFile }}
+                                                        </div>
+                                                        <div v-else>
+                                                            SIN ANTECEDENTES ADJUNTADOS
                                                         </div>
                                                         </template></v-file-input>
                                                     <v-subheader style="
@@ -1283,8 +1310,11 @@
                                                         dense
                                                         show-size
                                                     ><template v-slot:label>
-                                                        <div>
-                                                        Antecedentes FELCV Adjuntados<small> (opcional)</small>
+                                                        <div v-if="antecedente.aFelcvFile">
+                                                        {{ antecedente.aFelcvFile }}
+                                                        </div>
+                                                        <div v-else>
+                                                            SIN ANTECEDENTES ADJUNTADOS
                                                         </div>
                                                         </template></v-file-input>
                                                     <v-subheader style="
@@ -1450,26 +1480,22 @@
                                     </v-card>
                                 </template>
                                 </v-card>
-                                <div style="padding: 15px">
-                                    <v-btn
-                                        :disabled="!form3IsValid"
-                                        color="primary"
-                                        @click="e6 = 4"
-                                    >
-                                        Continuar
-                                    </v-btn>
-                                    <v-btn @click="e6 = 2">
-                                        Atrás
-                                    </v-btn>
-                                </div>
                                 </v-stepper-content>
 
                                 <!-- 4. Seguro Obligatorio de Responsabilidad Civil -->
-                                <v-stepper-step 
+                                <v-stepper-step v-if="seguro.seguroFile"
                                 :complete="e6 > 4"
                                 step="4"
                                 editable>
                                 Seguro Obligatorio de Responsabilidad Civil
+                                </v-stepper-step>
+                                <v-stepper-step v-else
+                                :rules="[() => false]"
+                                :complete="e6 > 4"
+                                step="4"
+                                editable>
+                                Seguro Obligatorio de Responsabilidad Civil
+                                <small>Incompleto</small>
                                 </v-stepper-step>
 
                                 <v-stepper-content step="4">
@@ -1630,8 +1656,11 @@
                                                 dense
                                                 show-size
                                             ><template v-slot:label>
-                                                <div>
-                                                Seguro Adjuntado<small> (opcional)</small>
+                                                <div v-if="seguro.seguroFile">
+                                                {{ seguro.seguroFile }}
+                                                </div>
+                                                <div v-else>
+                                                    SIN SEGURO ADJUNTADO
                                                 </div>
                                                 </template></v-file-input>
                                             <v-subheader style="
@@ -1645,24 +1674,18 @@
                                 </v-container>
                                 
                                 </v-card>
-                                <div style="padding: 15px">
-                                    <v-btn
-                                        :disabled="!form4IsValid"
-                                        color="primary"
-                                        @click="e6 = 5"
-                                    >
-                                        Continuar
-                                    </v-btn>
-                                    <v-btn @click="e6 = 3">
-                                        Atrás
-                                    </v-btn>
-                                </div>
                                 </v-stepper-content>
 
                                 <!-- 5. Datos del Can Peligroso -->
-                                <v-stepper-step step="5"
+                                <v-stepper-step step="5" v-if="can.vacFile && can.estFile"
                                 editable>
                                 Datos del Can Peligroso
+                                </v-stepper-step>
+                                <v-stepper-step step="5" v-else
+                                :rules="[() => false]"
+                                editable>
+                                Datos del Can Peligroso
+                                <small>Incompleto</small>
                                 </v-stepper-step>
 
                                 <v-stepper-content step="5">
@@ -1764,8 +1787,11 @@
                                                     show-size
                                                     :disabled="!webFotoCan"
                                                 ><template v-slot:label>
-                                                    <div>
-                                                    Foto o del Can adjuntada<small> (opcional)</small>
+                                                    <div v-if="can.fotoCan2">
+                                                    {{ can.fotoCan2 }}
+                                                    </div>
+                                                    <div v-else>
+                                                        SIN FOTO ADJUNTADA
                                                     </div>
                                                     </template></v-file-input>
                                                 <v-subheader style="
@@ -1773,11 +1799,6 @@
                                                     align-items: flex-start;
                                                     justify-content: flex-end;">
                                                     *Solo se admite una foto</v-subheader>
-
-                                                    <v-input style="height: 45px" class="d-none"
-                                                    id="fotoCan2Name"
-                                                    v-model="form.fotoCan2Name"
-                                                    ></v-input>
                                             </template>
                                             </form>
                                         </v-col>
@@ -1854,11 +1875,17 @@
                                                     disabled
                                                     id="fotoCanName"
                                                     v-model="form.fotoCanName"
-                                                    label="Foto del Can"
                                                     outlined
                                                     dense
                                                     prepend-icon="mdi-face"
-                                                ></v-text-field>
+                                                ><template v-slot:label>
+                                                    <div v-if="can.fotoCan">
+                                                    {{ can.fotoCan }}
+                                                    </div>
+                                                    <div v-else>
+                                                        SIN FOTO ADJUNTADA
+                                                    </div>
+                                                    </template></v-text-field>
                                                 <v-text-field class="d-none"
                                                     id="fotoCan"
                                                     v-model="form.fotoCan"
@@ -2111,8 +2138,11 @@
                                                     dense
                                                     show-size
                                                 ><template v-slot:label>
-                                                    <div>
-                                                    Certificado de Vacunación Adjuntado<small> (opcional)</small>
+                                                    <div v-if="can.vacFile">
+                                                    {{ can.vacFile }}
+                                                    </div>
+                                                    <div v-else>
+                                                        SIN CERTIFICADO ADJUNTADO
                                                     </div>
                                                     </template></v-file-input>
                                                 <v-subheader style="
@@ -2152,8 +2182,11 @@
                                                     dense
                                                     show-size
                                                 ><template v-slot:label>
-                                                    <div>
-                                                    Certificado de Esterilización Adjuntado<small> (opcional)</small>
+                                                    <div v-if="can.estFile">
+                                                    {{ can.estFile }}
+                                                    </div>
+                                                    <div v-else>
+                                                        SIN CERTIFICADO ADJUNTADO
                                                     </div>
                                                     </template></v-file-input>
                                                 <v-subheader style="
@@ -2184,25 +2217,48 @@
                                                 <v-text-field v-model="form.vetNum3" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
-                                            <v-col cols="12" sm="12">
+                                            <v-col cols="12" sm="6">
                                                 <template>
                                                 <v-file-input style="height: 45px"
-                                                    v-model="form.vetFile"
+                                                    v-model="form.vacFile"
                                                     outlined
                                                     dense
                                                     show-size
-                                                    multiple
-                                                    chips
                                                 ><template v-slot:label>
-                                                    <div>
-                                                    Certificado de Vacuna y Esterilización Adjuntados<small> (opcional)</small>
+                                                    <div v-if="can.vacFile">
+                                                    {{ can.vacFile }}
+                                                    </div>
+                                                    <div v-else>
+                                                        SIN CERTIFICADO DE VACUNA ADJUNTADO
                                                     </div>
                                                     </template></v-file-input>
                                                 <v-subheader style="
                                                     display: flex;
                                                     align-items: flex-start;
                                                     justify-content: flex-end;">
-                                                    *Para adjuntar más de un elemento haga una selcción múltiple</v-subheader>
+                                                    *Solo se admite un elemento</v-subheader>
+                                                </template>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <template>
+                                                <v-file-input style="height: 45px"
+                                                    v-model="form.estFile"
+                                                    outlined
+                                                    dense
+                                                    show-size
+                                                ><template v-slot:label>
+                                                    <div v-if="can.estFile">
+                                                    {{ can.estFile }}
+                                                    </div>
+                                                    <div v-else>
+                                                        SIN CERTIFICADO DE ESTERILIZACIÓN ADJUNTADO
+                                                    </div>
+                                                    </template></v-file-input>
+                                                <v-subheader style="
+                                                    display: flex;
+                                                    align-items: flex-start;
+                                                    justify-content: flex-end;">
+                                                    *Solo se admite un elemento</v-subheader>
                                                 </template>
                                             </v-col>
                                         </v-row>
@@ -2273,13 +2329,13 @@
                             </v-stepper>
                             <div style="padding: 15px">
                                 <v-btn
-                                    
+                                    :disabled="!form5IsValid"
                                     color="primary"
                                     @click="updateData"
                                 >
-                                    Realizar Cambios
+                                    Guardar Cambios
                                 </v-btn>
-                                <v-btn :href="route('registros.index')":disabled="!form5IsValid">
+                                <v-btn :href="route('registros.index')">
                                     Cancelar Cambios
                                 </v-btn>
                             </div>
@@ -2337,6 +2393,7 @@
             email: [v => /.+@.+\..+/.test(v) || 'El Correo Electrónico no es válido'],
             conditions: false,
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.',
+            check: true,
             terms: false,
             defaultForm,
             menuMemo: false,
@@ -2591,26 +2648,148 @@
                 /* Propietario */
                 paterno: this.propietario.paterno,
                 materno: this.propietario.materno,
-
+                nombres: this.propietario.nombres,
                 dateProp: this.propietario.dateProp,
+                estCivil: this.propietario.estCivil,
+                profesion: this.propietario.profesion,
+                docTipo: this.propietario.docTipo,
+                documento: this.propietario.documento,
+                docExp: this.propietario.docExp,
                 docFile: null,
+                fotoProp: null,
+                departamento: this.propietario.departamento,
+                provincia: this.propietario.provincia,
+                municipio: this.propietario.municipio,
+                zona: this.propietario.zona,
+                domicilio: this.propietario.domicilio,
+                latitud: this.propietario.latitud,
+                longitud: this.propietario.longitud,
+                celular: this.propietario.celular,
+                telefono: this.propietario.telefono,
+                email: this.propietario.email,
+                contactoAlterno: this.propietario.contactoAlterno,
                 /* Antecedentes */
+                numCanes: this.antecedente.numCanes,
+                aFechaHoraCanes: this.antecedente.aFechaHoraCanes,
+                aCanesFile: null,
+                aCanes: this.antecedente.aCanes,
+                numRejap: this.antecedente.numRejap,
+                aFechaHoraRejap: this.antecedente.aFechaHoraRejap,
+                aRejapFile: null,
+                aRejap: this.antecedente.aRejap,
+                numFelcc: this.antecedente.numFelcc,
+                aFechaHoraFelcc: this.antecedente.aFechaHoraFelcc,
+                aFelccFile: null,
+                aFelcc: this.antecedente.aFelcc,
+                numFelcn: this.antecedente.numFelcn,
+                aFechaHoraFelcn: this.antecedente.aFechaHoraFelcn,
+                aFelcnFile: null,
+                aFelcn: this.antecedente.aFelcn,
+                numFelcv: this.antecedente.numFelcv,
+                aFechaHoraFelcv: this.antecedente.aFechaHoraFelcv,
+                aFelcvFile: null,
+                aFelcv: this.antecedente.aFelcv,
+                /* Seguro */
+                nomAgencia: this.seguro.nomAgencia,
+                ubiAgencia: this.seguro.ubiAgencia,
+                dateExpSeg: this.seguro.dateExpSeg,
+                dateLimSeg: this.seguro.dateLimSeg,
+                resAgencia: this.seguro.resAgencia,
+                resAgenciaNum: this.seguro.resAgenciaNum,
+                seguroFile: null,
+                /* Can */
+                nomPerro: this.can.nomPerro,
+                dateNacPerro: this.can.dateNacPerro,
+                sexoCan: this.can.sexoCan,
+                procedenciaCan: this.can.procedenciaCan,
+
+                fotoCan2: null,
+                fotoCan: null,
+                pedigree: false,
+                razaCan: this.can.razaCan,
+                tamCan: this.can.tamCan,
+                colorCan: this.can.colorCan,
+                sinCan: this.can.sinCan,
+                vacuna: this.can.vacuna,
+                dateVacPerro: this.can.dateVacPerro,
+                esterilizacion: this.can.esterilizacion,
+                dateEstPerro: this.can.dateEstPerro,
+                vetNom1: this.can.vetNom1,
+                vetUbi1: this.can.vetUbi1,
+                vetRes1: this.can.vetRes1,
+                vetNum1: this.can.vetNum1,
+                vacFile: null,
+
+                vetNom2: this.can.vetNom2,
+                vetUbi2: this.can.vetUbi2,
+                vetRes2: this.can.vetRes2,
+                vetNum2: this.can.vetNum2,
+                estFile: null,
+
+                vetNom3: this.can.vetNom3,
+                vetUbi3: this.can.vetUbi3,
+                vetRes3: this.can.vetRes3,
+                vetNum3: this.can.vetNum3,
+
+                numMicro: this.can.numMicro,
+
+                canEven1: this.can.canEven1,
+                canEvenNum1: this.can.canEvenNum1,
+                canEven2: this.can.canEven2,
+                canEvenNum2: this.can.canEvenNum2,
+                canEven3: this.can.canEven3,
+                canEvenNum3: this.can.canEvenNum3,
+                canEven4: this.can.canEven4,
+                canEvenNum4: this.can.canEvenNum4,
+                canConvivencia: this.can.canConvivencia,
             },
             }
         },
         created () {
         },
         computed: {
-        form1IsValid () {
+        canesCheck () {
             return (
+            this.form.numCanes &&
+            this.form.aFechaHoraCanes &&
+            this.form.aCanes
+            )
+        },
+        rejapCheck () {
+            return (
+            this.form.numRejap &&
+            this.form.aFechaHoraRejap &&
+            this.form.aRejap
+            )
+        },
+        felccCheck () {
+            return (
+            this.form.numFelcc &&
+            this.form.aFechaHoraFelcc &&
+            this.form.aFelcc
+            )
+        },
+        felcnCheck () {
+            return (
+            this.form.numFelcn &&
+            this.form.aFechaHoraFelcn &&
+            this.form.aFelcn
+            )
+        },
+        felcvCheck () {
+            return (
+            this.form.numFelcv &&
+            this.form.aFechaHoraFelcv &&
+            this.form.aFelcv
+            )
+        },
+        form5IsValid () {
+            return (
+            /* MEMORIAL */
             this.form.comandante &&
             this.form.referencia &&
             this.form.dateMemo &&
-            this.form.terms
-            )
-        },
-        form2IsValid () {
-            return (
+            /* PROPIETARIO */
             this.form.paterno &&
             this.form.materno &&
             this.form.nombres &&
@@ -2620,7 +2799,6 @@
             this.form.docTipo &&
             this.form.documento &&
             this.form.docExp &&
-            this.form.fotoPropName &&
             this.form.departamento &&
             this.form.provincia &&
             this.form.municipio &&
@@ -2628,46 +2806,8 @@
             this.form.domicilio &&
             this.form.latitud &&
             this.form.longitud &&
-            (this.form.celular || this.form.telefono || this.form.email || this.form.contactoAlterno)
-            )
-        },
-            canesCheck () {
-                return (
-                this.form.numCanes &&
-                this.form.aFechaHoraCanes &&
-                this.form.aCanes
-                )
-            },
-            rejapCheck () {
-                return (
-                this.form.numRejap &&
-                this.form.aFechaHoraRejap &&
-                this.form.aRejap
-                )
-            },
-            felccCheck () {
-                return (
-                this.form.numFelcc &&
-                this.form.aFechaHoraFelcc &&
-                this.form.aFelcc
-                )
-            },
-            felcnCheck () {
-                return (
-                this.form.numFelcn &&
-                this.form.aFechaHoraFelcn &&
-                this.form.aFelcn
-                )
-            },
-            felcvCheck () {
-                return (
-                this.form.numFelcv &&
-                this.form.aFechaHoraFelcv &&
-                this.form.aFelcv
-                )
-            },
-        form3IsValid () {
-            return (
+            (this.form.celular || this.form.telefono || this.form.email || this.form.contactoAlterno) &&
+            /* ANTECEDENTES */
             this.form.numCanes &&
             this.form.aFechaHoraCanes &&
             this.form.aCanes &&
@@ -2682,17 +2822,12 @@
             this.form.aFelcn &&
             this.form.numFelcv &&
             this.form.aFechaHoraFelcv &&
-            this.form.aFelcv            )
-        },
-        form4IsValid () {
-            return (
+            this.form.aFelcv &&
+            /* SEGURO */
             this.form.nomAgencia &&
             this.form.dateExpSeg &&
-            this.form.dateLimSeg
-            )
-        },
-        form5IsValid () {
-            return (
+            this.form.dateLimSeg &&
+            /* CAN */
             this.form.nomPerro &&
             this.form.dateNacPerro &&
             this.form.sexoCan &&
@@ -2953,8 +3088,8 @@
             )
             },
             uploadPhoto(dataURL){
-            let uniquePictureName = this.generateCapturePhotoName();
-            let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName + '.jpg')
+            let uniquePictureName = 'Fotografía Tomada'
+            let capturedPhotoFile = this.dataURLtoFile(dataURL, 'PropietarioFoto' + '.jpg')
             this.form.fotoPropName = uniquePictureName;
             this.form.fotoProp = capturedPhotoFile;
             let formData = new FormData()
@@ -2964,9 +3099,6 @@
             //   console.log(response)
             // })
             console.log("File", capturedPhotoFile);
-            },
-                generateCapturePhotoName(){
-            return  'propietario_' + Math.random().toString(36).substring(2, 15)
             },
 
             dataURLtoFile(dataURL, filename) {
@@ -3118,8 +3250,8 @@
             )
             },
             uploadPhoto2(dataURL2){
-            let uniquePictureName2 = this.generateCapturePhotoName2();
-            let capturedPhotoFile2 = this.dataURLtoFile2(dataURL2, uniquePictureName2 + '.jpg')
+            let uniquePictureName2 = 'Fotografía Tomada';
+            let capturedPhotoFile2 = this.dataURLtoFile2(dataURL2, 'CanFoto' + '.jpg')
             this.form.fotoCanName = uniquePictureName2;
             this.form.fotoCan = capturedPhotoFile2;
             let formData2 = new FormData()
@@ -3129,9 +3261,6 @@
             //   console.log(response)
             // })
             console.log("File", capturedPhotoFile2);
-            },
-                generateCapturePhotoName2(){
-            return  'can_' + Math.random().toString(36).substring(2, 15)
             },
 
             dataURLtoFile2(dataURL2, filename2) {
@@ -3148,9 +3277,6 @@
             },
 
             onFileChange(event){
-                console.log(event.name);
-                let fotoCanName2 = event.name;
-                this.form.fotoCan2Name = fotoCanName2;
                 this.adFotoCan = false;
                 console.clear();
             },

@@ -54,7 +54,6 @@
                                                 sm="6"
                                             >
                                                 <v-text-field
-                                                id="comandante"
                                                 v-model="form.comandante"
                                                 :rules="vacio"
                                                 label="Comandante Departamental"
@@ -334,7 +333,6 @@
                                             </v-col>
                                             <v-col cols="12" sm="4">
                                                 <v-text-field
-                                                id="documento"
                                                 v-model="form.documento"
                                                 :rules="vacio"
                                                 label="Documento de Identidad"
@@ -578,7 +576,7 @@
                                                     <v-autocomplete v-else-if="form.provincia == 'Cercado'" v-model="form.municipio" :items= "muniTJ3" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Gran Chaco'" v-model="form.municipio" :items= "muniTJ4" placeholder="Municipio de Gran Chaco" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Méndez'" v-model="form.municipio" :items= "muniTJ5" placeholder="Municipio de Méndez" :rules="vacio" outlined></v-autocomplete>
-                                                    <v-autocomplete v-else-if="form.provincia == 'O’Connor'" v-model="form.municipio" :items= "muniTJ6" placeholder="Municipio de O’Connor" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'O`Connor'" v-model="form.municipio" :items= "muniTJ6" placeholder="Municipio de O`Connor" :rules="vacio" outlined></v-autocomplete>
                                                 <!-- Municipios de Santa Cruz -->
                                                     <v-autocomplete v-else-if="form.provincia == 'Andrés Ibáñez'" v-model="form.municipio" :items= "muniSC1" placeholder="Municipio de Andrés Ibáñez" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Ángel Sandoval'" v-model="form.municipio" :items= "muniSC2" placeholder="Municipio de Ángel Sandoval" :rules="vacio" outlined></v-autocomplete>
@@ -1750,7 +1748,7 @@
                                         outlined></v-text-field>
                                         </v-col>
                                         <v-col cols="12" lg="6" sm="6">
-                                            <form  enctype="multipart/form-data">
+                                            <form enctype="multipart/form-data">
                                             <template>
                                                 <v-file-input style="height: 45px"
                                                     id="fotoCan2"
@@ -1764,7 +1762,7 @@
                                                     :disabled="!webFotoCan"
                                                 ><template v-slot:label>
                                                     <div>
-                                                    Foto o del Can adjuntada<small> (opcional)</small>
+                                                    Foto del Can adjuntada<small> (opcional)</small>
                                                     </div>
                                                     </template></v-file-input>
                                                 <v-subheader style="
@@ -1772,11 +1770,6 @@
                                                     align-items: flex-start;
                                                     justify-content: flex-end;">
                                                     *Solo se admite una foto</v-subheader>
-
-                                                    <v-input style="height: 45px" class="d-none"
-                                                    id="fotoCan2Name"
-                                                    v-model="form.fotoCan2Name"
-                                                    ></v-input>
                                             </template>
                                             </form>
                                         </v-col>
@@ -2183,10 +2176,10 @@
                                                 <v-text-field v-model="form.vetNum3" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
-                                            <v-col cols="12" sm="12">
+                                            <v-col cols="12" sm="6">
                                                 <template>
                                                 <v-file-input style="height: 45px"
-                                                    v-model="form.vetFile"
+                                                    v-model="form.vacFile"
                                                     outlined
                                                     dense
                                                     show-size
@@ -2194,14 +2187,35 @@
                                                     chips
                                                 ><template v-slot:label>
                                                     <div>
-                                                    Certificado de Vacuna y Esterilización Adjuntados<small> (opcional)</small>
+                                                    Certificado de Vacunación Adjuntado<small> (opcional)</small>
                                                     </div>
                                                     </template></v-file-input>
                                                 <v-subheader style="
                                                     display: flex;
                                                     align-items: flex-start;
                                                     justify-content: flex-end;">
-                                                    *Para adjuntar más de un elemento haga una selcción múltiple</v-subheader>
+                                                    *Solo se admite un elemento</v-subheader>
+                                                </template>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <template>
+                                                <v-file-input style="height: 45px"
+                                                    v-model="form.estFile"
+                                                    outlined
+                                                    dense
+                                                    show-size
+                                                    multiple
+                                                    chips
+                                                ><template v-slot:label>
+                                                    <div>
+                                                    Certificado de Esterilización Adjuntado<small> (opcional)</small>
+                                                    </div>
+                                                    </template></v-file-input>
+                                                <v-subheader style="
+                                                    display: flex;
+                                                    align-items: flex-start;
+                                                    justify-content: flex-end;">
+                                                    *Solo se admite un elemento</v-subheader>
                                                 </template>
                                             </v-col>
                                         </v-row>
@@ -2603,7 +2617,6 @@
                 municipio: null,
                 zona: null,
                 domicilio: null,
-                fotoPropName: null,
                 latitud: null,
                 longitud: null,
                 celular: null,
@@ -2646,9 +2659,7 @@
                 procedenciaCan: null,
 
                 fotoCan2: null,
-                fotoCan2Name: null,
                 fotoCan: null,
-                fotoCanName: null,
                 pedigree: false,
                 razaCan: null,
                 tamCan: null,
@@ -2674,7 +2685,6 @@
                 vetUbi3: null,
                 vetRes3: null,
                 vetNum3: null,
-                vetFile: null,
 
                 numMicro: null,
 
@@ -2689,6 +2699,8 @@
                 canConvivencia: null,
             },
             }
+        },
+        created(){
         },
         computed: {
         form1IsValid () {
@@ -2710,7 +2722,7 @@
             this.form.docTipo &&
             this.form.documento &&
             this.form.docExp &&
-            this.form.fotoPropName &&
+            this.form.fotoProp &&
             this.form.departamento &&
             this.form.provincia &&
             this.form.municipio &&
@@ -3043,8 +3055,8 @@
             )
             },
             uploadPhoto(dataURL){
-            let uniquePictureName = this.generateCapturePhotoName();
-            let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName + '.jpg')
+            let uniquePictureName = 'Fotografía Tomada'
+            let capturedPhotoFile = this.dataURLtoFile(dataURL, 'PropietarioFoto' + '.jpg')
             this.form.fotoPropName = uniquePictureName;
             this.form.fotoProp = capturedPhotoFile;
             let formData = new FormData()
@@ -3054,9 +3066,6 @@
             //   console.log(response)
             // })
             console.log("File", capturedPhotoFile);
-            },
-                generateCapturePhotoName(){
-            return  'propietario_' + Math.random().toString(36).substring(2, 15)
             },
 
             dataURLtoFile(dataURL, filename) {
@@ -3208,8 +3217,8 @@
             )
             },
             uploadPhoto2(dataURL2){
-            let uniquePictureName2 = this.generateCapturePhotoName2();
-            let capturedPhotoFile2 = this.dataURLtoFile2(dataURL2, uniquePictureName2 + '.jpg')
+            let uniquePictureName2 = 'Fotografía Tomada';
+            let capturedPhotoFile2 = this.dataURLtoFile2(dataURL2, 'CanFoto' + '.jpg')
             this.form.fotoCanName = uniquePictureName2;
             this.form.fotoCan = capturedPhotoFile2;
             let formData2 = new FormData()
@@ -3219,9 +3228,6 @@
             //   console.log(response)
             // })
             console.log("File", capturedPhotoFile2);
-            },
-                generateCapturePhotoName2(){
-            return  'can_' + Math.random().toString(36).substring(2, 15)
             },
 
             dataURLtoFile2(dataURL2, filename2) {
@@ -3238,11 +3244,7 @@
             },
 
             onFileChange(event){
-                console.log(event.name);
-                let fotoCanName2 = event.name;
-                this.form.fotoCan2Name = fotoCanName2;
                 this.adFotoCan = false;
-                console.clear();
             },
             callItBack(){
                 this.adFotoCan = true;

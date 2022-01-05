@@ -49,7 +49,6 @@ class CreateCanesTable extends Migration
             $table->string('vetUbi3')->nullable();
             $table->string('vetRes3')->nullable();
             $table->string('vetNum3')->nullable();
-            $table->string('vetFile')->nullable();
 
             $table->string('numMicro')->nullable();
             $table->string('canEven1');

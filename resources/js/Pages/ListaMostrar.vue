@@ -117,6 +117,14 @@
                                             {{ propietario.departamento }}, {{ propietario.provincia }}, {{ propietario.municipio }} 
                                         </div>
                                     </v-row>
+                                    <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
+                                        <div style="padding: 20px; font-weight: bold">
+                                            Zona
+                                        </div>
+                                        <div style="padding: 20px">
+                                            {{ propietario.zona }}
+                                        </div>
+                                    </v-row>
                                     <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                         <div style="padding: 20px; font-weight: bold">
                                             Domicilio
@@ -359,7 +367,8 @@
                                 <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">CAN</h1>
                                 <v-row style="display: flex; justify-content: space-evenly">
                                     <div></div>
-                                        <img style="max-width: 60%; padding-bottom: 15px; min-height: 268px; max-height: 268px" v-bind:src="'/storage/images/canes/' + can.fotoCan">
+                                        <img style="max-width: 60%; padding-bottom: 15px; min-height: 268px; max-height: 268px" v-if="can.fotoCan != null" v-bind:src="'/storage/images/canes/' + can.fotoCan">
+                                        <img style="max-width: 60%; padding-bottom: 15px; min-height: 268px; max-height: 268px" v-else-if="can.fotoCan2 != null" v-bind:src="'/storage/images/canes/' + can.fotoCan2">
                                     <div></div>
                                 </v-row>
                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -476,7 +485,7 @@
                                             <v-icon v-if="((!can.vetNom1 || !can.vetNom2) && !can.vetNom3) || (!can.vetNom1 && !can.vetNom2 && !can.vetNom3)" color="red">
                                             mdi-hospital-box
                                             </v-icon>
-                                            <v-icon v-else-if="((can.vetNom1 && can.vetNom2) || can.vetNom3) && (((!can.vacFile || !can.estFile) && !can.vetNom3) || ((!can.vetFile) && (!can.vetNom1 && !can.vetNom2)))" color="orange darken-2">
+                                            <v-icon v-else-if="((can.vetNom1 && can.vetNom2) || can.vetNom3) && (((!can.vacFile || !can.estFile) && !can.vetNom3) || ((!can.vetNom1 && !can.vetNom2)))" color="orange darken-2">
                                             mdi-hospital-box
                                             </v-icon>
                                             <v-icon v-else-if="(can.vetNom1 && can.vetNom2) || can.vetNom3" color="primary">
@@ -677,11 +686,23 @@
                                             </v-row>
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                 <div style="padding: 20px; font-weight: bold">
-                                                    Certificado
+                                                    Certificado de Vacuna
                                                 </div>
-                                                <div v-if="can.vetFile" style="padding-top: 14px">
-                                                    <v-btn :href="route('downloadVac', can.vetFile)" text
-                                                    >{{ can.vetFile }}<v-icon style="padding-left: 10px" color="primary">mdi-download</v-icon></v-btn>
+                                                <div v-if="can.vacFile" style="padding-top: 14px">
+                                                    <v-btn :href="route('downloadVac', can.vacFile)" text
+                                                    >{{ can.vacFile }}<v-icon style="padding-left: 10px" color="primary">mdi-download</v-icon></v-btn>
+                                                </div>
+                                                <div v-else style="padding: 20px">
+                                                    SIN ADJUNTAR
+                                                </div>
+                                            </v-row>
+                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                <div style="padding: 20px; font-weight: bold">
+                                                    Certificado de Esterilización
+                                                </div>
+                                                <div v-if="can.estFile" style="padding-top: 14px">
+                                                    <v-btn :href="route('downloadEst', can.estFile)" text
+                                                    >{{ can.estFile }}<v-icon style="padding-left: 10px" color="primary">mdi-download</v-icon></v-btn>
                                                 </div>
                                                 <div v-else style="padding: 20px">
                                                     SIN ADJUNTAR
