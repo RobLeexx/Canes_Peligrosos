@@ -212,8 +212,7 @@
 
                             <v-divider style="padding-bottom: 15px"></v-divider>
 
-                            <div v-for="seguro in seguros" :key="seguro.id">
-                            <div v-if="propietario.id == seguro.id">
+                            <div>
                             <v-expansion-panels focusable>
                                 <v-expansion-panel>
                                 <v-expansion-panel-header disable-icon-rotate>Seguro de Responsabilidad Civil
@@ -293,7 +292,6 @@
                                 </v-expansion-panel>
                             </v-expansion-panels>
                             </div>
-                            </div>
 
                             <v-divider style="padding-bottom: 15px"></v-divider>
 
@@ -302,22 +300,18 @@
                                 <v-expansion-panel>
                                 <v-expansion-panel-header disable-icon-rotate>Memorial
                                     <template v-slot:actions>
-                                        <div v-for="memorial in memoriales" :key="memorial.id">
-                                        <div v-if="propietario.id == memorial.id">
-                                        <v-icon v-if="memorial.memoFile" color="primary">
-                                        mdi-file-check
-                                        </v-icon>
-                                        <v-icon v-else color="orange darken-2">
-                                        mdi-file-check
-                                        </v-icon>
-                                        </div>
+                                        <div>
+                                            <v-icon v-if="memorial.memoFile" color="primary">
+                                            mdi-file-check
+                                            </v-icon>
+                                            <v-icon v-else color="orange darken-2">
+                                            mdi-file-check
+                                            </v-icon>
                                         </div>
                                     </template>
                                 </v-expansion-panel-header>
                                 <v-expansion-panel-content>
-                                    <div v-for="memorial in memoriales" :key="memorial.id" style="padding-top: 4px">
-                                    <div v-if="propietario.id == memorial.id">
-                                        <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                        <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
                                             <div style="padding: 20px; font-weight: bold">
                                                 Comandante
                                             </div>
@@ -353,8 +347,6 @@
                                                 SIN ADJUNTAR
                                             </div>
                                         </v-row>
-                                    </div>
-                                    </div>
                                 </v-expansion-panel-content>
                                 </v-expansion-panel>
                             </v-expansion-panels>
@@ -362,8 +354,7 @@
                         <!-- DATOS DEL CAN -->
                         </v-col>
                         <v-col cols="12" sm="6">
-                            <div v-for="can in canes" :key="can.id">
-                            <div v-if="propietario.id == can.id">
+                            <div>
                                 <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">CAN</h1>
                                 <v-row style="display: flex; justify-content: space-evenly">
                                     <div></div>
@@ -862,12 +853,9 @@
                                 </v-expansion-panels>
                                 </template>
                             </div>
-                            </div>
                         </v-col>
                         <!-- ANTECEDENTES -->
                         <v-col cols="12" sm="12">
-                            <div v-for="antecedente in antecedentes" :key="antecedente.id">
-                            <div v-if="propietario.id == antecedente.id">
                             <v-expansion-panels focusable>
                                 <v-expansion-panel>
                                 <v-expansion-panel-header disable-icon-rotate>Antecedentes del Propietario
@@ -1133,8 +1121,6 @@
                                 </v-expansion-panel-content>
                                 </v-expansion-panel>
                             </v-expansion-panels>
-                            </div>
-                            </div>
                         </v-col>
                     </v-row>
                     <v-row>
@@ -1186,10 +1172,10 @@
     export default {
         props: {
             propietario: Object,
-            memoriales: Array,
-            antecedentes: Array,
-            seguros: Array,
-            canes: Array,
+            memorial: Object,
+            antecedente: Object,
+            seguro: Object,
+            can: Object,
         },
         data() {
             return {
@@ -1223,30 +1209,25 @@
             }
             document.getElementById('edad').innerHTML = age;
             
-            for(let can of this.canes)
-            {
-                if(this.propietario.id == can.id)
-                {
-                    var birthDateCan = new Date(can.dateNacPerro);
-                    var ageCan = today.getFullYear() - birthDateCan.getFullYear();
-                    var monCan = today.getMonth() - birthDateCan.getMonth();
-                    var m = today.getMonth() - birthDateCan.getMonth();
-                    if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
-                        ageCan--;
-                    }
-                    if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
-                        monCan--;
-                    }
-                    if (ageCan < 1)
-                    {
-                        document.getElementById('edadCan').innerHTML = monCan + " (Meses)";
-                    }
-                    else
-                    {
-                        document.getElementById('edadCan').innerHTML = ageCan;
-                    }
-                }
+            var birthDateCan = new Date(this.can.dateNacPerro);
+            var ageCan = today.getFullYear() - birthDateCan.getFullYear();
+            var monCan = today.getMonth() - birthDateCan.getMonth();
+            var m = today.getMonth() - birthDateCan.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
+                ageCan--;
             }
+            if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
+                monCan--;
+            }
+            if (ageCan < 1)
+            {
+                document.getElementById('edadCan').innerHTML = monCan + " (Meses)";
+            }
+            else
+            {
+                document.getElementById('edadCan').innerHTML = ageCan;
+            }
+                
             
         },
         components: {

@@ -1521,6 +1521,7 @@
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Expedición del Seguro"
                                                     :rules="vacio"
+                                                    clearable
                                                     readonly
                                                     outlined
                                                     v-bind="attrs"
@@ -1563,6 +1564,7 @@
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Expiración del Seguro"
                                                     :rules="vacio"
+                                                    clearable
                                                     readonly
                                                     outlined
                                                     v-bind="attrs"
@@ -1911,7 +1913,6 @@
                                         <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: flex-start">
                                             <v-card-text style="margin-top:5px; text-align: center" v-if="switchPuro == '1'">Sí</v-card-text>
                                             <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
-                                            <input @your-event-name="esPedigree()" class="d-none"></input>
                                         </v-col>
                                         <v-col cols="12" sm="6" style="padding-top: 38px">
                                             <v-autocomplete v-if="switchPuro == '1'"
@@ -1976,6 +1977,7 @@
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Vacunación del Can o Aproximada"
                                                     :rules="vacio"
+                                                    clearable
                                                     readonly
                                                     outlined
                                                     v-bind="attrs"
@@ -2027,6 +2029,7 @@
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Esterilización del Can o Aproximada"
                                                     :rules="vacio"
+                                                    clearable
                                                     readonly
                                                     outlined
                                                     v-bind="attrs"
@@ -2507,7 +2510,6 @@
             switchFELCC: false,
             switchFELCN: false,
             switchFELCV: false,
-            switchPuro: false,
             dropdownOpen1: false,
             dropdownOpen2: false,
             dropdownOpen3: false,
@@ -2579,10 +2581,10 @@
             switchPuro: false,
             tamCanItems: ['Pequeño','Mediano','Grande'],
             menuVacPerro: null,
-            switchVac: null,            
+            switchVac: false,            
             menuEstPerro: null,
-            switchEst: null,
-            switchVet: null,
+            switchEst: false,
+            switchVet: false,
             switchMicro: '',
             canvasHeight:600,
             canvasWidth:800,
@@ -2660,7 +2662,7 @@
 
                 fotoCan2: null,
                 fotoCan: null,
-                pedigree: false,
+                pedigree: null,
                 razaCan: null,
                 tamCan: null,
                 colorCan: null,
@@ -2877,6 +2879,32 @@
         methods: 
         {
             submitData() {
+                /* Verificar si es pedigree */
+                if(this.switchPuro == true)
+                {
+                    this.form.pedigree = 'Sí'
+                }
+                else
+                {
+                    this.form.pedigree = 'No'
+                }
+                if(this.switchVac == true)
+                {
+                    this.form.vacuna = 'Sí'
+                }
+                else
+                {
+                    this.form.vacuna = 'No'
+                }
+                if(this.switchEst == true)
+                {
+                    this.form.esterilizacion = 'Sí'
+                }
+                else
+                {
+                    this.form.esterilizacion = 'No'
+                }
+                /* subir datos */
                 this.$inertia.post(route('registros.store'),this.form);
             },
             switchToTeam(team) 
@@ -3316,18 +3344,6 @@
             this.form.aFechaHoraFelcv = this.formatDate(this.dateModel5) + ' ' + selectedTime5;
             this.$emit('input', this.dateModel5 + ' ' + selectedTime5);
             },
-
-        esPedigree (){
-            if(switchPuro = '1')
-            {
-                this.$emit('your-event-name', 'Sí')
-            }
-            else
-            {
-                this.$emit('your-event-name', 'No')
-            }
-            
-        },
         
         /* Antecedentes */
         next () {
@@ -3340,15 +3356,17 @@
             ? this.length - 1
             : this.onboarding - 1
         },
+        /* Guardar Coordenadas */
         saveCoord(){
             const lati = localStorage.getItem('lat');
             console.log(lati);
             const longi = localStorage.getItem('lon');
             console.log(longi);
+            document.getElementById('latitud').innerHTML = lati;
+            document.getElementById('longitud').innerHTML = longi;
             this.form.latitud = lati;
             this.form.longitud = longi;
-            
-        },
+        }
         },
          mounted() {
             // Set the current date and time as default value_DateTime
@@ -3397,6 +3415,8 @@
                 localStorage.removeItem('lat');
                 localStorage.removeItem('lon');
                 console.clear();
+                document.getElementById('latitud').innerHTML = null;
+                document.getElementById('longitud').innerHTML = null;
                 localStorage.setItem("lat", Object.values(coordinates)[1]);
                 localStorage.setItem("lon", Object.values(coordinates)[0]);
             }

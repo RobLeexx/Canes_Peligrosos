@@ -596,7 +596,7 @@
                                                     <v-autocomplete v-else-if="form.provincia == 'Cercado'" v-model="form.municipio" :items= "muniTJ3" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Gran Chaco'" v-model="form.municipio" :items= "muniTJ4" placeholder="Municipio de Gran Chaco" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Méndez'" v-model="form.municipio" :items= "muniTJ5" placeholder="Municipio de Méndez" :rules="vacio" outlined></v-autocomplete>
-                                                    <v-autocomplete v-else-if="form.provincia == 'O’Connor'" v-model="form.municipio" :items= "muniTJ6" placeholder="Municipio de O’Connor" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'O`Connor'" v-model="form.municipio" :items= "muniTJ6" placeholder="Municipio de O`Connor" :rules="vacio" outlined></v-autocomplete>
                                                 <!-- Municipios de Santa Cruz -->
                                                     <v-autocomplete v-else-if="form.provincia == 'Andrés Ibáñez'" v-model="form.municipio" :items= "muniSC1" placeholder="Municipio de Andrés Ibáñez" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Ángel Sandoval'" v-model="form.municipio" :items= "muniSC2" placeholder="Municipio de Ángel Sandoval" :rules="vacio" outlined></v-autocomplete>
@@ -1549,6 +1549,7 @@
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Expedición del Seguro"
                                                     :rules="vacio"
+                                                    clearable
                                                     readonly
                                                     outlined
                                                     v-bind="attrs"
@@ -1591,6 +1592,7 @@
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Expiración del Seguro"
                                                     :rules="vacio"
+                                                    clearable
                                                     readonly
                                                     outlined
                                                     v-bind="attrs"
@@ -1946,7 +1948,6 @@
                                         <v-col cols="12" sm="2" style="display: flex; align-items: center; justify-content: flex-start">
                                             <v-card-text style="margin-top:5px; text-align: center" v-if="switchPuro == '1'">Sí</v-card-text>
                                             <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
-                                            <input @your-event-name="esPedigree()" class="d-none"></input>
                                         </v-col>
                                         <v-col cols="12" sm="6" style="padding-top: 38px">
                                             <v-autocomplete v-if="switchPuro == '1'"
@@ -2012,6 +2013,7 @@
                                                     label="Fecha de Vacunación del Can o Aproximada"
                                                     :rules="vacio"
                                                     readonly
+                                                    clearable
                                                     outlined
                                                     v-bind="attrs"
                                                     v-on="on"
@@ -2062,6 +2064,7 @@
                                                     prepend-icon="mdi-calendar"
                                                     label="Fecha de Esterilización del Can o Aproximada"
                                                     :rules="vacio"
+                                                    clearable
                                                     readonly
                                                     outlined
                                                     v-bind="attrs"
@@ -2552,7 +2555,6 @@
             switchFELCC: false,
             switchFELCN: false,
             switchFELCV: false,
-            switchPuro: false,
             dropdownOpen1: false,
             dropdownOpen2: false,
             dropdownOpen3: false,
@@ -2624,11 +2626,11 @@
             switchPuro: false,
             tamCanItems: ['Pequeño','Mediano','Grande'],
             menuVacPerro: null,
-            switchVac: null,            
+            switchVac: false,            
             menuEstPerro: null,
-            switchEst: null,
-            switchVet: null,
-            switchMicro: '',
+            switchEst: false,
+            switchVet: false,
+            switchMicro: false,
             canvasHeight:600,
             canvasWidth:800,
             photoTaken: false,
@@ -2705,7 +2707,7 @@
 
                 fotoCan2: null,
                 fotoCan: null,
-                pedigree: false,
+                pedigree: null,
                 razaCan: this.can.razaCan,
                 tamCan: this.can.tamCan,
                 colorCan: this.can.colorCan,
@@ -2746,6 +2748,15 @@
             }
         },
         created () {
+            if(this.can.pedigree == 'Sí'){
+                this.switchPuro = true;
+            }
+            if(this.can.vacuna == 'Sí'){
+                this.switchVac = true;
+            }
+            if(this.can.esterilizacion == 'Sí'){
+                this.switchEst = true;
+            }
         },
         computed: {
         canesCheck () {
@@ -2910,6 +2921,32 @@
         methods: 
         {
             updateData() {
+                /* Verificar si es pedigree */
+                if(this.switchPuro == true)
+                {
+                    this.form.pedigree = 'Sí'
+                }
+                else
+                {
+                    this.form.pedigree = 'No'
+                }
+                if(this.switchVac == true)
+                {
+                    this.form.vacuna = 'Sí'
+                }
+                else
+                {
+                    this.form.vacuna = 'No'
+                }
+                if(this.switchEst == true)
+                {
+                    this.form.esterilizacion = 'Sí'
+                }
+                else
+                {
+                    this.form.esterilizacion = 'No'
+                }
+                /* subir datos */
                 this.$inertia.post(route('registros.update', this.propietario.id),this.form);
             },
             switchToTeam(team) 
@@ -3350,18 +3387,6 @@
             this.form.aFechaHoraFelcv = this.formatDate(this.dateModel5) + ' ' + selectedTime5;
             this.$emit('input', this.dateModel5 + ' ' + selectedTime5);
             },
-
-        esPedigree (){
-            if(switchPuro = '1')
-            {
-                this.$emit('your-event-name', 'Sí')
-            }
-            else
-            {
-                this.$emit('your-event-name', 'No')
-            }
-            
-        },
         
         /* Antecedentes */
         next () {
@@ -3374,11 +3399,14 @@
             ? this.length - 1
             : this.onboarding - 1
         },
+        /* Guardar Coordenadas */
         saveCoord(){
             const lati = localStorage.getItem('lat');
             console.log(lati);
             const longi = localStorage.getItem('lon');
             console.log(longi);
+            document.getElementById('latitud').innerHTML = lati;
+            document.getElementById('longitud').innerHTML = longi;
             this.form.latitud = lati;
             this.form.longitud = longi;
             
@@ -3423,8 +3451,6 @@
             var coordinates = null;
             coordinates = event.lngLat;
             marker.setLngLat(coordinates).addTo(map);
-            document.getElementById('latitud').innerHTML = Object.values(coordinates)[1];
-            document.getElementById('longitud').innerHTML = Object.values(coordinates)[0];
             if(localStorage.getItem('lat') == null)
             {
                 localStorage.setItem("lat", Object.values(coordinates)[1]);
@@ -3435,6 +3461,8 @@
                 localStorage.removeItem('lat');
                 localStorage.removeItem('lon');
                 console.clear();
+                document.getElementById('latitud').innerHTML = null;
+                document.getElementById('longitud').innerHTML = null;
                 localStorage.setItem("lat", Object.values(coordinates)[1]);
                 localStorage.setItem("lon", Object.values(coordinates)[0]);
             }

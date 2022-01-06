@@ -109,8 +109,8 @@
                         </thead>
                     </table>
                     <table id="cert" style="width: 100%">
-                        <tbody v-for="can in canes" :key="canes.id">
-                            <tr v-if="propietario.id == can.id">
+                        <tbody>
+                            <tr>
                                 <td>
                                     <div style="display: flex">
                                         <div style="width: 100%">
@@ -142,8 +142,8 @@
                     <!-- CUIDADORES EVENTUALES -->
                     <v-col style="padding-inline: 0; padding-bottom: 0px">
                     <table style="border: 1px solid black; width: 100%">
-                        <tbody v-for="can in canes" :key="canes.id">
-                            <div v-if="propietario.id == can.id">
+                        <tbody>
+                            <div>
                             <tr>
                                 <td style="padding-left: 5px"><h1 style="font-weight: bold">TENEDOR(ES) EVENTUAL(ES) DEL PERRO PELIGROSO:</h1>●&nbsp;{{ can.canEven1 }} {{ can.canEvenNum1 }}</td>
                             </tr>
@@ -170,8 +170,8 @@
                 <!-- OBSERVACIONES -->
                     <v-col style="padding: 0">
                     <table style="width: 100%">
-                        <tbody v-for="can in canes" :key="canes.id">
-                            <tr v-if="propietario.id == can.id">
+                        <tbody>
+                            <tr>
                                 <td style="padding-left: 5px"><h1 style="font-weight: bold">OBSERVACIONES:</h1>{{ can.canConvivencia }}</td>
                             </tr>
                         </tbody>
@@ -217,7 +217,7 @@
                                 <h1>Vo. Bo.</h1>
                             </v-col>
                             <v-col cols="12" sm="4">
-                                <div v-for="memorial in memoriales" :key="memorial.id"><h1 v-if="propietario.id == memorial.id">{{ memorial.comandante }}</h1></div>
+                                <h1>{{ memorial.comandante }}</h1>
                                 <h1>Comandante C.A.C</h1>
                             </v-col>
                         </v-row>
@@ -257,10 +257,8 @@
     export default {
         props: {
             propietario: Object,
-            memoriales: Array,
-            antecedentes: Array,
-            seguros: Array,
-            canes: Array,
+            memorial: Object,
+            can: Object,
         },
         data() {
             return {
@@ -311,29 +309,23 @@
                     age--;
                 }
                 ep = age;
-                for(let can of this.canes)
+                var birthDateCan = new Date(this.can.dateNacPerro);
+                var ageCan = today.getFullYear() - birthDateCan.getFullYear();
+                var monCan = today.getMonth() - birthDateCan.getMonth();
+                var m = today.getMonth() - birthDateCan.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
+                    ageCan--;
+                }
+                if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
+                    monCan--;
+                }
+                if (ageCan < 1)
                 {
-                    if(this.propietario.id == can.id)
-                    {
-                        var birthDateCan = new Date(can.dateNacPerro);
-                        var ageCan = today.getFullYear() - birthDateCan.getFullYear();
-                        var monCan = today.getMonth() - birthDateCan.getMonth();
-                        var m = today.getMonth() - birthDateCan.getMonth();
-                        if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
-                            ageCan--;
-                        }
-                        if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
-                            monCan--;
-                        }
-                        if (ageCan < 1)
-                        {
-                            ec = monCan + " (Meses)";
-                        }
-                        else
-                        {
-                            ec = ageCan;
-                        }
-                    }
+                    ec = monCan + " (Meses)";
+                }
+                else
+                {
+                    ec = ageCan;
                 }
 
                 /* LogoIzq */
@@ -389,34 +381,28 @@
                 });
 
                 /* Can */
-                for(let can of this.canes)
-                {
-                    if(this.propietario.id == can.id)
-                        {
-                            imgCan.src = '/storage/images/canes/' + can.fotoCan;
-                            pdf.addImage(imgCan, 'png', 155, 60, 45, 38);
-                            pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 110}, tableWidth: 48, styles: { fontSize: 7 },
-                            body: [
-                            ['NOMBRE:' + ' ' + can.nomPerro],
-                            ['RAZA:' + ' ' + can.razaCan],
-                            ['SEXO:' + ' ' + can.sexoCan],
-                            ['EDAD:' + ' ' + ec],
-                            ['PROCEDENCIA:' + ' ' + can.procedenciaCan],
-                            ]});
-                            /* Cuidadores Eventuales */
-                            pdf.autoTable({theme: 'plain', startY: 133, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontStyle: 'bold', fontSize: 9}, 
-                            body: [
-                            ['TENEDOR(ES) EVENTUAL(ES) DEL PERRO PELIGROSO:'],
-                            ]});
-                            pdf.autoTable({theme: 'grid', startY: 140, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontSize: 7 }, bodyStyles: { lineColor: 20, lineWidth: 0.2 },
-                            body: [
-                            [can.canEven1, can.canEvenNum1],
-                            [can.canEven2, can.canEvenNum2],
-                            [can.canEven3, can.canEvenNum3],
-                            [can.canEven4, can.canEvenNum4],
-                            ]});
-                        }
-                };
+                imgCan.src = '/storage/images/canes/' + this.can.fotoCan;
+                pdf.addImage(imgCan, 'png', 155, 60, 45, 38);
+                pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 110}, tableWidth: 48, styles: { fontSize: 7 },
+                body: [
+                ['NOMBRE:' + ' ' + this.can.nomPerro],
+                ['RAZA:' + ' ' + this.can.razaCan],
+                ['SEXO:' + ' ' + this.can.sexoCan],
+                ['EDAD:' + ' ' + ec],
+                ['PROCEDENCIA:' + ' ' + this.can.procedenciaCan],
+                ]});
+                /* Cuidadores Eventuales */
+                pdf.autoTable({theme: 'plain', startY: 133, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                body: [
+                ['TENEDOR(ES) EVENTUAL(ES) DEL PERRO PELIGROSO:'],
+                ]});
+                pdf.autoTable({theme: 'grid', startY: 140, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontSize: 7 }, bodyStyles: { lineColor: 20, lineWidth: 0.2 },
+                body: [
+                [this.can.canEven1, this.can.canEvenNum1],
+                [this.can.canEven2, this.can.canEvenNum2],
+                [this.can.canEven3, this.can.canEvenNum3],
+                [this.can.canEven4, this.can.canEvenNum4],
+                ]});
 
                 /* CURSOS */
                 pdf.autoTable({theme: 'plain', startY: 165.5, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9}, 
@@ -486,16 +472,10 @@
                 body: [
                 [this.$page.props.user.name],
                 ]});
-                for(let memorial of this.memoriales)
-                {
-                    if(this.propietario.id == memorial.id)
-                        {
-                            pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 141}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7}, 
-                            body: [
-                            [memorial.comandante],
-                            ]});
-                        }
-                }
+                pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 141}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7}, 
+                body: [
+                [this.memorial.comandante],
+                ]});
 
                 /* Guardado */
                 pdf.save('Autorización Nro' + this.propietario.id + '_' + this.propietario.documento + ' ' + this.propietario.docExp)
@@ -510,30 +490,26 @@
                 age--;
             }
             document.getElementById('edad').innerHTML = age;
-            for(let can of this.canes)
-            {
-                if(this.propietario.id == can.id)
-                {
-                    var birthDateCan = new Date(can.dateNacPerro);
-                    var ageCan = today.getFullYear() - birthDateCan.getFullYear();
-                    var monCan = today.getMonth() - birthDateCan.getMonth();
-                    var m = today.getMonth() - birthDateCan.getMonth();
-                    if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
-                        ageCan--;
-                    }
-                    if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
-                        monCan--;
-                    }
-                    if (ageCan < 1)
-                    {
-                        document.getElementById('edadCan').innerHTML = monCan + " (Meses)";
-                    }
-                    else
-                    {
-                        document.getElementById('edadCan').innerHTML = ageCan;
-                    }
-                }
+            
+            var birthDateCan = new Date(this.can.dateNacPerro);
+            var ageCan = today.getFullYear() - birthDateCan.getFullYear();
+            var monCan = today.getMonth() - birthDateCan.getMonth();
+            var m = today.getMonth() - birthDateCan.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
+                ageCan--;
             }
+            if (m < 0 || (m === 0 && today.getDate() < birthDateCan.getDate())) {
+                monCan--;
+            }
+            if (ageCan < 1)
+            {
+                document.getElementById('edadCan').innerHTML = monCan + " (Meses)";
+            }
+            else
+            {
+                document.getElementById('edadCan').innerHTML = ageCan;
+            }
+
             let dia = today.getDate();
             let mesN = today.getMonth()+1;
             let anio = today.getFullYear();

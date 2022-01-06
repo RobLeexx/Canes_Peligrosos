@@ -23,16 +23,11 @@ class CertificadoController extends Controller
      */
     public function __invoke(Request $request, Propietario $propietario)
     {
-        $canes = Can::all();
-        $memoriales = Memorial::all();
-        $antecedentes = Antecedente::all();
-        $seguros = Seguro::all();
-
-        /* PDF */
-        /*$pdf = App::make('dompdf.wrapper');*/
-        /*$pdf = PDF::loadHTML('<h1>Test</h1>');*/
-        /*$pdf = PDF::loadView('certificado.pdf', compact('propietario', 'memoriales', 'canes', 'antecedentes', 'seguros'));*/
-        /*return $pdf->download('Certificado.pdf');*/
-        return Inertia::render('Certificado', compact('propietario', 'memoriales', 'canes', 'antecedentes', 'seguros'));
+        $propID = $propietario['id'];
+        $canes = Can::whereIn('id',[$propID])->get();
+        $can = $canes[0];
+        $memoriales = Memorial::whereIn('id',[$propID])->get();
+        $memorial = $memoriales[0];
+        return Inertia::render('Certificado', compact('propietario', 'memorial', 'can'));
     }
 }
