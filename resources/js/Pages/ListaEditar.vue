@@ -162,8 +162,7 @@
                                                     <div @click.stop="" style="padding-top: 15px">
                                                     El Propietario del Can Peligroso dispone de su cooperación para cumplir con los requisitos y capacitaciones dispuestos en la
                                                     <a
-                                                        href="553"
-                                                        @click.prevent="terms = true"
+                                                        href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi4mLbu_pv1AhW2qpUCHXwYA3MQFnoECAMQAQ&url=https%3A%2F%2Fsea.gob.bo%2Fdigesto%2FCompendioII%2FI%2F60_L_553.pdf&usg=AOvVaw3zU7Do3Xjyfm97q4UglYnp" target="_blank"
                                                     >Ley No.553</a>
                                                     inherente al tratamiento con animales domésticos. 
                                                     </div>
@@ -1776,7 +1775,7 @@
                                         outlined></v-text-field>
                                         </v-col>
                                         <v-col cols="12" lg="6" sm="6">
-                                            <form  enctype="multipart/form-data">
+                                            <form enctype="multipart/form-data">
                                             <template>
                                                 <v-file-input style="height: 45px"
                                                     id="fotoCan2"
@@ -2716,6 +2715,7 @@
                 dateVacPerro: this.can.dateVacPerro,
                 esterilizacion: this.can.esterilizacion,
                 dateEstPerro: this.can.dateEstPerro,
+                mismoVeterinario: this.can.mismoVeterinario,
                 vetNom1: this.can.vetNom1,
                 vetUbi1: this.can.vetUbi1,
                 vetRes1: this.can.vetRes1,
@@ -2756,6 +2756,9 @@
             }
             if(this.can.esterilizacion == 'Sí'){
                 this.switchEst = true;
+            }
+            if(this.can.mismoVeterinario == 'Sí'){
+                this.switchVet = true;
             }
         },
         computed: {
@@ -2945,6 +2948,14 @@
                 else
                 {
                     this.form.esterilizacion = 'No'
+                }
+                if(this.switchVet == true)
+                {
+                    this.form.mismoVeterinario = 'Sí'
+                }
+                else
+                {
+                    this.form.mismoVeterinario = 'No'
                 }
                 /* subir datos */
                 this.$inertia.post(route('registros.update', this.propietario.id),this.form);

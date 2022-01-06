@@ -32,6 +32,7 @@ class CreateCanesTable extends Migration
             $table->string('dateVacPerro')->nullable();
             $table->string('esterilizacion')->nullable();
             $table->string('dateEstPerro')->nullable();
+            $table->string('mismoVeterinario')->nullable();
 
             $table->string('vetNom1')->nullable();
             $table->string('vetUbi1')->nullable();

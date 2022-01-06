@@ -442,7 +442,7 @@
                                 Visión
                             </h1>
                             <h1 style="font-size: 15px">
-                                Es fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevara a la interrelación policía – sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
+                                Es fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevara a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
                             </h1>
                         </v-col>
                     </div>
@@ -453,7 +453,7 @@
                                 Visión
                             </h1>
                             <h1 style="font-size: 20px">
-                                Es fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevara a la interrelación policía – sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
+                                Es fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevara a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
                             </h1>
                         </v-col>
                     </div>
@@ -470,7 +470,7 @@
                             Visión
                         </h1>
                         <h1 style="font-size: 20px; text-align: right">
-                            Es fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevara a la interrelación policía – sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
+                            Es fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevara a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
                         </h1>
                     </div>
                 </v-row>

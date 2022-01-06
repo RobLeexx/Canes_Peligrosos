@@ -26,6 +26,7 @@ class Can extends Model
         'dateVacPerro',
         'esterilizacion',
         'dateEstPerro',
+        'mismoVeterinario',
 
         'vetNom1',
         'vetUbi1',

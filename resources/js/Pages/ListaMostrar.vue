@@ -117,7 +117,7 @@
                                             {{ propietario.departamento }}, {{ propietario.provincia }}, {{ propietario.municipio }} 
                                         </div>
                                     </v-row>
-                                    <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
+                                    <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                         <div style="padding: 20px; font-weight: bold">
                                             Zona
                                         </div>
@@ -473,19 +473,19 @@
                                     <v-expansion-panel>
                                     <v-expansion-panel-header disable-icon-rotate>Estado Médico del Can
                                         <template v-slot:actions>
-                                            <v-icon v-if="((!can.vetNom1 || !can.vetNom2) && !can.vetNom3) || (!can.vetNom1 && !can.vetNom2 && !can.vetNom3)" color="red">
+                                            <v-icon v-if="(can.vacuna == 'No') || (can.esterilizacion == 'No')" color="red">
                                             mdi-hospital-box
                                             </v-icon>
-                                            <v-icon v-else-if="((can.vetNom1 && can.vetNom2) || can.vetNom3) && (((!can.vacFile || !can.estFile) && !can.vetNom3) || ((!can.vetNom1 && !can.vetNom2)))" color="orange darken-2">
+                                            <v-icon v-else-if="((can.vacuna && can.esterilizacion) == 'Sí') && !(can.vacFile && can.estFile)" color="orange darken-2">
                                             mdi-hospital-box
                                             </v-icon>
-                                            <v-icon v-else-if="(can.vetNom1 && can.vetNom2) || can.vetNom3" color="primary">
+                                            <v-icon v-else color="primary">
                                             mdi-hospital-box
                                             </v-icon>
                                         </template>
                                     </v-expansion-panel-header>
                                     <v-expansion-panel-content>
-                                        <div v-if="can.vetNom1" style="padding-bottom: 25px">
+                                        <div v-if="can.vacuna && !can.mismoVeterinario" style="padding-bottom: 25px">
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
                                                 <v-subheader style="padding: 20px">
                                                     Vacunación
@@ -544,7 +544,7 @@
                                                 </div>
                                             </v-row>
                                         </div>
-                                        <v-row v-else-if="!can.vetNom1 && !can.vetNom3" style="display: flex; padding-inline: 10%; padding-bottom: 25px; padding-top: 20px">
+                                        <v-row v-else-if="!can.vacuna" style="display: flex; padding-inline: 10%; padding-bottom: 25px; padding-top: 20px">
                                             <v-col cols="12" sm="4"></v-col>
                                             <v-col cols="12" sm="6">
                                                 <v-subheader style="padding: 10px; font-weight: bold; text-align: center">
@@ -553,7 +553,7 @@
                                             </v-col>
                                             <v-col cols="12" sm="2"></v-col>
                                         </v-row>
-                                        <div v-if="can.vetNom2" style="padding-bottom: 25px">
+                                        <div v-if="can.esterilizacion && !can.mismoVeterinario" style="padding-bottom: 25px">
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                 <v-subheader style="padding: 20px">
                                                     Esterilización
@@ -612,7 +612,7 @@
                                                 </div>
                                             </v-row>
                                         </div>
-                                        <v-row v-else-if="!can.vetNom2 && !can.vetNom3" style="display: flex; padding-inline: 10%; padding-bottom: 25px">
+                                        <v-row v-else-if="!can.esterilizacion" style="display: flex; padding-inline: 10%; padding-bottom: 25px">
                                             <v-col cols="12" sm="4"></v-col>
                                             <v-col cols="12" sm="6">
                                                 <v-subheader style="padding: 10px; font-weight: bold; text-align: center">
@@ -621,7 +621,7 @@
                                             </v-col>
                                             <v-col cols="12" sm="2"></v-col>
                                         </v-row>
-                                        <div v-if="can.vetNom3" style="padding-bottom: 25px">
+                                        <div v-if="can.mismoVeterinario" style="padding-bottom: 25px">
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
                                                 <v-subheader style="padding: 20px">
                                                     Veterinaria de Vacuna y Esterilzación 

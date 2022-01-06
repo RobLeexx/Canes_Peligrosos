@@ -145,8 +145,7 @@
                                                     <div @click.stop="" style="padding-top: 15px">
                                                     El Propietario del Can Peligroso dispone de su cooperación para cumplir con los requisitos y capacitaciones dispuestos en la
                                                     <a
-                                                        href="553"
-                                                        @click.prevent="terms = true"
+                                                        href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi4mLbu_pv1AhW2qpUCHXwYA3MQFnoECAMQAQ&url=https%3A%2F%2Fsea.gob.bo%2Fdigesto%2FCompendioII%2FI%2F60_L_553.pdf&usg=AOvVaw3zU7Do3Xjyfm97q4UglYnp" target="_blank"
                                                     >Ley No.553</a>
                                                     inherente al tratamiento con animales domésticos. 
                                                     </div>
@@ -2186,8 +2185,6 @@
                                                     outlined
                                                     dense
                                                     show-size
-                                                    multiple
-                                                    chips
                                                 ><template v-slot:label>
                                                     <div>
                                                     Certificado de Vacunación Adjuntado<small> (opcional)</small>
@@ -2207,8 +2204,6 @@
                                                     outlined
                                                     dense
                                                     show-size
-                                                    multiple
-                                                    chips
                                                 ><template v-slot:label>
                                                     <div>
                                                     Certificado de Esterilización Adjuntado<small> (opcional)</small>
@@ -2671,6 +2666,7 @@
                 dateVacPerro: null,
                 esterilizacion: null,
                 dateEstPerro: null,
+                mismoVeterinario: null,
                 vetNom1: null,
                 vetUbi1: null,
                 vetRes1: null,
@@ -2903,6 +2899,14 @@
                 else
                 {
                     this.form.esterilizacion = 'No'
+                }
+                if(this.switchVet == true)
+                {
+                    this.form.mismoVeterinario = 'Sí'
+                }
+                else
+                {
+                    this.form.mismoVeterinario = 'No'
                 }
                 /* subir datos */
                 this.$inertia.post(route('registros.store'),this.form);
