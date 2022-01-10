@@ -126,7 +126,7 @@
         },
         data: function () {
             return {
-                depFil: 'La Paz',
+                depFil: this.$page.props.user.departamento,
                 search: '',
                 registros: [],
                 headers: [{ text: "PROPIETARIO", value: "propietarioDatos", sortable: false },
@@ -181,7 +181,7 @@
                 can: registro.nomPerro,
                 raza: registro.razaCan,
 
-                departamento: registro.departamento,
+                departamento: registro.cac,
                 actions: registro.id,
             };
             },

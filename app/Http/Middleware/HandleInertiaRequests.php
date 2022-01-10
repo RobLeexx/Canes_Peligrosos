@@ -41,8 +41,8 @@ class HandleInertiaRequests extends Middleware
             'appName' => config('app.username'),
             // Lazily
             'auth.user' => fn () => $request->user()
-                ? $request->user()->only('id', 'name', 'username', 'email')
-                : null,
+                ? $request->user()->only('id','username', 'rol', 'email', 'paterno', 'materno', 'nombres', 'numContacto', 'grado', 'departamento', 'director')
+                : null
         ]);
     }
 }
@@ -53,6 +53,6 @@ Inertia::share('appName', config('app.name'));
 
 // Lazily
 Inertia::share('user', fn (Request $request) => $request->user()
-    ? $request->user()->only('id', 'name', 'username', 'email')
+    ? $request->user()->only('id','username', 'rol', 'email', 'paterno', 'materno', 'nombres', 'numContacto', 'grado', 'departamento', 'director')
     : null
 );

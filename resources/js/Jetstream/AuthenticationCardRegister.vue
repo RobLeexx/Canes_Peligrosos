@@ -1,0 +1,11 @@
+<template>
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+        <div>
+            <slot name="logo" />
+        </div>
+
+        <div class="bg-white shadow-md overflow-hidden sm:rounded-lg" style="box-shadow: 0px 0px 30px; padding: 20px; width: 75%">
+            <slot />
+        </div>
+    </div>
+</template>

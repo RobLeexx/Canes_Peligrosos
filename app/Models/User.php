@@ -24,11 +24,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'username',
+        'rol',
+        'paterno', 
+        'materno', 
+        'nombres',
+        'username', 
+        'numContacto', 
+        'grado', 
+        'departamento', 
+        'director',
         'email',
         'password',
-        'username',
     ];
 
     /**
@@ -61,8 +67,4 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function perfil()
-    {
-        return $this->hasOne(Perfil::class);
-    }
 }

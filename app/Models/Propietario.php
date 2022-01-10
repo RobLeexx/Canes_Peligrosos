@@ -30,6 +30,7 @@ class Propietario extends Model
         'celular',
         'telefono',
         'email',
-        'contactoAlterno'
+        'contactoAlterno',
+        'cac'
     ];
 }

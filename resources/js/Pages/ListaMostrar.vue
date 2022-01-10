@@ -9,13 +9,14 @@
 <template>
     <app-layout>
         <template #header>
-            <v-row>
-                <v-btn fab small text :href="route('registros.index')"><v-icon>mdi-arrow-left-circle</v-icon></v-btn>
-                <div style="padding: 9px">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ propietario.paterno }}, {{ propietario.documento }} {{ propietario.docExp }} 
-                </h2>
+            <v-row style="display: flex; justify-content: space-between">
+                <div style="display: flex; align-items: center">
+                    <v-btn fab small text :href="route('registros.index')"><v-icon>mdi-arrow-left-circle</v-icon></v-btn>
+                    <div class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{ propietario.paterno }}, {{ propietario.documento }} {{ propietario.docExp }}</div>
                 </div>
+                <div class="font-semibold text-xl text-gray-800 leading-tight" style="display: flex; align-items: center">
+                {{ propietario.cac }} </div>
             </v-row>
         </template>
 
@@ -485,7 +486,7 @@
                                         </template>
                                     </v-expansion-panel-header>
                                     <v-expansion-panel-content>
-                                        <div v-if="can.vacuna && !can.mismoVeterinario" style="padding-bottom: 25px">
+                                        <div v-if="(can.vacuna == 'Sí') && (can.mismoVeterinario == 'No')" style="padding-bottom: 25px">
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
                                                 <v-subheader style="padding: 20px">
                                                     Vacunación
@@ -544,16 +545,14 @@
                                                 </div>
                                             </v-row>
                                         </div>
-                                        <v-row v-else-if="!can.vacuna" style="display: flex; padding-inline: 10%; padding-bottom: 25px; padding-top: 20px">
-                                            <v-col cols="12" sm="4"></v-col>
-                                            <v-col cols="12" sm="6">
-                                                <v-subheader style="padding: 10px; font-weight: bold; text-align: center">
+                                        <v-row v-else-if="can.vacuna == 'No'" style="display: flex; padding-inline: 10%; padding-bottom: 25px; padding-top: 40px">
+                                            <v-col cols="12" sm="12">
+                                                <v-subheader style="padding: 10px; font-weight: bold; justify-content: center">
                                                     SIN VACUNACIÓN
                                                 </v-subheader>
                                             </v-col>
-                                            <v-col cols="12" sm="2"></v-col>
                                         </v-row>
-                                        <div v-if="can.esterilizacion && !can.mismoVeterinario" style="padding-bottom: 25px">
+                                        <div v-if="(can.esterilizacion == 'Sí') && (can.mismoVeterinario == 'No')" style="padding-bottom: 25px">
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                 <v-subheader style="padding: 20px">
                                                     Esterilización
@@ -612,16 +611,14 @@
                                                 </div>
                                             </v-row>
                                         </div>
-                                        <v-row v-else-if="!can.esterilizacion" style="display: flex; padding-inline: 10%; padding-bottom: 25px">
-                                            <v-col cols="12" sm="4"></v-col>
-                                            <v-col cols="12" sm="6">
-                                                <v-subheader style="padding: 10px; font-weight: bold; text-align: center">
+                                        <v-row v-else-if="can.esterilizacion == 'No'" style="display: flex; padding-inline: 10%; padding-bottom: 25px">
+                                            <v-col cols="12" sm="12">
+                                                <v-subheader style="padding: 10px; font-weight: bold; justify-content: center">
                                                     SIN ESTERILIZACIÓN
                                                 </v-subheader>
                                             </v-col>
-                                            <v-col cols="12" sm="2"></v-col>
                                         </v-row>
-                                        <div v-if="can.mismoVeterinario" style="padding-bottom: 25px">
+                                        <div v-if="(can.mismoVeterinario == 'Sí') && !(can.esterilizacion == 'No' || can.vacuna == 'No')" style="padding-bottom: 25px">
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
                                                 <v-subheader style="padding: 20px">
                                                     Veterinaria de Vacuna y Esterilzación 

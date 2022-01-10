@@ -8,7 +8,7 @@
 
         <template #description style="color: white">
             <h2 style="color: white">
-                Actualiza tu información de inicio de sesión.
+                Actualiza tu información de Usuario.
             </h2>
         </template>
 
@@ -45,27 +45,106 @@
                 <jet-input-error :message="form.errors.photo" class="mt-2" />
             </div>
 
-            <!-- Name -->
-            <!-- <div class="col-span-6 sm:col-span-4">
-                <jet-label for="name" value="Name" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
-                <jet-input-error :message="form.errors.name" class="mt-2" />
+            <div class="col-span-6 sm:col-span-6" style="display: flex">
+                <!-- Username -->
+                <v-col cols="12" sm="6">
+                    <jet-label for="username" value="Nombre de Usuario" />
+                    <jet-input id="username" type="text" class="mt-1 block w-full" v-model="form.username" autocomplete="username" style="background: #EFEDED"/>
+                    <jet-input-error :message="form.errors.username" class="mt-2" />
+                </v-col>
+                <!-- Email -->
+                <v-col cols="12" sm="6">
+                    <jet-label for="email" value="Correo Electrónico" />
+                    <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" style="background: #EFEDED"/>
+                    <jet-input-error :message="form.errors.email" class="mt-2" />
+                </v-col>
             </div>
-            -->
-
-            <!-- Username -->
-            <div class="col-span-6 sm:col-span-4">
-                <jet-label for="username" value="Nombre de Usuario" />
-                <jet-input id="username" type="text" class="mt-1 block w-full" v-model="form.username" autocomplete="username" style="background: #EFEDED"/>
-                <jet-input-error :message="form.errors.username" class="mt-2" />
+            <div class="col-span-6 sm:col-span-6" style="display: flex">
+                <!-- Paterno -->
+                <v-col cols="12" sm="6">
+                    <jet-label for="paterno" value="Apellido Paterno" />
+                    <jet-input id="paterno" type="text" class="mt-1 block w-full" v-model="form.paterno" autocomplete="paterno" style="background: #EFEDED"/>
+                    <jet-input-error :message="form.errors.paterno" class="mt-2" />
+                </v-col>
+                <!-- Materno -->
+                <v-col cols="12" sm="6">
+                    <jet-label for="materno" value="Apellido Materno" />
+                    <jet-input id="materno" type="text" class="mt-1 block w-full" v-model="form.materno" style="background: #EFEDED"/>
+                    <jet-input-error :message="form.errors.materno" class="mt-2" />
+                </v-col>
             </div>
-
-            <!-- Email -->
-            <div class="col-span-6 sm:col-span-4">
-                <jet-label for="email" value="Correo Electrónico" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" style="background: #EFEDED"/>
-                <jet-input-error :message="form.errors.email" class="mt-2" />
+            <div class="col-span-6 sm:col-span-6" style="display: flex">
+                <!-- Nombres -->
+                <v-col cols="12" sm="6">
+                    <jet-label for="nombres" value="Nombres" />
+                    <jet-input id="nombres" type="text" class="mt-1 block w-full" v-model="form.nombres" autocomplete="nombres" style="background: #EFEDED"/>
+                    <jet-input-error :message="form.errors.nombres" class="mt-2" />
+                </v-col>
+                <!-- Número -->
+                <v-col cols="12" sm="6">
+                    <jet-label for="numContacto" value="Número de Contacto" />
+                    <jet-input id="numContacto" type="number" class="mt-1 block w-full" v-model="form.numContacto" style="background: #EFEDED"/>
+                    <jet-input-error :message="form.errors.numContacto" class="mt-2" />
+                </v-col>
             </div>
+            <div class="col-span-6 sm:col-span-6" style="display: flex">
+                <!-- Departamento -->
+                <v-col cols="12" sm="6">
+                    <jet-label for="departamento" value="Departamento" />
+                    <select name="departamento" id="departamento" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color: #EFEDED" v-model="form.departamento">
+                        <option value="La Paz">La Paz</option>
+                        <option value="Cochabamba">Cochabamba</option>
+                        <option value="Santa Cruz">Santa Cruz</option>
+                        <option value="Chuquisaca">Chuquisaca</option>
+                        <option value="Oruro">Oruro</option>
+                        <option value="Potosí">Potosí</option>
+                        <option value="Tarija">Tarija</option>
+                        <option value="Beni">Beni</option>
+                        <option value="Pando">Pando</option>
+                    </select>
+                    <jet-input-error :message="form.errors.departamento" class="mt-2" />
+                </v-col>
+                <!-- Director -->
+                <v-col cols="12" sm="6">
+                    <jet-label for="director" value="Director" />
+                    <jet-input id="director" type="text" class="mt-1 block w-full" v-model="form.director" style="background: #EFEDED"/>
+                    <jet-input-error :message="form.errors.director" class="mt-2" />
+                </v-col>
+            </div>
+            <div class="col-span-6 sm:col-span-6" style="display: flex">
+                <!-- Grado -->
+                <v-col cols="12" sm="6">
+                    <jet-label for="grado" value="Grado" />
+                    <select name="grado" id="grado" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color:#EFEDED" v-model="form.grado">
+                        <option disabled value="Policial">POLICIAL</option>
+                        <option value="Cabo">Cabo</option>
+                        <option value="Sargento">Sargento</option>
+                        <option value="Suboficial">Suboficial</option>
+                        <option value="Subteniente">Subteniente</option>
+                        <option value="Teniente">Teniente</option>
+                        <option value="Capitán">Capitán</option>
+                        <option value="Mayor">Mayor</option>
+                        <option value="Teniente Coronel">Teniente Coronel</option>
+                        <option value="Coronel">Coronel</option>
+                        <option value="General">General</option>
+                        
+                        <option disabled value="Civil">CIVIL</option>
+                        <option value="Estudiante">Estudiante</option>
+                        <option value="Técnico">Técnico</option>
+                        <option value="Licenciado">Licenciado</option>
+                        <option value="Ingeniero">Ingeniero</option>
+                        <option value="Máster">Máster</option>
+                        <option value="Doctor">Doctor</option>
+                    </select>
+                    <jet-input-error :message="form.errors.grado" class="mt-2" />
+                </v-col>
+                <!-- Rol -->
+                <v-col cols="12" sm="6">
+                    <jet-label value="Rol" />
+                    <jet-label class="rounded-md shadow-sm" style="background-color:#EFEDED; padding: 10px; margin-top: 3px; font-size: 15px" v-model="form.rol" />
+                </v-col>
+            </div>
+            
         </template>
 
         <template #actions>
@@ -107,8 +186,15 @@
                 form: this.$inertia.form({
                     _method: 'PUT',
                     username: this.user.username,
-                    name: this.user.name,
                     email: this.user.email,
+                    paterno: this.user.paterno,
+                    materno: this.user.materno,
+                    nombres: this.user.nombres,
+                    numContacto: this.user.numContacto,
+                    departamento: this.user.departamento,
+                    director: this.user.director,
+                    grado: this.user.grado,
+                    rol: this.user.rol,
                     photo: null,
                 }),
 

@@ -33,7 +33,7 @@
                         <v-col cols="12" sm="3" style="text-align:center">
                             <h1 style="font-weight: bold; padding-top: 10px; font-size: 13px">CENTRO DE ADIESTRAMIENTO</h1>
                             <h1 style="font-weight: bold; font-size: 13px">DE CANES (C.A.C) DE</h1>
-                            <h1 style="font-weight: bold; font-size: 13px; text-transform: uppercase">{{ propietario.departamento }}</h1>
+                            <h1 style="font-weight: bold; font-size: 13px; text-transform: uppercase">{{ propietario.cac }}</h1>
                             <h1 style="font-weight: bold; font-size: 15px; padding-top: 15px; padding-right: 80px">Costo Bs.</h1>
                         </v-col>
                     </v-row>
@@ -49,7 +49,7 @@
                             </tr>
                         </thead>
                     </table>
-                    <table  id="cert1" style="border: 1px solid black; width: 100%">
+                    <table style="border: 1px solid black; width: 100%">
                         <tbody>
                             <tr>
                                 <td>
@@ -130,7 +130,8 @@
                                                 <td><div style="display: flex; padding-left: 5px"><h1>PROCEDENCIA:</h1>&nbsp;{{ can.procedenciaCan }}</div></td>
                                             </tr>
                                         </div>
-                                        <img style="max-width: 220px; min-width: 220px; max-height: 170px" v-bind:src="'/storage/images/canes/' + can.fotoCan">
+                                        <img style="max-width: 220px; min-width: 220px; max-height: 170px" v-if="can.fotoCan" v-bind:src="'/storage/images/canes/' + can.fotoCan2">
+                                        <img style="max-width: 220px; min-width: 220px; max-height: 170px" v-else v-bind:src="'/storage/images/canes/' + can.fotoCan2">
                                     </div>
                                 </td>
                             </tr>
@@ -206,11 +207,11 @@
                             <div style="padding-left: 5px"><h1 style="font-weight: bold; font-size: 13px">●</h1></div>
                             <div style="padding-left: 5px"><h1 style="font-weight: bold; font-size: 13px">{{ exp6 }}</h1></div>
                         </div>
-                            <div style="padding-left: 5px; display: flex; justify-content: end;padding: 40px"><div style="font-weight: bold">Lugar y Fecha:&nbsp;&nbsp;</div>{{ propietario.departamento }},&nbsp;<div id="diaC"></div>&nbsp;de&nbsp;<div id="mesC"></div>&nbsp;de&nbsp;<div id="anioC"></div>
+                            <div style="padding-left: 5px; display: flex; justify-content: end;padding: 40px"><div style="font-weight: bold">Lugar y Fecha:&nbsp;&nbsp;</div>{{ propietario.cac }},&nbsp;<div id="diaC"></div>&nbsp;de&nbsp;<div id="mesC"></div>&nbsp;de&nbsp;<div id="anioC"></div>
                         </div>
                         <v-row style="text-align: center; padding: 40px">
                             <v-col cols="12" sm="4">
-                                <h1>{{ $page.props.user.name }}</h1>
+                                <h1>{{ grado }} {{ $page.props.user.nombres }} {{ $page.props.user.paterno }} {{ $page.props.user.materno }}</h1>
                                 <h1>Funcionario Policial</h1>
                             </v-col>
                             <v-col cols="12" sm="4">
@@ -274,9 +275,65 @@
                 diaLocal: [],
                 mesLocal: [],
                 anioLocal: [],
+                grado: [],
             }
         },
-        
+        created(){
+            switch (this.$page.props.user.grado)
+            {
+                case 'Cabo':
+                    this.grado = 'Pol.';
+                    break
+                case 'Sargento':
+                    this.grado = 'Sgto.';
+                    break
+                case 'Suboficial':
+                    this.grado = 'Sof.';
+                    break
+                case 'Subteniente':
+                    this.grado = 'Subtte.';
+                    break
+                case 'Teniente':
+                    this.grado = 'Tte.';
+                    break
+                case 'Capitán':
+                    this.grado = 'Cap.';
+                    break
+                case 'Mayor':
+                    this.grado = 'My.';
+                    break
+                case 'Teniente Coronel':
+                    this.grado = 'Tcnl.';
+                    break
+                case 'Coronel':
+                    this.grado = 'Cnl.';
+                    break
+                case 'General':
+                    this.grado = 'Gnal.';
+                    break
+                case 'Estudiante':
+                    this.grado = 'Est.';
+                    break
+                case 'Técnico':
+                    this.grado = 'Tec.';
+                    break
+                case 'Licenciado':
+                    this.grado = 'Lic.';
+                    break
+                case 'Ingeniero':
+                    this.grado = 'Ing.';
+                    break
+                case 'Máster':
+                    this.grado = 'Msc.';
+                    break
+                case 'Doctor':
+                    this.grado = 'Doc.';
+                    break
+                default:
+                    this.grado = 'Funcionario';
+                    break
+            }
+        },
         methods: {
             downloadPDF() {
                 /* Legal 22*36 
@@ -344,9 +401,40 @@
                 pdf.setFontSize(12).text('PARA LA TENENCIA DE CAN PELIGROSO', 67, 45);
 
                 /* Derecha */
+                switch (this.propietario.cac)
+                {
+                    case 'La Paz':
+                        var cac = '             LA PAZ'
+                        break
+                    case 'Cochabamba':
+                        var cac = '          COCHABAMBA'
+                        break
+                    case 'Santa Cruz':
+                        var cac = '          SANTA CRUZ'
+                        break
+                    case 'Chuquisaca':
+                        var cac = '          CHUQUISACA'
+                        break
+                    case 'Oruro':
+                        var cac = '              ORURO'
+                        break
+                    case 'Potosí':
+                        var cac = '              POTOSÍ'
+                        break
+                    case 'Tarija':
+                        var cac = '              TARIJA'
+                        break
+                    case 'Beni':
+                        var cac = '                BENI'
+                        break
+                    case 'Pando':
+                        var cac = '               PANDO'
+                        break
+                }
                 pdf.setFont(undefined, 'bold').setFontSize(7).text('CENTRO DE ADIESTRAMIENTO', 170, 6);
                 pdf.setFont(undefined, 'bold').setFontSize(7).text('DE CANES (C.A.C)', 179, 9);
-                pdf.setFont(undefined, 'bold').setFontSize(9).text('Costo Bs.', 176, 16);
+                pdf.setFont(undefined, 'bold').setFontSize(7).text(cac, 175, 12);
+                pdf.setFont(undefined, 'bold').setFontSize(9).text('Costo Bs.', 172, 18);
 
                 /* Tablas */
                 pdf.autoTable({theme: 'plain', startY: 50, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9 }, 
@@ -381,9 +469,17 @@
                 });
 
                 /* Can */
-                imgCan.src = '/storage/images/canes/' + this.can.fotoCan;
-                pdf.addImage(imgCan, 'png', 155, 60, 45, 38);
-                pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 110}, tableWidth: 48, styles: { fontSize: 7 },
+                if(this.can.fotoCan)
+                {
+                    imgCan.src = '/storage/images/canes/' + this.can.fotoCan;
+                }
+                else if(this.can.fotoCan2)
+                {
+                    imgCan.src = '/storage/images/canes/' + this.can.fotoCan2;
+                }
+                
+                pdf.addImage(imgCan, 'png', 155.5, 60, 45, 38);
+                pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 110}, tableWidth: 45, styles: { fontSize: 7 },
                 body: [
                 ['NOMBRE:' + ' ' + this.can.nomPerro],
                 ['RAZA:' + ' ' + this.can.razaCan],
@@ -454,7 +550,7 @@
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 245, margin: {horizontal: 150}, tableWidth: 80, styles: { textColor: 20, fontSize: 7}, 
                 body: [
-                [this.propietario.departamento + ', ' + diaCell + ' de ' + mesCell + ' de ' + anioCell],
+                [this.propietario.dep + ', ' + diaCell + ' de ' + mesCell + ' de ' + anioCell],
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 40}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
                 body: [
@@ -470,7 +566,7 @@
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 25.5}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7}, 
                 body: [
-                [this.$page.props.user.name],
+                [this.grado + ' ' + this.$page.props.user.nombres + ' ' + this.$page.props.user.paterno + ' ' + this.$page.props.user.materno],
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 141}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7}, 
                 body: [

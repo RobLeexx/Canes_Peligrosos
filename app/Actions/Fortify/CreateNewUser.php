@@ -3,7 +3,6 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
-use App\Models\Perfil;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -23,23 +22,32 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:50', 'min:3'],
-            'username' =>['required', 'string', 'max:10', 'unique:users'],
+            'rol' =>['required', 'string', 'max:15'],
+            'paterno' => ['required'],
+            'materno' => ['required'],
+            'nombres' => ['required'],
+            'username' =>['required', 'string', 'max:15', 'unique:users'],
+            'numContacto' => ['required'],
+            'grado' => ['required'],
+            'departamento' => ['required'],
+            'director' => ['required'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
         $user = User::create([
-            'name' => $input['name'],
+            'rol' => $input['rol'],
+            'paterno' => $input['paterno'],
+            'materno' => $input['materno'],
+            'nombres' => $input['nombres'],
             'username' => $input['username'],
+            'numContacto' => $input['numContacto'],
+            'grado' => $input['grado'],
+            'departamento' => $input['departamento'],
+            'director' => $input['director'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-        ]);
-
-        Perfil::create([
-            'user_id' => $user->id,
-            'slug' => Str::of($user->name)->slug('-'),
         ]);
 
         return $user;

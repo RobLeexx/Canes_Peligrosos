@@ -62,16 +62,12 @@
                                         >
                                         <v-container>
                                             <v-row>
-                                            <v-col
-                                                cols="12"
-                                                sm="6"
-                                            >
+                                            <v-col cols="12" sm="6">
                                                 <v-text-field
-                                                id="comandante"
                                                 v-model="form.comandante"
                                                 :rules="vacio"
-                                                label="Comandante Departamental"
-                                                placeholder="Rango y nombre del Comandante Departamental"
+                                                label="Grado y Nombre del Comandante Departamental"
+                                                placeholder="Nombre del Comandante Departamental"
                                                 onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
@@ -686,7 +682,9 @@
                                                     <v-text-field
                                                         id="cel"
                                                         v-model="form.celular"
-                                                        :rules="vacio"
+                                                        :rules="cel"
+                                                        counter
+                                                        maxlength="15"
                                                         label="Celular"
                                                         prepend-icon="mdi-phone"
                                                         placeholder="Teléfono móvil del proietario"
@@ -700,6 +698,9 @@
                                                     <v-text-field
                                                         v-model="form.telefono"
                                                         label="Télefono"
+                                                        :rules="tel"
+                                                        counter
+                                                        maxlength="12"
                                                         prepend-icon="mdi-phone-classic"
                                                         placeholder="Télefono fijo del propietario"
                                                         outlined
@@ -2298,25 +2299,25 @@
                                         <v-row>
                                             <v-col cols="12" sm="12"><v-subheader>Cuidadores o Tenedores Eventuales *al menos un nombre con contacto es obligatorio</v-subheader></v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven1" outlined :rules="vacio" label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                                <v-text-field v-model="form.canEven1" outlined :rules="vacio" label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
                                                 <v-text-field v-model="form.canEvenNum1" outlined :rules="vacio" type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven2" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                                <v-text-field v-model="form.canEven2" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
                                                 <v-text-field v-model="form.canEvenNum2" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven3" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                                <v-text-field v-model="form.canEven3" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
                                                 <v-text-field v-model="form.canEvenNum3" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven4" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                                <v-text-field v-model="form.canEven4" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
                                                 <v-text-field v-model="form.canEvenNum4" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
@@ -2744,6 +2745,8 @@
                 canEven4: this.can.canEven4,
                 canEvenNum4: this.can.canEvenNum4,
                 canConvivencia: this.can.canConvivencia,
+
+                cac: this.propietario.cac,
             },
             }
         },

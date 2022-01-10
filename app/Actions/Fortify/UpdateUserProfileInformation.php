@@ -19,8 +19,15 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     public function update($user, array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:100'],
+            'rol' => ['required', 'string', 'max:100'],
+            'paterno' => ['required', 'string', 'max:100'],
+            'materno' => ['required', 'string', 'max:100'],
+            'nombres' => ['required', 'string', 'max:100'],
             'username' => ['required', 'string', 'max:50', Rule::unique('users')->ignore($user->id)],
+            'numContacto' => ['required', 'string', 'max:100'],
+            'grado' => ['required', 'string', 'max:100'],
+            'departamento' => ['required', 'string', 'max:100'],
+            'director' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:100', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'image', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
@@ -34,8 +41,15 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
-                'name' => $input['name'],
+                'rol' => $input['rol'],
+                'paterno' => $input['paterno'],
+                'materno' => $input['materno'],
+                'nombres' => $input['nombres'],
                 'username' => $input['username'],
+                'numContacto' => $input['numContacto'],
+                'grado' => $input['grado'],
+                'departamento' => $input['departamento'],
+                'director' => $input['director'],
                 'email' => $input['email'],
             ])->save();
         }
@@ -51,10 +65,16 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     protected function updateVerifiedUser($user, array $input)
     {
         $user->forceFill([
-            'name' => $input['name'],
-            'username ' => $input['username'],
+            'rol' => $input['rol'],
+            'paterno' => $input['paterno'],
+            'materno' => $input['materno'],
+            'nombres' => $input['nombres'],
+            'username' => $input['username'],
+            'numContacto' => $input['numContacto'],
+            'grado' => $input['grado'],
+            'departamento' => $input['departamento'],
+            'director' => $input['director'],
             'email' => $input['email'],
-            'email_verified_at' => null,
         ])->save();
 
         $user->sendEmailVerificationNotification();

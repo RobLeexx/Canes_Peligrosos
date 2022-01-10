@@ -13,10 +13,10 @@
                 <jet-label value="Team Owner" />
 
                 <div class="flex items-center mt-2">
-                    <img class="w-12 h-12 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name">
+                    <img class="w-12 h-12 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.username">
 
                     <div class="ml-4 leading-tight">
-                        <div>{{ $page.props.user.name }}</div>
+                        <div>{{ $page.props.user.username }}</div>
                         <div class="text-gray-700 text-sm">{{ $page.props.user.email }}</div>
                     </div>
                 </div>

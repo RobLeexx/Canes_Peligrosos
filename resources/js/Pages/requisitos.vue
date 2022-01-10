@@ -49,15 +49,20 @@
                                         >
                                         <v-container>
                                             <v-row>
-                                            <v-col
-                                                cols="12"
-                                                sm="6"
-                                            >
+                                            <v-col cols="12" sm="2">
+                                                <v-select v-model="grado"
+                                                :items="gradosComan"
+                                                :rules="vacio"
+                                                placeholder="Grado"
+                                                outlined>
+                                                </v-select>
+                                            </v-col>
+                                            <v-col cols="12" sm="4">
                                                 <v-text-field
                                                 v-model="form.comandante"
                                                 :rules="vacio"
                                                 label="Comandante Departamental"
-                                                placeholder="Rango y nombre del Comandante Departamental"
+                                                placeholder="Nombre del Comandante Departamental"
                                                 onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
@@ -67,7 +72,6 @@
                                                 sm="6"
                                             >
                                                 <v-text-field
-                                                id="referencia"
                                                 v-model="form.referencia"
                                                 :rules="vacio"
                                                 label="Referencia"
@@ -291,15 +295,13 @@
                                                         ><v-spacer></v-spacer>
                                                             <v-btn
                                                                 color="primary"
-                                                                @click="$refs.menuProp.save(form.dateProp)"
-                                                            >
+                                                                @click="$refs.menuProp.save(form.dateProp)">
                                                                 OK
                                                             </v-btn></v-date-picker>
                                                         </v-dialog>
                                                     </div>
                                                 </template>
                                             </v-col>
-
                                             <v-col cols="12" sm="6">
                                                 <v-autocomplete
                                                 v-model="form.estCivil"
@@ -311,6 +313,7 @@
                                             </v-col>
                                             <v-col cols="12" sm="6">
                                                 <v-text-field
+                                                id="profesion"
                                                 v-model="form.profesion"
                                                 :rules="vacio"
                                                 label="Profesión u Ocupación"
@@ -332,6 +335,7 @@
                                             </v-col>
                                             <v-col cols="12" sm="4">
                                                 <v-text-field
+                                                id="documento"
                                                 v-model="form.documento"
                                                 :rules="vacio"
                                                 label="Documento de Identidad"
@@ -610,7 +614,8 @@
                                                 </v-col>
 
                                             <v-col cols="12" sm="6">
-                                                <v-text-field 
+                                                <v-text-field
+                                                        id="zona"
                                                         v-model="form.zona"
                                                         outlined
                                                         label="Zona"
@@ -619,7 +624,8 @@
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field 
+                                                <v-text-field
+                                                        id="domicilio"
                                                         v-model="form.domicilio"
                                                         outlined
                                                         label="Domicilio"
@@ -664,9 +670,11 @@
                                             <v-col cols="12" sm="6">
                                                 <template>
                                                     <v-text-field
-                                                        id="cel"
+                                                        id="celular"
                                                         v-model="form.celular"
-                                                        :rules="vacio"
+                                                        :rules="cel"
+                                                        counter
+                                                        maxlength="12"
                                                         label="Celular"
                                                         prepend-icon="mdi-phone"
                                                         placeholder="Teléfono móvil del proietario"
@@ -678,8 +686,12 @@
                                             <v-col cols="12" sm="6">
                                                 <template>
                                                     <v-text-field
+                                                        id="telefono"
                                                         v-model="form.telefono"
                                                         label="Télefono"
+                                                        :rules="tel"
+                                                        counter
+                                                        maxlength="12"
                                                         prepend-icon="mdi-phone-classic"
                                                         placeholder="Télefono fijo del propietario"
                                                         outlined
@@ -690,6 +702,7 @@
                                             <v-col cols="12" sm="6">
                                                 <template>
                                                     <v-text-field
+                                                        id="email"
                                                         v-model="form.email"
                                                         label="Correo Elctrónico"
                                                         prepend-icon="mdi-at"
@@ -702,6 +715,7 @@
                                             <v-col cols="12" sm="6">
                                                 <template>
                                                     <v-text-field
+                                                        id="contactoAl"
                                                         v-model="form.contactoAlterno"
                                                         label="Otro Número de Contacto"
                                                         prepend-icon="mdi-phone-plus"
@@ -1481,7 +1495,8 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
+                                        id="agencia"
                                         v-model="form.nomAgencia"
                                         :rules="vacio"
                                         label="Agencia"
@@ -1492,7 +1507,8 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
+                                        id="ubiAgencia"
                                         v-model="form.ubiAgencia"
                                         placeholder="Departamento/Ciudad/Zona/Calle" 
                                         outlined>
@@ -1593,7 +1609,8 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
+                                        id="resAgencia"
                                         v-model="form.resAgencia"
                                         placeholder="Agente Responsable del Trámite" 
                                         outlined>
@@ -1607,7 +1624,8 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
+                                        id="resAgenciaNum"
                                         v-model="form.resAgenciaNum"
                                         type="number"
                                         placeholder="Número de Referencia de la Agencia o Agente Responsable" 
@@ -1666,14 +1684,12 @@
                                 <v-stepper-content step="5">
                                 <v-card
                                     class="mb-12"
-                                    height="100%"
-                                >
+                                    height="100%">
                                 <v-container fluid>
                                     <v-row>
                                         <v-col
                                             cols="12"
-                                            sm="6"
-                                        >
+                                            sm="6">
                                         <v-text-field 
                                         id="nomPerro"
                                         v-model="form.nomPerro"
@@ -1684,15 +1700,13 @@
                                         </v-col>
                                         <v-col
                                             cols="12"
-                                            sm="6"
-                                        >
+                                            sm="6">
                                         <template>
                                             <div>
                                                 <v-dialog
                                                 ref="menuNacPerro"
                                                 v-model="menuNacPerro"
-                                                :width="anchoDate"
-                                                >
+                                                :width="anchoDate">
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-text-field
                                                     v-model="form.dateNacPerro"
@@ -1702,8 +1716,7 @@
                                                     readonly
                                                     outlined
                                                     v-bind="attrs"
-                                                    v-on="on"
-                                                    >
+                                                    v-on="on">
                                                     </v-text-field>
                                                 </template>
                                                 <v-date-picker
@@ -1716,8 +1729,7 @@
                                                 ><v-spacer></v-spacer>
                                                     <v-btn
                                                         color="primary"
-                                                        @click="$refs.menuNacPerro.save(form.dateNacPerro)"
-                                                    >
+                                                        @click="$refs.menuNacPerro.save(form.dateNacPerro)">
                                                         OK
                                                     </v-btn></v-date-picker>
                                                 </v-dialog>
@@ -1741,7 +1753,8 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
+                                        id="procedencia"
                                         v-model="form.procedenciaCan"
                                         :rules="vacio"
                                         label="Procedencia"
@@ -1938,11 +1951,11 @@
                                             <v-autocomplete v-model="form.tamCan" :items= "tamCanItems" :rules="vacio" outlined placeholder="Tamaño del Can"></v-autocomplete>
                                         </v-col>
                                         <v-col cols="12" sm="6">
-                                            <v-text-field v-model="form.colorCan" outlined label="Color" :rules="vacio" placeholder="Color o Colores Característicos del Can">
+                                            <v-text-field id="colorCan" v-model="form.colorCan" outlined label="Color" :rules="vacio" placeholder="Color o Colores Característicos del Can">
                                             </v-text-field>
                                         </v-col>
                                         <v-col cols="12" sm="12">
-                                            <v-textarea v-model="form.sinCan" outlined label="Singularidades del Can" :rules="vacio" placeholder="Rasgos Característicos del Can, ej: cicatrices, color de ojos, etc.">
+                                            <v-textarea id="sinCan" v-model="form.sinCan" outlined label="Singularidades del Can" :rules="vacio" placeholder="Rasgos Característicos del Can, ej: cicatrices, color de ojos, etc.">
                                             </v-textarea>
                                         </v-col>
                                     </v-row>
@@ -2251,31 +2264,31 @@
                                         <v-row>
                                             <v-col cols="12" sm="12"><v-subheader>Cuidadores o Tenedores Eventuales *al menos un nombre con contacto es obligatorio</v-subheader></v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven1" outlined :rules="vacio" label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                                <v-text-field id="fullname" v-model="form.canEven1" outlined :rules="vacio" label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEvenNum1" outlined :rules="vacio" type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                                <v-text-field id="telefono" v-model="form.canEvenNum1" outlined :rules="vacio" type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven2" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                                <v-text-field id="fullname" v-model="form.canEven2" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEvenNum2" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                                <v-text-field id="telefono" v-model="form.canEvenNum2" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven3" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                                <v-text-field id="fullname" v-model="form.canEven3" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEvenNum3" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                                <v-text-field id="telefono" v-model="form.canEvenNum3" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven4" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conviva o conozca al Can a parte del Propietario"></v-text-field>
+                                                <v-text-field id="fullname" v-model="form.canEven4" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que o conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEvenNum4" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                                <v-text-field id="telefono" v-model="form.canEvenNum4" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="12"><v-subheader>Tenencia del Can</v-subheader></v-col>
-                                            <v-col cols="12" sm="12"><v-textarea v-model="form.canConvivencia" :rules="vacio" outlined label="Motivos de Convivencia con el Can Peligroso" placeholder="Motivos por los cuales se domestica al Perro Peligroso"></v-textarea></v-col>
+                                            <v-col cols="12" sm="12"><v-textarea id="canConvivencia" v-model="form.canConvivencia" :rules="vacio" outlined label="Motivos de Convivencia con el Can Peligroso" placeholder="Motivos por los cuales se domestica al Perro Peligroso"></v-textarea></v-col>
                                         </v-row>
                                     </v-row>
                                 </v-container>
@@ -2334,6 +2347,8 @@
             terms: false,})
         return {
             e6: 1,
+            gradosComan: ['Subtte.','Ttte.','Cap.','Tcnl.','Cnl.','Gnal.'],
+            grado: null,
             form: Object.assign({}, defaultForm),
             vacio: [v => !!v || 'Este campo es obligatorio'],
             cel: [
@@ -2695,6 +2710,8 @@
                 canEven4: null,
                 canEvenNum4: null,
                 canConvivencia: null,
+
+                cac: this.$page.props.user.departamento,
             },
             }
         },
@@ -2703,6 +2720,7 @@
         computed: {
         form1IsValid () {
             return (
+            this.grado &&
             this.form.comandante &&
             this.form.referencia &&
             this.form.dateMemo &&
@@ -2875,6 +2893,8 @@
         methods: 
         {
             submitData() {
+                /* Asignar grado al comandante */
+                this.form.comandante = this.grado + ' ' + this.form.comandante
                 /* Verificar si es pedigree */
                 if(this.switchPuro == true)
                 {
@@ -2908,9 +2928,11 @@
                 {
                     this.form.mismoVeterinario = 'No'
                 }
+                
                 /* subir datos */
                 this.$inertia.post(route('registros.store'),this.form);
             },
+
             switchToTeam(team) 
             {
                 this.$inertia.put(route('current-team.update'), 
@@ -3373,6 +3395,8 @@
         }
         },
          mounted() {
+             /* Obtener Edad */
+            
             // Set the current date and time as default value_DateTime
             var d = new Date();
             var currentHour = d.getHours() % 12; // AM,PM format
