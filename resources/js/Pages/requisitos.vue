@@ -1,5 +1,5 @@
 <template>
-    <app-layout>
+    <app-layout v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.rol == 'Secretaría')">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Registro de Requisitos
@@ -2313,6 +2313,9 @@
             </div>
         </div>
     </app-layout>
+    <div v-else style="display: flex; justify-content: center; align-items: center; font-size: 50px; background-color:#DCEDC8;position: absolute;height: 100%;width: 100%">
+        Sin Permisos Suficientes
+    </div>
 </template>
 
 <script>

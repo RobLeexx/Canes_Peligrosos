@@ -22,14 +22,11 @@
                                 <jet-nav-link :href="route('registros.index')" :active="route().current('registros.index')">
                                     Lista
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('registros.create')" :active="route().current('registros.create')">
+                                <jet-nav-link v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.rol == 'Secretaría')" :href="route('registros.create')" :active="route().current('registros.create')">
                                     Requisitos
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('capacitaciones')" :active="route().current('capacitaciones')">
+                                <jet-nav-link v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.rol == 'Capacitador')" :href="route('capacitaciones')" :active="route().current('capacitaciones')">
                                     Capacitaciones
-                                </jet-nav-link>
-                                <jet-nav-link :href="route('usuarios')" :active="route().current('usuarios')">
-                                    Usuarios
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -157,14 +154,11 @@
                         <jet-responsive-nav-link :href="route('registros.index')" :active="route().current('registros.index')">
                             Lista
                         </jet-responsive-nav-link>
-                        <jet-responsive-nav-link :href="route('registros.create')" :active="route().current('registros.create')">
+                        <jet-responsive-nav-link v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.rol == 'Secretaría')" :href="route('registros.create')" :active="route().current('registros.create')">
                             Requisitos
                         </jet-responsive-nav-link>
-                        <jet-responsive-nav-link :href="route('capacitaciones')" :active="route().current('capacitaciones')">
+                        <jet-responsive-nav-link v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.rol == 'Capacitador')" :href="route('capacitaciones')" :active="route().current('capacitaciones')">
                             Capacitaciones
-                        </jet-responsive-nav-link>
-                        <jet-responsive-nav-link :href="route('usuarios')" :active="route().current('usuarios')">
-                            Usuarios
                         </jet-responsive-nav-link>
                     </div>
 

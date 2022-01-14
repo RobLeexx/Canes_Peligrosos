@@ -130,7 +130,7 @@
                                                 <td><div style="display: flex; padding-left: 5px"><h1>PROCEDENCIA:</h1>&nbsp;{{ can.procedenciaCan }}</div></td>
                                             </tr>
                                         </div>
-                                        <img style="max-width: 220px; min-width: 220px; max-height: 170px" v-if="can.fotoCan" v-bind:src="'/storage/images/canes/' + can.fotoCan2">
+                                        <img style="max-width: 220px; min-width: 220px; max-height: 170px" v-if="can.fotoCan" v-bind:src="'/storage/images/canes/' + can.fotoCan">
                                         <img style="max-width: 220px; min-width: 220px; max-height: 170px" v-else v-bind:src="'/storage/images/canes/' + can.fotoCan2">
                                     </div>
                                 </td>
@@ -550,7 +550,7 @@
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 245, margin: {horizontal: 150}, tableWidth: 80, styles: { textColor: 20, fontSize: 7}, 
                 body: [
-                [this.propietario.dep + ', ' + diaCell + ' de ' + mesCell + ' de ' + anioCell],
+                [this.propietario.cac + ', ' + diaCell + ' de ' + mesCell + ' de ' + anioCell],
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 40}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
                 body: [

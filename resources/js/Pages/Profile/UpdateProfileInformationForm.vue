@@ -62,22 +62,22 @@
             <div class="col-span-6 sm:col-span-6" style="display: flex">
                 <!-- Paterno -->
                 <v-col cols="12" sm="6">
-                    <jet-label for="paterno" value="Apellido Paterno" />
-                    <jet-input id="paterno" type="text" class="mt-1 block w-full" v-model="form.paterno" autocomplete="paterno" style="background: #EFEDED"/>
+                    <jet-label for="paterno" value="Apellido Paterno (Deshabilitado)" />
+                    <jet-input disabled id="paterno" type="text" class="mt-1 block w-full" v-model="form.paterno" autocomplete="paterno" style="background: #EFEDED"/>
                     <jet-input-error :message="form.errors.paterno" class="mt-2" />
                 </v-col>
                 <!-- Materno -->
                 <v-col cols="12" sm="6">
-                    <jet-label for="materno" value="Apellido Materno" />
-                    <jet-input id="materno" type="text" class="mt-1 block w-full" v-model="form.materno" style="background: #EFEDED"/>
+                    <jet-label for="materno" value="Apellido Materno (Deshabilitado)" />
+                    <jet-input disabled id="materno" type="text" class="mt-1 block w-full" v-model="form.materno" style="background: #EFEDED"/>
                     <jet-input-error :message="form.errors.materno" class="mt-2" />
                 </v-col>
             </div>
             <div class="col-span-6 sm:col-span-6" style="display: flex">
                 <!-- Nombres -->
                 <v-col cols="12" sm="6">
-                    <jet-label for="nombres" value="Nombres" />
-                    <jet-input id="nombres" type="text" class="mt-1 block w-full" v-model="form.nombres" autocomplete="nombres" style="background: #EFEDED"/>
+                    <jet-label for="nombres" value="Nombres (Deshabilitado)" />
+                    <jet-input disabled id="nombres" type="text" class="mt-1 block w-full" v-model="form.nombres" autocomplete="nombres" style="background: #EFEDED"/>
                     <jet-input-error :message="form.errors.nombres" class="mt-2" />
                 </v-col>
                 <!-- Número -->
@@ -90,8 +90,8 @@
             <div class="col-span-6 sm:col-span-6" style="display: flex">
                 <!-- Departamento -->
                 <v-col cols="12" sm="6">
-                    <jet-label for="departamento" value="Departamento" />
-                    <select name="departamento" id="departamento" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color: #EFEDED" v-model="form.departamento">
+                    <jet-label for="departamento" value="Departamento (Deshabilitado)" />
+                    <select disabled name="departamento" id="departamento" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color: #EFEDED" v-model="form.departamento">
                         <option value="La Paz">La Paz</option>
                         <option value="Cochabamba">Cochabamba</option>
                         <option value="Santa Cruz">Santa Cruz</option>
@@ -106,16 +106,16 @@
                 </v-col>
                 <!-- Director -->
                 <v-col cols="12" sm="6">
-                    <jet-label for="director" value="Director" />
-                    <jet-input id="director" type="text" class="mt-1 block w-full" v-model="form.director" style="background: #EFEDED"/>
+                    <jet-label for="director" value="Director (Deshabilitado)" />
+                    <jet-input disabled id="director" type="text" class="mt-1 block w-full" v-model="form.director" style="background: #EFEDED"/>
                     <jet-input-error :message="form.errors.director" class="mt-2" />
                 </v-col>
             </div>
             <div class="col-span-6 sm:col-span-6" style="display: flex">
                 <!-- Grado -->
                 <v-col cols="12" sm="6">
-                    <jet-label for="grado" value="Grado" />
-                    <select name="grado" id="grado" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color:#EFEDED" v-model="form.grado">
+                    <jet-label for="grado" value="Grado (Deshabilitado)" />
+                    <select disabled name="grado" id="grado" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color:#EFEDED" v-model="form.grado">
                         <option disabled value="Policial">POLICIAL</option>
                         <option value="Cabo">Cabo</option>
                         <option value="Sargento">Sargento</option>
@@ -140,8 +140,8 @@
                 </v-col>
                 <!-- Rol -->
                 <v-col cols="12" sm="6">
-                    <jet-label value="Rol" />
-                    <jet-label class="rounded-md shadow-sm" style="background-color:#EFEDED; padding: 10px; margin-top: 3px; font-size: 15px" v-model="form.rol" />
+                    <jet-label value="Rol (Deshabilitado)" />
+                    <jet-input class="mt-1 block w-full" disabled style="background: #EFEDED" type="text" :value="form.rol" />
                 </v-col>
             </div>
             

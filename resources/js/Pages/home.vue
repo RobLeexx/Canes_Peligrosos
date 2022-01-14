@@ -536,67 +536,29 @@
                         </v-btn>
                     </v-col>
                 </v-row>
-                <h1 class="d-none d-sm-block" style="text-align: center; font-size: 40px; color: #388E3C; font-weight: bold; padding: 20px">Publicaciones de Terceros</h1>
-                <h1 class="d-block d-sm-none" style="text-align: center; font-size: 40px; color: #388E3C; font-weight: bold; padding: 20px">Publicaciones de Terceros</h1>
-
-                <v-row>
-                    <v-col cols="12" sm="4" class="text-center" style="padding: 50px">
-                        <v-btn
-                        rounded
-                        color="red"
-                        x-large
-                        dark
-                        href="https://www.youtube.com/watch?v=8LWPPNUKilo&ab_channel=BoliviatvOficial" target="_blank"
-                        >
-                        Youtube - Cochabamba
-                        </v-btn>
-                    </v-col>
-                    <v-col cols="12" sm="4" class="text-center" style="padding: 50px">
-                        <v-btn
-                        rounded
-                        color="deep-orange"
-                        x-large
-                        dark
-                        href="https://www.la-razon.com/sociedad/2021/03/26/logran-adiestran-a-canes-de-la-policia-para-detectar-covid-19/" target="_blank"
-                        >
-                        La Razón - Santa Cruz
-                        </v-btn>
-                    </v-col>
-                    <v-col cols="12" sm="4" class="text-center" style="padding: 50px">
-                        <v-btn
-                        rounded
-                        color="deep-orange"
-                        x-large
-                        dark
-                        href="https://web.senado.gob.bo/prensa/noticias/senado-entrega-declaraci%C3%B3n-camaral-al-centro-de-adiestramiento-de-canes-de-la" target="_blank"
-                        >
-                        Senado - Santa Cruz
-                        </v-btn>
-                    </v-col>
-                </v-row>
-
+                
                 <div ref="capacitaciones" style="padding-bottom: 120px">
                 </div>
                 <h1 class="d-none d-sm-block" style="text-align: center; font-size: 40px; color: #388E3C; font-weight: bold; padding: 20px">Capacitaciones</h1>
                 <h1 class="d-block d-sm-none" style="text-align: center; font-size: 40px; color: #388E3C; font-weight: bold; padding: 20px">Capacitaciones</h1>
 
                 <h1 style="font-size: 25px; color: #388E3C; font-weight: bold; padding: 20px">La Paz</h1>
-                <v-btn text style="padding-left: 20px; font-size: 20px" href="https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MJYSGC-ISSP-14-20-ANX.pdf">CAPACITACIONES DE CANES - LA PAZ - DICIEMBRE 2021</v-btn>
+                <v-btn text style="padding-left: 20px; font-size: 20px">CAPACITACIONES DE CANES - LA PAZ - DICIEMBRE 2021</v-btn>
 
                 <h1 style="font-size: 25px; color: #388E3C; font-weight: bold; padding: 20px">Cochabamba</h1>
-                <v-btn text style="padding-left: 20px; font-size: 20px" href="https://www.lexivox.org/norms/BO-L-N553.xhtml">REGLAMENTO PARA LA EMISIÓN DE LA AUTORIZACIÓN DE LICENCIA DE CRIANZA DE CANES - COCHABAMBA - NOVIEMBRE 2021</v-btn>
+                <v-btn text style="padding-left: 20px; font-size: 20px">REGLAMENTO PARA LA EMISIÓN DE LA AUTORIZACIÓN DE LICENCIA DE CRIANZA DE CANES - COCHABAMBA - NOVIEMBRE 2021</v-btn>
 
                 <h1 style="font-size: 25px; color: #388E3C; font-weight: bold; padding: 20px">Santa Cruz</h1>
-                <v-btn text style="padding-left: 20px; font-size: 20px" href="https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MJYSGC-ISSP-14-20-ANX.pdf">NORMA DE CAPACITADORES REGLAMENTADOS PARA LA LICENCIA CAPACITACIÓN CANINA - ENERO 2021</v-btn>
+                <v-btn text style="padding-left: 20px; font-size: 20px">NORMA DE CAPACITADORES REGLAMENTADOS PARA LA LICENCIA CAPACITACIÓN CANINA - ENERO 2021</v-btn>
 
                 <h1 style="font-size: 25px; color: #388E3C; font-weight: bold; padding: 20px">Oruro</h1>
-                <v-btn text style="padding-left: 20px; font-size: 20px" href="https://www.lexivox.org/norms/BO-L-N553.xhtml">CAPACITACIONES PARA PERROS EN OBEDIENCIA Y CANOTERAPIA - ORURO - DICIEMBRE 2021</v-btn>
+                <v-btn text style="padding-left: 20px; font-size: 20px">CAPACITACIONES PARA PERROS EN OBEDIENCIA Y CANOTERAPIA - ORURO - DICIEMBRE 2021</v-btn>
 
                 <h1 style="font-size: 25px; color: #388E3C; font-weight: bold; padding: 20px">Sucre</h1>
-                <v-btn text style="padding-left: 20px; font-size: 20px" href="https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MJYSGC-ISSP-14-20-ANX.pdf">REGULARIZACIÓN PARA LA CRIANZA DE PERROS AL PÚBLICO GENERAL - SUCRE - FREBRERO 2021</v-btn>
+                <v-btn text style="padding-left: 20px; font-size: 20px">REGULARIZACIÓN PARA LA CRIANZA DE PERROS AL PÚBLICO GENERAL - SUCRE - FREBRERO 2021</v-btn>
 
                 <h1 style="font-size: 25px; color: #388E3C; font-weight: bold; padding: 20px">Potosí</h1>
-                <v-btn text style="padding-left: 20px; font-size: 20px" href="https://www.lexivox.org/norms/BO-L-N553.xhtml">INSCRIPCIONES DE CURSOS DE VERANO PARA EL ENTRENAMIENTO DE CANES EN POTOSÍ DE LA POLICÍA PARA EL PÚBLICO GENERAL - POTOSÍ - MARZO 2021</v-btn>
+                <v-btn text style="padding-left: 20px; font-size: 20px">INSCRIPCIONES DE CURSOS DE VERANO PARA EL ENTRENAMIENTO DE CANES EN POTOSÍ DE LA POLICÍA PARA EL PÚBLICO GENERAL - POTOSÍ - MARZO 2021</v-btn>
             </div>
 
             <h1 style="text-align: center; font-size: 30px; color: #388E3C; font-weight: bold; padding: 20px; padding: 50px">Encuétranos en tu Departamento</h1>
@@ -611,7 +573,7 @@
                 cols="12"
                 style="color: white"
                 >
-                {{ new Date().getFullYear() }} — <strong style="color: white">La Salle</strong>
+                {{ new Date().getFullYear() }} — <strong style="color: white">Dirección Nacional de Tecnología y Telemática</strong>
                 </v-col>
             </v-footer>
             </div>

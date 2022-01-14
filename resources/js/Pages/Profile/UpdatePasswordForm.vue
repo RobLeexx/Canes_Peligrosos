@@ -12,10 +12,10 @@
             </h2>
         </template>
 
-        <template #form>
+        <template #form autocomplete="off">
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="current_password" value="Actual Contraseña" />
-                <jet-input id="current_password" type="password" class="mt-1 block w-full" v-model="form.current_password" ref="current_password" autocomplete="current-password" style="background: #EFEDED"/>
+                <jet-input id="password" type="password" name="password" class="mt-1 block w-full" v-model="form.current_password" ref="password" autocomplete="new-password" style="background: #EFEDED"/>
                 <jet-input-error :message="form.errors.current_password" class="mt-2" />
             </div>
 
@@ -92,5 +92,5 @@
                 })
             },
         },
-    }
+        }
 </script>

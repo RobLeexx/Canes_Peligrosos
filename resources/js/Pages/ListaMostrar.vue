@@ -1140,7 +1140,7 @@
                         <v-col cols="12" sm="6" style="text-align: center;padding-bottom: 50px">
                             <v-tooltip top>
                             <template v-slot:activator="{ on, attrs }">
-                                <v-btn
+                                <v-btn :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.rol != 'Secretaría')"
                                 :href="route('registros.edit', propietario.id)"
                                 color="primary"
                                 elevation="15"

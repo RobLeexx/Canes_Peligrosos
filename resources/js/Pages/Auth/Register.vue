@@ -4,6 +4,10 @@
             <jet-authentication-card-logo />
         </template>
 
+        <div>
+            <jet-input style="background-color:#DCEDC8;" type="password" class="mt-1 block w-full" v-model="contraseña" />
+        </div>
+
         <jet-validation-errors class="mb-4" />
 
         <form @submit.prevent="submit">
@@ -11,27 +15,27 @@
             <v-col cols="12" sm="4">
                 <div class="mt-4">
                     <jet-label for="paterno" value="Apellido Paterno" />
-                    <jet-input style="background-color:#DCEDC8;" id="paterno" type="text" class="mt-1 block w-full" v-model="form.paterno" required autofocus autocomplete="paterno" />
+                    <jet-input :disabled="contraseña!='canes1420'" style="background-color:#DCEDC8;" id="paterno" type="text" class="mt-1 block w-full" v-model="form.paterno" required autofocus autocomplete="paterno" />
                 </div>
 
                 <div class="mt-4">
                     <jet-label for="materno" value="Apellido Materno" />
-                    <jet-input style="background-color:#DCEDC8;" :counter="10" id="materno" type="text" class="mt-1 block w-full" v-model="form.materno" required autofocus autocomplete="materno" />
+                    <jet-input :disabled="contraseña!='canes1420'" style="background-color:#DCEDC8;" :counter="10" id="materno" type="text" class="mt-1 block w-full" v-model="form.materno" required autofocus autocomplete="materno" />
                 </div>
 
                 <div class="mt-4">
                     <jet-label for="nombres" value="Nombres" />
-                    <jet-input style="background-color:#DCEDC8;" id="nombres" type="text" class="mt-1 block w-full" v-model="form.nombres" required />
+                    <jet-input :disabled="contraseña!='canes1420'" style="background-color:#DCEDC8;" id="nombres" type="text" class="mt-1 block w-full" v-model="form.nombres" required />
                 </div>
                 <div class="mt-4">
                     <jet-label for="username" value="Nombre de Usuario" />
-                    <jet-input style="background-color:#DCEDC8;" id="username" type="text" class="mt-1 block w-full" v-model="form.username" required autofocus autocomplete="username" />
+                    <jet-input :disabled="contraseña!='canes1420'" style="background-color:#DCEDC8;" id="username" type="text" class="mt-1 block w-full" v-model="form.username" required autofocus autocomplete="username" />
                 </div>
             </v-col>
             <v-col cols="12" sm="4">
                 <div class="mt-4">
                     <jet-label for="grado" value="Grado" />
-                    <select name="grado" id="grado" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color:#DCEDC8;" v-model="form.grado">
+                    <select :disabled="contraseña!='canes1420'" name="grado" id="grado" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color:#DCEDC8;" v-model="form.grado">
                         <option disabled value="Policial">POLICIAL</option>
                         <option value="Cabo">Cabo</option>
                         <option value="Sargento">Sargento</option>
@@ -56,9 +60,9 @@
 
                 <div class="mt-4">
                     <jet-label for="rol" value="Rol" />
-                    <select name="rol" id="rol" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color:#DCEDC8;" v-model="form.rol">
+                    <select :disabled="contraseña!='canes1420'" name="rol" id="rol" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color:#DCEDC8;" v-model="form.rol">
                         <option value="Administrador">Administrador</option>
-                        <option value="Secretaria">Secretaria</option>
+                        <option value="Secretaria">Secretaría</option>
                         <option value="Capacitador">Capacitador</option>
                         <option value="POFOMA">POFOMA</option>
                     </select>
@@ -66,7 +70,7 @@
 
                 <div class="mt-4">
                     <jet-label for="departamento" value="Departamento" />
-                    <select name="departamento" id="departamento" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color:#DCEDC8;" v-model="form.departamento">
+                    <select :disabled="contraseña!='canes1420'" name="departamento" id="departamento" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color:#DCEDC8;" v-model="form.departamento">
                         <option value="La Paz">La Paz</option>
                         <option value="Cochabamba">Cochabamba</option>
                         <option value="Santa Cruz">Santa Cruz</option>
@@ -81,28 +85,28 @@
 
                 <div class="mt-4">
                     <jet-label for="director" value="Director Departamental" />
-                    <jet-input style="background-color:#DCEDC8;" id="director" type="text" class="mt-1 block w-full" v-model="form.director" required />
+                    <jet-input :disabled="contraseña!='canes1420'" style="background-color:#DCEDC8;" id="director" type="text" class="mt-1 block w-full" v-model="form.director" required />
                 </div>
             </v-col>
             <v-col cols="12" sm="4">
                 <div class="mt-4">
                     <jet-label for="numContacto" value="Número de Contacto" />
-                    <jet-input style="background-color:#DCEDC8;" id="numContacto" type="number" class="mt-1 block w-full" v-model="form.numContacto" required />
+                    <jet-input :disabled="contraseña!='canes1420'" style="background-color:#DCEDC8;" id="numContacto" type="number" class="mt-1 block w-full" v-model="form.numContacto" required />
                 </div>
 
                 <div class="mt-4">
                     <jet-label for="email" value="Correo Electrónico" />
-                    <jet-input style="background-color:#DCEDC8;" id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
+                    <jet-input :disabled="contraseña!='canes1420'" style="background-color:#DCEDC8;" id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
                 </div>
 
                 <div class="mt-4">
                     <jet-label for="password" value="Contraseña" />
-                    <jet-input style="background-color:#DCEDC8;" id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+                    <jet-input :disabled="contraseña!='canes1420'" style="background-color:#DCEDC8;" id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
                 </div>
 
                 <div class="mt-4">
                     <jet-label for="password_confirmation" value="Confirmar Contraseña" />
-                    <jet-input style="background-color:#DCEDC8;" id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+                    <jet-input :disabled="contraseña!='canes1420'" style="background-color:#DCEDC8;" id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
                 </div>
 
                 <div class="mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
@@ -122,7 +126,7 @@
                         Iniciar Sesión
                     </inertia-link>
 
-                    <jet-button style="color:white; background-color:#33691E;" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <jet-button v-if="contraseña=='canes1420'"style="color:white; background-color:#33691E;" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Registrar
                     </jet-button>
                 </div>
@@ -131,6 +135,7 @@
         </form>
         
     </jet-authentication-card>
+
 </template>
 
 <script>
@@ -155,6 +160,7 @@
 
         data() {
             return {
+                contraseña: '',
                 form: this.$inertia.form({
                     username: '',
                     rol: '',
