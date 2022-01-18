@@ -734,7 +734,7 @@
                                 </v-card>
                                 <div style="padding: 15px">
                                     <v-btn
-                                    :disabled="!form2IsValid"
+                                    :disabled="form2IsValid"
                                     color="primary"
                                     @click="e6 = 3"
                                     >
@@ -2295,7 +2295,7 @@
                                 </v-card>
                                 <div style="padding: 15px">
                                     <v-btn
-                                        :disabled="!form5IsValid"
+                                        :disabled="form5IsValid"
                                         color="primary"
                                         @click="submitData"
                                     >
