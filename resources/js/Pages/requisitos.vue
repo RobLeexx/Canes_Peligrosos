@@ -734,7 +734,7 @@
                                 </v-card>
                                 <div style="padding: 15px">
                                     <v-btn
-                                    :disabled="form2IsValid"
+                                    :disabled="!form2IsValid"
                                     color="primary"
                                     @click="e6 = 3"
                                     >
@@ -2295,7 +2295,7 @@
                                 </v-card>
                                 <div style="padding: 15px">
                                     <v-btn
-                                        :disabled="form5IsValid"
+                                        :disabled="!form5IsValid"
                                         color="primary"
                                         @click="submitData"
                                     >
@@ -2715,6 +2715,9 @@
                 canConvivencia: null,
 
                 cac: this.$page.props.user.departamento,
+                grupo: 'Ninguno',
+                capacitacion: 'Sin Comenzar',
+                creado_por: this.$page.props.user.id,
             },
             }
         },

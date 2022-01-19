@@ -31,6 +31,9 @@ class Propietario extends Model
         'telefono',
         'email',
         'contactoAlterno',
-        'cac'
+        'cac',
+        'grupo',
+        'capacitacion',
+        'creado_por',
     ];
 }

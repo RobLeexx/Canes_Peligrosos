@@ -1134,7 +1134,8 @@
                                 v-on="on"
                                 ><v-icon>mdi-text-box</v-icon></v-btn>
                             </template>
-                            <span>Generar Autorización</span>
+                            <span v-if="($page.props.user.rol == 'Administrador') && ($page.props.user.rol == 'Secretaría')">Generar Autorización</span>
+                            <span>Ver Autorización</span>
                             </v-tooltip>
                         </v-col>
                         <v-col cols="12" sm="6" style="text-align: center;padding-bottom: 50px">

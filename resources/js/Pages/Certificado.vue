@@ -231,6 +231,7 @@
                 <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn
+                    :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.rol != 'Secretaría')"
                     @click="downloadPDF"
                     color="primary"
                     elevation="15"
