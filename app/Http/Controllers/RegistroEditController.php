@@ -154,7 +154,7 @@ class RegistroEditController extends Controller
             $path = $request->file('seguroFile')->storeAs($destination_path,$seguro_name);
 
             $input['seguroFile'] = $seguro_name;
-            $antecedente->update(['seguroFile'=>$input['seguroFile']]);
+            $seguro->update(['seguroFile'=>$input['seguroFile']]);
         }
         unset($input['seguroFile']);
         $seguro->fill($input)->save();
