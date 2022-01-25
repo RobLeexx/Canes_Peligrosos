@@ -723,6 +723,28 @@
                                                     ></v-text-field>
                                                 </template>
                                             </v-col>
+                                            <v-col cols="12" sm="12">
+                                                <v-subheader>Boleta de Pago para la emisión de la Autorización</v-subheader>
+                                            </v-col>
+                                            <v-col cols="12" lg="12" sm="12">
+                                                <template>
+                                                    <v-file-input style="height: 45px"
+                                                        v-model="form.boleta"
+                                                        outlined
+                                                        dense
+                                                        show-size
+                                                    ><template v-slot:label>
+                                                        <div>
+                                                        Foto o escaneo de la Boleta de Pago<small> (opcional)</small>
+                                                        </div>
+                                                        </template></v-file-input>
+                                                    <v-subheader style="
+                                                        display: flex;
+                                                        align-items: flex-start;
+                                                        justify-content: flex-end;">
+                                                        *Solo se admite un elemento</v-subheader>
+                                                </template>
+                                            </v-col>
                                             </v-row>
                                         </v-container>
                                         </v-form>
@@ -2636,6 +2658,7 @@
                 telefono: null,
                 email: null,
                 contactoAlterno: null,
+                boleta: null,
                 /* Antecedentes */
                 numCanes: null,
                 aFechaHoraCanes: null,

@@ -553,7 +553,7 @@
                                                 <!-- Municipios de Oruro -->
                                                     <v-autocomplete v-else-if="form.provincia == 'Sabaya'" v-model="form.municipio" :items= "muniOR1" placeholder="Municipio de Sabaya" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Carangas'" v-model="form.municipio" :items= "muniOR2" placeholder="Municipio de Carangas" :rules="vacio" outlined></v-autocomplete>
-                                                    <v-autocomplete v-else-if="form.provincia == 'Cercado'" v-model="form.municipio" :items= "muniOR3" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Cercado (Oruro)'" v-model="form.municipio" :items= "muniOR3" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Eduardo Abaroa'" v-model="form.municipio" :items= "muniOR4" placeholder="Municipio de Eduardo Abaroa" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Ladislao Cabrera'" v-model="form.municipio" :items= "muniOR5" placeholder="Municipio de Ladislao Cabrera" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Litoral'" v-model="form.municipio" :items= "muniOR6" placeholder="Municipio de Litoral" :rules="vacio" outlined></v-autocomplete>
@@ -588,7 +588,7 @@
                                                 <!-- Municipios de Tarija -->
                                                     <v-autocomplete v-else-if="form.provincia == 'Aniceto Arce'" v-model="form.municipio" :items= "muniTJ1" placeholder="Municipio de Aniceto Arce" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Avilés'" v-model="form.municipio" :items= "muniTJ2" placeholder="Municipio de Avilés" :rules="vacio" outlined></v-autocomplete>
-                                                    <v-autocomplete v-else-if="form.provincia == 'Cercado'" v-model="form.municipio" :items= "muniTJ3" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Cercado (Tarija)'" v-model="form.municipio" :items= "muniTJ3" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Gran Chaco'" v-model="form.municipio" :items= "muniTJ4" placeholder="Municipio de Gran Chaco" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Méndez'" v-model="form.municipio" :items= "muniTJ5" placeholder="Municipio de Méndez" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'O`Connor'" v-model="form.municipio" :items= "muniTJ6" placeholder="Municipio de O`Connor" :rules="vacio" outlined></v-autocomplete>
@@ -609,7 +609,7 @@
                                                     <v-autocomplete v-else-if="form.provincia == 'Vallegrande'" v-model="form.municipio" :items= "muniSC14" placeholder="Municipio de Vallegrande" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Warnes'" v-model="form.municipio" :items= "muniSC15" placeholder="Municipio de Warnes" :rules="vacio" outlined></v-autocomplete>
                                                 <!-- Municipios de Beni -->
-                                                    <v-autocomplete v-else-if="form.provincia == 'Cercado'" v-model="form.municipio" :items= "muniBE1" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
+                                                    <v-autocomplete v-else-if="form.provincia == 'Cercado (Beni)'" v-model="form.municipio" :items= "muniBE1" placeholder="Municipio de Cercado" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Iténez'" v-model="form.municipio" :items= "muniBE2" placeholder="Municipio de Iténez" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'José Ballivián'" v-model="form.municipio" :items= "muniBE3" placeholder="Municipio de José Ballivián" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Mamoré'" v-model="form.municipio" :items= "muniBE4" placeholder="Municipio de Mamoré" :rules="vacio" outlined></v-autocomplete>
@@ -650,7 +650,6 @@
                                                     </div>
                                                     <div
                                                         id="latitud"
-                                                        v-model="form.latitud"
                                                     >{{ propietario.latitud }}</div>
                                                 </div>
                                             </v-col>
@@ -661,7 +660,6 @@
                                                     </div>
                                                     <div
                                                         id="longitud"
-                                                        v-model="form.longitud"
                                                     >{{ propietario.longitud }}</div>
                                                 </div>
                                             </v-col>
@@ -730,6 +728,31 @@
                                                         outlined
                                                         type="number"
                                                     ></v-text-field>
+                                                </template>
+                                            </v-col>
+                                            <v-col cols="12" sm="12">
+                                                <v-subheader>Boleta de Pago para la emisión de la Autorización</v-subheader>
+                                            </v-col>
+                                            <v-col cols="12" lg="12" sm="12">
+                                                <template>
+                                                    <v-file-input style="height: 45px"
+                                                        v-model="form.boleta"
+                                                        outlined
+                                                        dense
+                                                        show-size
+                                                    ><template v-slot:label>
+                                                    <div v-if="propietario.boleta">
+                                                    {{ propietario.boleta }}
+                                                    </div>
+                                                    <div v-else>
+                                                        SIN DOCUMENTO ADJUNTADO
+                                                    </div>
+                                                    </template></v-file-input>
+                                                    <v-subheader style="
+                                                        display: flex;
+                                                        align-items: flex-start;
+                                                        justify-content: flex-end;">
+                                                        *Solo se admite un elemento</v-subheader>
                                                 </template>
                                             </v-col>
                                             </v-row>
@@ -2462,7 +2485,7 @@
                 muniCB15:['Tapacarí'],
                 muniCB16:['Tiraque','Shinahota'],
                 /* Oruro */
-                provOR:['Sabaya','Carangas','Cercado','Eduardo Abaroa','Ladislao Cabrera','Litoral','Mejillones','Nor Carangas','Pantaleón Dalence','Poopó','Sajama','San Pedro de Totora','Saucarí','Sebastián, Pagador','Sud Carangas','Tomás Barrón'],
+                provOR:['Sabaya','Carangas','Cercado (Oruro)','Eduardo Abaroa','Ladislao Cabrera','Litoral','Mejillones','Nor Carangas','Pantaleón Dalence','Poopó','Sajama','San Pedro de Totora','Saucarí','Sebastián, Pagador','Sud Carangas','Tomás Barrón'],
                 muniOR1:['Sabaya','Chipaya','Coipasa'],
                 muniOR2:['Corque','Choquecota'],
                 muniOR3:['Oruro','Caracollo','El Choro','Soracachi'],
@@ -2498,7 +2521,7 @@
                 muniPT15:['San Pablo de Lípez','Mojinete','San Antonio de Esmoruco'],
                 muniPT16:['Potosí','Tinguipaya','Urmiri','Villa de Yocalla'],
                 /* Tarija */
-                provTJ:['Aniceto Arce','Avilés','Cercado','Gran Chaco','Méndez','O`Connor'],
+                provTJ:['Aniceto Arce','Avilés','Cercado (Tarija)','Gran Chaco','Méndez','O`Connor'],
                 muniTJ1:['Padcaya','Bermejo'],
                 muniTJ2:['Uriondo','Yunchará'],
                 muniTJ3:['Tarija'],
@@ -2523,7 +2546,7 @@
                 muniSC14:['Vallegrande','El Trigal','Moro Moro','Postrervalle','Pucará'],
                 muniSC15:['Warnes','Okinawa I'],
                 /* Beni */
-                provBE:['Cercado','Iténez','José Ballivián','Mamoré','Marbán','Moxos','Vaca Díez','Yacuma'],
+                provBE:['Cercado (Beni)','Iténez','José Ballivián','Mamoré','Marbán','Moxos','Vaca Díez','Yacuma'],
                 muniBE1:['Trinidad','San Javier'],
                 muniBE2:['Magdalena','Baures','Huacaraje'],
                 muniBE3:['Reyes','Rurrenabaque','San Borja','Santa Rosa'],
@@ -2673,6 +2696,7 @@
                 telefono: this.propietario.telefono,
                 email: this.propietario.email,
                 contactoAlterno: this.propietario.contactoAlterno,
+                boleta: null,
                 /* Antecedentes */
                 numCanes: this.antecedente.numCanes,
                 aFechaHoraCanes: this.antecedente.aFechaHoraCanes,

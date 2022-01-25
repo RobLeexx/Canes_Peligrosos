@@ -49,6 +49,17 @@ class RegistroEditController extends Controller
             $input['docFile'] = $ide_name;
             $propietario->update(['docFile'=>$input['docFile']]);
         }
+        if($request->hasFile('boleta'))
+        {
+            $destination_path = 'public/doc/boletas';
+            $bol = $request->file('boleta');
+            $bol_name = $propDOC.'_';
+            $bol_name .= $bol->getClientOriginalName();
+            $path = $request->file('boleta')->storeAs($destination_path,$bol_name);
+
+            $input['boleta'] = $bol_name;
+            $propietario->update(['boleta'=>$input['boleta']]);
+        }
         if($request->hasFile('fotoProp'))
         {
             $destination_path = 'public/images/propietarios';
@@ -60,7 +71,7 @@ class RegistroEditController extends Controller
             $input['fotoProp'] = $image_PropName;
             $propietario->update(['fotoProp'=>$input['fotoProp']]);
         }
-        unset($input['docFile'],$input['fotoProp']);
+        unset($input['docFile'],$input['fotoProp'],$input['boleta']);
         $propietario->fill($input)->save();
         
         /* MEMORIAL */

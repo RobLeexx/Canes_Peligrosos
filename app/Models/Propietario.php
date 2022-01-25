@@ -31,6 +31,7 @@ class Propietario extends Model
         'telefono',
         'email',
         'contactoAlterno',
+        'boleta',
         'cac',
         'grupo',
         'capacitacion',

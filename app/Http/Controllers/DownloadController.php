@@ -18,6 +18,11 @@ class DownloadController extends Controller
         $path = public_path('storage/doc/identificaciones/'. $doc);
         return response()->download($path);
     }
+    public function downloadBol($boleta)
+    {
+        $path = public_path('storage/doc/boletas/'. $boleta);
+        return response()->download($path);
+    }
     public function downloadCanes($canesFile)
     {
         $path = public_path('storage/doc/antecedentes/'. $canesFile);

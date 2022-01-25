@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::get('/identificaciones/{doc}', [DownloadController::class, 'downloadDoc'])->name('downloadDoc');
 
+    Route::get('/boletas/{boleta}', [DownloadController::class, 'downloadBol'])->name('downloadBol');
+
     Route::get('/antecedentes/{canesFile}', [DownloadController::class, 'downloadCanes'])->name('downloadCanes');
 
     Route::get('/antecedentes/{rejap}', [DownloadController::class, 'downloadRejap'])->name('downloadRejap');

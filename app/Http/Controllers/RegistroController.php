@@ -95,6 +95,16 @@ class RegistroController extends Controller
 
             $input['docFile'] = $ide_name;
         }
+        if($request->hasFile('boleta'))
+        {
+            $destination_path = 'public/doc/boletas';
+            $bol = $request->file('boleta');
+            $bol_name = $propDOC.'_';
+            $bol_name .= $bol->getClientOriginalName();
+            $path = $request->file('boleta')->storeAs($destination_path,$bol_name);
+
+            $input['boleta'] = $bol_name;
+        }
         if($request->hasFile('aCanesFile'))
         {
             $destination_path = 'public/doc/antecedentes';

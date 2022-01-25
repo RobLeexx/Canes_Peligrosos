@@ -39,6 +39,8 @@ class CreatePropietariosTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('email')->nullable();
             $table->string('contactoAlterno')->nullable();
+            /* Boleta de Pago */
+            $table->string('boleta')->nullable();
             /* C.A.C */
             $table->string('cac');
             $table->string('grupo');
