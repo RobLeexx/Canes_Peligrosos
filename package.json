@@ -21,6 +21,7 @@
         "jspdf-autotable": "^3.5.23",
         "mapbox-gl": "^0.53.1",
         "mapbox-gl-vue": "^2.0.4",
+        "moment": "^2.29.1",
         "nelo-mapbox-geocoder": "^1.0.24",
         "pdfjs-dist": "^2.12.313",
         "vue": "^2.6.14",

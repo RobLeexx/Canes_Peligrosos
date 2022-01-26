@@ -1,5 +1,5 @@
 <template>
-    <app-layout v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.rol == 'Secretaría')">
+    <app-layout v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.id == propietario.creado_por)">
         <template #header>
             <v-row>
                 <v-btn fab small text :href="route('registros.show', propietario.id)"><v-icon>mdi-arrow-left-circle</v-icon></v-btn>

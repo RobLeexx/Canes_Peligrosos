@@ -21,13 +21,6 @@
                 <jet-input style="background-color:#DCEDC8;" id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
             </div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <jet-checkbox style="background-color:#33691E;" name="remember" v-model="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Recuérdame</span>
-                </label>
-            </div>
-
             <div class="flex items-center justify-end mt-4">
                 <inertia-link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     ¿Olvidaste tu contraseña?

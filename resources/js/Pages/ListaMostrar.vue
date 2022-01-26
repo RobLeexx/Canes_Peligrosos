@@ -772,7 +772,7 @@
                                     <template>
                                     <v-expansion-panels focusable>
                                         <v-expansion-panel>
-                                        <v-expansion-panel-header disable-icon-rotate>Capacitación
+                                        <v-expansion-panel-header disable-icon-rotate> Microchip y Capacitación
                                             <template v-slot:actions>
                                                 <v-icon color="primary">
                                                 mdi-dog-side
@@ -863,11 +863,11 @@
                                                 <v-icon v-else-if="antecedente.aCanes != 'Ninguno' || antecedente.aRejap != 'Ninguno' || antecedente.aFelcc != 'Ninguno' || antecedente.aFelcn != 'Ninguno' || antecedente.aFelcv != 'Ninguno'" color="orange darken-2">
                                                 mdi-police-badge
                                                 </v-icon>
-                                                <v-icon v-else color="#33691E">
+                                                <v-icon v-else color="primary">
                                                 mdi-police-badge
                                                 </v-icon>
                                             </div>
-                                            <v-icon v-if="propietario.boleta" color="#33691E">
+                                            <v-icon v-if="propietario.boleta" color="primary">
                                             mdi-account-cash
                                             </v-icon>
                                             <v-icon v-else color="red">
@@ -885,7 +885,7 @@
 
                                                     <v-tooltip v-if="antecedente.aCanesFile" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadCanes', antecedente.aCanesFile)" small color="#33691E" fab text v-bind="attrs" v-on="on">
+                                                            <v-btn :href="route('downloadCanes', antecedente.aCanesFile)" small color="primary" fab text v-bind="attrs" v-on="on">
                                                                 <v-icon v-if="antecedente.aCanes == 'Ninguno'">mdi-text-box-check</v-icon>
                                                                 <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
                                                             </v-btn>
@@ -934,7 +934,7 @@
                                                     
                                                     <v-tooltip v-if="antecedente.aRejapFile" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadRejap', antecedente.aRejapFile)" small color="#33691E" fab text v-bind="attrs" v-on="on">
+                                                            <v-btn :href="route('downloadRejap', antecedente.aRejapFile)" small color="primary" fab text v-bind="attrs" v-on="on">
                                                                 <v-icon v-if="antecedente.aRejap == 'Ninguno'">mdi-text-box-check</v-icon>
                                                                 <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
                                                             </v-btn>
@@ -983,7 +983,7 @@
                                                     
                                                     <v-tooltip v-if="antecedente.aFelccFile" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadFelcc', antecedente.aFelccFile)" small color="#33691E" fab text v-bind="attrs" v-on="on">
+                                                            <v-btn :href="route('downloadFelcc', antecedente.aFelccFile)" small color="primary" fab text v-bind="attrs" v-on="on">
                                                                 <v-icon v-if="antecedente.aFelcc == 'Ninguno'">mdi-text-box-check</v-icon>
                                                                 <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
                                                             </v-btn>
@@ -1032,7 +1032,7 @@
 
                                                     <v-tooltip v-if="antecedente.aFelcnFile" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadFelcn', antecedente.aFelcnFile)" small color="#33691E" fab text v-bind="attrs" v-on="on">
+                                                            <v-btn :href="route('downloadFelcn', antecedente.aFelcnFile)" small color="primary" fab text v-bind="attrs" v-on="on">
                                                                 <v-icon v-if="antecedente.aFelcn == 'Ninguno'">mdi-text-box-check</v-icon>
                                                                 <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
                                                             </v-btn>
@@ -1081,7 +1081,7 @@
                                                     
                                                     <v-tooltip v-if="antecedente.aFelcvFile" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadFelcv', antecedente.aFelcvFile)" small color="#33691E" fab text v-bind="attrs" v-on="on">
+                                                            <v-btn :href="route('downloadFelcv', antecedente.aFelcvFile)" small color="primary" fab text v-bind="attrs" v-on="on">
                                                                 <v-icon v-if="antecedente.aFelcv == 'Ninguno'">mdi-text-box-check</v-icon>
                                                                 <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
                                                             </v-btn>
@@ -1129,8 +1129,8 @@
                                                     
                                                     <v-tooltip v-if="propietario.boleta" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadBol', propietario.boleta)" small color="#33691E" fab text v-bind="attrs" v-on="on">
-                                                                <v-icon color="#33691E">mdi-cash-check</v-icon>
+                                                            <v-btn :href="route('downloadBol', propietario.boleta)" small color="primary" fab text v-bind="attrs" v-on="on">
+                                                                <v-icon>mdi-cash-check</v-icon>
                                                             </v-btn>
                                                         </template>
                                                         <span>{{ propietario.boleta }}</span>
@@ -1142,6 +1142,86 @@
                                                         <span>Sin Boleta de Pago Adjuntada</span>
                                                     </v-tooltip>
 
+                                                </v-row>
+                                            </v-col>
+                                        </v-row>
+                                    </v-expansion-panel-content>
+                                    </v-expansion-panel>
+                                </v-expansion-panels>
+                            </v-col>
+                            <!-- REGISTRO -->
+                            <v-col cols="12" sm="12">
+                                <v-expansion-panels focusable>
+                                    <v-expansion-panel>
+                                    <v-expansion-panel-header disable-icon-rotate>Autores del Registro ({{ sec.departamento }})
+                                        <template v-slot:actions>
+                                            <v-icon v-if="propietario.boleta" color="#33691E">
+                                            mdi-account-supervisor-circle
+                                            </v-icon>
+                                        </template>
+                                    </v-expansion-panel-header>
+                                    <v-expansion-panel-content>
+                                        <v-row>
+                                            <v-col cols="12" sm="6">
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
+                                                    <v-subheader style="padding: 20px">
+                                                        SECRETARÍA
+                                                    </v-subheader>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Registrado por
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ grado }} {{ sec.nombres }} {{ sec.paterno }} {{ sec.materno }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Número de Contacto
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ sec.numContacto }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Email
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ sec.email }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Comandante
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ sec.director }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Fecha de registro
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ creacion }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Última actualizacion
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ actualizacion}}
+                                                    </div>
+                                                </v-row>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
+                                                    <v-subheader style="padding: 20px">
+                                                        CAPACITADOR
+                                                    </v-subheader>
                                                 </v-row>
                                             </v-col>
                                         </v-row>
@@ -1164,14 +1244,14 @@
                                     v-on="on"
                                     ><v-icon>mdi-text-box</v-icon></v-btn>
                                 </template>
-                                <span v-if="($page.props.user.rol == 'Administrador') && ($page.props.user.rol == 'Secretaría')">Generar Autorización</span>
-                                <span>Ver Autorización</span>
+                                <span v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.id == propietario.creado_por)">Generar Autorización</span>
+                                <span v-else>Ver Autorización</span>
                                 </v-tooltip>
                             </v-col>
                             <v-col cols="12" sm="6" style="text-align: center;padding-bottom: 50px">
                                 <v-tooltip top>
                                 <template v-slot:activator="{ on, attrs }">
-                                    <v-btn :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.rol != 'Secretaría')"
+                                    <v-btn :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.id != propietario.creado_por)"
                                     :href="route('registros.edit', propietario.id)"
                                     color="primary"
                                     elevation="15"
@@ -1196,6 +1276,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.10/vuetify.min.js"></script>
 <script>
     import AppLayout from '@/Layouts/AppLayout'
+    import moment from 'moment'
 
     export default {
         props: {
@@ -1204,6 +1285,7 @@
             antecedente: Object,
             seguro: Object,
             can: Object,
+            sec: Object,
         },
         data() {
             return {
@@ -1222,7 +1304,67 @@
                 { title: "Item 3", body: "I am item 3 body text" },
                 { title: "Item 4", body: "I am item 4 body text" }
             ],
+            creacion: [],
+            actualizacion: [],
             }
+        },
+        created(){
+            switch (this.sec.grado)
+            {
+                case 'Cabo':
+                    this.grado = 'Pol.';
+                    break
+                case 'Sargento':
+                    this.grado = 'Sgto.';
+                    break
+                case 'Suboficial':
+                    this.grado = 'Sof.';
+                    break
+                case 'Subteniente':
+                    this.grado = 'Subtte.';
+                    break
+                case 'Teniente':
+                    this.grado = 'Tte.';
+                    break
+                case 'Capitán':
+                    this.grado = 'Cap.';
+                    break
+                case 'Mayor':
+                    this.grado = 'My.';
+                    break
+                case 'Teniente Coronel':
+                    this.grado = 'Tcnl.';
+                    break
+                case 'Coronel':
+                    this.grado = 'Cnl.';
+                    break
+                case 'General':
+                    this.grado = 'Gnal.';
+                    break
+                case 'Estudiante':
+                    this.grado = 'Est.';
+                    break
+                case 'Técnico':
+                    this.grado = 'Tec.';
+                    break
+                case 'Licenciado':
+                    this.grado = 'Lic.';
+                    break
+                case 'Ingeniero':
+                    this.grado = 'Ing.';
+                    break
+                case 'Máster':
+                    this.grado = 'Msc.';
+                    break
+                case 'Doctor':
+                    this.grado = 'Doc.';
+                    break
+                default:
+                    this.grado = 'Funcionario';
+                    break
+            }
+            this.creacion = moment(String(this.propietario.created_at)).format('YYYY-MM-DD hh:mm'),
+            this.actualizacion = moment(String(this.propietario.updated_at)).format('YYYY-MM-DD hh:mm')
         },
         methods: {
             
@@ -1260,6 +1402,7 @@
         },
         components: {
             AppLayout,
+            moment,
         },
     }
 </script>
