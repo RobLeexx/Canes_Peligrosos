@@ -97,19 +97,8 @@
                                 >
                                     <template v-slot:activator="{ on, attrs }">
                                     <v-col cols="12" sm="6" md="6" >
-                                        <v-text-field
+                                        <v-text-field :disabled="turno==null"
                                             v-model="end"
-                                            outlined
-                                            label="Empieza:"
-                                            prepend-icon="mdi-clock-time-four-outline"
-                                            readonly
-                                            v-bind="attrs"
-                                            v-on="on"
-                                        ></v-text-field>
-                                    </v-col>
-                                    <v-col cols="12" sm="6" md="6" >
-                                        <v-text-field
-                                            v-model="start"
                                             outlined
                                             label="Termina:"
                                             prepend-icon="mdi-clock-time-four-outline"
@@ -118,23 +107,52 @@
                                             v-on="on"
                                         ></v-text-field>
                                     </v-col>
+                                    <v-col cols="12" sm="6" md="6" >
+                                        <v-text-field :disabled="turno==null"
+                                            v-model="start"
+                                            outlined
+                                            label="Empieza:"
+                                            prepend-icon="mdi-clock-time-four-outline"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                    </v-col>
                                     </template>
                                     <div style="background-color: white">
+                                        <v-card style="text-align: center">
+                                            <v-card-title style="display: flex; justify-content: center">
+                                                Turno: {{ turno }}
+                                            </v-card-title>
+                                            <div style="padding-bottom: 15px">
+                                                <div v-if="turno == 'Mañana'">
+                                                    Horas habilitadas: 06:00 - 13:00
+                                                </div>
+                                                <div v-else-if="turno == 'Tarde'">
+                                                    Horas habilitadas: 12:00 - 18:00
+                                                </div>
+                                                <div v-else-if="turno == 'Noche'">
+                                                    Horas habilitadas: 18:00 - 21:00
+                                                </div>
+                                            </div>
+                                        </v-card>
                                         <v-row style="margin: 0">
                                             <v-col cols="12" sm="6">
-                                                <v-time-picker scrollable
+                                                <v-time-picker scrollable :color="getColor()"
                                                     v-if="time"
                                                     v-model="start"
                                                     full-width
-                                                    :max="end"
+                                                    :min="minH()"
+                                                    :max="maxH()"
                                                 ></v-time-picker>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-time-picker scrollable
+                                                <v-time-picker scrollable :color="getColor()"
                                                     v-if="time"
                                                     v-model="end"
                                                     full-width
-                                                    :min="start"
+                                                    :min="minH()"
+                                                    :max="maxH()"
                                                 ></v-time-picker>
                                             </v-col>
                                         </v-row>
@@ -268,7 +286,7 @@
                 integrantes: null,
                 tipo: null,
                 turno: null,
-                start: null,
+                start: [],
                 end: null,
                 time: false,
                 time2: null,
@@ -348,6 +366,30 @@
 
                 actions: people.id,
             };
+            },
+            getColor () {
+                switch(this.turno)
+                {
+                    case 'Mañana': return 'yellow'
+                    case 'Tarde': return 'orange lighten-1'
+                    case 'Noche': return 'black lighten-1'
+                }
+            },
+            minH() {
+                switch(this.turno)
+                {
+                    case 'Mañana': return '6:00'
+                    case 'Tarde': return '12:00'
+                    case 'Noche': return '18:00'
+                }
+            },
+            maxH() {
+                switch(this.turno)
+                {
+                    case 'Mañana': return '13:00'
+                    case 'Tarde': return '18:00'
+                    case 'Noche': return '21:00'
+                }
             },
         },
         mounted() {
