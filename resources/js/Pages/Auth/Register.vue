@@ -61,7 +61,7 @@
                 <div class="mt-4">
                     <jet-label for="rol" value="Rol" />
                     <select :disabled="contraseña!='canes1420'" name="rol" id="rol" class="mt-1 block w-full border-gray-300 focus:border-green-700 focus:ring focus:ring-green-800 focus:ring-opacity-50 rounded-md shadow-sm" style="background-color:#DCEDC8;" v-model="form.rol">
-                        <option value="Secretaria">Secretaría</option>
+                        <option value="Secretaría">Secretaría</option>
                         <option value="Capacitador">Capacitador</option>
                         <option value="POFOMA">POFOMA</option>
                     </select>
@@ -125,7 +125,7 @@
                         Iniciar Sesión
                     </inertia-link>
 
-                    <jet-button v-if="contraseña=='canes1420'"style="color:white; background-color:#33691E;" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <jet-button v-if="contraseña=='canes1420'" style="color:white; background-color:#33691E;" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Registrar
                     </jet-button>
                 </div>

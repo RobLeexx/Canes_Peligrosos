@@ -43,8 +43,6 @@ class CreatePropietariosTable extends Migration
             $table->string('boleta')->nullable();
             /* C.A.C */
             $table->string('cac');
-            $table->string('grupo');
-            $table->string('capacitacion');
             $table->string('creado_por');
             $table->timestamps();
         });

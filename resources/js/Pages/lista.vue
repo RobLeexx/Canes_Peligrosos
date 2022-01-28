@@ -10,7 +10,7 @@
         <div class="py-12" style="background: #33691E">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div style="padding-left: 10px; position: absolute; top: 10px">
-                    <v-btn 
+                    <v-btn v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.rol == 'Secretaría')"
                     fab
                     color="primary"
                     :href="route('registros.create')"

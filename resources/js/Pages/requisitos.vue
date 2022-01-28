@@ -100,7 +100,8 @@
                                                             >
                                                             </v-text-field>
                                                         </template>
-                                                        <v-date-picker
+                                                        <div style="margin: 0">
+                                                            <v-date-picker
                                                             v-model="form.dateMemo"
                                                             scrollable
                                                             locale="es"
@@ -114,6 +115,7 @@
                                                             >
                                                                 OK
                                                             </v-btn></v-date-picker>
+                                                        </div>
                                                         </v-dialog>
                                                     </div>
                                                 </template>
@@ -851,8 +853,8 @@
                                                                 </v-flex>
                                             
                                                                 <v-flex style="justify-content: center; padding: 15px">
-                                                                    <v-btn color="primary" @click="confirm1()">Ok</v-btn>
                                                                     <v-btn text @click="dropdownOpen1 = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirm1()">Guardar</v-btn>
                                                                 </v-flex>
                                                             </v-layout>
                                                         </div>
@@ -963,8 +965,8 @@
                                                                 </v-flex>
                                             
                                                                 <v-flex style="justify-content: center; padding: 15px">
-                                                                    <v-btn color="primary" @click="confirm2()">Ok</v-btn>
                                                                     <v-btn text @click="dropdownOpen2 = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirm2()">Guardar</v-btn>
                                                                 </v-flex>
                                                             </v-layout>
                                                         </div>
@@ -1075,8 +1077,8 @@
                                                                 </v-flex>
                                             
                                                                 <v-flex style="justify-content: center; padding: 15px">
-                                                                    <v-btn color="primary" @click="confirm3()">Ok</v-btn>
                                                                     <v-btn text @click="dropdownOpen3 = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirm3()">Guardar</v-btn>
                                                                 </v-flex>
                                                             </v-layout>
                                                         </div>
@@ -1187,8 +1189,8 @@
                                                                 </v-flex>
                                             
                                                                 <v-flex style="justify-content: center; padding: 15px">
-                                                                    <v-btn color="primary" @click="confirm4()">Ok</v-btn>
                                                                     <v-btn text @click="dropdownOpen4 = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirm4()">Guardar</v-btn>
                                                                 </v-flex>
                                                             </v-layout>
                                                         </div>
@@ -1299,8 +1301,8 @@
                                                                 </v-flex>
                                             
                                                                 <v-flex style="justify-content: center; padding: 15px">
-                                                                    <v-btn color="primary" @click="confirm5()">Ok</v-btn>
                                                                     <v-btn text @click="dropdownOpen5 = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirm5()">Guardar</v-btn>
                                                                 </v-flex>
                                                             </v-layout>
                                                         </div>
@@ -1883,7 +1885,7 @@
                                                     label="Foto del Can"
                                                     outlined
                                                     dense
-                                                    prepend-icon="mdi-face"
+                                                    prepend-icon="mdi-dog"
                                                 ></v-text-field>
                                                 <v-text-field class="d-none"
                                                     id="fotoCan"
@@ -2735,10 +2737,15 @@
                 canEvenNum4: null,
                 canConvivencia: null,
 
+                /* Auditoría */
                 cac: this.$page.props.user.departamento,
-                grupo: 'Ninguno',
-                capacitacion: 'Sin Comenzar',
                 creado_por: this.$page.props.user.id,
+
+                /* Capacitaciones */
+                capacitador: 'Ninguno',
+                observaciones: 'Ninguno',
+                capProp: 'Sin Comenzar',
+                capCan: 'Sin Comenzar',
             },
             }
         },

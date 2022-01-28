@@ -57,7 +57,7 @@
             <div class="mt-5">
                 <div v-if="! twoFactorEnabled">
                     <jet-confirms-password @confirmed="enableTwoFactorAuthentication">
-                        <jet-button type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling" style="color:white; background-color:#ADAAAA;" disabled>
+                        <jet-button type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling" style="color:white; background-color:#ADAAAA;">
                             Habilitar
                         </jet-button>
                     </jet-confirms-password>

@@ -35,6 +35,9 @@
                             <h1 style="font-weight: bold; font-size: 13px">DE CANES (C.A.C) DE</h1>
                             <h1 style="font-weight: bold; font-size: 13px; text-transform: uppercase">{{ propietario.cac }}</h1>
                             <h1 style="font-weight: bold; font-size: 15px; padding-top: 15px; padding-right: 80px">Costo Bs.</h1>
+                            <div style="display: flex; justify-content: center; padding: 20px">
+                                <img style="width: 100px; min-width: 100px" src="/storage/img/qr.png">
+                            </div>
                         </v-col>
                     </v-row>
 

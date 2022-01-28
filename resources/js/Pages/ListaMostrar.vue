@@ -706,7 +706,7 @@
                                     <template>
                                     <v-expansion-panels focusable>
                                         <v-expansion-panel>
-                                        <v-expansion-panel-header disable-icon-rotate>Convinvecia del Can
+                                        <v-expansion-panel-header disable-icon-rotate>Convivencia del Can
                                             <template v-slot:actions>
                                                 <v-icon color="primary">
                                                 mdi-dog
@@ -799,49 +799,31 @@
                                             <v-divider></v-divider>
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
                                                 <v-subheader style="padding: 20px">
-                                                    Cuidador o Cuidadores Eventuales
+                                                    Capacitación
                                                 </v-subheader>
                                             </v-row>
-                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
-                                                <div style="padding: 20px">
-                                                    {{ can.canEven1 }}
+                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
+                                                <div style="padding: 20px; font-weight: bold">
+                                                    Grupo
                                                 </div>
                                                 <div style="padding: 20px">
-                                                    {{ can.canEvenNum1 }}
-                                                </div>
-                                            </v-row>
-                                            <v-row v-if="can.canEven2" style="display: flex; justify-content: space-between; padding-inline: 10%">
-                                                <div style="padding: 20px">
-                                                    {{ can.canEven2 }}
-                                                </div>
-                                                <div style="padding: 20px">
-                                                    {{ can.canEvenNum2 }}
+                                                    {{ propietario.grupo }}
                                                 </div>
                                             </v-row>
-                                            <v-row v-if="can.canEven3" style="display: flex; justify-content: space-between; padding-inline: 10%">
-                                                <div style="padding: 20px">
-                                                    {{ can.canEven3 }}
+                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
+                                                <div style="padding: 20px; font-weight: bold">
+                                                    Estado de la Capacitación
                                                 </div>
                                                 <div style="padding: 20px">
-                                                    {{ can.canEvenNum3 }}
-                                                </div>
-                                            </v-row>
-                                            <v-row v-if="can.canEven4" style="display: flex; justify-content: space-between; padding-inline: 10%">
-                                                <div style="padding: 20px">
-                                                    {{ can.canEven4 }}
-                                                </div>
-                                                <div style="padding: 20px">
-                                                    {{ can.canEvenNum4 }}
+                                                    {{ propietario.capacitacion }}
                                                 </div>
                                             </v-row>
-                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
-                                                <v-subheader style="padding: 20px">
-                                                    Motivos de Convivencia con el Can Peligroso
-                                                </v-subheader>
-                                            </v-row>
-                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
+                                                <div style="padding: 20px; font-weight: bold">
+                                                    Capacitador
+                                                </div>
                                                 <div style="padding: 20px">
-                                                    {{ can.canConvivencia }}
+                                                    {{ propietario.capacitado_por }}
                                                 </div>
                                             </v-row>
                                         </v-expansion-panel-content>
@@ -1194,14 +1176,6 @@
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                     <div style="padding: 20px; font-weight: bold">
-                                                        Comandante
-                                                    </div>
-                                                    <div style="padding: 20px">
-                                                        {{ sec.director }}
-                                                    </div>
-                                                </v-row>
-                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
-                                                    <div style="padding: 20px; font-weight: bold">
                                                         Fecha de registro
                                                     </div>
                                                     <div style="padding: 20px">
@@ -1210,21 +1184,80 @@
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                     <div style="padding: 20px; font-weight: bold">
-                                                        Última actualizacion
+                                                        Última actualización
                                                     </div>
                                                     <div style="padding: 20px">
                                                         {{ actualizacion}}
                                                     </div>
                                                 </v-row>
                                             </v-col>
-                                            <v-col cols="12" sm="6">
+                                            <v-col cols="12" sm="6"  v-if="propietario.grupo != 'Ninguno'">
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
                                                     <v-subheader style="padding: 20px">
                                                         CAPACITADOR
                                                     </v-subheader>
                                                 </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Capacitado por
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ grado }} {{ sec.nombres }} {{ sec.paterno }} {{ sec.materno }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Número de Contacto
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ sec.numContacto }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Email
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ sec.email }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Observaciones
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ creacion }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Fecha de capacitación
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ creacion }}
+                                                    </div>
+                                                </v-row>
+                                            </v-col>
+                                            <v-col cols="12" sm="6" v-else>
+                                                <v-row style="display: flex; justify-content: center; padding-inline: 10%; padding-top: 25px; height: 100%; align-content: center">
+                                                    <v-subheader style="padding: 20px; font-weight: bold">
+                                                        CAPACITACIÓN SIN COMENZAR
+                                                    </v-subheader>
+                                                </v-row>
                                             </v-col>
                                         </v-row>
+                                        <v-col cols="12" sm="6">
+                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
+                                                <v-subheader style="padding: 20px">
+                                                    COMANDANTE
+                                                </v-subheader>
+                                            </v-row>
+                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                <div style="padding: 20px">
+                                                    {{ sec.director }}
+                                                </div>
+                                            </v-row>
+                                        </v-col>
                                     </v-expansion-panel-content>
                                     </v-expansion-panel>
                                 </v-expansion-panels>

@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Use App\Http\Controllers\UsuarioController;
-Use App\Http\Controllers\ListaController;
 Use App\Http\Controllers\RegistroController;
+Use App\Http\Controllers\CapacitacionesController;
 Use App\Http\Controllers\RegistroShowController;
 Use App\Http\Controllers\RegistroEditController;
 Use App\Http\Controllers\DownloadController;
@@ -36,13 +36,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
         return Inertia::render('home');
     })->name('home');
     
-    Route::get('/capacitaciones', function () {
-        return Inertia::render('capacitaciones');
-    })->name('capacitaciones');
-    
-    Route::get('/lista', [ListaController::class, 'listaCont'])->name('lista');
-    
-    Route::resource('registros', RegistroController::class)->except('show','edit','update','destroy');
+    Route::resource('/registros', RegistroController::class)->except('show','edit','update','destroy');
+
+    Route::get('/capacitaciones', CapacitacionesController::class)->name('capacitaciones');
 
     Route::get('/registros/{propietario}', RegistroShowController::class)->name('registros.show');
 
