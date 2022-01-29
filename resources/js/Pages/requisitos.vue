@@ -2739,13 +2739,8 @@
 
                 /* Auditoría */
                 cac: this.$page.props.user.departamento,
-                creado_por: this.$page.props.user.id,
-
-                /* Capacitaciones */
-                capacitador: 'Ninguno',
-                observaciones: 'Ninguno',
-                capProp: 'Sin Comenzar',
-                capCan: 'Sin Comenzar',
+                grupo: 'Ninguno',
+                creado_por: this.$page.props.user.username,
             },
             }
         },

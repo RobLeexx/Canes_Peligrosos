@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grupo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class GruposController extends Controller
 {
@@ -35,7 +36,10 @@ class GruposController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Grupo::create($input);
+        return Redirect::route('capacitaciones');
     }
 
     /**

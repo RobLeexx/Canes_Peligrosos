@@ -80,9 +80,9 @@
                         </template>
                         <template v-slot:item.docExp="{ item }">
                             <v-chip
-                                :color="getColor(item.docExp)"
+                                :color="getColor(item.grupo)"
                                 dark>
-                                {{ item.docExp }}
+                                {{ item.grupo }}
                             </v-chip>
                         </template>
                         <template v-slot:item.conDatos="{ item }">
@@ -104,7 +104,7 @@
                         <template v-slot:item.actions="{ item }">
                             <div style="display: flex; align-items: center; justify-content: center">
                                 <v-btn fab text :href="route('registros.show', item.id)"><v-icon>mdi-eye</v-icon></v-btn>
-                                <v-btn fab text :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.id != item.creado_por)" :href="route('registros.edit', item.id)"><v-icon>mdi-pencil</v-icon></v-btn>
+                                <v-btn fab text :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.username != item.creado_por)" :href="route('registros.edit', item.id)"><v-icon>mdi-pencil</v-icon></v-btn>
                             </div>
                         </template>
                     </v-data-table>
@@ -129,6 +129,7 @@
                 depFil: this.$page.props.user.departamento,
                 search: '',
                 registros: [],
+                estadoCap: '',
                 headers: [{ text: "PROPIETARIO", value: "propietarioDatos", sortable: false },
                         { text: "CAN", value: "canesDatos", sortable: false },
                         { text: "CAPACITACIÓN", value: "docExp", sortable: false},
@@ -139,6 +140,7 @@
             }
         },
         created () {
+            /* Merge Canes y Propietarios en Registro */
             let mergedSubjects = this.propietarios.map(subject => {
             let otherSubject = this.canes.find(element => element.id === subject.id)
             const reg = {...subject, ...otherSubject}
@@ -160,6 +162,11 @@
                 const space = ' '
                 const propDatos = registro.paterno.concat(space,registro.materno,space,registro.nombres,registro.documento)
                 const canDatos = registro.nomPerro.concat(space,registro.razaCan)
+                /* Estado de capacitación */
+                if(registro.grupo == 'Ninguno')
+                {
+                    registro.grupo = 'Sin Comenzar';
+                }
             return {
                 id: registro.id,
                 propietarioDatos: propDatos,
@@ -182,6 +189,7 @@
                 can: registro.nomPerro,
                 raza: registro.razaCan,
 
+                grupo: registro.grupo,
                 departamento: registro.cac,
                 actions: registro.id,
             };
@@ -204,9 +212,12 @@
             });
             return items;
             },
-            getColor (cap) {
-                if (cap != 'LP') return 'green'
-                else return 'orange'
+            getColor (grupo) {
+                switch(grupo){
+                    case 'Sin Comenzar': return 'red'
+                    case 'En Curso': return 'orange'
+                    case 'Finalizado': return 'green'
+                }
             },
         },
         mounted() {

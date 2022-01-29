@@ -36,7 +36,7 @@
                             <v-row>
                             <v-col cols="12">
                                 <v-autocomplete
-                                v-model="integrantes"
+                                v-model="form.integrantes"
                                 :items="people"
                                 outlined
                                 chips
@@ -74,7 +74,7 @@
                             </v-col>
                             <v-col cols="12" sm="6" md="6">
                                 <v-autocomplete
-                                v-model="tipo"
+                                v-model="form.tipo"
                                 :items="tipoCap"
                                 outlined
                                 placeholder="Tipo de Capacitación">
@@ -82,7 +82,7 @@
                             </v-col>
                             <v-col cols="12" sm="6" md="6">
                                 <v-autocomplete
-                                v-model="turno"
+                                v-model="form.turno"
                                 :items="tipoTurno"
                                 outlined
                                 placeholder="Turno">
@@ -97,7 +97,7 @@
                                 >
                                     <template v-slot:activator="{ on, attrs }">
                                     <v-col cols="12" sm="6" md="6" >
-                                        <v-text-field :disabled="turno==null"
+                                        <v-text-field :disabled="form.turno==null"
                                             v-model="end"
                                             outlined
                                             label="Termina:"
@@ -108,7 +108,7 @@
                                         ></v-text-field>
                                     </v-col>
                                     <v-col cols="12" sm="6" md="6" >
-                                        <v-text-field :disabled="turno==null"
+                                        <v-text-field :disabled="form.turno==null"
                                             v-model="start"
                                             outlined
                                             label="Empieza:"
@@ -122,16 +122,16 @@
                                     <div style="background-color: white">
                                         <v-card style="text-align: center">
                                             <v-card-title style="display: flex; justify-content: center">
-                                                Turno: {{ turno }}
+                                                Turno: {{ form.turno }}
                                             </v-card-title>
                                             <div style="padding-bottom: 15px">
-                                                <div v-if="turno == 'Mañana'">
+                                                <div v-if="form.turno == 'Mañana'">
                                                     Horas habilitadas: 06:00 - 12:59
                                                 </div>
-                                                <div v-else-if="turno == 'Tarde'">
+                                                <div v-else-if="form.turno == 'Tarde'">
                                                     Horas habilitadas: 12:00 - 17:59
                                                 </div>
-                                                <div v-else-if="turno == 'Noche'">
+                                                <div v-else-if="form.turno == 'Noche'">
                                                     Horas habilitadas: 18:00 - 20:59
                                                 </div>
                                             </div>
@@ -167,8 +167,10 @@
                                                 Cancelar
                                             </v-btn>
                                             <v-btn
+                                                :disabled="!dialog1IsValid"
                                                 color="primary"
-                                                @click="$refs.dialog.save(start)">
+                                                @click.prevent="$refs.dialog.save(start)"
+                                                @click="horario()">
                                                 Guardar
                                             </v-btn>
                                         </div>
@@ -178,7 +180,7 @@
                                 <v-dialog
                                     ref="dialog2"
                                     v-model="modal"
-                                    :return-value.sync="date"
+                                    :return-value.sync="form.fechas"
                                     persistent
                                     width="40%"
                                 >
@@ -193,7 +195,7 @@
                                     ></v-text-field>
                                     </template>
                                     <v-date-picker
-                                    v-model="date"
+                                    v-model="form.fechas"
                                     range
                                     scrollable
                                     full-width
@@ -210,7 +212,7 @@
                                     </v-btn>
                                     <v-btn
                                         color="primary"
-                                        @click="$refs.dialog2.save(date)"
+                                        @click="$refs.dialog2.save(form.fechas)"
                                     >
                                         Guardar
                                     </v-btn>
@@ -231,8 +233,9 @@
                                 Cancelar
                             </v-btn>
                             <v-btn
+                                :disabled="!dialog2IsValid"
                                 color="primary"
-                                @click="save">
+                                @click="submitData">
                                 Guardar
                             </v-btn>
                         </div>
@@ -329,9 +332,6 @@
             return {
                 dialog: false,
                 dialog2: false,
-                integrantes: null,
-                tipo: null,
-                turno: null,
                 start: [],
                 date: [],
                 end: null,
@@ -340,7 +340,6 @@
                 modal: false,
                 tipoCap: ['Solo al Propietario','Propietario y Canino'],
                 tipoTurno: ['Mañana','Tarde','Noche'],
-                dates: ['2019-09-10', '2019-09-20'],
                 editedItem: {
                     name: '',
                     calories: '',
@@ -356,15 +355,23 @@
                         { text: 'ACCIONES', value: 'actions', sortable: false, align: 'center' }],
                 dep: ['La Paz', 'Cochabamba', 'Santa Cruz', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Beni', 'Pando'],
                 people: [],
+                form: {
+                    capacitador: this.$page.props.user.username,
+                    integrantes: null,
+                    tipo: null,
+                    turno: null,
+                    horario: null,
+                    fechas: [],
+                    estado: 'En Curso',
+                },
             }
         },
         created () {
             /* Fecha Actual más 10 días*/
             var today = new Date();
             today = moment(String(today)).format('YYYY-MM-DD');
-            // today = moment(String(today)).format('DD/MM/YYYY');
             const ten = moment().add(9, 'days').format('YYYY-MM-DD');
-            this.date.push(today,ten);
+            this.form.fechas.push(today,ten);
             /* Merge Canes y Propietarios */
             let mergedSubjects = this.propietarios.map(subject => {
             let otherSubject = this.canes.find(element => element.id === subject.id)
@@ -373,8 +380,23 @@
         })
         },
         computed: {
+            dialog1IsValid () {
+            return (
+            this.start &&
+            this.end
+            )
+        },
+            dialog2IsValid () {
+            return (
+            this.form.integrantes &&
+            this.form.tipo &&
+            this.form.turno &&
+            this.start &&
+            this.end
+            )
+        },
             dateRangeText () {
-            return this.date.join(' - ')
+            return this.form.fechas.join(' - ')
         },
         },
 
@@ -388,67 +410,77 @@
         },
 
         methods: {
-        close () {
-            this.$refs.form.reset()
-            this.dialog = false
-            this.$nextTick(() => {
-            this.editedItem = Object.assign({}, this.defaultItem)
-            this.editedIndex = -1
-            })
-        },
-        save () {
-            if (this.editedIndex > -1) {
-            Object.assign(this.desserts[this.editedIndex], this.editedItem)
-            } else {
-            this.desserts.push(this.editedItem)
-            }
-            this.close()
-        },
-        remove (item) {
-            const index = this.integrantes.indexOf(item.paterno)
-            if (index >= 0) this.integrantes.splice(index, 1)
-        },
-        reenviarRegistros() {
-                this.people = this.people.map(this.getDisplayRegistros);
+            submitData() {
+                /* subir datos */
+                this.form.fechas = this.form.fechas.toString();
+                this.form.integrantes = this.form.integrantes.toString(); 
+                this.$inertia.post(route('grupos.store'),this.form);
             },
-        getDisplayRegistros(people) {
-            return {
-                id: people.id,
-                fotoProp: people.fotoProp,
-                paterno: people.paterno,
-                materno: people.materno,
-                nombres: people.nombres,
-                documento: people.documento,
+            close () {
+                this.$refs.form.reset()
+                this.dialog = false
+                this.$nextTick(() => {
+                this.editedItem = Object.assign({}, this.defaultItem)
+                this.editedIndex = -1
+                })
+            },
+            save () {
+                if (this.editedIndex > -1) {
+                Object.assign(this.desserts[this.editedIndex], this.editedItem)
+                } else {
+                this.desserts.push(this.editedItem)
+                }
+                this.close()
+            },
+            remove (item) {
+                const index = this.integrantes.indexOf(item.paterno)
+                if (index >= 0) this.integrantes.splice(index, 1)
+            },
+            reenviarRegistros() {
+                    this.people = this.people.map(this.getDisplayRegistros);
+                },
+            getDisplayRegistros(people) {
+                return {
+                    id: people.id,
+                    fotoProp: people.fotoProp,
+                    paterno: people.paterno,
+                    materno: people.materno,
+                    nombres: people.nombres,
+                    documento: people.documento,
 
-                can: people.nomPerro,
+                    can: people.nomPerro,
 
-                actions: people.id,
-            };
+                    actions: people.id,
+                };
+                },
+            horario(){
+                this.form.horario = this.start + ', ' +this.end
             },
-            getColor () {
-                switch(this.turno)
-                {
-                    case 'Mañana': return '#e4cd4d'
-                    case 'Tarde': return 'orange lighten-1'
-                    case 'Noche': return 'black lighten-1'
-                }
-            },
-            minH() {
-                switch(this.turno)
-                {
-                    case 'Mañana': return '6:00'
-                    case 'Tarde': return '12:00'
-                    case 'Noche': return '18:00'
-                }
-            },
-            maxH() {
-                switch(this.turno)
-                {
-                    case 'Mañana': return '12:59'
-                    case 'Tarde': return '17:59'
-                    case 'Noche': return '20:59'
-                }
-            },
+
+                getColor () {
+                    switch(this.form.turno)
+                    {
+                        case 'Mañana': return '#e4cd4d'
+                        case 'Tarde': return 'orange lighten-1'
+                        case 'Noche': return 'black lighten-1'
+                    }
+                },
+                minH() {
+                    switch(this.form.turno)
+                    {
+                        case 'Mañana': return '6:00'
+                        case 'Tarde': return '12:00'
+                        case 'Noche': return '18:00'
+                    }
+                },
+                maxH() {
+                    switch(this.form.turno)
+                    {
+                        case 'Mañana': return '12:59'
+                        case 'Tarde': return '17:59'
+                        case 'Noche': return '20:59'
+                    }
+                },
         },
         mounted() {
             this.reenviarRegistros();

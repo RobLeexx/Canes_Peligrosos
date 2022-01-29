@@ -31,7 +31,7 @@ class RegistroShowController extends Controller
         $antecedente = $antecedentes[0];
         $seguros = Seguro::whereIn('id',[$propID])->get();
         $seguro = $seguros[0];
-        $secs = User::whereIn('id',[$secID])->get();
+        $secs = User::whereIn('username',[$secID])->get();
         $sec = $secs[0];
         return Inertia::render('ListaMostrar', compact('propietario', 'memorial', 'can', 'antecedente', 'seguro', 'sec'));
     }

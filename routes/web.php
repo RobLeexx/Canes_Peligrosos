@@ -6,6 +6,7 @@ use Inertia\Inertia;
 
 Use App\Http\Controllers\UsuarioController;
 Use App\Http\Controllers\RegistroController;
+Use App\Http\Controllers\GruposController;
 Use App\Http\Controllers\CapacitacionesController;
 Use App\Http\Controllers\RegistroShowController;
 Use App\Http\Controllers\RegistroEditController;
@@ -37,6 +38,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     })->name('home');
     
     Route::resource('/registros', RegistroController::class)->except('show','edit','update','destroy');
+
+    Route::resource('/grupos', GruposController::class);
 
     Route::get('/capacitaciones', CapacitacionesController::class)->name('capacitaciones');
 

@@ -1277,14 +1277,14 @@
                                     v-on="on"
                                     ><v-icon>mdi-text-box</v-icon></v-btn>
                                 </template>
-                                <span v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.id == propietario.creado_por)">Generar Autorización</span>
+                                <span v-if="($page.props.user.rol == 'Administrador') || ($page.props.user.username == propietario.creado_por)">Generar Autorización</span>
                                 <span v-else>Ver Autorización</span>
                                 </v-tooltip>
                             </v-col>
                             <v-col cols="12" sm="6" style="text-align: center;padding-bottom: 50px">
                                 <v-tooltip top>
                                 <template v-slot:activator="{ on, attrs }">
-                                    <v-btn :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.id != propietario.creado_por)"
+                                    <v-btn :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.username != propietario.creado_por)"
                                     :href="route('registros.edit', propietario.id)"
                                     color="primary"
                                     elevation="15"

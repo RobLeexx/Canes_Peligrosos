@@ -9,10 +9,12 @@ class Grupo extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'capacitador',
         'integrantes',
         'tipo',
         'turno',
         'horario',
+        'fechas',
         'estado',
     ];
 }

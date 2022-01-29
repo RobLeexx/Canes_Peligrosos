@@ -33,6 +33,7 @@ class Propietario extends Model
         'contactoAlterno',
         'boleta',
         'cac',
+        'grupo',
         'creado_por',
     ];
 }
