@@ -40,7 +40,7 @@
                                 :items="people"
                                 outlined
                                 chips
-                                label="Seleccionar integrantes"
+                                label="Seleccionar Integrantes"
                                 item-text="paterno"
                                 item-value="paterno"
                                 multiple
@@ -126,13 +126,13 @@
                                             </v-card-title>
                                             <div style="padding-bottom: 15px">
                                                 <div v-if="turno == 'Mañana'">
-                                                    Horas habilitadas: 06:00 - 13:00
+                                                    Horas habilitadas: 06:00 - 12:59
                                                 </div>
                                                 <div v-else-if="turno == 'Tarde'">
-                                                    Horas habilitadas: 12:00 - 18:00
+                                                    Horas habilitadas: 12:00 - 17:59
                                                 </div>
                                                 <div v-else-if="turno == 'Noche'">
-                                                    Horas habilitadas: 18:00 - 21:00
+                                                    Horas habilitadas: 18:00 - 20:59
                                                 </div>
                                             </div>
                                         </v-card>
@@ -142,6 +142,7 @@
                                                     v-if="time"
                                                     v-model="start"
                                                     full-width
+                                                    format="24hr"
                                                     :min="minH()"
                                                     :max="maxH()"
                                                 ></v-time-picker>
@@ -151,6 +152,7 @@
                                                     v-if="time"
                                                     v-model="end"
                                                     full-width
+                                                    format="24hr"
                                                     :min="minH()"
                                                     :max="maxH()"
                                                 ></v-time-picker>
@@ -172,26 +174,68 @@
                                         </div>
                                     </div>
                                 </v-dialog>
+                                <template>
+                                <v-dialog
+                                    ref="dialog2"
+                                    v-model="modal"
+                                    :return-value.sync="date"
+                                    persistent
+                                    width="40%"
+                                >
+                                    <template v-slot:activator="{ on, attrs }">
+                                    <v-text-field outlined
+                                        v-model="dateRangeText"
+                                        label="Fechas de Capacitación"
+                                        prepend-icon="mdi-calendar"
+                                        readonly
+                                        v-bind="attrs"
+                                        v-on="on"
+                                    ></v-text-field>
+                                    </template>
+                                    <v-date-picker
+                                    v-model="date"
+                                    range
+                                    scrollable
+                                    full-width
+                                    locale="es"
+                                    :min="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                    >
+                                    <v-spacer></v-spacer>
+                                    <v-btn
+                                        text
+                                        color="primary"
+                                        @click="modal = false"
+                                    >
+                                        Cancelar
+                                    </v-btn>
+                                    <v-btn
+                                        color="primary"
+                                        @click="$refs.dialog2.save(date)"
+                                    >
+                                        Guardar
+                                    </v-btn>
+                                    </v-date-picker>
+                                </v-dialog>
+                                </template>
                             </v-row>
                         </v-form>
                         </v-container>
                         </v-card-text>
-
-                        <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn
-                            color="primary"
-                            text
-                            @click="close"
-                        >
-                            Cancelar
-                        </v-btn>
-                        <v-btn
-                            color="primary"
-                            @click="save"
-                        >
-                            Guardar
-                        </v-btn>
+                        <v-divider></v-divider>
+                        <v-card-actions style="display: flex; justify-content: end">
+                        <div>
+                            <v-btn
+                                color="primary"
+                                text
+                                @click="close">
+                                Cancelar
+                            </v-btn>
+                            <v-btn
+                                color="primary"
+                                @click="save">
+                                Guardar
+                            </v-btn>
+                        </div>
                         </v-card-actions>
                     </v-card>
                     </v-dialog>
@@ -273,6 +317,7 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
+    import moment from 'moment'
 
     export default {
         props: {
@@ -283,15 +328,19 @@
         data: function () {
             return {
                 dialog: false,
+                dialog2: false,
                 integrantes: null,
                 tipo: null,
                 turno: null,
                 start: [],
+                date: [],
                 end: null,
                 time: false,
                 time2: null,
+                modal: false,
                 tipoCap: ['Solo al Propietario','Propietario y Canino'],
                 tipoTurno: ['Mañana','Tarde','Noche'],
+                dates: ['2019-09-10', '2019-09-20'],
                 editedItem: {
                     name: '',
                     calories: '',
@@ -310,6 +359,13 @@
             }
         },
         created () {
+            /* Fecha Actual más 10 días*/
+            var today = new Date();
+            today = moment(String(today)).format('YYYY-MM-DD');
+            // today = moment(String(today)).format('DD/MM/YYYY');
+            const ten = moment().add(9, 'days').format('YYYY-MM-DD');
+            this.date.push(today,ten);
+            /* Merge Canes y Propietarios */
             let mergedSubjects = this.propietarios.map(subject => {
             let otherSubject = this.canes.find(element => element.id === subject.id)
             const reg = {...subject, ...otherSubject}
@@ -317,16 +373,18 @@
         })
         },
         computed: {
-            
+            dateRangeText () {
+            return this.date.join(' - ')
+        },
         },
 
         watch: {
-        dialog (val) {
-            val || this.close()
-        },
-        dialogDelete (val) {
-            val || this.closeDelete()
-        },
+            dialog (val) {
+                val || this.close()
+            },
+            dialogDelete (val) {
+                val || this.closeDelete()
+            },
         },
 
         methods: {
@@ -370,7 +428,7 @@
             getColor () {
                 switch(this.turno)
                 {
-                    case 'Mañana': return 'yellow'
+                    case 'Mañana': return '#e4cd4d'
                     case 'Tarde': return 'orange lighten-1'
                     case 'Noche': return 'black lighten-1'
                 }
@@ -386,9 +444,9 @@
             maxH() {
                 switch(this.turno)
                 {
-                    case 'Mañana': return '13:00'
-                    case 'Tarde': return '18:00'
-                    case 'Noche': return '21:00'
+                    case 'Mañana': return '12:59'
+                    case 'Tarde': return '17:59'
+                    case 'Noche': return '20:59'
                 }
             },
         },
@@ -408,6 +466,7 @@
 
         components: {
             AppLayout,
+            moment,
         },
     }
 </script>
