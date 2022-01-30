@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Memorial;
 use App\Models\Propietario;
 use App\Models\Can;
 use App\Models\Grupo;
@@ -23,10 +22,12 @@ class CapacitacionesController extends Controller
     public function __invoke()
     {
         $cac = Auth::user()->departamento;
+        $username = Auth::user()->username;
         $propietarios = Propietario::select('id','fotoProp', 'paterno', 'materno', 'nombres', 'documento')->whereIn('cac',[$cac])->get();
         $canes = Can::select('id','nomPerro')->whereNotNull('id')->get();
         $users = User::whereIn('departamento',[$cac])->get();
-        return Inertia::render('capacitaciones', ['propietarios'=>$propietarios, 'canes'=>$canes, 'users'=>$users]);
+        $grupos = Grupo::whereIn('capacitador',[$username])->get();
+        return Inertia::render('capacitaciones', ['propietarios'=>$propietarios, 'canes'=>$canes, 'users'=>$users, 'grupos'=>$grupos]);
     }
     public function update()
     {

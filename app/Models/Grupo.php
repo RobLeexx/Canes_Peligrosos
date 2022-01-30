@@ -14,7 +14,8 @@ class Grupo extends Model
         'tipo',
         'turno',
         'horario',
-        'fechas',
+        'inicio',
+        'fin',
         'estado',
     ];
 }

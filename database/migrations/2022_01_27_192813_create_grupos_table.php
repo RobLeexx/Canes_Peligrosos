@@ -20,7 +20,8 @@ class CreateGruposTable extends Migration
             $table->string('tipo');
             $table->string('turno');
             $table->string('horario');
-            $table->string('fechas');
+            $table->string('inicio');
+            $table->string('fin');
             $table->string('estado');
             $table->timestamps();
         });

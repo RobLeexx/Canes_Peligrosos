@@ -88,6 +88,9 @@
                                 placeholder="Turno">
                                 </v-autocomplete>
                             </v-col>
+                            <v-col cols="12" sm="12">
+                                <v-subheader>Horario de Capacitación</v-subheader>
+                            </v-col>
                                 <v-dialog
                                     ref="dialog"
                                     v-model="time"
@@ -136,6 +139,7 @@
                                                 </div>
                                             </div>
                                         </v-card>
+                                        <v-form ref="horas">
                                         <v-row style="margin: 0">
                                             <v-col cols="12" sm="6">
                                                 <v-time-picker scrollable :color="getColor()"
@@ -158,12 +162,13 @@
                                                 ></v-time-picker>
                                             </v-col>
                                         </v-row>
+                                        </v-form>
                                         <v-spacer></v-spacer>
                                         <div style="padding: 15px; text-align: center">
                                             <v-btn
                                                 text
                                                 color="primary"
-                                                @click="time = false">
+                                                @click="close1()">
                                                 Cancelar
                                             </v-btn>
                                             <v-btn
@@ -176,47 +181,78 @@
                                         </div>
                                     </div>
                                 </v-dialog>
+                                <v-col cols="12" sm="12">
+                                    <v-subheader>Fechas de Capacitación</v-subheader>
+                                </v-col>
                                 <template>
                                 <v-dialog
-                                    ref="dialog2"
-                                    v-model="modal"
-                                    :return-value.sync="form.fechas"
+                                    ref="dialog3"
+                                    v-model="fecha"
+                                    :return-value.sync="form.inicio"
                                     persistent
-                                    width="40%"
+                                    width="50%"
                                 >
                                     <template v-slot:activator="{ on, attrs }">
-                                    <v-text-field outlined
-                                        v-model="dateRangeText"
-                                        label="Fechas de Capacitación"
-                                        prepend-icon="mdi-calendar"
-                                        readonly
-                                        v-bind="attrs"
-                                        v-on="on"
-                                    ></v-text-field>
+                                    <v-col cols="12" sm="6" md="6" >
+                                        <v-text-field
+                                            v-model="form.fin"
+                                            outlined
+                                            label="Termina:"
+                                            prepend-icon="mdi-calendar"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6" md="6" >
+                                        <v-text-field
+                                            v-model="form.inicio"
+                                            outlined
+                                            label="Empieza:"
+                                            prepend-icon="mdi-calendar"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                    </v-col>
                                     </template>
-                                    <v-date-picker
-                                    v-model="form.fechas"
-                                    range
-                                    scrollable
-                                    full-width
-                                    locale="es"
-                                    :min="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
-                                    >
-                                    <v-spacer></v-spacer>
-                                    <v-btn
-                                        text
-                                        color="primary"
-                                        @click="modal = false"
-                                    >
-                                        Cancelar
-                                    </v-btn>
-                                    <v-btn
-                                        color="primary"
-                                        @click="$refs.dialog2.save(form.fechas)"
-                                    >
-                                        Guardar
-                                    </v-btn>
-                                    </v-date-picker>
+                                    <div style="background-color: white">
+                                        <v-row style="margin: 0">
+                                            <v-col cols="12" sm="6">
+                                                <v-date-picker scrollable
+                                                    v-if="fecha"
+                                                    v-model="form.inicio"
+                                                    full-width
+                                                    locale="es"
+                                                    :min="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                ></v-date-picker>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-date-picker scrollable
+                                                    v-if="fecha"
+                                                    v-model="form.fin"
+                                                    full-width
+                                                    locale="es"
+                                                    :min="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                ></v-date-picker>
+                                            </v-col>
+                                        </v-row>
+                                        <v-spacer></v-spacer>
+                                        <div style="padding: 15px; text-align: center">
+                                            <v-btn
+                                                text
+                                                color="primary"
+                                                @click="fecha = false">
+                                                Cancelar
+                                            </v-btn>
+                                            <v-btn
+                                                :disabled="!dialog3IsValid"
+                                                color="primary"
+                                                @click="$refs.dialog3.save(form.inicio)">
+                                                Guardar
+                                            </v-btn>
+                                        </div>
+                                    </div>
                                 </v-dialog>
                                 </template>
                             </v-row>
@@ -229,12 +265,13 @@
                             <v-btn
                                 color="primary"
                                 text
-                                @click="close">
+                                @click="closeDelete">
                                 Cancelar
                             </v-btn>
                             <v-btn
                                 :disabled="!dialog2IsValid"
                                 color="primary"
+                                @click.prevent="close"
                                 @click="submitData">
                                 Guardar
                             </v-btn>
@@ -273,7 +310,7 @@
                      <v-divider></v-divider>
                     <v-data-table style="padding-inline: 20px"
                     :headers="headers"
-                    :items="people"
+                    :items="grupos"
                     
                     :search="search"
                     no-data-text="Sin Datos"
@@ -287,7 +324,7 @@
                      <v-divider></v-divider>
                     <v-data-table style="padding-inline: 20px"
                     :headers="headers"
-                    :items="people"
+                    :items="grupos"
                     
                     :search="search"
                     no-data-text="Sin Datos"
@@ -301,7 +338,7 @@
                      <v-divider></v-divider>
                     <v-data-table style="padding-inline: 20px"
                     :headers="headers"
-                    :items="people"
+                    :items="grupos"
                     
                     :search="search"
                     no-data-text="Sin Datos"
@@ -327,51 +364,44 @@
             propietarios: Array,
             canes: Array,
             users: Array,
+            grupos: Array,
         },
         data: function () {
             return {
                 dialog: false,
                 dialog2: false,
-                start: [],
-                date: [],
+                start: null,
                 end: null,
                 time: false,
-                time2: null,
-                modal: false,
+                fecha: false,
                 tipoCap: ['Solo al Propietario','Propietario y Canino'],
                 tipoTurno: ['Mañana','Tarde','Noche'],
-                editedItem: {
-                    name: '',
-                    calories: '',
-                    fat: '',
-                },
                 depFil: this.$page.props.user.departamento,
                 search: '',
-                headers: [{ text: "GRUPO", value: "propietarioDatos", sortable: false },
-                        { text: "INTEGRANTES", value: "canesDatos", sortable: false },
-                        { text: "TURNO", value: "docExp", sortable: false},
-                        { text: "HORARIO", value: "conDatos", sortable: false },
-                        { text: "ESTADO", value: "departamento", sortable: false },
+                headers: [{ text: "GRUPO", value: "id", sortable: false },
+                        { text: "INTEGRANTES", value: "integrantes", sortable: false },
+                        { text: "TIPO", value: "tipo", sortable: false},
+                        { text: "TURNO", value: "turno", sortable: false},
+                        { text: "HORARIO", value: "horario", sortable: false },
+                        { text: "FIN", value: "fin", sortable: false },
+                        { text: "ESTADO", value: "estado", sortable: false },
                         { text: 'ACCIONES', value: 'actions', sortable: false, align: 'center' }],
                 dep: ['La Paz', 'Cochabamba', 'Santa Cruz', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Beni', 'Pando'],
                 people: [],
+                grupo: [],
                 form: {
                     capacitador: this.$page.props.user.username,
                     integrantes: null,
                     tipo: null,
                     turno: null,
                     horario: null,
-                    fechas: [],
+                    inicio: null,
+                    fin: null,
                     estado: 'En Curso',
                 },
             }
         },
         created () {
-            /* Fecha Actual más 10 días*/
-            var today = new Date();
-            today = moment(String(today)).format('YYYY-MM-DD');
-            const ten = moment().add(9, 'days').format('YYYY-MM-DD');
-            this.form.fechas.push(today,ten);
             /* Merge Canes y Propietarios */
             let mergedSubjects = this.propietarios.map(subject => {
             let otherSubject = this.canes.find(element => element.id === subject.id)
@@ -380,23 +410,28 @@
         })
         },
         computed: {
-            dialog1IsValid () {
+        dialog1IsValid () {
             return (
             this.start &&
             this.end
             )
         },
-            dialog2IsValid () {
+        dialog3IsValid () {
+            return (
+            this.form.inicio &&
+            this.form.fin
+            )
+        },
+        dialog2IsValid () {
             return (
             this.form.integrantes &&
             this.form.tipo &&
             this.form.turno &&
             this.start &&
-            this.end
+            this.end &&
+            this.form.inicio &&
+            this.form.fin
             )
-        },
-            dateRangeText () {
-            return this.form.fechas.join(' - ')
         },
         },
 
@@ -412,32 +447,31 @@
         methods: {
             submitData() {
                 /* subir datos */
-                this.form.fechas = this.form.fechas.toString();
-                this.form.integrantes = this.form.integrantes.toString(); 
+                this.form.integrantes = this.form.integrantes.toString();
                 this.$inertia.post(route('grupos.store'),this.form);
+                this.$refs.form.reset()
             },
-            close () {
+            closeDelete () {
                 this.$refs.form.reset()
                 this.dialog = false
-                this.$nextTick(() => {
-                this.editedItem = Object.assign({}, this.defaultItem)
-                this.editedIndex = -1
-                })
+            },
+            close () {
+                this.dialog = false
+            },
+            close1 () {
+                this.$refs.horas.reset()
+                this.time = false
             },
             save () {
-                if (this.editedIndex > -1) {
-                Object.assign(this.desserts[this.editedIndex], this.editedItem)
-                } else {
-                this.desserts.push(this.editedItem)
-                }
                 this.close()
             },
             remove (item) {
-                const index = this.integrantes.indexOf(item.paterno)
-                if (index >= 0) this.integrantes.splice(index, 1)
+                const index = this.form.integrantes.indexOf(item.paterno)
+                if (index >= 0) this.form.integrantes.splice(index, 1)
             },
             reenviarRegistros() {
                     this.people = this.people.map(this.getDisplayRegistros);
+                    this.grupo = this.grupos.map(this.getDisplayGrupos);
                 },
             getDisplayRegistros(people) {
                 return {
@@ -453,8 +487,20 @@
                     actions: people.id,
                 };
                 },
+            getDisplayGrupos(grupos) {
+                return {
+                    id: grupos.id,
+                    integrantes: grupos.integrantes,
+                    tipo: grupos.tipo,
+                    turno: grupos.turno,
+                    horario: grupos.horario,
+                    inicio: grupos.inicio,
+                    fin: grupos.fin,
+                    estado: grupos.estado,
+                };
+                },
             horario(){
-                this.form.horario = this.start + ', ' +this.end
+                this.form.horario = this.start + ', ' + this.end
             },
 
                 getColor () {
