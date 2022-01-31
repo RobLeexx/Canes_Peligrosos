@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grupo;
+use App\Models\Propietario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -37,9 +38,19 @@ class GruposController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $idGroup = Grupo::create($input)->id;
+        $propIDS = $request->input('integrantes');
+        $propIDS = explode(',',trim($propIDS));
+        $length= count($propIDS);
 
-        Grupo::create($input);
-        return Redirect::route('capacitaciones');
+        for($n = 0; $n < $length; $n++)
+        {
+            $propID = $propIDS[$n];
+            $propietarios = Propietario::find($propID);
+            $propietarios->grupo = $idGroup;
+            $propietarios->save();
+        };
+        
     }
 
     /**

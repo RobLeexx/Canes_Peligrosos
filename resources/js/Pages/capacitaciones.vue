@@ -42,14 +42,13 @@
                                 chips
                                 label="Seleccionar Integrantes"
                                 item-text="paterno"
-                                item-value="paterno"
+                                item-value="id"
                                 multiple
                                 >
                                 <template v-slot:selection="data">
                                     <v-chip
                                     v-bind="data.attrs"
                                     :input-value="data.selected"
-                                    close
                                     @click="data.select"
                                     @click:close="remove(data.item)"
                                     >
@@ -310,8 +309,7 @@
                      <v-divider></v-divider>
                     <v-data-table style="padding-inline: 20px"
                     :headers="headers"
-                    :items="grupos"
-                    
+                    :items="uno"
                     :search="search"
                     no-data-text="Sin Datos"
                     no-results-text="Sin Resultados"
@@ -324,8 +322,7 @@
                      <v-divider></v-divider>
                     <v-data-table style="padding-inline: 20px"
                     :headers="headers"
-                    :items="grupos"
-                    
+                    :items="dos"
                     :search="search"
                     no-data-text="Sin Datos"
                     no-results-text="Sin Resultados"
@@ -338,8 +335,7 @@
                      <v-divider></v-divider>
                     <v-data-table style="padding-inline: 20px"
                     :headers="headers"
-                    :items="grupos"
-                    
+                    :items="tres"
                     :search="search"
                     no-data-text="Sin Datos"
                     no-results-text="Sin Resultados"
@@ -364,7 +360,9 @@
             propietarios: Array,
             canes: Array,
             users: Array,
-            grupos: Array,
+            en_curso: Array,
+            incompletos: Array,
+            completos: Array,
         },
         data: function () {
             return {
@@ -378,17 +376,18 @@
                 tipoTurno: ['Mañana','Tarde','Noche'],
                 depFil: this.$page.props.user.departamento,
                 search: '',
-                headers: [{ text: "GRUPO", value: "id", sortable: false },
-                        { text: "INTEGRANTES", value: "integrantes", sortable: false },
-                        { text: "TIPO", value: "tipo", sortable: false},
-                        { text: "TURNO", value: "turno", sortable: false},
-                        { text: "HORARIO", value: "horario", sortable: false },
-                        { text: "FIN", value: "fin", sortable: false },
-                        { text: "ESTADO", value: "estado", sortable: false },
+                headers: [{ text: "GRUPO", value: "id", sortable: true },
+                        { text: "INTEGRANTES", value: "numInt", sortable: true, align: 'center' },
+                        { text: "TIPO", value: "tipo", sortable: true},
+                        { text: "HORARIO", value: "horario", sortable: true },
+                        { text: "FIN", value: "fin", sortable: true },
+                        { text: "TURNO", value: "turno", sortable: true},
                         { text: 'ACCIONES', value: 'actions', sortable: false, align: 'center' }],
                 dep: ['La Paz', 'Cochabamba', 'Santa Cruz', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Beni', 'Pando'],
                 people: [],
-                grupo: [],
+                uno: [],
+                dos: [],
+                tres: [],
                 form: {
                     capacitador: this.$page.props.user.username,
                     integrantes: null,
@@ -448,8 +447,9 @@
             submitData() {
                 /* subir datos */
                 this.form.integrantes = this.form.integrantes.toString();
+                console.log(this.form.integrantes)
                 this.$inertia.post(route('grupos.store'),this.form);
-                this.$refs.form.reset()
+                window.location.reload();
             },
             closeDelete () {
                 this.$refs.form.reset()
@@ -471,7 +471,9 @@
             },
             reenviarRegistros() {
                     this.people = this.people.map(this.getDisplayRegistros);
-                    this.grupo = this.grupos.map(this.getDisplayGrupos);
+                    this.uno = this.en_curso.map(this.getDisplayUno);
+                    this.dos = this.incompletos.map(this.getDisplayDos);
+                    this.tres = this.completos.map(this.getDisplayTres);
                 },
             getDisplayRegistros(people) {
                 return {
@@ -481,24 +483,53 @@
                     materno: people.materno,
                     nombres: people.nombres,
                     documento: people.documento,
-
                     can: people.nomPerro,
-
                     actions: people.id,
                 };
-                },
-            getDisplayGrupos(grupos) {
+            },
+            /* Grupos */
+            getDisplayUno(en_curso) {
+                const numIntegrantes = en_curso.integrantes.split(",").length;
                 return {
-                    id: grupos.id,
-                    integrantes: grupos.integrantes,
-                    tipo: grupos.tipo,
-                    turno: grupos.turno,
-                    horario: grupos.horario,
-                    inicio: grupos.inicio,
-                    fin: grupos.fin,
-                    estado: grupos.estado,
-                };
-                },
+                        id: en_curso.id,
+                        numInt: numIntegrantes,
+                        integrantes: en_curso.integrantes,
+                        tipo: en_curso.tipo,
+                        turno: en_curso.turno,
+                        horario: en_curso.horario,
+                        inicio: en_curso.inicio,
+                        fin: en_curso.fin,
+                        estado: en_curso.estado,
+                    }
+            },
+            getDisplayDos(incompletos) {
+                const numIntegrantes = incompletos.integrantes.split(",").length;
+                return {
+                        id: incompletos.id,
+                        numInt: numIntegrantes,
+                        integrantes: incompletos.integrantes,
+                        tipo: incompletos.tipo,
+                        turno: incompletos.turno,
+                        horario: incompletos.horario,
+                        inicio: incompletos.inicio,
+                        fin: incompletos.fin,
+                        estado: incompletos.estado,
+                    }
+            },
+            getDisplayTres(completos) {
+                const numIntegrantes = completos.integrantes.split(",").length;
+                return {
+                        id: completos.id,
+                        numInt: numIntegrantes,
+                        integrantes: completos.integrantes,
+                        tipo: completos.tipo,
+                        turno: completos.turno,
+                        horario: completos.horario,
+                        inicio: completos.inicio,
+                        fin: completos.fin,
+                        estado: completos.estado,
+                    }
+            },
             horario(){
                 this.form.horario = this.start + ', ' + this.end
             },

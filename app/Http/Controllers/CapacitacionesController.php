@@ -23,11 +23,17 @@ class CapacitacionesController extends Controller
     {
         $cac = Auth::user()->departamento;
         $username = Auth::user()->username;
-        $propietarios = Propietario::select('id','fotoProp', 'paterno', 'materno', 'nombres', 'documento')->whereIn('cac',[$cac])->get();
+        /* Propietarios */
+        $propietarios = Propietario::select('id','fotoProp', 'paterno', 'materno', 'nombres', 'documento')->whereIn('cac',[$cac])->whereIn('grupo',['Ninguno'])->get();
+        /* Canes */
         $canes = Can::select('id','nomPerro')->whereNotNull('id')->get();
+        /* Usuarios */
         $users = User::whereIn('departamento',[$cac])->get();
-        $grupos = Grupo::whereIn('capacitador',[$username])->get();
-        return Inertia::render('capacitaciones', ['propietarios'=>$propietarios, 'canes'=>$canes, 'users'=>$users, 'grupos'=>$grupos]);
+        /* Grupos */
+        $en_curso = Grupo::whereIn('capacitador',[$username])->whereIn('estado',['En Curso'])->get();
+        $incompletos = Grupo::whereIn('capacitador',[$username])->whereIn('estado',['Incompleto'])->get();
+        $completos = Grupo::whereIn('capacitador',[$username])->whereIn('estado',['Completo'])->get();
+        return Inertia::render('capacitaciones', ['propietarios'=>$propietarios, 'canes'=>$canes, 'users'=>$users, 'en_curso'=>$en_curso, 'incompletos'=>$incompletos, 'completos'=>$completos]);
     }
     public function update()
     {
