@@ -797,35 +797,50 @@
                                                 </div>
                                             </v-row>
                                             <v-divider></v-divider>
-                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
-                                                <v-subheader style="padding: 20px">
-                                                    Capacitación
+                                            <div v-if="propietario.grupo == 'Ninguno'" style="display: flex; justify-content: center">
+                                                <v-subheader style="padding: 50px; font-weight: bold">
+                                                    CAPACITACIÓN SIN COMENZAR
                                                 </v-subheader>
-                                            </v-row>
-                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
-                                                <div style="padding: 20px; font-weight: bold">
-                                                    Grupo
-                                                </div>
-                                                <div style="padding: 20px">
-                                                    {{ propietario.grupo }}
-                                                </div>
-                                            </v-row>
-                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
-                                                <div style="padding: 20px; font-weight: bold">
-                                                    Estado de la Capacitación
-                                                </div>
-                                                <div style="padding: 20px">
-                                                    {{ propietario.capacitacion }}
-                                                </div>
-                                            </v-row>
-                                            <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
-                                                <div style="padding: 20px; font-weight: bold">
-                                                    Capacitador
-                                                </div>
-                                                <div style="padding: 20px">
-                                                    {{ propietario.capacitado_por }}
-                                                </div>
-                                            </v-row>
+                                            </div>
+                                            <div v-else>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 25px">
+                                                    <v-subheader style="padding: 20px">
+                                                        Capacitación
+                                                    </v-subheader>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Grupo
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ propietario.grupo }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Capacitador
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ grado }} {{ cap.nombres }} {{ cap.paterno }} {{ cap.materno }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Estado de Capacitación
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ grupo.estado }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Tipo de Capacitación
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ grupo.tipo }}
+                                                    </div>
+                                                </v-row>
+                                            </div>
                                         </v-expansion-panel-content>
                                         </v-expansion-panel>
                                     </v-expansion-panels>
@@ -1202,7 +1217,7 @@
                                                         Capacitado por
                                                     </div>
                                                     <div style="padding: 20px">
-                                                        {{ grado }} {{ sec.nombres }} {{ sec.paterno }} {{ sec.materno }}
+                                                        {{ grado }} {{ cap.nombres }} {{ cap.paterno }} {{ cap.materno }}
                                                     </div>
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -1210,7 +1225,7 @@
                                                         Número de Contacto
                                                     </div>
                                                     <div style="padding: 20px">
-                                                        {{ sec.numContacto }}
+                                                        {{ cap.numContacto }}
                                                     </div>
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -1218,23 +1233,23 @@
                                                         Email
                                                     </div>
                                                     <div style="padding: 20px">
-                                                        {{ sec.email }}
+                                                        {{ cap.email }}
                                                     </div>
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                     <div style="padding: 20px; font-weight: bold">
-                                                        Observaciones
+                                                        Inicio de Capacitación
                                                     </div>
                                                     <div style="padding: 20px">
-                                                        {{ creacion }}
+                                                        {{ grupo.inicio }}
                                                     </div>
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
                                                     <div style="padding: 20px; font-weight: bold">
-                                                        Fecha de capacitación
+                                                        Fin de Capacitación
                                                     </div>
                                                     <div style="padding: 20px">
-                                                        {{ creacion }}
+                                                        {{ grupo.fin }}
                                                     </div>
                                                 </v-row>
                                             </v-col>
@@ -1317,8 +1332,10 @@
             memorial: Object,
             antecedente: Object,
             seguro: Object,
+            grupo: Object,
             can: Object,
             sec: Object,
+            cap: Object,
         },
         data() {
             return {
@@ -1343,6 +1360,60 @@
         },
         created(){
             switch (this.sec.grado)
+            {
+                case 'Cabo':
+                    this.grado = 'Pol.';
+                    break
+                case 'Sargento':
+                    this.grado = 'Sgto.';
+                    break
+                case 'Suboficial':
+                    this.grado = 'Sof.';
+                    break
+                case 'Subteniente':
+                    this.grado = 'Subtte.';
+                    break
+                case 'Teniente':
+                    this.grado = 'Tte.';
+                    break
+                case 'Capitán':
+                    this.grado = 'Cap.';
+                    break
+                case 'Mayor':
+                    this.grado = 'My.';
+                    break
+                case 'Teniente Coronel':
+                    this.grado = 'Tcnl.';
+                    break
+                case 'Coronel':
+                    this.grado = 'Cnl.';
+                    break
+                case 'General':
+                    this.grado = 'Gnal.';
+                    break
+                case 'Estudiante':
+                    this.grado = 'Est.';
+                    break
+                case 'Técnico':
+                    this.grado = 'Tec.';
+                    break
+                case 'Licenciado':
+                    this.grado = 'Lic.';
+                    break
+                case 'Ingeniero':
+                    this.grado = 'Ing.';
+                    break
+                case 'Máster':
+                    this.grado = 'Msc.';
+                    break
+                case 'Doctor':
+                    this.grado = 'Doc.';
+                    break
+                default:
+                    this.grado = 'Funcionario';
+                    break
+            }
+            switch (this.cap.grado)
             {
                 case 'Cabo':
                     this.grado = 'Pol.';

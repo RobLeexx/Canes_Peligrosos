@@ -2737,6 +2737,12 @@
                 canEvenNum4: null,
                 canConvivencia: null,
 
+                /* Capacitaciones */
+                capacitador: 'Ninguno',
+                observaciones: 'Ninguno',
+                grupoID: 'Ninguno',
+                tipoCap: 'Ninguno',
+
                 /* Auditoría */
                 cac: this.$page.props.user.departamento,
                 grupo: 'Ninguno',

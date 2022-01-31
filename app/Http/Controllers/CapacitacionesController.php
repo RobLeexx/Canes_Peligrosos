@@ -31,9 +31,8 @@ class CapacitacionesController extends Controller
         $users = User::whereIn('departamento',[$cac])->get();
         /* Grupos */
         $en_curso = Grupo::whereIn('capacitador',[$username])->whereIn('estado',['En Curso'])->get();
-        $incompletos = Grupo::whereIn('capacitador',[$username])->whereIn('estado',['Incompleto'])->get();
-        $completos = Grupo::whereIn('capacitador',[$username])->whereIn('estado',['Completo'])->get();
-        return Inertia::render('capacitaciones', ['propietarios'=>$propietarios, 'canes'=>$canes, 'users'=>$users, 'en_curso'=>$en_curso, 'incompletos'=>$incompletos, 'completos'=>$completos]);
+        $completos = Grupo::whereIn('capacitador',[$username])->whereIn('estado',['Finalizado'])->get();
+        return Inertia::render('capacitaciones', ['propietarios'=>$propietarios, 'canes'=>$canes, 'users'=>$users, 'en_curso'=>$en_curso, 'completos'=>$completos]);
     }
     public function update()
     {

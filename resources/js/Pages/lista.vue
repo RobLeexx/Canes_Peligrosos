@@ -132,7 +132,7 @@
                 estadoCap: '',
                 headers: [{ text: "PROPIETARIO", value: "propietarioDatos", sortable: false },
                         { text: "CAN", value: "canesDatos", sortable: false },
-                        { text: "CAPACITACIÓN", value: "docExp", sortable: false},
+                        { text: "CAPACITACIÓN", value: "docExp", sortable: false, align: 'center' },
                         { text: "CONTACTOS", value: "conDatos", sortable: false },
                         { text: "C.A.C", value: "departamento", sortable: false, filter: this.depFilter },
                         { text: 'ACCIONES', value: 'actions', sortable: false, align: 'center' }],
@@ -166,6 +166,10 @@
                 if(registro.grupo == 'Ninguno')
                 {
                     registro.grupo = 'Sin Comenzar';
+                }
+                else if(registro.grupo != 'Ninguno')
+                {
+                    registro.grupo = 'En Curso'
                 }
             return {
                 id: registro.id,

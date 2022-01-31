@@ -11,7 +11,7 @@ class Capacitacion extends Model
     protected $fillable = [
         'capacitador',
         'observaciones',
-        'capProp',
-        'capCan',
+        'tipoCap',
+        'grupoID',
     ];
 }

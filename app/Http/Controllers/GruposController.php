@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grupo;
 use App\Models\Propietario;
+use App\Models\Capacitacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -40,6 +41,8 @@ class GruposController extends Controller
         $input = $request->all();
         $idGroup = Grupo::create($input)->id;
         $propIDS = $request->input('integrantes');
+        $capGroup = $request->input('capacitador');
+        $tipo = $request->input('tipo');
         $propIDS = explode(',',trim($propIDS));
         $length= count($propIDS);
 
@@ -47,8 +50,13 @@ class GruposController extends Controller
         {
             $propID = $propIDS[$n];
             $propietarios = Propietario::find($propID);
+            $capacitaciones = Capacitacion::find($propID);
             $propietarios->grupo = $idGroup;
+            $capacitaciones->grupoID = $idGroup;
+            $capacitaciones->capacitador = $capGroup;
+            $capacitaciones->tipoCap = $tipo;
             $propietarios->save();
+            $capacitaciones->save();
         };
         
     }
@@ -82,9 +90,16 @@ class GruposController extends Controller
      * @param  \App\Models\grupos  $grupos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, grupos $grupos)
+    public function update(Grupo $grupo)
     {
-        //
+        $grupoId = $grupo['id'];
+        $grupoEst = $grupo['estado'];
+
+        $grupo2 = Grupo::find($grupoId);
+        $grupo2->estado = 'Finalizado';
+        $grupo2->save();
+
+        return Redirect::route('capacitaciones');
     }
 
     /**

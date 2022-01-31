@@ -7,6 +7,7 @@ use App\Models\Propietario;
 use App\Models\Antecedente;
 use App\Models\Seguro;
 use App\Models\Can;
+use App\Models\Capacitacion;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
@@ -191,6 +192,7 @@ class RegistroController extends Controller
         Antecedente::create($input);
         Seguro::create($input);
         Can::create($input);
+        Capacitacion::create($input);
         return Redirect::route('registros.index');
     }
 

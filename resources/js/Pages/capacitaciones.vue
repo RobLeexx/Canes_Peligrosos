@@ -314,19 +314,11 @@
                     no-data-text="Sin Datos"
                     no-results-text="Sin Resultados"
                     :footer-props="{'items-per-page-options':[5,10,15,30],'items-per-page-text':'Usuarios por Página','pageText':'{0}-{1} de {2}'}">
-                    </v-data-table>
-                    <!-- Incompletos -->
-                    <v-subheader style="padding: 20px; padding-top: 40px">
-                        Incompletos
-                    </v-subheader>
-                     <v-divider></v-divider>
-                    <v-data-table style="padding-inline: 20px"
-                    :headers="headers"
-                    :items="dos"
-                    :search="search"
-                    no-data-text="Sin Datos"
-                    no-results-text="Sin Resultados"
-                    :footer-props="{'items-per-page-options':[5,10,15,30],'items-per-page-text':'Usuarios por Página','pageText':'{0}-{1} de {2}'}">
+                        <template v-slot:item.actions="{ item }">
+                            <div style="display: flex; align-items: center; justify-content: center">
+                                <v-btn fab text :href="route('grupos.show', item.id)"><v-icon>mdi-eye</v-icon></v-btn>
+                            </div>
+                        </template>
                     </v-data-table>
                     <!-- Finalizados -->
                     <v-subheader style="padding: 20px; padding-top: 40px">
@@ -340,6 +332,11 @@
                     no-data-text="Sin Datos"
                     no-results-text="Sin Resultados"
                     :footer-props="{'items-per-page-options':[5,10,15,30],'items-per-page-text':'Usuarios por Página','pageText':'{0}-{1} de {2}'}">
+                        <template v-slot:item.actions="{ item }">
+                            <div style="display: flex; align-items: center; justify-content: center">
+                                <v-btn fab text :href="route('grupos.show', item.id)"><v-icon>mdi-eye</v-icon></v-btn>
+                            </div>
+                        </template>
                     </v-data-table>
                 </v-card>
             </div>
@@ -361,7 +358,6 @@
             canes: Array,
             users: Array,
             en_curso: Array,
-            incompletos: Array,
             completos: Array,
         },
         data: function () {
@@ -376,7 +372,7 @@
                 tipoTurno: ['Mañana','Tarde','Noche'],
                 depFil: this.$page.props.user.departamento,
                 search: '',
-                headers: [{ text: "GRUPO", value: "id", sortable: true },
+                headers: [{ text: "GRUPO", value: "id", sortable: true, align: 'center' },
                         { text: "INTEGRANTES", value: "numInt", sortable: true, align: 'center' },
                         { text: "TIPO", value: "tipo", sortable: true},
                         { text: "HORARIO", value: "horario", sortable: true },
@@ -386,7 +382,6 @@
                 dep: ['La Paz', 'Cochabamba', 'Santa Cruz', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Beni', 'Pando'],
                 people: [],
                 uno: [],
-                dos: [],
                 tres: [],
                 form: {
                     capacitador: this.$page.props.user.username,
@@ -447,7 +442,6 @@
             submitData() {
                 /* subir datos */
                 this.form.integrantes = this.form.integrantes.toString();
-                console.log(this.form.integrantes)
                 this.$inertia.post(route('grupos.store'),this.form);
                 window.location.reload();
             },
@@ -472,7 +466,6 @@
             reenviarRegistros() {
                     this.people = this.people.map(this.getDisplayRegistros);
                     this.uno = this.en_curso.map(this.getDisplayUno);
-                    this.dos = this.incompletos.map(this.getDisplayDos);
                     this.tres = this.completos.map(this.getDisplayTres);
                 },
             getDisplayRegistros(people) {
@@ -484,7 +477,6 @@
                     nombres: people.nombres,
                     documento: people.documento,
                     can: people.nomPerro,
-                    actions: people.id,
                 };
             },
             /* Grupos */
@@ -500,20 +492,7 @@
                         inicio: en_curso.inicio,
                         fin: en_curso.fin,
                         estado: en_curso.estado,
-                    }
-            },
-            getDisplayDos(incompletos) {
-                const numIntegrantes = incompletos.integrantes.split(",").length;
-                return {
-                        id: incompletos.id,
-                        numInt: numIntegrantes,
-                        integrantes: incompletos.integrantes,
-                        tipo: incompletos.tipo,
-                        turno: incompletos.turno,
-                        horario: incompletos.horario,
-                        inicio: incompletos.inicio,
-                        fin: incompletos.fin,
-                        estado: incompletos.estado,
+                        actions: en_curso.id,
                     }
             },
             getDisplayTres(completos) {
@@ -528,6 +507,7 @@
                         inicio: completos.inicio,
                         fin: completos.fin,
                         estado: completos.estado,
+                        actions: completos.id,
                     }
             },
             horario(){

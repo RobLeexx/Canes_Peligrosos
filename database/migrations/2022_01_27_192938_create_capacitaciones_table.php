@@ -13,12 +13,12 @@ class CreateCapacitacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('capacitaciones', function (Blueprint $table) {
+        Schema::create('capacitacions', function (Blueprint $table) {
             $table->id();
             $table->string('capacitador');
             $table->string('observaciones');
-            $table->string('capProp');
-            $table->string('capCan');
+            $table->string('tipoCap');
+            $table->string('grupoID');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateCapacitacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('capacitaciones');
+        Schema::dropIfExists('capacitacions');
     }
 }

@@ -9,6 +9,7 @@ Use App\Http\Controllers\RegistroController;
 Use App\Http\Controllers\GruposController;
 Use App\Http\Controllers\CapacitacionesController;
 Use App\Http\Controllers\RegistroShowController;
+Use App\Http\Controllers\GruposShowController;
 Use App\Http\Controllers\RegistroEditController;
 Use App\Http\Controllers\DownloadController;
 Use App\Http\Controllers\CertificadoController;
@@ -42,6 +43,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::resource('/grupos', GruposController::class);
 
     Route::get('/capacitaciones', CapacitacionesController::class)->name('capacitaciones');
+
+    Route::get('/capacitaciones/{grupo}', GruposShowController::class)->name('grupos.show');
 
     Route::get('/registros/{propietario}', RegistroShowController::class)->name('registros.show');
 
