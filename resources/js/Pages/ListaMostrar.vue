@@ -1312,6 +1312,9 @@
                                 <span>Editar Datos</span>
                                 </v-tooltip>
                             </v-col>
+                            <v-col cols="12" sm="6">
+                                <img style="height: 100px" src="{!!$message->embedData(QrCode::format('png')->generate('Embed me into an e-mail!'), 'QrCode.png', 'image/png')!!}">
+                            </v-col>
                         </v-row>
                     </div>
                 </div>
@@ -1413,60 +1416,64 @@
                     this.grado = 'Funcionario';
                     break
             }
-            switch (this.cap.grado)
+            if(this.propietario.grupo != 'Ninguno')
             {
-                case 'Cabo':
-                    this.grado = 'Pol.';
-                    break
-                case 'Sargento':
-                    this.grado = 'Sgto.';
-                    break
-                case 'Suboficial':
-                    this.grado = 'Sof.';
-                    break
-                case 'Subteniente':
-                    this.grado = 'Subtte.';
-                    break
-                case 'Teniente':
-                    this.grado = 'Tte.';
-                    break
-                case 'Capitán':
-                    this.grado = 'Cap.';
-                    break
-                case 'Mayor':
-                    this.grado = 'My.';
-                    break
-                case 'Teniente Coronel':
-                    this.grado = 'Tcnl.';
-                    break
-                case 'Coronel':
-                    this.grado = 'Cnl.';
-                    break
-                case 'General':
-                    this.grado = 'Gnal.';
-                    break
-                case 'Estudiante':
-                    this.grado = 'Est.';
-                    break
-                case 'Técnico':
-                    this.grado = 'Tec.';
-                    break
-                case 'Licenciado':
-                    this.grado = 'Lic.';
-                    break
-                case 'Ingeniero':
-                    this.grado = 'Ing.';
-                    break
-                case 'Máster':
-                    this.grado = 'Msc.';
-                    break
-                case 'Doctor':
-                    this.grado = 'Doc.';
-                    break
-                default:
-                    this.grado = 'Funcionario';
-                    break
+                switch (this.cap.grado)
+                {
+                    case 'Cabo':
+                        this.grado = 'Pol.';
+                        break
+                    case 'Sargento':
+                        this.grado = 'Sgto.';
+                        break
+                    case 'Suboficial':
+                        this.grado = 'Sof.';
+                        break
+                    case 'Subteniente':
+                        this.grado = 'Subtte.';
+                        break
+                    case 'Teniente':
+                        this.grado = 'Tte.';
+                        break
+                    case 'Capitán':
+                        this.grado = 'Cap.';
+                        break
+                    case 'Mayor':
+                        this.grado = 'My.';
+                        break
+                    case 'Teniente Coronel':
+                        this.grado = 'Tcnl.';
+                        break
+                    case 'Coronel':
+                        this.grado = 'Cnl.';
+                        break
+                    case 'General':
+                        this.grado = 'Gnal.';
+                        break
+                    case 'Estudiante':
+                        this.grado = 'Est.';
+                        break
+                    case 'Técnico':
+                        this.grado = 'Tec.';
+                        break
+                    case 'Licenciado':
+                        this.grado = 'Lic.';
+                        break
+                    case 'Ingeniero':
+                        this.grado = 'Ing.';
+                        break
+                    case 'Máster':
+                        this.grado = 'Msc.';
+                        break
+                    case 'Doctor':
+                        this.grado = 'Doc.';
+                        break
+                    default:
+                        this.grado = 'Funcionario';
+                        break
+                }
             }
+            
             this.creacion = moment(String(this.propietario.created_at)).format('YYYY-MM-DD hh:mm'),
             this.actualizacion = moment(String(this.propietario.updated_at)).format('YYYY-MM-DD hh:mm')
         },

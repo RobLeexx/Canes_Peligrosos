@@ -68,7 +68,9 @@
                                                 :rules="vacio"
                                                 label="Grado y Nombre del Comandante Departamental"
                                                 placeholder="Nombre del Comandante Departamental"
-                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
+                                                maxlength="30"
+                                                counter
+                                                @keypress="sinNumeros($event)"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -81,6 +83,9 @@
                                                 v-model="form.referencia"
                                                 :rules="vacio"
                                                 label="Referencia"
+                                                maxlength="50"
+                                                counter
+                                                @keypress="sinNumeros($event)"
                                                 placeholder="Referencia adjuntada en el memorial"
                                                 outlined
                                                 ></v-text-field>
@@ -237,9 +242,11 @@
                                                 id="paterno"
                                                 v-model="form.paterno"
                                                 :rules="vacio"
+                                                maxlength="15"
+                                                counter="15"
+                                                @keypress="sinNumeros($event)"
                                                 label="Apellido Paterno"
                                                 placeholder="Apellido Paterno del Propietario"
-                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -251,9 +258,11 @@
                                                 id="materno"
                                                 v-model="form.materno"
                                                 :rules="vacio"
+                                                maxlength="15"
+                                                counter="15"
+                                                @keypress="sinNumeros($event)"
                                                 label="Apellido Materno"
                                                 placeholder="Apellido Materno (de no tener, repetir el apellido Paterno)"
-                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -267,7 +276,9 @@
                                                 :rules="vacio"
                                                 label="Nombres"
                                                 placeholder="Nombre o Nombres del Propietario"
-                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
+                                                maxlength="30"
+                                                counter="30"
+                                                @keypress="sinNumeros($event)"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -325,6 +336,8 @@
                                                 <v-text-field
                                                 v-model="form.profesion"
                                                 :rules="vacio"
+                                                maxlength="35"
+                                                counter="35"
                                                 label="Profesión u Ocupación"
                                                 placeholder="Profesión u Ocupación del Propietario"
                                                 outlined
@@ -347,6 +360,8 @@
                                                 id="documento"
                                                 v-model="form.documento"
                                                 :rules="vacio"
+                                                maxlength="12"
+                                                counter="12"
                                                 label="Documento de Identidad"
                                                 placeholder="Documento de Identidad"
                                                 outlined
@@ -630,6 +645,8 @@
                                                         v-model="form.zona"
                                                         outlined
                                                         label="Zona"
+                                                        maxlength="40"
+                                                        counter
                                                         placeholder="Zona del propietario"
                                                         :rules="vacio"
                                                 ></v-text-field>
@@ -638,6 +655,8 @@
                                                 <v-text-field 
                                                         v-model="form.domicilio"
                                                         outlined
+                                                        maxlength="40"
+                                                        counter
                                                         label="Domicilio"
                                                         placeholder="Domicilio del propietario"
                                                         :rules="vacio"
@@ -681,13 +700,13 @@
                                                         id="cel"
                                                         v-model="form.celular"
                                                         :rules="cel"
+                                                        maxlength="12"
                                                         counter
-                                                        maxlength="15"
+                                                        @keypress="soloNumeros($event)"
                                                         label="Celular"
                                                         prepend-icon="mdi-phone"
                                                         placeholder="Teléfono móvil del proietario"
                                                         outlined
-                                                        type="number"
                                                     ></v-text-field>
                                                 </template>
                                             </v-col>
@@ -697,12 +716,12 @@
                                                         v-model="form.telefono"
                                                         label="Télefono"
                                                         :rules="tel"
-                                                        counter
                                                         maxlength="12"
+                                                        counter
+                                                        @keypress="soloNumeros($event)"
                                                         prepend-icon="mdi-phone-classic"
                                                         placeholder="Télefono fijo del propietario"
                                                         outlined
-                                                        type="number"
                                                     ></v-text-field>
                                                 </template>
                                             </v-col>
@@ -713,6 +732,8 @@
                                                         label="Correo Elctrónico"
                                                         prepend-icon="mdi-at"
                                                         :rules="email"
+                                                        maxlength="25"
+                                                        counter
                                                         placeholder="Correo Elctrónico del propietario"
                                                         outlined
                                                     ></v-text-field>
@@ -722,11 +743,13 @@
                                                 <template>
                                                     <v-text-field
                                                         v-model="form.contactoAlterno"
+                                                        maxlength="12"
+                                                        counter
+                                                        @keypress="soloNumeros($event)"
                                                         label="Otro Número de Contacto"
                                                         prepend-icon="mdi-phone-plus"
                                                         placeholder="Otro número de contacto del propietario"
                                                         outlined
-                                                        type="number"
                                                     ></v-text-field>
                                                 </template>
                                             </v-col>
@@ -811,7 +834,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="form.numCanes" :rules="vacio" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.numCanes" maxlength="15" counter :rules="vacio" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -926,7 +949,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="form.numRejap" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.numRejap" maxlength="15" counter outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -1041,7 +1064,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="form.numFelcc" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.numFelcc" maxlength="15" counter outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -1156,7 +1179,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="form.numFelcn" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.numFelcn" maxlength="15" counter outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -1271,7 +1294,7 @@
                                             
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="form.numFelcv" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                    <v-text-field v-model="form.numFelcv" maxlength="15" counter outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12" sm="6">
                                                     <div>
@@ -1535,6 +1558,7 @@
                                         >
                                         <v-text-field 
                                         v-model="form.nomAgencia"
+                                        maxlength="25" counter
                                         :rules="vacio"
                                         label="Agencia"
                                         placeholder="Nombre de la Agencia" 
@@ -1546,6 +1570,7 @@
                                         >
                                         <v-text-field 
                                         v-model="form.ubiAgencia"
+                                        maxlength="25" counter
                                         placeholder="Departamento/Ciudad/Zona/Calle" 
                                         outlined>
                                         <template v-slot:label>
@@ -1647,6 +1672,7 @@
                                         >
                                         <v-text-field 
                                         v-model="form.resAgencia"
+                                        maxlength="25" counter
                                         placeholder="Agente Responsable del Trámite" 
                                         outlined>
                                         <template v-slot:label>
@@ -1661,7 +1687,8 @@
                                         >
                                         <v-text-field 
                                         v-model="form.resAgenciaNum"
-                                        type="number"
+                                        maxlength="25" counter
+                                        @keypress="soloNumeros($event)"
                                         placeholder="Número de Referencia de la Agencia o Agente Responsable" 
                                         outlined>
                                         <template v-slot:label>
@@ -1729,6 +1756,7 @@
                                         v-model="form.nomPerro"
                                         :rules="vacio"
                                         label="Nombre"
+                                        maxlength="15" counter
                                         placeholder="Nombre del Can" 
                                         outlined></v-text-field>
                                         </v-col>
@@ -1795,6 +1823,7 @@
                                         v-model="form.procedenciaCan"
                                         :rules="vacio"
                                         label="Procedencia"
+                                        maxlength="30" counter
                                         placeholder="Procedencia de la Adquisición del Can" 
                                         outlined></v-text-field>
                                         </v-col>
@@ -1987,6 +2016,8 @@
                                                 v-model="form.razaCan"
                                                 :rules="vacio"
                                                 label="Raza"
+                                                maxlength="25" counter
+                                                @keypress="sinNumeros($event)"
                                                 placeholder="Especifique la Raza o Cruce de Razas del Can"
                                                 outlined>
                                             </v-text-field>
@@ -1997,11 +2028,11 @@
                                             <v-autocomplete v-model="form.tamCan" :items= "tamCanItems" :rules="vacio" outlined placeholder="Tamaño del Can"></v-autocomplete>
                                         </v-col>
                                         <v-col cols="12" sm="6">
-                                            <v-text-field v-model="form.colorCan" outlined label="Color" :rules="vacio" placeholder="Color o Colores Característicos del Can">
+                                            <v-text-field v-model="form.colorCan" maxlength="40" counter @keypress="sinNumeros($event)" outlined label="Color" :rules="vacio" placeholder="Color o Colores Característicos del Can">
                                             </v-text-field>
                                         </v-col>
                                         <v-col cols="12" sm="12">
-                                            <v-textarea v-model="form.sinCan" outlined label="Singularidades del Can" :rules="vacio" placeholder="Rasgos Característicos del Can, ej: cicatrices, color de ojos, etc.">
+                                            <v-textarea v-model="form.sinCan" @keypress="sinNumeros($event)" outlined label="Singularidades del Can" :rules="vacio" placeholder="Rasgos Característicos del Can, ej: cicatrices, color de ojos, etc.">
                                             </v-textarea>
                                         </v-col>
                                     </v-row>
@@ -2140,19 +2171,19 @@
                                             <v-subheader>Datos de Referencia de la Vacuna</v-subheader>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchVac" v-model="form.vetNom1" :rules="vacio" outlined label="Veterinaria o Unidad Móvil" placeholder="Nombre de la Veterinaria o Entidad donde se Vacunó al Can">
+                                                <v-text-field :disabled="!switchVac" maxlength="20" counter v-model="form.vetNom1" :rules="vacio" outlined label="Veterinaria o Unidad Móvil" placeholder="Nombre de la Veterinaria o Entidad donde se Vacunó al Can">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchVac" v-model="form.vetUbi1" outlined placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchVac" maxlength="30" counter v-model="form.vetUbi1" outlined placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchVac" v-model="form.vetRes1" outlined placeholder="Nombre del Responsable a Cargo de la Vacunación"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchVac" maxlength="30" counter @keypress="sinNumeros($event)" v-model="form.vetRes1" outlined placeholder="Nombre del Responsable a Cargo de la Vacunación"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchVac" v-model="form.vetNum1" outlined type="number" placeholder="Teléfono de Referencia de la Veterinaria o Referente"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchVac" maxlength="12" counter @keypress="soloNumeros($event)" v-model="form.vetNum1" outlined placeholder="Teléfono de Referencia de la Veterinaria o Referente"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
@@ -2184,19 +2215,19 @@
                                             <v-subheader>Datos de Referencia de la Esterilización</v-subheader>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="form.vetNom2" :rules="vacio" outlined label="Veterinaria" placeholder="Nombre de la Veterinaria donde se Esterilizó al Can">
+                                                <v-text-field :disabled="!switchEst" maxlength="20" counter v-model="form.vetNom2" :rules="vacio" outlined label="Veterinaria" placeholder="Nombre de la Veterinaria donde se Esterilizó al Can">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="form.vetUbi2" outlined placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchEst" maxlength="30" counter v-model="form.vetUbi2" outlined placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="form.vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchEst" maxlength="30" counter @keypress="sinNumeros($event)" v-model="form.vetRes2" outlined placeholder="Nombre del Responsable a Cargo de la Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field :disabled="!switchEst" v-model="form.vetNum2" outlined type="number" placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
+                                                <v-text-field :disabled="!switchEst" maxlength="12" counter @keypress="soloNumeros($event)" v-model="form.vetNum2" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
@@ -2228,19 +2259,19 @@
                                             <v-subheader>Datos de Referencia de la Veterinaria</v-subheader>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.vetNom3" :rules="vacio" outlined label="Veterinaria" placeholder="Nombre de la Veterinaria donde se Trató al Can">
+                                                <v-text-field v-model="form.vetNom3" maxlength="20" counter :rules="vacio" outlined label="Veterinaria" placeholder="Nombre de la Veterinaria donde se Trató al Can">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.vetUbi3" outlined label="Ubicación" placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
+                                                <v-text-field v-model="form.vetUbi3" maxlength="30" counter outlined label="Ubicación" placeholder="Departamento/Ciudad/Zona/Calle"><template v-slot:label><div>Ubicación<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.vetRes3" outlined placeholder="Nombre del Responsable a Cargo de la Vacuna O Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
+                                                <v-text-field v-model="form.vetRes3" maxlength="30" counter @keypress="sinNumeros($event)" outlined placeholder="Nombre del Responsable a Cargo de la Vacuna O Esterilización"><template v-slot:label><div>Responsable<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.vetNum3" type="number" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
+                                                <v-text-field v-model="form.vetNum3" maxlength="12" counter @keypress="soloNumeros($event)" outlined placeholder="Teléfono de Referencia de la Veterinaria o Responsable"><template v-slot:label><div>Número de Contacto<small> (opcional)</small></div></template>
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
@@ -2313,6 +2344,7 @@
                                                 <v-text-field :disabled="!switchMicro"
                                                     v-model="form.numMicro"
                                                     :rules="vacio"
+                                                    maxlength="12" counter 
                                                     label="Número de Microchip"
                                                     placeholder="Número de Identitifación del Microchip"
                                                     outlined>
@@ -2322,28 +2354,28 @@
                                         <v-row>
                                             <v-col cols="12" sm="12"><v-subheader>Cuidadores o Tenedores Eventuales *al menos un nombre con contacto es obligatorio</v-subheader></v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven1" outlined :rules="vacio" label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
+                                                <v-text-field v-model="form.canEven1" maxlength="30" counter @keypress="sinNumeros($event)" outlined :rules="vacio" label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEvenNum1" outlined :rules="vacio" type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                                <v-text-field v-model="form.canEvenNum1" maxlength="12" counter @keypress="soloNumeros($event)" outlined :rules="vacio" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven2" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
+                                                <v-text-field v-model="form.canEven2" maxlength="30" counter @keypress="sinNumeros($event)" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEvenNum2" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                                <v-text-field v-model="form.canEvenNum2" maxlength="12" counter @keypress="soloNumeros($event)" outlined label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven3" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
+                                                <v-text-field v-model="form.canEven3" maxlength="30" counter @keypress="sinNumeros($event)" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEvenNum3" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                                <v-text-field v-model="form.canEvenNum3" maxlength="12" counter @keypress="soloNumeros($event)" outlined label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEven4" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
+                                                <v-text-field v-model="form.canEven4" maxlength="30" counter @keypress="sinNumeros($event)" outlined label="Cuidador Eventual" placeholder="Nombre del Cuidador o Tenedor Eventual que conozca al Can"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="form.canEvenNum4" outlined type="number" label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
+                                                <v-text-field v-model="form.canEvenNum4" maxlength="12" counter @keypress="soloNumeros($event)" outlined label="Número de Contacto" placeholder="Número de Contacto del Cuidador Eventual"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="12"><v-subheader>Tenencia del Can</v-subheader></v-col>
                                             <v-col cols="12" sm="12"><v-textarea v-model="form.canConvivencia" :rules="vacio" outlined label="Motivos de Convivencia con el Can Peligroso" placeholder="Motivos por los cuales se domestica al Perro Peligroso"></v-textarea></v-col>
@@ -2874,6 +2906,7 @@
             /* CAN */
             this.form.nomPerro &&
             this.form.dateNacPerro &&
+            (this.form.fotoCan || this.form.fotoCan2) &&
             this.form.sexoCan &&
             this.form.procedenciaCan &&
             this.form.razaCan &&
@@ -2989,6 +3022,28 @@
                 }
                 /* subir datos */
                 this.$inertia.post(route('registros.update', this.propietario.id),this.form);
+            },
+
+            sinNumeros: function(evt)
+            {
+                evt = (evt) ? evt : window.event;
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+                if (!((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || (charCode >= 192 && charCode <= 255) || (charCode == [209]) || (charCode == [241]) || (charCode == [32]) || (charCode == [39]) || (charCode == [46]))) {
+                    evt.preventDefault();
+                } else {
+                    return true;
+                }
+            },
+            soloNumeros: function(evt)
+            {
+                
+                evt = (evt) ? evt : window.event;
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+                if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || (charCode >= 192 && charCode <= 255) || (charCode == [209]) || (charCode == [241]) || (charCode == [32]) || (charCode == [39]) || (charCode == [46])) {
+                    evt.preventDefault();
+                } else {
+                    return true;
+                }
             },
             switchToTeam(team) 
             {

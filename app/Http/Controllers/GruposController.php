@@ -6,6 +6,7 @@ use App\Models\Grupo;
 use App\Models\Propietario;
 use App\Models\Capacitacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
 class GruposController extends Controller
@@ -58,6 +59,12 @@ class GruposController extends Controller
             $propietarios->save();
             $capacitaciones->save();
         };
+        $image = \QrCode::format('png')
+                 ->merge('img/t.jpg', 0.1, true)
+                 ->size(200)->errorCorrection('H')
+                 ->generate('A simple example of QR code!');
+        $output_file = '/img/qr-code/img-' . time() . '.png';
+        Storage::disk('local')->put($output_file, $image);
         
     }
 

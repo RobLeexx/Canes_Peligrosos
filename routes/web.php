@@ -77,6 +77,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::get('/veterinaria/{vet}', [DownloadController::class, 'downloadVet'])->name('downloadVet');
 
     Route::get('/registros/{propietario}/pdf', CertificadoController::class)->name('certificado.pdf');
+
+    Route::get('qrcode', function () {
+        return QrCode::size(250)
+            ->backgroundColor(255, 255, 204)
+            ->generate('MyNotePaper');
+    });
     
 });
 
