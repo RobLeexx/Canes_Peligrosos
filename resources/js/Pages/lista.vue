@@ -101,6 +101,16 @@
                                 </div>
                             </div>
                         </template>
+                        <template v-slot:item.adj="{ item }">
+                            <div style="display: flex; align-items: center; justify-content: center">
+                                <v-progress-circular
+                                :value="100"
+                                :color="colorPen"
+                                :size="40"
+                                :width="5"
+                                >{{ pendientes }}</v-progress-circular>    
+                            </div>
+                        </template>
                         <template v-slot:item.actions="{ item }">
                             <div style="display: flex; align-items: center; justify-content: center">
                                 <v-btn fab text :href="route('registros.show', item.id)"><v-icon>mdi-eye</v-icon></v-btn>
@@ -124,6 +134,9 @@
             propietarios: Array,
             canes: Array,
             capacitaciones: Array,
+            memo: Array,
+            seguro: Array,
+            antecedentes: Array,
         },
         data: function () {
             return {
@@ -131,11 +144,14 @@
                 search: '',
                 registros: [],
                 estadoCap: '',
+                pendientes: '',
+                colorPen: '',
                 headers: [{ text: "PROPIETARIO", value: "propietarioDatos", sortable: false },
                         { text: "CAN", value: "canesDatos", sortable: false },
                         { text: "CAPACITACIÓN", value: "docExp", sortable: false, align: 'center' },
                         { text: "CONTACTOS", value: "conDatos", sortable: false },
                         { text: "C.A.C", value: "departamento", sortable: false, filter: this.depFilter },
+                        { text: "PENDIENTES", value: "adj", sortable: false, align: 'center' },
                         { text: 'ACCIONES', value: 'actions', sortable: false, align: 'center' }],
                 dep: ['La Paz', 'Cochabamba', 'Santa Cruz', 'Chuquisaca', 'Oruro', 'Potosí', 'Tarija', 'Beni', 'Pando'],
             }
@@ -143,9 +159,12 @@
         created () {
             /* Merge Canes y Propietarios en Registro */
             let mergedSubjects = this.propietarios.map(subject => {
-            let otherSubject = this.canes.find(element => element.id === subject.id)
-            let otherSubject2 = this.capacitaciones.find(element => element.id === subject.id)
-            const reg = {...subject, ...otherSubject, ...otherSubject2,}
+            let canesID = this.canes.find(element => element.id === subject.id)
+            let capID = this.capacitaciones.find(element => element.id === subject.id)
+            let memoID = this.memo.find(element => element.id === subject.id)
+            let segID = this.seguro.find(element => element.id === subject.id)
+            let antID = this.antecedentes.find(element => element.id === subject.id)
+            const reg = {...subject, ...canesID, ...capID, ...memoID, ...segID, ...antID}
             this.registros.push(reg)})
         },
         methods: {
@@ -155,7 +174,6 @@
             }
             return value === this.depFil;
             },
-
             reenviarRegistros() {
                 this.registros = this.registros.map(this.getDisplayRegistros);
             },
@@ -201,6 +219,19 @@
                 grupo: registro.grupo,
                 departamento: registro.cac,
                 actions: registro.id,
+
+                /* PENDIENTES */
+                docFile: registro.docFile,
+                memoFile: registro.memoFile,
+                boleta: registro.boleta,
+                aCanesFile: registro.aCanesFile,
+                aRejapFile: registro.aRejapFile,
+                aFelccFile: registro.aFelccFile,
+                aFelcvFile: registro.aFelcvFile,
+                aFelcnFile: registro.aFelcnFile,
+                seguroFile: registro.seguroFile,
+                vacFile: registro.vacFile,
+                estFile: registro.estFile,
             };
             },
             customSort(items, index, isDesc) {
@@ -221,7 +252,7 @@
             });
             return items;
             },
-            getColor (grupo) {
+            getColor(grupo) {
                 switch(grupo){
                     case 'Sin Comenzar': return 'red'
                     case 'En Curso': return 'orange'
@@ -231,6 +262,47 @@
         },
         mounted() {
             this.reenviarRegistros();
+            /* PENDIENTES */
+            let numPen = 0;
+            for(let registro of this.registros)
+            {
+                if(!registro.memoFile){
+                    numPen += 1 }
+                if(!registro.docFile){
+                    numPen += 1 }
+                if(!registro.boleta){
+                    numPen += 1 }
+                if(!registro.aCanesFile){
+                    numPen += 1 }
+                if(!registro.aFelccFile){
+                    numPen += 1 }
+                if(!registro.aFelcvFile){
+                    numPen += 1 }
+                if(!registro.aRejapFile){
+                    numPen += 1 }
+                if(!registro.aFelcnFile){
+                    numPen += 1 }
+                if(!registro.seguroFile){
+                    numPen += 1 }
+                if(!registro.vacFile){
+                    numPen += 1 }
+                if(!registro.estFile){
+                    numPen += 1 }
+                
+                if(numPen > 3)
+                {
+                    this.colorPen = 'red'
+                }
+                else if(numPen <= 3 && numPen != 0)
+                {
+                    this.colorPen = 'orange darken-2'
+                }
+                else if(numPen == 0)
+                {
+                    this.colorPen = 'green'
+                }
+                this.pendientes = numPen;
+            }
         },
         computed: {
             anchoProp() {

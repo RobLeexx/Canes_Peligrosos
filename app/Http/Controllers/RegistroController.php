@@ -24,7 +24,11 @@ class RegistroController extends Controller
         $propietarios = Propietario::all();
         $canes = Can::all();
         $capacitaciones = Capacitacion::all();
-        return Inertia::render('lista', ['propietarios'=>$propietarios, 'canes'=>$canes, 'capacitaciones'=>$capacitaciones]);
+        /* Adjuntos */
+        $memo = Memorial::select('id','memoFile')->whereNotNull('id')->get();
+        $seguro = Seguro::select('id','seguroFile')->whereNotNull('id')->get();
+        $antecedentes = Antecedente::select('id','aCanesFile','aRejapFile','aFelccFile','aFelcnFile','aFelcvFile')->whereNotNull('id')->get();
+        return Inertia::render('lista', ['propietarios'=>$propietarios, 'canes'=>$canes, 'capacitaciones'=>$capacitaciones, 'seguro'=>$seguro, 'antecedentes'=>$antecedentes, 'memo'=>$memo]);
     }
 
     /**

@@ -788,7 +788,7 @@
                                 </v-stepper-content>
 
                                 <!-- 3. Antecedentes del Propietario -->
-                                <v-stepper-step v-if="antecedente.aCanesFile && antecedente.aRejapFile && antecedente.aFelccFile && antecedente.aFelcn && antecedente.aFelcv"
+                                <v-stepper-step v-if="antecedente.aCanesFile && antecedente.aRejapFile && antecedente.aFelccFile && antecedente.aFelcnFile && antecedente.aFelcvFile"
                                 :complete="e6 > 3"
                                 step="3"
                                 editable>
@@ -2906,7 +2906,6 @@
             /* CAN */
             this.form.nomPerro &&
             this.form.dateNacPerro &&
-            (this.form.fotoCan || this.form.fotoCan2) &&
             this.form.sexoCan &&
             this.form.procedenciaCan &&
             this.form.razaCan &&
