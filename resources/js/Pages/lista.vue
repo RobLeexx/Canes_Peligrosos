@@ -105,10 +105,10 @@
                             <div style="display: flex; align-items: center; justify-content: center">
                                 <v-progress-circular
                                 :value="100"
-                                :color="colorPen"
+                                :color="colorPen(item.num)"
                                 :size="40"
                                 :width="5"
-                                >{{ pendientes }}</v-progress-circular>    
+                                >{{ item.num }}</v-progress-circular>    
                             </div>
                         </template>
                         <template v-slot:item.actions="{ item }">
@@ -144,8 +144,6 @@
                 search: '',
                 registros: [],
                 estadoCap: '',
-                pendientes: '',
-                colorPen: '',
                 headers: [{ text: "PROPIETARIO", value: "propietarioDatos", sortable: false },
                         { text: "CAN", value: "canesDatos", sortable: false },
                         { text: "CAPACITACIÓN", value: "docExp", sortable: false, align: 'center' },
@@ -194,6 +192,30 @@
                 {
                     registro.grupo = 'Finalizado'
                 }
+                /* Adjuntos Pendientes */
+                let numPen = 0;
+                if(!registro.memoFile){
+                    numPen += 1 }
+                if(!registro.docFile){
+                    numPen += 1 }
+                if(!registro.boleta){
+                    numPen += 1 }
+                if(!registro.aCanesFile){
+                    numPen += 1 }
+                if(!registro.aFelccFile){
+                    numPen += 1 }
+                if(!registro.aFelcvFile){
+                    numPen += 1 }
+                if(!registro.aRejapFile){
+                    numPen += 1 }
+                if(!registro.aFelcnFile){
+                    numPen += 1 }
+                if(!registro.seguroFile){
+                    numPen += 1 }
+                if(!registro.vacFile){
+                    numPen += 1 }
+                if(!registro.estFile){
+                    numPen += 1 }
             return {
                 id: registro.id,
                 propietarioDatos: propDatos,
@@ -232,6 +254,7 @@
                 seguroFile: registro.seguroFile,
                 vacFile: registro.vacFile,
                 estFile: registro.estFile,
+                num: numPen,
             };
             },
             customSort(items, index, isDesc) {
@@ -255,95 +278,22 @@
             getColor(grupo) {
                 switch(grupo){
                     case 'Sin Comenzar': return 'red'
-                    case 'En Curso': return 'orange'
+                    case 'En Curso': return 'orange darken-2'
                     case 'Finalizado': return 'green'
+                }
+            },
+            colorPen(num) {
+                switch(true){
+                    case num > 3: return 'red'
+                    case num <= 3 && num != 0 : return 'orange darken-2'
+                    case num == 0: return 'green'
                 }
             },
         },
         mounted() {
             this.reenviarRegistros();
-            /* PENDIENTES */
-            let numPen = 0;
-            for(let registro of this.registros)
-            {
-                if(!registro.memoFile){
-                    numPen += 1 }
-                if(!registro.docFile){
-                    numPen += 1 }
-                if(!registro.boleta){
-                    numPen += 1 }
-                if(!registro.aCanesFile){
-                    numPen += 1 }
-                if(!registro.aFelccFile){
-                    numPen += 1 }
-                if(!registro.aFelcvFile){
-                    numPen += 1 }
-                if(!registro.aRejapFile){
-                    numPen += 1 }
-                if(!registro.aFelcnFile){
-                    numPen += 1 }
-                if(!registro.seguroFile){
-                    numPen += 1 }
-                if(!registro.vacFile){
-                    numPen += 1 }
-                if(!registro.estFile){
-                    numPen += 1 }
-                
-                if(numPen > 3)
-                {
-                    this.colorPen = 'red'
-                }
-                else if(numPen <= 3 && numPen != 0)
-                {
-                    this.colorPen = 'orange darken-2'
-                }
-                else if(numPen == 0)
-                {
-                    this.colorPen = 'green'
-                }
-                this.pendientes = numPen;
-            }
         },
         computed: {
-            anchoProp() {
-            switch (this.$vuetify.breakpoint.name) {
-                case 'xs': return 320
-                case 'sm': return 340
-                case 'md': return 350
-                case 'lg': return 420
-                case 'xl': return 420
-            }
-            },
-            anchoCan() {
-            switch (this.$vuetify.breakpoint.name) {
-                case 'sm': return 300
-                case 'md': return 200
-                case 'lg': return 240
-                case 'xl': return 240
-            }
-            },
-            anchoCan2() {
-            switch (this.$vuetify.breakpoint.name) {
-                case 'sm': return 300
-                case 'md': return 200
-                case 'lg': return 202
-                case 'xl': return 210
-            }
-            },
-            anchoCap() {
-            switch (this.$vuetify.breakpoint.name) {
-                case 'md': return 160
-                case 'lg': return 210
-                case 'xl': return 210
-            }
-            },
-            anchoTel() {
-            switch (this.$vuetify.breakpoint.name) {
-                case 'md': return 160
-                case 'lg': return 200
-                case 'xl': return 200   
-            }
-            },
         },
         components: {
             AppLayout,
