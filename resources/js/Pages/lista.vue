@@ -123,6 +123,7 @@
         props: {
             propietarios: Array,
             canes: Array,
+            capacitaciones: Array,
         },
         data: function () {
             return {
@@ -143,9 +144,9 @@
             /* Merge Canes y Propietarios en Registro */
             let mergedSubjects = this.propietarios.map(subject => {
             let otherSubject = this.canes.find(element => element.id === subject.id)
-            const reg = {...subject, ...otherSubject}
-            this.registros.push(reg)
-        })
+            let otherSubject2 = this.capacitaciones.find(element => element.id === subject.id)
+            const reg = {...subject, ...otherSubject, ...otherSubject2,}
+            this.registros.push(reg)})
         },
         methods: {
             depFilter(value) {
@@ -163,13 +164,17 @@
                 const propDatos = registro.paterno.concat(space,registro.materno,space,registro.nombres,registro.documento)
                 const canDatos = registro.nomPerro.concat(space,registro.razaCan)
                 /* Estado de capacitación */
-                if(registro.grupo == 'Ninguno')
+                if(registro.estado == 'Sin Comenzar')
                 {
                     registro.grupo = 'Sin Comenzar';
                 }
-                else if(registro.grupo != 'Ninguno')
+                else if(registro.estado == 'En Curso')
                 {
                     registro.grupo = 'En Curso'
+                }
+                else if(registro.estado == 'Finalizado')
+                {
+                    registro.grupo = 'Finalizado'
                 }
             return {
                 id: registro.id,

@@ -19,6 +19,7 @@ class CreateCapacitacionesTable extends Migration
             $table->string('observaciones');
             $table->string('tipoCap');
             $table->string('grupoID');
+            $table->string('estado');
             $table->timestamps();
         });
     }

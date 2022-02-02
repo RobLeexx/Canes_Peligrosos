@@ -391,6 +391,7 @@
                     horario: null,
                     inicio: null,
                     fin: null,
+                    dia: '0',
                     estado: 'En Curso',
                 },
             }

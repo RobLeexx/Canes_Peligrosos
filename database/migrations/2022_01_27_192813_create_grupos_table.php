@@ -22,6 +22,7 @@ class CreateGruposTable extends Migration
             $table->string('horario');
             $table->string('inicio');
             $table->string('fin');
+            $table->string('dia');
             $table->string('estado');
             $table->timestamps();
         });

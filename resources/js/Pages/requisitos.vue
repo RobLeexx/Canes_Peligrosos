@@ -2776,6 +2776,7 @@
                 capacitador: 'Ninguno',
                 observaciones: 'Ninguno',
                 grupoID: 'Ninguno',
+                estado: 'Sin Comenzar',
                 tipoCap: 'Ninguno',
 
                 /* Auditoría */

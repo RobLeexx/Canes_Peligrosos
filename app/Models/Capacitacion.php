@@ -13,5 +13,6 @@ class Capacitacion extends Model
         'observaciones',
         'tipoCap',
         'grupoID',
+        'estado',
     ];
 }

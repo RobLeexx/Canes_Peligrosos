@@ -23,7 +23,8 @@ class RegistroController extends Controller
     {
         $propietarios = Propietario::all();
         $canes = Can::all();
-        return Inertia::render('lista', ['propietarios'=>$propietarios, 'canes'=>$canes]);
+        $capacitaciones = Capacitacion::all();
+        return Inertia::render('lista', ['propietarios'=>$propietarios, 'canes'=>$canes, 'capacitaciones'=>$capacitaciones]);
     }
 
     /**

@@ -390,9 +390,9 @@
                 }
 
                 /* LogoIzq */
-                //img.src = '/storage/img/logoPol.png';
+                img.src = '/storage/img/logoPol.png';
                 imgProp.src = '/storage/images/propietarios/' + this.propietario.fotoProp;
-                //pdf.addImage(img, 'png', 17, 5, 14, 18);
+                pdf.addImage(img, 'png', 17, 5, 14, 18);
                 pdf.addImage(imgProp, 'png', 62.5, 60, 45, 38);
                 pdf.setFontSize(9).text('POLICÍA BOLIVIANA', 10, 27);
                 pdf.setFontSize(6).text('Dir. Nal. De Fiscalización', 13, 31);

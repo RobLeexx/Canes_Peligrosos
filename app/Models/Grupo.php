@@ -16,6 +16,7 @@ class Grupo extends Model
         'horario',
         'inicio',
         'fin',
+        'dia',
         'estado',
     ];
 }

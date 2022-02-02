@@ -56,15 +56,10 @@ class GruposController extends Controller
             $capacitaciones->grupoID = $idGroup;
             $capacitaciones->capacitador = $capGroup;
             $capacitaciones->tipoCap = $tipo;
+            $capacitaciones->estado = 'En Curso';
             $propietarios->save();
             $capacitaciones->save();
         };
-        $image = \QrCode::format('png')
-                 ->merge('img/t.jpg', 0.1, true)
-                 ->size(200)->errorCorrection('H')
-                 ->generate('A simple example of QR code!');
-        $output_file = '/img/qr-code/img-' . time() . '.png';
-        Storage::disk('local')->put($output_file, $image);
         
     }
 
@@ -105,6 +100,19 @@ class GruposController extends Controller
         $grupo2 = Grupo::find($grupoId);
         $grupo2->estado = 'Finalizado';
         $grupo2->save();
+
+        /* Estado Capacitacion */
+        $propIDS = $grupo['integrantes'];
+        $propIDS = explode(',',trim($propIDS));
+        $length= count($propIDS);
+
+        for($n = 0; $n < $length; $n++)
+        {
+            $propID = $propIDS[$n];
+            $capacitaciones = Capacitacion::find($propID);
+            $capacitaciones->estado = 'Finalizado';
+            $capacitaciones->save();
+        };
 
         return Redirect::route('capacitaciones');
     }
