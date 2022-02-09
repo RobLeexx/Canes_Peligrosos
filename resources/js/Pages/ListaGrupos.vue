@@ -10,12 +10,27 @@
         <div class="py-12" style="background: #4a6813">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
+                    <v-row style="padding: 20px">
+                        <v-col cols="12" sm="6">
+                            Tipo de Capacitación: {{ grupo.tipo }}
+                        </v-col>
+                        <v-col cols="12" sm="6">
+                            Turno: {{ grupo.turno }} ({{ grupo.horario }})
+                        </v-col>
+                        <v-col cols="12" sm="6">
+                            Fechas: desde el {{ grupo.inicio }} hasta el {{ grupo.fin }}
+                        </v-col>
+                        <v-col cols="12" sm="6">
+                            Estado: {{ grupo.estado }}
+                        </v-col>
+                    </v-row>
+                    <v-divider></v-divider>
                     <h1 style="
                             display: flex;
                             justify-content: center;
                             font-size: x-large;
                             padding: 50px" >
-                            Capacitación {{ grupo.tipo }}</h1>
+                            Asistencia</h1>
                     <template>
                         <v-stepper
                             v-model="e6"
