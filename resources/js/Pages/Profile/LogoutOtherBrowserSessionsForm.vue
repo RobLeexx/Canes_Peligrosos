@@ -48,7 +48,7 @@
             </div>
 
             <div class="flex items-center mt-5">
-                <jet-button @click.native="confirmLogout" style="color:white; background-color:#33691E;">
+                <jet-button @click.native="confirmLogout" style="color:white; background-color:#4a6813;">
                     Cerrar sesión en otras sesiones del navegación
                 </jet-button>
 

@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+Use App\Http\Controllers\ArticulosController;
 Use App\Http\Controllers\UsuarioController;
 Use App\Http\Controllers\RegistroController;
 Use App\Http\Controllers\GruposController;
@@ -13,7 +14,6 @@ Use App\Http\Controllers\GruposShowController;
 Use App\Http\Controllers\RegistroEditController;
 Use App\Http\Controllers\DownloadController;
 Use App\Http\Controllers\CertificadoController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,18 +25,15 @@ Use App\Http\Controllers\CertificadoController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
-});
+Route::resource('/', ArticulosController::class);
+
+Route::get('/articulos/{art}', [DownloadController::class, 'downloadART'])->name('downloadART');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     
-    Route::get('/home', function () {
-        return Inertia::render('home');
-    })->name('home');
+    Route::resource('/home', ArticulosController::class);
+
+    /* Route::resource('/usuarios', UsuarioController::class); */
     
     Route::resource('/registros', RegistroController::class)->except('show','edit','update','destroy');
 

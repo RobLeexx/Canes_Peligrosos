@@ -12,7 +12,7 @@
             <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
         </head>
 
-        <div class="py-12" style="background: #33691E">
+        <div class="py-12" style="background: #4a6813">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
                     <v-app>
@@ -241,7 +241,6 @@
                                                 @keypress="sinNumeros($event)"
                                                 label="Apellido Paterno"
                                                 placeholder="Apellido Paterno del Propietario"
-                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -258,7 +257,6 @@
                                                 @keypress="sinNumeros($event)"
                                                 label="Apellido Materno"
                                                 placeholder="Apellido Materno (de no tener, repetir el apellido Paterno)"
-                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -275,7 +273,6 @@
                                                 @keypress="sinNumeros($event)"
                                                 label="Nombres"
                                                 placeholder="Nombre o Nombres del Propietario"
-                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 192 && event.charCode <= 255) || (event.charCode == [209]) || (event.charCode == [241]) || (event.charCode == [32]) || (event.charCode == [39]) || (event.charCode == [46]))"
                                                 outlined
                                                 ></v-text-field>
                                             </v-col>
@@ -2072,10 +2069,15 @@
                                         </template>
                                         </v-col>
                                         <v-col cols="12" sm="4" style="display: flex; justify-content: center" >
-                                            <v-switch
+                                            <v-switch :disabled="!form.sexoCan" v-if="form.sexoCan == 'Hembra'"
                                             v-model="switchEst"
                                             inset
                                             label="¿Está Esterilizado?">
+                                            </v-switch>
+                                            <v-switch :disabled="!form.sexoCan" v-if="form.sexoCan == 'Macho'"
+                                            v-model="switchEst"
+                                            inset
+                                            label="¿Está Castrado?">
                                             </v-switch>
                                         </v-col>
                                         <v-col cols="12" sm="2">

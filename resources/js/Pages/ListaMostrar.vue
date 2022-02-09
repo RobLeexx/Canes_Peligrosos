@@ -20,7 +20,7 @@
     </template>
 
     <v-app>
-            <div class="py-12" style="background: #33691E">
+            <div class="py-12" style="background: #4a6813">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
                         <v-row style="height: 100%; padding: 50px; display: flex; justify-content: space-around;">
@@ -536,7 +536,7 @@
                                                         Certificado
                                                     </div>
                                                     <div v-if="can.vacFile" style="padding-top: 14px">
-                                                        <v-btn :href="route('downloadVac', can.vacFile)" text
+                                                        <v-btn :href="route('downloadVac1', can.vacFile)" text
                                                         >{{ can.vacFile }}<v-icon style="padding-left: 10px" color="primary">mdi-download</v-icon></v-btn>
                                                     </div>
                                                     <div v-else style="padding: 20px">
@@ -558,8 +558,11 @@
                                                     </v-subheader>
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
-                                                    <div style="padding: 20px; font-weight: bold">
+                                                    <div style="padding: 20px; font-weight: bold" v-if="can.sexoCan == 'Hembra'">
                                                         Fecha de Esterilización
+                                                    </div>
+                                                    <div style="padding: 20px; font-weight: bold" v-else-if="can.sexoCan == 'Macho'">
+                                                        Fecha de Castración
                                                     </div>
                                                     <div style="padding: 20px">
                                                         {{ can.dateEstPerro }}
@@ -612,8 +615,11 @@
                                             </div>
                                             <v-row v-else-if="can.esterilizacion == 'No'" style="display: flex; padding-inline: 10%; padding-bottom: 25px">
                                                 <v-col cols="12" sm="12">
-                                                    <v-subheader style="padding: 10px; font-weight: bold; justify-content: center">
+                                                    <v-subheader style="padding: 10px; font-weight: bold; justify-content: center" v-if="can.sexoCan == 'Hembra'">
                                                         SIN ESTERILIZACIÓN
+                                                    </v-subheader>
+                                                    <v-subheader style="padding: 10px; font-weight: bold; justify-content: center" v-if="can.sexoCan == 'Macho'">
+                                                        SIN CASTRACIÓN
                                                     </v-subheader>
                                                 </v-col>
                                             </v-row>
@@ -1152,7 +1158,7 @@
                                     <v-expansion-panel>
                                     <v-expansion-panel-header disable-icon-rotate>Autores del Registro ({{ sec.departamento }})
                                         <template v-slot:actions>
-                                            <v-icon v-if="propietario.boleta" color="#33691E">
+                                            <v-icon color="#4a6813">
                                             mdi-account-supervisor-circle
                                             </v-icon>
                                         </template>
@@ -1312,9 +1318,6 @@
                                 <span>Editar Datos</span>
                                 </v-tooltip>
                             </v-col>
-                            <v-col cols="12" sm="6">
-                                <img style="height: 100px" src="{!!$message->embedData(QrCode::format('png')->generate('Embed me into an e-mail!'), 'QrCode.png', 'image/png')!!}">
-                            </v-col>
                         </v-row>
                     </div>
                 </div>
@@ -1350,12 +1353,6 @@
                 "Yes, they do!",
                 "What does it look like?",
                 "Not bad at all."
-            ],
-            items: [
-                { title: "Item 1", body: "I am item 1 body text" },
-                { title: "Item 2", body: "I am item 2 body text" },
-                { title: "Item 3", body: "I am item 3 body text" },
-                { title: "Item 4", body: "I am item 4 body text" }
             ],
             creacion: [],
             actualizacion: [],

@@ -7,7 +7,7 @@
             </h2>
         </template>
 <v-app>
-        <div class="py-12" style="background: #33691E">
+        <div class="py-12" style="background: #4a6813">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
                     <h1 style="
@@ -231,10 +231,10 @@
                             <v-stepper-content step="8">
                             <v-divider></v-divider>
                             <v-card style="padding: 50px">
+                                <v-col cols="12" sm="12" style="text-align:center">
+                                    Observaciones
+                                </v-col>
                                 <v-row v-for="cap in caps" :key="cap.id">
-                                    <v-col cols="12" sm="12" style="text-align:center">
-                                        Observaciones
-                                    </v-col>
                                     <v-col cols="12" sm="3">
                                         <div style="padding: 25px">{{ cap.paterno }}</div>
                                     </v-col>

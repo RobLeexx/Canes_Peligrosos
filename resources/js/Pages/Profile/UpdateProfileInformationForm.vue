@@ -49,13 +49,13 @@
                 <!-- Username -->
                 <v-col cols="12" sm="6">
                     <jet-label for="username" value="Nombre de Usuario" />
-                    <jet-input id="username" type="text" class="mt-1 block w-full" v-model="form.username" autocomplete="username" style="background: #EFEDED"/>
+                    <jet-input id="username" type="text" class="mt-1 block w-full" maxlength="15" v-model="form.username" autocomplete="username" style="background: #EFEDED"/>
                     <jet-input-error :message="form.errors.username" class="mt-2" />
                 </v-col>
                 <!-- Email -->
                 <v-col cols="12" sm="6">
                     <jet-label for="email" value="Correo Electrónico" />
-                    <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" style="background: #EFEDED"/>
+                    <jet-input id="email" type="email" class="mt-1 block w-full" maxlength="30" v-model="form.email" style="background: #EFEDED"/>
                     <jet-input-error :message="form.errors.email" class="mt-2" />
                 </v-col>
             </div>
@@ -83,7 +83,7 @@
                 <!-- Número -->
                 <v-col cols="12" sm="6">
                     <jet-label for="numContacto" value="Número de Contacto" />
-                    <jet-input id="numContacto" type="number" class="mt-1 block w-full" v-model="form.numContacto" style="background: #EFEDED"/>
+                    <jet-input id="numContacto" type="text" maxlength="10" @keypress="soloNumeros($event)" class="mt-1 block w-full" v-model="form.numContacto" style="background: #EFEDED"/>
                     <jet-input-error :message="form.errors.numContacto" class="mt-2" />
                 </v-col>
             </div>
@@ -152,7 +152,7 @@
                 Guardado con éxito
             </jet-action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#33691E;">
+            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#4a6813;">
                 Guardar
             </jet-button>
         </template>
@@ -233,6 +233,17 @@
                     preserveScroll: true,
                     onSuccess: () => (this.photoPreview = null),
                 });
+            },
+            soloNumeros: function(evt)
+            {
+                
+                evt = (evt) ? evt : window.event;
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+                if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || (charCode >= 192 && charCode <= 255) || (charCode == [209]) || (charCode == [241]) || (charCode == [32]) || (charCode == [39]) || (charCode == [46])) {
+                    evt.preventDefault();
+                } else {
+                    return true;
+                }
             },
         },
     }

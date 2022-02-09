@@ -63,4 +63,11 @@ class DownloadController extends Controller
         $path = public_path('storage/doc/veterinaria/'. $est);
         return response()->download($path);
     }
+
+    /* Artículos Públicos */
+    public function downloadART($art)
+    {
+        $path = public_path('storage/articulos/'. $art);
+        return response()->download($path);
+    }
 }

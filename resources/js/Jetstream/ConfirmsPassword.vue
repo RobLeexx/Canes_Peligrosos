@@ -27,7 +27,7 @@
                     Cancelar
                 </jet-secondary-button>
 
-                <jet-button class="ml-2" @click.native="confirmPassword" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#33691E;">
+                <jet-button class="ml-2" @click.native="confirmPassword" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#4a6813;">
                     {{ button }}
                 </jet-button>
             </template>

@@ -37,7 +37,7 @@
                 Guardado con éxito
             </jet-action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#33691E;">
+            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#4a6813;">
                 Guardar
             </jet-button>
         </template>

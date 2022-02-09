@@ -1,5 +1,5 @@
 <template>
-    <jet-authentication-card style="background-color:#33691E;">
+    <jet-authentication-card style="background-color:#4a6813;">
         <template #logo>
             <jet-authentication-card-logo />
         </template>
@@ -125,7 +125,7 @@
                         Iniciar Sesión
                     </inertia-link>
 
-                    <jet-button v-if="contraseña=='canes1420'" style="color:white; background-color:#33691E;" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <jet-button v-if="contraseña=='canes1420'" style="color:white; background-color:#4a6813;" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Registrar
                     </jet-button>
                 </div>

@@ -1,5 +1,5 @@
 <template>
-    <jet-authentication-card style="background-color:#33691E;">
+    <jet-authentication-card style="background-color:#4a6813;">
         <template #logo>
             <jet-authentication-card-logo />
         </template>
@@ -20,7 +20,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#33691E;">
+                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="color:white; background-color:#4a6813;">
                     Enviar enlace
                 </jet-button>
             </div>

@@ -7,6 +7,7 @@ use App\Models\Propietario;
 use App\Models\Antecedente;
 use App\Models\Seguro;
 use App\Models\Can;
+use App\Models\Capacitacion;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use PDF;
@@ -28,6 +29,8 @@ class CertificadoController extends Controller
         $can = $canes[0];
         $memoriales = Memorial::whereIn('id',[$propID])->get();
         $memorial = $memoriales[0];
-        return Inertia::render('Certificado', compact('propietario', 'memorial', 'can'));
+        $capacitaciones = Capacitacion::whereIn('id',[$propID])->get();
+        $capacitacion = $capacitaciones[0];
+        return Inertia::render('Certificado', compact('propietario', 'memorial', 'can', 'capacitacion'));
     }
 }

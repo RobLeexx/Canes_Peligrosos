@@ -12,7 +12,7 @@
     </template>
 
     <v-app>
-        <div class="py-12" style="background: #33691E">
+        <div class="py-12" style="background: #4a6813">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
                     <v-row style="width: 100%; display: flex;justify-content: space-between; padding-bottom: 10px">
@@ -176,7 +176,7 @@
                     <table style="width: 100%">
                         <tbody>
                             <tr>
-                                <td style="padding-left: 5px"><h1 style="font-weight: bold">OBSERVACIONES:</h1>{{ can.canConvivencia }}</td>
+                                <td style="padding-left: 5px"><h1 style="font-weight: bold">OBSERVACIONES:</h1>Sin Observaciones</td>
                             </tr>
                         </tbody>
                     </table>
@@ -221,7 +221,7 @@
                                 <h1>Vo. Bo.</h1>
                             </v-col>
                             <v-col cols="12" sm="4">
-                                <h1>{{ memorial.comandante }}</h1>
+                                <h1>{{ $page.props.user.director }}</h1>
                                 <h1>Comandante C.A.C</h1>
                             </v-col>
                         </v-row>
@@ -231,7 +231,20 @@
                 </div>
             <!-- Descargar Autorización -->
             <div style="text-align: center; padding: 50px">
-                <v-tooltip top>
+                <v-tooltip top v-if="capacitacion.estado != 'Finalizado'">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                    color="red"
+                    elevation="15"
+                    fab
+                    x-large
+                    v-bind="attrs"
+                    v-on="on"
+                    ><v-icon>mdi-download-lock</v-icon></v-btn>
+                </template>
+                <span>Capacitación sin Concluir, Finalice la Capacitación para poder descargar</span>
+                </v-tooltip>
+                <v-tooltip top v-else>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn
                     :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.username != propietario.creado_por)"
@@ -264,6 +277,7 @@
             propietario: Object,
             memorial: Object,
             can: Object,
+            capacitacion: Object,
         },
         data() {
             return {
@@ -345,6 +359,7 @@
                 var pdf = new jsPDF('p', 'mm', [360, 217]);
                 var img = new Image();
                 var imgProp = new Image();
+                var qr = new Image();
                 var imgCan = new Image();
                 var diaCell = this.diaLocal;
                 var mesCell = this.mesLocal;
@@ -439,6 +454,8 @@
                 pdf.setFont(undefined, 'bold').setFontSize(7).text('DE CANES (C.A.C)', 179, 9);
                 pdf.setFont(undefined, 'bold').setFontSize(7).text(cac, 175, 12);
                 pdf.setFont(undefined, 'bold').setFontSize(9).text('Costo Bs.', 172, 18);
+                qr.src = '/storage/img/qr.png';
+                pdf.addImage(qr, 'png', 180, 23, 20, 20);
 
                 /* Tablas */
                 pdf.autoTable({theme: 'plain', startY: 50, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9 }, 
@@ -529,7 +546,7 @@
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 191, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontSize: 7}, 
                 body: [
-                [this.propietario.domicilio],
+                ['Sin Observaciones'],
                 ]});
 
                 /* final */
@@ -574,7 +591,7 @@
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 141}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7}, 
                 body: [
-                [this.memorial.comandante],
+                [this.$page.props.user.director],
                 ]});
 
                 /* Guardado */

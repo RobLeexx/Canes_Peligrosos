@@ -1,5 +1,5 @@
 <template>
-    <jet-authentication-card style="background-color:#33691E;">
+    <jet-authentication-card style="background-color:#4a6813;">
         <template #logo>
             <jet-authentication-card-logo />
         </template>
@@ -26,7 +26,7 @@
                     ¿Olvidaste tu contraseña?
                 </inertia-link>
 
-                <jet-button style="color:white; background-color:#33691E;" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button style="color:white; background-color:#4a6813;" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Iniciar Sesión
                 </jet-button>
             </div>

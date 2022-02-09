@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 class UsuarioController extends Controller
 {
     public function index(){
-        $usuarios = User::all();
+        $usuarios = User::select('id','username','paterno','materno','nombres')->whereNotNull('id')->get();
         return Inertia::render('usuarios', ['usuarios' => $usuarios]);
     }
 }
