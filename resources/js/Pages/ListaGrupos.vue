@@ -35,21 +35,17 @@
                             :headers="headers"
                             :items="caps"
                             show-select
-                            no-data-text="Sin Datos"
-                            no-results-text="Sin Resultados"
-                            :footer-props="{'items-per-page-options':[5,10,15,30],'items-per-page-text':'Usuarios por Página','pageText':'{0}-{1} de {2}'}">
+                            hide-default-footer>
                             </v-data-table>
-                            <v-btn
-                                color="primary"
-                                @click="e6 = 2"
-                            >
-                                Continuar
-                            </v-btn>
-                            <v-btn text>
-                                Cancelar
-                            </v-btn>
+                            <div style="padding: 20px">
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 2"
+                                >
+                                    Día Siguiente
+                                </v-btn>
+                            </div>
                             </v-stepper-content>
-
                             <v-stepper-step
                             :complete="e6 > 2"
                             step="2"
@@ -64,21 +60,20 @@
                             :headers="headers"
                             :items="caps"
                             show-select
-                            no-data-text="Sin Datos"
-                            no-results-text="Sin Resultados"
-                            :footer-props="{'items-per-page-options':[5,10,15,30],'items-per-page-text':'Usuarios por Página','pageText':'{0}-{1} de {2}'}">
+                            hide-default-footer>
                             </v-data-table>
-                            <v-btn
-                                color="primary"
-                                @click="e6 = 3"
-                            >
-                                Continuar
-                            </v-btn>
-                            <v-btn text>
-                                Cancelar
-                            </v-btn>
+                            <div style="padding: 20px">
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 3"
+                                >
+                                    Día Siguiente
+                                </v-btn>
+                                <v-btn text @click="e6 = 1">
+                                    Día Anterior
+                                </v-btn>
+                            </div>
                             </v-stepper-content>
-
                             <v-stepper-step
                             :complete="e6 > 3"
                             step="3"
@@ -93,19 +88,19 @@
                             :headers="headers"
                             :items="caps"
                             show-select
-                            no-data-text="Sin Datos"
-                            no-results-text="Sin Resultados"
-                            :footer-props="{'items-per-page-options':[5,10,15,30],'items-per-page-text':'Usuarios por Página','pageText':'{0}-{1} de {2}'}">
+                            hide-default-footer>
                             </v-data-table>
-                            <v-btn
-                                color="primary"
-                                @click="e6 = 4"
-                            >
-                                Continuar
-                            </v-btn>
-                            <v-btn text>
-                                Cancelar
-                            </v-btn>
+                            <div style="padding: 20px">
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 4"
+                                >
+                                    Día Siguiente
+                                </v-btn>
+                                <v-btn text @click="e6 = 2">
+                                    Día Anterior
+                                </v-btn>
+                            </div>
                             </v-stepper-content>
 
                             <v-stepper-step
@@ -122,19 +117,19 @@
                             :headers="headers"
                             :items="caps"
                             show-select
-                            no-data-text="Sin Datos"
-                            no-results-text="Sin Resultados"
-                            :footer-props="{'items-per-page-options':[5,10,15,30],'items-per-page-text':'Usuarios por Página','pageText':'{0}-{1} de {2}'}">
+                            hide-default-footer>
                             </v-data-table>
-                            <v-btn
-                                color="primary"
-                                @click="e6 = 5"
-                            >
-                                Continuar
-                            </v-btn>
-                            <v-btn text>
-                                Cancelar
-                            </v-btn>
+                            <div style="padding: 20px">
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 5"
+                                >
+                                    Día Siguiente
+                                </v-btn>
+                                <v-btn text @click="e6 = 3">
+                                    Día Anterior
+                                </v-btn>
+                            </div>
                             </v-stepper-content>
                             <v-stepper-step
                             :complete="e6 > 5"
@@ -150,19 +145,19 @@
                             :headers="headers"
                             :items="caps"
                             show-select
-                            no-data-text="Sin Datos"
-                            no-results-text="Sin Resultados"
-                            :footer-props="{'items-per-page-options':[5,10,15,30],'items-per-page-text':'Usuarios por Página','pageText':'{0}-{1} de {2}'}">
+                            hide-default-footer>
                             </v-data-table>
-                            <v-btn
-                                color="primary"
-                                @click="e6 = 6"
-                            >
-                                Continuar
-                            </v-btn>
-                            <v-btn text>
-                                Cancelar
-                            </v-btn>
+                            <div style="padding: 20px">
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 6"
+                                >
+                                    Día Siguiente
+                                </v-btn>
+                                <v-btn text @click="e6 = 4">
+                                    Día Anterior
+                                </v-btn>
+                            </div>
                             </v-stepper-content>
                             <v-stepper-step
                             :complete="e6 > 6"
@@ -178,19 +173,19 @@
                             :headers="headers"
                             :items="caps"
                             show-select
-                            no-data-text="Sin Datos"
-                            no-results-text="Sin Resultados"
-                            :footer-props="{'items-per-page-options':[5,10,15,30],'items-per-page-text':'Usuarios por Página','pageText':'{0}-{1} de {2}'}">
+                            hide-default-footer>
                             </v-data-table>
-                            <v-btn
-                                color="primary"
-                                @click="e6 = 7"
-                            >
-                                Continuar
-                            </v-btn>
-                            <v-btn text>
-                                Cancelar
-                            </v-btn>
+                            <div style="padding: 20px">
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 7"
+                                >
+                                    Día Siguiente
+                                </v-btn>
+                                <v-btn text @click="e6 = 5">
+                                    Día Anterior
+                                </v-btn>
+                            </div>
                             </v-stepper-content>
                             <v-stepper-step
                             :complete="e6 > 7"
@@ -199,26 +194,25 @@
                             >
                             Día 7
                             </v-stepper-step>
-
                             <v-stepper-content step="7">
                             <v-divider></v-divider>
                             <v-data-table style="padding-inline: 20px"
                             :headers="headers"
                             :items="caps"
                             show-select
-                            no-data-text="Sin Datos"
-                            no-results-text="Sin Resultados"
-                            :footer-props="{'items-per-page-options':[5,10,15,30],'items-per-page-text':'Usuarios por Página','pageText':'{0}-{1} de {2}'}">
+                            hide-default-footer>
                             </v-data-table>
-                            <v-btn
-                                color="primary"
-                                @click="e6 = 1"
-                            >
-                                Continuar
-                            </v-btn>
-                            <v-btn text>
-                                Cancelar
-                            </v-btn>
+                            <div style="padding: 20px">
+                                <v-btn
+                                    color="primary"
+                                    @click="e6 = 8"
+                                >
+                                    Día Siguiente
+                                </v-btn>
+                                <v-btn text @click="e6 = 6">
+                                    Día Anterior
+                                </v-btn>
+                            </div>
                             </v-stepper-content>
                             <v-stepper-step
                             :complete="e6 > 8"
@@ -243,15 +237,18 @@
                                     </v-col>
                                 </v-row>
                             </v-card>
-                            <v-btn
-                                color="primary"
-                                @click="submitData"
-                            >
-                                Finalizar
-                            </v-btn>
-                            <v-btn text>
-                                Cancelar
-                            </v-btn>
+                            <div style="padding-top: 20px; display: flex">
+                                <v-btn
+                                    color="primary"
+                                    @click="submitData"
+                                    :disabled="finDate"
+                                >
+                                    Finalizar
+                                </v-btn>
+                                <h1 v-if="finDate" style="padding-left: 10px; padding-top: 5px">
+                                    Puede finalizar {{ dias }} ({{ this.grupo.fin }})
+                                </h1>
+                            </div>
                             </v-stepper-content>
                         </v-stepper>
                         </template>
@@ -264,6 +261,7 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
+    import moment from 'moment'
     
     export default {
         props: {
@@ -275,6 +273,7 @@
             return{
                 e6: 1,
                 caps:[],
+                dias: [],
                 headers: [{ text: "GRUPO", value: "id", sortable: true, align: 'center' },
                         { text: "PATERNO", value: "paterno", sortable: true},
                         { text: "MATERNO", value: "materno", sortable: true},
@@ -290,7 +289,22 @@
             let otherSubject = this.capacitaciones.find(element => element.id === subject.id)
             const reg = {...subject, ...otherSubject}
             this.caps.push(reg)
+
+            this.dias = moment(this.grupo.fin, "YYYY-MM-DD").locale('es').fromNow()
         })
+        },
+        computed: {
+            finDate(){
+                var today = new Date();
+                var fin = new Date(this.grupo.fin);
+                var diferencia = fin.getDate()+1 - today.getDate();
+                if(diferencia > 0){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            },
         },
         methods: {
             submitData() {
@@ -310,12 +324,26 @@
                     documento: caps.documento,
                 };
             },
+            formatDate(date) {
+                var d = new Date(date),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2) 
+                    month = '0' + month;
+                if (day.length < 2) 
+                    day = '0' + day;
+
+                return [year, month, day].join('-');
+            },
         },
         mounted(){
             this.reenviarRegistros();
         },
         components: {
             AppLayout,
+            moment,
         },
     }
 </script>
