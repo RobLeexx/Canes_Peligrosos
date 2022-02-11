@@ -28,6 +28,13 @@ class Can extends Model
         'dateEstPerro',
         'mismoVeterinario',
 
+        'antecedentesCan',
+        'tipoAnt',
+        'numAnt',
+        'fechaHoraAnt',
+        'canAntFile',
+        'canAnt',
+
         'vetNom1',
         'vetUbi1',
         'vetRes1',
@@ -44,7 +51,7 @@ class Can extends Model
         'vetUbi3',
         'vetRes3',
         'vetNum3',
-        
+
         'numMicro',
         'canEven1',
         'canEvenNum1',

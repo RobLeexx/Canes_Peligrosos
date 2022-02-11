@@ -37,7 +37,7 @@ class RegistroEditController extends Controller
         $input = $request->all();
         $propID = $propietario['id'];
         $propDOC = $propietario['documento'];
-        
+
         if($request->hasFile('docFile'))
         {
             $destination_path = 'public/doc/identificaciones';
@@ -73,7 +73,7 @@ class RegistroEditController extends Controller
         }
         unset($input['docFile'],$input['fotoProp'],$input['boleta']);
         $propietario->fill($input)->save();
-        
+
         /* MEMORIAL */
         $memoriales = Memorial::whereIn('id',[$propID])->get();
         $memorial = $memoriales[0];
@@ -87,11 +87,11 @@ class RegistroEditController extends Controller
 
             $input['memoFile'] = $doc_name;
             $memorial->update(['memoFile'=>$input['memoFile']]);
-        
+
         }
         unset($input['memoFile']);
         $memorial->fill($input)->save();
-        
+
         /* ANTECEDENTE */
         $antecedentes = Antecedente::whereIn('id',[$propID])->get();
         $antecedente = $antecedentes[0];
@@ -221,7 +221,19 @@ class RegistroEditController extends Controller
             $input['estFile'] = $est_name;
             $can->update(['estFile'=>$input['estFile']]);
         }
-        unset($input['vacFile'],$input['estFile'],$input['fotoCan'],$input['fotoCan2']);
+        /* Antecedentes Can */
+        if($request->hasFile('canAntFile'))
+        {
+            $destination_path = 'public/doc/antecedentes';
+            $canAnt = $request->file('canAntFile');
+            $canAnt_name = $propDOC.'_';
+            $canAnt_name .= $canAnt->getClientOriginalName();
+            $path = $request->file('canAntFile')->storeAs($destination_path,$canAnt_name);
+
+            $input['canAntFile'] = $canAnt_name;
+            $can->update(['canAntFile'=>$input['canAntFile']]);
+        }
+        unset($input['vacFile'],$input['estFile'],$input['fotoCan'],$input['fotoCan2'],$input['canAntFile']);
         $can->fill($input)->save();
 
         return Redirect::route('registros.index');

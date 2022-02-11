@@ -28,6 +28,13 @@ class CreateCanesTable extends Migration
             $table->string('colorCan');
             $table->string('sinCan')->nullable();
 
+            $table->string('antecedentesCan')->nullable();
+            $table->string('tipoAnt')->nullable();
+            $table->string('numAnt')->nullable();
+            $table->string('fechaHoraAnt')->nullable();
+            $table->string('canAntFile')->nullable();
+            $table->string('canAnt')->nullable();
+
             $table->string('vacuna')->nullable();
             $table->string('dateVacPerro')->nullable();
             $table->string('esterilizacion')->nullable();

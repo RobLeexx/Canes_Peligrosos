@@ -30,11 +30,11 @@ Route::resource('/', ArticulosController::class);
 Route::get('/articulos/{art}', [DownloadController::class, 'downloadART'])->name('downloadART');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
-    
+
     Route::resource('/home', ArticulosController::class);
 
     /* Route::resource('/usuarios', UsuarioController::class); */
-    
+
     Route::resource('/registros', RegistroController::class)->except('show','edit','update','destroy');
 
     Route::resource('/grupos', GruposController::class);
@@ -55,21 +55,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::get('/boletas/{boleta}', [DownloadController::class, 'downloadBol'])->name('downloadBol');
 
-    Route::get('/antecedentes/{canesFile}', [DownloadController::class, 'downloadCanes'])->name('downloadCanes');
-
-    Route::get('/antecedentes/{rejap}', [DownloadController::class, 'downloadRejap'])->name('downloadRejap');
-
-    Route::get('/antecedentes/{felcc}', [DownloadController::class, 'downloadFelcc'])->name('downloadFelcc');
-
-    Route::get('/antecedentes/{felcn}', [DownloadController::class, 'downloadFelcn'])->name('downloadFelcn');
-
-    Route::get('/antecedentes/{felcv}', [DownloadController::class, 'downloadFelcv'])->name('downloadFelcv');
+    Route::get('/antecedentes/{ant}', [DownloadController::class, 'downloadAntecedente'])->name('downloadAntecedente');
 
     Route::get('/seguros/{seguro}', [DownloadController::class, 'downloadSeguro'])->name('downloadSeguro');
-
-    Route::get('/veterinaria/{vac}', [DownloadController::class, 'downloadVac'])->name('downloadVac');
-
-    Route::get('/veterinaria/{est}', [DownloadController::class, 'downloadEst'])->name('downloadEst');
 
     Route::get('/veterinaria/{vet}', [DownloadController::class, 'downloadVet'])->name('downloadVet');
 
@@ -80,6 +68,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
             ->backgroundColor(255, 255, 204)
             ->generate('MyNotePaper');
     });
-    
+
 });
 

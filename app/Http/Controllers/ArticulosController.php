@@ -137,7 +137,7 @@ class ArticulosController extends Controller
                  $ptName = $name6;
              }
              $path = $request->file('filePT')->storeAs($destination_path,$ptName);
- 
+
              $articulo->filePT = $ptName;
          }
         unset($input['fileLP'], $input['fileCB'], $input['fileSC'], $input['fileOR'], $input['fileSU'], $input['filePT']);

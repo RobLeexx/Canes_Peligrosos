@@ -5,7 +5,7 @@
                 <v-btn fab small text :href="route('registros.show', propietario.id)"><v-icon>mdi-arrow-left-circle</v-icon></v-btn>
                 <div style="padding: 9px">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Editar Propietario {{ propietario.paterno }}, {{ propietario.documento }} {{ propietario.docExp }} 
+                    Editar Propietario {{ propietario.paterno }}, {{ propietario.documento }} {{ propietario.docExp }}
                 </h2>
                 </div>
             </v-row>
@@ -165,7 +165,7 @@
                                                     <a
                                                         href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi4mLbu_pv1AhW2qpUCHXwYA3MQFnoECAMQAQ&url=https%3A%2F%2Fsea.gob.bo%2Fdigesto%2FCompendioII%2FI%2F60_L_553.pdf&usg=AOvVaw3zU7Do3Xjyfm97q4UglYnp" target="_blank"
                                                     >Ley No.553</a>
-                                                    inherente al tratamiento con animales domésticos. 
+                                                    inherente al tratamiento con animales domésticos.
                                                     </div>
                                                 </template>
                                                 </v-checkbox>
@@ -368,7 +368,7 @@
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="2">
-                                                <v-select 
+                                                <v-select
                                                 id="docExp"
                                                 v-model="form.docExp"
                                                 :items= "docExpItems"
@@ -436,7 +436,7 @@
                                                             <li></li>
                                                             </ul>
                                                         </div>
-                                                        
+
                                                         <v-row style="padding:12px; margin-right: 5px">
                                                             <div v-if="isCameraOpen" v-show="!isLoading" :class="{ 'flash' : isShotPhoto }">
                                                                 <div :class="{'flash' : isShotPhoto}"></div>
@@ -582,7 +582,7 @@
                                                     <v-autocomplete v-else-if="form.provincia == 'Sebastián Pagador'" v-model="form.municipio" :items= "muniOR14" placeholder="Municipio de Sebastián Pagador" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Sud Carangas'" v-model="form.municipio" :items= "muniOR15" placeholder="Municipio de Sud Carangas" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Tomás Barrón'" v-model="form.municipio" :items= "muniOR16" placeholder="Municipio de Tomás Barrón" :rules="vacio" outlined></v-autocomplete>
-                                                     
+
                                                 <!-- Municipios de Potosí -->
                                                     <v-autocomplete v-else-if="form.provincia == 'Alonso de Ibáñez'" v-model="form.municipio" :items= "muniPT1" placeholder="Municipio de Alonso de Ibáñez" :rules="vacio" outlined></v-autocomplete>
                                                     <v-autocomplete v-else-if="form.provincia == 'Antonio Quijarro'" v-model="form.municipio" :items= "muniPT2" placeholder="Municipio de Antonio Quijarro" :rules="vacio" outlined></v-autocomplete>
@@ -641,7 +641,7 @@
                                                 </v-col>
 
                                             <v-col cols="12" sm="6">
-                                                <v-text-field 
+                                                <v-text-field
                                                         v-model="form.zona"
                                                         outlined
                                                         label="Zona"
@@ -652,7 +652,7 @@
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field 
+                                                <v-text-field
                                                         v-model="form.domicilio"
                                                         outlined
                                                         maxlength="40"
@@ -831,7 +831,7 @@
                                                 <v-icon>mdi-chevron-right</v-icon>
                                             </v-btn></v-row>
                                             <v-divider></v-divider>
-                                            
+
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
                                                     <v-text-field v-model="form.numCanes" maxlength="15" counter :rules="vacio" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
@@ -855,30 +855,30 @@
                                                                 v-on="on"
                                                             ></v-text-field>
                                                         </template>
-                                            
+
                                                         <div style="background: white;padding:15px">
                                                             <v-layout row wrap>
                                                                 <v-flex xs12 sm6 style="justify-content: center">
-                                                                    <v-date-picker 
+                                                                    <v-date-picker
                                                                         v-model="dateModel1"
                                                                         :width="anchoDate2b"
                                                                         locale="es"
                                                                         :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                                         color="primary"></v-date-picker>
-                                            
+
                                                                 </v-flex>
                                                                 <v-flex xs12 sm6 style="display:block; text-align: center">
-                                                                    <v-time-picker 
-                                                                        v-if="dropdownOpen1" 
-                                                                        v-model="timeModel1" 
+                                                                    <v-time-picker
+                                                                        v-if="dropdownOpen1"
+                                                                        v-model="timeModel1"
                                                                         color="primary"
                                                                         :width="anchoDate2b"
                                                                         format="ampm"
                                                                         scrollable></v-time-picker>
-                                            
+
                                                                     <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection1 }}</h3>
                                                                 </v-flex>
-                                            
+
                                                                 <v-flex style="justify-content: center; padding: 15px">
                                                                     <v-btn text @click="dropdownOpen1 = false">Cancelar</v-btn>
                                                                     <v-btn color="primary" @click="confirm1()">Guardar</v-btn>
@@ -922,7 +922,7 @@
                                                     <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                                 </v-col>
                                             </v-row>
-                                                    
+
                                             <!-- Si tuviera antecedentes -->
                                             <v-subheader>Antecedentes CANES</v-subheader>
                                             <v-col cols="12" sm="12" style="padding:20px">
@@ -946,7 +946,7 @@
                                                 <v-icon>mdi-chevron-right</v-icon>
                                             </v-btn></v-row>
                                             <v-divider></v-divider>
-                                            
+
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
                                                     <v-text-field v-model="form.numRejap" maxlength="15" counter outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
@@ -970,30 +970,30 @@
                                                                 v-on="on"
                                                             ></v-text-field>
                                                         </template>
-                                            
+
                                                         <div style="background: white;padding:15px">
                                                             <v-layout row wrap>
                                                                 <v-flex xs12 sm6 style="justify-content: center">
-                                                                    <v-date-picker 
+                                                                    <v-date-picker
                                                                         v-model="dateModel2"
                                                                         :width="anchoDate2b"
                                                                         locale="es"
                                                                         :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                                         color="primary"></v-date-picker>
-                                            
+
                                                                 </v-flex>
                                                                 <v-flex xs12 sm6 style="display:block; text-align: center">
-                                                                    <v-time-picker 
-                                                                        v-if="dropdownOpen2" 
-                                                                        v-model="timeModel2" 
+                                                                    <v-time-picker
+                                                                        v-if="dropdownOpen2"
+                                                                        v-model="timeModel2"
                                                                         color="primary"
                                                                         :width="anchoDate2b"
                                                                         format="ampm"
                                                                         scrollable></v-time-picker>
-                                            
+
                                                                     <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection2 }}</h3>
                                                                 </v-flex>
-                                            
+
                                                                 <v-flex style="justify-content: center; padding: 15px">
                                                                     <v-btn text @click="dropdownOpen2 = false">Cancelar</v-btn>
                                                                     <v-btn color="primary" @click="confirm2()">Guardar</v-btn>
@@ -1061,7 +1061,7 @@
                                                 <v-icon>mdi-chevron-right</v-icon>
                                             </v-btn></v-row>
                                             <v-divider></v-divider>
-                                            
+
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
                                                     <v-text-field v-model="form.numFelcc" maxlength="15" counter outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
@@ -1085,30 +1085,30 @@
                                                                 v-on="on"
                                                             ></v-text-field>
                                                         </template>
-                                            
+
                                                         <div style="background: white;padding:15px">
                                                             <v-layout row wrap>
                                                                 <v-flex xs12 sm6 style="justify-content: center">
-                                                                    <v-date-picker 
+                                                                    <v-date-picker
                                                                         v-model="dateModel3"
                                                                         :width="anchoDate2b"
                                                                         locale="es"
                                                                         :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                                         color="primary"></v-date-picker>
-                                            
+
                                                                 </v-flex>
                                                                 <v-flex xs12 sm6 style="display:block; text-align: center">
-                                                                    <v-time-picker 
-                                                                        v-if="dropdownOpen3" 
-                                                                        v-model="timeModel3" 
+                                                                    <v-time-picker
+                                                                        v-if="dropdownOpen3"
+                                                                        v-model="timeModel3"
                                                                         color="primary"
                                                                         :width="anchoDate2b"
                                                                         format="ampm"
                                                                         scrollable></v-time-picker>
-                                            
+
                                                                     <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection3 }}</h3>
                                                                 </v-flex>
-                                            
+
                                                                 <v-flex style="justify-content: center; padding: 15px">
                                                                     <v-btn text @click="dropdownOpen3 = false">Cancelar</v-btn>
                                                                     <v-btn color="primary" @click="confirm3()">Guardar</v-btn>
@@ -1176,7 +1176,7 @@
                                                 <v-icon>mdi-chevron-right</v-icon>
                                             </v-btn></v-row>
                                             <v-divider></v-divider>
-                                            
+
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
                                                     <v-text-field v-model="form.numFelcn" maxlength="15" counter outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
@@ -1200,30 +1200,30 @@
                                                                 v-on="on"
                                                             ></v-text-field>
                                                         </template>
-                                            
+
                                                         <div style="background: white;padding:15px">
                                                             <v-layout row wrap>
                                                                 <v-flex xs12 sm6 style="justify-content: center">
-                                                                    <v-date-picker 
+                                                                    <v-date-picker
                                                                         v-model="dateModel4"
                                                                         :width="anchoDate2b"
                                                                         locale="es"
                                                                         :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                                         color="primary"></v-date-picker>
-                                            
+
                                                                 </v-flex>
                                                                 <v-flex xs12 sm6 style="display:block; text-align: center">
-                                                                    <v-time-picker 
-                                                                        v-if="dropdownOpen4" 
-                                                                        v-model="timeModel4" 
+                                                                    <v-time-picker
+                                                                        v-if="dropdownOpen4"
+                                                                        v-model="timeModel4"
                                                                         color="primary"
                                                                         :width="anchoDate2b"
                                                                         format="ampm"
                                                                         scrollable></v-time-picker>
-                                            
+
                                                                     <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection4 }}</h3>
                                                                 </v-flex>
-                                            
+
                                                                 <v-flex style="justify-content: center; padding: 15px">
                                                                     <v-btn text @click="dropdownOpen4 = false">Cancelar</v-btn>
                                                                     <v-btn color="primary" @click="confirm4()">Guardar</v-btn>
@@ -1291,7 +1291,7 @@
                                                 <v-icon>mdi-chevron-right</v-icon>
                                             </v-btn></v-row>
                                             <v-divider></v-divider>
-                                            
+
                                             <v-row style="padding: 20px">
                                                 <v-col cols="12" sm="6">
                                                     <v-text-field v-model="form.numFelcv" maxlength="15" counter outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
@@ -1315,30 +1315,30 @@
                                                                 v-on="on"
                                                             ></v-text-field>
                                                         </template>
-                                            
+
                                                         <div style="background: white;padding:15px">
                                                             <v-layout row wrap>
                                                                 <v-flex xs12 sm6 style="justify-content: center">
-                                                                    <v-date-picker 
+                                                                    <v-date-picker
                                                                         v-model="dateModel5"
                                                                         :width="anchoDate2b"
                                                                         locale="es"
                                                                         :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
                                                                         color="primary"></v-date-picker>
-                                            
+
                                                                 </v-flex>
                                                                 <v-flex xs12 sm6 style="display:block; text-align: center">
-                                                                    <v-time-picker 
-                                                                        v-if="dropdownOpen5" 
-                                                                        v-model="timeModel5" 
+                                                                    <v-time-picker
+                                                                        v-if="dropdownOpen5"
+                                                                        v-model="timeModel5"
                                                                         color="primary"
                                                                         :width="anchoDate2b"
                                                                         format="ampm"
                                                                         scrollable></v-time-picker>
-                                            
+
                                                                     <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelection5 }}</h3>
                                                                 </v-flex>
-                                            
+
                                                                 <v-flex style="justify-content: center; padding: 15px">
                                                                     <v-btn text @click="dropdownOpen5 = false">Cancelar</v-btn>
                                                                     <v-btn color="primary" @click="confirm5()">Guardar</v-btn>
@@ -1556,22 +1556,22 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
                                         v-model="form.nomAgencia"
                                         maxlength="25" counter
                                         :rules="vacio"
                                         label="Agencia"
-                                        placeholder="Nombre de la Agencia" 
+                                        placeholder="Nombre de la Agencia"
                                         outlined></v-text-field>
                                         </v-col>
                                         <v-col
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
                                         v-model="form.ubiAgencia"
                                         maxlength="25" counter
-                                        placeholder="Departamento/Ciudad/Zona/Calle" 
+                                        placeholder="Departamento/Ciudad/Zona/Calle"
                                         outlined>
                                         <template v-slot:label>
                                             <div>
@@ -1670,10 +1670,10 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
                                         v-model="form.resAgencia"
                                         maxlength="25" counter
-                                        placeholder="Agente Responsable del Trámite" 
+                                        placeholder="Agente Responsable del Trámite"
                                         outlined>
                                         <template v-slot:label>
                                             <div>
@@ -1685,11 +1685,11 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
                                         v-model="form.resAgenciaNum"
                                         maxlength="25" counter
                                         @keypress="soloNumeros($event)"
-                                        placeholder="Número de Referencia de la Agencia o Agente Responsable" 
+                                        placeholder="Número de Referencia de la Agencia o Agente Responsable"
                                         outlined>
                                         <template v-slot:label>
                                             <div>
@@ -1724,7 +1724,7 @@
                                         </v-col>
                                     </v-row>
                                 </v-container>
-                                
+
                                 </v-card>
                                 </v-stepper-content>
 
@@ -1751,13 +1751,13 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
                                         id="nomPerro"
                                         v-model="form.nomPerro"
                                         :rules="vacio"
                                         label="Nombre"
                                         maxlength="15" counter
-                                        placeholder="Nombre del Can" 
+                                        placeholder="Nombre del Can"
                                         outlined></v-text-field>
                                         </v-col>
                                         <v-col
@@ -1819,12 +1819,12 @@
                                             cols="12"
                                             sm="6"
                                         >
-                                        <v-text-field 
+                                        <v-text-field
                                         v-model="form.procedenciaCan"
                                         :rules="vacio"
                                         label="Procedencia"
                                         maxlength="30" counter
-                                        placeholder="Procedencia de la Adquisición del Can" 
+                                        placeholder="Procedencia de la Adquisición del Can"
                                         outlined></v-text-field>
                                         </v-col>
                                         <v-col cols="12" lg="6" sm="6">
@@ -1894,7 +1894,7 @@
                                                         <li></li>
                                                         </ul>
                                                     </div>
-                                                    
+
                                                     <v-row style="padding:12px; margin-right: 5px">
                                                         <div v-if="isCameraOpen2" v-show="!isLoading2" :class="{ 'flash' : isShotPhoto2 }">
                                                             <div :class="{'flash' : isShotPhoto}"></div>
@@ -2036,6 +2036,123 @@
                                             </v-textarea>
                                         </v-col>
                                     </v-row>
+                                    <v-row style="display: flex; justify-content: center">
+                                        <v-col cols="12" sm="12">
+                                            <v-subheader>Antecedentes del Can</v-subheader>
+                                        </v-col>
+                                        <v-col cols="12" sm="4" style="display: flex; justify-content: center">
+                                            <v-switch
+                                            v-model="switchAnt"
+                                            inset
+                                            label="El Can tiene antecedentes?">
+                                            </v-switch>
+                                        </v-col>
+                                        <v-col cols="12" sm="2">
+                                            <v-card-text style="margin-top:5px; text-align: center" v-if="switchAnt == '1'">Sí</v-card-text>
+                                            <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row v-if="switchAnt">
+                                        <v-card
+                                            height="100%"
+                                            width="100%"
+                                            >
+                                            <v-row style="padding: 20px; justify-content: center">
+                                            <h1 style="text-align: center; font-size: large; padding-top: 5px">Antecedentes Del Can</h1>
+                                            </v-row>
+                                            <v-divider></v-divider>
+
+                                            <v-row style="padding: 20px">
+                                                <v-col cols="12" sm="6">
+                                                    <v-text-field v-model="form.tipoAnt" maxlength="15" counter :rules="vacio" outlined label="Tipo de Antecente" placeholder="Tipo de Antecedente que tiene el Can"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <v-text-field v-model="form.numAnt" maxlength="15" counter :rules="vacio" outlined label="Número de Registro" placeholder="Número de Registro del Antecedente o Sanción"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <div>
+                                                    <v-dialog
+                                                        ref="menu"
+                                                        v-model="dropdownOpenCanAnt"
+                                                        :close-on-content-click="false"
+                                                        :return-value.sync="modelCanAnt"
+                                                        :width="anchoDate2a">
+                                                        <template v-slot:activator="{ on }">
+                                                            <v-text-field
+                                                                v-model="form.fechaHoraAnt"
+                                                                label="Fecha y hora del registro"
+                                                                prepend-icon="mdi-calendar-clock"
+                                                                readonly
+                                                                outlined
+                                                                :rules="vacio"
+                                                                v-on="on"
+                                                            ></v-text-field>
+                                                        </template>
+
+                                                        <div style="background: white;padding:15px">
+                                                            <v-layout row wrap>
+                                                                <v-flex xs12 sm6 style="justify-content: center">
+                                                                    <v-date-picker
+                                                                        v-model="dateModelAnt"
+                                                                        :width="anchoDate2b"
+                                                                        locale="es"
+                                                                        :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+                                                                        color="primary"></v-date-picker>
+
+                                                                </v-flex>
+                                                                <v-flex xs12 sm6 style="display:block; text-align: center">
+                                                                    <v-time-picker
+                                                                        v-if="dropdownOpenCanAnt"
+                                                                        v-model="timeModelAnt"
+                                                                        color="primary"
+                                                                        :width="anchoDate2b"
+                                                                        format="ampm"
+                                                                        scrollable></v-time-picker>
+
+                                                                    <h3 style="text-align: center; padding: 10px; font-weight: bold;">{{ currentSelectionAnt }}</h3>
+                                                                </v-flex>
+
+                                                                <v-flex style="justify-content: center; padding: 15px">
+                                                                    <v-btn text @click="dropdownOpenCanAnt = false">Cancelar</v-btn>
+                                                                    <v-btn color="primary" @click="confirmCanAnt()">Guardar</v-btn>
+                                                                </v-flex>
+                                                            </v-layout>
+                                                        </div>
+                                                    </v-dialog>
+                                                </div>
+                                                </v-col>
+                                                <v-col cols="12" sm="6">
+                                                    <template>
+                                                    <v-file-input style="height: 45px"
+                                                        v-model="form.canAntFile"
+                                                        outlined
+                                                        dense
+                                                        show-size
+                                                    ><template v-slot:label>
+                                                        <div v-if="can.canAntFile">
+                                                        {{ can.canAntFile }}
+                                                        </div>
+                                                        <div v-else>
+                                                            SIN ANTECEDENTES ADJUNTADOS
+                                                        </div>
+                                                        </template></v-file-input>
+                                                    <v-subheader style="
+                                                        display: flex;
+                                                        align-items: flex-start;
+                                                        justify-content: flex-end;">
+                                                        *Solo se admite un elemento</v-subheader>
+                                                    </template>
+                                                </v-col>
+                                            </v-row>
+
+                                            <!-- Antecedentes -->
+                                            <v-subheader>Antecedentes del Can</v-subheader>
+                                            <v-col cols="12" sm="12" style="padding:20px">
+                                                <v-textarea v-model="form.canAnt" counter maxlength="150" outlined filled placeholder="Especifique los Antecedentes o Sanciones del Propietario"></v-textarea>
+                                            </v-col>
+
+                                            </v-card>
+                                    </v-row>
                                     <v-row>
                                         <v-col cols="12" sm="12">
                                             <v-subheader>Estado de Salud del Can</v-subheader>
@@ -2048,8 +2165,8 @@
                                             </v-switch>
                                         </v-col>
                                         <v-col cols="12" sm="2">
-                                            <v-card-text v-model="form.vacuna" style="margin-top:5px; text-align: center" v-if="switchVac == '1'">Sí</v-card-text>
-                                            <v-card-text v-model="form.esterilizacion" style="margin-top:5px; text-align: center" v-else>No</v-card-text>
+                                            <v-card-text style="margin-top:5px; text-align: center" v-if="switchVac == '1'">Sí</v-card-text>
+                                            <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                         </v-col>
                                         <v-col cols="12" sm="6">
                                             <template>
@@ -2170,7 +2287,7 @@
                                                 <v-card-text style="margin-top:5px; text-align: center" v-else>No</v-card-text>
                                             </v-col>
                                         </v-row></v-col>
-                                        
+
                                         <v-row v-if="!switchVet || (switchVac && !switchEst)">
                                             <v-col cols="12" sm="12">
                                             <v-subheader>Datos de Referencia de la Vacuna</v-subheader>
@@ -2349,7 +2466,7 @@
                                                 <v-text-field :disabled="!switchMicro"
                                                     v-model="form.numMicro"
                                                     :rules="vacio"
-                                                    maxlength="12" counter 
+                                                    maxlength="12" counter
                                                     label="Número de Microchip"
                                                     placeholder="Número de Identitifación del Microchip"
                                                     outlined>
@@ -2425,9 +2542,9 @@
     import mapboxgl from 'mapbox-gl'
     import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
-    export default 
+    export default
     {
-        components: 
+        components:
         {
             AppLayout,
             JetApplicationMark,
@@ -2623,20 +2740,23 @@
             dropdownOpen3: false,
             dropdownOpen4: false,
             dropdownOpen5: false,
+            dropdownOpenCanAnt: false,
             dateModel1: '',
             dateModel2: '',
             dateModel3: '',
             dateModel4: '',
             dateModel5: '',
+            dateModelAnt: '',
             timeModel1: '',
             timeModel2: '',
             timeModel3: '',
             timeModel4: '',
             timeModel5: '',
+            timeModelAnt: '',
             menuExpSeg: null,
             menuLimSeg: null,
             menuNacPerro: null,
-            
+
             sexoCan2: ['Macho', 'Hembra'],
             razas: [
                 {
@@ -2688,8 +2808,9 @@
             ],
             switchPuro: false,
             tamCanItems: ['Pequeño','Mediano','Grande'],
+            switchAnt: false,
             menuVacPerro: null,
-            switchVac: false,            
+            switchVac: false,
             menuEstPerro: null,
             switchEst: false,
             switchVet: false,
@@ -2769,6 +2890,14 @@
                 sexoCan: this.can.sexoCan,
                 procedenciaCan: this.can.procedenciaCan,
 
+                /* Antecedentes Can */
+                antecedentesCan: this.can.antecedentesCan,
+                tipoAnt: this.can.tipoAnt,
+                numAnt: this.can.numAnt,
+                fechaHoraAnt: this.can.fechaHoraAnt,
+                canAntFile: null,
+                canAnt: this.can.canAnt,
+
                 fotoCan2: null,
                 fotoCan: null,
                 pedigree: null,
@@ -2826,6 +2955,9 @@
             }
             if(this.can.mismoVeterinario == 'Sí'){
                 this.switchVet = true;
+            }
+            if(this.can.antecedentesCan == 'Sí'){
+                this.switchAnt = true;
             }
         },
         computed: {
@@ -2937,6 +3069,9 @@
         model5: {
             get() {return this.value;},
             set(model5) {} },
+        modelCanAnt: {
+            get() {return this.value;},
+            set(modelCanAnt) {} },
 
         currentSelection1() {
         let selectedTime1 = this.timeModel1;
@@ -2957,6 +3092,10 @@
         currentSelection5() {
         let selectedTime5 = this.timeModel5;
         return this.formatDate(this.dateModel5) + ' ' + selectedTime5;
+        },
+        currentSelectionAnt() {
+        let selectedTimeAnt = this.timeModelAnt;
+        return this.formatDate(this.dateModelAnt) + ' ' + selectedTimeAnt;
         },
 
         anchoDate() {
@@ -2988,7 +3127,7 @@
             },
         },
 
-        methods: 
+        methods:
         {
             updateData() {
                 /* Verificar si es pedigree */
@@ -3024,6 +3163,14 @@
                 {
                     this.form.mismoVeterinario = 'No'
                 }
+                if(this.switchAnt == true)
+                {
+                  this.form.antecedentesCan = 'Sí'
+                }
+                else
+                {
+                  this.form.antecedentesCan = 'No'
+                }
                 /* subir datos */
                 this.$inertia.post(route('registros.update', this.propietario.id),this.form);
             },
@@ -3040,7 +3187,7 @@
             },
             soloNumeros: function(evt)
             {
-                
+
                 evt = (evt) ? evt : window.event;
                 var charCode = (evt.which) ? evt.which : evt.keyCode;
                 if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || (charCode >= 192 && charCode <= 255) || (charCode == [209]) || (charCode == [241]) || (charCode == [32]) || (charCode == [39]) || (charCode == [46])) {
@@ -3049,18 +3196,18 @@
                     return true;
                 }
             },
-            switchToTeam(team) 
+            switchToTeam(team)
             {
-                this.$inertia.put(route('current-team.update'), 
+                this.$inertia.put(route('current-team.update'),
                 {
                     'team_id': team.id
-                }, 
+                },
                 {
                     preserveState: false
                 })
             },
 
-            logout() 
+            logout()
             {
                 this.$inertia.post(route('logout'));
             },
@@ -3091,7 +3238,7 @@
             save (dateEstPerro) {
                 this.$refs.menuEstPerro.save(dateEstPerro)
             },
-            
+
             toggleCamera() {
                 if(this.isCameraOpen) {
                     this.isCameraOpen = false;
@@ -3131,7 +3278,7 @@
                             deviceId: videoSource ? {exact: videoSource} : undefined
                         }
                     };
-                
+
                     return navigator.mediaDevices.getUserMedia(constraints);
                 }
             };
@@ -3184,7 +3331,7 @@
                 track.stop();
             });
             },
-            
+
             takePhoto() {
                 const FLASH_TIMEOUT = 50;
                 let self = this;
@@ -3291,7 +3438,7 @@
                             deviceId: videoSource ? {exact: videoSource} : undefined
                         }
                     };
-                
+
                     return navigator.mediaDevices.getUserMedia(constraints);
                 }
             };
@@ -3344,7 +3491,7 @@
                 track.stop();
             });
             },
-            
+
             takePhoto2() {
                 const FLASH_TIMEOUT = 50;
                 let self = this;
@@ -3422,14 +3569,14 @@
                 console.clear();
             },
 
-            /* DateTimeExtension */                
+            /* DateTimeExtension */
             formatDate(date) {
             if (!date) return '';
-        
+
             const [year, month, day] = date.split('-');
             return `${year}-${month}-${day}`;
             },
-        
+
             // Confirm the datetime selection and close the popover
             confirm1() {
             this.onUpdateDate1();
@@ -3451,7 +3598,11 @@
             this.onUpdateDate5();
             this.dropdownOpen5 = false;
             },
-        
+            confirmCanAnt() {
+            this.onUpdateDateAnt();
+            this.dropdownOpenCanAnt = false;
+            },
+
             // Format the date and trigger the input event
             onUpdateDate1() {
             if (!this.dateModel1 || !this.timeModel1) return false;
@@ -3459,35 +3610,42 @@
             this.form.aFechaHoraCanes = this.formatDate(this.dateModel1) + ' ' + selectedTime1;
             this.$emit('input', this.dateModel1 + ' ' + selectedTime1);
             },
-            
+
             onUpdateDate2() {
             if (!this.dateModel2 || !this.timeModel2) return false;
             let selectedTime2 = this.timeModel2;
             this.form.aFechaHoraRejap = this.formatDate(this.dateModel2) + ' ' + selectedTime2;
             this.$emit('input', this.dateModel2 + ' ' + selectedTime2);
             },
-            
+
             onUpdateDate3() {
             if (!this.dateModel3 || !this.timeModel3) return false;
             let selectedTime3 = this.timeModel3;
             this.form.aFechaHoraFelcc = this.formatDate(this.dateModel3) + ' ' + selectedTime3;
             this.$emit('input', this.dateModel3 + ' ' + selectedTime3);
             },
-            
+
             onUpdateDate4() {
             if (!this.dateModel4 || !this.timeModel4) return false;
             let selectedTime4 = this.timeModel4;
             this.form.aFechaHoraFelcn = this.formatDate(this.dateModel4) + ' ' + selectedTime4;
             this.$emit('input', this.dateModel4 + ' ' + selectedTime4);
             },
-            
+
             onUpdateDate5() {
             if (!this.dateModel5 || !this.timeModel5) return false;
             let selectedTime5 = this.timeModel5;
             this.form.aFechaHoraFelcv = this.formatDate(this.dateModel5) + ' ' + selectedTime5;
             this.$emit('input', this.dateModel5 + ' ' + selectedTime5);
             },
-        
+
+            onUpdateDateAnt() {
+            if (!this.dateModelAnt || !this.timeModelAnt) return false;
+            let selectedTimeAnt = this.timeModelAnt;
+            this.form.fechaHoraAnt = this.formatDate(this.dateModelAnt) + ' ' + selectedTimeAnt;
+            this.$emit('input', this.dateModelAnt + ' ' + selectedTimeAnt);
+            },
+
         /* Antecedentes */
         next () {
             this.onboarding = this.onboarding + 1 === this.length
@@ -3509,7 +3667,7 @@
             document.getElementById('longitud').innerHTML = longi;
             this.form.latitud = lati;
             this.form.longitud = longi;
-            
+
         },
         },
          mounted() {
@@ -3520,7 +3678,7 @@
             var currentTime = currentHour + ':' + minutes;
             this.timeModel1 = currentTime;
             this.dateModel1 = d.toISOString().substr(0, 10);
-            
+
             this.timeModel2 = currentTime;
             this.dateModel2 = d.toISOString().substr(0, 10);
 
@@ -3532,7 +3690,10 @@
 
             this.timeModel5 = currentTime;
             this.dateModel5 = d.toISOString().substr(0, 10);
-                
+
+            this.timeModelAnt = currentTime;
+            this.dateModelAnt = d.toISOString().substr(0, 10);
+
             mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ibGVlOTkiLCJhIjoiY2t2Z25tdDZxMDZ0OTJ2cGYzNndzZHJ3NyJ9.pBGTzYuYUmbU2dbF5TW8zQ';
             const map = new mapboxgl.Map({
                 container: 'map', // container ID
@@ -3600,10 +3761,10 @@
                 showUserHeading: true
                 })
             );
-            
+
         },
 
-        props: 
+        props:
         {
             propietario: Object,
             memorial: Object,

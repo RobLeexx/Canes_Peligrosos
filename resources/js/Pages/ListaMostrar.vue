@@ -94,7 +94,7 @@
                                         Documento de Identidad
                                     </div>
                                     <div style="padding: 20px">
-                                        {{ propietario.documento }} {{ propietario.docExp }} 
+                                        {{ propietario.documento }} {{ propietario.docExp }}
                                     </div>
                                 </v-row>
                                 <v-divider style="padding-bottom: 25px"></v-divider>
@@ -114,7 +114,7 @@
                                                 Localidad
                                             </div>
                                             <div style="padding: 20px">
-                                                {{ propietario.departamento }}, {{ propietario.provincia }}, {{ propietario.municipio }} 
+                                                {{ propietario.departamento }}, {{ propietario.provincia }}, {{ propietario.municipio }}
                                             </div>
                                         </v-row>
                                         <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -226,7 +226,7 @@
                                         </template>
                                     </v-expansion-panel-header>
                                     <v-expansion-panel-content>
-                                        
+
                                             <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
                                                 <div style="padding: 20px; font-weight: bold">
                                                     Agencia
@@ -287,7 +287,7 @@
                                                     SIN ADJUNTAR
                                                 </div>
                                             </v-row>
-                                        
+
                                     </v-expansion-panel-content>
                                     </v-expansion-panel>
                                 </v-expansion-panels>
@@ -465,7 +465,7 @@
                                         </v-expansion-panel>
                                     </v-expansion-panels>
                                     </template>
-                                    
+
                                     <v-divider style="padding-bottom: 15px"></v-divider>
 
                                     <template>
@@ -536,7 +536,7 @@
                                                         Certificado
                                                     </div>
                                                     <div v-if="can.vacFile" style="padding-top: 14px">
-                                                        <v-btn :href="route('downloadVac1', can.vacFile)" text
+                                                        <v-btn :href="route('downloadVet', can.vacFile)" text
                                                         >{{ can.vacFile }}<v-icon style="padding-left: 10px" color="primary">mdi-download</v-icon></v-btn>
                                                     </div>
                                                     <div v-else style="padding: 20px">
@@ -605,7 +605,7 @@
                                                         Certificado
                                                     </div>
                                                     <div v-if="can.estFile" style="padding-top: 14px">
-                                                        <v-btn :href="route('downloadEst', can.estFile)" text
+                                                        <v-btn :href="route('downloadVet', can.estFile)" text
                                                         >{{ can.estFile }}<v-icon style="padding-left: 10px" color="primary">mdi-download</v-icon></v-btn>
                                                     </div>
                                                     <div v-else style="padding: 20px">
@@ -626,7 +626,7 @@
                                             <div v-if="(can.mismoVeterinario == 'Sí') && !(can.esterilizacion == 'No' || can.vacuna == 'No')" style="padding-bottom: 25px">
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
                                                     <v-subheader style="padding: 20px">
-                                                        Veterinaria de Vacuna y Esterilzación 
+                                                        Veterinaria de Vacuna y Esterilzación
                                                     </v-subheader>
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -682,7 +682,7 @@
                                                         Certificado de Vacuna
                                                     </div>
                                                     <div v-if="can.vacFile" style="padding-top: 14px">
-                                                        <v-btn :href="route('downloadVac', can.vacFile)" text
+                                                        <v-btn :href="route('downloadVet', can.vacFile)" text
                                                         >{{ can.vacFile }}<v-icon style="padding-left: 10px" color="primary">mdi-download</v-icon></v-btn>
                                                     </div>
                                                     <div v-else style="padding: 20px">
@@ -694,7 +694,7 @@
                                                         Certificado de Esterilización
                                                     </div>
                                                     <div v-if="can.estFile" style="padding-top: 14px">
-                                                        <v-btn :href="route('downloadEst', can.estFile)" text
+                                                        <v-btn :href="route('downloadVet', can.estFile)" text
                                                         >{{ can.estFile }}<v-icon style="padding-left: 10px" color="primary">mdi-download</v-icon></v-btn>
                                                     </div>
                                                     <div v-else style="padding: 20px">
@@ -706,7 +706,7 @@
                                         </v-expansion-panel>
                                     </v-expansion-panels>
                                     </template>
-                                    
+
                                     <v-divider style="padding-bottom: 15px"></v-divider>
 
                                     <template>
@@ -857,13 +857,13 @@
                             <v-col cols="12" sm="12">
                                 <v-expansion-panels focusable>
                                     <v-expansion-panel>
-                                    <v-expansion-panel-header disable-icon-rotate>Antecedentes del Propietario y Boleta de Pago
+                                    <v-expansion-panel-header disable-icon-rotate>Antecedentes del Propietario, Can y Boleta de Pago
                                         <template v-slot:actions>
                                             <div style="padding-right: 15px">
-                                                <v-icon v-if="!antecedente.aCanesFile || !antecedente.aRejapFile || !antecedente.aFelccFile || !antecedente.aFelcnFile || !antecedente.aFelcvFile" color="red">
+                                                <v-icon v-if="!antecedente.aCanesFile || !antecedente.aRejapFile || !antecedente.aFelccFile || !antecedente.aFelcnFile || !antecedente.aFelcvFile || (can.antecedentesCan == 'Sí' && !can.canAntFile)" color="red">
                                                 mdi-police-badge
                                                 </v-icon>
-                                                <v-icon v-else-if="antecedente.aCanes != 'Ninguno' || antecedente.aRejap != 'Ninguno' || antecedente.aFelcc != 'Ninguno' || antecedente.aFelcn != 'Ninguno' || antecedente.aFelcv != 'Ninguno'" color="orange darken-2">
+                                                <v-icon v-else-if="antecedente.aCanes != 'Ninguno' || antecedente.aRejap != 'Ninguno' || antecedente.aFelcc != 'Ninguno' || antecedente.aFelcn != 'Ninguno' || antecedente.aFelcv != 'Ninguno' || can.antecedentesCan != 'No'" color="orange darken-2">
                                                 mdi-police-badge
                                                 </v-icon>
                                                 <v-icon v-else color="primary">
@@ -888,7 +888,7 @@
 
                                                     <v-tooltip v-if="antecedente.aCanesFile" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadCanes', antecedente.aCanesFile)" small color="primary" fab text v-bind="attrs" v-on="on">
+                                                            <v-btn :href="route('downloadAntecedente', antecedente.aCanesFile)" small color="primary" fab text v-bind="attrs" v-on="on">
                                                                 <v-icon v-if="antecedente.aCanes == 'Ninguno'">mdi-text-box-check</v-icon>
                                                                 <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
                                                             </v-btn>
@@ -934,10 +934,10 @@
                                                     <v-subheader style="padding: 20px">
                                                         REJAP
                                                     </v-subheader>
-                                                    
+
                                                     <v-tooltip v-if="antecedente.aRejapFile" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadRejap', antecedente.aRejapFile)" small color="primary" fab text v-bind="attrs" v-on="on">
+                                                            <v-btn :href="route('downloadAntecedente', antecedente.aRejapFile)" small color="primary" fab text v-bind="attrs" v-on="on">
                                                                 <v-icon v-if="antecedente.aRejap == 'Ninguno'">mdi-text-box-check</v-icon>
                                                                 <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
                                                             </v-btn>
@@ -983,10 +983,10 @@
                                                     <v-subheader style="padding: 20px">
                                                         FELCC
                                                     </v-subheader>
-                                                    
+
                                                     <v-tooltip v-if="antecedente.aFelccFile" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadFelcc', antecedente.aFelccFile)" small color="primary" fab text v-bind="attrs" v-on="on">
+                                                            <v-btn :href="route('downloadAntecedente', antecedente.aFelccFile)" small color="primary" fab text v-bind="attrs" v-on="on">
                                                                 <v-icon v-if="antecedente.aFelcc == 'Ninguno'">mdi-text-box-check</v-icon>
                                                                 <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
                                                             </v-btn>
@@ -1035,7 +1035,7 @@
 
                                                     <v-tooltip v-if="antecedente.aFelcnFile" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadFelcn', antecedente.aFelcnFile)" small color="primary" fab text v-bind="attrs" v-on="on">
+                                                            <v-btn :href="route('downloadAntecedente', antecedente.aFelcnFile)" small color="primary" fab text v-bind="attrs" v-on="on">
                                                                 <v-icon v-if="antecedente.aFelcn == 'Ninguno'">mdi-text-box-check</v-icon>
                                                                 <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
                                                             </v-btn>
@@ -1081,10 +1081,10 @@
                                                     <v-subheader style="padding: 20px">
                                                         FELCV
                                                     </v-subheader>
-                                                    
+
                                                     <v-tooltip v-if="antecedente.aFelcvFile" top>
                                                         <template v-slot:activator="{ on, attrs }">
-                                                            <v-btn :href="route('downloadFelcv', antecedente.aFelcvFile)" small color="primary" fab text v-bind="attrs" v-on="on">
+                                                            <v-btn :href="route('downloadAntecedente', antecedente.aFelcvFile)" small color="primary" fab text v-bind="attrs" v-on="on">
                                                                 <v-icon v-if="antecedente.aFelcv == 'Ninguno'">mdi-text-box-check</v-icon>
                                                                 <v-icon v-else color="orange darken-2">mdi-text-box</v-icon>
                                                             </v-btn>
@@ -1124,12 +1124,66 @@
                                                     </div>
                                                 </v-row>
                                             </v-col>
-                                            <v-col cols="6">
+                                            <v-col cols="12" sm="6">
+                                              <div v-if="can.antecedentesCan == 'Sí'">
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-top: 20px">
+                                                    <v-subheader style="padding: 20px">
+                                                        {{ can.tipoAnt }}
+                                                    </v-subheader>
+
+                                                    <v-tooltip v-if="can.canAntFile" top>
+                                                        <template v-slot:activator="{ on, attrs }">
+                                                            <v-btn :href="route('downloadAntecedente', can.canAntFile)" small color="primary" fab text v-bind="attrs" v-on="on">
+                                                                <v-icon color="orange darken-2">mdi-text-box</v-icon>
+                                                            </v-btn>
+                                                        </template>
+                                                        <span>{{ can.canAntFile }}</span>
+                                                    </v-tooltip>
+                                                    <v-tooltip v-else top>
+                                                        <template v-slot:activator="{ on, attrs }">
+                                                            <v-icon color="red" style="padding-right: 15px" v-bind="attrs" v-on="on">mdi-text-box-remove</v-icon>
+                                                        </template>
+                                                        <span>Sin Archivo de Antecedentes del Can</span>
+                                                    </v-tooltip>
+
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Número de Registro
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ can.numAnt }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Fecha y Hora
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ can.fechaHoraAnt }}
+                                                    </div>
+                                                </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Antecedentes
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ can.canAnt }}
+                                                    </div>
+                                                </v-row>
+                                              </div>
+                                                <div v-else style="height: 100%; display: flex; justify-content: center; align-items: center">
+                                                  <v-subheader style="padding: 10px; font-weight: bold">
+                                                      EL CAN NO TIENE ANTECEDENTES
+                                                  </v-subheader>
+                                                </div>
+                                            </v-col>
+                                            <v-col cols="12" sm="12">
+                                                <v-row style="display: flex; justify-content: space-between; padding: 50px">
                                                     <v-subheader style="padding: 20px">
                                                         BOLETA DE PAGO
                                                     </v-subheader>
-                                                    
+
                                                     <v-tooltip v-if="propietario.boleta" top>
                                                         <template v-slot:activator="{ on, attrs }">
                                                             <v-btn :href="route('downloadBol', propietario.boleta)" small color="primary" fab text v-bind="attrs" v-on="on">
@@ -1470,12 +1524,12 @@
                         break
                 }
             }
-            
+
             this.creacion = moment(String(this.propietario.created_at)).format('YYYY-MM-DD hh:mm'),
             this.actualizacion = moment(String(this.propietario.updated_at)).format('YYYY-MM-DD hh:mm')
         },
         methods: {
-            
+
         },
         mounted() {
             var today = new Date();
@@ -1486,7 +1540,7 @@
                 age--;
             }
             document.getElementById('edad').innerHTML = age;
-            
+
             var birthDateCan = new Date(this.can.dateNacPerro);
             var ageCan = today.getFullYear() - birthDateCan.getFullYear();
             var monCan = today.getMonth() - birthDateCan.getMonth();
@@ -1505,8 +1559,8 @@
             {
                 document.getElementById('edadCan').innerHTML = ageCan;
             }
-                
-            
+
+
         },
         components: {
             AppLayout,

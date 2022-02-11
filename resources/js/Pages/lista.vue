@@ -46,7 +46,7 @@
                     <v-col cols="12" sm="12" style="display: flex; justify-content: end; padding-top: 0">
                         <v-btn :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.rol != 'Secretaría')" @click="downloadReporte" color='primary' small style="margin-right: 20px">REPORTE</v-btn>
                     </v-col>
-                        
+
                     <v-data-table style="padding-inline: 20px"
                     :headers="headers"
                     :items="registros"
@@ -112,7 +112,7 @@
                                 :color="colorPen(item.num)"
                                 :size="40"
                                 :width="5"
-                                >{{ item.num }}</v-progress-circular>    
+                                >{{ item.num }}</v-progress-circular>
                             </div>
                         </template>
                         <template v-slot:item.actions="{ item }">
@@ -135,7 +135,7 @@
     import jsPDF from 'jspdf'
     import 'jspdf-autotable'
     import moment from 'moment'
-    
+
     export default {
         props: {
             propietarios: Array,
@@ -283,6 +283,8 @@
                     numPen += 1 }
                 if(!registro.estFile){
                     numPen += 1 }
+                if((registro.antecedentesCan == 'Sí') && !registro.canAntFile){
+                    numPen += 1 }
             return {
                 id: registro.id,
                 propietarioDatos: propDatos,
@@ -323,6 +325,9 @@
                 seguroFile: registro.seguroFile,
                 vacFile: registro.vacFile,
                 estFile: registro.estFile,
+                /* Pendiente si tiene antecedentes el can */
+                antecedentesCan: registro.antecedentesCan,
+                canAntFile: registro.canAntFile,
                 num: numPen,
 
                 /* CREACION */
@@ -362,7 +367,7 @@
                 }
             },
             downloadReporte(){
-                /* Legal 22*36 
+                /* Legal 22*36
                    Legal PRUEBA REAL 21.7*33 */
                 var pdf = new jsPDF('p', 'mm', [360, 217]);
                 var img = new Image();
@@ -417,7 +422,7 @@
                 pdf.setFont(undefined, 'bold').setFontSize(7).text('CENTRO DE ADIESTRAMIENTO', 170, 27);
                 pdf.setFont(undefined, 'bold').setFontSize(7).text('DE CANES (C.A.C)', 179, 30);
                 pdf.setFont(undefined, 'bold').setFontSize(7).text(cac, 175, 33);
-                
+
                 /* Tabla */
                 pdf.autoTable({
                     columns,

@@ -23,29 +23,9 @@ class DownloadController extends Controller
         $path = public_path('storage/doc/boletas/'. $boleta);
         return response()->download($path);
     }
-    public function downloadCanes($canesFile)
+    public function downloadAntecedente($ant)
     {
-        $path = public_path('storage/doc/antecedentes/'. $canesFile);
-        return response()->download($path);
-    }
-    public function downloadRejap($rejap)
-    {
-        $path = public_path('storage/doc/antecedentes/'. $rejap);
-        return response()->download($path);
-    }
-    public function downloadFelcc($felcc)
-    {
-        $path = public_path('storage/doc/antecedentes/'. $felcc);
-        return response()->download($path);
-    }
-    public function downloadFelcn($felcn)
-    {
-        $path = public_path('storage/doc/antecedentes/'. $felcn);
-        return response()->download($path);
-    }
-    public function downloadFelcv($felcv)
-    {
-        $path = public_path('storage/doc/antecedentes/'. $felcv);
+        $path = public_path('storage/doc/antecedentes/'. $ant);
         return response()->download($path);
     }
     public function downloadSeguro($seguro)
@@ -53,14 +33,9 @@ class DownloadController extends Controller
         $path = public_path('storage/doc/seguros/'. $seguro);
         return response()->download($path);
     }
-    public function downloadVac($vac)
+    public function downloadVet($vac)
     {
         $path = public_path('storage/doc/veterinaria/'. $vac);
-        return response()->download($path);
-    }
-    public function downloadEst($est)
-    {
-        $path = public_path('storage/doc/veterinaria/'. $est);
         return response()->download($path);
     }
 

@@ -191,6 +191,17 @@ class RegistroController extends Controller
 
             $input['estFile'] = $est_name;
         }
+        /* Antecedentes Caninos */
+        if($request->hasFile('canAntFile'))
+        {
+            $destination_path = 'public/doc/antecedentes';
+            $canAnt = $request->file('canAntFile');
+            $canAnt_name = $propDOC.'_';
+            $canAnt_name .= $canAnt->getClientOriginalName();
+            $path = $request->file('canAntFile')->storeAs($destination_path,$canAnt_name);
+
+            $input['canAntFile'] = $canAnt_name;
+        }
 
         Memorial::create($input);
         Propietario::create($input);
