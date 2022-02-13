@@ -13,8 +13,12 @@ class Can extends Model
         'dateNacPerro',
         'sexoCan',
         'procedenciaCan',
-        'fotoCan',
+
+        'fotoCan1',
         'fotoCan2',
+        'fotoCan3',
+        'fotoCan4',
+        'fotoCan5',
 
         'pedigree',
         'razaCan',

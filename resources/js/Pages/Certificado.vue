@@ -133,8 +133,7 @@
                                                 <td><div style="display: flex; padding-left: 5px"><h1>PROCEDENCIA:</h1>&nbsp;{{ can.procedenciaCan }}</div></td>
                                             </tr>
                                         </div>
-                                        <img style="max-width: 220px; min-width: 220px; max-height: 170px" v-if="can.fotoCan" v-bind:src="'/storage/images/canes/' + can.fotoCan">
-                                        <img style="max-width: 220px; min-width: 220px; max-height: 170px" v-else v-bind:src="'/storage/images/canes/' + can.fotoCan2">
+                                        <img style="max-width: 220px; min-width: 220px; max-height: 170px" v-bind:src="'/storage/images/canes/ci_'+ propietario.documento + '/' + can.fotoCan1">
                                     </div>
                                 </td>
                             </tr>
@@ -158,7 +157,7 @@
                         </tbody>
                     </table>
                     </v-col>
-                
+
                 <!-- CURSOS -->
                 <v-row style="padding-inline: 11px">
                     <v-col cols="12" sm="6" style="text-align: center; padding-inline: 0">
@@ -181,7 +180,7 @@
                         </tbody>
                     </table>
                     </v-col>
-                
+
                 <!-- EXPEDICIÓN -->
                     <v-col style="padding: 0; border: 1px solid black; width: 100%">
                         <div style="padding-left: 5px"><h1 style="font-weight: bold; font-size: 13px">{{ exp }}</h1></div>
@@ -354,7 +353,7 @@
         },
         methods: {
             downloadPDF() {
-                /* Legal 22*36 
+                /* Legal 22*36
                    Legal PRUEBA REAL 21.7*33 */
                 var pdf = new jsPDF('p', 'mm', [360, 217]);
                 var img = new Image();
@@ -458,23 +457,23 @@
                 pdf.addImage(qr, 'png', 180, 23, 20, 20);
 
                 /* Tablas */
-                pdf.autoTable({theme: 'plain', startY: 50, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9 }, 
+                pdf.autoTable({theme: 'plain', startY: 50, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9 },
                 body: [
                 ['DATOS DEL PROPIETARIO']]
                 });
-                pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold'}, 
+                pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold'},
                 body: [
                 [''],[''],[''],[''],[''],[''],[''],[''],[''],['']]
                 });
-                pdf.autoTable({theme: 'plain', startY: 50, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                pdf.autoTable({theme: 'plain', startY: 50, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9},
                 body: [
                 ['DATOS DEL CAN PELIGROSO']]
                 });
-                pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold'}, 
+                pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold'},
                 body: [
                 [''],[''],[''],[''],[''],[''],[''],[''],[''],['']]
                 });
-                
+
                 /* Propietario */
                 pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 12.5}, tableWidth: 50, styles: { fontSize: 7 },
                 body: [
@@ -490,15 +489,9 @@
                 });
 
                 /* Can */
-                if(this.can.fotoCan)
-                {
-                    imgCan.src = '/storage/images/canes/' + this.can.fotoCan;
-                }
-                else if(this.can.fotoCan2)
-                {
-                    imgCan.src = '/storage/images/canes/' + this.can.fotoCan2;
-                }
-                
+                imgCan.src = '/storage/images/canes/ci_'+ this.propietario.documento + '/' + this.can.fotoCan1;
+
+
                 pdf.addImage(imgCan, 'png', 155.5, 60, 45, 38);
                 pdf.autoTable({theme: 'plain', startY: 57, margin: {horizontal: 110}, tableWidth: 45, styles: { fontSize: 7 },
                 body: [
@@ -509,7 +502,7 @@
                 ['PROCEDENCIA:' + ' ' + this.can.procedenciaCan],
                 ]});
                 /* Cuidadores Eventuales */
-                pdf.autoTable({theme: 'plain', startY: 133, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                pdf.autoTable({theme: 'plain', startY: 133, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontStyle: 'bold', fontSize: 9},
                 body: [
                 ['TENEDOR(ES) EVENTUAL(ES) DEL PERRO PELIGROSO:'],
                 ]});
@@ -522,11 +515,11 @@
                 ]});
 
                 /* CURSOS */
-                pdf.autoTable({theme: 'plain', startY: 165.5, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                pdf.autoTable({theme: 'plain', startY: 165.5, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9},
                 body: [
                 ['               CURSO PREVENTIVO SOBRE LA TENENCIA                Y CUIDADO DEL PERRO PELIGROSO']
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 165.5, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                pdf.autoTable({theme: 'plain', startY: 165.5, margin: {horizontal: 110}, tableWidth: 93, tableLineColor: 20, tableLineWidth: 0.3, styles: { halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9},
                 body: [
                 ['                               ADIESTRAMIENTO                                BÁSICO CANINO']
                 ]});
@@ -540,11 +533,11 @@
                 ]});
 
                 /* Observaciones */
-                pdf.autoTable({theme: 'plain', startY: 184, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontStyle: 'bold', fontSize: 9}, 
+                pdf.autoTable({theme: 'plain', startY: 184, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontStyle: 'bold', fontSize: 9},
                 body: [
                 ['OBSERVACIONES:'],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 191, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontSize: 7}, 
+                pdf.autoTable({theme: 'plain', startY: 191, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontSize: 7},
                 body: [
                 ['Sin Observaciones'],
                 ]});
@@ -565,31 +558,31 @@
                 [''],
                 [''],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 245, margin: {horizontal: 130}, tableWidth: 28, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                pdf.autoTable({theme: 'plain', startY: 245, margin: {horizontal: 130}, tableWidth: 28, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'},
                 body: [
                 ['Lugar y Fecha:'],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 245, margin: {horizontal: 150}, tableWidth: 80, styles: { textColor: 20, fontSize: 7}, 
+                pdf.autoTable({theme: 'plain', startY: 245, margin: {horizontal: 150}, tableWidth: 80, styles: { textColor: 20, fontSize: 7},
                 body: [
                 [this.propietario.cac + ', ' + diaCell + ' de ' + mesCell + ' de ' + anioCell],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 40}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 40}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'},
                 body: [
                 ['Funcionario Policial'],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 104}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 104}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'},
                 body: [
                 ['Vo. Bo.'],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 156}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'}, 
+                pdf.autoTable({theme: 'plain', startY: 266, margin: {horizontal: 156}, tableWidth: 50, styles: { textColor: 20, fontSize: 7, fontStyle: 'bold'},
                 body: [
                 ['Comandante C.A.C'],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 25.5}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7}, 
+                pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 25.5}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7},
                 body: [
                 [this.grado + ' ' + this.$page.props.user.nombres + ' ' + this.$page.props.user.paterno + ' ' + this.$page.props.user.materno],
                 ]});
-                pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 141}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7}, 
+                pdf.autoTable({theme: 'plain', startY: 260, margin: {horizontal: 141}, tableWidth: 55, styles: { halign: 'center', textColor: 20, fontSize: 7},
                 body: [
                 [this.$page.props.user.director],
                 ]});
@@ -607,7 +600,7 @@
                 age--;
             }
             document.getElementById('edad').innerHTML = age;
-            
+
             var birthDateCan = new Date(this.can.dateNacPerro);
             var ageCan = today.getFullYear() - birthDateCan.getFullYear();
             var monCan = today.getMonth() - birthDateCan.getMonth();

@@ -70,8 +70,7 @@
                         </template>
                         <template v-slot:item.canesDatos="{ item }">
                             <div style="display: flex; align-items: center; height: 60px">
-                                <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-if="item.fotoCan != null" v-bind:src="'/storage/images/canes/' + item.fotoCan">
-                                <img style="border-radius: 30px; max-width: 50px; min-width: 50px" v-else-if="item.fotoCan2 != null" v-bind:src="'/storage/images/canes/' + item.fotoCan2">
+                                <img style="border-radius: 30px; max-width: 50px; min-width: 50px; max-height: 50px" v-bind:src="'/storage/images/canes/ci_'+ item.documento + '/' + item.fotoCan1">
                                 <div style="padding-inline: 10px">
                                     <div class="text-sm font-medium text-gray-900">
                                         {{ item.can }}
@@ -304,7 +303,7 @@
                 contactoAlterno: registro.contactoAlterno,
                 creado_por: registro.creado_por,
 
-                fotoCan: registro.fotoCan,
+                fotoCan1: registro.fotoCan1,
                 fotoCan2: registro.fotoCan2,
                 can: registro.nomPerro,
                 raza: registro.razaCan,

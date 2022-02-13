@@ -37,6 +37,9 @@ class RegistroEditController extends Controller
         $input = $request->all();
         $propID = $propietario['id'];
         $propDOC = $propietario['documento'];
+        $canes = Can::whereIn('id', [$propID])->get();
+        $canes = $canes[0];
+        $canName = $canes['nomPerro'];
 
         if($request->hasFile('docFile'))
         {
@@ -173,31 +176,60 @@ class RegistroEditController extends Controller
         /* CAN */
         $canes = Can::whereIn('id',[$propID])->get();
         $can = $canes[0];
-        if($request->hasFile('fotoCan'))
+        if($request->hasFile('fotoCan1'))
         {
-            $destination_path = 'public/images/canes';
-            $fotoCan = $request->file('fotoCan');
-            $fotoCan_name = $propDOC.'_';
+            $destination_path = 'public/images/canes/ci_'.$propDOC;
+            $fotoCan = $request->file('fotoCan1');
+            $fotoCan_name = $canName.'_';
             $fotoCan_name .= $fotoCan->getClientOriginalName();
-            $path = $request->file('fotoCan')->storeAs($destination_path,$fotoCan_name);
+            $path = $request->file('fotoCan1')->storeAs($destination_path,$fotoCan_name);
 
-            $input['fotoCan'] = $fotoCan_name;
-            $can->update(['fotoCan'=>$input['fotoCan']]);
+            $input['fotoCan1'] = $fotoCan_name;
+            $can->update(['fotoCan1'=>$input['fotoCan1']]);
         }
         if($request->hasFile('fotoCan2'))
         {
-            $destination_path = 'public/images/canes';
-            if($can['fotoCan'])
-            {
-                $can->update(['fotoCan'=> null]);
-            }
+            $destination_path = 'public/images/canes/ci_'.$propDOC;
             $fotoCan2 = $request->file('fotoCan2');
-            $fotoCan2_name = $propDOC.'_';
+            $fotoCan2_name = $canName.'_';
             $fotoCan2_name .= $fotoCan2->getClientOriginalName();
             $path = $request->file('fotoCan2')->storeAs($destination_path,$fotoCan2_name);
 
             $input['fotoCan2'] = $fotoCan2_name;
             $can->update(['fotoCan2'=>$input['fotoCan2']]);
+        }
+        if($request->hasFile('fotoCan3'))
+        {
+            $destination_path = 'public/images/canes/ci_'.$propDOC;
+            $fotoCan3 = $request->file('fotoCan3');
+            $fotoCan3_name = $canName.'_';
+            $fotoCan3_name .= $fotoCan3->getClientOriginalName();
+            $path = $request->file('fotoCan3')->storeAs($destination_path,$fotoCan3_name);
+
+            $input['fotoCan3'] = $fotoCan3_name;
+            $can->update(['fotoCan3'=>$input['fotoCan3']]);
+        }
+        if($request->hasFile('fotoCan4'))
+        {
+            $destination_path = 'public/images/canes/ci_'.$propDOC;
+            $fotoCan4 = $request->file('fotoCan4');
+            $fotoCan4_name = $canName.'_';
+            $fotoCan4_name .= $fotoCan4->getClientOriginalName();
+            $path = $request->file('fotoCan4')->storeAs($destination_path,$fotoCan4_name);
+
+            $input['fotoCan4'] = $fotoCan4_name;
+            $can->update(['fotoCan4'=>$input['fotoCan4']]);
+        }
+        if($request->hasFile('fotoCan5'))
+        {
+            $destination_path = 'public/images/canes/ci_'.$propDOC;
+            $fotoCan5 = $request->file('fotoCan5');
+            $fotoCan5_name = $canName.'_';
+            $fotoCan5_name .= $fotoCan5->getClientOriginalName();
+            $path = $request->file('fotoCan5')->storeAs($destination_path,$fotoCan5_name);
+
+            $input['fotoCan5'] = $fotoCan5_name;
+            $can->update(['fotoCan5'=>$input['fotoCan5']]);
         }
         if($request->hasFile('vacFile'))
         {
@@ -233,7 +265,7 @@ class RegistroEditController extends Controller
             $input['canAntFile'] = $canAnt_name;
             $can->update(['canAntFile'=>$input['canAntFile']]);
         }
-        unset($input['vacFile'],$input['estFile'],$input['fotoCan'],$input['fotoCan2'],$input['canAntFile']);
+        unset($input['vacFile'],$input['estFile'],$input['fotoCan1'],$input['fotoCan2'],$input['fotoCan3'],$input['fotoCan4'],$input['fotoCan5'],$input['canAntFile']);
         $can->fill($input)->save();
 
         return Redirect::route('registros.index');

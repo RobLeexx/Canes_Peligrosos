@@ -51,6 +51,7 @@ class RegistroController extends Controller
     {
         $input = $request->all();
         $propDOC = $request->input('documento');
+        $canName = $request->input('nomPerro');
         if($request->hasFile('fotoProp'))
         {
             $destination_path = 'public/images/propietarios';
@@ -61,25 +62,55 @@ class RegistroController extends Controller
 
             $input['fotoProp'] = $image_PropName;
         }
-        if($request->hasFile('fotoCan'))
+        if($request->hasFile('fotoCan1'))
         {
-            $destination_path = 'public/images/canes';
-            $imageCan = $request->file('fotoCan');
-            $image_CanName = $propDOC.'_';
-            $image_CanName .= $imageCan->getClientOriginalName();
-            $path = $request->file('fotoCan')->storeAs($destination_path,$image_CanName);
+            $destination_path = 'public/images/canes/ci_'.$propDOC;
+            $imageCan1 = $request->file('fotoCan1');
+            $image_Can1Name = $canName.'_';
+            $image_Can1Name .= $imageCan1->getClientOriginalName();
+            $path = $request->file('fotoCan1')->storeAs($destination_path,$image_Can1Name);
 
-            $input['fotoCan'] = $image_CanName;
+            $input['fotoCan1'] = $image_Can1Name;
         }
         if($request->hasFile('fotoCan2'))
         {
-            $destination_path = 'public/images/canes';
+            $destination_path = 'public/images/canes/ci_'.$propDOC;
             $imageCan2 = $request->file('fotoCan2');
-            $image_Can2Name = $propDOC.'_';
+            $image_Can2Name = $canName.'_';
             $image_Can2Name .= $imageCan2->getClientOriginalName();
             $path = $request->file('fotoCan2')->storeAs($destination_path,$image_Can2Name);
 
             $input['fotoCan2'] = $image_Can2Name;
+        }
+        if($request->hasFile('fotoCan3'))
+        {
+            $destination_path = 'public/images/canes/ci_'.$propDOC;
+            $imageCan3 = $request->file('fotoCan3');
+            $image_Can3Name = $canName.'_';
+            $image_Can3Name .= $imageCan3->getClientOriginalName();
+            $path = $request->file('fotoCan3')->storeAs($destination_path,$image_Can3Name);
+
+            $input['fotoCan3'] = $image_Can3Name;
+        }
+        if($request->hasFile('fotoCan4'))
+        {
+            $destination_path = 'public/images/canes/ci_'.$propDOC;
+            $imageCan4 = $request->file('fotoCan4');
+            $image_Can4Name = $canName.'_';
+            $image_Can4Name .= $imageCan4->getClientOriginalName();
+            $path = $request->file('fotoCan4')->storeAs($destination_path,$image_Can4Name);
+
+            $input['fotoCan4'] = $image_Can4Name;
+        }
+        if($request->hasFile('fotoCan5'))
+        {
+            $destination_path = 'public/images/canes/ci_'.$propDOC;
+            $imageCan5 = $request->file('fotoCan5');
+            $image_Can5Name = $canName.'_';
+            $image_Can5Name .= $imageCan5->getClientOriginalName();
+            $path = $request->file('fotoCan5')->storeAs($destination_path,$image_Can5Name);
+
+            $input['fotoCan5'] = $image_Can5Name;
         }
         if($request->hasFile('memoFile'))
         {

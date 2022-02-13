@@ -1,5 +1,5 @@
 <template>
-    <div>    
+    <div>
         <template>
             <head>
                 <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.1/mapbox-gl.css" type="text/css" />
@@ -7,7 +7,7 @@
                 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
             </head>
         </template>
-        
+
         <v-app>
             <v-card class="overflow-hidden">
                 <!-- Portada y Menú -->
@@ -27,7 +27,7 @@
                     gradient="to top right, rgba(75, 129, 59, 0.7), rgba(30, 72, 25, 0.7)"
                     ></v-img>
                 </template>
-                
+
                 <!-- Menus Responsive -->
                 <template v-slot:extension>
                     <div>
@@ -368,7 +368,7 @@
                     </v-menu>
                 </v-row>
 
-                
+
                 </v-app-bar>
 
                 <body>
@@ -409,7 +409,7 @@
                                             Misión
                                         </h1>
                                         <h1 style="font-size: 15px">
-                                            Siendo su misión ejecutar programas de adiestramiento de canes, para incorporar en la funciones policiales y de seguridad ciudadana a los canes en diferentes especialidades, canoterapia, búsqueda y localización de explosivos, búsqueda y localización de cadáveres, búsqueda y localización de personas vivas y defensa protección, con la finalidad de ayudar, cooperar, coadyuvar la labor policial, para prevenir cualquier situación de riesgo contra la seguridad e integridad de los habitantes., a partir de esta misión concordante con la misión fundamental encomendada a la policía Boliviana por la Constitución Política del Estado Art.251 de la cual surge nuestra visión.
+                                            Ejecutar programas de adiestramiento de canes, para incorporar en las funciones policiales y de seguridad ciudadana a los canes en diferentes especialidades, canoterapia, búsqueda y localización de explosivos, búsqueda y localización de cadáveres, búsqueda y localización de personas vivas, defensa y protección, con la finalidad de ayudar, cooperar, coadyuvar la labor policial, para prevenir cualquier situación de riesgo contra la seguridad e integridad de los habitantes, a partir de esta misión concordante con la misión fundamental encomendada a la Policía Boliviana por la Constitución Política del Estado Art.251 de la cual surge nuestra visión.
                                         </h1>
                                     </v-col>
                                 </div>
@@ -420,7 +420,7 @@
                                             Misión
                                         </h1>
                                         <h1 style="font-size: 20px">
-                                            Siendo su misión ejecutar programas de adiestramiento de canes, para incorporar en la funciones policiales y de seguridad ciudadana a los canes en diferentes especialidades, canoterapia, búsqueda y localización de explosivos, búsqueda y localización de cadáveres, búsqueda y localización de personas vivas y defensa protección, con la finalidad de ayudar, cooperar, coadyuvar la labor policial, para prevenir cualquier situación de riesgo contra la seguridad e integridad de los habitantes., a partir de esta misión concordante con la misión fundamental encomendada a la policía Boliviana por la Constitución Política del Estado Art.251 de la cual surge nuestra visión.
+                                            Ejecutar programas de adiestramiento de canes, para incorporar en las funciones policiales y de seguridad ciudadana a los canes en diferentes especialidades, canoterapia, búsqueda y localización de explosivos, búsqueda y localización de cadáveres, búsqueda y localización de personas vivas, defensa y protección, con la finalidad de ayudar, cooperar, coadyuvar la labor policial, para prevenir cualquier situación de riesgo contra la seguridad e integridad de los habitantes, a partir de esta misión concordante con la misión fundamental encomendada a la Policía Boliviana por la Constitución Política del Estado Art.251 de la cual surge nuestra visión.
                                         </h1>
                                     </v-col>
                                 </div>
@@ -429,7 +429,7 @@
                                         Misión
                                     </h1>
                                     <h1 style="font-size: 20px">
-                                        Siendo su misión ejecutar programas de adiestramiento de canes, para incorporar en la funciones policiales y de seguridad ciudadana a los canes en diferentes especialidades, canoterapia, búsqueda y localización de explosivos, búsqueda y localización de cadáveres, búsqueda y localización de personas vivas y defensa protección, con la finalidad de ayudar, cooperar, coadyuvar la labor policial, para prevenir cualquier situación de riesgo contra la seguridad e integridad de los habitantes., a partir de esta misión concordante con la misión fundamental encomendada a la policía Boliviana por la Constitución Política del Estado Art.251 de la cual surge nuestra visión.
+                                        Ejecutar programas de adiestramiento de canes, para incorporar en las funciones policiales y de seguridad ciudadana a los canes en diferentes especialidades, canoterapia, búsqueda y localización de explosivos, búsqueda y localización de cadáveres, búsqueda y localización de personas vivas, defensa y protección, con la finalidad de ayudar, cooperar, coadyuvar la labor policial, para prevenir cualquier situación de riesgo contra la seguridad e integridad de los habitantes, a partir de esta misión concordante con la misión fundamental encomendada a la Policía Boliviana por la Constitución Política del Estado Art.251 de la cual surge nuestra visión.
                                     </h1>
                                 </div>
 
@@ -452,7 +452,7 @@
                                             Visión
                                         </h1>
                                         <h1 style="font-size: 15px">
-                                            Es fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevara a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
+                                            Fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevará a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
                                         </h1>
                                     </v-col>
                                 </div>
@@ -463,7 +463,7 @@
                                             Visión
                                         </h1>
                                         <h1 style="font-size: 20px">
-                                            Es fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevara a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
+                                            Fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevará a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
                                         </h1>
                                     </v-col>
                                 </div>
@@ -480,14 +480,14 @@
                                         Visión
                                     </h1>
                                     <h1 style="font-size: 20px; text-align: right">
-                                        Es fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevara a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
+                                        Fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevará a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
                                     </h1>
                                 </div>
                             </v-row>
                         </div>
 
                         <div id="PUBLICACIONES">
-                            <div ref="publicaciones" style="padding-bottom: 120px">
+                            <div ref="publicaciones" style="padding-top: 120px">
                             <h1 class="d-none d-sm-block" style="text-align: center; font-size: 40px; color: #4a6813; font-weight: bold; padding: 20px">Publicaciones de Facebook</h1>
                             <h1 class="d-block d-sm-none" style="text-align: center; font-size: 40px; color: #4a6813; font-weight: bold; padding: 20px">Publicaciones de Facebook</h1>
 
@@ -549,10 +549,10 @@
                                 </v-col>
                             </v-row>
                         </div>
-                        
+
                         </div>
-                        
-                        <div ref="capacitaciones" id="ARTICULOS">
+
+                        <div ref="capacitaciones" id="ARTICULOS" style="padding-top: 120px">
                             <div id="TITULO">
                                 <h1 class="d-none d-sm-block" style="text-align: center; font-size: 40px; color: #4a6813; font-weight: bold; padding: 20px">Capacitaciones</h1>
                                 <h1 class="d-block d-sm-none" style="text-align: center; font-size: 40px; color: #4a6813; font-weight: bold; padding: 20px">Capacitaciones</h1>
@@ -596,7 +596,7 @@
                                     </v-row>
                                     <v-btn text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileLP)">{{ articulos.artLP }}</v-btn>
                                 </div>
-                                
+
                                 <div id="COCHA" style="padding-bottom: 15px">
                                     <v-row style="margin-left: 20px; margin-bottom: 10px">
                                         <h1 style="font-size: 25px; color: #4a6813; font-weight: bold; padding-right: 10px">Cochabamba</h1>
@@ -787,7 +787,7 @@
                                     <v-btn text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.filePT)">{{ articulos.artPT }}</v-btn>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -798,7 +798,7 @@
                             <div style="height: 500px" id="map"></div>
                         </div>
                     </div>
-                    
+
                     <!-- Footer -->
                     <div id="Footer" style="padding-top: 50px">
                     <v-footer padless color="#4a6813">
@@ -814,7 +814,7 @@
                 </body>
             </v-card>
         </v-app>
-        
+
     </div>
 </template>
 
@@ -829,9 +829,9 @@
     import mapboxgl from 'mapbox-gl'
     import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
-    export default 
+    export default
     {
-        props: 
+        props:
         {
             canLogin: Boolean,
             canRegister: Boolean,
@@ -839,8 +839,8 @@
             phpVersion: String,
             articulos: Object,
         },
-        
-        data() 
+
+        data()
         {
             return {
                 showingNavigationDropdown: false,
@@ -872,24 +872,24 @@
                 },
                 }
         },
-        methods: 
+        methods:
         {
             submitData() {
                 /* subir datos */
                 this.$inertia.post(route('home.store', this.form), this.form);
                 window.location.reload();
             },
-            switchToTeam(team) 
+            switchToTeam(team)
             {
-                this.$inertia.put(route('current-team.update'), 
+                this.$inertia.put(route('current-team.update'),
                 {
                     'team_id': team.id
-                }, 
+                },
                 {
                     preserveState: false
                 })
             },
-            logout() 
+            logout()
             {
                 this.$inertia.post(route('logout'));
             },
@@ -914,9 +914,9 @@
             '/storage/img/canes.jpg',
             (error, image) => {
             if (error) throw error;
-            
+
             map.addImage('dog', image);
-            
+
             map.addSource('point', {
             'type': 'geojson',
             'data': {
@@ -965,9 +965,9 @@
             '/storage/img/canes.jpg',
             (error, image) => {
             if (error) throw error;
-            
+
             map.addImage('dog2', image);
-            
+
             map.addSource('point2', {
             'type': 'geojson',
             'data': {
@@ -1016,9 +1016,9 @@
             '/storage/img/canes.jpg',
             (error, image) => {
             if (error) throw error;
-            
+
             map.addImage('dog3', image);
-            
+
             map.addSource('point3', {
             'type': 'geojson',
             'data': {
@@ -1067,9 +1067,9 @@
             '/storage/img/canes.jpg',
             (error, image) => {
             if (error) throw error;
-            
+
             map.addImage('dog4', image);
-            
+
             map.addSource('point4', {
             'type': 'geojson',
             'data': {
@@ -1118,9 +1118,9 @@
             '/storage/img/canes.jpg',
             (error, image) => {
             if (error) throw error;
-            
+
             map.addImage('dog5', image);
-            
+
             map.addSource('point5', {
             'type': 'geojson',
             'data': {
@@ -1169,9 +1169,9 @@
             '/storage/img/canes.jpg',
             (error, image) => {
             if (error) throw error;
-            
+
             map.addImage('dog6', image);
-            
+
             map.addSource('point6', {
             'type': 'geojson',
             'data': {
@@ -1215,7 +1215,7 @@
 
         },
 
-        components: 
+        components:
         {
             JetApplicationMark,
             JetBanner,

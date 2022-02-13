@@ -358,8 +358,7 @@
                                     <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">CAN</h1>
                                     <v-row style="display: flex; justify-content: space-evenly">
                                         <div></div>
-                                            <img style="max-width: 60%; padding-bottom: 15px; min-height: 268px; max-height: 268px" v-if="can.fotoCan != null" v-bind:src="'/storage/images/canes/' + can.fotoCan">
-                                            <img style="max-width: 60%; padding-bottom: 15px; min-height: 268px; max-height: 268px" v-else-if="can.fotoCan2 != null" v-bind:src="'/storage/images/canes/' + can.fotoCan2">
+                                            <img style="max-width: 60%; padding-bottom: 15px" v-bind:src="'/storage/images/canes/ci_'+ propietario.documento + '/' + can.fotoCan1">
                                         <div></div>
                                     </v-row>
                                     <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -406,7 +405,7 @@
                                             {{ can.procedenciaCan }}
                                         </div>
                                     </v-row>
-                                    <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 29px">
+                                    <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
                                         <div style="padding: 20px; font-weight: bold">
                                             Microchip
                                         </div>

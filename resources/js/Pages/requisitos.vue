@@ -1812,36 +1812,10 @@
                                         placeholder="Procedencia de la Adquisición del Can"
                                         outlined></v-text-field>
                                         </v-col>
-                                        <v-col cols="12" lg="6" sm="6">
-                                            <form enctype="multipart/form-data">
-                                            <template>
-                                                <v-file-input style="height: 45px"
-                                                    id="fotoCan2"
-                                                    v-model="form.fotoCan2"
-                                                    outlined
-                                                    accept="image/*"
-                                                    @change="onFileChange"
-                                                    @click:clear="callItBack()"
-                                                    dense
-                                                    show-size
-                                                    :disabled="!webFotoCan"
-                                                ><template v-slot:label>
-                                                    <div>
-                                                    Foto del Can adjuntada<small> (opcional)</small>
-                                                    </div>
-                                                    </template></v-file-input>
-                                                <v-subheader style="
-                                                    display: flex;
-                                                    align-items: flex-start;
-                                                    justify-content: flex-end;">
-                                                    *Solo se admite una foto</v-subheader>
-                                            </template>
-                                            </form>
-                                        </v-col>
-                                        <v-col cols="12" lg="1" sm="1" style="display: flex; justify-content: center; padding: 0">
+                                        <v-col cols="12" lg="12" sm="12" style="display: flex; justify-content: space-around; padding: 0">
                                             <v-dialog persistent fullscreen hide-overlay transition="dialog-bottom-transition" v-model="dialog2">
                                                 <template v-slot:activator="{ on, attrs }">
-                                                    <v-btn fab v-if="!photoTaken2" color="primary" v-bind="attrs" v-on="on" @click="toggleCamera2" :loading="dialog2" :disabled="!adFotoCan">
+                                                    <v-btn fab v-if="!photoTaken1 || !photoTaken2 || !photoTaken3 || !photoTaken4 || !photoTaken5" color="primary" v-bind="attrs" v-on="on" @click="toggleCamera1" :loading="dialog2">
                                                         <v-icon>
                                                             mdi-camera-plus
                                                         </v-icon>
@@ -1857,76 +1831,236 @@
                                                     dark
                                                     color="primary"
                                                     >
-                                                    <v-toolbar-title>Foto Frontal del Can</v-toolbar-title>
+                                                    <v-toolbar-title>Fotografías del Can:&nbsp;</v-toolbar-title>
                                                     <v-spacer></v-spacer>
                                                     <v-toolbar-items>
-                                                        <v-btn large v-if="!photoTaken2" style="padding: 10px" text @click.prevent="dialog2 = false" @click="toggleCamera2">
+                                                        <v-btn large style="padding: 10px" text @click.prevent="dialog2 = false">
                                                             Cerrar
-                                                        </v-btn>
-                                                        <v-btn large v-else style="padding: 10px" text @click.prevent="dialog2 = false">
-                                                            Guardar
                                                         </v-btn>
                                                     </v-toolbar-items>
                                                     </v-toolbar>
 
-                                                    <div v-show="isCameraOpen2 && isLoading2">
-                                                        <ul>
-                                                        <li></li>
-                                                        <li></li>
-                                                        <li></li>
-                                                        </ul>
-                                                    </div>
-
                                                     <v-row style="padding:12px; margin-right: 5px">
-                                                        <div v-if="isCameraOpen2" v-show="!isLoading2" :class="{ 'flash' : isShotPhoto2 }">
-                                                            <div :class="{'flash' : isShotPhoto}"></div>
-                                                            <video v-if="!photoTaken2" ref="camera" :width="canvasWidth" :height="canvasHeight" autoplay id="player2"></video>
-                                                            <canvas v-show="photoTaken2" ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
-                                                        </div>
-                                                        <v-row style="display: flex; flex-direction: column">
-                                                            <div v-if="isCameraOpen2 && !isLoading2 && !photoTaken2" style="text-align: center; padding: 50px">
-                                                                <v-btn fab color="success" @click="takePhoto2">
-                                                                    <v-icon>
-                                                                        mdi-camera
-                                                                    </v-icon>
-                                                                </v-btn>
-                                                            </div>
-                                                            <select style="padding:20px; margin-right: 20px; margin-left: 20px" v-show="!photoTaken2" id="camaras2"></select>
-                                                            <div v-if="isCameraOpen2 && !isLoading2 && photoTaken2" style="text-align: center; padding: 50px">
-                                                                <v-btn fab color="warning" @click="retryPhoto2">
-                                                                    <v-icon>
-                                                                        mdi-reload
-                                                                    </v-icon>
-                                                                </v-btn>
-                                                            </div>
-                                                        </v-row>
+                                                        <v-tabs vertical>
+                                                        <v-tab>
+                                                            <v-icon left>
+                                                            </v-icon>
+                                                            FRONTAL
+                                                        </v-tab>
+                                                        <v-tab @click="toggleCamera2">
+                                                            <v-icon left>
+                                                            </v-icon>
+                                                            IZQUIERDA
+                                                        </v-tab>
+                                                        <v-tab @click="toggleCamera3">
+                                                            <v-icon left>
+                                                            </v-icon>
+                                                            DERECHA
+                                                        </v-tab>
+                                                        <v-tab @click="toggleCamera4">
+                                                            <v-icon left>
+                                                            </v-icon>
+                                                            POSTERIOR
+                                                        </v-tab>
+                                                        <v-tab @click="toggleCamera5">
+                                                            <v-icon left>
+                                                            </v-icon>
+                                                            LATERAL
+                                                        </v-tab>
+
+                                                        <v-tab-item>
+                                                            <v-card flat>
+                                                            <v-card-text>
+                                                                <v-row>
+                                                                    <div v-if="isCameraOpen1" v-show="!isLoading1" :class="{ 'flash' : isShotPhoto1 }">
+                                                                        <div :class="{'flash' : isShotPhoto1}"></div>
+                                                                        <video v-if="!photoTaken1" ref="camera1" :width="canvasWidth" :height="canvasHeight" autoplay id="player1"></video>
+                                                                        <canvas v-show="photoTaken1" ref="canvas1" :width="canvasWidth" :height="canvasHeight"></canvas>
+                                                                    </div>
+                                                                    <v-row style="display: flex; flex-direction: column">
+                                                                        <div v-if="isCameraOpen1 && !isLoading1 && !photoTaken1" style="text-align: center; padding: 50px">
+                                                                            <v-btn fab color="success" @click="takePhoto1">
+                                                                                <v-icon>
+                                                                                    mdi-camera
+                                                                                </v-icon>
+                                                                            </v-btn>
+                                                                        </div>
+                                                                        <select style="padding:20px; margin-right: 20px; margin-left: 20px" v-show="!photoTaken1" id="camaras1"></select>
+                                                                        <div v-if="isCameraOpen1 && !isLoading1 && photoTaken1" style="text-align: center; padding: 50px">
+                                                                            <v-btn fab color="warning" @click="retryPhoto1">
+                                                                                <v-icon>
+                                                                                    mdi-reload
+                                                                                </v-icon>
+                                                                            </v-btn>
+                                                                        </div>
+                                                                    </v-row>
+                                                                </v-row>
+                                                            </v-card-text>
+                                                            </v-card>
+                                                        </v-tab-item>
+                                                        <v-tab-item>
+                                                            <v-card flat>
+                                                            <v-card-text>
+                                                                <v-row>
+                                                                    <div v-if="isCameraOpen2" v-show="!isLoading2" :class="{ 'flash' : isShotPhoto2 }">
+                                                                        <div :class="{'flash' : isShotPhoto2}"></div>
+                                                                        <video v-if="!photoTaken2" ref="camera2" :width="canvasWidth" :height="canvasHeight" autoplay id="player2"></video>
+                                                                        <canvas v-show="photoTaken2" ref="canvas2" :width="canvasWidth" :height="canvasHeight"></canvas>
+                                                                    </div>
+                                                                    <v-row style="display: flex; flex-direction: column">
+                                                                        <div v-if="isCameraOpen2 && !isLoading2 && !photoTaken2" style="text-align: center; padding: 50px">
+                                                                            <v-btn fab color="success" @click="takePhoto2">
+                                                                                <v-icon>
+                                                                                    mdi-camera
+                                                                                </v-icon>
+                                                                            </v-btn>
+                                                                        </div>
+                                                                        <select style="padding:20px; margin-right: 20px; margin-left: 20px" v-show="!photoTaken2" id="camaras2"></select>
+                                                                        <div v-if="isCameraOpen2 && !isLoading2 && photoTaken2" style="text-align: center; padding: 50px">
+                                                                            <v-btn fab color="warning" @click="retryPhoto2">
+                                                                                <v-icon>
+                                                                                    mdi-reload
+                                                                                </v-icon>
+                                                                            </v-btn>
+                                                                        </div>
+                                                                    </v-row>
+                                                                </v-row>
+                                                            </v-card-text>
+                                                            </v-card>
+                                                        </v-tab-item>
+                                                        <v-tab-item>
+                                                            <v-card flat>
+                                                            <v-card-text>
+                                                                <v-row>
+                                                                    <div v-if="isCameraOpen3" v-show="!isLoading3" :class="{ 'flash' : isShotPhoto3 }">
+                                                                        <div :class="{'flash' : isShotPhoto3}"></div>
+                                                                        <video v-if="!photoTaken3" ref="camera3" :width="canvasWidth" :height="canvasHeight" autoplay id="player3"></video>
+                                                                        <canvas v-show="photoTaken3" ref="canvas3" :width="canvasWidth" :height="canvasHeight"></canvas>
+                                                                    </div>
+                                                                    <v-row style="display: flex; flex-direction: column">
+                                                                        <div v-if="isCameraOpen3 && !isLoading3 && !photoTaken3" style="text-align: center; padding: 50px">
+                                                                            <v-btn fab color="success" @click="takePhoto3">
+                                                                                <v-icon>
+                                                                                    mdi-camera
+                                                                                </v-icon>
+                                                                            </v-btn>
+                                                                        </div>
+                                                                        <select style="padding:20px; margin-right: 20px; margin-left: 20px" v-show="!photoTaken3" id="camaras3"></select>
+                                                                        <div v-if="isCameraOpen3 && !isLoading3 && photoTaken3" style="text-align: center; padding: 50px">
+                                                                            <v-btn fab color="warning" @click="retryPhoto3">
+                                                                                <v-icon>
+                                                                                    mdi-reload
+                                                                                </v-icon>
+                                                                            </v-btn>
+                                                                        </div>
+                                                                    </v-row>
+                                                                </v-row>
+                                                            </v-card-text>
+                                                            </v-card>
+                                                        </v-tab-item>
+                                                        <v-tab-item>
+                                                            <v-card flat>
+                                                            <v-card-text>
+                                                                <v-row>
+                                                                    <div v-if="isCameraOpen4" v-show="!isLoading4" :class="{ 'flash' : isShotPhoto4 }">
+                                                                        <div :class="{'flash' : isShotPhoto4}"></div>
+                                                                        <video v-if="!photoTaken4" ref="camera4" :width="canvasWidth" :height="canvasHeight" autoplay id="player4"></video>
+                                                                        <canvas v-show="photoTaken4" ref="canvas4" :width="canvasWidth" :height="canvasHeight"></canvas>
+                                                                    </div>
+                                                                    <v-row style="display: flex; flex-direction: column">
+                                                                        <div v-if="isCameraOpen4 && !isLoading4 && !photoTaken4" style="text-align: center; padding: 50px">
+                                                                            <v-btn fab color="success" @click="takePhoto4">
+                                                                                <v-icon>
+                                                                                    mdi-camera
+                                                                                </v-icon>
+                                                                            </v-btn>
+                                                                        </div>
+                                                                        <select style="padding:20px; margin-right: 20px; margin-left: 20px" v-show="!photoTaken4" id="camaras4"></select>
+                                                                        <div v-if="isCameraOpen4 && !isLoading4 && photoTaken4" style="text-align: center; padding: 50px">
+                                                                            <v-btn fab color="warning" @click="retryPhoto4">
+                                                                                <v-icon>
+                                                                                    mdi-reload
+                                                                                </v-icon>
+                                                                            </v-btn>
+                                                                        </div>
+                                                                    </v-row>
+                                                                </v-row>
+                                                            </v-card-text>
+                                                            </v-card>
+                                                        </v-tab-item>
+                                                        <v-tab-item>
+                                                            <v-card flat>
+                                                            <v-card-text>
+                                                                <v-row>
+                                                                    <div v-if="isCameraOpen5" v-show="!isLoading5" :class="{ 'flash' : isShotPhoto5 }">
+                                                                        <div :class="{'flash' : isShotPhoto5}"></div>
+                                                                        <video v-if="!photoTaken5" ref="camera5" :width="canvasWidth" :height="canvasHeight" autoplay id="player5"></video>
+                                                                        <canvas v-show="photoTaken5" ref="canvas5" :width="canvasWidth" :height="canvasHeight"></canvas>
+                                                                    </div>
+                                                                    <v-row style="display: flex; flex-direction: column">
+                                                                        <div v-if="isCameraOpen5 && !isLoading5 && !photoTaken5" style="text-align: center; padding: 50px">
+                                                                            <v-btn fab color="success" @click="takePhoto5">
+                                                                                <v-icon>
+                                                                                    mdi-camera
+                                                                                </v-icon>
+                                                                            </v-btn>
+                                                                        </div>
+                                                                        <select style="padding:20px; margin-right: 20px; margin-left: 20px" v-show="!photoTaken5" id="camaras5"></select>
+                                                                        <div v-if="isCameraOpen5 && !isLoading5 && photoTaken5" style="text-align: center; padding: 50px">
+                                                                            <v-btn fab color="warning" @click="retryPhoto5">
+                                                                                <v-icon>
+                                                                                    mdi-reload
+                                                                                </v-icon>
+                                                                            </v-btn>
+                                                                        </div>
+                                                                    </v-row>
+                                                                </v-row>
+                                                            </v-card-text>
+                                                            </v-card>
+                                                        </v-tab-item>
+                                                        </v-tabs>
                                                     </v-row>
                                                     <v-divider></v-divider>
                                                 </v-card>
                                             </v-dialog>
-                                        </v-col>
-                                        <v-col cols="12" lg="5" md="5" sm="5">
-                                            <template>
-                                                <v-text-field style="height: 45px"
-                                                    disabled
-                                                    id="fotoCanName"
-                                                    v-model="form.fotoCanName"
-                                                    label="Foto del Can"
-                                                    outlined
-                                                    dense
-                                                    prepend-icon="mdi-dog"
-                                                ></v-text-field>
-                                                <v-text-field class="d-none"
-                                                    id="fotoCan"
-                                                    v-model="form.fotoCan"
-                                                ></v-text-field>
-                                                <v-subheader style="
-                                                    display: flex;
-                                                    align-items: flex-start;
-                                                    justify-content: flex-end;
-                                                    color: grey">
-                                                    *Solo se admite una foto</v-subheader>
-                                            </template>
+                                            <v-btn-toggle style="padding-top: 10px" class="d-none d-sm-block"
+                                              v-model="toggle_one" shaped mandatory
+                                            >
+                                              <v-btn v-if="!photoTaken1" disabled>
+                                                Frontal
+                                              </v-btn>
+                                              <v-btn v-else-if="photoTaken1" tile color="success">
+                                                Frontal
+                                              </v-btn>
+
+                                              <v-btn v-if="!photoTaken2" disabled>
+                                                Izquierdo
+                                              </v-btn>
+                                              <v-btn v-else-if="photoTaken2" color="success">
+                                                Izquierdo
+                                              </v-btn>
+
+                                              <v-btn v-if="!photoTaken3" disabled>
+                                                Derecho
+                                              </v-btn>
+                                              <v-btn v-else-if="photoTaken3" color="success">
+                                                Derecho
+                                              </v-btn>
+
+                                              <v-btn v-if="!photoTaken4" disabled>
+                                                Posterior
+                                              </v-btn>
+                                              <v-btn v-else-if="photoTaken4" color="success">
+                                                Posterior
+                                              </v-btn>
+
+                                              <v-btn v-if="!photoTaken5" disabled>
+                                                Lateral
+                                              </v-btn>
+                                              <v-btn v-else-if="photoTaken5" color="success">
+                                                Lateral
+                                              </v-btn>
+                                            </v-btn-toggle>
                                         </v-col>
                                         <v-col cols="12" sm="12">
                                             <v-subheader>Caracterísicas de Raza del Can</v-subheader>
@@ -2683,11 +2817,23 @@
             dialog: false,
             dialog2: false,
             isCameraOpen: false,
+            isCameraOpen1: false,
             isCameraOpen2: false,
+            isCameraOpen3: false,
+            isCameraOpen4: false,
+            isCameraOpen5: false,
             isShotPhoto: false,
+            isShotPhoto1: false,
             isShotPhoto2: false,
+            isShotPhoto3: false,
+            isShotPhoto4: false,
+            isShotPhoto5: false,
             isLoading: false,
+            isLoading1: false,
             isLoading2: false,
+            isLoading3: false,
+            isLoading4: false,
+            isLoading5: false,
             showDevices: false,
             link: '#',
             length: 5,
@@ -2719,6 +2865,7 @@
             menuExpSeg: null,
             menuLimSeg: null,
             menuNacPerro: null,
+            toggle_one: null,
 
             sexoCan2: ['Macho', 'Hembra'],
             razas: [
@@ -2781,13 +2928,24 @@
             canvasHeight:600,
             canvasWidth:800,
             photoTaken: false,
-            itemPhotoProp: [],
-            itemPhotoProp2: [],
-            firstSwitch: true,
-            firstSwitch2: true,
+            photoTaken1: false,
             photoTaken2: false,
+            photoTaken3: false,
+            photoTaken4: false,
+            photoTaken5: false,
+            itemPhotoProp: [],
+            itemPhotoProp1: [],
+            itemPhotoProp2: [],
+            itemPhotoProp3: [],
+            itemPhotoProp4: [],
+            itemPhotoProp5: [],
+            firstSwitch: true,
+            firstSwitch1: true,
+            firstSwitch2: true,
+            firstSwitch3: true,
+            firstSwitch4: true,
+            firstSwitch5: true,
             webFotoCan: true,
-            adFotoCan: true,
             form: {
                 /* Memorial */
                 comandante: null,
@@ -2853,8 +3011,11 @@
                 sexoCan: 'Macho',
                 procedenciaCan: null,
 
+                fotoCan1: null,
                 fotoCan2: null,
-                fotoCan: null,
+                fotoCan3: null,
+                fotoCan4: null,
+                fotoCan5: null,
                 pedigree: null,
                 razaCan: null,
                 tamCan: null,
@@ -3376,22 +3537,193 @@
                 }
                 return new File([u8arr], filename, {type: mime});
             },
-            /* CAMARA CAN */
-
+            /* GALERÍA CAN */
+            toggleCamera1() {
+                if(!this.isCameraOpen1) {
+                    this.isCameraOpen1 = true;
+                    this.showDevices1 = true;
+                    this.createCameraElement1();
+                    this.switchCamara1();
+                }
+            },
             toggleCamera2() {
-                if(this.isCameraOpen2) {
-                    this.isCameraOpen2 = false;
-                    this.isShotPhoto2 = false;
-                    this.stopCameraStream2();
-                    this.firstSwitch2 = false;
-                    console.clear();
-                } else {
+                if(!this.isCameraOpen2) {
                     this.isCameraOpen2 = true;
                     this.showDevices2 = true;
                     this.createCameraElement2();
                     this.switchCamara2();
                 }
             },
+            toggleCamera3() {
+                if(!this.isCameraOpen3) {
+                    this.isCameraOpen3 = true;
+                    this.showDevices3 = true;
+                    this.createCameraElement3();
+                    this.switchCamara3();
+                }
+            },
+            toggleCamera4() {
+                if(!this.isCameraOpen4) {
+                    this.isCameraOpen4 = true;
+                    this.showDevices4 = true;
+                    this.createCameraElement4();
+                    this.switchCamara4();
+                }
+            },
+            toggleCamera5() {
+                if(!this.isCameraOpen5) {
+                    this.isCameraOpen5 = true;
+                    this.showDevices5 = true;
+                    this.createCameraElement5();
+                    this.switchCamara5();
+                }
+            },
+            /* FRONTAL */
+            switchCamara1(){
+                navigator.mediaDevices.enumerateDevices().then((devices) => {
+                let videoSourcesSelect1 = document.getElementById("camaras1");
+                let videoPlayer1 = document.getElementById("player1");
+                let MediaStreamHelper1 = {
+                // Property of the object to store the current stream
+                _stream: null,
+                // This method will return the promise to list the real devices
+                getDevices: function() {
+                    return navigator.mediaDevices.enumerateDevices();
+                },
+                // Request user permissions to access the camera and video
+                requestStream: function() {
+                    if (this._stream) {
+                        this._stream.getTracks().forEach(track => {
+                            track.stop();
+                        });
+                    }
+
+                    const videoSource = videoSourcesSelect1.value;
+                    const constraints = {
+                        video: {
+                            deviceId: videoSource ? {exact: videoSource} : undefined
+                        }
+                    };
+
+                    return navigator.mediaDevices.getUserMedia(constraints);
+                }
+            };
+                    videoSourcesSelect1.onchange = function(){
+                    MediaStreamHelper1.requestStream().then(function(stream){
+                        MediaStreamHelper1._stream = stream;
+                        videoPlayer1.srcObject = stream;
+                    });
+                };
+            devices.forEach((device) => {
+                let option = new Option();
+                option.value = device.deviceId;
+
+                switch(device.kind){
+                    // Append device to list of Cameras
+                    case "videoinput":
+                        if(this.firstSwitch1){
+                        option.text = device.label || `Camera ${videoSourcesSelect1.length + 1}`;
+                        videoSourcesSelect1.appendChild(option);
+                        console.log(device);
+                        }
+                        break;
+                }
+            });
+            })
+            .catch(function(err) {
+            console.log(err.name + ": " + err.message);
+            });
+            },
+
+            createCameraElement1() {
+                this.isLoading1 = true;
+                const constraints = (window.constraints = {
+                            audio: false,
+                            video: true
+            });
+            navigator.mediaDevices
+            .getUserMedia(constraints)
+            .then(stream => {
+            this.isLoading1 = false;
+            this.$refs.camera1.srcObject = stream;
+            }).catch(error => {
+            this.isLoading1 = false;
+                alert("El navegador o el dispositivo no permiten Cámara Web");
+            });
+            },
+            stopCameraStream1() {
+            let tracks = this.$refs.camera1.srcObject.getTracks();
+            tracks.forEach(track => {
+                track.stop();
+            });
+            },
+
+            takePhoto1() {
+                const FLASH_TIMEOUT = 50;
+                let self = this;
+                setTimeout(() => {
+                this.showDevices1 = false;
+                this.photoTaken1 = true;
+                this.firstSwitch1 = false;
+                this.webFotoCan = false;
+                const context = this.$refs.canvas1.getContext('2d');
+                context.drawImage(this.$refs.camera1, 0, 0, this.canvasWidth, this.canvasHeight);
+                const dataUrl1 = this.$refs.canvas1.toDataURL("image/jpeg")
+                    .replace("image/jpeg", "image/octet-stream");
+                this.addToPhotoGallery1(dataUrl1);
+                this.uploadPhoto1(dataUrl1);
+                this.stopCameraStream1();
+                }, FLASH_TIMEOUT);
+            },
+            retryPhoto1() {
+                console.clear();
+                this.itemPhotoProp1.splice(),
+                this.showDevices1 = true;
+                this.photoTaken1 = false,
+                this.isCameraOpen1 = true,
+                this.form.fotoProp1 = null,
+                this.form.fotoPropName = null,
+                this.webFotoCan = true,
+                this.switchCamara1(),
+                this.createCameraElement1()
+            },
+
+            addToPhotoGallery1(dataURI) {
+            this.itemPhotoProp1.push(
+                {
+                    src: dataURI,
+                    thumbnail: dataURI,
+                    w: this.canvasWidth,
+                    h: this.canvasHeight,
+                    alt: 'some numbers on a grey background' // optional alt attribute for thumbnail image
+                }
+            )
+            },
+            uploadPhoto1(dataURL1){
+            let capturedPhotoFile1 = this.dataURLtoFile1(dataURL1, 'CanFrontal' + '.jpg')
+            this.form.fotoCan1 = capturedPhotoFile1;
+            let formData1 = new FormData()
+            formData1.append('file', capturedPhotoFile1)
+            // Upload image api
+            // axios.post('http://your-url-upload', formData).then(response => {
+            //   console.log(response)
+            // })
+            console.log("File", capturedPhotoFile1);
+            },
+
+            dataURLtoFile1(dataURL1, filename1) {
+                let arr = dataURL1.split(','),
+                    mime = arr[0].match(/:(.*?);/)[1],
+                    bstr = atob(arr[1]),
+                    n = bstr.length,
+                    u8arr = new Uint8Array(n);
+
+                while (n--) {
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+                return new File([u8arr], filename1, {type: mime});
+            },
+            /* IZQUIERDA */
             switchCamara2(){
                 navigator.mediaDevices.enumerateDevices().then((devices) => {
                 let videoSourcesSelect2 = document.getElementById("camaras2");
@@ -3458,14 +3790,14 @@
             .getUserMedia(constraints)
             .then(stream => {
             this.isLoading2 = false;
-            this.$refs.camera.srcObject = stream;
+            this.$refs.camera2.srcObject = stream;
             }).catch(error => {
             this.isLoading2 = false;
                 alert("El navegador o el dispositivo no permiten Cámara Web");
             });
             },
             stopCameraStream2() {
-            let tracks = this.$refs.camera.srcObject.getTracks();
+            let tracks = this.$refs.camera2.srcObject.getTracks();
             tracks.forEach(track => {
                 track.stop();
             });
@@ -3479,9 +3811,9 @@
                 this.photoTaken2 = true;
                 this.firstSwitch2 = false;
                 this.webFotoCan = false;
-                const context = this.$refs.canvas.getContext('2d');
-                context.drawImage(this.$refs.camera, 0, 0, this.canvasWidth, this.canvasHeight);
-                const dataUrl2 = this.$refs.canvas.toDataURL("image/jpeg")
+                const context = this.$refs.canvas2.getContext('2d');
+                context.drawImage(this.$refs.camera2, 0, 0, this.canvasWidth, this.canvasHeight);
+                const dataUrl2 = this.$refs.canvas2.toDataURL("image/jpeg")
                     .replace("image/jpeg", "image/octet-stream");
                 this.addToPhotoGallery2(dataUrl2);
                 this.uploadPhoto2(dataUrl2);
@@ -3513,10 +3845,8 @@
             )
             },
             uploadPhoto2(dataURL2){
-            let uniquePictureName2 = 'Fotografía Tomada';
-            let capturedPhotoFile2 = this.dataURLtoFile2(dataURL2, 'CanFoto' + '.jpg')
-            this.form.fotoCanName = uniquePictureName2;
-            this.form.fotoCan = capturedPhotoFile2;
+            let capturedPhotoFile2 = this.dataURLtoFile2(dataURL2, 'CanIzquierda' + '.jpg')
+            this.form.fotoCan2 = capturedPhotoFile2;
             let formData2 = new FormData()
             formData2.append('file', capturedPhotoFile2)
             // Upload image api
@@ -3538,14 +3868,442 @@
                 }
                 return new File([u8arr], filename2, {type: mime});
             },
+            /* DERECHA */
+            switchCamara3(){
+                navigator.mediaDevices.enumerateDevices().then((devices) => {
+                let videoSourcesSelect3 = document.getElementById("camaras3");
+                let videoPlayer3 = document.getElementById("player3");
+                let MediaStreamHelper3 = {
+                // Property of the object to store the current stream
+                _stream: null,
+                // This method will return the promise to list the real devices
+                getDevices: function() {
+                    return navigator.mediaDevices.enumerateDevices();
+                },
+                // Request user permissions to access the camera and video
+                requestStream: function() {
+                    if (this._stream) {
+                        this._stream.getTracks().forEach(track => {
+                            track.stop();
+                        });
+                    }
 
-            onFileChange(event){
-                this.adFotoCan = false;
+                    const videoSource = videoSourcesSelect3.value;
+                    const constraints = {
+                        video: {
+                            deviceId: videoSource ? {exact: videoSource} : undefined
+                        }
+                    };
+
+                    return navigator.mediaDevices.getUserMedia(constraints);
+                }
+            };
+                    videoSourcesSelect3.onchange = function(){
+                    MediaStreamHelper3.requestStream().then(function(stream){
+                        MediaStreamHelper3._stream = stream;
+                        videoPlayer3.srcObject = stream;
+                    });
+                };
+            devices.forEach((device) => {
+                let option = new Option();
+                option.value = device.deviceId;
+
+                switch(device.kind){
+                    // Append device to list of Cameras
+                    case "videoinput":
+                        if(this.firstSwitch3){
+                        option.text = device.label || `Camera ${videoSourcesSelect3.length + 1}`;
+                        videoSourcesSelect3.appendChild(option);
+                        console.log(device);
+                        }
+                        break;
+                }
+            });
+            })
+            .catch(function(err) {
+            console.log(err.name + ": " + err.message);
+            });
             },
-            callItBack(){
-                this.adFotoCan = true;
+
+            createCameraElement3() {
+                this.isLoading3 = true;
+                const constraints = (window.constraints = {
+                            audio: false,
+                            video: true
+            });
+            navigator.mediaDevices
+            .getUserMedia(constraints)
+            .then(stream => {
+            this.isLoading3 = false;
+            this.$refs.camera3.srcObject = stream;
+            }).catch(error => {
+            this.isLoading3 = false;
+                alert("El navegador o el dispositivo no permiten Cámara Web");
+            });
+            },
+            stopCameraStream3() {
+            let tracks = this.$refs.camera3.srcObject.getTracks();
+            tracks.forEach(track => {
+                track.stop();
+            });
+            },
+
+            takePhoto3() {
+                const FLASH_TIMEOUT = 50;
+                let self = this;
+                setTimeout(() => {
+                this.showDevices3 = false;
+                this.photoTaken3 = true;
+                this.firstSwitch3 = false;
+                this.webFotoCan = false;
+                const context = this.$refs.canvas3.getContext('2d');
+                context.drawImage(this.$refs.camera3, 0, 0, this.canvasWidth, this.canvasHeight);
+                const dataUrl3 = this.$refs.canvas3.toDataURL("image/jpeg")
+                    .replace("image/jpeg", "image/octet-stream");
+                this.addToPhotoGallery3(dataUrl3);
+                this.uploadPhoto3(dataUrl3);
+                this.stopCameraStream3();
+                }, FLASH_TIMEOUT);
+            },
+            retryPhoto3() {
                 console.clear();
+                this.itemPhotoProp3.splice(),
+                this.showDevices3 = true;
+                this.photoTaken3 = false,
+                this.isCameraOpen3 = true,
+                this.form.fotoProp3 = null,
+                this.form.fotoPropName = null,
+                this.webFotoCan = true,
+                this.switchCamara3(),
+                this.createCameraElement3()
             },
+
+            addToPhotoGallery3(dataURI) {
+            this.itemPhotoProp3.push(
+                {
+                    src: dataURI,
+                    thumbnail: dataURI,
+                    w: this.canvasWidth,
+                    h: this.canvasHeight,
+                    alt: 'some numbers on a grey background' // optional alt attribute for thumbnail image
+                }
+            )
+            },
+            uploadPhoto3(dataURL3){
+            let capturedPhotoFile3 = this.dataURLtoFile3(dataURL3, 'CanDerecha' + '.jpg')
+            this.form.fotoCan3 = capturedPhotoFile3;
+            let formData3 = new FormData()
+            formData3.append('file', capturedPhotoFile3)
+            // Upload image api
+            // axios.post('http://your-url-upload', formData).then(response => {
+            //   console.log(response)
+            // })
+            console.log("File", capturedPhotoFile3);
+            },
+
+            dataURLtoFile3(dataURL3, filename3) {
+                let arr = dataURL3.split(','),
+                    mime = arr[0].match(/:(.*?);/)[1],
+                    bstr = atob(arr[1]),
+                    n = bstr.length,
+                    u8arr = new Uint8Array(n);
+
+                while (n--) {
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+                return new File([u8arr], filename3, {type: mime});
+            },
+            /* POSTERIOR */
+            switchCamara4(){
+                navigator.mediaDevices.enumerateDevices().then((devices) => {
+                let videoSourcesSelect4 = document.getElementById("camaras4");
+                let videoPlayer4 = document.getElementById("player4");
+                let MediaStreamHelper4 = {
+                // Property of the object to store the current stream
+                _stream: null,
+                // This method will return the promise to list the real devices
+                getDevices: function() {
+                    return navigator.mediaDevices.enumerateDevices();
+                },
+                // Request user permissions to access the camera and video
+                requestStream: function() {
+                    if (this._stream) {
+                        this._stream.getTracks().forEach(track => {
+                            track.stop();
+                        });
+                    }
+
+                    const videoSource = videoSourcesSelect4.value;
+                    const constraints = {
+                        video: {
+                            deviceId: videoSource ? {exact: videoSource} : undefined
+                        }
+                    };
+
+                    return navigator.mediaDevices.getUserMedia(constraints);
+                }
+            };
+                    videoSourcesSelect4.onchange = function(){
+                    MediaStreamHelper4.requestStream().then(function(stream){
+                        MediaStreamHelper4._stream = stream;
+                        videoPlayer4.srcObject = stream;
+                    });
+                };
+            devices.forEach((device) => {
+                let option = new Option();
+                option.value = device.deviceId;
+
+                switch(device.kind){
+                    // Append device to list of Cameras
+                    case "videoinput":
+                        if(this.firstSwitch4){
+                        option.text = device.label || `Camera ${videoSourcesSelect4.length + 1}`;
+                        videoSourcesSelect4.appendChild(option);
+                        console.log(device);
+                        }
+                        break;
+                }
+            });
+            })
+            .catch(function(err) {
+            console.log(err.name + ": " + err.message);
+            });
+            },
+
+            createCameraElement4() {
+                this.isLoading4 = true;
+                const constraints = (window.constraints = {
+                            audio: false,
+                            video: true
+            });
+            navigator.mediaDevices
+            .getUserMedia(constraints)
+            .then(stream => {
+            this.isLoading4 = false;
+            this.$refs.camera4.srcObject = stream;
+            }).catch(error => {
+            this.isLoading4 = false;
+                alert("El navegador o el dispositivo no permiten Cámara Web");
+            });
+            },
+            stopCameraStream4() {
+            let tracks = this.$refs.camera4.srcObject.getTracks();
+            tracks.forEach(track => {
+                track.stop();
+            });
+            },
+
+            takePhoto4() {
+                const FLASH_TIMEOUT = 50;
+                let self = this;
+                setTimeout(() => {
+                this.showDevices4 = false;
+                this.photoTaken4 = true;
+                this.firstSwitch4 = false;
+                this.webFotoCan = false;
+                const context = this.$refs.canvas4.getContext('2d');
+                context.drawImage(this.$refs.camera4, 0, 0, this.canvasWidth, this.canvasHeight);
+                const dataUrl4 = this.$refs.canvas4.toDataURL("image/jpeg")
+                    .replace("image/jpeg", "image/octet-stream");
+                this.addToPhotoGallery4(dataUrl4);
+                this.uploadPhoto4(dataUrl4);
+                this.stopCameraStream4();
+                }, FLASH_TIMEOUT);
+            },
+            retryPhoto4() {
+                console.clear();
+                this.itemPhotoProp4.splice(),
+                this.showDevices4 = true;
+                this.photoTaken4 = false,
+                this.isCameraOpen4 = true,
+                this.form.fotoProp4 = null,
+                this.form.fotoPropName = null,
+                this.webFotoCan = true,
+                this.switchCamara4(),
+                this.createCameraElement4()
+            },
+
+            addToPhotoGallery4(dataURI) {
+            this.itemPhotoProp4.push(
+                {
+                    src: dataURI,
+                    thumbnail: dataURI,
+                    w: this.canvasWidth,
+                    h: this.canvasHeight,
+                    alt: 'some numbers on a grey background' // optional alt attribute for thumbnail image
+                }
+            )
+            },
+            uploadPhoto4(dataURL4){
+            let capturedPhotoFile4 = this.dataURLtoFile4(dataURL4, 'CanPosterior' + '.jpg')
+            this.form.fotoCan4 = capturedPhotoFile4;
+            let formData4 = new FormData()
+            formData4.append('file', capturedPhotoFile4)
+            // Upload image api
+            // axios.post('http://your-url-upload', formData).then(response => {
+            //   console.log(response)
+            // })
+            console.log("File", capturedPhotoFile4);
+            },
+
+            dataURLtoFile4(dataURL4, filename4) {
+                let arr = dataURL4.split(','),
+                    mime = arr[0].match(/:(.*?);/)[1],
+                    bstr = atob(arr[1]),
+                    n = bstr.length,
+                    u8arr = new Uint8Array(n);
+
+                while (n--) {
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+                return new File([u8arr], filename4, {type: mime});
+            },
+            /* LATERAL */
+            switchCamara5(){
+                navigator.mediaDevices.enumerateDevices().then((devices) => {
+                let videoSourcesSelect5 = document.getElementById("camaras5");
+                let videoPlayer5 = document.getElementById("player5");
+                let MediaStreamHelper5 = {
+                // Property of the object to store the current stream
+                _stream: null,
+                // This method will return the promise to list the real devices
+                getDevices: function() {
+                    return navigator.mediaDevices.enumerateDevices();
+                },
+                // Request user permissions to access the camera and video
+                requestStream: function() {
+                    if (this._stream) {
+                        this._stream.getTracks().forEach(track => {
+                            track.stop();
+                        });
+                    }
+
+                    const videoSource = videoSourcesSelect5.value;
+                    const constraints = {
+                        video: {
+                            deviceId: videoSource ? {exact: videoSource} : undefined
+                        }
+                    };
+
+                    return navigator.mediaDevices.getUserMedia(constraints);
+                }
+            };
+                    videoSourcesSelect5.onchange = function(){
+                    MediaStreamHelper5.requestStream().then(function(stream){
+                        MediaStreamHelper5._stream = stream;
+                        videoPlayer5.srcObject = stream;
+                    });
+                };
+            devices.forEach((device) => {
+                let option = new Option();
+                option.value = device.deviceId;
+
+                switch(device.kind){
+                    // Append device to list of Cameras
+                    case "videoinput":
+                        if(this.firstSwitch5){
+                        option.text = device.label || `Camera ${videoSourcesSelect5.length + 1}`;
+                        videoSourcesSelect5.appendChild(option);
+                        console.log(device);
+                        }
+                        break;
+                }
+            });
+            })
+            .catch(function(err) {
+            console.log(err.name + ": " + err.message);
+            });
+            },
+
+            createCameraElement5() {
+                this.isLoading5 = true;
+                const constraints = (window.constraints = {
+                            audio: false,
+                            video: true
+            });
+            navigator.mediaDevices
+            .getUserMedia(constraints)
+            .then(stream => {
+            this.isLoading5 = false;
+            this.$refs.camera5.srcObject = stream;
+            }).catch(error => {
+            this.isLoading5 = false;
+                alert("El navegador o el dispositivo no permiten Cámara Web");
+            });
+            },
+            stopCameraStream5() {
+            let tracks = this.$refs.camera5.srcObject.getTracks();
+            tracks.forEach(track => {
+                track.stop();
+            });
+            },
+
+            takePhoto5() {
+                const FLASH_TIMEOUT = 50;
+                let self = this;
+                setTimeout(() => {
+                this.showDevices5 = false;
+                this.photoTaken5 = true;
+                this.firstSwitch5 = false;
+                this.webFotoCan = false;
+                const context = this.$refs.canvas5.getContext('2d');
+                context.drawImage(this.$refs.camera5, 0, 0, this.canvasWidth, this.canvasHeight);
+                const dataUrl5 = this.$refs.canvas5.toDataURL("image/jpeg")
+                    .replace("image/jpeg", "image/octet-stream");
+                this.addToPhotoGallery5(dataUrl5);
+                this.uploadPhoto5(dataUrl5);
+                this.stopCameraStream5();
+                }, FLASH_TIMEOUT);
+            },
+            retryPhoto5() {
+                console.clear();
+                this.itemPhotoProp5.splice(),
+                this.showDevices5 = true;
+                this.photoTaken5 = false,
+                this.isCameraOpen5 = true,
+                this.form.fotoProp5 = null,
+                this.form.fotoPropName = null,
+                this.webFotoCan = true,
+                this.switchCamara5(),
+                this.createCameraElement5()
+            },
+
+            addToPhotoGallery5(dataURI) {
+            this.itemPhotoProp5.push(
+                {
+                    src: dataURI,
+                    thumbnail: dataURI,
+                    w: this.canvasWidth,
+                    h: this.canvasHeight,
+                    alt: 'some numbers on a grey background' // optional alt attribute for thumbnail image
+                }
+            )
+            },
+            uploadPhoto5(dataURL5){
+            let capturedPhotoFile5 = this.dataURLtoFile5(dataURL5, 'CanLateral' + '.jpg')
+            this.form.fotoCan5 = capturedPhotoFile5;
+            let formData5 = new FormData()
+            formData5.append('file', capturedPhotoFile5)
+            // Upload image api
+            // axios.post('http://your-url-upload', formData).then(response => {
+            //   console.log(response)
+            // })
+            console.log("File", capturedPhotoFile5);
+            },
+
+            dataURLtoFile5(dataURL5, filename5) {
+                let arr = dataURL5.split(','),
+                    mime = arr[0].match(/:(.*?);/)[1],
+                    bstr = atob(arr[1]),
+                    n = bstr.length,
+                    u8arr = new Uint8Array(n);
+
+                while (n--) {
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+                return new File([u8arr], filename5, {type: mime});
+            },
+            /* FIN GALERÍA */
 
             /* DateTimeExtension */
             formatDate(date) {

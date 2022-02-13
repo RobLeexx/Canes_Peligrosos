@@ -19,8 +19,12 @@ class CreateCanesTable extends Migration
             $table->string('dateNacPerro');
             $table->string('sexoCan');
             $table->string('procedenciaCan');
-            $table->string('fotoCan')->nullable();
+
+            $table->string('fotoCan1')->nullable();
             $table->string('fotoCan2')->nullable();
+            $table->string('fotoCan3')->nullable();
+            $table->string('fotoCan4')->nullable();
+            $table->string('fotoCan5')->nullable();
 
             $table->string('pedigree')->nullable();
             $table->string('razaCan');
