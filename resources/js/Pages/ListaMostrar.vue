@@ -26,9 +26,48 @@
                         <v-row style="height: 100%; padding: 50px; display: flex; justify-content: space-around;">
                             <v-col cols="12" sm="6">
                                 <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">PROPIETARIO</h1>
-                                <v-row style="display: flex;justify-content: space-evenly">
+                                <v-row style="display: flex;justify-content: space-evenly; padding-bottom: 15px">
                                     <div></div>
-                                    <img style="max-width: 60%; padding-bottom: 15px" v-bind:src="'/storage/images/propietarios/' + propietario.fotoProp">
+                                    <v-hover>
+                                      <template v-slot:default="{ hover }">
+                                        <v-card style="max-width: 60%">
+                                         <img v-bind:src="'/storage/images/propietarios/' + propietario.fotoProp">
+                                          <v-fade-transition>
+                                            <v-overlay
+                                              v-if="hover"
+                                              absolute
+                                              color="#4a6813"
+                                            >
+                                              <v-btn
+                                                @click="overlay1 = !overlay1"
+                                              >
+                                                Ver Foto
+                                              </v-btn>
+                                                <v-overlay
+                                                  :z-index="zIndex"
+                                                  :value="overlay1"
+                                                >
+                                                <div style="text-align: center; width: 100%; padding: 15px">
+                                                  <v-btn @click="overlay1 = false" color="red">
+                                                    Cerrar
+                                                  </v-btn>
+                                                </div>
+                                                  <v-sheet
+                                                    height="100%"
+                                                    tile>
+                                                    <v-row
+                                                      class="fill-height"
+                                                      align="center"
+                                                      justify="center">
+                                                      <img v-bind:src="'/storage/images/propietarios/' + propietario.fotoProp">
+                                                    </v-row>
+                                                  </v-sheet>
+                                                </v-overlay>
+                                            </v-overlay>
+                                          </v-fade-transition>
+                                        </v-card>
+                                      </template>
+                                    </v-hover>
                                     <div></div>
                                 </v-row>
                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -356,9 +395,103 @@
                             <v-col cols="12" sm="6">
                                 <div>
                                     <h1 style="text-align: center; padding: 20px; font-size: large; font-weight: bold">CAN</h1>
-                                    <v-row style="display: flex; justify-content: space-evenly">
+                                    <v-row style="display: flex; justify-content: space-evenly; padding-bottom: 15px">
                                         <div></div>
-                                            <img style="max-width: 60%; padding-bottom: 15px" v-bind:src="'/storage/images/canes/ci_'+ propietario.documento + '/' + can.fotoCan1">
+                                          <v-hover>
+                                            <template v-slot:default="{ hover }">
+                                              <v-card style="max-width: 60%">
+                                                <img v-bind:src="'/storage/images/canes/ci_'+ propietario.documento + '/' + can.fotoCan1">
+
+                                                <v-fade-transition>
+                                                  <v-overlay
+                                                    v-if="hover"
+                                                    absolute
+                                                    color="#4a6813"
+                                                  >
+                                                    <v-btn
+                                                      @click="overlay3 = !overlay3"
+                                                    >
+                                                      Ver Galería
+                                                    </v-btn>
+                                                      <v-overlay
+                                                        :z-index="zIndex1"
+                                                        :value="overlay3"
+                                                      >
+                                                      <div style="text-align: center; width: 100%; padding: 15px">
+                                                        <v-btn @click="overlay3 = false" color="red">
+                                                          Cerrar
+                                                        </v-btn>
+                                                      </div>
+                                                        <template>
+                                                          <v-carousel v-model="model1">
+                                                            <v-carousel-item>
+                                                              <v-sheet
+                                                                height="100%"
+                                                                tile>
+                                                                <v-row
+                                                                  class="fill-height"
+                                                                  align="center"
+                                                                  justify="center">
+                                                                  <img v-bind:src="'/storage/images/canes/ci_'+ propietario.documento + '/' + can.fotoCan1">
+                                                                </v-row>
+                                                              </v-sheet>
+                                                            </v-carousel-item>
+                                                            <v-carousel-item>
+                                                              <v-sheet
+                                                                height="100%"
+                                                                tile>
+                                                                <v-row
+                                                                  class="fill-height"
+                                                                  align="center"
+                                                                  justify="center">
+                                                                  <img v-bind:src="'/storage/images/canes/ci_'+ propietario.documento + '/' + can.fotoCan2">
+                                                                </v-row>
+                                                              </v-sheet>
+                                                            </v-carousel-item>
+                                                            <v-carousel-item>
+                                                              <v-sheet
+                                                                height="100%"
+                                                                tile>
+                                                                <v-row
+                                                                  class="fill-height"
+                                                                  align="center"
+                                                                  justify="center">
+                                                                  <img v-bind:src="'/storage/images/canes/ci_'+ propietario.documento + '/' + can.fotoCan3">
+                                                                </v-row>
+                                                              </v-sheet>
+                                                            </v-carousel-item>
+                                                            <v-carousel-item>
+                                                              <v-sheet
+                                                                height="100%"
+                                                                tile>
+                                                                <v-row
+                                                                  class="fill-height"
+                                                                  align="center"
+                                                                  justify="center">
+                                                                  <img v-bind:src="'/storage/images/canes/ci_'+ propietario.documento + '/' + can.fotoCan4">
+                                                                </v-row>
+                                                              </v-sheet>
+                                                            </v-carousel-item>
+                                                            <v-carousel-item>
+                                                              <v-sheet
+                                                                height="100%"
+                                                                tile>
+                                                                <v-row
+                                                                  class="fill-height"
+                                                                  align="center"
+                                                                  justify="center">
+                                                                  <img v-bind:src="'/storage/images/canes/ci_'+ propietario.documento + '/' + can.fotoCan5">
+                                                                </v-row>
+                                                              </v-sheet>
+                                                            </v-carousel-item>
+                                                          </v-carousel>
+                                                        </template>
+                                                      </v-overlay>
+                                                  </v-overlay>
+                                                </v-fade-transition>
+                                              </v-card>
+                                            </template>
+                                          </v-hover>
                                         <div></div>
                                     </v-row>
                                     <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -1409,6 +1542,14 @@
             ],
             creacion: [],
             actualizacion: [],
+            overlay: false,
+            overlay1: false,
+            overlay2: false,
+            overlay3: false,
+            zIndex: 0,
+            zIndex1: 0,
+            model: 0,
+            model1: 0,
             }
         },
         created(){

@@ -17,7 +17,7 @@
                 dark
                 shrink-on-scroll
                 prominent
-                src="/storage/img/port1.png"
+                src="/storage/img/porttt.png"
                 fade-img-on-scroll
                 height="350px"
                 >
@@ -271,12 +271,10 @@
                         <div style="background: none; color: white; padding-top: 3px; display:flex; max-height: 50px !important; padding-left:110px">
                             <div>
                                 <v-row>
-                                    <v-toolbar-title class="d-none d-lg-none d-md-none d-sm-block" style="cursor: pointer; font-size: 17px" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA -&nbsp;</v-toolbar-title>
-                                    <v-toolbar-title class="d-none d-lg-none d-md-none d-sm-block" style="cursor: pointer; font-size: 17px" @click="scrollMeTo('cac')">CENTRO DE ADIESTRAMIENTO DE CANES</v-toolbar-title>
+                                    <v-toolbar-title class="d-none d-lg-none d-md-none d-sm-block" style="cursor: pointer; font-size: 17px" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</v-toolbar-title>
                                 </v-row>
                                 <v-row>
-                                    <v-toolbar-title class="d-none d-lg-block d-md-block" style="cursor: pointer" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA -&nbsp;</v-toolbar-title>
-                                    <v-toolbar-title class="d-none d-lg-block d-md-block" style="cursor: pointer" @click="scrollMeTo('cac')">CENTRO DE ADIESTRAMIENTO DE CANES (C.A.C)</v-toolbar-title>
+                                    <v-toolbar-title class="d-none d-lg-block d-md-block" style="cursor: pointer" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</v-toolbar-title>
                                 </v-row>
                             </div>
                         </div>
@@ -408,9 +406,9 @@
                                         <h1 style="font-size: 25px; color: #4a6813; font-weight: bold">
                                             Misión
                                         </h1>
-                                        <h1 style="font-size: 15px">
+                                        <p style="font-size: 15px; text-align: justify">
                                             Ejecutar programas de adiestramiento de canes, para incorporar en las funciones policiales y de seguridad ciudadana a los canes en diferentes especialidades, canoterapia, búsqueda y localización de explosivos, búsqueda y localización de cadáveres, búsqueda y localización de personas vivas, defensa y protección, con la finalidad de ayudar, cooperar, coadyuvar la labor policial, para prevenir cualquier situación de riesgo contra la seguridad e integridad de los habitantes, a partir de esta misión concordante con la misión fundamental encomendada a la Policía Boliviana por la Constitución Política del Estado Art.251 de la cual surge nuestra visión.
-                                        </h1>
+                                        </p>
                                     </v-col>
                                 </div>
 
@@ -419,7 +417,7 @@
                                         <h1 style="font-size: 25px; color: #4a6813; font-weight: bold">
                                             Misión
                                         </h1>
-                                        <h1 style="font-size: 20px">
+                                        <h1 style="font-size: 20px; text-align: justify">
                                             Ejecutar programas de adiestramiento de canes, para incorporar en las funciones policiales y de seguridad ciudadana a los canes en diferentes especialidades, canoterapia, búsqueda y localización de explosivos, búsqueda y localización de cadáveres, búsqueda y localización de personas vivas, defensa y protección, con la finalidad de ayudar, cooperar, coadyuvar la labor policial, para prevenir cualquier situación de riesgo contra la seguridad e integridad de los habitantes, a partir de esta misión concordante con la misión fundamental encomendada a la Policía Boliviana por la Constitución Política del Estado Art.251 de la cual surge nuestra visión.
                                         </h1>
                                     </v-col>
@@ -428,7 +426,7 @@
                                     <h1 style="font-size: 25px; color: #4a6813; font-weight: bold">
                                         Misión
                                     </h1>
-                                    <h1 style="font-size: 20px">
+                                    <h1 style="font-size: 20px; text-align: justify">
                                         Ejecutar programas de adiestramiento de canes, para incorporar en las funciones policiales y de seguridad ciudadana a los canes en diferentes especialidades, canoterapia, búsqueda y localización de explosivos, búsqueda y localización de cadáveres, búsqueda y localización de personas vivas, defensa y protección, con la finalidad de ayudar, cooperar, coadyuvar la labor policial, para prevenir cualquier situación de riesgo contra la seguridad e integridad de los habitantes, a partir de esta misión concordante con la misión fundamental encomendada a la Policía Boliviana por la Constitución Política del Estado Art.251 de la cual surge nuestra visión.
                                     </h1>
                                 </div>
@@ -451,7 +449,7 @@
                                         <h1 style="font-size: 25px; color: #4a6813; font-weight: bold">
                                             Visión
                                         </h1>
-                                        <h1 style="font-size: 15px">
+                                        <h1 style="font-size: 15px; text-align: justify">
                                             Fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevará a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
                                         </h1>
                                     </v-col>
@@ -462,7 +460,7 @@
                                         <h1 style="font-size: 25px; color: #4a6813; font-weight: bold">
                                             Visión
                                         </h1>
-                                        <h1 style="font-size: 20px">
+                                        <h1 style="font-size: 20px; text-align: justify">
                                             Fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevará a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
                                         </h1>
                                     </v-col>
@@ -479,7 +477,7 @@
                                     <h1 style="font-size: 25px; color: #4a6813; font-weight: bold; text-align: right">
                                         Visión
                                     </h1>
-                                    <h1 style="font-size: 20px; text-align: right">
+                                    <h1 style="font-size: 20px; text-align: justify">
                                         Fortalecer la calidad de los servicios empleando a nuestros canes adiestrados en diferentes especialidades, mejorando las capacidades técnicas, operativas y logísticas de la unidad, lo que finalmente nos llevará a la interrelación policía - sociedad, con nuestros servicios cada vez más profesionales, fortaleciendo la confianza, credibilidad y respeto de la población hacia la Policía Boliviana.
                                     </h1>
                                 </div>
@@ -578,7 +576,9 @@
                                                 <v-form>
                                                     <template>
                                                         <v-text-field v-model="form.artLP" outlined label="Nombre del Artículo"></v-text-field>
-                                                        <v-file-input v-model="form.fileLP" :label="articulos.fileLP" outlined></v-file-input>
+
+                                                        <v-file-input v-if="articulos.fileLP" v-model="form.fileLP" :label="articulos.fileLP" outlined></v-file-input>
+                                                        <v-file-input v-else v-model="form.fileLP" outlined></v-file-input>
                                                     </template>
                                                     <v-btn
                                                         color="primary"
@@ -594,7 +594,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileLP)">{{ articulos.artLP }}</v-btn>
+                                    <v-btn v-if="articulos.fileLP" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileLP)">{{ articulos.artLP }}</v-btn>
                                 </div>
 
                                 <div id="COCHA" style="padding-bottom: 15px">
@@ -632,7 +632,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileCB)">{{ articulos.artCB }}</v-btn>
+                                    <v-btn v-if="articulos.fileCB" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileCB)">{{ articulos.artCB }}</v-btn>
                                 </div>
 
                                 <div id="SANTACRUZ" style="padding-bottom: 15px">
@@ -670,7 +670,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileSC)">{{ articulos.artSC }}</v-btn>
+                                    <v-btn v-if="articulos.fileSC" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileSC)">{{ articulos.artSC }}</v-btn>
                                 </div>
 
                                 <div id="ORURO" style="padding-bottom: 15px">
@@ -708,7 +708,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileOR)">{{ articulos.artOR }}</v-btn>
+                                    <v-btn v-if="articulos.fileOR" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileOR)">{{ articulos.artOR }}</v-btn>
                                 </div>
 
                                 <div id="SUCRE" style="padding-bottom: 15px">
@@ -746,7 +746,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileSU)">{{ articulos.artSU }}</v-btn>
+                                    <v-btn v-if="articulos.fileSU" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileSU)">{{ articulos.artSU }}</v-btn>
                                 </div>
 
                                 <div id="POTOSÍ" style="padding-bottom: 15px">
@@ -784,7 +784,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.filePT)">{{ articulos.artPT }}</v-btn>
+                                    <v-btn v-if="articulos.filePT" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.filePT)">{{ articulos.artPT }}</v-btn>
                                 </div>
                             </div>
 
@@ -852,25 +852,51 @@
                 PT: false,
                 form: {
                     /* La Paz */
-                    artLP: this.articulos.artLP,
+                    artLP: null,
                     fileLP: null,
                     /* Cochabamba */
-                    artCB: this.articulos.artCB,
+                    artCB: null,
                     fileCB: null,
                     /* Santa Cruz */
-                    artSC: this.articulos.artSC,
+                    artSC: null,
                     fileSC: null,
                     /* Oruro */
-                    artOR: this.articulos.artOR,
+                    artOR: null,
                     fileOR: null,
                     /* Sucre */
-                    artSU: this.articulos.artSU,
+                    artSU: null,
                     fileSU: null,
                     /* Potosí */
-                    artPT: this.articulos.artPT,
+                    artPT: null,
                     filePT: null,
                 },
                 }
+        },
+        created(){
+          if(this.articulos.artLP)
+          {
+            this.artLP = this.articulos.artLP
+          }
+          if(this.articulos.artCB)
+          {
+            this.artCB = this.articulos.artCB
+          }
+          if(this.articulos.artSC)
+          {
+            this.artSC = this.articulos.artSC
+          }
+          if(this.articulos.artOR)
+          {
+            this.artOR = this.articulos.artOR
+          }
+          if(this.articulos.artSU)
+          {
+            this.artSU = this.articulos.artSU
+          }
+          if(this.articulos.artPT)
+          {
+            this.artPT = this.articulos.artPT
+          }
         },
         methods:
         {

@@ -19,8 +19,16 @@ class ArticulosController extends Controller
     public function index()
     {
         $articulos = Articulo::all();
-        $articulos =$articulos[0];
-        return Inertia::render('home', compact('articulos'), ['canLogin' => Route::has('login'),'canRegister' => Route::has('register'),]);
+        if($articulos->isEmpty())
+        {
+            return Inertia::render('home', ['canLogin' => Route::has('login'),'canRegister' => Route::has('register'),]);
+        }
+        else
+        {
+            $articulos =$articulos[0];
+            return Inertia::render('home', compact('articulos'), ['canLogin' => Route::has('login'),'canRegister' => Route::has('register'),]);
+        }
+
     }
 
     /**
