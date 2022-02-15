@@ -12,7 +12,7 @@
             </h2>
         </template>
 
-        <template #form>
+        <template #form style="padding-bottom: 0">
             <!-- Profile Photo -->
             <div class="col-span-6 sm:col-span-4" v-if="$page.props.jetstream.managesProfilePhotos">
                 <!-- Profile Photo File Input -->
@@ -104,14 +104,6 @@
                     </select>
                     <jet-input-error :message="form.errors.departamento" class="mt-2" />
                 </v-col>
-                <!-- Director -->
-                <v-col cols="12" sm="6">
-                    <jet-label for="director" value="Director (Deshabilitado)" />
-                    <jet-input disabled id="director" type="text" class="mt-1 block w-full" v-model="form.director" style="background: #EFEDED"/>
-                    <jet-input-error :message="form.errors.director" class="mt-2" />
-                </v-col>
-            </div>
-            <div class="col-span-6 sm:col-span-6" style="display: flex">
                 <!-- Grado -->
                 <v-col cols="12" sm="6">
                     <jet-label for="grado" value="Grado (Deshabilitado)" />
@@ -127,7 +119,7 @@
                         <option value="Teniente Coronel">Teniente Coronel</option>
                         <option value="Coronel">Coronel</option>
                         <option value="General">General</option>
-                        
+
                         <option disabled value="Civil">CIVIL</option>
                         <option value="Estudiante">Estudiante</option>
                         <option value="Técnico">Técnico</option>
@@ -138,13 +130,15 @@
                     </select>
                     <jet-input-error :message="form.errors.grado" class="mt-2" />
                 </v-col>
+            </div>
+            <div class="col-span-6 sm:col-span-6" style="display: flex">
                 <!-- Rol -->
                 <v-col cols="12" sm="6">
                     <jet-label value="Rol (Deshabilitado)" />
                     <jet-input class="mt-1 block w-full" disabled style="background: #EFEDED" type="text" :value="form.rol" />
                 </v-col>
             </div>
-            
+
         </template>
 
         <template #actions>
@@ -236,7 +230,7 @@
             },
             soloNumeros: function(evt)
             {
-                
+
                 evt = (evt) ? evt : window.event;
                 var charCode = (evt.which) ? evt.which : evt.keyCode;
                 if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || (charCode >= 192 && charCode <= 255) || (charCode == [209]) || (charCode == [241]) || (charCode == [32]) || (charCode == [39]) || (charCode == [46])) {

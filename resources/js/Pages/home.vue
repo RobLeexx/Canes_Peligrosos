@@ -274,7 +274,7 @@
                                     <v-toolbar-title class="d-none d-lg-none d-md-none d-sm-block" style="cursor: pointer; font-size: 17px" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</v-toolbar-title>
                                 </v-row>
                                 <v-row>
-                                    <v-toolbar-title class="d-none d-lg-block d-md-block" style="cursor: pointer" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</v-toolbar-title>
+                                    <v-toolbar-title class="d-none d-lg-block d-md-block" style="cursor: pointer; font-size: 28px; font-weight: bold;" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</v-toolbar-title>
                                 </v-row>
                             </div>
                         </div>

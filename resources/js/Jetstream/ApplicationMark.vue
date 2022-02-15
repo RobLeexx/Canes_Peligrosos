@@ -1,3 +1,3 @@
 <template>
-    <v-img src="/storage/img/logoPol.png" alt="" min-height="60px" max-width="50px"></v-img>
+    <v-img src="/storage/img/logoPol.png" alt="" min-height="80px" max-width="65px" style="padding:20px"></v-img>
 </template>
