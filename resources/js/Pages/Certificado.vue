@@ -36,7 +36,7 @@
                             <h1 style="font-weight: bold; font-size: 13px; text-transform: uppercase">{{ propietario.cac }}</h1>
                             <h1 style="font-weight: bold; font-size: 15px; padding-top: 15px; padding-right: 80px">Costo Bs.</h1>
                             <div style="display: flex; justify-content: center; padding: 20px">
-                                <img style="width: 100px; min-width: 100px" src="/storage/img/qr.png">
+                                <img style="width: 100px; min-width: 100px" src="/storage/img/qr_img.png">
                             </div>
                         </v-col>
                     </v-row>
@@ -453,7 +453,7 @@
                 pdf.setFont(undefined, 'bold').setFontSize(7).text('DE CANES (C.A.C)', 179, 9);
                 pdf.setFont(undefined, 'bold').setFontSize(7).text(cac, 175, 12);
                 pdf.setFont(undefined, 'bold').setFontSize(9).text('Costo Bs.', 172, 18);
-                qr.src = '/storage/img/qr.png';
+                qr.src = '/storage/img/qr_img.png';
                 pdf.addImage(qr, 'png', 180, 23, 20, 20);
 
                 /* Tablas */

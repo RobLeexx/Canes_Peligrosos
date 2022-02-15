@@ -3,7 +3,6 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
 Use App\Http\Controllers\ArticulosController;
 Use App\Http\Controllers\UsuarioController;
 Use App\Http\Controllers\RegistroController;
@@ -63,11 +62,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::get('/registros/{propietario}/pdf', CertificadoController::class)->name('certificado.pdf');
 
-    Route::get('qrcode', function () {
-        return QrCode::size(250)
-            ->backgroundColor(255, 255, 204)
-            ->generate('MyNotePaper');
-    });
+    Route::get('/prueba');
 
 });
 
