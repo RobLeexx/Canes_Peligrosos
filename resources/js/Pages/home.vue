@@ -852,51 +852,27 @@
                 PT: false,
                 form: {
                     /* La Paz */
-                    artLP: null,
+                    artLP: this.articulos.artLP,
                     fileLP: null,
                     /* Cochabamba */
-                    artCB: null,
+                    artCB: this.articulos.artCB,
                     fileCB: null,
                     /* Santa Cruz */
-                    artSC: null,
+                    artSC: this.articulos.artSC,
                     fileSC: null,
                     /* Oruro */
-                    artOR: null,
+                    artOR: this.articulos.artOR,
                     fileOR: null,
                     /* Sucre */
-                    artSU: null,
+                    artSU: this.articulos.artSU,
                     fileSU: null,
                     /* Potosí */
-                    artPT: null,
+                    artPT: this.articulos.artPT,
                     filePT: null,
                 },
                 }
         },
         created(){
-          if(this.articulos.artLP)
-          {
-            this.artLP = this.articulos.artLP
-          }
-          if(this.articulos.artCB)
-          {
-            this.artCB = this.articulos.artCB
-          }
-          if(this.articulos.artSC)
-          {
-            this.artSC = this.articulos.artSC
-          }
-          if(this.articulos.artOR)
-          {
-            this.artOR = this.articulos.artOR
-          }
-          if(this.articulos.artSU)
-          {
-            this.artSU = this.articulos.artSU
-          }
-          if(this.articulos.artPT)
-          {
-            this.artPT = this.articulos.artPT
-          }
         },
         methods:
         {
