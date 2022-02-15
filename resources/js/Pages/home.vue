@@ -594,7 +594,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn v-if="articulos.fileLP" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileLP)">{{ articulos.artLP }}</v-btn>
+                                    <v-btn v-if="articulos.artLP" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileLP)">{{ articulos.artLP }}</v-btn>
                                 </div>
 
                                 <div id="COCHA" style="padding-bottom: 15px">
@@ -632,7 +632,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn v-if="articulos.fileCB" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileCB)">{{ articulos.artCB }}</v-btn>
+                                    <v-btn v-if="articulos.artCB" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileCB)">{{ articulos.artCB }}</v-btn>
                                 </div>
 
                                 <div id="SANTACRUZ" style="padding-bottom: 15px">
@@ -670,7 +670,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn v-if="articulos.fileSC" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileSC)">{{ articulos.artSC }}</v-btn>
+                                    <v-btn v-if="articulos.artSC" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileSC)">{{ articulos.artSC }}</v-btn>
                                 </div>
 
                                 <div id="ORURO" style="padding-bottom: 15px">
@@ -708,7 +708,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn v-if="articulos.fileOR" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileOR)">{{ articulos.artOR }}</v-btn>
+                                    <v-btn v-if="articulos.artOR" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileOR)">{{ articulos.artOR }}</v-btn>
                                 </div>
 
                                 <div id="SUCRE" style="padding-bottom: 15px">
@@ -746,7 +746,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn v-if="articulos.fileSU" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileSU)">{{ articulos.artSU }}</v-btn>
+                                    <v-btn v-if="articulos.artSU" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.fileSU)">{{ articulos.artSU }}</v-btn>
                                 </div>
 
                                 <div id="POTOSÍ" style="padding-bottom: 15px">
@@ -784,7 +784,7 @@
                                         </v-card>
                                         </v-dialog>
                                     </v-row>
-                                    <v-btn v-if="articulos.filePT" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.filePT)">{{ articulos.artPT }}</v-btn>
+                                    <v-btn v-if="articulos.artPT" text style="padding-left: 20px; font-size: 20px" :href="route('downloadART', articulos.filePT)">{{ articulos.artPT }}</v-btn>
                                 </div>
                             </div>
 
