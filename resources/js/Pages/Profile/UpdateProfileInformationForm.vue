@@ -48,8 +48,8 @@
             <div class="col-span-6 sm:col-span-6" style="display: flex">
                 <!-- Username -->
                 <v-col cols="12" sm="6">
-                    <jet-label for="username" value="Nombre de Usuario" />
-                    <jet-input id="username" type="text" class="mt-1 block w-full" maxlength="15" v-model="form.username" autocomplete="username" style="background: #EFEDED"/>
+                    <jet-label for="username" value="Nombre de Usuario (Deshabilitado)" />
+                    <jet-input disabled id="username" type="text" class="mt-1 block w-full" maxlength="15" v-model="form.username" autocomplete="username" style="background: #EFEDED"/>
                     <jet-input-error :message="form.errors.username" class="mt-2" />
                 </v-col>
                 <!-- Email -->

@@ -27,7 +27,6 @@
                     gradient="to top right, rgba(75, 129, 59, 0.7), rgba(30, 72, 25, 0.7)"
                     ></v-img>
                 </template>
-
                 <!-- Menus Responsive -->
                 <template v-slot:extension>
                     <div>
@@ -265,108 +264,116 @@
                     </div>
                 </template>
 
-                <!-- Título Responsive -->
-                <template>
-                    <v-row style="margin: 0; display: flex; justify-content: flex-end; padding-top:20px; margin-right: 3px">
-                        <div style="background: none; color: white; padding-top: 3px; display:flex; max-height: 50px !important; padding-left:110px">
-                            <div>
-                                <v-row>
-                                    <v-toolbar-title class="d-none d-lg-none d-md-none d-sm-block" style="cursor: pointer; font-size: 17px" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</v-toolbar-title>
-                                </v-row>
-                                <v-row>
-                                    <v-toolbar-title class="d-none d-lg-block d-md-block" style="cursor: pointer; font-size: 28px; font-weight: bold;" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</v-toolbar-title>
+
+                <v-row>
+                  <v-col cols="12" sm="1"></v-col>
+                  <v-col cols="12" sm="9">
+                    <!-- Título Responsive -->
+                    <v-row style="display: flex; justify-content: center">
+                        <div style="padding: 18px">
+                          <v-img src="/storage/img/logoPol.png" alt="" min-height="40px" max-width="40px"></v-img>
+                        </div>
+                        <div style="margin: 0; display: flex; justify-content: flex-end; padding-top:20px; margin-right: 3px">
+                            <div style="background: none; color: white; padding-top: 3px; display:flex; max-height: 50px !important; padding-left:10px">
+                                <div style="padding-top: 10px">
+                                    <v-row>
+                                      <h1 class="d-none d-lg-none d-md-none d-sm-block" style="cursor: pointer; font-size: 25px; font-weight: bold;" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</h1>
+                                    </v-row>
+                                    <v-row>
+                                      <h1 class="d-none d-lg-block d-md-block" style="cursor: pointer; font-size: 28px; font-weight: bold;" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</h1>
+                                    </v-row>
+                                </div>
+                            </div>
+
+                            <div class="d-lg-none d-md-none d-sm-none" style="background: none; color: white; display:flex; max-height: 50px !important;">
+                                <v-row style="display: flex; flex-direction: column; flex-wrap: nowrap">
+                                    <div>
+                                        <v-toolbar-title style="cursor: pointer; font-size: 20px" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</v-toolbar-title>
+                                    </div>
+                                    <div>
+                                        <v-toolbar-title style="cursor: pointer; font-size: 20px" @click="scrollMeTo('cac')">C.A.C</v-toolbar-title>
+                                    </div>
                                 </v-row>
                             </div>
                         </div>
-
-                        <div class="d-lg-none d-md-none d-sm-none" style="background: none; color: white; display:flex; max-height: 50px !important;">
-                            <v-row style="display: flex; flex-direction: column; flex-wrap: nowrap">
-                                <div>
-                                    <v-toolbar-title style="cursor: pointer; font-size: 20px" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</v-toolbar-title>
-                                </div>
-                                <div>
-                                    <v-toolbar-title style="cursor: pointer; font-size: 20px" @click="scrollMeTo('cac')">C.A.C</v-toolbar-title>
-                                </div>
-                            </v-row>
-                        </div>
                     </v-row>
-                </template>
+                  </v-col>
+                  <v-col cols="12" sm="2">
+                    <!-- Social Ads No-Mobile -->
+                    <v-row style="margin: 0; display: flex; text-align: end;" class="d-none d-sm-block">
+                        <v-menu
+                        top
+                        offset-y
+                        >
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn icon
+                            v-bind="attrs"
+                            v-on="on"
+                            ><v-icon>mdi-facebook</v-icon>
+                            </v-btn>
+                        </template>
 
-                <!-- Social Ads No-Mobile -->
-                <v-row style="margin: 0; display: flex; text-align: end;" class="d-none d-sm-block">
-                    <v-menu
-                    top
-                    offset-y
-                    >
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn icon
-                        v-bind="attrs"
-                        v-on="on"
-                        ><v-icon>mdi-facebook</v-icon>
-                        </v-btn>
-                    </template>
+                        <v-list style="margin-top: 40px; width: 200px">
+                            <v-list-item href="https://www.facebook.com/Centro-De-Adiestramiento-De-Canes-122253125093342/" target="_blank">
+                                <v-icon color="primary" left x-large style="left:-40px"> mdi-rectangle </v-icon>La Paz
+                            </v-list-item>
+                            <v-list-item href="https://www.facebook.com/Centro-de-Adiestramiento-de-Canes-Detectores-de-Droga-CACDD-175096869251064/" target="_blank">
+                                <v-icon color="primary" left x-large style="left:-40px"> mdi-rectangle </v-icon>Cochabamba
+                            </v-list-item>
+                            <v-list-item href="https://www.facebook.com/profile.php?id=100063683831375" target="_blank">
+                                <v-icon color="primary" left x-large style="left:-40px"> mdi-rectangle </v-icon>Santa Cruz
+                            </v-list-item>
+                            <v-list-item href="https://www.facebook.com/Centro-De-Adiestramiento-De-Canes-Oruro-110439807978117" target="_blank">
+                                <v-icon color="primary" left x-large style="left:-40px"> mdi-rectangle </v-icon>Oruro
+                            </v-list-item>
+                            <v-list-item href="https://www.facebook.com/Polic%C3%ADa-Centro-de-Adiestramiento-de-Canes-Sucre-105968478529499/" target="_blank">
+                                <v-icon color="primary" left x-large style="left:-40px"> mdi-rectangle </v-icon>Sucre
+                            </v-list-item>
+                        </v-list>
+                        </v-menu>
 
-                    <v-list style="margin-top: 40px; width: 200px">
-                        <v-list-item href="https://www.facebook.com/Centro-De-Adiestramiento-De-Canes-122253125093342/" target="_blank">
-                            <v-icon color="primary" left x-large style="left:-40px"> mdi-rectangle </v-icon>La Paz
-                        </v-list-item>
-                        <v-list-item href="https://www.facebook.com/Centro-de-Adiestramiento-de-Canes-Detectores-de-Droga-CACDD-175096869251064/" target="_blank">
-                            <v-icon color="primary" left x-large style="left:-40px"> mdi-rectangle </v-icon>Cochabamba
-                        </v-list-item>
-                        <v-list-item href="https://www.facebook.com/profile.php?id=100063683831375" target="_blank">
-                            <v-icon color="primary" left x-large style="left:-40px"> mdi-rectangle </v-icon>Santa Cruz
-                        </v-list-item>
-                        <v-list-item href="https://www.facebook.com/Centro-De-Adiestramiento-De-Canes-Oruro-110439807978117" target="_blank">
-                            <v-icon color="primary" left x-large style="left:-40px"> mdi-rectangle </v-icon>Oruro
-                        </v-list-item>
-                        <v-list-item href="https://www.facebook.com/Polic%C3%ADa-Centro-de-Adiestramiento-de-Canes-Sucre-105968478529499/" target="_blank">
-                            <v-icon color="primary" left x-large style="left:-40px"> mdi-rectangle </v-icon>Sucre
-                        </v-list-item>
-                    </v-list>
-                    </v-menu>
+                        <v-menu
+                        top
+                        offset-y
+                        >
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn icon
+                            v-bind="attrs"
+                            v-on="on"
+                            ><v-icon>mdi-whatsapp</v-icon>
+                            </v-btn>
+                        </template>
 
-                    <v-menu
-                    top
-                    offset-y
-                    >
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn icon
-                        v-bind="attrs"
-                        v-on="on"
-                        ><v-icon>mdi-whatsapp</v-icon>
-                        </v-btn>
-                    </template>
-
-                    <v-list style="margin-top: 40px; width: 200px">
-                        <v-list-item>
-                            <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>LP - 67156260
-                        </v-list-item>
-                        <v-list-item>
-                            <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>CB - 2-25493
-                        </v-list-item>
-                        <v-list-item>
-                            <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>SC - 70669842
-                        </v-list-item>
-                        <v-list-item>
-                            <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>OR - 67715632
-                        </v-list-item>
-                        <v-list-item>
-                            <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>CH - 78898654
-                        </v-list-item>
-                        <v-list-item>
-                            <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>PD - 60298654
-                        </v-list-item>
-                        <v-list-item>
-                            <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>TJ - 60585346
-                        </v-list-item>
-                        <v-list-item>
-                            <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>BN - 70595664
-                        </v-list-item>
-                    </v-list>
-                    </v-menu>
+                        <v-list style="margin-top: 40px; width: 200px">
+                            <v-list-item>
+                                <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>LP - 67156260
+                            </v-list-item>
+                            <v-list-item>
+                                <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>CB - 2-25493
+                            </v-list-item>
+                            <v-list-item>
+                                <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>SC - 70669842
+                            </v-list-item>
+                            <v-list-item>
+                                <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>OR - 67715632
+                            </v-list-item>
+                            <v-list-item>
+                                <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>CH - 78898654
+                            </v-list-item>
+                            <v-list-item>
+                                <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>PD - 60298654
+                            </v-list-item>
+                            <v-list-item>
+                                <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>TJ - 60585346
+                            </v-list-item>
+                            <v-list-item>
+                                <v-icon color="green" left x-large style="left:-40px"> mdi-rectangle </v-icon>BN - 70595664
+                            </v-list-item>
+                        </v-list>
+                        </v-menu>
+                    </v-row>
+                  </v-col>
                 </v-row>
-
-
                 </v-app-bar>
 
                 <body>

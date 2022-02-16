@@ -158,7 +158,7 @@ class ArticulosController extends Controller
      * @param  \App\Models\grupos  $grupos
      * @return \Illuminate\Http\Response
      */
-    public function show(grupos $grupos)
+    public function show()
     {
         //
     }
@@ -169,7 +169,7 @@ class ArticulosController extends Controller
      * @param  \App\Models\grupos  $grupos
      * @return \Illuminate\Http\Response
      */
-    public function edit(articulos $articulo)
+    public function edit()
     {
        //
     }
@@ -197,7 +197,7 @@ class ArticulosController extends Controller
      * @param  \App\Models\grupos  $grupos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(grupos $grupos)
+    public function destroy()
     {
         //
     }
