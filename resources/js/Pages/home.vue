@@ -270,28 +270,35 @@
                   <v-col cols="12" sm="9">
                     <!-- Título Responsive -->
                     <v-row style="display: flex; justify-content: center">
-                        <div style="padding: 18px">
+                        <div style="padding: 18px" class="d-none d-sm-block">
                           <v-img src="/storage/img/logoPol.png" alt="" min-height="40px" max-width="40px"></v-img>
                         </div>
                         <div style="margin: 0; display: flex; justify-content: flex-end; padding-top:20px; margin-right: 3px">
                             <div style="background: none; color: white; padding-top: 3px; display:flex; max-height: 50px !important; padding-left:10px">
-                                <div style="padding-top: 10px">
+                                <div>
                                     <v-row>
-                                      <h1 class="d-none d-lg-none d-md-none d-sm-block" style="cursor: pointer; font-size: 25px; font-weight: bold;" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</h1>
+                                      <h1 class="d-none d-lg-none d-md-none d-sm-block" style="cursor: pointer; font-size: 25px; font-weight: bold; padding-top: 10px" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</h1>
                                     </v-row>
                                     <v-row>
-                                      <h1 class="d-none d-lg-block d-md-block" style="cursor: pointer; font-size: 28px; font-weight: bold;" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</h1>
+                                      <h1 class="d-none d-lg-block d-md-block" style="cursor: pointer; font-size: 28px; font-weight: bold; padding-top: 10px" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</h1>
                                     </v-row>
                                 </div>
                             </div>
-
-                            <div class="d-lg-none d-md-none d-sm-none" style="background: none; color: white; display:flex; max-height: 50px !important;">
+                        </div>
+                    </v-row>
+                    <!-- Mobile -->
+                    <v-row style="display: flex; justify-content: flex-end; margin-top: 0" class="d-lg-none d-md-none d-sm-none">
+                        <div style="padding-top: 8px">
+                          <v-img src="/storage/img/logoPol.png" alt="" min-height="40px" max-width="40px"></v-img>
+                        </div>
+                        <div style="margin: 0; display: flex; justify-content: flex-end; margin-right: 3px; padding: 15px">
+                            <div style="background: none; color: white; display:flex; max-height: 50px !important;">
                                 <v-row style="display: flex; flex-direction: column; flex-wrap: nowrap">
                                     <div>
-                                        <v-toolbar-title style="cursor: pointer; font-size: 20px" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</v-toolbar-title>
+                                        <h1 style="cursor: pointer; font-size: 20px" @click="scrollMeTo('cac')">POLICÍA BOLIVIANA</h1>
                                     </div>
                                     <div>
-                                        <v-toolbar-title style="cursor: pointer; font-size: 20px" @click="scrollMeTo('cac')">C.A.C</v-toolbar-title>
+                                        <h1 style="cursor: pointer; font-size: 20px" @click="scrollMeTo('cac')">C.A.C</h1>
                                     </div>
                                 </v-row>
                             </div>
