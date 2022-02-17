@@ -959,7 +959,7 @@
                                                         Capacitador
                                                     </div>
                                                     <div style="padding: 20px">
-                                                        {{ grado }} {{ cap.nombres }} {{ cap.paterno }} {{ cap.materno }}
+                                                        {{ gradoCap }} {{ cap.nombres }} {{ cap.paterno }} {{ cap.materno }}
                                                     </div>
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
@@ -1362,7 +1362,7 @@
                                                         Registrado por
                                                     </div>
                                                     <div style="padding: 20px">
-                                                        {{ grado }} {{ sec.nombres }} {{ sec.paterno }} {{ sec.materno }}
+                                                        {{ gradoSec }} {{ sec.nombres }} {{ sec.paterno }} {{ sec.materno }}
                                                     </div>
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -1409,7 +1409,7 @@
                                                         Capacitado por
                                                     </div>
                                                     <div style="padding: 20px">
-                                                        {{ grado }} {{ cap.nombres }} {{ cap.paterno }} {{ cap.materno }}
+                                                        {{ gradoCap }} {{ cap.nombres }} {{ cap.paterno }} {{ cap.materno }}
                                                     </div>
                                                 </v-row>
                                                 <v-row style="display: flex; justify-content: space-between; padding-inline: 10%">
@@ -1471,7 +1471,34 @@
                             </v-col>
                         </v-row>
                         <v-row>
-                            <v-col cols="12" sm="6" style="text-align: center;padding-bottom: 50px">
+                            <v-col cols="12" sm="6" style="display: flex; padding: 5%; justify-content: center">
+                              <v-hover>
+                                <template v-slot:default="{ hover }">
+                                  <v-card style="max-width: 60%">
+                                    <img style="height: 200px" v-bind:src="'/storage/qr/' + propietario.documento + '.svg'">
+                                    <v-fade-transition>
+                                      <v-overlay
+                                        v-if="hover"
+                                        absolute
+                                        color="#4a6813"
+                                      >
+                                        <v-btn
+                                          :href="route('qr.view', propietario.uuid)"
+                                        >
+                                          Vista Pública
+                                        </v-btn>
+                                          <v-overlay
+                                            :z-index="zIndex"
+                                            :value="overlay1"
+                                          >
+                                          </v-overlay>
+                                      </v-overlay>
+                                    </v-fade-transition>
+                                  </v-card>
+                                </template>
+                              </v-hover>
+                            </v-col>
+                            <v-col cols="12" sm="3" style="text-align: center;padding-bottom: 50px; display: flex; align-items: center">
                                 <v-tooltip top>
                                 <template v-slot:activator="{ on, attrs }">
                                     <v-btn
@@ -1488,7 +1515,7 @@
                                 <span v-else>Ver Autorización</span>
                                 </v-tooltip>
                             </v-col>
-                            <v-col cols="12" sm="6" style="text-align: center;padding-bottom: 50px">
+                            <v-col cols="12" sm="3" style="text-align: center;padding-bottom: 50px; display: flex; align-items: center">
                                 <v-tooltip top>
                                 <template v-slot:activator="{ on, attrs }">
                                     <v-btn :disabled="($page.props.user.rol != 'Administrador') && ($page.props.user.username != propietario.creado_por)"
@@ -1541,6 +1568,8 @@
                 "Not bad at all."
             ],
             creacion: [],
+            gradoSec:[],
+            gradoCap:[],
             actualizacion: [],
             overlay: false,
             overlay1: false,
@@ -1556,55 +1585,55 @@
             switch (this.sec.grado)
             {
                 case 'Cabo':
-                    this.grado = 'Pol.';
+                    this.gradoSec = 'Pol.';
                     break
                 case 'Sargento':
-                    this.grado = 'Sgto.';
+                    this.gradoSec = 'Sgto.';
                     break
                 case 'Suboficial':
-                    this.grado = 'Sof.';
+                    this.gradoSec = 'Sof.';
                     break
                 case 'Subteniente':
-                    this.grado = 'Subtte.';
+                    this.gradoSec = 'Subtte.';
                     break
                 case 'Teniente':
-                    this.grado = 'Tte.';
+                    this.gradoSec = 'Tte.';
                     break
                 case 'Capitán':
-                    this.grado = 'Cap.';
+                    this.gradoSec = 'Cap.';
                     break
                 case 'Mayor':
-                    this.grado = 'My.';
+                    this.gradoSec = 'My.';
                     break
                 case 'Teniente Coronel':
-                    this.grado = 'Tcnl.';
+                    this.gradoSec = 'Tcnl.';
                     break
                 case 'Coronel':
-                    this.grado = 'Cnl.';
+                    this.gradoSec = 'Cnl.';
                     break
                 case 'General':
-                    this.grado = 'Gnal.';
+                    this.gradoSec = 'Gnal.';
                     break
                 case 'Estudiante':
-                    this.grado = 'Est.';
+                    this.gradoSec = 'Est.';
                     break
                 case 'Técnico':
-                    this.grado = 'Tec.';
+                    this.gradoSec = 'Tec.';
                     break
                 case 'Licenciado':
-                    this.grado = 'Lic.';
+                    this.gradoSec = 'Lic.';
                     break
                 case 'Ingeniero':
-                    this.grado = 'Ing.';
+                    this.gradoSec = 'Ing.';
                     break
                 case 'Máster':
-                    this.grado = 'Msc.';
+                    this.gradoSec = 'Msc.';
                     break
                 case 'Doctor':
-                    this.grado = 'Doc.';
+                    this.gradoSec = 'Doc.';
                     break
                 default:
-                    this.grado = 'Funcionario';
+                    this.gradoSec = 'Funcionario';
                     break
             }
             if(this.propietario.grupo != 'Ninguno')
@@ -1612,55 +1641,55 @@
                 switch (this.cap.grado)
                 {
                     case 'Cabo':
-                        this.grado = 'Pol.';
+                        this.gradoCap = 'Pol.';
                         break
                     case 'Sargento':
-                        this.grado = 'Sgto.';
+                        this.gradoCap = 'Sgto.';
                         break
                     case 'Suboficial':
-                        this.grado = 'Sof.';
+                        this.gradoCap = 'Sof.';
                         break
                     case 'Subteniente':
-                        this.grado = 'Subtte.';
+                        this.gradoCap = 'Subtte.';
                         break
                     case 'Teniente':
-                        this.grado = 'Tte.';
+                        this.gradoCap = 'Tte.';
                         break
                     case 'Capitán':
-                        this.grado = 'Cap.';
+                        this.gradoCap = 'Cap.';
                         break
                     case 'Mayor':
-                        this.grado = 'My.';
+                        this.gradoCap = 'My.';
                         break
                     case 'Teniente Coronel':
-                        this.grado = 'Tcnl.';
+                        this.gradoCap = 'Tcnl.';
                         break
                     case 'Coronel':
-                        this.grado = 'Cnl.';
+                        this.gradoCap = 'Cnl.';
                         break
                     case 'General':
-                        this.grado = 'Gnal.';
+                        this.gradoCap = 'Gnal.';
                         break
                     case 'Estudiante':
-                        this.grado = 'Est.';
+                        this.gradoCap = 'Est.';
                         break
                     case 'Técnico':
-                        this.grado = 'Tec.';
+                        this.gradoCap = 'Tec.';
                         break
                     case 'Licenciado':
-                        this.grado = 'Lic.';
+                        this.gradoCap = 'Lic.';
                         break
                     case 'Ingeniero':
-                        this.grado = 'Ing.';
+                        this.gradoCap = 'Ing.';
                         break
                     case 'Máster':
-                        this.grado = 'Msc.';
+                        this.gradoCap = 'Msc.';
                         break
                     case 'Doctor':
-                        this.grado = 'Doc.';
+                        this.gradoCap = 'Doc.';
                         break
                     default:
-                        this.grado = 'Funcionario';
+                        this.gradoCap = 'Funcionario';
                         break
                 }
             }

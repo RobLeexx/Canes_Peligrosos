@@ -13,6 +13,7 @@ Use App\Http\Controllers\GruposShowController;
 Use App\Http\Controllers\RegistroEditController;
 Use App\Http\Controllers\DownloadController;
 Use App\Http\Controllers\CertificadoController;
+Use App\Http\Controllers\QrController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,8 @@ Use App\Http\Controllers\CertificadoController;
 Route::resource('/', ArticulosController::class);
 
 Route::get('/articulos/{art}', [DownloadController::class, 'downloadART'])->name('downloadART');
+
+Route::get('/registros/qr/{prop::uuid}', QrController::class)->name('qr.view');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
@@ -62,7 +65,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::get('/registros/{propietario}/pdf', CertificadoController::class)->name('certificado.pdf');
 
-    Route::get('/prueba');
-
+    /*Route::get('/qr_generator', [QrController::class, 'qr_generator'])->name('qr_generator');*/
 });
 

@@ -15,6 +15,7 @@ class CreatePropietariosTable extends Migration
     {
         Schema::create('propietarios', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->string('paterno');
             $table->string('materno');
             $table->string('nombres');

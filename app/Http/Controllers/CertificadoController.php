@@ -10,9 +10,6 @@ use App\Models\Can;
 use App\Models\Capacitacion;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use PDF;
-use App;
-use resources\js\Pages\Certificado;
 
 class CertificadoController extends Controller
 {
