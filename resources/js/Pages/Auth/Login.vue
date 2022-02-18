@@ -10,7 +10,7 @@
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" autocomplete="off">
             <div>
                 <jet-label for="auth" value="Email o Nombre de Usuario" />
                 <jet-input style="background-color:#DCEDC8;" id="auth" name="auth" type="text" class="mt-1 block w-full" v-model="form.auth" required autofocus />
@@ -18,7 +18,7 @@
 
             <div class="mt-4">
                 <jet-label for="password" value="Contraseña" />
-                <jet-input style="background-color:#DCEDC8;" id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
+                <jet-input style="background-color:#DCEDC8;" id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="off" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
