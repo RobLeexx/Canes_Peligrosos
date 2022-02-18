@@ -1475,7 +1475,7 @@
                               <v-hover>
                                 <template v-slot:default="{ hover }">
                                   <v-card style="max-width: 60%">
-                                    <img style="height: 200px" v-bind:src="'/storage/qr/' + propietario.documento + '.svg'">
+                                    <img style="height: 200px" v-bind:src="'/storage/qr/' + propietario.documento + '.png'">
                                     <v-fade-transition>
                                       <v-overlay
                                         v-if="hover"
