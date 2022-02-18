@@ -11,6 +11,7 @@ use App\Models\Capacitacion;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class RegistroController extends Controller
@@ -242,7 +243,7 @@ class RegistroController extends Controller
         Can::create($input);
         Capacitacion::create($input);
         /* QR */
-        QrCode::generate('https://cac.policia.bo/registros/qr/'.$uuid, '../public/storage/qr/'.$propDOC.'.svg');
+        QrCode::format('png')->merge('/logoPol.png')->generate('https://cac.policia.bo/registros/qr/'.$uuid, '../public/storage/qr/'.$propDOC.'.png');
 
         return Redirect::route('registros.index');
     }

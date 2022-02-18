@@ -3,7 +3,8 @@
     <div class="font-sans text-gray-900 antialiased">
         <div class="pt-4 bg-gray-100">
             <div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0">
-              <v-card>
+              <v-card class="mx-auto my-12"
+                max-width="85%">
               <v-alert
                 outlined
                 type="success"
@@ -16,10 +17,15 @@
               </div>
               <v-row>
                 <v-col cols="12" sm="6">
-                  <v-card-title>PROPIETARIO: {{  propietario.paterno  }} {{  propietario.materno  }} {{  propietario.nombres  }}</v-card-title>
+                  <h1 style="padding: 15px; font-weight: bold; font-size: 20px">PROPIETARIO: {{  propietario.paterno  }} {{  propietario.materno  }} {{  propietario.nombres  }}</h1>
                   <h1 style="padding: 15px">Cédula de Identidad: {{  propietario.documento  }} {{  propietario.docExp  }}</h1>
                   <h1 style="padding: 15px">Fecha de nacimiento del propietario: {{  propietario.dateProp  }}</h1>
                   <h1 style="padding: 15px">Residencia: {{  propietario.departamento  }}</h1>
+                  <!-- Contactos -->
+                  <h1 style="padding: 15px" v-if="propietario.celular" >Contacto: {{  propietario.celular  }}</h1>
+                  <h1 style="padding: 15px" v-else-if="propietario.telefono" >Contacto: {{  propietario.telefono  }}</h1>
+                  <h1 style="padding: 15px" v-else-if="propietario.email" >Contacto: {{  propietario.email  }}</h1>
+                  <h1 style="padding: 15px" v-else-if="propietario.contactoAlterno" >Contacto: {{  propietario.contactoAlterno  }}</h1>
                   <div style="padding: 20px">
                     <v-alert v-if="antecedente.aCanes != 'Ninguno' || antecedente.aRejap != 'Ninguno' || antecedente.aFelcc != 'Ninguno' || antecedente.aFelcv != 'Ninguno' || antecedente.aFelcn != 'Ninguno'"
                       type="warning"
@@ -30,9 +36,10 @@
                   </div>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <v-card-title>NOMBRE DEL CAN: {{ can.nomPerro }}</v-card-title>
+                  <h1 style="padding: 15px; font-weight: bold; font-size: 20px">NOMBRE DEL CAN: {{ can.nomPerro }}</h1>
                   <h1 style="padding: 15px">Raza del Can: {{  can.razaCan  }}</h1>
                   <h1 style="padding: 15px">Fecha de nacimiento del Can: {{  can.dateNacPerro  }}</h1>
+                  <h1 style="padding: 15px">Sexo: {{  can.sexoCan  }}</h1>
                   <h1 style="padding: 15px">Capacitación: {{  capacitacion.estado  }}</h1>
                   <div style="padding: 20px">
                     <v-alert v-if="can.antecedentesCan == 'No'"
@@ -44,12 +51,12 @@
                   </div>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <v-card-title>REGSITRADO POR: {{ gradoSec }} {{ sec.paterno }} {{ sec.materno }} {{ sec.nombres }}</v-card-title>
+                  <h1 style="padding: 15px; font-weight: bold; font-size: 20px">REGISTRADO POR: {{ gradoSec }} {{ sec.paterno }} {{ sec.materno }} {{ sec.nombres }}</h1>
                   <h1 style="padding: 15px">Registrado en: {{  propietario.cac  }}</h1>
                   <h1 style="padding: 15px">Fecha de registro: {{  creacion  }}</h1>
                 </v-col>
                 <v-col cols="12" sm="6" v-if="propietario.grupo != 'Ninguno'">
-                  <v-card-title>CAPACITADO POR: {{ gradoCap }} {{ cap.paterno }} {{ cap.materno }} {{ cap.nombres }}</v-card-title>
+                  <h1 style="padding: 15px; font-weight: bold; font-size: 20px">CAPACITADO POR: {{ gradoCap }} {{ cap.paterno }} {{ cap.materno }} {{ cap.nombres }}</h1>
                   <h1 style="padding: 15px">Inicio de capacitacion: {{  grupo.inicio  }}</h1>
                   <h1 style="padding: 15px">Fin de capacitacion: {{  grupo.fin  }}</h1>
                 </v-col>

@@ -36,7 +36,7 @@
                             <h1 style="font-weight: bold; font-size: 13px; text-transform: uppercase">{{ propietario.cac }}</h1>
                             <h1 style="font-weight: bold; font-size: 15px; padding-top: 15px; padding-right: 80px">Costo Bs.</h1>
                             <div style="display: flex; justify-content: center; padding: 20px">
-                                <img style="width: 100px; min-width: 100px" src="/storage/img/qr_img.png">
+                                <img v-bind:src="'/storage/qr/' + propietario.documento + '.svg'">
                             </div>
                         </v-col>
                     </v-row>
@@ -455,6 +455,8 @@
                 pdf.setFont(undefined, 'bold').setFontSize(9).text('Costo Bs.', 172, 18);
                 qr.src = '/storage/img/qr_img.png';
                 pdf.addImage(qr, 'png', 180, 23, 20, 20);
+                /*qr.src = '/storage/qr/' + this.propietario.documento + '.svg';
+                pdf.addImage(qr, 'svg', 180, 23, 20, 20);*/
 
                 /* Tablas */
                 pdf.autoTable({theme: 'plain', startY: 50, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9 },

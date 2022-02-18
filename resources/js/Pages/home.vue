@@ -590,7 +590,6 @@
                                                 <v-form>
                                                     <template>
                                                         <v-text-field v-model="form.artLP" outlined label="Nombre del Artículo"></v-text-field>
-
                                                         <v-file-input v-if="articulos.fileLP" v-model="form.fileLP" :label="articulos.fileLP" outlined></v-file-input>
                                                         <v-file-input v-else v-model="form.fileLP" outlined></v-file-input>
                                                     </template>
@@ -866,22 +865,22 @@
                 PT: false,
                 form: {
                     /* La Paz */
-                    artLP: this.articulos.artLP,
+                    artLP: null,
                     fileLP: null,
                     /* Cochabamba */
-                    artCB: this.articulos.artCB,
+                    artCB: null,
                     fileCB: null,
                     /* Santa Cruz */
-                    artSC: this.articulos.artSC,
+                    artSC: null,
                     fileSC: null,
                     /* Oruro */
-                    artOR: this.articulos.artOR,
+                    artOR: null,
                     fileOR: null,
                     /* Sucre */
-                    artSU: this.articulos.artSU,
+                    artSU: null,
                     fileSU: null,
                     /* Potosí */
-                    artPT: this.articulos.artPT,
+                    artPT: null,
                     filePT: null,
                 },
                 }
