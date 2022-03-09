@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
+use function GuzzleHttp\Promise\all;
+
 class GruposController extends Controller
 {
     /**
@@ -60,7 +62,7 @@ class GruposController extends Controller
             $propietarios->save();
             $capacitaciones->save();
         };
-        
+
     }
 
     /**
@@ -92,27 +94,68 @@ class GruposController extends Controller
      * @param  \App\Models\grupos  $grupos
      * @return \Illuminate\Http\Response
      */
-    public function update(Grupo $grupo)
+    public function update(Request $request, Grupo $grupo)
     {
-        $grupoId = $grupo['id'];
-        $grupoEst = $grupo['estado'];
+        $input = $request->all();
+        $grupo->fill($input)->save();
 
-        $grupo2 = Grupo::find($grupoId);
-        $grupo2->estado = 'Finalizado';
-        $grupo2->save();
-
-        /* Estado Capacitacion */
-        $propIDS = $grupo['integrantes'];
-        $propIDS = explode(',',trim($propIDS));
-        $length= count($propIDS);
-
-        for($n = 0; $n < $length; $n++)
+        /* Estado Capacitacion Completos */
+        $propCom = $grupo['completos'];
+        if($propCom)
         {
-            $propID = $propIDS[$n];
-            $capacitaciones = Capacitacion::find($propID);
-            $capacitaciones->estado = 'Finalizado';
-            $capacitaciones->save();
-        };
+            $propIDS = explode(',',trim($propCom));
+            $length1 = count($propIDS);
+
+            for($n1 = 0; $n1 < $length1; $n1++)
+            {
+                $propID = $propIDS[$n1];
+                $capacitaciones = Capacitacion::find($propID);
+                $capacitaciones->estado = 'Finalizado';
+                $capacitaciones->asistenciaCompleta = 'Sí';
+                $capacitaciones->save();
+            };
+        }
+        else
+        {
+            $grupo->completos = 'Ninguno';
+            $grupo->save();
+        }
+
+        /* Estado Capacitacion Incompletos */
+        $propIn = $grupo['incompletos'];
+        if($propIn)
+        {
+            $propIDS = explode(',',trim($propIn));
+            $length2 = count($propIDS);
+
+            for($n2 = 0; $n2 < $length2; $n2++)
+            {
+                $propID = $propIDS[$n2];
+                $capacitaciones = Capacitacion::find($propID);
+                $capacitaciones->estado = 'Incompleto';
+                $capacitaciones->asistenciaCompleta = 'No';
+                $capacitaciones->save();
+            };
+        }
+        else
+        {
+            $grupo->incompletos = 'Ninguno';
+            $grupo->save();
+        }
+        /* Observaciones Capacitacion */
+        $ints = $grupo['integrantes'];
+        $intsIDS = explode(',',trim($ints));
+        $obs = $grupo['observados'];
+        $obsNumIDS = explode(',',trim($obs));
+        $length3 = count($obsNumIDS);
+
+        for($n3 = 0; $n3 < $length3; $n3++)
+            {
+                $intID = $intsIDS[$n3];
+                $capacitaciones = Capacitacion::find($intID);
+                $capacitaciones->observaciones = $obsNumIDS[$n3];
+                $capacitaciones->save();
+            };
 
         return Redirect::route('capacitaciones');
     }

@@ -15,15 +15,17 @@ class CreateGruposTable extends Migration
     {
         Schema::create('grupos', function (Blueprint $table) {
             $table->id();
-            $table->string('capacitador');
-            $table->string('integrantes');
-            $table->string('tipo');
-            $table->string('turno');
-            $table->string('horario');
-            $table->string('inicio');
-            $table->string('fin');
-            $table->string('dia');
-            $table->string('estado');
+            $table->string('capacitador')->nullable();
+            $table->string('integrantes')->nullable();
+            $table->string('tipo')->nullable();
+            $table->string('turno')->nullable();
+            $table->string('horario')->nullable();
+            $table->string('inicio')->nullable();
+            $table->string('fin')->nullable();
+            $table->string('completos')->nullable();
+            $table->string('incompletos')->nullable();
+            $table->string('observados')->nullable();
+            $table->string('estado')->nullable();
             $table->timestamps();
         });
     }

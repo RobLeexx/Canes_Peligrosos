@@ -17,7 +17,7 @@
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
                     <v-row style="width: 100%; display: flex;justify-content: space-between; padding-bottom: 10px">
                         <v-col cols="12" sm="3" style="padding-left: 20px; padding-top: 50px; text-align: center; min-height: 30px">
-                            <div style="display: flex; justify-content: center">
+                            <div style="display: flex; justify-content: center; padding: 5px">
                                 <img style="width: 60px; min-width: 60px" src="/storage/img/logoPol.png">
                             </div>
                             <h1 style="font-size: 15px">POLICÍA BOLIVIANA</h1>
@@ -37,6 +37,7 @@
                             <h1 style="font-weight: bold; font-size: 15px; padding-top: 15px; padding-right: 80px">Costo Bs.</h1>
                             <div style="display: flex; justify-content: center; padding: 20px">
                                 <img v-bind:src="'/storage/qr/' + propietario.documento + '.png'">
+                                <!-- <img v-bind:src="'/storage/img/qr_img.png'"> -->
                             </div>
                         </v-col>
                     </v-row>
@@ -175,7 +176,7 @@
                     <table style="width: 100%">
                         <tbody>
                             <tr>
-                                <td style="padding-left: 5px"><h1 style="font-weight: bold">OBSERVACIONES:</h1>Sin Observaciones</td>
+                                <td style="padding-left: 5px"><h1 style="font-weight: bold">OBSERVACIONES:</h1>{{ capacitacion.observaciones }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -406,11 +407,11 @@
                 /* LogoIzq */
                 img.src = '/storage/img/logoPol.png';
                 imgProp.src = '/storage/images/propietarios/' + this.propietario.fotoProp;
-                pdf.addImage(img, 'png', 17, 5, 14, 18);
+                pdf.addImage(img, 'png', 17, 5, 14, 14);
                 pdf.addImage(imgProp, 'png', 62.5, 60, 45, 38);
-                pdf.setFontSize(9).text('POLICÍA BOLIVIANA', 10, 27);
-                pdf.setFontSize(6).text('Dir. Nal. De Fiscalización', 13, 31);
-                pdf.setFontSize(6).text('y Recaudaciones', 16, 34);
+                pdf.setFontSize(9).text('POLICÍA BOLIVIANA', 10, 25);
+                pdf.setFontSize(6).text('Dir. Nal. De Fiscalización', 13, 29);
+                pdf.setFontSize(6).text('y Recaudaciones', 16, 32);
 
                 /* Centro */
                 pdf.setFontSize(9).text('N°' + this.propietario.id.toString(), 107, 29.5);
@@ -456,7 +457,7 @@
                 /*qr.src = '/storage/img/qr_img.png';
                 pdf.addImage(qr, 'png', 180, 23, 20, 20);*/
                 qr.src = '/storage/qr/' + this.propietario.documento + '.png';
-                pdf.addImage(qr, 'svg', 180, 23, 20, 20);
+                pdf.addImage(qr, 'png', 180, 23, 20, 20);
 
                 /* Tablas */
                 pdf.autoTable({theme: 'plain', startY: 50, margin: {horizontal: 12.5}, tableWidth: 97.5, tableLineColor: 20, tableLineWidth: 0.3, styles: {halign: 'center', textColor: 20, fontStyle: 'bold', fontSize: 9 },
@@ -541,7 +542,7 @@
                 ]});
                 pdf.autoTable({theme: 'plain', startY: 191, margin: {horizontal: 12.5}, tableWidth: 190.5, tableLineColor: 20, tableLineWidth: 0.3, styles: { textColor: 20, fontSize: 7},
                 body: [
-                ['Sin Observaciones'],
+                [this.capacitacion.observaciones],
                 ]});
 
                 /* final */

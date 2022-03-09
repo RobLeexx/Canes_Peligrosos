@@ -8,6 +8,7 @@ use App\Models\Antecedente;
 use App\Models\Seguro;
 use App\Models\Grupo;
 use App\Models\Can;
+use App\Models\Capacitacion;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -44,7 +45,9 @@ class RegistroShowController extends Controller
             $grupoCap = $grupo['capacitador'];
             $caps = User::whereIn('username',[$grupoCap])->get();
             $cap = $caps[0];
-            return Inertia::render('ListaMostrar', compact('propietario', 'memorial', 'can', 'antecedente', 'seguro', 'sec', 'grupo', 'cap'));
+            $capacitaciones = Capacitacion::whereIn('id',[$propID])->get();
+            $capacitacion = $capacitaciones[0];
+            return Inertia::render('ListaMostrar', compact('propietario', 'memorial', 'can', 'antecedente', 'seguro', 'sec', 'grupo', 'cap', 'capacitacion'));
         }
         else
         {

@@ -2604,7 +2604,8 @@
                                 </v-card>
                                 <div style="padding: 15px">
                                     <v-btn
-                                        :disabled="!form5IsValid"
+                                        :disabled="!form5IsValid || disableBtnFlag"
+                                        :loading="disableBtnFlag"
                                         color="primary"
                                         @click="submitData"
                                     >
@@ -3065,7 +3066,7 @@
 
                 /* Capacitaciones */
                 capacitador: 'Ninguno',
-                observaciones: 'Ninguno',
+                observaciones: 'Ninguna',
                 grupoID: 'Ninguno',
                 estado: 'Sin Comenzar',
                 tipoCap: 'Ninguno',
@@ -3075,6 +3076,8 @@
                 grupo: 'Ninguno',
                 creado_por: this.$page.props.user.username,
             },
+            disableBtnFlag: false,
+            cnt: 1,
             }
         },
         created(){
@@ -3312,6 +3315,11 @@
 
                 /* subir datos */
                 this.$inertia.post(route('registros.store'),this.form);
+
+                /* Primer Click */
+                if(!this.disableBtnFlag) {
+                    this.disableBtnFlag = true;
+                }
             },
 
             sinNumeros: function(evt)

@@ -37,9 +37,6 @@ class RegistroEditController extends Controller
         $input = $request->all();
         $propID = $propietario['id'];
         $propDOC = $propietario['documento'];
-        $canes = Can::whereIn('id', [$propID])->get();
-        $canes = $canes[0];
-        $canName = $canes['nomPerro'];
 
         if($request->hasFile('docFile'))
         {
@@ -176,6 +173,7 @@ class RegistroEditController extends Controller
         /* CAN */
         $canes = Can::whereIn('id',[$propID])->get();
         $can = $canes[0];
+        $canName = $can['nomPerro'];
         if($request->hasFile('fotoCan1'))
         {
             $destination_path = 'public/images/canes/ci_'.$propDOC;

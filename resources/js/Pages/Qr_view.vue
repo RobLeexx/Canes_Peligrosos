@@ -26,14 +26,7 @@
                   <h1 style="padding: 15px" v-else-if="propietario.telefono" >Contacto: {{  propietario.telefono  }}</h1>
                   <h1 style="padding: 15px" v-else-if="propietario.email" >Contacto: {{  propietario.email  }}</h1>
                   <h1 style="padding: 15px" v-else-if="propietario.contactoAlterno" >Contacto: {{  propietario.contactoAlterno  }}</h1>
-                  <div style="padding: 20px">
-                    <v-alert v-if="antecedente.aCanes != 'Ninguno' || antecedente.aRejap != 'Ninguno' || antecedente.aFelcc != 'Ninguno' || antecedente.aFelcv != 'Ninguno' || antecedente.aFelcn != 'Ninguno'"
-                      type="warning"
-                    >El Propietario TIENE ANTECEDENTES</v-alert>
-                    <v-alert v-else
-                      type="success"
-                    >El Propietario NO TIENE ANTECEDENTES</v-alert>
-                  </div>
+
                 </v-col>
                 <v-col cols="12" sm="6">
                   <h1 style="padding: 15px; font-weight: bold; font-size: 20px">NOMBRE DEL CAN: {{ can.nomPerro }}</h1>
@@ -41,14 +34,7 @@
                   <h1 style="padding: 15px">Fecha de nacimiento del Can: {{  can.dateNacPerro  }}</h1>
                   <h1 style="padding: 15px">Sexo: {{  can.sexoCan  }}</h1>
                   <h1 style="padding: 15px">Capacitación: {{  capacitacion.estado  }}</h1>
-                  <div style="padding: 20px">
-                    <v-alert v-if="can.antecedentesCan == 'No'"
-                      type="success"
-                    >El Can NO TIENE ANTECEDENTES</v-alert>
-                    <v-alert v-else
-                      type="warning"
-                    >El Can TIENE ANTECEDENTES</v-alert>
-                  </div>
+
                 </v-col>
                 <v-col cols="12" sm="6">
                   <h1 style="padding: 15px; font-weight: bold; font-size: 20px">REGISTRADO POR: {{ gradoSec }} {{ sec.paterno }} {{ sec.materno }} {{ sec.nombres }}</h1>

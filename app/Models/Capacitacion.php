@@ -14,5 +14,6 @@ class Capacitacion extends Model
         'tipoCap',
         'grupoID',
         'estado',
+        'asistenciaCompleta',
     ];
 }

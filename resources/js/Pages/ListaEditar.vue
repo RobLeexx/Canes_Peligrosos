@@ -2634,7 +2634,8 @@
                             </v-stepper>
                             <div style="padding: 15px">
                                 <v-btn
-                                    :disabled="!form5IsValid"
+                                    :disabled="!form5IsValid || disableBtnFlag"
+                                    :loading="disableBtnFlag"
                                     color="primary"
                                     @click="updateData"
                                 >
@@ -3096,6 +3097,7 @@
 
                 cac: this.propietario.cac,
             },
+            disableBtnFlag: false,
             }
         },
         created () {
@@ -3328,6 +3330,11 @@
                 }
                 /* subir datos */
                 this.$inertia.post(route('registros.update', this.propietario.id),this.form);
+
+                /* Primer Click */
+                if(!this.disableBtnFlag) {
+                    this.disableBtnFlag = true;
+                }
             },
 
             sinNumeros: function(evt)

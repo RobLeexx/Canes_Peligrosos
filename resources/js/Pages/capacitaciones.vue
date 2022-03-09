@@ -16,7 +16,7 @@
                     max-width="70%"
                     >
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn 
+                        <v-btn
                             fab
                             color="primary"
                             v-bind="attrs"
@@ -391,7 +391,8 @@
                     horario: null,
                     inicio: null,
                     fin: null,
-                    dia: '0',
+                    completos: null,
+                    incompletos: null,
                     estado: 'En Curso',
                 },
             }
@@ -483,13 +484,14 @@
             /* Grupos */
             getDisplayUno(en_curso) {
                 const numIntegrantes = en_curso.integrantes.split(",").length;
+                const horario = en_curso.horario.replace(',',' -');
                 return {
                         id: en_curso.id,
                         numInt: numIntegrantes,
                         integrantes: en_curso.integrantes,
                         tipo: en_curso.tipo,
                         turno: en_curso.turno,
-                        horario: en_curso.horario,
+                        horario: horario,
                         inicio: en_curso.inicio,
                         fin: en_curso.fin,
                         estado: en_curso.estado,
@@ -498,13 +500,14 @@
             },
             getDisplayTres(completos) {
                 const numIntegrantes = completos.integrantes.split(",").length;
+                const horario = completos.horario.replace(',',' -');
                 return {
                         id: completos.id,
                         numInt: numIntegrantes,
                         integrantes: completos.integrantes,
                         tipo: completos.tipo,
                         turno: completos.turno,
-                        horario: completos.horario,
+                        horario: horario,
                         inicio: completos.inicio,
                         fin: completos.fin,
                         estado: completos.estado,

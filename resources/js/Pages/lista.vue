@@ -258,6 +258,10 @@
                 {
                     registro.grupo = 'Finalizado'
                 }
+                else if(registro.estado == 'Incompleto')
+                {
+                    registro.grupo = 'Incompleto'
+                }
                 /* Adjuntos Pendientes */
                 let numPen = 0;
                 if(!registro.memoFile){
@@ -356,6 +360,7 @@
                     case 'Sin Comenzar': return 'red'
                     case 'En Curso': return 'orange darken-2'
                     case 'Finalizado': return 'green'
+                    case 'Incompleto': return 'red'
                 }
             },
             colorPen(num) {

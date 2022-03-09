@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
 
     Route::resource('/registros', RegistroController::class)->except('show','edit','update','destroy');
 
-    Route::resource('/grupos', GruposController::class);
+    Route::resource('/grupos', GruposController::class)->except('index', 'create', 'show', 'edit','destroy');
 
     Route::get('/capacitaciones', CapacitacionesController::class)->name('capacitaciones');
 

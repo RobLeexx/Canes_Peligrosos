@@ -978,6 +978,14 @@
                                                         {{ grupo.tipo }}
                                                     </div>
                                                 </v-row>
+                                                <v-row style="display: flex; justify-content: space-between; padding-inline: 10%; padding-bottom: 25px">
+                                                    <div style="padding: 20px; font-weight: bold">
+                                                        Observaciones
+                                                    </div>
+                                                    <div style="padding: 20px">
+                                                        {{ capacitacion.observaciones }}
+                                                    </div>
+                                                </v-row>
                                             </div>
                                         </v-expansion-panel-content>
                                         </v-expansion-panel>
@@ -1555,6 +1563,7 @@
             can: Object,
             sec: Object,
             cap: Object,
+            capacitacion: Object,
         },
         data() {
             return {
