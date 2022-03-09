@@ -15,7 +15,7 @@
         <div class="py-12" style="background: #4a6813">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="box-shadow: 0px 0px 30px">
-                    <v-row style="width: 100%; display: flex;justify-content: space-between; padding-bottom: 10px">
+                    <v-row style="width: 100%; display: flex;justify-content: space-between">
                         <v-col cols="12" sm="3" style="padding-left: 20px; padding-top: 50px; text-align: center; min-height: 30px">
                             <div style="display: flex; justify-content: center; padding: 5px">
                                 <img style="width: 60px; min-width: 60px" src="/storage/img/logoPol.png">
