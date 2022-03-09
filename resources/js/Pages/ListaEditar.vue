@@ -3460,7 +3460,7 @@
                         if(this.firstSwitch){
                         option.text = device.label || `Camera ${videoSourcesSelect.length + 1}`;
                         videoSourcesSelect.appendChild(option);
-                        console.log(device);
+                        /*console.log(device);*/
                         }
                         break;
                 }
@@ -3544,7 +3544,7 @@
             // axios.post('http://your-url-upload', formData).then(response => {
             //   console.log(response)
             // })
-            console.log("File", capturedPhotoFile);
+            /*console.log("File", capturedPhotoFile);*/
             },
 
             dataURLtoFile(dataURL, filename) {
@@ -3646,7 +3646,7 @@
                         if(this.firstSwitch1){
                         option.text = device.label || `Camera ${videoSourcesSelect1.length + 1}`;
                         videoSourcesSelect1.appendChild(option);
-                        console.log(device);
+                        //console.log(device);
                         }
                         break;
                 }
@@ -3730,7 +3730,7 @@
             // axios.post('http://your-url-upload', formData).then(response => {
             //   console.log(response)
             // })
-            console.log("File", capturedPhotoFile1);
+            //console.log("File", capturedPhotoFile1);
             },
 
             dataURLtoFile1(dataURL1, filename1) {
@@ -3791,7 +3791,7 @@
                         if(this.firstSwitch2){
                         option.text = device.label || `Camera ${videoSourcesSelect2.length + 1}`;
                         videoSourcesSelect2.appendChild(option);
-                        console.log(device);
+                        //console.log(device);
                         }
                         break;
                 }
@@ -3875,7 +3875,7 @@
             // axios.post('http://your-url-upload', formData).then(response => {
             //   console.log(response)
             // })
-            console.log("File", capturedPhotoFile2);
+            //console.log("File", capturedPhotoFile2);
             },
 
             dataURLtoFile2(dataURL2, filename2) {
@@ -3936,7 +3936,7 @@
                         if(this.firstSwitch3){
                         option.text = device.label || `Camera ${videoSourcesSelect3.length + 1}`;
                         videoSourcesSelect3.appendChild(option);
-                        console.log(device);
+                        //console.log(device);
                         }
                         break;
                 }
@@ -4020,7 +4020,7 @@
             // axios.post('http://your-url-upload', formData).then(response => {
             //   console.log(response)
             // })
-            console.log("File", capturedPhotoFile3);
+            //console.log("File", capturedPhotoFile3);
             },
 
             dataURLtoFile3(dataURL3, filename3) {
@@ -4081,7 +4081,7 @@
                         if(this.firstSwitch4){
                         option.text = device.label || `Camera ${videoSourcesSelect4.length + 1}`;
                         videoSourcesSelect4.appendChild(option);
-                        console.log(device);
+                        //console.log(device);
                         }
                         break;
                 }
@@ -4165,7 +4165,7 @@
             // axios.post('http://your-url-upload', formData).then(response => {
             //   console.log(response)
             // })
-            console.log("File", capturedPhotoFile4);
+            //("File", capturedPhotoFile4);
             },
 
             dataURLtoFile4(dataURL4, filename4) {
@@ -4226,7 +4226,7 @@
                         if(this.firstSwitch5){
                         option.text = device.label || `Camera ${videoSourcesSelect5.length + 1}`;
                         videoSourcesSelect5.appendChild(option);
-                        console.log(device);
+                        //console.log(device);
                         }
                         break;
                 }
@@ -4310,7 +4310,7 @@
             // axios.post('http://your-url-upload', formData).then(response => {
             //   console.log(response)
             // })
-            console.log("File", capturedPhotoFile5);
+            //console.log("File", capturedPhotoFile5);
             },
 
             dataURLtoFile5(dataURL5, filename5) {
@@ -4418,9 +4418,9 @@
         /* Guardar Coordenadas */
         saveCoord(){
             const lati = localStorage.getItem('lat');
-            console.log(lati);
+            //(lati);
             const longi = localStorage.getItem('lon');
-            console.log(longi);
+            //console.log(longi);
             document.getElementById('latitud').innerHTML = lati;
             document.getElementById('longitud').innerHTML = longi;
             this.form.latitud = lati;
