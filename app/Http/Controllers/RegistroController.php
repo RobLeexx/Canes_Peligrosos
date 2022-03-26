@@ -243,7 +243,9 @@ class RegistroController extends Controller
         Can::create($input);
         Capacitacion::create($input);
         /* QR */
+        // PROD
         QrCode::format('png')->merge('/logoPol.png', .3)->size(300)->generate('https://cac.policia.bo/registros/qr/'.$uuid, '../public/storage/qr/'.$propDOC.'.png');
+        // DEV
         /*QrCode::generate('https://cac.policia.bo/registros/qr/'.$uuid, '../public/storage/qr/'.$propDOC.'.svg');*/
 
         return Redirect::route('registros.index');
